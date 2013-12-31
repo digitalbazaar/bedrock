@@ -1,0 +1,167 @@
+${set(pageTitle = "Legal Information")}
+{{partial "head.tpl"}}
+
+<div id="tos">
+   <div id="tos-toc">
+      <h2>Terms Of Service</h2>
+
+      <p>This is an agreement between you and Digital Bazaar, Inc. It is also an
+      agreement between you and the other participants with whom you choose
+      to participate with on the Bedrock Developer Sandbox. Before using the
+      Bedrock Developer Sandbox (The "Service"), please read and familiarize
+      yourself with this document. If you use the Service or develop software
+      that uses the Service, you will be bound by this agreement.
+      </p>
+
+      <p>For further information and questions, you may use any of the
+      methods below to communicate with the community that operates
+      the Service:</p>
+      <ul>
+         <li>Email:
+         <a href="mailto:support@digitalbazaar.com">support@digitalbazaar.com</a></li>
+      </ul>
+
+   </div>
+
+   <div id="tos-overview">
+      <h2>Service Overview</h2>
+
+      <p>The Service offers a sandboxed set of web pages and an API.
+      </p>
+
+      <h3>Summary of Terms</h3>
+      <ul>
+         <li>This Service is a sandboxed development environment.</li>
+         <li>Using the sandbox is free.</li>
+         <li>Alpha/Beta software warning: Do not enter sensitive information.</li>
+         <li>This Service may contain explicit content.</li>
+         <li>We reserve the right to make changes to our terms of service.</li>
+         <li>We do our best to protect your data.</li>
+         <li>Don't use the Service to do anything illegal or make people
+         think that they are executing real contracts.</li>
+      </ul>
+
+      <h3>Sandboxed Development Environment</h3>
+      <p>The Service is a fully sandboxed environment. At no point will
+      Digital Bazaar be expected to disburse funds for payment or any other
+      sort of financial outcome caused by operation of the sandboxed
+      environment. All money on this system is fake and only tracked for the
+      purposes of developing and testing interoperable systems.</p>
+
+      <h3>Phishing</h3>
+      <p>All communication will be performed via Internet-based protocols such
+      as email or secure HTTP. At no point will the Service or staff of
+      Digital Bazaar attempt to contact you via physical mail or telephone
+      without your express permission.</p>
+
+      <h3>Information Security</h3>
+      <p>Transmission of all personal data and financial information will be
+      encrypted and will occur using industry standard Transport Layer Security
+      (TLS) technology. All sensitive financial data, such as credit card
+      numbers, are blinded in all staff-facing interfaces. Digital Bazaar also
+      uses standard security industry practices to secure communication and
+      data storage.</p>
+
+      <p>Digital Bazaar will, from time to time, update this website with alpha
+      or beta releases of the software and cannot guarantee that there will not
+      be bugs in the software. While the staff of Digital Bazaar will endeavor
+      to fix the bugs as quickly as possible, we cannot guarantee that there
+      will not be a breach of information at some point. Since this is a
+      sandboxed environment, developers are urged to not use real credit card
+      information or other financially or personally sensitive data.</p>
+
+      <h3>Explicit Content Warning</h3>
+      <p>You agree that Digital Bazaar has no liability to you for
+      any content that you find to be offensive, indecent or objectionable.
+      This includes, but is not limited to cursing, rude gestures, nudity,
+      strong themes, violence, or anything else that may offend your delicate
+      sensibilities.</p>
+
+      <h3>Data Privacy</h3>
+      <p>Your privacy is very important to us and we will strive to protect your
+      personal information at all times. Any private data, such as
+      first and last names, street addresses, credit card information, purchasing
+      history, preferences and any other personally identifiable information will
+      never be sold or given to third parties without your express written consent
+      or by force of law. At times we may publish aggregate information to the
+      public or our partners, but we will ensure that all personal information is
+      removed. More information about the data we store and how we use it can be
+      found on our <a href="/legal#pp">Privacy Policy</a> page.
+      </p>
+
+      <h3>Usage Restrictions</h3>
+      <p>You represent, warrant and agree that you will use the Service only for
+      development and evaluation purposes. You agree not to infringe the rights
+      of copyright owners and to comply with all applicable laws in your use of the
+      Service. Do not execute contracts using the Service in a way that
+      makes it seem as if the contract is binding or valid in any way. Do not
+      execute contracts that contain assets to which you do not own the
+      copyright or licensing rights. Use fake money, use content you own,
+      use your common sense and you should be fine.
+      </p>
+
+      <h3>Minors</h3>
+      <p>Minors (persons under the age of 18) may develop software using the
+      Service but are warned that they will require the supervision of their
+      parent or legal guardian. Accounts can be created for use by minors, but
+      the information contained therein must belong to and identify their
+      parent or legal guardian, not the minor. If you are under the age of 18,
+      tell your parents or legal guardian that you are signing up for an
+      account and using their information.</p>
+
+      <h3>Changes to Terms of Service</h3>
+      <p>From time to time Digital Bazaar may need to modify these
+      Terms of Service. We reserve the right to do so for any reason and
+      without notice.</p>
+   </div>
+</div>
+
+<div id="pp">
+   <h2>Privacy Policy</h2>
+
+   <p>Digital Bazaar, the company that operates this Service, is committed to
+   protecting and respecting the privacy of the individuals that use its
+   services. No information that could individually identify you is willfully
+   disclosed to any third party without your explicit consent except when
+   required by law.</p>
+
+   <h3>Cookies</h3>
+   <p>When you visit this website, a "cookie" is sent
+   to your computer. The cookie is a small file placed on your hard drive that
+   contains information uniquely identifying your session with the Service.
+   The cookie is used to make your experience when using the website
+   easier. This
+   is accomplished by storing your preferences and your current session
+   information in the cookie. Cookies will never be disclosed to any third
+   party without your explicit consent except when required by law.</p>
+
+   <p>Most browsers are set up by default to accept cookies, however, you may
+   set your browser to refuse cookies or notify you whenever one is being
+   sent. If you reject cookies in your browser, you will not be able to log
+   into the Service.</p>
+
+   <h3>Collection</h3>
+   <p>Digital Bazaar may store unique information about you such as your name
+   and email address only when it is specifically and knowingly provided by
+   you. Digital Bazaar also collects other information during the course of
+   operating the service, such as your IP address and Web browser version,
+   in order to make debugging issues on the service easier to accomplish.</p>
+
+   <h3>Sharing</h3>
+   <p>Digital Bazaar may share aggregate information about participants on the
+   Service with other third parties. Individually identifiable information,
+   however, will not be shared with any third party without your express
+   consent except when required by law.</p>
+
+   <h3>Changes to Privacy Policy</h3>
+   <p>Digital Bazaar reserves the right to change this Privacy Policy.
+   Whenever the policy is changed, the changes will be reflected on this page
+   so that you are always aware of the information that is collected, how it
+   is used, and to whom it is disclosed.</p>
+
+   <h3>Your Consent</h3>
+   <p>By using this Service you consent to the collection and use of your
+   information as has been outlined by this policy.</p>
+</div>
+
+{{partial "foot.tpl"}}

@@ -1,0 +1,68 @@
+{
+  "name": "bedrock",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "node test.js --unit",
+    "lint": "jshint *.js bin/*js configs/*.js email-templates/*.js lib/*.js lib/bedrock/*.js lib/bedrock/tests/*.js locales/*.js schemas/*.js site/static/en/app/*.js site/static/en/app/controllers/*.js site/static/en/app/directives/*.js site/static/en/app/filters/*.js site/static/en/app/services/*.js site/static/en/legacy/*.js test/*.js",
+    "ci-test": "node test.js --unit --system",
+    "ci-lint": "mkdir -p reports && jshint --reporter=checkstyle *.js bin/*js configs/*.js email-templates/*.js lib/*.js lib/bedrock/*.js lib/bedrock/tests/*.js locales/*.js schemas/*.js site/static/en/app/*.js site/static/en/app/controllers/*.js site/static/en/app/directives/*.js site/static/en/app/filters/*.js site/static/en/app/services/*.js site/static/en/legacy/*.js test/*.js > reports/jshint.xml || exit 0",
+    "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js > reports/coverage.html && rm -rf lib-cov",
+    "install-selenium": "test ! -e ./temp/sv-selenium/selenium-server-standalone.jar && ./node_modules/.bin/install_selenium; test ! -e ./temp/sv-selenium/chromedriver && ./node_modules/.bin/install_chromedriver; ln -sf ./temp/sv-selenium/chromedriver .; echo 'Selenium and chromedriver have been successfully installed.'",
+    "minify": "./node_modules/grunt-cli/bin/grunt && ./node_modules/requirejs/bin/r.js -o minify.js"
+  },
+  "dependencies": {
+    "async": "~0.2.8",
+    "almond": "~0.2.6",
+    "bcrypt": "~0.7.2",
+    "commander": "~1.3.0",
+    "connect": "~2.7.10",
+    "connect-mongo": "git://github.com/digitalbazaar/connect-mongo.git",
+    "emailjs": "git://github.com/digitalbazaar/emailjs.git",
+    "express": "~3.3.5",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-angular-templates": "~0.3.10",
+    "http-signature": "~0.10.0",
+    "i18n": "~0.4.0",
+    "jqtpl": "~1.1.0",
+    "jsdom": "~0.7.0",
+    "json-schema": "git://github.com/digitalbazaar/json-schema.git",
+    "jsonld": "~0.1.25",
+    "mailparser": "~0.3.0",
+    "mongodb": "~1.3.18",
+    "passport": "~0.1.9",
+    "passport-local": "~0.1.3",
+    "pkginfo": "~0.3.0",
+    "posix": "~1.0.0",
+    "prompt": "~0.2.11",
+    "redback": "~0.3.6",
+    "request": "~2.27.0",
+    "requirejs": "~2.1.8",
+    "sprintf": "~0.1.1",
+    "swig": "git://github.com/digitalbazaar/swig.git",
+    "ua-parser": "~0.3.0",
+    "underscore": "~1.5.0",
+    "ursa": "v0.8.0",
+    "walk": "~2.2.1",
+    "winston": "~0.7.0",
+    "winston-mail": "~0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "should": "~1.2.2",
+    "superagent": "*",
+    "sv-selenium": "*",
+    "wd": "*",
+    "visionmedia-jscoverage": "~1.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "directories": {
+    "lib": "./lib/bedrock"
+  },
+  "main": "./lib/bedrock"
+}

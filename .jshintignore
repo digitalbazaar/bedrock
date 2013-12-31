@@ -1,0 +1,4 @@
+lib/payswarm-auth/rdfa.js
+minify.js
+site/static/en/app/main.min.js
+site/static/en/app/templates.min.js

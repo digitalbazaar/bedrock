@@ -1,0 +1,40 @@
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>{{session.profile.email}}</td>
+      </tr>
+      <tr data-ng-show="session.identity">
+        <td><strong>Identity:</strong></td>
+        <td>{{session.identity.label}}</td>
+      </tr>
+      <tr data-ng-hide="session.identity">
+        <td><strong>Profile:</strong></td>
+        <td>{{session.profile.label}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div data-modal-switch-identity="showIdentitySwitcher"></div>
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="2"><a
+          data-ng-click="refreshData(); $parent.visible=false"><i class="icon-refresh"></i> Refresh</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><a
+          data-ng-click="showIdentitySwitcher=true; $parent.visible=false"><i
+          class="icon-random"></i> Switch Identity</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="/profile/logout"><i
+          class="icon-off"></i> Sign Out</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
