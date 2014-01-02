@@ -50,9 +50,9 @@ config.database.host = 'localhost';
 config.database.port = 27017;
 config.database.local.collection = 'bedrock_dev';
 
-// authority config
+// root user config
 config.root.baseUri = 'https://' + config.server.host;
-config.root.id = config.root.baseUri + '/i/authority';
+config.root.id = config.root.baseUri + '/i/root';
 config.root.name = 'Bedrock Dev Root User';
 
 // mail config
