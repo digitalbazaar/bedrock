@@ -127,53 +127,6 @@ ${set([
         </div>
       </fieldset>
 
-      <!-- <button class="btn" data-toggle="collapse" data-target="#account-form">
-        Advanced
-      </button> -->
-
-      <div class="collapse">
-        <fieldset>
-          <legend>Your Default Financial Account</legend>
-
-          <div class="control-group">
-            <p class="help-block">
-      Your default financial account is where you will keep your money and have
-      others send you money. You start off with one financial account, but you can
-      add others at any point at no extra cost.
-            </p>
-          </div>
-
-          <div class="control-group" data-binding="account.label">
-            <label class="control-label" for="account">Account Name</label>
-            <div class="controls">
-              <div class="input-append">
-                <input class="input-xlarge"
-                  name="account-label" value="Primary Account" type="text"
-                  data-ng-model="profile.account.label"
-                  data-slug-out="profile.account.psaSlug"
-                  data-track-state="model.help.accountLabel"
-                  data-ng-disabled="loading" />
-                <button class="btn" data-help-toggle="model.help.accountLabel">
-                  <i class="icon-question-sign"></i>
-                </button>
-              </div>
-              <p data-fade-toggle="model.help.accountLabel.show"
-                class="help-block">
-                The name of your default financial account. Most people pick
-                'Primary Account' for the name of this account. You can change
-                your account's vanity address below:
-              </p>
-              <p><small>{{baseUrl}}/i/{{psaIdentity.psaSlug || 'IDENTITY-NAME'}}/accounts/</small><input
-                data-binding="account.psaSlug" class="slug" name="account-slug"
-                type="text" placeholder="ACCOUNT-NAME"
-                data-slug-in data-ng-model="profile.account.psaSlug"
-                data-ng-disabled="loading" /></p>
-            </div>
-          </div>
-
-        </fieldset>
-      </div>
-
       <fieldset>
         <legend>Service Agreement</legend>
 

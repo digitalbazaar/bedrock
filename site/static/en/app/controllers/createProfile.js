@@ -28,11 +28,6 @@ function factory($scope, $http) {
       label: '',
       psaSlug: '',
       psaPublic: []
-    },
-    account: {
-      label: 'Primary',
-      psaSlug: 'primary',
-      psaPublic: []
     }
   };
   $scope.agreementChecked = false;

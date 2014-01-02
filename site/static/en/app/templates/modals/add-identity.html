@@ -97,10 +97,6 @@
       </form>
     </div>
 
-    <div class="section">
-      <h4 class="headline">New Financial Account</h4>
-      <div data-ng-include="'/app/templates/account-form.html'"></div>
-    </div>
   </div>
   <div class="modal-footer">
     <div class="modal-feedback"
@@ -108,7 +104,7 @@
     <span data-spinner="loading"
       data-spinner-class="prepend-btn-spinner"></span>
     <button class="btn btn-primary"
-      data-ng-disabled="loading || !model.identitySlugAvailable || !model.accountSlugAvailable"
+      data-ng-disabled="loading || !model.identitySlugAvailable"
       data-ng-click="addIdentity()"><i class="icon-ok icon-white"></i> Add</button>
     <button class="btn btn-close" data-ng-disabled="loading">Cancel</button>
   </div>
