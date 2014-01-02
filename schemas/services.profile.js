@@ -92,7 +92,7 @@ var postCreate = {
         type: {
           required: true,
           type: 'string',
-          enum: ['PersonalIdentity', 'VendorIdentity']
+          enum: ['PersonalIdentity']
         },
         psaSlug: slug(),
         label: label(),

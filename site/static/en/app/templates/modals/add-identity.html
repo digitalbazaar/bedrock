@@ -60,37 +60,6 @@
               </div>
               <p class="help-block"
                 data-ng-show="identityType == 'PersonalIdentity'">Choose this type if this identity is for a person.</p>
-              <p class="help-block"
-                data-ng-show="identityType == 'VendorIdentity'">Choose this type if this identity is for a website or business.</p>
-            </div>
-          </div>
-          <div data-ng-show="identityType == 'VendorIdentity'">
-            <div class="control-group" data-binding="website">
-              <label class="control-label" for="name">Vendor Website</label>
-              <div class="controls">
-                <div class="input-prepend input-append">
-                  <span class="add-on"><i class="icon-globe"></i></span><input
-                    type="text" name="vendor-website"
-                    data-ng-model="identity['VendorIdentity'].website"
-                    data-track-state="model.help.website" />
-                  <button class="btn" data-help-toggle="model.help.website">
-                    <i class="icon-question-sign"></i>
-                  </button>
-                </div>
-                <p data-fade-toggle="model.help.website.show"
-                  class="help-block">
-                  Please enter your website address, which will be displayed to
-                  your customers.</p>
-              </div>
-            </div>
-            <div class="control-group" data-binding="description">
-              <label class="control-label" for="name">Description</label>
-              <div class="controls">
-                <textarea class="resize-vertical"
-                  name="vendor-description" rows="3"
-                  data-ng-model="identity['VendorIdentity'].description"></textarea>
-                <p class="help-block">Your business description will be displayed to your customers.</p>
-              </div>
             </div>
           </div>
         </fieldset>

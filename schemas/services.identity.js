@@ -1,12 +1,9 @@
-var graphSignature = require('./graphSignature');
 var jsonldContext = require('./jsonldContext');
 var jsonldType = require('./jsonldType');
 var label = require('./label');
-var nonce = require('./nonce');
 var identifier = require('./identifier');
 var publicKeyPem = require('./publicKeyPem');
 var slug = require('./slug');
-var url = require('./url');
 var visibility = require('./propertyVisibility');
 
 var postIdentity = {
@@ -22,29 +19,7 @@ var postIdentity = {
 var getIdentitiesQuery = {
   title: 'Get Identities Query',
   type: 'object',
-  properties: {
-    form: {
-      required: false,
-      type: 'string',
-      enum: ['register']
-    },
-    'public-key-label': {
-      required: false,
-      type: label()
-    },
-    'public-key': {
-      required: false,
-      type: publicKeyPem()
-    },
-    'registration-callback': {
-      required: false,
-      type: url()
-    },
-    'response-nonce': {
-      required: false,
-      type: nonce()
-    }
-  },
+  properties: {},
   additionalProperties: true
 };
 
@@ -56,7 +31,7 @@ var postIdentities = {
     type: {
       required: true,
       type: 'string',
-      enum: ['PersonalIdentity', 'VendorIdentity']
+      enum: ['PersonalIdentity']
     },
     psaSlug: slug(),
     label: label(),
