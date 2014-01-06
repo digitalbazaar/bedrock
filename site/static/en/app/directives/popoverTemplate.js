@@ -3,41 +3,35 @@
  *
  * @author Dave Longley
  */
-define([], function() {
+define(['angular'], function(angular) {
 
-var deps = ['svcTemplateCache', '$compile', '$timeout'];
+var deps = ['svcTemplateCache', '$compile', '$parse', '$timeout'];
 return {popoverTemplate: deps.concat(factory)};
 
-function factory(svcTemplateCache, $compile, $timeout) {
+function factory(svcTemplateCache, $compile, $parse, $timeout) {
   // FIXME: popover needs cleanup/rewrite to handle scopes properly and
   // to better deal with placement, etc. -- but wait for bootstrap update to
-  // popovers/modals
+  // popovers/modals, would be nice to use transclusion
   return {
     restrict: 'A',
-    scope: {
-      visible: '=popoverVisible'
-    },
-    controller: ['$scope', function($scope) {
-      // FIXME: use $watch and $parse().assign to get/set visible instead?
-      // manually inherit from parent scope because scope is auto-isolated
-      // when inheriting 'visible' property w/another name
-      for(var prop in $scope.$parent) {
-        if($scope.$parent.hasOwnProperty(prop) &&
-          !$scope.hasOwnProperty(prop) && prop[0] !== '$') {
-          $scope[prop] = $scope.$parent[prop];
-        }
-      }
-    }],
     link: function(scope, element, attrs) {
+      var getVisible = $parse(attrs.popoverVisible);
+      var setVisible = getVisible.assign || angular.noop;
       svcTemplateCache.get(attrs.popoverTemplate, function(err, data) {
         // initialize popover, toggle on click
+        var container = element.closest('.modal-body');
+        if(!container.length) {
+          container = 'body';
+        }
         element.popover({
+          container: container,
           content: data,
           trigger: 'manual',
-          html: true
+          html: true,
         }).click(function(e) {
-          scope.visible = !scope.visible;
-          scope.$apply();
+          scope.$apply(function() {
+            setVisible(scope, !getVisible(scope));
+          });
         });
 
         // update popover content just once
@@ -45,10 +39,25 @@ function factory(svcTemplateCache, $compile, $timeout) {
         var popover = element.data('popover');
         popover.setContent = function() {
           var tip = this.tip();
-          tip.find('.popover-title').text(this.getTitle());
+          var title = this.getTitle();
+          if(!title) {
+            tip.find('.popover-title').hide();
+          }
+          else {
+            tip.find('.popover-title').text(title);
+            tip.find('.popover-title').show();
+          }
           if(!once) {
             tip.find('.popover-content').html(this.getContent());
             once = true;
+          }
+          // if popover is a dropdown menu, do specialized styling
+          var content = tip.find('.popover-content');
+          var menu = content.find('.dropdown-menu');
+          if(menu.parent().hasClass('popover-content')) {
+            tip.css({border: 'none', padding: 0, margin: 0});
+            content.css({padding: 0});
+            tip.find('.arrow').css({display: 'none'});
           }
           tip.removeClass('fade top bottom left right in');
         };
@@ -118,6 +127,7 @@ function factory(svcTemplateCache, $compile, $timeout) {
 
             // hide popover when clicking away
             $(document).bind('click', hideOnClick);
+            $('a').bind('click', hideOnClick);
           });
         };
 
@@ -125,7 +135,7 @@ function factory(svcTemplateCache, $compile, $timeout) {
         function hideOnClick(e) {
           var tip = popover.tip();
           if($(e.target).closest(tip).length === 0) {
-            scope.visible = false;
+            setVisible(scope, false);
             if(childScope) {
               childScope.$destroy();
               childScope = null;
@@ -138,7 +148,7 @@ function factory(svcTemplateCache, $compile, $timeout) {
         function hideOnEscape(e) {
           if(e.keyCode === 27) {
             e.stopPropagation();
-            scope.visible = false;
+            setVisible(scope, false);
             if(childScope) {
               childScope.$destroy();
               childScope = null;
@@ -149,7 +159,7 @@ function factory(svcTemplateCache, $compile, $timeout) {
 
         // watch for changes to visibility
         var visible = false;
-        scope.$watch('visible', function(value) {
+        scope.$watch(attrs.popoverVisible, function(value) {
           if(value) {
             if(!visible) {
               visible = true;
@@ -162,6 +172,7 @@ function factory(svcTemplateCache, $compile, $timeout) {
             element.removeClass('active');
             element.popover('hide');
             $(document).unbind('click', hideOnClick);
+            $('a').unbind('click', hideOnClick);
             $(document).unbind('keyup', hideOnEscape);
           }
         });
