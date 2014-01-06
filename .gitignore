@@ -1,0 +1,12 @@
+*.py[co]
+*.sw[nop]
+*~
+.project
+.settings
+TAGS
+coverage.html
+lib-cov
+node_modules
+npm-debug.log
+site/static/en/app/main.min.js
+site/static/en/app/templates.min.js
