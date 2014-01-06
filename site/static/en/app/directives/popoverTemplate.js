@@ -50,14 +50,21 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
           if(!once) {
             tip.find('.popover-content').html(this.getContent());
             once = true;
-          }
-          // if popover is a dropdown menu, do specialized styling
-          var content = tip.find('.popover-content');
-          var menu = content.find('.dropdown-menu');
-          if(menu.parent().hasClass('popover-content')) {
-            tip.css({border: 'none', padding: 0, margin: 0});
-            content.css({padding: 0});
-            tip.find('.arrow').css({display: 'none'});
+
+            // if popover is a dropdown menu, do specialized styling
+            var content = tip.find('.popover-content');
+            var menu = content.find('.dropdown-menu');
+            if(menu.parent().hasClass('popover-content')) {
+              tip.css({border: 'none', padding: 0, margin: 0});
+              content.css({padding: 0});
+              tip.find('.arrow').css({display: 'none'});
+              // hide popover if menu item is clicked
+              menu.find('a').click(function() {
+                scope.$apply(function() {
+                  setVisible(scope, false);
+                });
+              });
+            }
           }
           tip.removeClass('fade top bottom left right in');
         };
