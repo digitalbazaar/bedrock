@@ -55,6 +55,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
             var content = tip.find('.popover-content');
             var menu = content.find('.dropdown-menu');
             if(menu.parent().hasClass('popover-content')) {
+              menu.css({display: 'block'});
               tip.css({border: 'none', padding: 0, margin: 0});
               content.css({padding: 0});
               tip.find('.arrow').css({display: 'none'});
