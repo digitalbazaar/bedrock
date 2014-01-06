@@ -3515,17 +3515,17 @@ input[type="button"].btn-block {
 .btn-nav {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #5fb65f;
-  *background-color: #4cab4c;
-  background-image: -moz-linear-gradient(top, #6cbe6c, #4cab4c);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6cbe6c), to(#4cab4c));
-  background-image: -webkit-linear-gradient(top, #6cbe6c, #4cab4c);
-  background-image: -o-linear-gradient(top, #6cbe6c, #4cab4c);
-  background-image: linear-gradient(to bottom, #6cbe6c, #4cab4c);
+  background-color: #fafafa;
+  *background-color: #f2f2f2;
+  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
   background-repeat: repeat-x;
-  border-color: #4cab4c #4cab4c #347634;
+  border-color: #f2f2f2 #f2f2f2 #cccccc;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6cbe6c', endColorstr='#ff4cab4c', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
@@ -3535,13 +3535,13 @@ input[type="button"].btn-block {
 .btn-nav.disabled,
 .btn-nav[disabled] {
   color: #ffffff;
-  background-color: #4cab4c;
-  *background-color: #449944;
+  background-color: #f2f2f2;
+  *background-color: #e6e6e6;
 }
 
 .btn-nav:active,
 .btn-nav.active {
-  background-color: #3c873c \9;
+  background-color: #d9d9d9 \9;
 }
 
 button.btn,
@@ -3613,7 +3613,7 @@ input[type="submit"].btn.btn-mini {
 .btn-nav.hover,
 .btn-nav[disabled]:hover,
 .btn-nav.disabled:hover {
-  color: #eeeeee;
+  color: #000000;
 }
 
 .btn-group {
@@ -4351,18 +4351,18 @@ input[type="submit"].btn.btn-mini {
   min-height: 45px;
   padding-right: 20px;
   padding-left: 20px;
-  background-color: #51aa51;
-  background-image: -moz-linear-gradient(top, #5ab65a, #449944);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5ab65a), to(#449944));
-  background-image: -webkit-linear-gradient(top, #5ab65a, #449944);
-  background-image: -o-linear-gradient(top, #5ab65a, #449944);
-  background-image: linear-gradient(to bottom, #5ab65a, #449944);
+  background-color: #ededed;
+  background-image: -moz-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: -o-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
   background-repeat: repeat-x;
-  border: 1px solid #316f31;
+  border: 1px solid #c7c7c7;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5ab65a', endColorstr='#ff449944', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2f2f2', endColorstr='#ffe6e6e6', GradientType=0);
   *zoom: 1;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
@@ -4396,8 +4396,8 @@ input[type="submit"].btn.btn-mini {
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
-  color: #eeeeee;
-  text-shadow: 0 1px 0 #5ab65a;
+  color: #000000;
+  text-shadow: 0 1px 0 #f2f2f2;
 }
 
 .navbar .brand:hover {
@@ -4407,22 +4407,22 @@ input[type="submit"].btn.btn-mini {
 .navbar-text {
   margin-bottom: 0;
   line-height: 45px;
-  color: #eeeeee;
+  color: #000000;
 }
 
 .navbar-link {
-  color: #eeeeee;
+  color: #000000;
 }
 
 .navbar-link:hover {
-  color: #ffffff;
+  color: #222222;
 }
 
 .navbar .divider-vertical {
   height: 45px;
   margin: 0 9px;
-  border-right: 1px solid #5ab65a;
-  border-left: 1px solid #449944;
+  border-right: 1px solid #f2f2f2;
+  border-left: 1px solid #e6e6e6;
 }
 
 .navbar .btn,
@@ -4587,9 +4587,9 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li > a {
   float: none;
   padding: 12.5px 15px 12.5px;
-  color: #eeeeee;
+  color: #000000;
   text-decoration: none;
-  text-shadow: 0 1px 0 #5ab65a;
+  text-shadow: 0 1px 0 #f2f2f2;
 }
 
 .navbar .nav .dropdown-toggle .caret {
@@ -4598,7 +4598,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  color: #ffffff;
+  color: #222222;
   text-decoration: none;
   background-color: transparent;
 }
@@ -4606,9 +4606,9 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
-  color: #eeeeee;
+  color: #222222;
   text-decoration: none;
-  background-color: #3c873c;
+  background-color: #d9d9d9;
   -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
      -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
           box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
@@ -4622,17 +4622,17 @@ input[type="submit"].btn.btn-mini {
   margin-left: 5px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #469d46;
-  *background-color: #3c873c;
-  background-image: -moz-linear-gradient(top, #4cab4c, #3c873c);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4cab4c), to(#3c873c));
-  background-image: -webkit-linear-gradient(top, #4cab4c, #3c873c);
-  background-image: -o-linear-gradient(top, #4cab4c, #3c873c);
-  background-image: linear-gradient(to bottom, #4cab4c, #3c873c);
+  background-color: #e0e0e0;
+  *background-color: #d9d9d9;
+  background-image: -moz-linear-gradient(top, #e5e5e5, #d9d9d9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e5e5e5), to(#d9d9d9));
+  background-image: -webkit-linear-gradient(top, #e5e5e5, #d9d9d9);
+  background-image: -o-linear-gradient(top, #e5e5e5, #d9d9d9);
+  background-image: linear-gradient(to bottom, #e5e5e5, #d9d9d9);
   background-repeat: repeat-x;
-  border-color: #3c873c #3c873c #255225;
+  border-color: #d9d9d9 #d9d9d9 #b3b3b3;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4cab4c', endColorstr='#ff3c873c', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5e5e5', endColorstr='#ffd9d9d9', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
@@ -4645,13 +4645,13 @@ input[type="submit"].btn.btn-mini {
 .navbar .btn-navbar.disabled,
 .navbar .btn-navbar[disabled] {
   color: #ffffff;
-  background-color: #3c873c;
-  *background-color: #347634;
+  background-color: #d9d9d9;
+  *background-color: #cccccc;
 }
 
 .navbar .btn-navbar:active,
 .navbar .btn-navbar.active {
-  background-color: #2c642c \9;
+  background-color: #bfbfbf \9;
 }
 
 .navbar .btn-navbar .icon-bar {
@@ -4710,27 +4710,27 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav li.dropdown > a:hover .caret {
-  border-top-color: #eeeeee;
-  border-bottom-color: #eeeeee;
+  border-top-color: #222222;
+  border-bottom-color: #222222;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  color: #eeeeee;
-  background-color: #3c873c;
+  color: #222222;
+  background-color: #d9d9d9;
 }
 
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
-  border-top-color: #eeeeee;
-  border-bottom-color: #eeeeee;
+  border-top-color: #000000;
+  border-bottom-color: #000000;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
-  border-top-color: #eeeeee;
-  border-bottom-color: #eeeeee;
+  border-top-color: #222222;
+  border-bottom-color: #222222;
 }
 
 .navbar .pull-right > li > .dropdown-menu,
