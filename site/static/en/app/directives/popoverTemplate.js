@@ -15,8 +15,7 @@ function factory(svcTemplateCache, $compile, $timeout) {
   return {
     restrict: 'A',
     scope: {
-      visible: '=popoverVisible',
-      minWidth: '&popoverMinWidth'
+      visible: '=popoverVisible'
     },
     controller: ['$scope', function($scope) {
       // FIXME: use $watch and $parse().assign to get/set visible instead?
@@ -62,51 +61,61 @@ function factory(svcTemplateCache, $compile, $timeout) {
           oldShow.call(popover);
           var tip = this.tip();
 
-          // resize width to fix minimum width
-          var minWidth = Math.max(
-            scope.minWidth(tip) || 0, tip.outerWidth(true));
-          tip.css({width: minWidth});
+          // simulate popover content
+          var tmpTip = $([
+            '<div class="popover" style="width: auto">',
+            '<div class="popover-content">',
+            data,
+            '</div></div>'].join(''));
+          $('body').append(tmpTip);
+          var tmpScope = scope.$new();
+          $compile(tmpTip)(tmpScope);
 
-          // fix positioning for bottom popover
-          if(popover.options.placement === 'bottom') {
-            // set initial position
-            var pos = popover.getPosition(false);
-            pos = {top: pos.top + pos.height, left: 0};
+          // allow for async linking
+          $timeout(function() {
+            // get minimum popover width and remove simulated element
+            var minWidth = tmpTip.outerWidth(true);
+            tmpTip.remove();
+            tmpScope.$destroy();
+            minWidth = Math.max(minWidth || 0, tip.outerWidth(true));
+            tip.css({width: minWidth});
 
-            // determine if the parent element has relative positioning
-            // (if so, the absolute positioning of the popover will be
-            // relative to the parent)
-            var parent = tip.parent();
-            var isRelative = parent.css('position') === 'relative';
-            if(isRelative) {
-              var offset = parent.offset();
-              pos.top -= offset.top;
-              pos.left -= offset.left;
+            // fix positioning for bottom popover
+            if(popover.options.placement === 'bottom') {
+              // set initial position
+              var pos = popover.getPosition(false);
+              pos = {top: pos.top + pos.height, left: 0};
+
+              // determine if the parent element has relative positioning
+              // (if so, the absolute positioning of the popover will be
+              // relative to the parent)
+              var parent = tip.parent();
+              var isRelative = parent.css('position') === 'relative';
+              if(isRelative) {
+                var offset = parent.offset();
+                pos.top -= offset.top;
+                pos.left -= offset.left;
+              }
+
+              // calculate left position and position arrow
+              var right = element.offset().left + element[0].offsetWidth;
+              pos.left += right - tip[0].offsetWidth;
+              $('.arrow', tip).css({
+                left: tip[0].offsetWidth - element[0].offsetWidth / 2 - 1
+              });
+              tip.css(pos);
             }
 
-            // calculate left position and position arrow
-            var right = element.offset().left + element[0].offsetWidth;
-            pos.left += right - tip[0].offsetWidth;
-            $('.arrow', tip).css({
-              left: tip[0].offsetWidth - element[0].offsetWidth / 2 - 1
-            });
-            tip.css(pos);
-          }
+            // compile and link tooltip to scope
+            if(childScope) {
+              childScope.$destroy();
+            }
+            childScope = scope.$new();
+            $compile(tip)(childScope);
 
-          // compile and link tooltip to scope
-          if(childScope) {
-            childScope.$destroy();
-          }
-          childScope = scope.$new();
-          $compile(tip)(childScope);
+            // hide when pressing escape
+            $(document).bind('keyup', hideOnEscape);
 
-          // hide when pressing escape
-          $(document).bind('keyup', hideOnEscape);
-
-          // HACK: $timeout is only used here because the click that shows
-          // the popover is being handled after it is shown which immediately
-          // closes it
-          $timeout(function() {
             // hide popover when clicking away
             $(document).bind('click', hideOnClick);
           });
