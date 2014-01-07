@@ -25,11 +25,11 @@ config.loggers.email.silent = true;
 // server info
 // 0 means use # of cpus
 config.server.workers = 1;
-config.server.port = 20443;
-config.server.httpPort = 20080;
+config.server.port = 18443;
+config.server.httpPort = 18080;
 config.server.bindAddr = ['bedrock.dev'];
 config.server.domain = 'bedrock.dev';
-config.server.host = 'bedrock.dev:20443';
+config.server.host = 'bedrock.dev:18443';
 config.server.key = __dirname + '/../pki/test-bedrock.key';
 config.server.cert = __dirname + '/../pki/test-bedrock.crt';
 
