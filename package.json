@@ -57,7 +57,8 @@
     "superagent": "*",
     "sv-selenium": "*",
     "wd": "*",
-    "visionmedia-jscoverage": "~1.0.0"
+    "visionmedia-jscoverage": "~1.0.0",
+    "grunt-contrib-jshint": "~0.8.0"
   },
   "engines": {
     "node": ">=0.10.0"

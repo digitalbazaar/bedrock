@@ -2,6 +2,8 @@ var path = require('path');
 var fs = require('fs');
 
 module.exports = function(grunt) {
+  'use strict';
+
   // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -21,11 +23,29 @@ module.exports = function(grunt) {
         src: 'site/static/en/app/templates/**/*.html',
         dest: 'site/static/en/app/templates.min.js'
       }
+    },
+    jshint: {
+      all: [
+        '*.js',
+        'bin/*.js',
+        'configs/*.js',
+        'email-templates/*.js',
+        'lib/*.js',
+        'lib/**/*.js',
+        'lib/**/**/*.js',
+        'locales/*.js',
+        'schemas/*.js',
+        'site/static/en/app/*.js',
+        'site/static/en/app/**/*.js',
+        'site/static/en/legacy/*.js',
+        'test/*.js'
+      ]
     }
   });
 
   // plugins
   grunt.loadNpmTasks('grunt-angular-templates');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   
   grunt.registerTask('templates2requireJS', function() {
     var filename = path.join(__dirname, 'site/static/en/app/templates.min.js');
