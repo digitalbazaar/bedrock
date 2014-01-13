@@ -30,6 +30,7 @@ config.server.httpPort = 18080;
 config.server.bindAddr = ['bedrock.dev'];
 config.server.domain = 'bedrock.dev';
 config.server.host = 'bedrock.dev:18443';
+config.server.baseUri = 'https://' + config.server.host;
 config.server.key = __dirname + '/../pki/test-bedrock.key';
 config.server.cert = __dirname + '/../pki/test-bedrock.crt';
 
@@ -50,11 +51,6 @@ config.database.host = 'localhost';
 config.database.port = 27017;
 config.database.local.collection = 'bedrock_dev';
 
-// root user config
-config.root.baseUri = 'https://' + config.server.host;
-config.root.id = config.root.baseUri + '/i/root';
-config.root.name = 'Bedrock Dev Root User';
-
 // mail config
 config.mail.connection = {
   host: 'localhost',
@@ -63,7 +59,7 @@ config.mail.connection = {
 config.mail.send = false;
 config.mail.vars = {
   productionMode: config.website.views.vars.productionMode,
-  baseUri: config.root.baseUri,
+  baseUri: config.server.baseUri,
   serviceHost: config.server.host,
   serviceDomain: config.server.domain,
   supportDomain: config.server.domain,

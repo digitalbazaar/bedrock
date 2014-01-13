@@ -11,7 +11,7 @@ config.website.browserVersions = {
 config.website.views.vars = {
   productionMode: false,
   minimizeJS: false,
-  baseUri: config.root.baseUri,
+  baseUri: config.server.baseUri,
   serviceHost: config.server.host,
   serviceDomain: config.server.domain,
   supportDomain: config.server.domain,

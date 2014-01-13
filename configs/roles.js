@@ -1,7 +1,7 @@
 var config = require(__libdir + '/bedrock').config;
 
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/profile_administrator',
+  id: config.server.baseUri + '/roles/profile_administrator',
   label: 'Profile Administrator',
   comment: 'Role for profile administrators.',
   psaPermission: [
@@ -13,7 +13,7 @@ config.permission.roles.push({
   ]
 });
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/profile_manager',
+  id: config.server.baseUri + '/roles/profile_manager',
   label: 'Registered Profile',
   comment: 'Role for registered profiles.',
   psaPermission: [
@@ -24,7 +24,7 @@ config.permission.roles.push({
   ]
 });
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/role_administrator',
+  id: config.server.baseUri + '/roles/role_administrator',
   label: 'Role Administrator',
   comment: 'This role is used to administer Roles and Permissions.',
   psaPermission: [
@@ -34,7 +34,7 @@ config.permission.roles.push({
   ]
 });
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/identity_administrator',
+  id: config.server.baseUri + '/roles/identity_administrator',
   label: 'Identity Administrator',
   comment: 'Role for Identity administrators.',
   psaPermission: [
@@ -48,7 +48,7 @@ config.permission.roles.push({
   ]
 });
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/identity_manager',
+  id: config.server.baseUri + '/roles/identity_manager',
   label: 'Identity Manager',
   comment: 'Role for identity managers.',
   psaPermission: [
@@ -60,7 +60,7 @@ config.permission.roles.push({
   ]
 });
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/website_administrator',
+  id: config.server.baseUri + '/roles/website_administrator',
   label: 'Website Administrator',
   comment: 'This role is used to administer the website.',
   psaPermission: [
@@ -68,11 +68,11 @@ config.permission.roles.push({
   ]
 });
 
-// root role contains all permissions
+// admin role contains all permissions
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/root',
-  label: 'Root',
-  comment: 'Role for Root User.',
+  id: config.server.baseUri + '/roles/admin',
+  label: 'Administrator',
+  comment: 'Role for System Administrator.',
   psaPermission: [
     // profile permissions
     {id: 'bedrock.profile.permission.profile_admin'},
@@ -100,7 +100,7 @@ config.permission.roles.push({
 // default registered profile role (contains all permissions for a regular
 // profile)
 config.permission.roles.push({
-  id: config.root.baseUri + '/roles/profile_registered',
+  id: config.server.baseUri + '/roles/profile_registered',
   label: 'Registered Profile',
   comment: 'Role for registered profiles.',
   psaPermission: [
