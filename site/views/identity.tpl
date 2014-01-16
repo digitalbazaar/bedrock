@@ -67,5 +67,4 @@ ${set([
   </div>
 </div>
 
-
 {{partial "foot.tpl"}}
