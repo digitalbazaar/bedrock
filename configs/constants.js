@@ -1,26 +1,29 @@
-/*
- * Copyright (c) 2013-2014 Digital Bazaar, Inc. All rights reserved.
- */
-var api = {};
-module.exports = api;
+var config = require(__libdir + '/config');
+
+var constants = config.constants = {};
 
 /**
- * Versioned Bedrock JSON-LD context URLs.
+ * Versioned main application JSON-LD context URLs. An application that
+ * extends bedrock is expected to override these and use them to version
+ * its contexts.
  */
-api.CONTEXT_V1_URL = 'https://w3id.org/bedrock/v1';
+constants.CONTEXT_V1_URL = 'https://w3id.org/bedrock/v1';
 
 /**
- * Supported Bedrock JSON-LD contexts.
+ * Supported JSON-LD contexts.
  *
- * This object can be extended from other modules to add support for
- * hardcoded contexts.
+ * This object can be extended to add support for hardcoded contexts.
  */
-api.CONTEXTS = {};
+constants.CONTEXTS = {};
 
 /**
- * V1 Bedrock JSON-LD context.
+ * V1 main application JSON-LD context.
+ *
+ * NOTE: If this context is overridden by an application extending bedrock,
+ * then the new context must still define all of the properties that are used
+ * by any bedrock modules that the application relies upon.
  */
-api.CONTEXTS[api.CONTEXT_V1_URL] = {
+constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   // aliases
   id: '@id',
   type: '@type',
@@ -89,11 +92,11 @@ api.CONTEXTS[api.CONTEXT_V1_URL] = {
 };
 
 /**
- * Default Bedrock JSON-LD context URL.
+ * Default main application JSON-LD context URL.
  */
-api.CONTEXT_URL = api.CONTEXT_V1_URL;
+constants.CONTEXT_URL = constants.CONTEXT_V1_URL;
 
 /**
- * Default Bedrock JSON-LD context.
+ * Default main application JSON-LD context.
  */
-api.CONTEXT = api.CONTEXTS[api.CONTEXT_URL];
+constants.CONTEXT = constants.CONTEXTS[constants.CONTEXT_URL];
