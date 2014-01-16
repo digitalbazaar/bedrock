@@ -1,4 +1,5 @@
 var tools = require(__libdir + '/bedrock/tools');
+var config = require(__libdir + '/config');
 
 var schema = {
   required: true,
@@ -6,7 +7,7 @@ var schema = {
   description: 'A JSON-LD Context',
   type: [{
     type: 'string',
-    pattern: '^https://w3id.org/bedrock/v1$'
+    pattern: '^' + config.constants.CONTEXT_URL + '$'
   }, {
     type: 'object'
     // FIXME: improve context object validator
