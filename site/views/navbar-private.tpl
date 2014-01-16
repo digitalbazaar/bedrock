@@ -3,7 +3,13 @@
     <div class="container">
       {{if session.loaded && session.identity.owner == session.profile.id}}
         {{if pageLayout == "normal"}}
-          <a class="brand" href="/"><img src="${cacheRoot}${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" /></a>
+          <a class="brand" href="/">
+            {{if style.brand.src}}
+            <img src="${cacheRoot}${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
+            {{else}}
+            ${siteTitle}
+            {{/if}}
+          </a>
           <ul class="nav">
             <li {{if inav == "dashboard"}}class="active"{{/if}}><a href="${session.identity.id}/dashboard"><i class="icon-dashboard"></i> Dashboard</a></li>
             <li {{if inav == "settings"}}class="active"{{/if}}><a href="${session.identity.id}/settings"><i class="icon-wrench"></i> Settings</a></li>

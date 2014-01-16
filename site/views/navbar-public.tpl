@@ -5,10 +5,16 @@
 {{/if}}
   <div class="navbar-inner navbar-inner-banner">
     <div class="container ng-cloak" data-ng-controller="LoginCtrl">
-      <a class="brand" href="/"><img
-      src="${cacheRoot}${style.brand.src}"
-      width="${style.brand.width}" height="${style.brand.height}"
-      alt="${style.brand.alt}" /></a>
+      <a class="brand" href="/">
+        {{if style.brand.src}}
+        <img
+          src="${cacheRoot}${style.brand.src}"
+          width="${style.brand.width}" height="${style.brand.height}"
+          alt="${style.brand.alt}" />
+        {{else}}
+        ${siteTitle}
+        {{/if}}
+      </a>
       {{if pageLayout == "normal"}}
       {{verbatim}}
       <form class="navbar-form pull-right" data-ng-submit="submit()">
