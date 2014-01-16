@@ -17,10 +17,11 @@ function factory(svcModal, svcIdentity) {
     $scope.selected = svcIdentity.identity;
 
     $scope.switchIdentity = function() {
-      // if current url starts with '/i', switch to other identity's dashboard
+      // if current url starts with identity base path,
+      // then switch to other identity's dashboard
       var identity = $scope.selected;
       var redirect = window.location.href;
-      if(window.location.pathname.indexOf('/i') === 0) {
+      if(window.location.pathname.indexOf($scope.data.identityBasePath) === 0) {
         redirect = identity.id + '/dashboard';
       }
 

@@ -17,9 +17,8 @@ function factory($scope, $http) {
   //      : also remove the id fom the form in create.tpl.
   $scope.feedbackTarget = $('#createProfileFeedbackTarget');
   $scope.loading = false;
-  $scope.baseUrl = window.location.protocol + '//' + window.location.host;
   $scope.profile = {
-    '@context': 'https://w3id.org/bedrock/v1',
+    '@context': $scope.data.contextUrl,
     email: '',
     psaPassword: '',
     psaIdentity: {

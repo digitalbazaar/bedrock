@@ -22,6 +22,8 @@ function factory($http, $filter) {
       result: '=duplicateCheckerResult'
     },
     link: function(scope, element, attrs) {
+      scope.data = window.data || {};
+
       // hide feedback until input changes
       element.addClass('alert').hide();
 
@@ -32,9 +34,8 @@ function factory($http, $filter) {
 
       function change(value) {
         // determine if owner input is ready
-        var baseUrl = window.location.protocol + '//' + window.location.host;
         var ownerReady = (scope.owner === undefined ||
-          scope.owner.length > (baseUrl + '/i/').length);
+          scope.owner.length > (scope.data.identityBaseUri + '/').length);
 
         // initialized once value is defined and owner is ready
         if(!init && value !== undefined && ownerReady) {
@@ -70,17 +71,17 @@ function factory($http, $filter) {
               else {
                 timer = null;
                 if(scope.type === 'email') {
-                  lastCheck = scope.input;
+                  lastInput = scope.input;
                 }
                 else {
-                  lastCheck = $filter('slug')(scope.input);
+                  lastInput = $filter('slug')(scope.input);
                 }
                 var data = {type: scope.type};
                 if(scope.type === 'email') {
-                  data.email = lastCheck;
+                  data.email = lastInput;
                 }
                 else {
-                  data.psaSlug = lastCheck;
+                  data.psaSlug = lastInput;
                 }
                 $http.post('/identifier', $.extend(
                   data, scope.owner ? {owner: scope.owner} : {}))

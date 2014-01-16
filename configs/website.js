@@ -48,6 +48,7 @@ config.website.views.vars = {
   cacheRoot: '',
   // client-side data
   clientData: {
+    baseUri: config.server.baseUri,
     siteTitle: config.brand.name,
     productionMode: false
   },

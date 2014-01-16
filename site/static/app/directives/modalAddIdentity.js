@@ -10,9 +10,9 @@ return {modalAddIdentity: deps.concat(factory)};
 
 function factory(svcModal, svcIdentity) {
   function Ctrl($scope) {
-    $scope.baseUrl = window.location.protocol + '//' + window.location.host;
     $scope.model = {};
     $scope.data = window.data || {};
+    $scope.baseUrl = $scope.data.baseUri;
     $scope.feedback = {};
     $scope.loading = false;
     // identity
@@ -38,7 +38,7 @@ function factory(svcModal, svcIdentity) {
       svcIdentity.add(identity, function(err, identity) {
         // if identity is a duplicate, update id
         if(err.type === 'bedrock.website.DuplicateIdentity') {
-          identity.id = $scope.baseUrl + '/i/' + identity.psaSlug;
+          identity.id = $scope.data.identityBaseUri + '/' + identity.psaSlug;
         }
 
         $scope.loading = false;

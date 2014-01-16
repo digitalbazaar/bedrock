@@ -109,7 +109,7 @@ ${set([
               name like 'janedoe'. You can also customize your identity vanity
               address below:
             </p>
-            <p><small>{{baseUrl}}/i/</small><input
+            <p><small>{{data.identityBaseUri}}/</small><input
               data-binding="psaIdentity.psaSlug" class="slug"
               name="identity-slug" type="text" maxlength="32"
               placeholder="IDENTITY-NAME"

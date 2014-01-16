@@ -3,7 +3,6 @@ var baseUri = config.server.baseUri;
 
 // profiles
 config.profile.profiles.push({
-  id: baseUri + '/profiles/dev',
   type: 'Profile',
   psaSlug: 'dev',
   email: 'dev@bedrock.dev',
@@ -14,7 +13,6 @@ config.profile.profiles.push({
 
 // identities
 config.identity.identities.push({
-  id: baseUri + '/i/dev',
   type: 'PersonalIdentity',
   owner: baseUri + '/profiles/dev',
   psaSlug: 'dev',
