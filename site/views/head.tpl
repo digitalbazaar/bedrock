@@ -73,13 +73,6 @@
       </noscript>
 
       {{if pageLayout != "error"}}
-      <!-- Force load fonts -->
-      <div>
-        <span class="cc-font-front"></span>
-        <span class="cc-font-back"></span>
-        <span class="cc-font-shine"></span>
-        <span class="bank-font"></span>
-      </div>
 
       {{partial "data.tpl"}}
       {{/if}}
