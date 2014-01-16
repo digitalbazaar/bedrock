@@ -1,4 +1,4 @@
 lib/bedrock/rdfa.js
 minify.js
-site/static/en/app/main.min.js
-site/static/en/app/templates.min.js
+site/static/app/main.min.js
+site/static/app/templates.min.js

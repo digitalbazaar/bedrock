@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       myapp: {
         options: {
           // $templateCache ID will be relative to this folder
-          base: 'site/static/en',
+          base: 'site/static',
           // prepend path to $templateCache ID
           prepend: '/',
           // the module the templates will be added to
@@ -20,8 +20,8 @@ module.exports = function(grunt) {
             define: true
           }
         },
-        src: 'site/static/en/app/templates/**/*.html',
-        dest: 'site/static/en/app/templates.min.js'
+        src: 'site/static/app/templates/**/*.html',
+        dest: 'site/static/app/templates.min.js'
       }
     },
     jshint: {
@@ -35,9 +35,9 @@ module.exports = function(grunt) {
         'lib/**/**/*.js',
         'locales/*.js',
         'schemas/*.js',
-        'site/static/en/app/*.js',
-        'site/static/en/app/**/*.js',
-        'site/static/en/legacy/*.js',
+        'site/static/app/*.js',
+        'site/static/app/**/*.js',
+        'site/static/legacy/*.js',
         'test/*.js'
       ]
     }
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   
   grunt.registerTask('templates2requireJS', function() {
-    var filename = path.join(__dirname, 'site/static/en/app/templates.min.js');
+    var filename = path.join(__dirname, 'site/static/app/templates.min.js');
     var module = fs.readFileSync(filename, 'utf8');
     module = "define(['angular'], function(angular) {\n" + module + '});\n';
     fs.writeFileSync(filename, module);

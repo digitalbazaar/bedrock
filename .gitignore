@@ -8,5 +8,5 @@ coverage.html
 lib-cov
 node_modules
 npm-debug.log
-site/static/en/app/main.min.js
-site/static/en/app/templates.min.js
+site/static/app/main.min.js
+site/static/app/templates.min.js

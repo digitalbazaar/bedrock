@@ -6,12 +6,12 @@
     "start": "node index.js",
     "dev": "node index.js",
     "test": "node test.js --unit",
-    "lint": "jshint *.js bin/*js configs/*.js email-templates/*.js lib/*.js lib/bedrock/*.js lib/bedrock/tests/*.js locales/*.js schemas/*.js site/static/en/app/*.js site/static/en/app/controllers/*.js site/static/en/app/directives/*.js site/static/en/app/filters/*.js site/static/en/app/services/*.js site/static/en/legacy/*.js test/*.js",
+    "lint": "jshint *.js bin/*js configs/*.js email-templates/*.js lib/*.js lib/bedrock/*.js lib/bedrock/tests/*.js locales/*.js schemas/*.js site/static/app/*.js site/static/app/controllers/*.js site/static/app/directives/*.js site/static/app/filters/*.js site/static/app/services/*.js site/static/legacy/*.js test/*.js",
     "ci-test": "node test.js --unit --system",
-    "ci-lint": "mkdir -p reports && jshint --reporter=checkstyle *.js bin/*js configs/*.js email-templates/*.js lib/*.js lib/bedrock/*.js lib/bedrock/tests/*.js locales/*.js schemas/*.js site/static/en/app/*.js site/static/en/app/controllers/*.js site/static/en/app/directives/*.js site/static/en/app/filters/*.js site/static/en/app/services/*.js site/static/en/legacy/*.js test/*.js > reports/jshint.xml || exit 0",
+    "ci-lint": "mkdir -p reports && jshint --reporter=checkstyle *.js bin/*js configs/*.js email-templates/*.js lib/*.js lib/bedrock/*.js lib/bedrock/tests/*.js locales/*.js schemas/*.js site/static/app/*.js site/static/app/controllers/*.js site/static/app/directives/*.js site/static/app/filters/*.js site/static/app/services/*.js site/static/legacy/*.js test/*.js > reports/jshint.xml || exit 0",
     "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js > reports/coverage.html && rm -rf lib-cov",
     "install-selenium": "test ! -e ./temp/sv-selenium/selenium-server-standalone.jar && ./node_modules/.bin/install_selenium; test ! -e ./temp/sv-selenium/chromedriver && ./node_modules/.bin/install_chromedriver; ln -sf ./temp/sv-selenium/chromedriver .; echo 'Selenium and chromedriver have been successfully installed.'",
-    "bootstrap": "make -C ../bedrock-bootstrap bootstrap && rsync -av --exclude=js/bootstrap.min.js ../bedrock-bootstrap/bootstrap/ ./site/static/en/bootstrap/",
+    "bootstrap": "make -C ../bedrock-bootstrap bootstrap && rsync -av --exclude=js/bootstrap.min.js ../bedrock-bootstrap/bootstrap/ ./site/static/bootstrap/",
     "minify": "./node_modules/grunt-cli/bin/grunt && ./node_modules/requirejs/bin/r.js -o minify.js"
   },
   "dependencies": {
