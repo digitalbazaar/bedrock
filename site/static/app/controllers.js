@@ -11,7 +11,8 @@ define([
   'app/controllers/keySettings',
   'app/controllers/login',
   'app/controllers/navbar',
-  'app/controllers/passcode'
+  'app/controllers/passcode',
+  'app/controllers/settings'
 ], function(angular) {
   // register controllers and gather routes
   var module = angular.module('app.controllers', []);

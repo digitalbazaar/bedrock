@@ -1,5 +1,5 @@
 /*!
- * Identity Dashboard.
+ * Identity Settings.
  *
  * @author Dave Longley
  * @author David I. Lehn
@@ -8,12 +8,12 @@ define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
 var deps = ['$scope', 'svcIdentity', '$timeout'];
 return {
-  controller: {DashboardCtrl: deps.concat(factory)},
+  controller: {SettingsCtrl: deps.concat(factory)},
   routes: [{
-    path: '/i/:identity/dashboard',
+    path: '/i/:identity/settings',
     options: {
-      templateUrl: '/app/templates/dashboard.html',
-      controller: 'DashboardCtrl'
+      templateUrl: '/app/templates/settings.html',
+      controller: 'SettingsCtrl'
     }
   }]
 };

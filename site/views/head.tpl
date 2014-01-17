@@ -73,6 +73,5 @@
       </noscript>
 
       {{if pageLayout != "error"}}
-
       {{partial "data.tpl"}}
       {{/if}}
