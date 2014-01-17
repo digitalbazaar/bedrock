@@ -12,7 +12,7 @@
     "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js > reports/coverage.html && rm -rf lib-cov",
     "install-selenium": "test ! -e ./temp/sv-selenium/selenium-server-standalone.jar && ./node_modules/.bin/install_selenium; test ! -e ./temp/sv-selenium/chromedriver && ./node_modules/.bin/install_chromedriver; ln -sf ./temp/sv-selenium/chromedriver .; echo 'Selenium and chromedriver have been successfully installed.'",
     "bootstrap": "make -C ../bedrock-bootstrap bootstrap && rsync -av --exclude=js/bootstrap.min.js ../bedrock-bootstrap/bootstrap/ ./site/static/bootstrap/",
-    "minify": "./node_modules/grunt-cli/bin/grunt && ./node_modules/requirejs/bin/r.js -o minify.js"
+    "minify": "./node_modules/grunt-cli/bin/grunt && r.js -o minify.js"
   },
   "dependencies": {
     "async": "~0.2.8",
