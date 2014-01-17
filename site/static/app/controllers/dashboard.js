@@ -10,7 +10,7 @@ var deps = ['$scope', 'svcIdentity', '$timeout'];
 return {
   controller: {DashboardCtrl: deps.concat(factory)},
   routes: [{
-    path: '/i/:identity/dashboard',
+    path: window.data.identityBasePath + '/:identity/dashboard',
     options: {
       title: 'Dashboard',
       templateUrl: '/app/templates/dashboard.html',

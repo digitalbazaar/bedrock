@@ -10,7 +10,7 @@ var deps = ['$scope', 'svcIdentity', '$timeout'];
 return {
   controller: {SettingsCtrl: deps.concat(factory)},
   routes: [{
-    path: '/i/:identity/settings',
+    path: window.data.identityBasePath + '/:identity/settings',
     options: {
       title: 'Settings',
       templateUrl: '/app/templates/settings.html',

@@ -12,8 +12,8 @@
           </a>
           {{verbatim}}
           <ul class="nav">
-            <li data-ng-class="{active: page == 'dashboard'}"><a href="{{session.identity.id}}/dashboard"><i class="icon-dashboard"></i> Dashboard</a></li>
-            <li data-ng-class="{active: page == 'settings'}"><a href="{{session.identity.id}}/settings"><i class="icon-wrench"></i> Settings</a></li>
+            <li data-ng-class="{active: pageTitle == 'Dashboard'}"><a href="{{session.identity.id}}/dashboard"><i class="icon-dashboard"></i> Dashboard</a></li>
+            <li data-ng-class="{active: pageTitle == 'Settings'}"><a href="{{session.identity.id}}/settings"><i class="icon-wrench"></i> Settings</a></li>
           </ul>
           {{/verbatim}}
         {{else}}
