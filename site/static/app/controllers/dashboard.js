@@ -12,6 +12,7 @@ return {
   routes: [{
     path: '/i/:identity/dashboard',
     options: {
+      title: 'Dashboard',
       templateUrl: '/app/templates/dashboard.html',
       controller: 'DashboardCtrl'
     }

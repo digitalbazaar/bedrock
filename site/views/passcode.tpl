@@ -1,5 +1,6 @@
 ${set([
-  pageTitle = "Reset Password"
+  pageTitle = "Reset Password",
+  clientData.pageTitle = "Reset Password"
 ])}
 {{partial "head.tpl"}}
 

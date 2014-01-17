@@ -12,6 +12,7 @@ return {
   routes: [{
     path: '/i/:identity/settings',
     options: {
+      title: 'Settings',
       templateUrl: '/app/templates/settings.html',
       controller: 'SettingsCtrl'
     }

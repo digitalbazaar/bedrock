@@ -22,10 +22,20 @@ define([
     /* Note: $route is injected above to trigger watching routes to ensure
       pages are loaded properly. */
 
+    // set site and page titles
+    $rootScope.siteTitle = window.data.siteTitle;
+    $rootScope.pageTitle = window.data.pageTitle;
+
     // reload page if switching between routes and non-routes
     $rootScope.$on('$routeChangeStart', function(event, next, last) {
       if(last && last !== next && (next.none || last.none)) {
         window.location.href = $location.absUrl();
+      }
+    });
+    // set page title when route changes
+    $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
+      if(current && current.$$route) {
+        $rootScope.pageTitle = current.$$route.title;
       }
     });
 

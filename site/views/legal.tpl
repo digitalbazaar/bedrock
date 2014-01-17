@@ -1,4 +1,7 @@
-${set(pageTitle = "Legal Information")}
+${set([
+  pageTitle = "Legal Information",
+  clientData.pageTitle = "Legal Information"
+])}
 {{partial "head.tpl"}}
 
 <div id="tos">

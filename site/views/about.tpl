@@ -1,4 +1,7 @@
-${set(pageTitle = "About")}
+${set([
+  pageTitle = "About",
+  clientData.pageTitle = "About"
+])}
 {{partial "head.tpl"}}
 
 <h2>${pageTitle}</h2>

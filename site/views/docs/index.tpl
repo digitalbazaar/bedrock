@@ -1,5 +1,6 @@
 ${set([
-  pageTitle = "Documentation"
+  pageTitle = "Documentation",
+  clientData.pageTitle = "Documentation"
 ])}
 {{partial "head.tpl"}}
 

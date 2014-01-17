@@ -1,5 +1,6 @@
 ${set([
-  pageTitle = "Bedrock App"
+  pageTitle = "App",
+  clientData.pageTitle = "App"
 ])}
 {{partial "head.tpl"}}
 

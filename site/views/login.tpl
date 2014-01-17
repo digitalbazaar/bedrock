@@ -1,5 +1,6 @@
 ${set([
   pageTitle = "Sign In",
+  clientData.pageTitle = "Sign In",
   pageLayout = "minimal"
 ])}
 {{partial "head.tpl"}}
