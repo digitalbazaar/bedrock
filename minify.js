@@ -12,4 +12,4 @@
   out: 'site/static/app/main.min.js',
   wrap: true,
   preserveLicenseComments: false
-})
+});
