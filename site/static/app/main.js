@@ -14,6 +14,7 @@ require.config({
   paths: {
     angular: 'angular/angular',
     async: 'async/async',
+    bedrock: '.',
     bootstrap: 'bootstrap/js/bootstrap',
     iso8601: 'iso8601/iso8601',
     jquery: 'jquery/jquery',
