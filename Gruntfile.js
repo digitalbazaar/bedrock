@@ -7,6 +7,22 @@ module.exports = function(grunt) {
   // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    cssmin: {
+      combine: {
+        options: {
+          report: 'min'
+        },
+        files: {
+          'site/static/css/bundle.min.css': [
+            'site/static/bootstrap/css/bootstrap.css',
+            'site/static/bootstrap/css/bootstrap-responsive.css',
+            'site/static/font-awesome/css/font-awesome.css',
+            'site/static/css/common.css',
+            'site/static/css/custom.css'
+          ]
+        }
+      }
+    },
     ngtemplates: {
       myapp: {
         options: {
@@ -53,6 +69,7 @@ module.exports = function(grunt) {
   });
 
   // plugins
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-angular-templates');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
@@ -64,5 +81,6 @@ module.exports = function(grunt) {
   });
 
   // default tasks
-  grunt.registerTask('default', ['ngtemplates', 'templates2requireJS']);
+  grunt.registerTask('default',
+    ['ngtemplates', 'templates2requireJS', 'cssmin']);
 };

@@ -10,3 +10,4 @@ node_modules
 npm-debug.log
 site/static/app/main.min.js
 site/static/app/templates.min.js
+site/static/css/bundle.min.css

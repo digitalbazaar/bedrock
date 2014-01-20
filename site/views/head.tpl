@@ -18,19 +18,22 @@
     <title data-ng-bind="(pageTitle && (siteTitle + ': ' + pageTitle)) || siteTitle"></title>
     {{/verbatim}}
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
-    <link href="${cacheRoot}/bootstrap/css/bootstrap.${cssLibExt}" rel="stylesheet" type="text/css" />
-    <link href="${cacheRoot}/bootstrap/css/bootstrap-responsive.${cssLibExt}" rel="stylesheet" type="text/css" />
-    <link href="${cacheRoot}/font-awesome/css/font-awesome.${cssLibExt}" rel="stylesheet" type="text/css" />
-    <link href="${cacheRoot}/css/common.${cssExt}" rel="stylesheet" type="text/css" />
-    <link href="${cacheRoot}/css/custom.${cssExt}" rel="stylesheet" type="text/css" />
-    <!--[if IE]>
-    <link href="${cacheRoot}/css/ie.${cssExt}" rel="stylesheet" type="text/css" />
-    <![endif]-->
-    {{if cssList && cssList.length > 0}}
-    {{each(idx, cssFile) cssList}}
-    <link href="${cacheRoot}/${cssFile}.${cssExt}" rel="stylesheet" type="text/css" />
-    {{/each}}
+    {{if productionMode}}
+      <link href="css/bundle.min.css" rel="stylesheet" type="text/css" />
+    {{else}}
+      {{if minimizeJS}}
+        <link href="css/bundle.min.css" rel="stylesheet" type="text/css" />
+      {{else}}
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link href="css/common.css" rel="stylesheet" type="text/css" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" />
+      {{/if}}
     {{/if}}
+    <!--[if IE]>
+    <link href="css/ie.${cssExt}" rel="stylesheet" type="text/css" />
+    <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
