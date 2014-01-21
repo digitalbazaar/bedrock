@@ -31,3 +31,10 @@ Minimizing the RequireJS client-side JS
 
 1. npm run minify
 2. To test in dev mode, set the website config var 'minimizeJS' to true.
+
+Generating a new self-signed SSL certificate for testing
+========================================================
+
+1. nodejs create-credentials.js
+2. Save the generated private key and certificate PEMs in the
+   appropriate files (in ./pki/ if using the default config).
