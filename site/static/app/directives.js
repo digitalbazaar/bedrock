@@ -33,9 +33,6 @@ define([
   'app/directives/tooltipTitle',
   'app/directives/trackState'
 ], function(angular) {
-  var module = angular.module('app.directives', []);
-  module.run(function() {
-    module.directive(angular.extend.apply(
-      null, [{}].concat(Array.prototype.slice.call(arguments, 1))));
-  });
+  angular.module('app.directives', []).directive(angular.extend.apply(
+    null, [{}].concat(Array.prototype.slice.call(arguments, 1))));
 });
