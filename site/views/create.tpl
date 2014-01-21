@@ -52,14 +52,14 @@ ${set([
           </div>
         </div>
 
-        <div class="control-group" data-binding="psaPassword">
+        <div class="control-group" data-binding="sysPassword">
           <label class="control-label" for="password">Password</label>
           <div class="controls">
             <div class="input-append">
               <input class="input-xlarge"
-                name="password" data-binding="psaPassword"
+                name="password" data-binding="sysPassword"
                 maxlength="32" type="password"
-                data-ng-model="profile.psaPassword"
+                data-ng-model="profile.sysPassword"
                 data-track-state="model.help.password"
                 data-ng-disabled="loading" />
               <button class="btn" data-help-toggle="model.help.password">
@@ -89,14 +89,14 @@ ${set([
           </p>
         </div>
 
-        <div class="control-group" data-binding="psaIdentity.label">
+        <div class="control-group" data-binding="sysIdentity.label">
           <label class="control-label" for="identity">Identity Name</label>
           <div class="controls">
             <div class="input-append">
               <input class="input-xlarge"
                 name="identity-label" type="text"
-                data-slug-out="profile.psaIdentity.psaSlug"
-                data-ng-model="profile.psaIdentity.label"
+                data-slug-out="profile.sysIdentity.sysSlug"
+                data-ng-model="profile.sysIdentity.label"
                 data-track-state="model.help.identityLabel"
                 data-ng-disabled="loading"
                 autocomplete="off" />
@@ -111,12 +111,12 @@ ${set([
               address below:
             </p>
             <p><small>{{data.identityBaseUri}}/</small><input
-              data-binding="psaIdentity.psaSlug" class="slug"
+              data-binding="sysIdentity.sysSlug" class="slug"
               name="identity-slug" type="text" maxlength="32"
               placeholder="IDENTITY-NAME"
-              data-slug-in data-ng-model="profile.psaIdentity.psaSlug"
+              data-slug-in data-ng-model="profile.sysIdentity.sysSlug"
               data-ng-disabled="loading" /></p>
-            <div data-duplicate-checker="profile.psaIdentity.psaSlug"
+            <div data-duplicate-checker="profile.sysIdentity.sysSlug"
               data-duplicate-checker-type="PersonalIdentity"
               data-duplicate-checker-available="This identity name is available!"
               data-duplicate-checker-invalid="Identity name is invalid."

@@ -13,8 +13,8 @@ function factory($scope) {
   $scope.model = {};
   var data = window.data || {};
   $scope.email = data.session ? data.session.profile.email : '';
-  $scope.psaPasscode = data.psaPasscode || '';
-  $scope.psaPasswordNew = '';
+  $scope.sysPasscode = data.sysPasscode || '';
+  $scope.sysPasswordNew = '';
   $scope.feedback = {
     email: {},
     password: {}
@@ -26,7 +26,7 @@ function factory($scope) {
     // request a passcode
     resetFeedback();
     bedrock.profiles.passcode({
-      profile: {psaIdentifier: $scope.email},
+      profile: {sysIdentifier: $scope.email},
       success: function() {
         $scope.feedback.email.success = {
           message:
@@ -51,9 +51,9 @@ function factory($scope) {
     resetFeedback();
     bedrock.profiles.password({
       profile: {
-        psaIdentifier: $scope.email,
-        psaPasscode: $scope.psaPasscode,
-        psaPasswordNew: $scope.psaPasswordNew
+        sysIdentifier: $scope.email,
+        sysPasscode: $scope.sysPasscode,
+        sysPasswordNew: $scope.sysPasswordNew
       },
       success: function() {
         $scope.feedback.password.success = {

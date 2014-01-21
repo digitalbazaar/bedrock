@@ -33,12 +33,12 @@ function factory(svcModal, svcIdentity) {
     $scope.addIdentity = function() {
       var identity = $scope.identity[$scope.identityType];
       identity.label = $scope.identityLabel;
-      identity.psaSlug = $scope.identitySlug;
+      identity.sysSlug = $scope.identitySlug;
       $scope.loading = true;
       svcIdentity.add(identity, function(err, identity) {
         // if identity is a duplicate, update id
         if(err.type === 'bedrock.website.DuplicateIdentity') {
-          identity.id = $scope.data.identityBaseUri + '/' + identity.psaSlug;
+          identity.id = $scope.data.identityBaseUri + '/' + identity.sysSlug;
         }
 
         $scope.loading = false;

@@ -26,7 +26,7 @@ var postPasscode = {
   description: 'Create a passcode.',
   type: 'object',
   properties: {
-    psaIdentifier: {
+    sysIdentifier: {
       required: true,
       type: [identifier(), slug(), email()]
     }
@@ -40,8 +40,8 @@ var postPassword = {
   type: 'object',
   properties: {
     id: identifier(),
-    psaPassword: password(),
-    psaPasswordNew: password()
+    sysPassword: password(),
+    sysPasswordNew: password()
   },
   additionalProperties: false
 };
@@ -51,12 +51,12 @@ var postPasswordReset = {
   description: 'Reset a password.',
   type: 'object',
   properties: {
-    psaIdentifier: {
+    sysIdentifier: {
       required: true,
       type: [identifier(), slug(), email()]
     },
-    psaPasscode: passcode(),
-    psaPasswordNew: password()
+    sysPasscode: passcode(),
+    sysPasswordNew: password()
   },
   additionalProperties: false
 };
@@ -66,11 +66,11 @@ var postEmailVerify = {
   description: 'Verify an email address.',
   type: 'object',
   properties: {
-    psaIdentifier: {
+    sysIdentifier: {
       required: true,
       type: [identifier(), slug(), email()]
     },
-    psaPasscode: passcode()
+    sysPasscode: passcode()
   },
   additionalProperties: false
 };
@@ -81,11 +81,11 @@ var postCreate = {
   type: 'object',
   properties: {
     '@context': jsonldContext(),
-    psaSlug: slug({required: false}),
+    sysSlug: slug({required: false}),
     email: email(),
-    psaPassword: password(),
+    sysPassword: password(),
     label: label({required: false}),
-    psaIdentity: {
+    sysIdentity: {
       required: true,
       type: 'object',
       properties: {
@@ -94,9 +94,9 @@ var postCreate = {
           type: 'string',
           enum: ['PersonalIdentity']
         },
-        psaSlug: slug(),
+        sysSlug: slug(),
         label: label(),
-        psaPublic: {
+        sysPublic: {
           required: false,
           type: visibility()
         }

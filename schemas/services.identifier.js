@@ -1,5 +1,4 @@
 var email = require('./email');
-var identifier = require('./identifier');
 var slug = require('./slug');
 
 var postIdentifier = {
@@ -11,7 +10,7 @@ var postIdentifier = {
         type: 'string',
         enum: ['Profile', 'PersonalIdentity']
       },
-      psaSlug: slug()
+      sysSlug: slug()
     },
     additionalProperties: false
   }, {

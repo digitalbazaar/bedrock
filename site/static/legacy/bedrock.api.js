@@ -261,7 +261,7 @@ bedrock.profiles.login = function(options) {
  * Usage:
  *
  * bedrock.profiles.passcode({
- *   profile: {psaIdentifier: "foo@example.com"},
+ *   profile: {sysIdentifier: "foo@example.com"},
  *   [usage]: 'reset'/'verify',
  *   success: function() {},
  *   error: function(err) {}
@@ -303,9 +303,9 @@ bedrock.profiles.passcode = function(options) {
  *
  * bedrock.profiles.password({
  *   profile: {
- *     "psaIdentifier": "foo@example.com",
- *     "psaPasscode": "fhj32hfg8",
- *     "psaPasswordNew": "password12345",
+ *     "sysIdentifier": "foo@example.com",
+ *     "sysPasscode": "fhj32hfg8",
+ *     "sysPasswordNew": "password12345",
  *   },
  *   success: function() {},
  *   error: function(err) {}
@@ -339,8 +339,8 @@ bedrock.profiles.password = function(options) {
  *
  * bedrock.profiles.verifyEmail({
  *   profile: {
- *     "psaIdentifier": "foo@example.com",
- *     "psaPasscode": "fhj32hfg8"
+ *     "sysIdentifier": "foo@example.com",
+ *     "sysPasscode": "fhj32hfg8"
  *   },
  *   success: function() {},
  *   error: function(err) {}

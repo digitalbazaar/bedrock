@@ -1,6 +1,6 @@
 To: registration@{{supportDomain}}
 From: cluster@{{supportDomain}}
-Subject: {{subjectPrefix}}{{serviceName}} Profile created: {{profile.psaSlug}} ({{profile.id}})
+Subject: {{subjectPrefix}}{{serviceName}} Profile created: {{profile.sysSlug}} ({{profile.id}})
 
 Machine:        {{machine}}
 Profile ID:     {{profile.id}}

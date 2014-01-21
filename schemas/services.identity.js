@@ -33,7 +33,7 @@ var postIdentities = {
       type: 'string',
       enum: ['PersonalIdentity']
     },
-    psaSlug: slug(),
+    sysSlug: slug(),
     label: label(),
     website: {
       required: false,
@@ -43,7 +43,7 @@ var postIdentities = {
       required: false,
       type: 'string'
     },
-    psaPublic: {
+    sysPublic: {
       required: false,
       type: visibility()
     }

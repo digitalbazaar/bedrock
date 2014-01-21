@@ -20,13 +20,13 @@ function factory($scope, $http) {
   $scope.profile = {
     '@context': $scope.data.contextUrl,
     email: '',
-    psaPassword: '',
-    psaIdentity: {
+    sysPassword: '',
+    sysIdentity: {
       // FIXME: add option for type in ui?
       type: 'PersonalIdentity',
       label: '',
-      psaSlug: '',
-      psaPublic: []
+      sysSlug: '',
+      sysPublic: []
     }
   };
   $scope.agreementChecked = false;

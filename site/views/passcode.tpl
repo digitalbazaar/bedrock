@@ -17,7 +17,7 @@ ${set([
     <form id="emailFeedbackTarget" class="form-horizontal" action="" data-ng-submit="sendReset()">
       <fieldset>
       <legend>Get Passcode</legend>
-        <div class="control-group" data-binding="psaIdentifier">
+        <div class="control-group" data-binding="sysIdentifier">
           <label class="control-label" for="email">Email</label>
           <div class="controls">
             <div class="input-append">
@@ -55,7 +55,7 @@ ${set([
       <fieldset>
       <legend>Update Your Password</legend>
 
-      <div class="control-group" data-binding="psaIdentifier">
+      <div class="control-group" data-binding="sysIdentifier">
         <label class="control-label" for="reset-email">Email</label>
         <div class="controls">
           <div class="input-append">
@@ -74,12 +74,12 @@ ${set([
         </div>
       </div>
 
-      <div class="control-group" data-binding="psaPasscode">
+      <div class="control-group" data-binding="sysPasscode">
         <label class="control-label" for="passcode">Passcode</label>
         <div class="controls">
           <div class="input-append">
-            <input name="psaPasscode" type="text" maxlength="8"
-              data-ng-model="psaPasscode"
+            <input name="sysPasscode" type="text" maxlength="8"
+              data-ng-model="sysPasscode"
               data-track-state="model.help.passcode"
               data-ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.passcode">
@@ -93,12 +93,12 @@ ${set([
         </div>
       </div>
 
-      <div class="control-group" data-binding="psaPasswordNew">
+      <div class="control-group" data-binding="sysPasswordNew">
         <label class="control-label" for="new-password">New Password</label>
         <div class="controls">
           <div class="input-append">
-            <input name="psaPasswordNew" type="password" maxlength="32"
-              data-ng-model= "psaPasswordNew"
+            <input name="sysPasswordNew" type="password" maxlength="32"
+              data-ng-model= "sysPasswordNew"
               data-track-state="model.help.password"
               data-ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.password">

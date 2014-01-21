@@ -4,7 +4,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/profile_administrator',
   label: 'Profile Administrator',
   comment: 'Role for profile administrators.',
-  psaPermission: [
+  sysPermission: [
     {id: 'bedrock.profile.permission.profile_admin'},
     {id: 'bedrock.profile.permission.profile_access'},
     {id: 'bedrock.profile.permission.profile_create'},
@@ -16,7 +16,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/profile_manager',
   label: 'Registered Profile',
   comment: 'Role for registered profiles.',
-  psaPermission: [
+  sysPermission: [
     {id: 'bedrock.profile.permission.profile_access'},
     {id: 'bedrock.profile.permission.profile_create'},
     {id: 'bedrock.profile.permission.profile_edit'},
@@ -27,7 +27,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/role_administrator',
   label: 'Role Administrator',
   comment: 'This role is used to administer Roles and Permissions.',
-  psaPermission: [
+  sysPermission: [
     {id: 'bedrock.profile.permission.role_admin'},
     {id: 'bedrock.profile.permission.role_edit'},
     {id: 'bedrock.profile.permission.role_remove'}
@@ -37,7 +37,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/identity_administrator',
   label: 'Identity Administrator',
   comment: 'Role for Identity administrators.',
-  psaPermission: [
+  sysPermission: [
     {id: 'bedrock.identity.permission.identity_admin'},
     {id: 'bedrock.identity.permission.identity_access'},
     {id: 'bedrock.identity.permission.identity_create'},
@@ -51,7 +51,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/identity_manager',
   label: 'Identity Manager',
   comment: 'Role for identity managers.',
-  psaPermission: [
+  sysPermission: [
     {id: 'bedrock.identity.permission.identity_access'},
     {id: 'bedrock.identity.permission.identity_create'},
     {id: 'bedrock.identity.permission.identity_edit'},
@@ -63,7 +63,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/website_administrator',
   label: 'Website Administrator',
   comment: 'This role is used to administer the website.',
-  psaPermission: [
+  sysPermission: [
     {id: 'bedrock.website.permission.admin'}
   ]
 });
@@ -73,7 +73,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/admin',
   label: 'Administrator',
   comment: 'Role for System Administrator.',
-  psaPermission: [
+  sysPermission: [
     // profile permissions
     {id: 'bedrock.profile.permission.profile_admin'},
     {id: 'bedrock.profile.permission.profile_access'},
@@ -103,7 +103,7 @@ config.permission.roles.push({
   id: config.server.baseUri + '/roles/profile_registered',
   label: 'Registered Profile',
   comment: 'Role for registered profiles.',
-  psaPermission: [
+  sysPermission: [
     // profile permissions
     {id: 'bedrock.profile.permission.profile_access'},
     {id: 'bedrock.profile.permission.profile_create'},

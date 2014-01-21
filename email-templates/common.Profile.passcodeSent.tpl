@@ -17,7 +17,7 @@ https://{{serviceHost}}/profile/passcode
 
 {%- if profiles.length == 1 %}
 
-Your passcode is: {{profiles[0].psaPasscode}}
+Your passcode is: {{profiles[0].sysPasscode}}
 
 {%- else %}
 
@@ -29,9 +29,9 @@ passcodes for each one:
 Identity:  {{profile.identity.label}}
 {%- else %}
 
-Profile:   {{profile.psaSlug}}
+Profile:   {{profile.sysSlug}}
 {%- endif %}
-Passcode: {{profile.psaPasscode}}
+Passcode: {{profile.sysPasscode}}
 {%- endfor -%}
 {%- endif %}
 

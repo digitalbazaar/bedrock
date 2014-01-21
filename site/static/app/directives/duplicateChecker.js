@@ -81,7 +81,7 @@ function factory($http, $filter) {
                   data.email = lastInput;
                 }
                 else {
-                  data.psaSlug = lastInput;
+                  data.sysSlug = lastInput;
                 }
                 $http.post('/identifier', $.extend(
                   data, scope.owner ? {owner: scope.owner} : {}))
