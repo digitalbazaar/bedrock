@@ -1,6 +1,8 @@
 /*!
  * Key Details.
  *
+ * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ *
  * @author Manu Sporny
  * @author David I. Lehn
  * @author Dave Longley

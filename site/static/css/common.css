@@ -1,4 +1,8 @@
-/* Bedrock common style */
+/*
+ * Bedrock common style
+ *
+ * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ */
 
 /* Hide AngularJS templates prior to bootstrapping AngularJS */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ */
 var email = require('./email');
 var slug = require('./slug');
 
