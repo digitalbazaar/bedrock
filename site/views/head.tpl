@@ -19,20 +19,20 @@
     {{/verbatim}}
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
     {{if productionMode}}
-      <link href="css/bundle.min.css" rel="stylesheet" type="text/css" />
+      <link href="/css/bundle.min.css" rel="stylesheet" type="text/css" />
     {{else}}
       {{if minimizeJS}}
-        <link href="css/bundle.min.css" rel="stylesheet" type="text/css" />
+        <link href="/css/bundle.min.css" rel="stylesheet" type="text/css" />
       {{else}}
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-        <link href="css/common.css" rel="stylesheet" type="text/css" />
-        <link href="css/custom.css" rel="stylesheet" type="text/css" />
+        <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+        <link href="/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link href="/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="/css/custom.css" rel="stylesheet" type="text/css" />
       {{/if}}
     {{/if}}
     <!--[if IE]>
-    <link href="css/ie.${cssExt}" rel="stylesheet" type="text/css" />
+    <link href="/css/ie.${cssExt}" rel="stylesheet" type="text/css" />
     <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico" />
