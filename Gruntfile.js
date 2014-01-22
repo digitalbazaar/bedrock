@@ -86,7 +86,6 @@ module.exports = function(grunt) {
           'app/templates': 'app/templates.min'
         },
         mainConfigFile: 'site/static/app/main.js',
-        name: '../../node_modules/almond/almond',
         include: ['app/main'],
         insertRequire: ['app/main'],
         out: 'site/static/app/main.min.js',
