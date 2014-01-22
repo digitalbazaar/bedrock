@@ -8,6 +8,7 @@ coverage.html
 lib-cov
 node_modules
 npm-debug.log
+reports
 site/static/app/main.min.js
 site/static/app/templates.min.js
 site/static/css/bundle.min.css
