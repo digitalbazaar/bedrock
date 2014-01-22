@@ -9,6 +9,12 @@ module.exports = function(grunt) {
   // init config
   grunt.initConfig({});
 
+  // set mode to either 'default' or 'ci'
+  grunt.config('mode',
+    grunt.option('mode') || process.env.GRUNT_MODE || 'default');
+  // check for ci mode
+  grunt.config('ci', grunt.option('mode') === 'ci');
+
   // read package configuration
   grunt.config('pkg', grunt.file.readJSON('package.json'));
 
@@ -72,6 +78,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.config('jshint', {
     all: {
+      options: grunt.config('ci') ? {
+        reporter: 'checkstyle',
+        reporterOutput: 'reports/jshint.xml'
+      } : {},
       src: [
         '*.js',
         'bin/*.js',
