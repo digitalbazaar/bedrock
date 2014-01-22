@@ -96,7 +96,7 @@ module.exports = function(grunt) {
     }
   });
 
-  // jshint
+  // _jshint
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.config('jshint', {
     all: {
