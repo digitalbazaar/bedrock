@@ -21,7 +21,7 @@
     {{if productionMode}}
       <link href="/css/bundle.min.css" rel="stylesheet" type="text/css" />
     {{else}}
-      {{if minimizeJS}}
+      {{if minify}}
         <link href="/css/bundle.min.css" rel="stylesheet" type="text/css" />
       {{else}}
         <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
       {{if productionMode}}
         <script src="/app/main.min.js"></script>
       {{else}}
-        {{if minimizeJS}}
+        {{if minify}}
           <script src="/app/main.min.js"></script>
         {{else}}
           <script data-main="/app/main.js" src="/requirejs/require.js"></script>
