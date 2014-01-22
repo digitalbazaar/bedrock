@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
         options: {
+          root: 'site/static/',
           report: 'min'
         },
         files: {
