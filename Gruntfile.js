@@ -1,6 +1,3 @@
-var path = require('path');
-var fs = require('fs');
-
 module.exports = function(grunt) {
   'use strict';
 
@@ -27,10 +24,6 @@ module.exports = function(grunt) {
     ngtemplates: {
       myapp: {
         options: {
-          // $templateCache ID will be relative to this folder
-          base: 'site/static',
-          // prepend path to $templateCache ID
-          prepend: '/',
           // the module the templates will be added to
           module: 'app.templates',
           htmlmin: {
@@ -43,8 +36,19 @@ module.exports = function(grunt) {
             removeScriptTypeAttributes:     true,
             removeStyleLinkTypeAttributes:  true
           },
-          // define the templates module
-          standalone: true
+          bootstrap: function(module, script) {
+            return [
+              "define(['angular'], function(angular) {\n",
+              "angular.module('" + module + "', [])",
+              ".run(['$templateCache', function($templateCache) {\n",
+              script,
+              '}]);\n});\n'].join('');
+          },
+          url: function(file) {
+            var idx = file.indexOf('site/static');
+            file = file.substr(idx + 'site/static'.length);
+            return file;
+          }
         },
         src: 'site/static/app/templates/**/*.html',
         dest: 'site/static/app/templates.min.js'
@@ -74,14 +78,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-angular-templates');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('templates2requireJS', function() {
-    var filename = path.join(__dirname, 'site/static/app/templates.min.js');
-    var module = fs.readFileSync(filename, 'utf8');
-    module = "define(['angular'], function(angular) {\n" + module + '});\n';
-    fs.writeFileSync(filename, module);
-  });
-
   // default tasks
-  grunt.registerTask('default',
-    ['ngtemplates', 'templates2requireJS', 'cssmin']);
+  grunt.registerTask('default', ['ngtemplates', 'cssmin']);
 };
