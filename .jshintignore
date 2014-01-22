@@ -1,5 +1,4 @@
 lib/bedrock/rdfa.js
 lib/iso8601/iso8601.js
-minify.js
 site/static/app/main.min.js
 site/static/app/templates.min.js
