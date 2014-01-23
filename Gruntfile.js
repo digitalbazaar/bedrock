@@ -85,11 +85,13 @@ module.exports = function(grunt) {
       options: {
         baseUrl: 'site/static',
         paths: {
+          'almond': '../../node_modules/almond/almond',
           'underscore': '../../node_modules/underscore',
           // override templates
           'app/templates': 'app/templates.min'
         },
         mainConfigFile: 'site/static/app/main.js',
+        name: 'almond',
         include: ['app/main'],
         insertRequire: ['app/main'],
         out: 'site/static/app/main.min.js',
