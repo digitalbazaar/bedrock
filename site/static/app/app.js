@@ -28,12 +28,28 @@ define([
     $rootScope.siteTitle = window.data.siteTitle;
     $rootScope.pageTitle = window.data.pageTitle;
 
+    // build route regexes
+    var routeRegexes = [];
+    angular.forEach($route.routes, function(route, path) {
+      routeRegexes.push(getRouteRegex(path));
+    });
+
     // reload page if switching between routes and non-routes
-    $rootScope.$on('$routeChangeStart', function(event, next, last) {
-      if(last && last !== next && (next.none || last.none)) {
+    $rootScope.$on('$locationChangeStart', function(event, next, last) {
+      // test location to see if it's a route
+      var isRoute = false;
+      for(var i = 0; i < routeRegexes.length; ++i) {
+        if(routeRegexes[i].test($location.path())) {
+          isRoute = true;
+          break;
+        }
+      }
+      if(!isRoute && window.location.href !== $location.absUrl()) {
         window.location.href = $location.absUrl();
+        event.preventDefault();
       }
     });
+
     // set page title when route changes
     $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
       if(current && current.$$route) {
@@ -59,4 +75,24 @@ define([
   }]);
 
   angular.bootstrap(document, ['app']);
+
+  // from angular.js for route matching
+  // TODO: could probably be simplified
+  function getRouteRegex(when) {
+    // Escape regexp special characters.
+    when = '^' + when.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '$';
+    var regex = '', params = [], dst = {};
+    var re = /:(\w+)/g, paramMatch, lastMatchedIndex = 0;
+    while((paramMatch = re.exec(when)) !== null) {
+      // Find each :param in `when` and replace it with a capturing group.
+      // Append all other sections of when unchanged.
+      regex += when.slice(lastMatchedIndex, paramMatch.index);
+      regex += '([^\\/]*)';
+      params.push(paramMatch[1]);
+      lastMatchedIndex = re.lastIndex;
+    }
+    // Append trailing path part.
+    regex += when.substr(lastMatchedIndex);
+    return new RegExp(regex);
+  }
 });
