@@ -36,10 +36,6 @@ config.website.views.vars = {
       width: '182'
     }
   },
-  // extensions for webpage loaded resources can be adjusted to 'min.css' or
-  // similar to load minimized resources
-  // local resources
-  cssExt: 'css',
   // client-side data
   clientData: {
     baseUri: config.server.baseUri,
