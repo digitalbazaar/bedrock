@@ -5,7 +5,7 @@
         {{if pageLayout == "normal"}}
           <a class="brand" href="/">
             {{if style.brand.src}}
-            <img src="${cacheRoot}${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
+            <img src="${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
             {{else}}
             ${siteTitle}
             {{/if}}
@@ -17,7 +17,7 @@
           </ul>
           {{/verbatim}}
         {{else}}
-          <img class="brand-minimal" src="${cacheRoot}${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
+          <img class="brand-minimal" src="${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
         {{/if}}
         {{verbatim}}
         <a class="btn btn-nav btn-small show pull-right{{showHovercard && ' active' || ''}}"

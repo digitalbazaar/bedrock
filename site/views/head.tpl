@@ -32,7 +32,7 @@
       {{/if}}
     {{/if}}
     <!--[if IE]>
-    <link href="/css/ie.${cssExt}" rel="stylesheet" type="text/css" />
+    <link href="/css/ie.css" rel="stylesheet" type="text/css" />
     <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico" />

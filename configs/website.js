@@ -23,7 +23,6 @@ config.website.views.vars = {
     loaded: false,
     auth: false
   },
-  inav: '',
   pageLayout: 'normal',
   debug: true,
   title: config.brand.name,
@@ -41,11 +40,6 @@ config.website.views.vars = {
   // similar to load minimized resources
   // local resources
   cssExt: 'css',
-  // library resources
-  cssLibExt: 'css',
-  // list of css files to load without the extension
-  cssList: [],
-  cacheRoot: '',
   // client-side data
   clientData: {
     baseUri: config.server.baseUri,

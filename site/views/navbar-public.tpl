@@ -8,7 +8,7 @@
       <a class="brand" href="/">
         {{if style.brand.src}}
         <img
-          src="${cacheRoot}${style.brand.src}"
+          src="${style.brand.src}"
           width="${style.brand.width}" height="${style.brand.height}"
           alt="${style.brand.alt}" />
         {{else}}

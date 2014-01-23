@@ -3,7 +3,7 @@
     <div class="container">
       <a href="/">
         {{if style.brand.src}}
-        <img class="brand-minimal" src="${cacheRoot}${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
+        <img class="brand-minimal" src="${style.brand.src}" width="${style.brand.width}" height="${style.brand.height}" alt="${style.brand.alt}" />
         {{else}}
         ${siteTitle}
         {{/if}}
