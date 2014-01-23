@@ -15,6 +15,10 @@ module.exports = function(grunt) {
   // check for ci mode
   grunt.config('ci', grunt.option('mode') === 'ci');
 
+  // optimization flag (any require.js mode, ie, 'uglify', 'none', etc
+  grunt.config('optimize',
+    grunt.option('optimize') || process.env.GRUNT_OPTIMIZE || 'uglify');
+
   // read package configuration
   grunt.config('pkg', grunt.file.readJSON('package.json'));
 
@@ -90,7 +94,8 @@ module.exports = function(grunt) {
         insertRequire: ['app/main'],
         out: 'site/static/app/main.min.js',
         wrap: true,
-        preserveLicenseComments: false
+        preserveLicenseComments: false,
+        optimize: grunt.config('optimize')
       }
     }
   });
