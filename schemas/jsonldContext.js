@@ -2,7 +2,7 @@
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
 var tools = require(__libdir + '/bedrock/tools');
-var config = require(__libdir + '/config');
+var config = require(__libdir + '/bedrock').config;
 
 var schema = {
   required: true,
