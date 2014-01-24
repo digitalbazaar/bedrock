@@ -3,8 +3,6 @@ Bedrock
 
 A core foundation for a rich application server.
 
-Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
-
 Building the Software
 ---------------------
 
@@ -38,3 +36,21 @@ Generating a new self-signed SSL certificate for testing
 1. nodejs create-credentials.js
 2. Save the generated private key and certificate PEMs in the
    appropriate files (in ./pki/ if using the default config).
+
+Authors
+-------
+
+See the [AUTHORS][] file for author contact information.
+
+License
+-------
+
+See the [LICENSE][] file for license information.
+
+Copyright
+---------
+
+Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
+
+[AUTHORS]: AUTHORS.md
+[LICENSE]: LICENSE.md
