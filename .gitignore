@@ -4,6 +4,7 @@
 .project
 .settings
 TAGS
+chromedriver
 coverage.html
 lib-cov
 node_modules
