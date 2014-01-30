@@ -10,7 +10,7 @@ define([
   'app/configs/data',
   'app/configs/site'
 ], function(angular) {
-  // register controllers and gather routes
+  // register configs
   var module = angular.module('app.configs', []);
   var configs = Array.prototype.slice.call(arguments, 1);
   var moduleConfig = {};
