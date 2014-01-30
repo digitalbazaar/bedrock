@@ -10,7 +10,7 @@ var jsonschema = require('json-schema');
 var slug = require(_schema_dir + '/slug');
 
 // FIXME: add more tests, test for proper errors
-describe('PaySwarm JSON-LD REST API input schema', function() {
+describe('JSON-LD REST API input schema', function() {
   describe('comment', function() {
     var schema = comment();
     it('should be an Object', function(done) {
