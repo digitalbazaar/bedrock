@@ -47,6 +47,12 @@ Generating a new self-signed SSL certificate for testing
 2. Save the generated private key and certificate PEMs in the
    appropriate files (in ./pki/ if using the default config).
 
+Hacking
+-------
+
+See the [HACKING][] file for various details for coders about
+hacking on this project.
+
 Authors
 -------
 
@@ -63,4 +69,5 @@ Copyright
 Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
 
 [AUTHORS]: AUTHORS.md
+[HACKING]: HACKING.md
 [LICENSE]: LICENSE.md
