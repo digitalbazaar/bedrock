@@ -4,8 +4,9 @@
 
 'use strict';
 
+var jsonld = require(__libdir + '/bedrock/jsonld');
 var bedrock = {
-  security: require(__libdir + '/bedrock/security', true),
+  security: require(__libdir + '/bedrock/security', true)
 };
 var should = GLOBAL.should;
 
@@ -76,13 +77,16 @@ describe('bedrock.security', function() {
 
   describe('JSON-LD decryption', function() {
     it('should retrieve the original message', function(done) {
-      // If this fails and encryptedMessage must be regenerated see the        
-      // console.log NOTE below.                                               
+      // If this fails and encryptedMessage must be regenerated see the
+      // console.log NOTE below.
       bedrock.security.decryptJsonLd(
         encryptedMessage, privateKey, function(err, msg) {
           should.not.exist(err);
-          msg.should.eql(testObject);
-          done();
+          jsonld.compact(msg, {'@context': 'https://w3id.org/bedrock/v1'}, function(err, msg) {
+            should.not.exist(err);
+            msg.should.eql(testObject);
+            done();
+          });
       });
     });
   });
@@ -92,12 +96,15 @@ describe('bedrock.security', function() {
       bedrock.security.encryptJsonLd(
         testObject, publicKey, function(err, msg) {
         should.not.exist(err);
-        // NOTE: enable this to print out the hardcoded "encryptedMessage".    
-        //console.log(JSON.stringify(msg));                                    
+        // NOTE: enable this to print out the hardcoded "encryptedMessage".
+        //console.log(JSON.stringify(msg));
         bedrock.security.decryptJsonLd(msg, privateKey, function(err, msg) {
           should.not.exist(err);
-          msg.should.eql(testObject);
-          done();
+          jsonld.compact(msg, {'@context': 'https://w3id.org/bedrock/v1'}, function(err, msg) {
+            should.not.exist(err);
+            msg.should.eql(testObject);
+            done();
+          });
         });
       });
     });
