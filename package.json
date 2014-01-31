@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js",
-    "test": "node test.js --unit",
+    "test": "node test.js --unit --system",
+    "test-unit": "node test.js --unit",
+    "test-system": "node test.js --system",
     "lint": "grunt jshint",
     "ci-test": "node test.js --unit --system",
     "ci-lint": "grunt jshint --mode=ci || exit 0",

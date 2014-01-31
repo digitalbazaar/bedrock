@@ -16,7 +16,17 @@ Running the Development Bedrock Server
 Running the Tests
 -----------------
 
-1. npm run tests
+Run all unit and system tests:
+
+1. npm run test
+
+Run just the unit tests:
+
+1. npm run test-unit
+
+Run just the system tests:
+
+1. npm run test-system
 
 Running the Code Coverage Tool
 ------------------------------
