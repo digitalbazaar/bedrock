@@ -10,9 +10,7 @@ ${set([
     <h2>Create a Profile</h2>
 
     <p>
-    By creating a profile, you will be able to buy and sell digital goods
-    online, raise money for projects, fund other projects, and enter a new
-    world of collaboration on the web.
+    By creating a profile, you will be able to log into the service.
     </p>
 
     <div data-ng-include="'/app/templates/demo-warning.html'"></div>
@@ -46,8 +44,8 @@ ${set([
               data-duplicate-checker-result="model.emailAvailable">
             </div>
             <p data-fade-toggle="model.help.email.show" class="help-block">
-              A valid email address is required so that we can send you
-              receipts and reset your password if you get locked out.
+              A valid email address is required so that we can reset
+              your password if you get locked out.
             </p>
           </div>
         </div>
@@ -80,12 +78,11 @@ ${set([
         <div class="control-group">
           <p class="help-block">
     Your identity will be used to keep track of and verify your online
-    activity with this service. It is stored along with any purchases or
-    sales that you participate in. It is usually a good idea to use some
+    activity with this service. It is usually a good idea to use some
     shortened form of your full name here, similar to how people choose
     email addresses or twitter handles. Once you've logged in, you'll be
-    able to create new personal or business identities, all with the
-    same email address, if you want to.
+    able to create additional identities, all with the same email address,
+    if you want to.
           </p>
         </div>
 
