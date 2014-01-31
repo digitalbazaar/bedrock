@@ -19,7 +19,7 @@ describe('Dev Account Login', function() {
     return browser
       .get(baseUrl)
       // FIXME need to wait for angular processing to settle
-      .sleep(1000);
+      .sleep(2000);
   });
 
   it('should be able to access the page title', function() {
