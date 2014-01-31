@@ -1,10 +1,13 @@
 /*
  * Copyright (c) 2013-2014 Digital Bazaar, Inc. All rights reserved.
  */
+
+'use strict';
+
 var bedrock = {
   security: require(__libdir + '/bedrock/security', true),
 };
-var should = require('should');
+var should = GLOBAL.should;
 
 var privateKey = {
   privateKeyPem: '-----BEGIN RSA PRIVATE KEY-----\r\n' +

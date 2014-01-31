@@ -1,12 +1,13 @@
 /*
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
-var _schema_dir = '../../schemas';
 
-var should = require('should');
+'use strict';
 
-var comment = require(_schema_dir + '/comment');
 var jsonschema = require('json-schema');
+
+var _schema_dir = '../../schemas';
+var comment = require(_schema_dir + '/comment');
 var slug = require(_schema_dir + '/slug');
 
 // FIXME: add more tests, test for proper errors

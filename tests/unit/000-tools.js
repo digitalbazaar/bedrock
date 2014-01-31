@@ -1,8 +1,9 @@
 /*
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
-var _ = require('underscore');
-var should = require('should');
+
+'use strict';
+
 var bedrock = {
   tools: require(__libdir + '/bedrock/tools', true)
 };

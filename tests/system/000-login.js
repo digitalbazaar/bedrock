@@ -1,8 +1,6 @@
 var bedrock = {
   config: require(__libdir + '/config')
 };
-var should = require('should');
-var async = require('async');
 
 var browser = GLOBAL.browser;
 var baseUrl = bedrock.config.website.baseUrl;
@@ -15,38 +13,29 @@ var baseUrl = bedrock.config.website.baseUrl;
  * Eventually, we should have long series of tests that are chained together
  * to ensure that we're simulating standard usage flows for the system.
  */
-describe('Dev Account', function() {
+describe('Dev Account Login', function() {
 
-  it('should be able to access the landing page', function(done) {
-    browser.chain()
+  beforeEach(function() {
+    return browser
       .get(baseUrl)
-      .title(function(err, title) {
-        should.not.exist(err);
-        title.should.eql('Bedrock: Welcome');
-        done();
-      });
+      // FIXME need to wait for angular processing to settle
+      .sleep(1000);
   });
 
-  it('should be able to sign in', function(done) {
-    browser.chain()
-      .get(baseUrl + '/')
-      .elementByName('profile', function(err, element) {
-        should.not.exist(err);
-        element.sendKeys('dev');
-      })
-      .elementByName('password', function(err, element) {
-        should.not.exist(err);
-        element.sendKeys('password');
-      })
-      .elementByXPath('//a[text()="Sign In"]', function(err, element) {
-        should.not.exist(err);
-        browser.next('clickElement', element, function() {
-        });
-      })
-      .waitForElementByXPath('//h1[text()="Dashboard"]', 5000, function(err) {
-        should.not.exist(err);
-        done();
-      });
+  it('should be able to access the page title', function() {
+    return browser
+      .title().should.become('Bedrock: Welcome');
+  });
+
+  it('should be able to sign in', function() {
+    return browser
+      .elementByName('profile')
+      .sendKeys('dev')
+      .elementByName('password')
+      .sendKeys('password')
+      .elementByXPath('//a[text()="Sign In"]')
+      .click()
+      .waitForElementByXPath('//h1[text()="Dashboard"]', 5000);
   });
 
 });
