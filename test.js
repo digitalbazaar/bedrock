@@ -11,6 +11,9 @@ var program = require('commander');
 program
   .version('0.0.1')
   .usage('[options]')
+  .option('-c, --config [config]',
+    'Set config file to use. [./configs/test.js]',
+    './configs/test.js')
   .option('-u, --unit', 'Perform all unit tests')
   .option('-s, --system', 'Perform all system tests')
   .option('-d, --display', 'The X display to use for system tests')
@@ -42,5 +45,5 @@ process.env.NODE_ENV = 'test';
 process.env.TEST_ENV = tests.join(',');
 
 // load test config and start
-require('./configs/test');
+require(program.config);
 br.start();
