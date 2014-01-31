@@ -103,7 +103,7 @@ describe('bedrock.security', function() {
         bedrock.security.decryptJsonLd(msg, privateKey, function(err, msg) {
           should.not.exist(err);
           jsonld.compact(
-            msg, {'@context': 'https://w3id.org/bedrock/v1'},
+            msg, {'@context': testObject['@context']},
             function(err, msg) {
               should.not.exist(err);
               msg.should.eql(testObject);
