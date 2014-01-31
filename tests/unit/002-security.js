@@ -82,11 +82,13 @@ describe('bedrock.security', function() {
       bedrock.security.decryptJsonLd(
         encryptedMessage, privateKey, function(err, msg) {
           should.not.exist(err);
-          jsonld.compact(msg, {'@context': 'https://w3id.org/bedrock/v1'}, function(err, msg) {
-            should.not.exist(err);
-            msg.should.eql(testObject);
-            done();
-          });
+          jsonld.compact(
+            msg, {'@context': 'https://w3id.org/bedrock/v1'},
+            function(err, msg) {
+              should.not.exist(err);
+              msg.should.eql(testObject);
+              done();
+            });
       });
     });
   });
@@ -100,11 +102,13 @@ describe('bedrock.security', function() {
         //console.log(JSON.stringify(msg));
         bedrock.security.decryptJsonLd(msg, privateKey, function(err, msg) {
           should.not.exist(err);
-          jsonld.compact(msg, {'@context': 'https://w3id.org/bedrock/v1'}, function(err, msg) {
-            should.not.exist(err);
-            msg.should.eql(testObject);
-            done();
-          });
+          jsonld.compact(
+            msg, {'@context': 'https://w3id.org/bedrock/v1'},
+            function(err, msg) {
+              should.not.exist(err);
+              msg.should.eql(testObject);
+              done();
+            });
         });
       });
     });
