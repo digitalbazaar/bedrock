@@ -86,7 +86,8 @@ module.exports = function(grunt) {
         baseUrl: 'site/static',
         paths: {
           'almond': '../../node_modules/almond/almond',
-          'underscore': '../../node_modules/underscore',
+          'underscore': '../../node_modules/underscore/underscore',
+          'restangular': '../../node_modules/restangular/src/restangular',
           // override templates
           'app/templates': 'app/templates.min'
         },
