@@ -8,6 +8,7 @@
 define([
   'angular',
   'app/configs/data',
+  'app/configs/settings',
   'app/configs/site'
 ], function(angular) {
   // register configs

@@ -14,6 +14,7 @@ define([
   'app/controllers/login',
   'app/controllers/navbar',
   'app/controllers/passcode',
+  'app/controllers/profileSettings',
   'app/controllers/settings'
 ], function(angular) {
   // register controllers and gather routes

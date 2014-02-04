@@ -8,7 +8,7 @@
  */
 define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
-var deps = ['$scope', 'svcIdentity', '$timeout'];
+var deps = ['$scope', 'svcIdentity', '$timeout', 'config'];
 return {
   controller: {SettingsCtrl: deps.concat(factory)},
   routes: [{
@@ -21,13 +21,15 @@ return {
   }]
 };
 
-function factory($scope, svcIdentity, $timeout) {
+function factory($scope, svcIdentity, $timeout, config) {
   var model = $scope.model = {};
   var data = window.data || {};
   $scope.profile = data.session.profile;
   $scope.identity = svcIdentity.identity;
   $scope.state = {};
   $scope.modals = {};
+
+  $scope.panes = config.settings.panes;
 
   function refresh(force) {
     var opts = {force: !!force};
