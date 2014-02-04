@@ -32,6 +32,7 @@ define([
   'app/directives/slugOut',
   'app/directives/spinner',
   'app/directives/submitForm',
+  'app/directives/tabs',
   'app/directives/tooltipTitle',
   'app/directives/trackState'
 ], function(angular) {
