@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  'restangular',
   'app/services/constant',
   'app/services/identity',
   'app/services/key',
@@ -14,6 +15,6 @@ define([
   'app/services/model',
   'app/services/templateCache'
 ], function(angular) {
-  angular.module('app.services', []).factory(angular.extend.apply(
-    null, [{}].concat(Array.prototype.slice.call(arguments, 1))));
+  angular.module('app.services', ['restangular']).factory(angular.extend.apply(
+    null, [{}].concat(Array.prototype.slice.call(arguments, 2))));
 });
