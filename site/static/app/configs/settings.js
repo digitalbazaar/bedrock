@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 return {
   settings: {
     panes: [

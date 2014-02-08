@@ -7,12 +7,14 @@
  */
 define(['jquery'], function($) {
 
-var deps = ['$scope', '$rootScope'];
+var deps = ['$scope', '$rootScope', 'config'];
 return {NavbarCtrl: deps.concat(factory)};
 
-function factory($scope, $rootScope) {
+function factory($scope, $rootScope, config) {
   $scope.model = {};
-  $scope.session = window.data.session;
+  $scope.session = config.data.session;
+
+  $scope.nav = config.site.navbar.nav;
 
   $scope.refreshData = function() {
     $rootScope.$broadcast('refreshData');

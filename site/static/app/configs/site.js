@@ -7,6 +7,27 @@
  */
 define([], function() {
 
-return {};
+'use strict';
+
+return {
+  site: {
+    navbar: {
+      nav: [
+        {
+          slug: 'dashboard',
+          icon: 'icon-dashboard',
+          label: 'Dashboard',
+          pageTitle: 'Dashboard'
+        },
+        {
+          slug: 'settings',
+          icon: 'icon-wrench',
+          label: 'Settings',
+          pageTitle: 'Settings'
+        }
+      ]
+    }
+  }
+};
 
 });
