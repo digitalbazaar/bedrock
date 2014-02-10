@@ -59,7 +59,7 @@ function tabsPaneFactory() {
       title: '@'
     },
     link: Link,
-    templateUrl: '/app/templates/tabsPane.html'
+    templateUrl: '/app/templates/tabs-pane.html'
   };
 }
 
