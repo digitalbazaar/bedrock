@@ -17,7 +17,6 @@ require.config({
     angular: 'angular/angular',
     bedrock: '.',
     bootstrap: 'bootstrap/js/bootstrap',
-    iso8601: 'iso8601/iso8601',
     jquery: 'jquery/jquery',
     'jquery.placeholder': 'jquery/jquery.placeholder',
     restangular: 'restangular/restangular',
