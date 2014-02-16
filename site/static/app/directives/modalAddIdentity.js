@@ -11,10 +11,10 @@ var deps = ['svcModal', 'svcIdentity'];
 return {modalAddIdentity: deps.concat(factory)};
 
 function factory(svcModal, svcIdentity) {
-  function Ctrl($scope) {
+  function Ctrl($scope, data) {
     $scope.model = {};
-    $scope.data = window.data || {};
-    $scope.baseUrl = $scope.data.baseUri;
+    $scope.data = data;
+    $scope.baseUrl = data.baseUri;
     $scope.feedback = {};
     $scope.loading = false;
     // identity
@@ -27,7 +27,7 @@ function factory(svcModal, svcIdentity) {
     };
     angular.forEach($scope.identityTypes, function(type) {
       $scope.identity[type] = {
-        '@context': bedrock.CONTEXT_URL,
+        '@context': data.contextUrl,
         type: type
       };
     });
@@ -55,7 +55,7 @@ function factory(svcModal, svcIdentity) {
       identityTypes: '='
     },
     templateUrl: '/app/templates/modals/add-identity.html',
-    controller: ['$scope', Ctrl],
+    controller: ['$scope', 'data', Ctrl],
     link: function(scope, element, attrs) {
       scope.feedbackTarget = element;
     }

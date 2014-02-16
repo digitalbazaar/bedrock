@@ -14,9 +14,6 @@
 // bedrock API
 var bedrock = window.bedrock = window.bedrock || {};
 
-// default @context
-bedrock.CONTEXT_URL = 'https://w3id.org/bedrock/v1';
-
 // identities API
 bedrock.identities = {};
 
@@ -198,7 +195,7 @@ bedrock.keys.revoke = function(options) {
     url: options.key,
     contentType: 'application/json',
     data: JSON.stringify({
-      '@context': bedrock.CONTEXT_URL,
+      '@context': window.data.contextUrl,
       id: options.key,
       revoked: ''
     }),
