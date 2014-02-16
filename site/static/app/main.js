@@ -15,7 +15,6 @@ require.config({
   baseUrl: '/',
   paths: {
     angular: 'angular/angular',
-    async: 'async/async',
     bedrock: '.',
     bootstrap: 'bootstrap/js/bootstrap',
     iso8601: 'iso8601/iso8601',
@@ -33,7 +32,6 @@ require.config({
   shim: {
     // export globals for non-requireJS libs
     angular: {exports: 'angular', deps: ['jquery']},
-    async: {exports: 'async'},
     bootstrap: {deps: ['jquery']},
     jquery: {exports: 'jQuery'},
     'jquery.placeholder': {deps: ['jquery']},
@@ -43,7 +41,7 @@ require.config({
     'ui-utils': {deps: ['angular', 'ui-utils-ieshiv']},
     underscore: {exports: '_'},
     // FIXME: port to requireJS and remove these
-    'bedrock.api': {deps: ['async', 'jquery'], exports: 'bedrock'}
+    'bedrock.api': {deps: ['jquery'], exports: 'bedrock'}
   }
 });
 
