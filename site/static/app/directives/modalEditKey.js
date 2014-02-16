@@ -11,11 +11,11 @@ var deps = ['svcModal'];
 return {modalEditKey: deps.concat(factory)};
 
 function factory(svcModal) {
-  function Ctrl($scope, data, svcKey) {
+  function Ctrl($scope, config, svcKey) {
     $scope.model = {};
-    $scope.data = data;
+    $scope.data = config.data;
     $scope.feedback = {};
-    $scope.identity = data.identity || {};
+    $scope.identity = config.data.identity || {};
     // copy source budget for editing
     $scope.key = {};
     angular.extend($scope.key, $scope.sourceKey);
@@ -23,7 +23,7 @@ function factory(svcModal) {
     $scope.editKey = function() {
       // set all fields from UI
       var key = {
-        '@context': data.contextUrl,
+        '@context': config.data.contextUrl,
         id: $scope.key.id,
         label: $scope.key.label
       };
@@ -43,7 +43,7 @@ function factory(svcModal) {
     name: 'EditKey',
     scope: {sourceKey: '=key'},
     templateUrl: '/app/templates/modals/edit-key.html',
-    controller: ['$scope', 'data', 'svcKey', Ctrl],
+    controller: ['$scope', 'config', 'svcKey', Ctrl],
     link: function(scope, element, attrs) {
       scope.feedbackTarget = element;
     }

@@ -11,10 +11,10 @@ var deps = ['svcModal', 'svcIdentity'];
 return {modalAddIdentity: deps.concat(factory)};
 
 function factory(svcModal, svcIdentity) {
-  function Ctrl($scope, data) {
+  function Ctrl($scope, config) {
     $scope.model = {};
-    $scope.data = data;
-    $scope.baseUrl = data.baseUri;
+    $scope.data = config.data;
+    $scope.baseUrl = config.data.baseUri;
     $scope.feedback = {};
     $scope.loading = false;
     // identity
@@ -27,7 +27,7 @@ function factory(svcModal, svcIdentity) {
     };
     angular.forEach($scope.identityTypes, function(type) {
       $scope.identity[type] = {
-        '@context': data.contextUrl,
+        '@context': config.data.contextUrl,
         type: type
       };
     });
@@ -55,7 +55,7 @@ function factory(svcModal, svcIdentity) {
       identityTypes: '='
     },
     templateUrl: '/app/templates/modals/add-identity.html',
-    controller: ['$scope', 'data', Ctrl],
+    controller: ['$scope', 'config', Ctrl],
     link: function(scope, element, attrs) {
       scope.feedbackTarget = element;
     }
