@@ -15,8 +15,7 @@ return {
     path: window.data.identityBasePath + '/:identity/dashboard',
     options: {
       title: 'Dashboard',
-      templateUrl: '/app/templates/dashboard.html',
-      controller: 'DashboardCtrl'
+      templateUrl: '/app/templates/dashboard.html'
     }
   }]
 };

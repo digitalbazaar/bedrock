@@ -15,8 +15,7 @@ return {
     path: window.data.identityBasePath + '/:identity/settings',
     options: {
       title: 'Settings',
-      templateUrl: '/app/templates/settings.html',
-      controller: 'SettingsCtrl'
+      templateUrl: '/app/templates/settings.html'
     }
   }]
 };
