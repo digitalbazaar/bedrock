@@ -26,12 +26,16 @@ function tabsFactory() {
       pane.selected = true;
     };
 
-    this.addPane = function(pane) {
-      if(panes.length === 0) {
-        //$scope.select(pane);
-        pane.selected = true;
+    this.addPane = function(pane, index) {
+      if(panes.length === 0 || index === 0) {
+        $scope.select(pane);
       }
-      panes.push(pane);
+      if(typeof index === undefined || index >= panes.length) {
+        panes.push(pane);
+      }
+      else {
+        panes.splice(index, 0, pane);
+      }
     };
   }
 
@@ -48,7 +52,7 @@ function tabsPaneFactory() {
   function Link(scope, element, attrs, tabsCtrl) {
     scope.title = scope.title || attrs.title || element.attr('title');
     scope.tabId = scope.tabId || attrs.tabId || element.attr('tab-id');
-    tabsCtrl.addPane(scope);
+    tabsCtrl.addPane(scope, element.parent().index());
   }
 
   return {
