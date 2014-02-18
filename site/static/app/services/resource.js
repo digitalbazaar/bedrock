@@ -33,7 +33,6 @@ function factory($rootScope, $http, svcModel) {
     this.state = {
       loading: false
     };
-    console.log('C CREATED', this);
   };
 
   service.Collection.prototype.startLoading = function(count) {
