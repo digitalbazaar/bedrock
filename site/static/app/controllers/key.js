@@ -11,12 +11,12 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope'];
+var deps = ['$scope', 'config'];
 return {KeyCtrl: deps.concat(factory)};
 
 function factory($scope) {
   $scope.model = {};
-  var data = window.data || {};
+  var data = config.data || {};
   $scope.key = data.key;
 }
 
