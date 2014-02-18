@@ -8,6 +8,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$scope', '$http'];
 return {CreateProfileCtrl: deps.concat(factory)};
 

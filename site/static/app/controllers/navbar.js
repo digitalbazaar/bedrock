@@ -7,6 +7,8 @@
  */
 define(['jquery'], function($) {
 
+'use strict';
+
 var deps = ['$scope', '$rootScope', 'config'];
 return {NavbarCtrl: deps.concat(factory)};
 

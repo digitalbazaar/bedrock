@@ -7,6 +7,8 @@
  */
 define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
+'use strict';
+
 var deps = ['$rootScope'];
 return {svcIdentity: deps.concat(factory)};
 

@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$scope', 'svcKey'];
 return {KeySettingsCtrl: deps.concat(factory)};
 

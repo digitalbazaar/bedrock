@@ -7,6 +7,8 @@
  */
 define(['angular'], function(angular) {
 
+'use strict';
+
 var deps = ['$filter', '$parse'];
 return {slugOut: deps.concat(factory)};
 

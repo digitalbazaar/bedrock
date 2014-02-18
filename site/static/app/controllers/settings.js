@@ -8,6 +8,8 @@
  */
 define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
+'use strict';
+
 var deps = ['$scope', 'svcIdentity', '$timeout', 'config'];
 return {
   controller: {SettingsCtrl: deps.concat(factory)},

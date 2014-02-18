@@ -7,6 +7,8 @@
  */
 define(['bedrock.api'], function(bedrock) {
 
+'use strict';
+
 var deps = ['svcModal', 'svcIdentity'];
 return {modalSwitchIdentity: deps.concat(factory)};
 

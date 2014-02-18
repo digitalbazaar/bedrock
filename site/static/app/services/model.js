@@ -7,6 +7,8 @@
  */
 define(['angular'], function(angular) {
 
+'use strict';
+
 var deps = [];
 return {svcModel: deps.concat(factory)};
 

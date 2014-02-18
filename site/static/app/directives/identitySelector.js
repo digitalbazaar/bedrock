@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = [];
 return {identitySelector: deps.concat(factory)};
 

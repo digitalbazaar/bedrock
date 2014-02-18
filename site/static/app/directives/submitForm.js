@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = [];
 return {submitForm: deps.concat(factory)};
 

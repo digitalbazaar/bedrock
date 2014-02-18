@@ -7,6 +7,8 @@
  */
 define(['angular'], function(angular) {
 
+'use strict';
+
 var deps = ['$http', '$templateCache'];
 return {svcTemplateCache: deps.concat(factory)};
 

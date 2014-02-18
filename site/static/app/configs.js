@@ -11,6 +11,9 @@ define([
   'app/configs/settings',
   'app/configs/site'
 ], function(angular) {
+
+  'use strict';
+
   // register configs
   var module = angular.module('app.configs', []);
   var configs = Array.prototype.slice.call(arguments, 1);

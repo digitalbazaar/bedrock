@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = [];
 return {encodeURIComponent: deps.concat(factory)};
 

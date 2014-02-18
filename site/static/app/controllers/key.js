@@ -9,6 +9,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$scope'];
 return {KeyCtrl: deps.concat(factory)};
 

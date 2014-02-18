@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$parse'];
 return {fadeToggle: deps.concat(factory)};
 

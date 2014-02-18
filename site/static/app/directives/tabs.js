@@ -9,6 +9,8 @@
  */
 define(['angular'], function(angular) {
 
+'use strict';
+
 var deps = [];
 return {
   tabs: deps.concat(tabsFactory),

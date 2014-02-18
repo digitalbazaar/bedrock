@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['svcModal'];
 return {modalSelector: deps.concat(factory)};
 

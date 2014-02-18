@@ -8,6 +8,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$scope', 'svcIdentity'];
 return {ProfileSettingsCtrl: deps.concat(factory)};
 

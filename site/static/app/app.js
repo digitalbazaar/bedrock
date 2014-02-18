@@ -18,6 +18,9 @@ define([
   'app/services',
   'app/templates'
 ], function(angular) {
+
+  'use strict';
+
   var module = angular.module('app', [
     'app.templates', 'app.directives', 'app.filters', 'app.services',
     'app.controllers', 'app.configs', 'ui.bootstrap', 'ui.utils']);

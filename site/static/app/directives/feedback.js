@@ -7,6 +7,8 @@
  */
 define(['angular', 'jquery'], function(angular, $) {
 
+'use strict';
+
 var deps = [];
 return {feedback: deps.concat(factory)};
 

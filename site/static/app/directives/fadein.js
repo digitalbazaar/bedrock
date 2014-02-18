@@ -7,6 +7,8 @@
  */
 define(['angular'], function(angular) {
 
+'use strict';
+
 var deps = ['$parse'];
 return {fadein: deps.concat(factory)};
 

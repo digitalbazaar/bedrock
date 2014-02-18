@@ -7,6 +7,8 @@
  */
 define(['angular'], function(angular) {
 
+'use strict';
+
 var deps = ['svcTemplateCache', '$compile', '$parse', '$timeout'];
 return {popoverTemplate: deps.concat(factory)};
 

@@ -17,6 +17,9 @@ define([
   'app/controllers/profileSettings',
   'app/controllers/settings'
 ], function(angular) {
+
+  'use strict';
+
   // register controllers and gather routes
   var module = angular.module('app.controllers', []);
   var controllers = Array.prototype.slice.call(arguments, 1);

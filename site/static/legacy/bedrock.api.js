@@ -11,6 +11,8 @@
  */
 (function($) {
 
+'use strict';
+
 // bedrock API
 var bedrock = window.bedrock = window.bedrock || {};
 

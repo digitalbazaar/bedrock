@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$http', '$filter'];
 return {duplicateChecker: deps.concat(factory)};
 

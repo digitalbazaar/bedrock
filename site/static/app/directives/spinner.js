@@ -7,6 +7,8 @@
  */
 define(['spin'], function(Spinner) {
 
+'use strict';
+
 var deps = [];
 return {spinner: deps.concat(factory)};
 

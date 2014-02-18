@@ -7,5 +7,8 @@
  * @author Dave Longley
  */
 define(['angular'], function(angular) {
+
+  'use strict';
+
   angular.module('app.templates', []);
 });

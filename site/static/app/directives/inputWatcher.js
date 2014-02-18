@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$parse', '$http'];
 return {inputWatcher: deps.concat(factory)};
 

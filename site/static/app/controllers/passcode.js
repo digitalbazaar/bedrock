@@ -8,6 +8,8 @@
  */
 define(['bedrock.api'], function(bedrock) {
 
+'use strict';
+
 var deps = ['$scope'];
 return {PasscodeCtrl: deps.concat(factory)};
 

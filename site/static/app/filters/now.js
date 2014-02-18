@@ -7,6 +7,8 @@
  */
 define([], function() {
 
+'use strict';
+
 var deps = ['$filter'];
 return {now: deps.concat(factory)};
 
