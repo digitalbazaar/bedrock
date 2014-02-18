@@ -13,6 +13,7 @@ define([
   'app/services/key',
   'app/services/modal',
   'app/services/model',
+  'app/services/resource',
   'app/services/templateCache'
 ], function(angular) {
   angular.module('app.services', ['restangular']).factory(angular.extend.apply(
