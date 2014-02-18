@@ -10,6 +10,7 @@ define([
   'bootstrap',
   'ui-bootstrap',
   'ui-utils',
+  'promise',
   'app/configs',
   'app/controllers',
   'app/directives',

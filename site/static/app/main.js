@@ -19,6 +19,7 @@ require.config({
     bootstrap: 'bootstrap/js/bootstrap',
     jquery: 'jquery/jquery',
     'jquery.placeholder': 'jquery/jquery.placeholder',
+    promise: 'promise/promise',
     restangular: 'restangular/restangular',
     spin: 'spin/spin',
     'ui-bootstrap': 'angular-ui/ui-bootstrap-tpls',
