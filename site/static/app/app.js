@@ -21,10 +21,42 @@ define([
   var module = angular.module('app', [
     'app.templates', 'app.directives', 'app.filters', 'app.services',
     'app.controllers', 'app.configs', 'ui.bootstrap', 'ui.utils']);
-  module.run(['$rootScope', '$location', '$route', function(
-    $rootScope, $location, $route) {
+  module.config(['$httpProvider', function($httpProvider) {
+    // TODO: interceptor API changed after angular 1.0.x
+    // normalize errors, deal w/auth redirection
+    $httpProvider.responseInterceptors.push(['$q', function($q) {
+      return function(promise) {
+        return promise.then(function(response) {
+          return response;
+        }, function(response) {
+          var error = response.data || {};
+          if(error.type === undefined) {
+            error.type = 'website.Exception';
+            error.message =
+              'An error occurred while communicating with the server: ' +
+              (response.statusText || ('HTTP ' + response.status));
+          }
+          // check for invalid session or missing session
+          else if(error.type === 'bedrock.website.PermissionDenied') {
+            // redirect to login
+            // TODO: support modal login to keep state vs forced redirect
+            window.location = '/profile/login?ref=' +
+              encodeURIComponent(window.location.pathname) +
+              '&expired=true';
+          }
+          return $q.reject(error);
+        });
+      };
+    }]);
+  }]);
+  module.run(['$rootScope', '$location', '$route', '$http', function(
+    $rootScope, $location, $route, $http) {
     /* Note: $route is injected above to trigger watching routes to ensure
       pages are loaded properly. */
+
+    // accept JSON-LD
+    $http.defaults.headers.common.Accept =
+      'application/ld+json, application/json, text/plain, */*';
 
     // set site and page titles
     $rootScope.siteTitle = window.data.siteTitle;
