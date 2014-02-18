@@ -24,9 +24,17 @@ define([
   module.config(['$httpProvider', function($httpProvider) {
     // TODO: interceptor API changed after angular 1.0.x
     // normalize errors, deal w/auth redirection
-    $httpProvider.responseInterceptors.push(['$q', function($q) {
+    $httpProvider.responseInterceptors.push(['$q', '$timeout', function(
+      $q, $timeout) {
       return function(promise) {
         return promise.then(function(response) {
+          if('delay' in response.config) {
+            var defer = $q.defer();
+            $timeout(function() {
+              defer.resolve(response);
+            }, response.config.delay);
+            return defer.promise;
+          }
           return response;
         }, function(response) {
           var error = response.data || {};
