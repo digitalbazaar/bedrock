@@ -31,7 +31,7 @@ function factory($scope, svcKey) {
   };
   $scope.confirmRevokeKey = function(err, result) {
     if(!err && result === 'ok') {
-      svcKey.revoke($scope.modals.key);
+      svcKey.revoke($scope.modals.key.id);
     }
     $scope.modals.key = null;
   };
