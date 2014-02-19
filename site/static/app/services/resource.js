@@ -62,6 +62,7 @@ function factory($rootScope, $http, svcModel) {
       }
       var promise = Promise.cast($http.get(self.config.url, config));
       promise.then(function(response) {
+        // update expriation time and collection
         self.expires = Date.now() + self.maxAge;
         svcModel.replaceArray(self.storage, response.data);
         self.finishLoading();
@@ -95,7 +96,7 @@ function factory($rootScope, $http, svcModel) {
       }
       var promise = Promise.cast($http.get(resourceId, config));
       promise.then(function(response) {
-        self.expires = Date.now() + self.maxAge;
+        // update collection but not collection expiration time
         svcModel.replaceInArray(self.storage, response.data);
         self.finishLoading();
         resolve(response.data);
@@ -120,8 +121,11 @@ function factory($rootScope, $http, svcModel) {
       }
       var promise = Promise.cast($http.post(self.config.url, resource, config));
       promise.then(function(response) {
-        self.expires = Date.now() + self.maxAge;
-        self.storage.push(response.data);
+        // don't update collection expiration time
+        // update collection if resource not present
+        if(!_.findWhere(self.storage, {id: response.data.id})) {
+          self.storage.push(response.data);
+        }
         self.finishLoading();
         resolve(response.data);
         $rootScope.$apply();
@@ -145,9 +149,14 @@ function factory($rootScope, $http, svcModel) {
       }
       var promise = Promise.cast($http.post(resource.id, resource, config));
       promise.then(function(response) {
+        // don't update collection expiration time
+        // update collection if resource present
+        if(_.findWhere(self.storage, {id: response.data.id})) {
+          svcModel.replaceInArray(self.storage, response.data);
+        }
         self.finishLoading();
-        // get updated resource
-        return self.get(resource.id, {force: true});
+        resolve(response.data);
+        $rootScope.$apply();
       }).catch(function(err) {
         self.finishLoading();
         reject(err);
@@ -168,7 +177,11 @@ function factory($rootScope, $http, svcModel) {
       }
       var promise = Promise.cast($http.delete(resourceId, config));
       promise.then(function(response) {
-        svcModel.removeFromArray(resourceId, self.storage);
+        // don't update collection expiration time
+        // update collection if resource present
+        if(_.findWhere(self.storage, {id: response.data.id})) {
+          svcModel.removeFromArray(resourceId, self.storage);
+        }
         self.finishLoading();
         resolve();
         $rootScope.$apply();
