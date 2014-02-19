@@ -179,7 +179,7 @@ function factory($rootScope, $http, svcModel) {
       promise.then(function(response) {
         // don't update collection expiration time
         // update collection if resource present
-        if(_.findWhere(self.storage, {id: response.data.id})) {
+        if(_.findWhere(self.storage, {id: resourceId})) {
           svcModel.removeFromArray(resourceId, self.storage);
         }
         self.finishLoading();
