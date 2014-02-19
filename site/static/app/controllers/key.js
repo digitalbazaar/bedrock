@@ -14,7 +14,7 @@ define([], function() {
 var deps = ['$scope', 'config'];
 return {KeyCtrl: deps.concat(factory)};
 
-function factory($scope) {
+function factory($scope, config) {
   $scope.model = {};
   var data = config.data || {};
   $scope.key = data.key;
