@@ -38,7 +38,7 @@ function factory($scope, svcKey) {
 
   function refresh(force) {
     var opts = {force: !!force};
-    svcKey.get(opts);
+    svcKey.collection.getAll(opts);
   }
   $scope.$on('refreshData', function() {
     refresh(true);
