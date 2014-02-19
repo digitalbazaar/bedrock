@@ -47,6 +47,11 @@ Generating a new self-signed SSL certificate for testing
 2. Save the generated private key and certificate PEMs in the
    appropriate files (in ./pki/ if using the default config).
 
+Features
+-------
+
+For a complete list of features included in Bedrock, see the [FEATURES][] file.
+
 Hacking
 -------
 
@@ -69,5 +74,6 @@ Copyright
 Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
 
 [AUTHORS]: AUTHORS.md
+[FEATURES]: FEATURES.md
 [HACKING]: HACKING.md
 [LICENSE]: LICENSE.md
