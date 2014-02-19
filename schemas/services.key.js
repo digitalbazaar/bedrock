@@ -4,6 +4,7 @@
 var jsonldContext = require('./jsonldContext');
 var label = require('./label');
 var identifier = require('./identifier');
+var privateKeyPem = require('./privateKeyPem');
 var publicKeyPem = require('./publicKeyPem');
 
 var postKey = {
@@ -25,7 +26,8 @@ var postKeys = {
   properties: {
     '@context': jsonldContext(),
     label: label(),
-    publicKeyPem: publicKeyPem()
+    publicKeyPem: publicKeyPem(),
+    privateKeyPem: privateKeyPem({required: false})
   },
   additionalProperties: false
 };
