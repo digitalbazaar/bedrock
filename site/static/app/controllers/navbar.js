@@ -5,7 +5,7 @@
  *
  * @author Dave Longley
  */
-define(['jquery'], function($) {
+define([], function() {
 
 'use strict';
 
