@@ -150,13 +150,13 @@ function factory($rootScope, $http, svcModel) {
       var promise = Promise.cast($http.post(resource.id, resource, config));
       promise.then(function(response) {
         // don't update collection expiration time
-        // update collection if resource present
-        if(_.findWhere(self.storage, {id: response.data.id})) {
-          svcModel.replaceInArray(self.storage, response.data);
-        }
-        self.finishLoading();
-        resolve(response.data);
-        $rootScope.$apply();
+        // re-get resource to update collection
+        // FIXME: get() error flow
+        self.get(resource.id, {force: true}).then(function(updatedResource) {
+          self.finishLoading();
+          resolve(updatedResource);
+          $rootScope.$apply();
+        });
       }).catch(function(err) {
         self.finishLoading();
         reject(err);
