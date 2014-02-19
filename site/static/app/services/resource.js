@@ -166,7 +166,7 @@ function factory($rootScope, $http, svcModel) {
       if('delay' in options) {
         config.delay = options.delay;
       }
-      var promise = Promise.cast($http.delete(self.config.url, config));
+      var promise = Promise.cast($http.delete(resourceId, config));
       promise.then(function(response) {
         svcModel.removeFromArray(resourceId, self.storage);
         self.finishLoading();
