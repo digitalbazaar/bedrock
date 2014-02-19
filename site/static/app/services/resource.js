@@ -67,9 +67,9 @@ function factory($rootScope, $http, svcModel) {
         self.finishLoading();
         resolve(self.storage);
         $rootScope.$apply();
-      }).catch(function(response) {
+      }).catch(function(err) {
         self.finishLoading();
-        reject(response.data);
+        reject(err);
         $rootScope.$apply();
       });
     });
@@ -100,9 +100,9 @@ function factory($rootScope, $http, svcModel) {
         self.finishLoading();
         resolve(response.data);
         $rootScope.$apply();
-      }).catch(function(response) {
+      }).catch(function(err) {
         self.finishLoading();
-        reject(response.data);
+        reject(err);
         $rootScope.$apply();
       });
     });
@@ -125,9 +125,9 @@ function factory($rootScope, $http, svcModel) {
         self.finishLoading();
         resolve(response.data);
         $rootScope.$apply();
-      }).catch(function(response) {
+      }).catch(function(err) {
         self.finishLoading();
-        reject(response.data);
+        reject(err);
         $rootScope.$apply();
       });
     });
@@ -148,9 +148,9 @@ function factory($rootScope, $http, svcModel) {
         self.finishLoading();
         // get updated resource
         return self.get(resource.id, {force: true});
-      }).catch(function(response) {
+      }).catch(function(err) {
         self.finishLoading();
-        reject(response.data);
+        reject(err);
         $rootScope.$apply();
       });
     });
@@ -172,9 +172,9 @@ function factory($rootScope, $http, svcModel) {
         self.finishLoading();
         resolve();
         $rootScope.$apply();
-      }).catch(function(response) {
+      }).catch(function(err) {
         self.finishLoading();
-        reject(response.data);
+        reject(err);
         $rootScope.$apply();
       });
     });
