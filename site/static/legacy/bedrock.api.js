@@ -16,9 +16,6 @@
 // bedrock API
 var bedrock = window.bedrock = window.bedrock || {};
 
-// identities API
-bedrock.identities = {};
-
 /**
  * Switches the current session's identity.
  *

@@ -46,45 +46,6 @@ function factory($http, $rootScope) {
     });
   };
 
-  // update identity preferences
-  service.updatePreferences = function(
-    identityId, preferences, nonce, callback) {
-    if(typeof nonce === 'function') {
-      callback = nonce;
-      nonce = undefined;
-    }
-    callback = callback || angular.noop;
-    service.state.loading = true;
-    bedrock.identities.preferences.update({
-      identity: identityId,
-      preferences: preferences,
-      success: function() {
-        // get identity preferences and post to callback
-        bedrock.identities.preferences.get({
-          identity: identityId,
-          responseNonce: nonce,
-          success: function(prefs) {
-            service.state.loading = false;
-            // update preferences
-            service.identity.preferences = prefs;
-            callback(null, prefs);
-            $rootScope.$apply();
-          },
-          error: function(err) {
-            service.state.loading = false;
-            callback(err);
-            $rootScope.$apply();
-          }
-        });
-      },
-      error: function(err) {
-        service.state.loading = false;
-        callback(err);
-        $rootScope.$apply();
-      }
-    });
-  };
-
   return service;
 }
 
