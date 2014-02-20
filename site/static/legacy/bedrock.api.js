@@ -20,38 +20,6 @@ var bedrock = window.bedrock = window.bedrock || {};
 bedrock.identities = {};
 
 /**
- * Adds an identity to the current profile.
- *
- * Usage:
- *
- * bedrock.identities.add({
- *   identity: identity,
- *   success: function(identity) {},
- *   error: function(err) {}
- * });
- */
-bedrock.identities.add = function(options) {
-  $.ajax({
-    async: true,
-    type: 'POST',
-    url: '/i',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: JSON.stringify(options.identity),
-    success: function(response, statusText) {
-      if(options.success) {
-        options.success(response);
-      }
-    },
-    error: function(xhr, textStatus, errorThrown) {
-      if(options.error) {
-        options.error(normalizeError(xhr, textStatus));
-      }
-    }
-  });
-};
-
-/**
  * Switches the current session's identity.
  *
  * Usage:

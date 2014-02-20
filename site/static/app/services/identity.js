@@ -9,10 +9,10 @@ define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
 'use strict';
 
-var deps = ['$rootScope'];
+var deps = ['$http', '$rootScope'];
 return {svcIdentity: deps.concat(factory)};
 
-function factory($rootScope) {
+function factory($http, $rootScope) {
   var service = {};
 
   var data = window.data || {};
@@ -28,23 +28,21 @@ function factory($rootScope) {
   };
 
   // add a new identity
-  service.add = function(identity, callback) {
-    callback = callback || angular.noop;
-    service.state.loading = true;
-    bedrock.identities.add({
-      identity: identity,
-      success: function(identity) {
+  service.add = function(identity) {
+    return new Promise(function(resolve, reject) {
+      service.state.loading = true;
+      var promise = Promise.cast($http.post('/i', identity));
+      promise.then(function(response) {
         service.identityMap[identity.id] = identity;
         service.identities.push(identity);
         service.state.loading = false;
-        callback(null, identity);
+        resolve(identity);
         $rootScope.$apply();
-      },
-      error: function(err) {
+      }).catch(function(err) {
         service.state.loading = false;
-        callback(err);
+        reject(err);
         $rootScope.$apply();
-      }
+      });
     });
   };
 

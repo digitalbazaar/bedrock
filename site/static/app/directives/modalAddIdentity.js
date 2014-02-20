@@ -39,14 +39,16 @@ function factory(svcModal, svcIdentity) {
       identity.label = $scope.identityLabel;
       identity.sysSlug = $scope.identitySlug;
       $scope.loading = true;
-      svcIdentity.add(identity, function(err, identity) {
-        // if identity is a duplicate, update id
-        if(err.type === 'bedrock.website.DuplicateIdentity') {
-          identity.id = $scope.data.identityBaseUri + '/' + identity.sysSlug;
-        }
-
+      var promise = svcIdentity.add(identity);
+      promise.then(function(identity) {
+        $scope.loading = false;
+        $scope.feedback.error = null;
+        $scope.modal.close(null, {identity: identity});
+        $scope.$apply();
+      }).catch(function(err) {
         $scope.loading = false;
         $scope.feedback.error = err;
+        $scope.$apply();
       });
     };
   }
