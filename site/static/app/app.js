@@ -126,7 +126,7 @@ define([
   function getRouteRegex(when) {
     // Escape regexp special characters.
     when = '^' + when.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '$';
-    var regex = '', params = [], dst = {};
+    var regex = '', params = [];
     var re = /:(\w+)/g, paramMatch, lastMatchedIndex = 0;
     while((paramMatch = re.exec(when)) !== null) {
       // Find each :param in `when` and replace it with a capturing group.
