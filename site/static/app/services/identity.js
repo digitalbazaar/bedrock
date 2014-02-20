@@ -36,7 +36,7 @@ function factory($http, $rootScope) {
         service.identityMap[identity.id] = identity;
         service.identities.push(identity);
         service.state.loading = false;
-        resolve(identity);
+        resolve(response.data);
         $rootScope.$apply();
       }).catch(function(err) {
         service.state.loading = false;
