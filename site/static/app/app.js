@@ -79,20 +79,36 @@ define([
       routeRegexes.push(getRouteRegex(path));
     });
 
-    // reload page if switching between routes and non-routes
+    // tracks whether current page is using an angular view
+    var usingView = false;
+
+    // determine if full page reload is needed, yes if:
+    // 1. not changing location to the same page
+    // 2. switching from non-view to view (non-route to route)
+    // 3. switching from view to non-view
     $rootScope.$on('$locationChangeStart', function(event, next, last) {
-      // test location to see if it's a route
-      var isRoute = false;
-      for(var i = 0; i < routeRegexes.length; ++i) {
+      // don't reload same page
+      if(window.location.href === $location.absUrl()) {
+        return;
+      }
+      // if currently using view, test location to see if its a route
+      var mustReload = true;
+      for(var i = 0; usingView && i < routeRegexes.length; ++i) {
+        // location is a route and already using angular view
         if(routeRegexes[i].test($location.path())) {
-          isRoute = true;
+          mustReload = false;
           break;
         }
       }
-      if(!isRoute && window.location.href !== $location.absUrl()) {
+      if(mustReload) {
         window.location.href = $location.absUrl();
         event.preventDefault();
       }
+    });
+
+    // monitor whether or not an angular view is in use
+    $rootScope.$on('$viewContentLoaded', function() {
+      usingView = true;
     });
 
     // set page title when route changes
