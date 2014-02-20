@@ -51,6 +51,7 @@
     "requirejs": "~2.1.8",
     "sprintf": "~0.1.1",
     "swig": "git://github.com/digitalbazaar/swig.git",
+    "topcube": "~0.2.0",
     "ua-parser": "~0.3.0",
     "underscore": "~1.5.0",
     "ursa": "v0.8.0",
