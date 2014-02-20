@@ -151,12 +151,11 @@ function factory($rootScope, $http, svcModel) {
       promise.then(function(response) {
         // don't update collection expiration time
         // re-get resource to update collection
-        // FIXME: get() error flow
-        self.get(resource.id, {force: true}).then(function(updatedResource) {
-          self.finishLoading();
-          resolve(updatedResource);
-          $rootScope.$apply();
-        });
+        return self.get(resource.id, {force: true});
+      }).then(function(updatedResource) {
+        self.finishLoading();
+        resolve(updatedResource);
+        $rootScope.$apply();
       }).catch(function(err) {
         self.finishLoading();
         reject(err);
