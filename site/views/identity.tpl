@@ -48,7 +48,7 @@ ${set([
 
 <div class="row">
   <div class="span4 offset4">
-    <h2>Access Keys</h2>
+    <h2>Cryptographic Keys</h2>
 {{if keys.length > 0}}
   <ul>
   {{each(idx,value) keys}}
