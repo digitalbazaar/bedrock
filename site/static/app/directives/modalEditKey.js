@@ -31,12 +31,16 @@ function factory(svcModal) {
       };
 
       $scope.loading = true;
-      svcKey.update(key, function(err, key) {
+      var promise = svcKey.collection.update(key);
+      promise.then(function(key) {
         $scope.loading = false;
-        if(!err) {
-          $scope.modal.close(null, key);
-        }
+        $scope.modal.close(null, key);
+        $scope.feedback.error = null;
+        $scope.$apply();
+      }).catch(function(err) {
+        $scope.loading = false;
         $scope.feedback.error = err;
+        $scope.$apply();
       });
     };
   }
