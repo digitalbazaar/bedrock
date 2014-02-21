@@ -43,26 +43,24 @@
     <p class="center">You have no keys associated with this identity.
     Access keys can be added by using an external website or application.</p>
   </div>
-</div>
-</div>
+  <div data-modal-edit-key="modals.showEditKey" data-key="modals.key"></div>
 
-<!-- Revoking key alert -->
-<div data-modal-alert="modals.showRevokeKeyAlert"
-  data-modal-header="Warning"
-  data-modal-ok="Revoke"
-  data-modal-cancel="Cancel"
-  data-modal-on-close="confirmRevokeKey(err, result)">
-  <div class="center alert">
-    <strong>Warning!</strong>
-    Revoking an access key is permanent.
+  <!-- Revoking key alert -->
+  <div data-modal-alert="modals.showRevokeKeyAlert"
+    data-modal-header="Warning"
+    data-modal-ok="Revoke"
+    data-modal-cancel="Cancel"
+    data-modal-on-close="confirmRevokeKey(err, result)">
+    <div class="center alert">
+      <strong>Warning!</strong>
+      Revoking an access key is permanent.
+    </div>
+    <p>Any items that you have listed for sale using this key will be
+    invalidated and any applications that use this key will be disabled.
+    You can relist your items or re-enable your applications by
+    registering a new key.</p>
+    <p>Are you sure that you want to revoke this key?</p>
   </div>
-  <p>Any items that you have listed for sale using this key will be
-  invalidated and any applications that use this key will be disabled.
-  You can relist your items or re-enable your applications by
-  registering a new key.</p>
-  <p>Are you sure that you want to revoke this key?</p>
 </div>
 
-<div data-modal-edit-key="modals.showEditKey"
-  data-key="modals.key"></div>
 </div>
