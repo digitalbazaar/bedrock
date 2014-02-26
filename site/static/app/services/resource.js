@@ -10,10 +10,10 @@ define(['angular', 'underscore'], function(angular, _) {
 
 'use strict';
 
-var deps = ['$rootScope', '$http', 'svcModel'];
+var deps = ['$rootScope', '$http', '$location', 'svcModel'];
 return {svcResource: deps.concat(factory)};
 
-function factory($rootScope, $http, svcModel) {
+function factory($rootScope, $http, $location, svcModel) {
   var service = {};
 
   // create a new collection
@@ -108,6 +108,15 @@ function factory($rootScope, $http, svcModel) {
         $rootScope.$apply();
       });
     });
+  };
+
+  // get current resource
+  service.Collection.prototype.getCurrent = function(options) {
+    var currentId =
+      $location.protocol() + '://' +
+      $location.host() + ':' + $location.port() +
+      $location.path();
+    return this.get(id, options);
   };
 
   // add one resource
