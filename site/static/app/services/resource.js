@@ -116,7 +116,7 @@ function factory($rootScope, $http, $location, svcModel) {
       $location.protocol() + '://' +
       $location.host() + ':' + $location.port() +
       $location.path();
-    return this.get(id, options);
+    return this.get(currentId, options);
   };
 
   // add one resource
