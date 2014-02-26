@@ -6,9 +6,15 @@ var config = require(__libdir + '/config');
 config.app.masterTitle = 'bedrock1d';
 config.app.workerTitle = 'bedrock1d-worker';
 config.app.restartWorkers = false;
+
 // system group and user IDs (can be groupname/username instead of numbers)
-config.app.user.groupId = process.getgid();
-config.app.user.userId = process.getuid();
+if(process.platform !== 'win32') {
+  config.app.user.groupId = process.getgid();
+  config.app.user.userId = process.getuid();
+} else {
+  config.app.user.groupId = 0;
+  config.app.user.userId = 0;
+}
 
 // config environment
 config.environment = 'development';
