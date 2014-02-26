@@ -60,7 +60,8 @@ function factory($rootScope, $http, svcModel) {
       if('delay' in options) {
         config.delay = options.delay;
       }
-      var promise = Promise.cast($http.get(self.config.url, config));
+      var url = _getUrl(self.config, 'getAll');
+      var promise = Promise.cast($http.get(url, config));
       promise.then(function(response) {
         // update expriation time and collection
         self.expires = Date.now() + self.maxAge;
@@ -119,7 +120,8 @@ function factory($rootScope, $http, svcModel) {
       if('delay' in options) {
         config.delay = options.delay;
       }
-      var promise = Promise.cast($http.post(self.config.url, resource, config));
+      var url = _getUrl(self.config, 'add');
+      var promise = Promise.cast($http.post(url, resource, config));
       promise.then(function(response) {
         // don't update collection expiration time
         // update collection if resource not present
@@ -193,6 +195,21 @@ function factory($rootScope, $http, svcModel) {
   };
 
   return service;
+}
+
+/**
+ * Gets the URL from the config for the given collection method.
+ *
+ * @param config the config to check.
+ * @param method the collection method, eg: 'getAll', 'add'.
+ *
+ * @return the URL to use for the collection method.
+ */
+function _getUrl(config, method) {
+  if(config.urls && method in config.urls) {
+    return config.urls[method];
+  }
+  return config.url;
 }
 
 });
