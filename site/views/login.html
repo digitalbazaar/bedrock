@@ -1,11 +1,9 @@
-${set([
-  pageTitle = "Sign In",
-  clientData.pageTitle = "Sign In",
-  pageLayout = "minimal"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Sign In" %}
+{% set clientData.pageTitle = "Sign In" %}
+{% set pageLayout = "minimal" %}
+{% include "head.html" %}
 
-{{verbatim}}
+{% raw %}
 <div data-ng-controller="LoginCtrl">
 
 <h2 class="headline">Sign in to {{model.siteTitle}}</h2>
@@ -83,6 +81,6 @@ ${set([
 </form>
 
 </div>
-{{/verbatim}}
+{% endraw %}
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

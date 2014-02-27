@@ -1,71 +1,69 @@
-${set([
-  pageTitle = "Identity",
-  clientData.pageTitle = "Identity"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Identity" %}
+{% set clientData.pageTitle = "Identity" %}
+{% include "head.html" %}
 
-<div about="" typeof="ps:${identity.type}" class="row">
+<div about="" typeof="ps:{{identity.type}}" class="row">
   <div class="span12">
-{{if identity.label}}
+{% if identity.label %}
     <h1 class="headline">
-      About <span property="rdfs:label">${identity.label}</span>
+      About <span property="rdfs:label">{{identity.label}}</span>
     </h1>
-{{else}}
+{% else %}
     <h1 class="headline">About Identity</h1>
-{{/if}}
+{% endif %}
   </div>
 </div>
 
-{{if identity.website || identity.description}}
+{% if identity.website || identity.description %}
 <hr />
-{{/if}}
-{{if identity.website}}
+{% endif %}
+{% if identity.website %}
 <div class="row">
   <div class="span4 offset4">
     <h2>Website</h2>
-    <a property="foaf:homepage" href="${identity.website}">
-      ${identity.website}
+    <a property="foaf:homepage" href="{{identity.website}}">
+      {{identity.website}}
     </a>
   </div>
 </div>
-{{/if}}
-{{if identity.website && identity.description}}
+{% endif %}
+{% if identity.website && identity.description %}
 <div class="row">
   <div class="span12">&nbsp;</div>
 </div>
-{{/if}}
-{{if identity.description}}
+{% endif %}
+{% if identity.description %}
 <div class="row">
   <div class="span4 offset4">
     <h2>Description</h2>
     <p></p>
-    <p property="dc:description">${identity.description}</p>
+    <p property="dc:description">{{identity.description}}</p>
   </div>
 </div>
-{{/if}}
+{% endif %}
 
 <hr />
 
 <div class="row">
   <div class="span4 offset4">
     <h2>Cryptographic Keys</h2>
-{{if keys.length > 0}}
+{% if keys.length > 0 %}
   <ul>
-  {{each(idx,value) keys}}
+  {% for key in keys %}
     <li>
-      <a about="" rel="sec:publicKey" href="${keys[idx].id}">
-        <span property="rdfs:label">${keys[idx].label}</span>
+      <a about="" rel="sec:publicKey" href="{{key.id}}">
+        <span property="rdfs:label">{{key.label}}</span>
       </a>
-      <span about="${keys[idx].id}" typeof="sec:CryptographicKey">
+      <span about="{{key.id}}" typeof="sec:CryptographicKey">
         <link rel="sec:owner" href="" />
       </span>
     </li>
-  {{/each}}
+  {% endfor %}
   </ul>
-{{else}}
+{% else %}
     <p>No publicly visible keys.</p>
-{{/if}}
+{% endif %}
   </div>
 </div>
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

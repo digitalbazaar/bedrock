@@ -1,12 +1,13 @@
-${set(pageTitle = "Error 403")}
-{{partial "head.tpl"}}
+{% set pageTitle = "Unauthorized Access" %}
+{% set clientData.pageTitle = "Unauthorized Access" %}
+{% include "head.html" %}
 
 <h2>Forbidden</h2>
 
 <div>
   <p>Sorry, but you are not authorized to access this page.</p>
   <p>If you think this is an error, please contact
-  <a href="mailto:support@${supportDomain}">Customer Support</a>.</p>
+  <a href="mailto:support@{{supportDomain}}">Customer Support</a>.</p>
 </div>
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

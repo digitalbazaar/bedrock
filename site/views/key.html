@@ -1,14 +1,12 @@
-${set([
-  pageTitle = "Cryptographic Key Details",
-  clientData.pageTitle = "Cryptographic Key Details"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Cryptographic Key Details" %}
+{% set clientData.pageTitle = "Cryptographic Key Details" %}
+{% include "head.html" %}
 
 <div class="row">
-  <h2 class="headline">${pageTitle}</h2>
+  <h2 class="headline">{{pageTitle}}</h2>
 </div>
 
-{{verbatim}}
+{% raw %}
 <div data-ng-controller="KeyCtrl" class="ng-cloak"
   about="" typeof="sec:CryptographicKey">
 
@@ -18,9 +16,9 @@ ${set([
       <span data-ng-show="key.sysStatus">({{key.sysStatus}})</span>
     </h3>
   </div>
-{{/verbatim}}
+{% endraw %}
 
-{{if key.revoked}}
+{% if key.revoked %}
   <div class="row">
     <div class="offset3 span6">
       <h3 class="headline">
@@ -28,9 +26,9 @@ ${set([
       </h3>
     </div>
   </div>
-{{/if}}
+{% endif %}
 
-{{verbatim}}
+{% raw %}
   <div class="row">
     <div class="offset3 span6">
       <pre data-ng-show="key.publicKeyPem"
@@ -47,6 +45,6 @@ ${set([
   </div>
 
 </div>
-{{/verbatim}}
+{% endraw %}
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}
