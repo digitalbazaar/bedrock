@@ -11,7 +11,7 @@
   details of what went wrong.</p>
 	
   {% if debug %}
-  <pre><code>Exception: {{exception|json_encode}}</code></pre>
+  <pre><code>Exception: {{exception|json(2)|replace('\\n', '<br/>', 'g')}}</code></pre>
   {% endif %}
 </div>
 
