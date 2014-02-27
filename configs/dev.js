@@ -11,7 +11,8 @@ config.app.restartWorkers = false;
 if(process.platform !== 'win32') {
   config.app.user.groupId = process.getgid();
   config.app.user.userId = process.getuid();
-} else {
+}
+else {
   config.app.user.groupId = 0;
   config.app.user.userId = 0;
 }
