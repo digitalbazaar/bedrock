@@ -50,9 +50,9 @@ config.website.views.vars = {
 };
 
 config.website.views.routes = [
-  ['/', 'index.tpl'],
+  ['/', 'index.html'],
   '/about',
   '/legal',
   '/contact',
-  ['/help', 'help/index.tpl']
+  ['/help', 'help/index.html']
 ];

@@ -1,22 +1,22 @@
-{{if pageLayout == "normal"}}
+{% if pageLayout == "normal" %}
 <div class="navbar navbar-login">
-{{else}}
+{% else %}
 <div class="navbar">
-{{/if}}
+{% endif %}
   <div class="navbar-inner navbar-inner-banner">
     <div class="container ng-cloak" data-ng-controller="LoginCtrl">
       <a class="brand" href="/">
-        {{if style.brand.src}}
+        {% if style.brand.src %}
         <img
-          src="${style.brand.src}"
-          width="${style.brand.width}" height="${style.brand.height}"
-          alt="${style.brand.alt}" />
-        {{else}}
-        ${siteTitle}
-        {{/if}}
+          src="{{style.brand.src}}"
+          width="{{style.brand.width}}" height="{{style.brand.height}}"
+          alt="{{style.brand.alt}}" />
+        {% else %}
+        {{siteTitle}}
+        {% endif %}
       </a>
-      {{if pageLayout == "normal"}}
-      {{verbatim}}
+      {% if pageLayout == "normal" %}
+      {% raw %}
       <form class="navbar-form pull-right" data-ng-submit="submit()">
         <fieldset>
           <input data-ng-hide="multiple"
@@ -55,8 +55,8 @@
           </div>
         </fieldset>
       </form>
-      {{/verbatim}}
-      {{/if}}
+      {% endraw %}
+      {% endif %}
     </div>
   </div>
 </div>

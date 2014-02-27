@@ -1,8 +1,6 @@
-${set([
-  pageTitle = "Welcome",
-  clientData.pageTitle = "Welcome"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Welcome" %}
+{% set clientData.pageTitle = "Welcome" %}
+{% include "head.html" %}
 
 <div class="row">
   <div class="span10 offset1">
@@ -13,4 +11,4 @@ ${set([
   </div>
 </div>
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

@@ -1,13 +1,13 @@
-      {{! Avoid extra whitespace between elements for proper inline layout }}
+      {# Avoid extra whitespace between elements for proper inline layout #}
 
-      {{if pageLayout == "normal"}}
+      {% if pageLayout == "normal" %}
       <hr/>
-      {{/if}}
+      {% endif %}
       <footer class="footer row">
-        {{if pageLayout != "error"}}
+        {% if pageLayout != "error" %}
         <div class="span12">
           <ul>
-            {{if pageLayout == "normal"}}
+            {% if pageLayout == "normal" %}
             <li><a href="/">Home</a></li><!--
             --><li><a href="/about">About</a></li><!--
             --><li><a href="/help">Help</a></li><!--
@@ -15,17 +15,17 @@
             --><li><a href="/legal#tos">Terms of Service</a></li><!--
             --><li><a href="/legal#pp">Privacy Policy</a></li><!--
             --><li><a href="/contact">Contact</a></li><!--
-            -->{{if contact.blog}}<li><!--
-              --><a href="${contact.blog.url}">Blog</a><!--
-            --></li>{{/if}}
-            {{else}}
+            -->{% if contact.blog %}<li><!--
+              --><a href="{{contact.blog.url}}">Blog</a><!--
+            --></li>{% endif %}
+            {% else %}
             <li><a href="/help">Help</a></li><!--
             --><li><a href="/legal#tos">Terms of Service</a></li><!--
             --><li><a href="/legal#pp">Privacy Policy</a></li>
-            {{/if}}
+            {% endif %}
           </ul>
         </div>
-        {{/if}}
+        {% endif %}
         <div class="span12">
           <ul>
             <li><!--
@@ -40,8 +40,8 @@
       </footer>
     </div>
 
-    {{! Analytics }}
-    {{if googleAnalytics.enabled}}
+    {# Analytics #}
+    {% if googleAnalytics.enabled %}
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '${googleAnalytics.account}']);
@@ -52,7 +52,7 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
       </script>
-    {{/if}}
+    {% endif %}
 
   </body>
 </html>
