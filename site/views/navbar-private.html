@@ -32,7 +32,7 @@
         {% if session.identity %}
           {{ session.identity.label|default('-') }}
         {% else %}
-          {{ session.profile.label|default('-) }}
+          {{ session.profile.label|default('-') }}
         {% endif %}
         </a>
       {% endif %}

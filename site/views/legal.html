@@ -1,8 +1,6 @@
-${set([
-  pageTitle = "Legal Information",
-  clientData.pageTitle = "Legal Information"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Terms of Service" %}
+{% set clientData.pageTitle = "Terms of Service" %}
+{% include "head.html" %}
 
 <div id="tos">
    <div id="tos-toc">
@@ -167,4 +165,4 @@ ${set([
    information as has been outlined by this policy.</p>
 </div>
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

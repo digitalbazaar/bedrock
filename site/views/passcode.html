@@ -1,14 +1,12 @@
-${set([
-  pageTitle = "Reset Password",
-  clientData.pageTitle = "Reset Password"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Reset Password" %}
+{% set clientData.pageTitle = "Reset Password" %}
+{% include "head.html" %}
 
 <div class="row">
-  <h2 class="headline">${pageTitle}</h2>
+  <h2 class="headline">{{pageTitle}}</h2>
 </div>
 
-{{verbatim}}
+{% raw %}
 <div class="ng-cloak" data-ng-controller="PasscodeCtrl">
 
 <div class="row">
@@ -126,6 +124,6 @@ ${set([
 </div>
 
 </div>
-{{/verbatim}}
+{% endraw %}
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

@@ -1,10 +1,8 @@
-${set([
-  pageTitle = "Create a Profile",
-  clientData.pageTitle = "Create a Profile"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Create Profile" %}
+{% set clientData.pageTitle = "Create Profile" %}
+{% include "head.html" %}
 
-{{verbatim}}
+{% raw %}
 <div class="row ng-cloak" data-ng-controller="CreateProfileCtrl">
   <div class="span8 offset2">
     <h2>Create a Profile</h2>
@@ -147,6 +145,6 @@ ${set([
     </form>
   </div>
 </div>
-{{/verbatim}}
+{% raw %}
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

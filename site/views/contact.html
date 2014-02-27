@@ -1,10 +1,9 @@
-${set([
-  pageTitle = "Contact",
-  clientData.pageTitle = "Contact"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "Contact" %}
+{% set clientData.pageTitle = "Contact" %}
+{% include "head.html" %}
 
-<h2>${pageTitle}</h2>
+
+<h2>{{pageTitle}}</h2>
 
 <div>
   <p>
@@ -32,4 +31,4 @@ company that operates this developer sandbox.
   </ul>
 </div>
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

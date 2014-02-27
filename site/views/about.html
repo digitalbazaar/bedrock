@@ -1,13 +1,10 @@
-${set([
-  pageTitle = "About",
-  clientData.pageTitle = "About"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "About" %}
+{% include "head.html" %}
 
-<h2>${pageTitle}</h2>
+<h2>{{pageTitle}}</h2>
 
 <p>Bedrock!</p>
 
-{{partial "app/templates/credits.tpl"}}
+{% include "partials/credits.html" %}
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}

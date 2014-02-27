@@ -1,8 +1,6 @@
-${set([
-  pageTitle = "App",
-  clientData.pageTitle = "App"
-])}
-{{partial "head.tpl"}}
+{% set pageTitle = "App" %}
+{% set clientData.pageTitle = "App" %}
+{% include "head.html" %}
 
 <div class="container ng-cloak">
   <div data-ng-view></div>
@@ -10,4 +8,4 @@ ${set([
 
 <div data-ng-include="'/app/templates/demo-warning.html'"></div>
 
-{{partial "foot.tpl"}}
+{% include "foot.html" %}
