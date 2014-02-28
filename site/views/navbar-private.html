@@ -12,7 +12,7 @@
           </a>
           {% raw %}
           <ul class="nav">
-            <li data-ng-repeat="item in nav" data-ng-class="{active: pageTitle == item.pageTitle}"><a href="{{session.identity.id}}/{{item.slug}}"><i class="{{item.icon}}"></i> {{item.label}}</a></li>
+            <li data-ng-repeat="item in model.navbar.private" data-ng-class="{active: pageTitle == item.pageTitle}"><a href="{{item.url || (model.session.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a></li>
           </ul>
           {% endraw %}
         {% else %}
@@ -22,7 +22,7 @@
         <a class="btn btn-nav btn-small show pull-right{{showHovercard && ' active' || ''}}"
           data-popover-template="/app/templates/navbar-hovercard.html"
           data-popover-visible="showHovercard"
-          data-title="{{session.identity.label || session.profile.label}}"
+          data-title="{{model.session.identity.label || model.session.profile.label}}"
           data-placement="bottom">
         {% endraw %}
           <i class="icon-user"></i>

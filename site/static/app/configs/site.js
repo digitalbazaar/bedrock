@@ -12,7 +12,7 @@ define([], function() {
 return {
   site: {
     navbar: {
-      nav: [
+      private: [
         {
           slug: 'dashboard',
           icon: 'icon-dashboard',
@@ -25,7 +25,8 @@ return {
           label: 'Settings',
           pageTitle: 'Settings'
         }
-      ]
+      ],
+      public: []
     }
   }
 };

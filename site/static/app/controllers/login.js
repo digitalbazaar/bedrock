@@ -9,11 +9,11 @@ define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
 'use strict';
 
-var deps = ['$scope'];
+var deps = ['$scope', 'config'];
 return {LoginCtrl: deps.concat(factory)};
 
-function factory($scope) {
-  $scope.model = {};
+function factory($scope, config) {
+  var model = $scope.model = {};
   var data = window.data;
   $scope.multiple = false;
   $scope.loading = false;
@@ -21,8 +21,9 @@ function factory($scope) {
   $scope.profile = '';
   $scope.password = '';
   $scope.ref = data.ref;
-  $scope.model.siteTitle = data.siteTitle;
-  $scope.model.sessionExpired = data.sessionExpired || false;
+  model.siteTitle = data.siteTitle;
+  model.sessionExpired = data.sessionExpired || false;
+  model.navbar = config.site.navbar;
 
   $scope.submit = function() {
     // do login

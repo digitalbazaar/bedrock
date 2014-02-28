@@ -3,15 +3,15 @@
     <tbody>
       <tr>
         <td><strong>Email:</strong></td>
-        <td>{{session.profile.email}}</td>
+        <td>{{model.session.profile.email}}</td>
       </tr>
-      <tr data-ng-show="session.identity">
+      <tr data-ng-show="model.session.identity">
         <td><strong>Identity:</strong></td>
-        <td>{{session.identity.label}}</td>
+        <td>{{model.session.identity.label}}</td>
       </tr>
-      <tr data-ng-hide="session.identity">
+      <tr data-ng-hide="model.session.identity">
         <td><strong>Profile:</strong></td>
-        <td>{{session.profile.label}}</td>
+        <td>{{model.session.profile.label}}</td>
       </tr>
     </tbody>
   </table>

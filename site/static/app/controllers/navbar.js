@@ -13,10 +13,9 @@ var deps = ['$scope', '$rootScope', 'config'];
 return {NavbarCtrl: deps.concat(factory)};
 
 function factory($scope, $rootScope, config) {
-  $scope.model = {};
-  $scope.session = config.data.session;
-
-  $scope.nav = config.site.navbar.nav;
+  var model = $scope.model = {};
+  model.session = config.data.session;
+  model.navbar = config.site.navbar;
 
   $scope.refreshData = function() {
     $rootScope.$broadcast('refreshData');
