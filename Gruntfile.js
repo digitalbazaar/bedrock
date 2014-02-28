@@ -86,6 +86,8 @@ module.exports = function(grunt) {
         baseUrl: 'site/static',
         paths: {
           'almond': '../../node_modules/almond/almond',
+          'forge': '../../node_modules/node-forge/js',
+          'jsonld': '../../node_modules/jsonld/js/jsonld.js',
           'promise': '../../node_modules/es6-promise/dist/promise-0.1.1',
           'underscore': '../../node_modules/underscore/underscore',
           // override templates
