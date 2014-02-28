@@ -16,7 +16,7 @@ return {
         templateUrl: '/app/templates/settings/profile.html'
       },
       {
-        templateUrl: 'app/templates/settings/keys.html'
+        templateUrl: '/app/templates/settings/keys.html'
       }
     ]
   }
