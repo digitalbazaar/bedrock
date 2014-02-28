@@ -64,10 +64,10 @@ to MongoDB.
 
 ### Redis database abstraction layer
 
-The system has a simple database abstraction layer for reading and writing 
-to Redis.
+Included is the ability to connect to Redis for simple reading and writing 
+of values to a fast in-memory database.
 
-### Sharded GUID generator
+### Distributed GUID generator
 
 The ability to create guaranteed unique global IDs (GIDs) is useful when 
 deploying the web server framework on multiple machines in a cluster 
@@ -115,6 +115,16 @@ This protects against garbage/fuzzing attacks on REST API endpoints.
 JSON Schema is a particularly useful strategy when attempting 
 to prevent bad data injection and basic parameter checking.
 
+### Public Key Service
+
+A public key service is provided that allows the storage and publishing of
+public key data. This service enables a distributed public key infrastructure
+for the system, enabling remote websites and programs to receive messages
+created by the system and then verify the validity of the messages by 
+checking the digital signature on the message. Verifying agents must
+access the public key service to fetch the key information needed for the
+verification step.
+
 ### HTTP Signature Authentication
 
 Strong protection of REST API resources is possible using 
@@ -131,6 +141,39 @@ Service and Distributed Denial of Service attacks.
 
 The ability to digitally sign and encrypt JSON data and publish it in a 
 way that can be easily verified via the Web or intranet.
+
+## Linked Data
+
+Linked Data is a way to create a network of machine interpretable data 
+across different documents and Web sites. It allows an application to start 
+at one piece of Linked Data, and follow embedded links to other pieces 
+of Linked Data that are hosted on different sites across the Web. The
+Linked Data formats used by the system include JSON-LD and RDFa.
+
+### Linked Identity and Profile Data
+
+A Linked Data identity system is provided to assign URL identifiers to 
+the people and organizations that use the system. The public portion of
+the identities, such as names, and publicly available cryptographic public 
+key data, is published in a machine-readable way. Access to the identity 
+information is based on a role-based access control system that also allows 
+private data to be read by authorized agents.
+
+A single profile in the system may have multiple identities associated with
+it for separate purposes, such as a personal identity and a business identity.
+The profile subsystem manages access to each identity.
+
+### RDFa and JSON-LD Support
+
+Parsers to read in and convert both RDFa and JSON-LD to native data formats
+and modify, translate, and process the information are included. Converters
+are included to translate from RDFa to JSON-LD and vice-versa.
+
+### Digital Signatures for Linked Data
+
+Subsystems are provided that implement the Secure Messaging specification
+enabling JSON-LD to be normalized, hashed, and digitally signed. The subsystem
+also enables the verification of any RDF data that has been digitally signed.
 
 ## Customer Experience Subsystems
 
@@ -170,10 +213,10 @@ for single connection load for production sites is available. Grunt-based CSS
 concatenation and optimization for production sites makes it easy to 
 deploy production sites w/ no manual build process necessary.
 
-### Basic Angular UI Widgets
+### AngularJS UI Widgets
 
 Basic Angular UI widgets are available: activity spinner, navbar 
-popover, duplicate ID checker, generic modal alert, help toggle, etc.
+popover, duplicate ID checker, generic modal alert, and help toggle.
 
 ## Developer Tooling
 
@@ -182,10 +225,13 @@ applications on top of the framework, debug the system when problems arise,
 generate good testing code coverage for the system, and ensure that bug 
 regressions are caught before deploying the software to production.
 
-### Testing Subsystem
+### Testing and Continuous Integration Subsystem
 
 A modular testing subsystem that is capable of running both unit tests and 
-browser-based system tests.
+browser-based system tests. The tests are designed to be run inside
+continuous integration frameworks to provide constant feedback on code
+coverage and test status as new changes are made to the software built using
+Bedrock.
 
 ### Chained Exception/Error Reporting
 
