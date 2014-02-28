@@ -6,11 +6,11 @@
  * @author Dave Longley
  * @author David I. Lehn
  */
-define(['angular', 'bedrock.api'], function(angular, bedrock) {
+define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'svcIdentity', '$timeout', 'config'];
+var deps = ['$scope', 'config', 'svcIdentity'];
 return {
   controller: {SettingsCtrl: deps.concat(factory)},
   routes: [{
@@ -22,7 +22,8 @@ return {
   }]
 };
 
-function factory($scope, svcIdentity, $timeout, config) {
+function factory($scope, config, svcIdentity) {
+  // TODO: use model instead of scope directly
   var model = $scope.model = {};
   var data = window.data || {};
   $scope.profile = data.session.profile;
