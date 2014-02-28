@@ -23,7 +23,6 @@
     "commander": "~1.3.0",
     "connect": "~2.7.10",
     "connect-mongo": "git://github.com/digitalbazaar/connect-mongo.git",
-    "consolidate": "~0.4.0",
     "emailjs": "git://github.com/digitalbazaar/emailjs.git",
     "es6-promise": "=0.1.1",
     "express": "~3.3.5",
