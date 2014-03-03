@@ -68,7 +68,7 @@
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
     "superagent": "0.16.0",
-    "sv-selenium": "~0.2.2",
+    "sv-selenium": "~0.2.3",
     "visionmedia-jscoverage": "~1.0.0",
     "wd": "~0.2.10"
   },
