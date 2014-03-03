@@ -65,8 +65,6 @@
     "chai": "~1.9.0",
     "chai-as-promised": "~4.1.0",
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-yuidoc": "~0.5.0",
-    "grunt-jsdoc": "~0.5.1",
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
     "superagent": "0.16.0",
