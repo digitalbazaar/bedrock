@@ -26,8 +26,7 @@ function factory($scope, $http) {
     email: '',
     sysPassword: '',
     sysIdentity: {
-      // FIXME: add option for type in ui?
-      type: 'PersonalIdentity',
+      type: 'Identity',
       label: '',
       sysSlug: '',
       sysPublic: []

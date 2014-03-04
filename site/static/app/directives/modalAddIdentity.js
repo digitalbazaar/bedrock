@@ -25,7 +25,7 @@ function factory(svcModal, svcIdentity) {
     $scope.identitySlug = '';
     $scope.identity = {};
     $scope.identityTypeLabels = {
-      'PersonalIdentity': 'Personal'
+      'Identity': 'Identity'
     };
     angular.forEach($scope.identityTypes, function(type) {
       $scope.identity[type] = {

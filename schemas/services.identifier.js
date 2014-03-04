@@ -11,7 +11,7 @@ var postIdentifier = {
       type: {
         required: true,
         type: 'string',
-        enum: ['Profile', 'PersonalIdentity']
+        enum: ['Profile', 'Identity']
       },
       sysSlug: slug()
     },

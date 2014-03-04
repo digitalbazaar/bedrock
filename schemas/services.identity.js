@@ -34,7 +34,7 @@ var postIdentities = {
     type: {
       required: true,
       type: 'string',
-      enum: ['PersonalIdentity']
+      enum: ['Identity']
     },
     sysSlug: slug(),
     label: label(),

@@ -38,7 +38,7 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   xsd: 'http://www.w3.org/2001/XMLSchema#',
 
   // bedrock
-  PersonalIdentity: 'bed:PersonalIdentity',
+  Identity: 'bed:lIdentity',
   Profile: 'bed:Profile',
 
   // general

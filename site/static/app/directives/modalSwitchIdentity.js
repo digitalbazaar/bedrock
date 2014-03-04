@@ -16,7 +16,7 @@ function factory(svcModal, svcIdentity) {
   function Ctrl($scope) {
     $scope.model = {};
     $scope.data = window.data || {};
-    $scope.identityTypes = ['PersonalIdentity'];
+    $scope.identityTypes = ['Identity'];
     $scope.identities = svcIdentity.identities;
     $scope.selected = svcIdentity.identity;
 

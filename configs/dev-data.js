@@ -13,7 +13,7 @@ config.profile.profiles.push({
 
 // identities
 config.identity.identities.push({
-  type: 'PersonalIdentity',
+  type: 'Identity',
   owner: baseUri + '/profiles/dev',
   sysSlug: 'dev',
   label: 'Dev'
