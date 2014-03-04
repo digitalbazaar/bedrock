@@ -60,8 +60,45 @@ define([
       };
     }]);
   }]);
-  module.run(['$rootScope', '$location', '$route', '$http', function(
-    $rootScope, $location, $route, $http) {
+
+  // utility functions
+  var util = {};
+  module.value('util', util);
+  util.parseFloat = parseFloat;
+
+  var jsonld = util.jsonld = {};
+  jsonld.isType = function(obj, value) {
+    var types = obj.type;
+    if(types) {
+      if(!angular.isArray(types)) {
+        types = [types];
+      }
+      return types.indexOf(value) !== -1;
+    }
+    return false;
+  };
+
+  util.w3cDate = function(date) {
+    if(date === undefined || date === null) {
+      date = new Date();
+    }
+    else if(typeof date === 'number' || typeof date === 'string') {
+      date = new Date(date);
+    }
+    return (
+      date.getUTCFullYear() + '-' +
+      util.zeroFill(date.getUTCMonth() + 1) + '-' +
+      util.zeroFill(date.getUTCDate()) + 'T' +
+      util.zeroFill(date.getUTCHours()) + ':' +
+      util.zeroFill(date.getUTCMinutes()) + ':' +
+      util.zeroFill(date.getUTCSeconds()) + 'Z');
+  };
+  util.zeroFill = function(num) {
+    return (num < 10) ? '0' + num : '' + num;
+  };
+
+  module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
+    $rootScope, $location, $route, $http, util) {
     /* Note: $route is injected above to trigger watching routes to ensure
       pages are loaded properly. */
 
@@ -119,20 +156,8 @@ define([
     });
 
     // utility functions
-    var util = $rootScope.util = {};
-    util.parseFloat = parseFloat;
-
-    var jsonld = $rootScope.jsonld = {};
-    jsonld.isType = function(obj, value) {
-      var types = obj.type;
-      if(types) {
-        if(!angular.isArray(types)) {
-          types = [types];
-        }
-        return types.indexOf(value) !== -1;
-      }
-      return false;
-    };
+    $rootScope.util = util;
+    $rootScope.jsonld = util.jsonld;
   }]);
 
   angular.bootstrap(document, ['app']);
