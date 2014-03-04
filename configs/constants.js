@@ -31,11 +31,10 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   // prefixes
   bed: 'http://w3id.org/bedrock#',
   dc: 'http://purl.org/dc/terms/',
-  foaf: 'http://xmlns.com/foaf/0.1/',
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
   sec: 'https://w3id.org/security#',
-  vcard: 'http://www.w3.org/2006/vcard/ns#',
+  schema: 'http://schema.org/',
   xsd: 'http://www.w3.org/2001/XMLSchema#',
 
   // bedrock
@@ -43,32 +42,36 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   Profile: 'bed:Profile',
 
   // general
-  address: {'@id': 'vcard:adr', '@type': '@id'},
+  address: {'@id': 'schema:address', '@type': '@id'},
+  addressCountry: 'schema:addressCountry',
+  addressLocality: 'schema:addressLocality',
+  addressRegion: 'schema:addressRegion',
   comment: 'rdfs:comment',
-  countryName: 'vcard:country-name',
   created: {'@id': 'dc:created', '@type': 'xsd:dateTime'},
   creator: {'@id': 'dc:creator', '@type': '@id'},
-  depiction: {'@id': 'foaf:depiction', '@type': '@id'},
-  description: 'dc:description',
-  email: 'foaf:mbox',
-  fullName: 'vcard:fn',
+  description: 'schema:description',
+  email: 'schema:email',
+  familyName: 'schema:familyName',
+  givenName: 'schema:givenName',
+  image: {'@id': 'schema:image', '@type': '@id'},
   label: 'rdfs:label',
-  locality: 'vcard:locality',
-  postalCode: 'vcard:postal-code',
-  region: 'vcard:region',
-  streetAddress: 'vcard:street-address',
+  name: 'schema:name',
+  postalCode: 'schema:postalCode',
+  streetAddress: 'schema:streetAddress',
   title: 'dc:title',
-  website: {'@id': 'foaf:homepage', '@type': '@id'},
-  Address: 'vcard:Address',
+  url: {'@id': 'schema:url', '@type': '@id'},
+  PostalAddress: 'schema:PostalAddress',
 
   // error
   // FIXME: add error terms
   // 'errorMessage': 'err:message'
 
   // security
+  credential: {'@id': 'sec:credential', '@type': '@id'},
   cipherAlgorithm: 'sec:cipherAlgorithm',
   cipherData: 'sec:cipherData',
   cipherKey: 'sec:cipherKey',
+  claim: {'@id': 'sec:claim', '@type': '@id'},
   digestAlgorithm: 'sec:digestAlgorithm',
   digestValue: 'sec:digestValue',
   expires: {'@id': 'sec:expiration', '@type': 'xsd:dateTime'},
