@@ -56,10 +56,7 @@ function factory($rootScope, $http, $location, svcModel) {
     }
     return new Promise(function(resolve, reject) {
       self.startLoading();
-      var config = {};
-      if('delay' in options) {
-        config.delay = options.delay;
-      }
+      var config = _buildConfig(options);
       var url = _getUrl(self.config, 'getAll');
       var promise = Promise.cast($http.get(url, config));
       promise.then(function(response) {
@@ -91,10 +88,7 @@ function factory($rootScope, $http, $location, svcModel) {
     // FIXME: reject if resourceId not a sub-url of collection
     return new Promise(function(resolve, reject) {
       self.startLoading();
-      var config = {};
-      if('delay' in options) {
-        config.delay = options.delay;
-      }
+      var config = _buildConfig(options);
       var promise = Promise.cast($http.get(resourceId, config));
       promise.then(function(response) {
         // update collection but not collection expiration time
@@ -125,10 +119,7 @@ function factory($rootScope, $http, $location, svcModel) {
     options = options || {};
     return new Promise(function(resolve, reject) {
       self.startLoading();
-      var config = {};
-      if('delay' in options) {
-        config.delay = options.delay;
-      }
+      var config = _buildConfig(options);
       var url = _getUrl(self.config, 'add');
       var promise = Promise.cast($http.post(url, resource, config));
       promise.then(function(response) {
@@ -154,10 +145,7 @@ function factory($rootScope, $http, $location, svcModel) {
     options = options || {};
     return new Promise(function(resolve, reject) {
       self.startLoading();
-      var config = {};
-      if('delay' in options) {
-        config.delay = options.delay;
-      }
+      var config = _buildConfig(options);
       var promise = Promise.cast($http.post(resource.id, resource, config));
       promise.then(function(response) {
         // don't update collection expiration time
@@ -181,10 +169,7 @@ function factory($rootScope, $http, $location, svcModel) {
     options = options || {};
     return new Promise(function(resolve, reject) {
       self.startLoading();
-      var config = {};
-      if('delay' in options) {
-        config.delay = options.delay;
-      }
+      var config = _buildConfig(options);
       var promise = Promise.cast($http.delete(resourceId, config));
       promise.then(function(response) {
         // don't update collection expiration time
@@ -204,6 +189,20 @@ function factory($rootScope, $http, $location, svcModel) {
   };
 
   return service;
+}
+
+/**
+ * Build a $http config from collection options.
+ */
+function _buildConfig(options, config) {
+  config = config || {};
+  if('delay' in options) {
+    config.delay = options.delay;
+  }
+  if('params' in options) {
+    config.params = options.params;
+  }
+  return config;
 }
 
 /**
