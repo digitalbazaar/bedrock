@@ -35,6 +35,9 @@ function factory($scope, $http) {
   $scope.agreementChecked = false;
 
   $scope.submit = function() {
+    if(!$scope.agreementChecked) {
+      return false;
+    }
     $scope.loading = true;
     $http.post('/profile/create', $scope.profile)
       .success(function(response) {
