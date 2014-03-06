@@ -150,7 +150,7 @@ function factory($rootScope, $http, $location, svcModel) {
       promise.then(function(response) {
         // don't update collection expiration time
         // re-get resource to update collection
-        return self.get(resource.id, {force: true});
+        return self.get(options.get || resource.id, {force: true});
       }).then(function(updatedResource) {
         self.finishLoading();
         resolve(updatedResource);
