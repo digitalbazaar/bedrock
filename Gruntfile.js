@@ -50,14 +50,16 @@ module.exports = function(grunt) {
         // the module the templates will be added to
         module: 'app.templates',
         htmlmin: {
-          collapseBooleanAttributes:      true,
+          collapseBooleanAttributes:      false,
           collapseWhitespace:             true,
-          removeAttributeQuotes:          true,
+          removeAttributeQuotes:          false,
           removeComments:                 true,
-          removeEmptyAttributes:          true,
-          removeRedundantAttributes:      true,
-          removeScriptTypeAttributes:     true,
-          removeStyleLinkTypeAttributes:  true
+          removeEmptyAttributes:          false,
+          removeEmptyElements:            false,
+          removeRedundantAttributes:      false,
+          removeScriptTypeAttributes:     false,
+          removeStyleLinkTypeAttributes:  false,
+          removeOptionalTags:             false
         },
         bootstrap: function(module, script) {
           return [
