@@ -1,9 +1,13 @@
 var config = require(__libdir + '/bedrock').config;
 
-// profile config
-config.profile.defaults = {
-  profile: {
-    sysStatus: 'active',
-    sysRole: [config.server.baseUri + '/roles/profile_registered']
+// identity config
+config.identity.defaults.identity = {
+  type: 'Identity',
+  sysStatus: 'active',
+  sysRole: [config.server.baseUri + '/roles/identity_registered'],
+  sysPublic: [],
+  address: [],
+  preferences: {
+    type: 'IdentityPreferences'
   }
 };
