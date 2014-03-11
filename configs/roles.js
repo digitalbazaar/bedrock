@@ -1,118 +1,57 @@
 var config = require(__libdir + '/bedrock').config;
 
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/profile_administrator',
-  label: 'Profile Administrator',
-  comment: 'Role for profile administrators.',
-  sysPermission: [
-    {id: 'bedrock.profile.permission.profile_admin'},
-    {id: 'bedrock.profile.permission.profile_access'},
-    {id: 'bedrock.profile.permission.profile_create'},
-    {id: 'bedrock.profile.permission.profile_edit'},
-    {id: 'bedrock.profile.permission.profile_remove'}
-  ]
-});
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/profile_manager',
-  label: 'Registered Profile',
-  comment: 'Role for registered profiles.',
-  sysPermission: [
-    {id: 'bedrock.profile.permission.profile_access'},
-    {id: 'bedrock.profile.permission.profile_create'},
-    {id: 'bedrock.profile.permission.profile_edit'},
-    {id: 'bedrock.profile.permission.promo_redeem_code'}
-  ]
-});
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/role_administrator',
-  label: 'Role Administrator',
-  comment: 'This role is used to administer Roles and Permissions.',
-  sysPermission: [
-    {id: 'bedrock.profile.permission.role_admin'},
-    {id: 'bedrock.profile.permission.role_edit'},
-    {id: 'bedrock.profile.permission.role_remove'}
-  ]
-});
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/identity_administrator',
+var permissions = config.permission.permissions;
+var roles = config.permission.roles;
+
+roles['identity.admin'] = {
+  id: 'identity.administrator',
   label: 'Identity Administrator',
-  comment: 'Role for Identity administrators.',
+  comment: 'Role for identity administrators.',
   sysPermission: [
-    {id: 'bedrock.identity.permission.identity_admin'},
-    {id: 'bedrock.identity.permission.identity_access'},
-    {id: 'bedrock.identity.permission.identity_create'},
-    {id: 'bedrock.identity.permission.identity_edit'},
-    {id: 'bedrock.identity.permission.identity_remove'},
-    {id: 'bedrock.identity.permission.public_key_create'},
-    {id: 'bedrock.identity.permission.public_key_remove'}
+    permissions.IDENTITY_ADMIN.id,
+    permissions.IDENTITY_ACCESS.id,
+    permissions.IDENTITY_CREATE.id,
+    permissions.IDENTITY_EDIT.id,
+    permissions.IDENTITY_REMOVE.id,
+    permissions.PUBLIC_KEY_CREATE.id,
+    permissions.PUBLIC_KEY_REMOVE.id
   ]
-});
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/identity_manager',
+};
+roles['identity.manager'] = {
+  id: 'identity.manager',
   label: 'Identity Manager',
   comment: 'Role for identity managers.',
   sysPermission: [
-    {id: 'bedrock.identity.permission.identity_access'},
-    {id: 'bedrock.identity.permission.identity_create'},
-    {id: 'bedrock.identity.permission.identity_edit'},
-    {id: 'bedrock.identity.permission.public_key_create'},
-    {id: 'bedrock.identity.permission.public_key_remove'}
+    permissions.IDENTITY_ADMIN.id,
+    permissions.IDENTITY_ACCESS.id,
+    permissions.IDENTITY_CREATE.id,
+    permissions.IDENTITY_EDIT.id,
+    permissions.PUBLIC_KEY_CREATE.id,
+    permissions.PUBLIC_KEY_REMOVE.id
   ]
-});
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/website_administrator',
+};
+roles['website.admin'] = {
+  id: 'website.administrator',
   label: 'Website Administrator',
   comment: 'This role is used to administer the website.',
-  sysPermission: [
-    {id: 'bedrock.website.permission.admin'}
-  ]
-});
+  sysPermission: [permissions.WEBSITE_ADMIN.id]
+};
 
 // admin role contains all permissions
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/admin',
+roles['admin'] = {
+  id: 'admin',
   label: 'Administrator',
   comment: 'Role for System Administrator.',
-  sysPermission: [
-    // profile permissions
-    {id: 'bedrock.profile.permission.profile_admin'},
-    {id: 'bedrock.profile.permission.profile_access'},
-    {id: 'bedrock.profile.permission.profile_create'},
-    {id: 'bedrock.profile.permission.profile_edit'},
-    {id: 'bedrock.profile.permission.profile_remove'},
-    // role permissions
-    {id: 'bedrock.permission.permission.role_admin'},
-    {id: 'bedrock.permission.permission.role_edit'},
-    {id: 'bedrock.permission.permission.role_remove'},
-    // identity permissions
-    {id: 'bedrock.identity.permission.identity_admin'},
-    {id: 'bedrock.identity.permission.identity_access'},
-    {id: 'bedrock.identity.permission.identity_create'},
-    {id: 'bedrock.identity.permission.identity_edit'},
-    {id: 'bedrock.identity.permission.identity_remove'},
-    {id: 'bedrock.identity.permission.public_key_create'},
-    {id: 'bedrock.identity.permission.public_key_remove'},
-    // website permissions
-    {id: 'bedrock.website.permission.admin'}
-  ]
-});
+  sysPermission: [].concat(
+    roles['identity.admin'].sysPermission,
+    roles['website.admin'].sysPermission)
+};
 
-// default registered profile role (contains all permissions for a regular
-// profile)
-config.permission.roles.push({
-  id: config.server.baseUri + '/roles/profile_registered',
-  label: 'Registered Profile',
-  comment: 'Role for registered profiles.',
-  sysPermission: [
-    // profile permissions
-    {id: 'bedrock.profile.permission.profile_access'},
-    {id: 'bedrock.profile.permission.profile_create'},
-    {id: 'bedrock.profile.permission.profile_edit'},
-    // identity permissions
-    {id: 'bedrock.identity.permission.identity_access'},
-    {id: 'bedrock.identity.permission.identity_create'},
-    {id: 'bedrock.identity.permission.identity_edit'},
-    {id: 'bedrock.identity.permission.public_key_create'},
-    {id: 'bedrock.identity.permission.public_key_remove'}
-  ]
-});
+// default registered identity role (contains all permissions for a regular
+// identity)
+roles['identity.registered'] = {
+  id: 'identity.registered',
+  label: 'Registered Identity',
+  comment: 'Role for registered identities.',
+  sysPermission: [].concat(roles['identity.manager'].sysPermission)
+};

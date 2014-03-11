@@ -4,10 +4,14 @@ var config = require(__libdir + '/bedrock').config;
 config.identity.defaults.identity = {
   type: 'Identity',
   sysStatus: 'active',
-  sysRole: [config.server.baseUri + '/roles/identity_registered'],
   sysPublic: [],
   address: [],
   preferences: {
     type: 'IdentityPreferences'
   }
 };
+
+// default resource roles
+config.identity.defaults.roles = [{
+  sysRole: 'identity.registered'
+}];
