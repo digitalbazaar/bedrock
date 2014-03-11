@@ -13,7 +13,7 @@ address.
 
 You may visit the following page and enter your code manually:
 
-https://{{serviceHost}}/identity/passcode
+https://{{serviceHost}}/session/passcode
 
 {%- if identities.length == 1 %}
 
