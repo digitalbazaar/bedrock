@@ -1,6 +1,6 @@
-To: {{profile.email}}
+To: {{identity.email}}
 From: "{{serviceName}} Customer Support" <support@{{supportDomain}}>
-Subject: {{profileSubjectPrefix}}Welcome to {{serviceName}}!
+Subject: {{identitySubjectPrefix}}Welcome to {{serviceName}}!
 
 {% if productionMode == false %}
 *******
@@ -16,7 +16,7 @@ Welcome to {{serviceName}}!
 We're so glad you joined! Please let us know if there is anything that we
 can do to help you settle into the website.
 
-You can manage your profile and other settings by going here:
+You can manage your identity and other settings by going here:
 
 {{identity.id}}/settings
 

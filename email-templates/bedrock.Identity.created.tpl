@@ -1,16 +1,12 @@
 To: registration@{{supportDomain}}
 From: cluster@{{supportDomain}}
-Subject: {{subjectPrefix}}{{serviceName}} Profile created: {{profile.sysSlug}} ({{profile.id}})
+Subject: {{subjectPrefix}}{{serviceName}} Identity created: {{identity.sysSlug}} ({{identity.id}})
 
 Machine:        {{machine}}
-Profile ID:     {{profile.id}}
-Profile Email:  {{profile.email}}
 Identity ID:    {{identity.id}}
+Identity Email: {{identity.email}}
 Identity Label: {{identity.label}}
 
------BEGIN PROFILE-----
-{{toJson(profile)}}
------END PROFILE-----
 -----BEGIN IDENTITY-----
 {{toJson(identity)}}
 -----END IDENTITY-----

@@ -71,7 +71,7 @@ config.mail.vars = {
   serviceDomain: config.server.domain,
   supportDomain: config.server.domain,
   subjectPrefix: '[BEDROCK TEST] ',
-  profileSubjectPrefix: '[BEDROCK TEST] ',
+  identitySubjectPrefix: '[BEDROCK TEST] ',
   serviceName: 'Bedrock Dev Test',
   machine: require('os').hostname()
 };

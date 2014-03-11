@@ -1,6 +1,6 @@
 To: {{email}}
 From: "{{serviceName}} Customer Support" <support@{{supportDomain}}>
-Subject: {{profileSubjectPrefix}}Your {{serviceName}} passcode
+Subject: {{identitySubjectPrefix}}Your {{serviceName}} passcode
 
 {% if usage === "reset" -%}
 You requested a passcode so you could reset your {{serviceName}} password.
@@ -13,25 +13,22 @@ address.
 
 You may visit the following page and enter your code manually:
 
-https://{{serviceHost}}/profile/passcode
+https://{{serviceHost}}/identity/passcode
 
-{%- if profiles.length == 1 %}
+{%- if identities.length == 1 %}
 
-Your passcode is: {{profiles[0].sysPasscode}}
+Your passcode is: {{identities[0].sysPasscode}}
 
 {%- else %}
 
-Since you have multiple profiles with the same email address, we sent you
+Since you have multiple identities with the same email address, we sent you
 passcodes for each one:
-{%- for profile in profiles -%}
-{%- if profile.identity %}
+{%- for identity in identities -%}
+{%- if identity %}
 
-Identity:  {{profile.identity.label}}
-{%- else %}
-
-Profile:   {{profile.sysSlug}}
+Identity:  {{identity.label}}
 {%- endif %}
-Passcode: {{profile.sysPasscode}}
+Passcode: {{identity.sysPasscode}}
 {%- endfor -%}
 {%- endif %}
 

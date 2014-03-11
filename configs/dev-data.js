@@ -1,10 +1,4 @@
 var config = require(__libdir + '/bedrock').config;
-var baseUri = config.server.baseUri;
-
-// profiles
-config.profile.profiles.push({
-  type: 'Profile',
-});
 
 // identities
 config.identity.identities.push({

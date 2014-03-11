@@ -1,8 +1,8 @@
 module.exports.map = function(mapping) {
   var ids = [
-    'common.Profile.created',
-    'common.Profile.created-profile',
-    'common.Profile.passcodeSent'
+    'bedrock.Identity.created',
+    'bedrock.Identity.created-identity',
+    'bedrock.Identity.passcodeSent'
   ];
 
   ids.forEach(function(id) {
