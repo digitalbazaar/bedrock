@@ -150,7 +150,7 @@ at one piece of Linked Data, and follow embedded links to other pieces
 of Linked Data that are hosted on different sites across the Web. The
 Linked Data formats used by the system include JSON-LD and RDFa.
 
-### Linked Identity and Profile Data
+### Linked Identity Data
 
 A Linked Data identity system is provided to assign URL identifiers to
 the people and organizations that use the system. The public portion of
@@ -159,9 +159,9 @@ key data, is published in a machine-readable way. Access to the identity
 information is based on a role-based access control system that also allows
 private data to be read by authorized agents.
 
-A single profile in the system may have multiple identities associated with
-it for separate purposes, such as a personal identity and a business identity.
-The profile subsystem manages access to each identity.
+A single identity in the system may be associated with multiple other
+identities for separate purposes, such as a personal identity and a business
+identity.
 
 ### RDFa and JSON-LD Support
 
