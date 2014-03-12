@@ -87,27 +87,22 @@ function factory($http, $filter) {
                 else {
                   data.sysSlug = lastInput;
                 }
-                $http.post('/identifier', $.extend(
-                  data, scope.owner ? {owner: scope.owner} : {}))
-                  .success(function() {
+                Promise.cast($http.post('/identifier', $.extend(
+                  data, scope.owner ? {owner: scope.owner} : {})))
+                  .then(function() {
                     // available
                     scope.result = true;
-                    // FIXME: hack, remove once why it is needed to update
-                    // the scope is determined
-                    setTimeout(function() {scope.$apply();});
                     element
                       .hide()
                       .removeClass('alert-error alert-success')
                       .addClass('alert-success')
                       .text(scope.available)
                       .fadeIn('slow');
-                  })
-                  .error(function(data, status) {
+                  }).catch(function(err) {
                     scope.result = false;
-                    // FIXME: hack, remove once why it is needed to update
-                    // the scope is determined
-                    setTimeout(function() {scope.$apply();});
                     element.hide().removeClass('alert-error alert-success');
+                    var status = (err.details && err.details.httpStatusCode ?
+                      err.details.httpStatusCode : 500);
                     if(status === 400) {
                       // invalid
                       element
