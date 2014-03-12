@@ -18,7 +18,7 @@ can do to help you settle into the website.
 
 You can manage your identity and other settings by going here:
 
-{{identity.id}}/settings
+{{identity.id}}/dashboard
 
 We'd love to hear any feedback you have about {{serviceName}}.
 Just send an email to comments@{{supportDomain}}.
