@@ -19,6 +19,7 @@ function factory($scope, $rootScope, config) {
 
   $scope.refreshData = function() {
     $rootScope.$broadcast('refreshData');
+    $scope.setVisible(false);
   };
 }
 

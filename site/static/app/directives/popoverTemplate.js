@@ -21,6 +21,12 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
     link: function(scope, element, attrs) {
       var getVisible = $parse(attrs.popoverVisible);
       var setVisible = getVisible.assign || angular.noop;
+      scope.getVisible = function() {
+        return getVisible(scope);
+      };
+      scope.setVisible = function(visible) {
+        setVisible(scope, visible);
+      };
       svcTemplateCache.get(attrs.popoverTemplate, function(err, data) {
         // initialize popover, toggle on click
         var container = element.closest('.modal-body');
@@ -34,7 +40,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
           html: true,
         }).click(function(e) {
           scope.$apply(function() {
-            setVisible(scope, !getVisible(scope));
+            scope.setVisible(!scope.getVisible());
           });
         });
 
@@ -66,7 +72,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
               // hide popover if menu item is clicked
               menu.find('a').click(function() {
                 scope.$apply(function() {
-                  setVisible(scope, false);
+                  scope.setVisible(false);
                 });
               });
             }
@@ -147,7 +153,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
         function hideOnClick(e) {
           var tip = popover.tip();
           if($(e.target).closest(tip).length === 0) {
-            setVisible(scope, false);
+            scope.setVisible(false);
             scope.$apply();
           }
         }
@@ -156,7 +162,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
         function hideOnEscape(e) {
           if(e.keyCode === 27) {
             e.stopPropagation();
-            setVisible(scope, false);
+            scope.setVisible(false);
             scope.$apply();
           }
         }
