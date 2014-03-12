@@ -1,5 +1,7 @@
 var config = require(__libdir + '/bedrock').config;
 
+require('./permissions');
+
 var permissions = config.permission.permissions;
 var roles = config.permission.roles;
 
