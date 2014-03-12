@@ -18,18 +18,15 @@ https://{{serviceHost}}/session/passcode
 {%- if identities.length == 1 %}
 
 Your passcode is: {{identities[0].sysPasscode}}
-
-{%- else %}
+{% else -%}
 
 Since you have multiple identities with the same email address, we sent you
 passcodes for each one:
-{%- for identity in identities -%}
+{% for identity in identities -%}
 {%- if identity %}
-
-Identity:  {{identity.label}}
-{%- endif %}
+Identity: {{identity.label}}
+{%- endif -%}
 Passcode: {{identity.sysPasscode}}
 {%- endfor -%}
 {%- endif %}
-
 If you have any questions or comments please contact support@{{supportDomain}}.
