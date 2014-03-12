@@ -21,7 +21,6 @@ define([
   'app/directives/modalAlert',
   'app/directives/modalEditKey',
   'app/directives/modalSelector',
-  'app/directives/modalSwitchIdentity',
   'app/directives/mouseoverToggle',
   'app/directives/ngBlur',
   'app/directives/ngFocus',
