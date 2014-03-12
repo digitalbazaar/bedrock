@@ -6,7 +6,7 @@
  * @author Dave Longley
  * @author Manu Sporny
  */
-define(['bedrock.api'], function(bedrock) {
+define([], function() {
 
 'use strict';
 

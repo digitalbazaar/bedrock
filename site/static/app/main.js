@@ -27,9 +27,7 @@ require.config({
     'ui-bootstrap': 'angular-ui/ui-bootstrap-tpls',
     'ui-utils': 'angular-ui/ui-utils',
     'ui-utils-ieshiv': 'angular-ui/ui-utils-ieshiv',
-    underscore: 'underscore/underscore',
-    // FIXME: port to requireJS
-    'bedrock.api': 'legacy/bedrock.api'
+    underscore: 'underscore/underscore'
   },
   shim: {
     // export globals for non-requireJS libs
@@ -40,9 +38,7 @@ require.config({
     spin: {exports: 'Spinner'},
     'ui-bootstrap': {deps: ['angular']},
     'ui-utils': {deps: ['angular', 'ui-utils-ieshiv']},
-    underscore: {exports: '_'},
-    // FIXME: port to requireJS and remove these
-    'bedrock.api': {deps: ['jquery'], exports: 'bedrock'}
+    underscore: {exports: '_'}
   }
 });
 

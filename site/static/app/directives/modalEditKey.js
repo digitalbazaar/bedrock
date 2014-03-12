@@ -5,7 +5,7 @@
  *
  * @author Dave Longley
  */
-define(['angular', 'bedrock.api'], function(angular, bedrock) {
+define(['angular'], function(angular) {
 
 'use strict';
 

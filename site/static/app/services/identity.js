@@ -5,18 +5,17 @@
  *
  * @author Dave Longley
  */
-define(['angular', 'bedrock.api'], function(angular, bedrock) {
+define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$http', '$rootScope'];
+var deps = ['config', '$http', '$rootScope'];
 return {svcIdentity: deps.concat(factory)};
 
-function factory($http, $rootScope) {
+function factory(config, $http, $rootScope) {
   var service = {};
 
-  var data = window.data || {};
-  var session = data.session || {auth: false};
+  var session = config.data.session || {auth: false};
   service.identity = session.identity || null;
   service.identityMap = session.identities || {};
   service.identities = [];
