@@ -23,15 +23,14 @@
       <form class="navbar-form pull-right" data-ng-submit="submit()">
         <fieldset>
           <input data-ng-hide="multiple"
-            class="input-medium" name="profile" type="text"
-            data-ng-model="profile" autofocus="autofocus"
+            class="input-medium" name="sysIdentifier" type="text"
+            data-ng-model="sysIdentifier" autofocus="autofocus"
             placeholder="Email" data-ng-disabled="loading" />
-          <select data-ng-show="multiple" name="profile" autofocus="autofocus"
+          <select data-ng-show="multiple" name="sysIdentifier" autofocus="autofocus"
             data-tooltip-title="Your email address ({{email}}) is associated with multiple
-            profiles. Please select the identity associated with the profile
-            you'd like to sign in with."
+            identities. Please select the identity you'd like to sign in with."
             data-placement="bottom" data-trigger="hover"
-            data-ng-model="profile"
+            data-ng-model="sysIdentifier"
             data-ng-options="value.id as value.label for value in choices"
             data-ng-disabled="loading">
           </select>
@@ -45,15 +44,15 @@
             <div class="btn-group btn-group-banner">
               <a class="btn btn-primary" data-submit-form>Sign In</a>
               <a class="btn btn-primary"
-                data-popover-template="/app/templates/navbar-profile-actions.html"
-                data-popover-visible="showProfileActions"
-                data-title="Profile Actions"
+                data-popover-template="/app/templates/navbar-actions.html"
+                data-popover-visible="showNavbarActions"
+                data-title="Actions"
                 data-placement="bottom">
                   <i class="caret"></i>
               </a>
             </div>
             <div class="btn-group btn-group-banner">
-              <a class="btn btn-inverse" href="/profile/create">Join</a>
+              <a class="btn btn-inverse" href="/join">Join</a>
             </div>
           </div>
         </fieldset>

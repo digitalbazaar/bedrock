@@ -16,8 +16,8 @@
   <fieldset>
     <div class="control-group">
       <div data-ng-hide="multiple" class="controls">
-        <input name="profile" type="text" autofocus="autofocus"
-          data-ng-model="profile"
+        <input name="sysIdentifier" type="text" autofocus="autofocus"
+          data-ng-model="sysIdentifier"
           placeholder="Email" data-ng-disabled="loading" />
       </div>
 
@@ -25,12 +25,11 @@
         <p class="alert alert-info">
           <strong>Note:</strong>
           Your email address ({{email}}) is associated with multiple
-          profiles. Please select the identity associated with the profile
-          you'd like to sign in with.
+          identities. Please select the identity you'd like to sign in with.
         </p>
         <div class="controls">
-          <select name="profile" autofocus="autofocus"
-            data-ng-model="profile"
+          <select name="identity" autofocus="autofocus"
+            data-ng-model="identity"
             data-ng-options="value.id as value.label for value in choices"
             data-ng-disabled="loading">
           </select>
@@ -58,13 +57,13 @@
         <div></div>
         <ul class="center dropdown-menu">
           <li>
-            <a href="/profile/create">
+            <a href="/join">
               <i class="icon-user"></i>
-              Create a Profile
+              Create an Identity
             </a>
           </li>
           <li>
-            <a href="/profile/passcode">
+            <a href="/session/passcode">
               <i class="icon-refresh"></i>
               Password Reset
             </a>

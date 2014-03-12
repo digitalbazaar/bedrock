@@ -29,7 +29,7 @@ describe('Dev Account Login', function() {
 
   it('should be able to sign in', function() {
     return browser
-      .elementByName('profile')
+      .elementByName('sysIdentifier')
       .sendKeys('dev')
       .elementByName('password')
       .sendKeys('password')

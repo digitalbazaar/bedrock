@@ -1,23 +1,23 @@
-{% set pageTitle = "Create Profile" %}
-{% set clientData.pageTitle = "Create Profile" %}
+{% set pageTitle = "Create Identity" %}
+{% set clientData.pageTitle = "Create Identity" %}
 {% include "head.html" %}
 
 {% raw %}
-<div class="row ng-cloak" data-ng-controller="CreateProfileCtrl">
+<div class="row ng-cloak" data-ng-controller="CreateIdentityCtrl">
   <div class="span8 offset2">
-    <h2>Create a Profile</h2>
+    <h2>Create an Identity</h2>
 
     <p>
-    By creating a profile, you will be able to log into the service.
+    By creating an identity, you will be able to log into the service.
     </p>
 
     <div data-ng-include="'/app/templates/demo-warning.html'"></div>
 
     <hr />
 
-    <form id="createProfileFeedbackTarget" class="form-horizontal" action="" data-ng-submit="submit()">
+    <form id="createIdentityFeedbackTarget" class="form-horizontal" action="" data-ng-submit="submit()">
       <fieldset>
-        <legend>Your Profile Details</legend>
+        <legend>Your Identity Details</legend>
 
         <div class="control-group" data-binding="email">
           <label class="control-label" for="email">Email</label>
@@ -25,7 +25,7 @@
             <div class="input-append">
               <input class="input-xlarge form-field-vspaced"
                 name="email" data-binding="email" type="text"
-                data-ng-model="profile.email"
+                data-ng-model="identity.email"
                 data-track-state="model.help.email"
                 data-ng-disabled="loading"
                 autocomplete="off" />
@@ -33,11 +33,11 @@
                 <i class="icon-question-sign"></i>
               </button>
             </div>
-            <div data-duplicate-checker="profile.email"
+            <div data-duplicate-checker="identity.email"
               data-duplicate-checker-type="email"
               data-duplicate-checker-available="This email address is available!"
               data-duplicate-checker-invalid="Email address is invalid."
-              data-duplicate-checker-taken="This email address is already in use. While you can create a new profile if you want to, you should probably log in and create a new identity instead."
+              data-duplicate-checker-taken="This email address is already in use. While you can create a new identity if you want to, you may want to log in as your existing identity instead."
               data-duplicate-checker-checking="Checking Availability..."
               data-duplicate-checker-result="model.emailAvailable">
             </div>
@@ -55,7 +55,7 @@
               <input class="input-xlarge"
                 name="password" data-binding="sysPassword"
                 maxlength="32" type="password"
-                data-ng-model="profile.sysPassword"
+                data-ng-model="identity.sysPassword"
                 data-track-state="model.help.password"
                 data-ng-disabled="loading" />
               <button class="btn" data-help-toggle="model.help.password">
@@ -90,8 +90,8 @@
             <div class="input-append">
               <input class="input-xlarge"
                 name="identity-label" type="text"
-                data-slug-out="profile.sysIdentity.sysSlug"
-                data-ng-model="profile.sysIdentity.label"
+                data-slug-out="identity.sysSlug"
+                data-ng-model="identity.label"
                 data-track-state="model.help.identityLabel"
                 data-ng-disabled="loading"
                 autocomplete="off" />
@@ -106,12 +106,12 @@
               address below:
             </p>
             <p><small>{{data.identityBaseUri}}/</small><input
-              data-binding="sysIdentity.sysSlug" class="slug"
+              data-binding="identity.sysSlug" class="slug"
               name="identity-slug" type="text" maxlength="32"
               placeholder="IDENTITY-NAME"
-              data-slug-in data-ng-model="profile.sysIdentity.sysSlug"
+              data-slug-in data-ng-model="identity.sysSlug"
               data-ng-disabled="loading" /></p>
-            <div data-duplicate-checker="profile.sysIdentity.sysSlug"
+            <div data-duplicate-checker="identity.sysSlug"
               data-duplicate-checker-type="Identity"
               data-duplicate-checker-available="This identity name is available!"
               data-duplicate-checker-invalid="Identity name is invalid."
@@ -136,7 +136,7 @@
           data-feedback="feedback" data-target="feedbackTarget"></div>
         <button data-ng-disabled="loading || !model.identitySlugAvailable || !model.emailAvailable || !agreementChecked"
           class="btn btn-large btn-primary"
-          data-submit-form>Create Profile</button>
+          data-submit-form>Create Identity</button>
         <span data-spinner="loading"
           data-spinner-class="append-btn-spinner"></span>
       </div>
