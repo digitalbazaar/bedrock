@@ -9,60 +9,63 @@ define(['angular', 'bedrock.api'], function(angular, bedrock) {
 
 'use strict';
 
-var deps = ['$scope', 'config'];
+var deps = ['$scope', 'config', '$http'];
 return {LoginCtrl: deps.concat(factory)};
 
-function factory($scope, config) {
+function factory($scope, config, $http) {
   var model = $scope.model = {};
-  var data = window.data;
   $scope.multiple = false;
   $scope.loading = false;
   $scope.error = '';
-  $scope.profile = '';
+  $scope.sysIdentifier = '';
   $scope.password = '';
-  $scope.ref = data.ref;
-  model.siteTitle = data.siteTitle;
-  model.sessionExpired = data.sessionExpired || false;
+  $scope.ref = config.data.ref;
+  model.siteTitle = config.data.siteTitle;
+  model.sessionExpired = config.data.sessionExpired || false;
   model.navbar = config.site.navbar;
 
   $scope.submit = function() {
     // do login
     $scope.error = '';
     $scope.loading = true;
-    bedrock.profiles.login({
-      profile: $scope.profile,
-      password: $scope.password,
-      ref: $scope.ref,
-      success: function(response) {
-        // if a 'ref' is returned, login was successful
-        if(response.ref) {
-          // redirect to referral URL
-          window.location = response.ref;
-        }
-        else {
-          // show multiple profiles
-          $scope.multiple = true;
-          $scope.email = response.email;
-          $scope.choices = [];
-          angular.forEach(response.profiles, function(identity, profileId) {
-            $scope.choices.push({id: profileId, label: identity.label});
-          });
-          $scope.profile = $scope.choices[0].id;
-          $scope.loading = false;
-          $scope.$apply();
-        }
-      },
-      error: function(err) {
-        // FIXME: use directive to show feedback?
-        if(err.type === 'bedrock.validation.ValidationError') {
-          $scope.error = 'Please enter your email address and password.';
-        }
-        else {
-          $scope.error = err.message;
-        }
+
+    var data = {
+      sysIdentifier: $scope.sysIdentifier,
+      password: $scope.password
+    };
+    if($scope.ref) {
+      data.ref = $scope.ref;
+    }
+    Promise.cast($http.post('/session/login', data))
+      .then(function(response) {
+      var data = response.data;
+      // if a 'ref' is returned, login was successful
+      if(data.ref) {
+        // redirect to referral URL
+        window.location = data.ref;
+      }
+      else {
+        // show multiple identities
+        $scope.multiple = true;
+        $scope.email = data.email;
+        $scope.choices = [];
+        angular.forEach(data.identities, function(identity, identityId) {
+          $scope.choices.push({id: identityId, label: identity.label});
+        });
+        $scope.sysIdentifier = $scope.choices[0].id;
         $scope.loading = false;
         $scope.$apply();
       }
+    }).catch(function(err) {
+      // FIXME: use directive to show feedback?
+      if(err.type === 'bedrock.validation.ValidationError') {
+        $scope.error = 'Please enter your email address and password.';
+      }
+      else {
+        $scope.error = err.message;
+      }
+      $scope.loading = false;
+      $scope.$apply();
     });
   };
 }

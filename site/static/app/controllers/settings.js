@@ -25,8 +25,6 @@ return {
 function factory($scope, config, svcIdentity) {
   // TODO: use model instead of scope directly
   var model = $scope.model = {};
-  var data = window.data || {};
-  $scope.profile = data.session.profile;
   $scope.identity = svcIdentity.identity;
   $scope.state = {};
   $scope.modals = {};

@@ -1,5 +1,5 @@
 /*!
- * Profile Settings.
+ * Identity Settings.
  *
  * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -11,7 +11,7 @@ define([], function() {
 'use strict';
 
 var deps = ['$scope', 'svcIdentity'];
-return {ProfileSettingsCtrl: deps.concat(factory)};
+return {IdentitySettingsCtrl: deps.concat(factory)};
 
 function factory($scope, svcIdentity) {
   $scope.state = svcIdentity.state;

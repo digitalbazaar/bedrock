@@ -1,5 +1,5 @@
 /*!
- * Profile Creation Controller.
+ * Identity Creation Controller.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -11,7 +11,7 @@ define([], function() {
 'use strict';
 
 var deps = ['$scope', '$http'];
-return {CreateProfileCtrl: deps.concat(factory)};
+return {CreateIdentityCtrl: deps.concat(factory)};
 
 function factory($scope, $http) {
   $scope.model = {};
@@ -19,18 +19,16 @@ function factory($scope, $http) {
   $scope.feedback = {};
   // FIXME: temporary code to be removed after feedback improvements.
   //      : also remove the id fom the form in create.tpl.
-  $scope.feedbackTarget = $('#createProfileFeedbackTarget');
+  $scope.feedbackTarget = $('#createIdentityFeedbackTarget');
   $scope.loading = false;
-  $scope.profile = {
+  $scope.identity = {
     '@context': $scope.data.contextUrl,
+    type: 'Identity',
+    label: '',
     email: '',
     sysPassword: '',
-    sysIdentity: {
-      type: 'Identity',
-      label: '',
-      sysSlug: '',
-      sysPublic: []
-    }
+    sysPublic: [],
+    sysSlug: ''
   };
   $scope.agreementChecked = false;
 
@@ -39,12 +37,12 @@ function factory($scope, $http) {
       return false;
     }
     $scope.loading = true;
-    $http.post('/profile/create', $scope.profile)
+    $http.post('/join', $scope.identity)
       .success(function(response) {
         // redirect to referral URL
         window.location = response.ref;
       })
-      .error(function(err, status) {
+      .error(function(err) {
         $scope.loading = false;
         $scope.feedback.error = err;
       });

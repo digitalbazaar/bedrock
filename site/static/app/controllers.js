@@ -7,14 +7,14 @@
  */
 define([
   'angular',
-  'app/controllers/createProfile',
+  'app/controllers/createIdentity',
   'app/controllers/dashboard',
   'app/controllers/key',
   'app/controllers/keySettings',
   'app/controllers/login',
   'app/controllers/navbar',
   'app/controllers/passcode',
-  'app/controllers/profileSettings',
+  'app/controllers/identitySettings',
   'app/controllers/settings'
 ], function(angular) {
 

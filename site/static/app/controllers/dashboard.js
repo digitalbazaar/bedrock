@@ -6,11 +6,11 @@
  * @author Dave Longley
  * @author David I. Lehn
  */
-define(['angular', 'bedrock.api'], function(angular, bedrock) {
+define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'svcIdentity', '$timeout'];
+var deps = ['$scope', 'config', 'svcIdentity'];
 return {
   controller: {DashboardCtrl: deps.concat(factory)},
   routes: [{
@@ -22,10 +22,8 @@ return {
   }]
 };
 
-function factory($scope, svcIdentity, $timeout) {
+function factory($scope, svcIdentity) {
   var model = $scope.model = {};
-  var data = window.data || {};
-  $scope.profile = data.session.profile;
   $scope.identity = svcIdentity.identity;
   $scope.state = {};
   $scope.modals = {};

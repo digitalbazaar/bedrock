@@ -10,14 +10,13 @@ define(['bedrock.api'], function(bedrock) {
 
 'use strict';
 
-var deps = ['$scope'];
+var deps = ['$scope', 'config', '$http'];
 return {PasscodeCtrl: deps.concat(factory)};
 
-function factory($scope) {
+function factory($scope, config, $http) {
   $scope.model = {};
-  var data = window.data || {};
-  $scope.email = data.session ? data.session.profile.email : '';
-  $scope.sysPasscode = data.sysPasscode || '';
+  $scope.email = config.data.session ? config.data.session.identity.email : '';
+  $scope.sysPasscode = config.data.sysPasscode || '';
   $scope.sysPasswordNew = '';
   $scope.feedback = {
     email: {},
@@ -29,19 +28,35 @@ function factory($scope) {
   $scope.sendReset = function() {
     // request a passcode
     resetFeedback();
-    bedrock.profiles.passcode({
-      profile: {sysIdentifier: $scope.email},
-      success: function() {
-        $scope.feedback.email.success = {
-          message:
-            'An email has been sent to you with password reset instructions.'
-        };
-        $scope.$apply();
-      },
-      error: function(err) {
-        $scope.feedback.email.error = err;
-        $scope.$apply();
-      }
+    Promise.cast($http.post('/session/passcode?usage=reset', {
+      sysIdentifier: $scope.email
+    })).then(function() {
+      $scope.feedback.email.success = {
+        message:
+          'An email has been sent to you with password reset instructions.'
+      };
+      $scope.$apply();
+    }).catch(function(err) {
+      $scope.feedback.email.error = err;
+      $scope.$apply();
+    });
+  };
+
+  $scope.updatePassword = function() {
+    // request a password reset using the given passcode
+    resetFeedback();
+    Promise.cast($http.post('/session/password/reset', {
+      sysIdentifier: $scope.email,
+      sysPasscode: $scope.sysPasscode,
+      sysPasswordNew: $scope.sysPasswordNew
+    })).then(function() {
+      $scope.feedback.password.success = {
+        message: 'Your password has been updated successfully.'
+      };
+      $scope.$apply();
+    }).catch(function(err) {
+      $scope.feedback.password.error = err;
+      $scope.$apply();
     });
   };
 
@@ -49,28 +64,6 @@ function factory($scope) {
     $scope.feedback.email = {};
     $scope.feedback.password = {};
   }
-
-  $scope.updatePassword = function() {
-    // request a password reset using the given passcode
-    resetFeedback();
-    bedrock.profiles.password({
-      profile: {
-        sysIdentifier: $scope.email,
-        sysPasscode: $scope.sysPasscode,
-        sysPasswordNew: $scope.sysPasswordNew
-      },
-      success: function() {
-        $scope.feedback.password.success = {
-          message: 'Your password has been updated successfully.'
-        };
-        $scope.$apply();
-      },
-      error: function(err) {
-        $scope.feedback.password.error = err;
-        $scope.$apply();
-      }
-    });
-  };
 }
 
 });

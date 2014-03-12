@@ -13,7 +13,7 @@ return {
   settings: {
     panes: [
       {
-        templateUrl: '/app/templates/settings/profile.html'
+        templateUrl: '/app/templates/settings/identity.html'
       },
       {
         templateUrl: '/app/templates/settings/keys.html'

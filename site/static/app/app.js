@@ -51,7 +51,7 @@ define([
           else if(error.type === 'bedrock.website.PermissionDenied') {
             // redirect to login
             // TODO: support modal login to keep state vs forced redirect
-            window.location = '/profile/login?ref=' +
+            window.location = '/session/login?ref=' +
               encodeURIComponent(window.location.pathname) +
               '&expired=true';
           }

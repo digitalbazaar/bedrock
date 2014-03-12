@@ -1,17 +1,13 @@
 <div>
   <table>
     <tbody>
-      <tr>
-        <td><strong>Email:</strong></td>
-        <td>{{model.session.profile.email}}</td>
-      </tr>
       <tr data-ng-show="model.session.identity">
         <td><strong>Identity:</strong></td>
-        <td>{{model.session.identity.label}}</td>
+        <td>{{model.session.identity.label || model.session.identity.sysSlug}}</td>
       </tr>
-      <tr data-ng-hide="model.session.identity">
-        <td><strong>Profile:</strong></td>
-        <td>{{model.session.profile.label}}</td>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>{{model.session.identity.email}}</td>
       </tr>
     </tbody>
   </table>
@@ -31,7 +27,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2"><a href="/profile/logout"><i
+        <td colspan="2"><a href="/session/logout"><i
           class="icon-off"></i> Sign Out</a>
         </td>
       </tr>
