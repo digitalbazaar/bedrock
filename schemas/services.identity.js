@@ -1,10 +1,13 @@
 /*
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
+var email = require('./email');
 var jsonldContext = require('./jsonldContext');
 var jsonldType = require('./jsonldType');
 var label = require('./label');
 var identifier = require('./identifier');
+var passcode = require('./passcode');
+var password = require('./password');
 var publicKeyPem = require('./publicKeyPem');
 var slug = require('./slug');
 var visibility = require('./propertyVisibility');
@@ -14,7 +17,8 @@ var postIdentity = {
   type: 'object',
   properties: {
     '@context': jsonldContext(),
-    label: label()
+    email: email({required: false}),
+    label: label({required: false})
   },
   additionalProperties: false
 };
@@ -27,7 +31,8 @@ var getIdentitiesQuery = {
 };
 
 var postIdentities = {
-  title: 'Post Identities',
+  title: 'Create Identity',
+  description: 'Create an Identity',
   type: 'object',
   properties: {
     '@context': jsonldContext(),
@@ -38,7 +43,9 @@ var postIdentities = {
     },
     sysSlug: slug(),
     label: label(),
-    website: {
+    email: email(),
+    sysPassword: password(),
+    url: {
       required: false,
       type: 'string'
     },
@@ -80,6 +87,16 @@ var postPreferences = {
   additionalProperties: false
 };
 
+var postEmailVerify = {
+  title: 'Verify email',
+  description: 'Verify an email address.',
+  type: 'object',
+  properties: {
+    sysPasscode: passcode()
+  },
+  additionalProperties: false
+};
+
 module.exports.postIdentity = function() {
   return postIdentity;
 };
@@ -91,4 +108,7 @@ module.exports.postIdentities = function() {
 };
 module.exports.postPreferences = function() {
   return postPreferences;
+};
+module.exports.postEmailVerify = function() {
+  return postEmailVerify;
 };

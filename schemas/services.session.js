@@ -23,7 +23,6 @@ var getPasscodeQuery = {
   additionalProperties: true
 };
 
-
 var postPasscode = {
   title: 'Passcode',
   description: 'Create a passcode.',
@@ -64,46 +63,32 @@ var postPasswordReset = {
   additionalProperties: false
 };
 
-var postEmailVerify = {
-  title: 'Verify email',
-  description: 'Verify an email address.',
-  type: 'object',
-  properties: {
-    sysIdentifier: {
-      required: true,
-      type: [identifier(), slug(), email()]
-    },
-    sysPasscode: passcode()
-  },
-  additionalProperties: false
-};
-
-var postCreate = {
-  title: 'Create profile',
-  description: 'Create a profile.',
+var postJoin = {
+  title: 'Create Identity',
+  description: 'Create an Identity',
   type: 'object',
   properties: {
     '@context': jsonldContext(),
-    sysSlug: slug({required: false}),
+    type: {
+      required: true,
+      type: 'string',
+      enum: ['Identity']
+    },
+    sysSlug: slug(),
+    label: label(),
     email: email(),
     sysPassword: password(),
-    label: label({required: false}),
-    sysIdentity: {
-      required: true,
-      type: 'object',
-      properties: {
-        type: {
-          required: true,
-          type: 'string',
-          enum: ['Identity']
-        },
-        sysSlug: slug(),
-        label: label(),
-        sysPublic: {
-          required: false,
-          type: visibility()
-        }
-      }
+    url: {
+      required: false,
+      type: 'string'
+    },
+    description: {
+      required: false,
+      type: 'string'
+    },
+    sysPublic: {
+      required: false,
+      type: visibility()
     }
   },
   additionalProperties: false
@@ -129,34 +114,12 @@ var postLogin = {
   description: 'Login.',
   type: 'object',
   properties: {
-    profile: {
+    sysIdentifier: {
       required: true,
       type: [slug(), email(), identifier()]
     },
     password: password(),
     ref: url({required: false})
-  },
-  additionalProperties: false
-};
-
-var postProfile = {
-  title: 'Update profile',
-  description: 'Update profile.',
-  type: 'object',
-  properties: {
-    label: label({required: false}),
-    email: email({required: false})
-  },
-  additionalProperties: false
-};
-
-var switchIdentity = {
-  title: 'Switch identity',
-  description: 'Switch identity.',
-  type: 'object',
-  properties: {
-    identity: identifier(),
-    redirect: url()
   },
   additionalProperties: false
 };
@@ -173,11 +136,8 @@ module.exports.postPassword = function() {
 module.exports.postPasswordReset = function() {
   return postPasswordReset;
 };
-module.exports.postEmailVerify = function() {
-  return postEmailVerify;
-};
-module.exports.postCreate = function() {
-  return postCreate;
+module.exports.postJoin = function() {
+  return postJoin;
 };
 module.exports.getLoginQuery = function() {
   return getLoginQuery;
@@ -187,7 +147,4 @@ module.exports.postLogin = function() {
 };
 module.exports.postProfile = function() {
   return postProfile;
-};
-module.exports.switchIdentity = function() {
-  return switchIdentity;
 };
