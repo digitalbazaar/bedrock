@@ -2,6 +2,7 @@ var config = require(__libdir + '/bedrock').config;
 
 var permissions = config.permission.permissions;
 
+// identity permissions
 permissions.IDENTITY_ADMIN = {
   id: 'IDENTITY_ADMIN',
   label: 'Identity Administration',
@@ -36,4 +37,11 @@ permissions.PUBLIC_KEY_REMOVE = {
   id: 'PUBLIC_KEY_REMOVE',
   label: 'Remove Public Key',
   comment: 'Required to remove a Public Key.'
+};
+
+// website permissions
+permissions.WEBSITE_ADMIN = {
+  id: 'WEBSITE_ADMIN',
+  label: 'Website Administration',
+  comment: 'Required to administer website services.'
 };
