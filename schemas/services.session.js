@@ -145,6 +145,3 @@ module.exports.getLoginQuery = function() {
 module.exports.postLogin = function() {
   return postLogin;
 };
-module.exports.postProfile = function() {
-  return postProfile;
-};
