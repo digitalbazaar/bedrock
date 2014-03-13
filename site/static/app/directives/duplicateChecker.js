@@ -98,6 +98,7 @@ function factory($http, $filter) {
                       .addClass('alert-success')
                       .text(scope.available)
                       .fadeIn('slow');
+                    scope.$apply();
                   }).catch(function(err) {
                     scope.result = false;
                     element.hide().removeClass('alert-error alert-success');
@@ -119,6 +120,7 @@ function factory($http, $filter) {
                     else {
                       // FIXME: report server errors
                     }
+                    scope.$apply();
                   });
               }
             });
