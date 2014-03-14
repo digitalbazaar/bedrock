@@ -6,46 +6,49 @@ A core foundation for a rich application server.
 Building the Software
 ---------------------
 
-1. npm install
+    npm install
 
 Running the Development Bedrock Server
 --------------------------------------
 
-1. npm run dev
+    npm run dev
 
 Running the Tests
 -----------------
 
 Run all unit and system tests:
 
-1. npm run test
+    npm run test
 
 Run just the unit tests:
 
-1. npm run test-unit
+    npm run test-unit
 
 Run just the system tests:
 
-1. npm run test-system
+    npm run test-system
 
 Running the Code Coverage Tool
 ------------------------------
 
-1. npm run coverage
-2. Look at 'coverage.html' using a web browser
+    npm run coverage
+
+Look at 'coverage.html' using a web browser
 
 Minimizing the RequireJS client-side JS
 ---------------------------------------
 
-1. npm run minify
-2. To test in dev mode, set the website config var 'minify' to true.
+    npm run minify
+
+To test in dev mode, set the website config var 'minify' to true.
 
 Generating a new self-signed SSL certificate for testing
 --------------------------------------------------------
 
-1. nodejs create-credentials.js
-2. Save the generated private key and certificate PEMs in the
-   appropriate files (in ./pki/ if using the default config).
+    nodejs create-credentials.js
+
+Save the generated private key and certificate PEMs in the appropriate files
+(in ./pki/ if using the default config).
 
 Features
 -------

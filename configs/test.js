@@ -13,8 +13,8 @@ config.app.masterTitle = 'bedrock1d';
 config.app.workerTitle = 'bedrock1d-worker';
 config.app.restartWorkers = true;
 // system group and user IDs (can be groupname/username instead of numbers)
-config.app.user.groupId = process.getuid();
-config.app.user.userId = process.getgid();
+config.app.user.groupId = process.getgid();
+config.app.user.userId = process.getuid();
 
 // config environment
 config.environment = 'development';
