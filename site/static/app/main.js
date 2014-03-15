@@ -17,6 +17,7 @@ require.config({
   baseUrl: '/',
   paths: {
     angular: 'angular/angular',
+    'angular-route': 'angular/angular-route',
     bedrock: '.',
     bootstrap: 'bootstrap/js/bootstrap',
     jquery: 'jquery/jquery',
@@ -32,6 +33,7 @@ require.config({
   shim: {
     // export globals for non-requireJS libs
     angular: {exports: 'angular', deps: ['jquery']},
+    'angular-route': {deps: ['angular']},
     bootstrap: {deps: ['jquery']},
     jquery: {exports: 'jQuery'},
     'jquery.placeholder': {deps: ['jquery']},

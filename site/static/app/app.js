@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  'angular-route',
   'bootstrap',
   'ui-bootstrap',
   'ui-utils',
@@ -22,6 +23,7 @@ define([
   'use strict';
 
   var module = angular.module('app', [
+    'ngRoute',
     'app.templates', 'app.directives', 'app.filters', 'app.services',
     'app.controllers', 'app.configs', 'ui.bootstrap', 'ui.utils']);
   module.config(['$httpProvider', function($httpProvider) {
@@ -102,9 +104,10 @@ define([
     /* Note: $route is injected above to trigger watching routes to ensure
       pages are loaded properly. */
 
-    // accept JSON-LD
+    // default headers
     $http.defaults.headers.common.Accept =
       'application/ld+json, application/json, text/plain, */*';
+    $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
     // set site and page titles
     $rootScope.siteTitle = window.data.siteTitle;
@@ -150,6 +153,7 @@ define([
 
     // set page title when route changes
     $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
+      // FIXME: angular13 fix this
       if(current && current.$$route) {
         $rootScope.pageTitle = current.$$route.title;
       }
