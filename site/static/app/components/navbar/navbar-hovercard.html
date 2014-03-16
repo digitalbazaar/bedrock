@@ -1,0 +1,29 @@
+<div>
+  <table>
+    <tbody>
+      <tr data-ng-show="model.session.identity">
+        <td><strong>Identity:</strong></td>
+        <td>{{model.session.identity.label}}</td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>{{model.session.identity.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="2"><a
+          data-ng-click="refreshData()"><i class="icon-refresh"></i> Refresh</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="/session/logout"><i
+          class="icon-off"></i> Sign Out</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

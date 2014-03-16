@@ -1,0 +1,20 @@
+/*!
+ * Tabs module.
+ *
+ * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ *
+ * @author Dave Longley
+ */
+define([
+  'angular',
+  'tabs.controller'
+], function(angular, controller) {
+
+'use strict';
+
+var module = angular.module('app.tabs', []);
+
+// register controller
+module.controller(controller.controller);
+
+});

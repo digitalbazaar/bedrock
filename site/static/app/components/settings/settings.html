@@ -1,0 +1,11 @@
+<div class="container ng-cloak" data-ng-controller="SettingsCtrl">
+  <div class="row">
+    <div class="title-section span12">
+      <h1 class="headline">Settings</h1>
+    </div>
+  </div>
+
+  <div data-tabs>
+    <div data-ng-repeat="pane in panes" data-ng-include="pane.templateUrl"></div>
+  </div>
+</div>

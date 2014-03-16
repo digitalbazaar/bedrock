@@ -1,0 +1,24 @@
+<form class="well form-horizontal" action="">
+  <fieldset>
+    <div class="control-group" data-binding="label">
+      <label class="control-label" for="label">Access Key Label</label>
+      <div class="controls">
+        <div class="input-prepend input-append">
+          <span class="add-on"><i class="icon-tag"></i></span><input
+            type="text" name="label"
+            data-ng-model="key.label"
+            data-track-state="model.help.label" />
+          <button class="btn" data-help-toggle="model.help.label">
+            <i class="icon-question-sign"></i>
+          </button>
+        </div>
+        <p data-fade-toggle="model.help.label.show" class="help-block">
+          Please enter a memorable name that describes what this key is
+          for.
+          <br/><br/>
+          Suggestions: Blog Key 1, Command Line Key, My App Key
+        </p>
+      </div>
+    </div>
+  </fieldset>
+</form>

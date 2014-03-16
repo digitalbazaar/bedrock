@@ -1,0 +1,16 @@
+<div>
+  <div data-selector data-item-type="Identity"
+    data-items="identities" data-selected="selected" data-invalid="invalid"
+    data-add-item="showAddIdentityModal=true" data-fixed="{{fixed}}">
+    <div class="identity">
+      <strong>{{selected.label}}</strong><br/>
+      <small>{{selected.id}}</small><br/>
+      <span data-ng-show="selected.address.length > 0">
+        {{selected.address[0].fullName}}
+      </span>
+    </div>
+  </div>
+  <div data-modal-add-identity="showAddIdentityModal"
+    data-identity-types="identityTypes"
+    data-modal-on-close="!err && (selected=result.identity)"></div>
+</div>
