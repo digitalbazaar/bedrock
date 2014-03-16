@@ -20,7 +20,7 @@
         {% endif %}
         {% raw %}
         <a class="btn btn-nav btn-small show pull-right{{model.showHovercard && ' active' || ''}}"
-          data-popover-template="/app/templates/navbar-hovercard.html"
+          data-popover-template="/app/components/navbar/hovercard.html"
           data-popover-visible="model.showHovercard"
           data-title="{{model.session.identity.label}}"
           data-placement="bottom">

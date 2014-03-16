@@ -75,7 +75,7 @@ module.exports = function(grunt) {
           return file;
         }
       },
-      src: 'site/static/app/templates/**/*.html',
+      src: 'site/static/app/**/*.html',
       dest: 'site/static/app/templates.min.js'
     }
   });

@@ -13,20 +13,22 @@ define([
   'ui-utils',
   'promise',
   'app/configs',
-  'app/controllers',
-  'app/directives',
-  'app/filters',
-  'app/services',
+  'app/components',
   'app/templates'
 ], function(angular) {
 
-  'use strict';
+'use strict';
 
-  var module = angular.module('app', [
-    'ngRoute',
-    'app.templates', 'app.directives', 'app.filters', 'app.services',
-    'app.controllers', 'app.configs', 'ui.bootstrap', 'ui.utils']);
-  module.config(['$httpProvider', function($httpProvider) {
+var module = angular.module('app', [
+  'ngRoute', 'ui.bootstrap', 'ui.utils', 'app.configs', 'app.components']);
+module.config(['$locationProvider', '$routeProvider', '$httpProvider',
+  function($locationProvider, $routeProvider, $httpProvider) {
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
+
+    // add non-route
+    $routeProvider.otherwise({none: true});
+
     // TODO: interceptor API changed after angular 1.0.x
     // normalize errors, deal w/auth redirection
     $httpProvider.responseInterceptors.push(['$q', '$timeout', function(
@@ -61,128 +63,129 @@ define([
         });
       };
     }]);
-  }]);
+}]);
+
+// utility functions
+var util = {};
+module.value('util', util);
+util.parseFloat = parseFloat;
+
+var jsonld = util.jsonld = {};
+jsonld.isType = function(obj, value) {
+  var types = obj.type;
+  if(types) {
+    if(!angular.isArray(types)) {
+      types = [types];
+    }
+    return types.indexOf(value) !== -1;
+  }
+  return false;
+};
+
+util.w3cDate = function(date) {
+  if(date === undefined || date === null) {
+    date = new Date();
+  }
+  else if(typeof date === 'number' || typeof date === 'string') {
+    date = new Date(date);
+  }
+  return (
+    date.getUTCFullYear() + '-' +
+    util.zeroFill(date.getUTCMonth() + 1) + '-' +
+    util.zeroFill(date.getUTCDate()) + 'T' +
+    util.zeroFill(date.getUTCHours()) + ':' +
+    util.zeroFill(date.getUTCMinutes()) + ':' +
+    util.zeroFill(date.getUTCSeconds()) + 'Z');
+};
+util.zeroFill = function(num) {
+  return (num < 10) ? '0' + num : '' + num;
+};
+
+module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
+  $rootScope, $location, $route, $http, util) {
+  /* Note: $route is injected above to trigger watching routes to ensure
+    pages are loaded properly. */
+
+  // default headers
+  $http.defaults.headers.common.Accept =
+    'application/ld+json, application/json, text/plain, */*';
+  $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+  // set site and page titles
+  $rootScope.siteTitle = window.data.siteTitle;
+  $rootScope.pageTitle = window.data.pageTitle;
+
+  // build route regexes
+  var routeRegexes = [];
+  angular.forEach($route.routes, function(route, path) {
+    routeRegexes.push(getRouteRegex(path));
+  });
+
+  // tracks whether current page is using an angular view
+  var usingView = false;
+
+  // determine if full page reload is needed, yes if:
+  // 1. not changing location to the same page
+  // 2. switching from non-view to view (non-route to route)
+  // 3. switching from view to non-view
+  $rootScope.$on('$locationChangeStart', function(event, next, last) {
+    // don't reload same page
+    if(window.location.href === $location.absUrl()) {
+      return;
+    }
+    // if currently using view, test location to see if its a route
+    var mustReload = true;
+    for(var i = 0; usingView && i < routeRegexes.length; ++i) {
+      // location is a route and already using angular view
+      if(routeRegexes[i].test($location.path())) {
+        mustReload = false;
+        break;
+      }
+    }
+    if(mustReload) {
+      window.location.href = $location.absUrl();
+      event.preventDefault();
+    }
+  });
+
+  // monitor whether or not an angular view is in use
+  $rootScope.$on('$viewContentLoaded', function() {
+    usingView = true;
+  });
+
+  // set page title when route changes
+  $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
+    // FIXME: angular13 fix this
+    if(current && current.$$route) {
+      $rootScope.pageTitle = current.$$route.title;
+    }
+  });
 
   // utility functions
-  var util = {};
-  module.value('util', util);
-  util.parseFloat = parseFloat;
+  $rootScope.util = util;
+  $rootScope.jsonld = util.jsonld;
+}]);
 
-  var jsonld = util.jsonld = {};
-  jsonld.isType = function(obj, value) {
-    var types = obj.type;
-    if(types) {
-      if(!angular.isArray(types)) {
-        types = [types];
-      }
-      return types.indexOf(value) !== -1;
-    }
-    return false;
-  };
+angular.bootstrap(document, ['app']);
 
-  util.w3cDate = function(date) {
-    if(date === undefined || date === null) {
-      date = new Date();
-    }
-    else if(typeof date === 'number' || typeof date === 'string') {
-      date = new Date(date);
-    }
-    return (
-      date.getUTCFullYear() + '-' +
-      util.zeroFill(date.getUTCMonth() + 1) + '-' +
-      util.zeroFill(date.getUTCDate()) + 'T' +
-      util.zeroFill(date.getUTCHours()) + ':' +
-      util.zeroFill(date.getUTCMinutes()) + ':' +
-      util.zeroFill(date.getUTCSeconds()) + 'Z');
-  };
-  util.zeroFill = function(num) {
-    return (num < 10) ? '0' + num : '' + num;
-  };
-
-  module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
-    $rootScope, $location, $route, $http, util) {
-    /* Note: $route is injected above to trigger watching routes to ensure
-      pages are loaded properly. */
-
-    // default headers
-    $http.defaults.headers.common.Accept =
-      'application/ld+json, application/json, text/plain, */*';
-    $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-    // set site and page titles
-    $rootScope.siteTitle = window.data.siteTitle;
-    $rootScope.pageTitle = window.data.pageTitle;
-
-    // build route regexes
-    var routeRegexes = [];
-    angular.forEach($route.routes, function(route, path) {
-      routeRegexes.push(getRouteRegex(path));
-    });
-
-    // tracks whether current page is using an angular view
-    var usingView = false;
-
-    // determine if full page reload is needed, yes if:
-    // 1. not changing location to the same page
-    // 2. switching from non-view to view (non-route to route)
-    // 3. switching from view to non-view
-    $rootScope.$on('$locationChangeStart', function(event, next, last) {
-      // don't reload same page
-      if(window.location.href === $location.absUrl()) {
-        return;
-      }
-      // if currently using view, test location to see if its a route
-      var mustReload = true;
-      for(var i = 0; usingView && i < routeRegexes.length; ++i) {
-        // location is a route and already using angular view
-        if(routeRegexes[i].test($location.path())) {
-          mustReload = false;
-          break;
-        }
-      }
-      if(mustReload) {
-        window.location.href = $location.absUrl();
-        event.preventDefault();
-      }
-    });
-
-    // monitor whether or not an angular view is in use
-    $rootScope.$on('$viewContentLoaded', function() {
-      usingView = true;
-    });
-
-    // set page title when route changes
-    $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
-      // FIXME: angular13 fix this
-      if(current && current.$$route) {
-        $rootScope.pageTitle = current.$$route.title;
-      }
-    });
-
-    // utility functions
-    $rootScope.util = util;
-    $rootScope.jsonld = util.jsonld;
-  }]);
-
-  angular.bootstrap(document, ['app']);
-
-  // from angular.js for route matching
-  // TODO: could probably be simplified
-  function getRouteRegex(when) {
-    // Escape regexp special characters.
-    when = '^' + when.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '$';
-    var regex = '', params = [];
-    var re = /:(\w+)/g, paramMatch, lastMatchedIndex = 0;
-    while((paramMatch = re.exec(when)) !== null) {
-      // Find each :param in `when` and replace it with a capturing group.
-      // Append all other sections of when unchanged.
-      regex += when.slice(lastMatchedIndex, paramMatch.index);
-      regex += '([^\\/]*)';
-      params.push(paramMatch[1]);
-      lastMatchedIndex = re.lastIndex;
-    }
-    // Append trailing path part.
-    regex += when.substr(lastMatchedIndex);
-    return new RegExp(regex);
+// from angular.js for route matching
+// TODO: could probably be simplified
+function getRouteRegex(when) {
+  // Escape regexp special characters.
+  when = '^' + when.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '$';
+  var regex = '', params = [];
+  var re = /:(\w+)/g, paramMatch, lastMatchedIndex = 0;
+  while((paramMatch = re.exec(when)) !== null) {
+    // Find each :param in `when` and replace it with a capturing group.
+    // Append all other sections of when unchanged.
+    regex += when.slice(lastMatchedIndex, paramMatch.index);
+    regex += '([^\\/]*)';
+    params.push(paramMatch[1]);
+    lastMatchedIndex = re.lastIndex;
   }
+  // Append trailing path part.
+  regex += when.substr(lastMatchedIndex);
+  return new RegExp(regex);
+}
+
 });

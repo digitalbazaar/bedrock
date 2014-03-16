@@ -13,16 +13,17 @@ define([
   'app/configs/site'
 ], function(angular) {
 
-  'use strict';
+'use strict';
 
-  // register configs
-  var module = angular.module('app.configs', []);
-  var configs = Array.prototype.slice.call(arguments, 1);
-  var moduleConfig = {};
-  angular.forEach(configs, function(config) {
-    angular.forEach(config, function(value, key) {
-      moduleConfig[key] = value;
-    });
+// register configs
+var module = angular.module('app.configs', []);
+var configs = Array.prototype.slice.call(arguments, 1);
+var moduleConfig = {};
+angular.forEach(configs, function(config) {
+  angular.forEach(config, function(value, key) {
+    moduleConfig[key] = value;
   });
-  module.value('config', moduleConfig);
+});
+module.value('config', moduleConfig);
+
 });
