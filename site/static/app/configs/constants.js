@@ -1,5 +1,5 @@
 /*!
- * Constant Service.
+ * Constants config.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -9,38 +9,18 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {svcConstant: deps.concat(factory)};
-
-function factory() {
-  var service = {};
-
-  // months for date handling
-  service.monthNames = [
+var constants = {
+  monthNames: [
     'January','February','March','April',
     'May','June','July','August',
-    'September','October','November','December'];
-  service.monthNumbers = [
-    '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-
-  // create {index: #, label: "01 - January"} labels
-  service.monthLabels = [];
-  for(var i = 0; i < 12; ++i) {
-    service.monthLabels[i] = {
-      index: i + 1,
-      label: service.monthNumbers[i] + ' - ' + service.monthNames[i]
-    };
-  }
-
-  // next ten 10 years for expiration dates (quick hack)
-  service.years = [];
-  var year = new Date().getFullYear();
-  for(var i = 0; i < 10; ++i) {
-    service.years.push(year + i);
-  }
+    'September','October','November','December'
+  ],
+  monthNumbers: [
+    '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+  ],
 
   // country map sorted by display order
-  service.countries = [
+  countries: [
     {code:'AH', name:'Afghanistan'},
     {code:'AL', name:'Albania'},
     {code:'DZ', name:'Algeria'},
@@ -276,9 +256,27 @@ function factory() {
     {code:'ZR', name:'Zaire'},
     {code:'ZM', name:'Zambia'},
     {code:'ZW', name:'Zimbabwe'}
-  ];
+  ]
+};
 
-  return service;
+// create {index: #, label: "01 - January"} labels
+constants.monthLabels = [];
+for(var i = 0; i < 12; ++i) {
+  constants.monthLabels[i] = {
+    index: i + 1,
+    label: constants.monthNumbers[i] + ' - ' + constants.monthNames[i]
+  };
 }
+
+// next ten 10 years for expiration dates (quick hack)
+constants.years = [];
+var year = new Date().getFullYear();
+for(var i = 0; i < 10; ++i) {
+  constants.years.push(year + i);
+}
+
+return {
+  constants: constants
+};
 
 });
