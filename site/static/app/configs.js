@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  'app/configs/constants',
   'app/configs/data',
   'app/configs/settings',
   'app/configs/site'
