@@ -7,14 +7,13 @@
  */
 define([
   'angular',
-  'tabs.controller'
+  './tabs.controller'
 ], function(angular, controller) {
 
 'use strict';
 
 var module = angular.module('app.tabs', []);
 
-// register controller
 module.controller(controller.controller);
 
 });

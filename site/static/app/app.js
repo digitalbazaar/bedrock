@@ -13,7 +13,7 @@ define([
   'ui-utils',
   'promise',
   'app/configs',
-  'app/components',
+  'app/components/components',
   'app/templates'
 ], function(angular) {
 

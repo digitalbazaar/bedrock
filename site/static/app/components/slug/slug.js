@@ -7,9 +7,9 @@
  */
 define([
   'angular',
-  'slug.filter',
-  'slugIn.directive',
-  'slugOut.directive'
+  './slug.filter',
+  './slugIn.directive',
+  './slugOut.directive'
 ], function(angular, filter, slugIn, slugOut) {
 
 'use strict';

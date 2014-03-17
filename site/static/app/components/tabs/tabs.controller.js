@@ -46,7 +46,7 @@ function tabsFactory() {
     transclude: true,
     scope: {},
     controller: ['$scope', Ctrl],
-    templateUrl: '/app/templates/tabs.html'
+    templateUrl: '/app/components/tabs/tabs.html'
   };
 }
 
@@ -65,7 +65,7 @@ function tabsPaneFactory() {
       title: '@'
     },
     link: Link,
-    templateUrl: '/app/templates/tabs-pane.html'
+    templateUrl: '/app/components/tabs/tabs-pane.html'
   };
 }
 

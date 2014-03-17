@@ -21,7 +21,7 @@ function factory(svcModal) {
       itemType: '='
     },
     transclude: true,
-    templateUrl: '/app/templates/modals/selector.html'
+    templateUrl: '/app/components/selector/modal-selector.html'
   });
 }
 

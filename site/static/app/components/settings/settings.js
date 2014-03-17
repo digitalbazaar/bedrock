@@ -7,9 +7,9 @@
  */
 define([
   'angular',
-  'identitySettings.controller',
-  'keySettings.controller',
-  'settings.controller'
+  './identitySettings.controller',
+  './keySettings.controller',
+  './settings.controller'
 ], function(angular, identitySettings, keySettings, settings) {
 
 'use strict';
@@ -27,6 +27,5 @@ module.config(['$routeProvider',
     });
   }
 ]);
-
 
 });

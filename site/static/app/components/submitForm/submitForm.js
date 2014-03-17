@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  'submitForm.directive'
+  './submitForm.directive'
 ], function(angular, directive) {
 
 'use strict';

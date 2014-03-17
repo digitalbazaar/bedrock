@@ -7,10 +7,10 @@
  */
 define([
   'angular',
-  'createIdentity.controller',
-  'identity.service',
-  'identitySelector.directive',
-  'modalAddIdentity.directive'
+  './createIdentity.controller',
+  './identity.service',
+  './identitySelector.directive',
+  './modalAddIdentity.directive'
 ], function(
   angular, createIdentity, service, identitySelector, modalAddIdentity) {
 

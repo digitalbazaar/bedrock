@@ -16,7 +16,7 @@ function factory(svcModal) {
   return svcModal.directive({
     name: 'Alert',
     transclude: true,
-    templateUrl: '/app/templates/modals/alert.html',
+    templateUrl: '/app/components/modal/modal-alert.html',
     scope: {
       header: '@modalHeader',
       ok: '@modalOk',

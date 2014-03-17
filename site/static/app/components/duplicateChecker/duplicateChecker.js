@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  'duplicateChecker.directive'
+  './duplicateChecker.directive'
 ], function(angular, directive) {
 
 'use strict';

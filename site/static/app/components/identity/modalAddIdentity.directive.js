@@ -58,7 +58,7 @@ function factory(svcModal, svcIdentity) {
     scope: {
       identityTypes: '='
     },
-    templateUrl: '/app/templates/modals/add-identity.html',
+    templateUrl: '/app/components/identity/modal-add-identity.html',
     controller: ['$scope', 'config', Ctrl],
     link: function(scope, element, attrs) {
       scope.feedbackTarget = element;

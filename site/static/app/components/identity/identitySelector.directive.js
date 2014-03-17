@@ -27,7 +27,7 @@ function factory() {
       invalid: '=',
       fixed: '@'
     },
-    templateUrl: '/app/templates/identity-selector.html',
+    templateUrl: '/app/components/identity/identity-selector.html',
     link: Link
   };
 }

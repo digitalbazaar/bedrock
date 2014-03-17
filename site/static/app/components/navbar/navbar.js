@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  'navbar.controller'
+  './navbar.controller'
 ], function(angular, controller) {
 
 'use strict';

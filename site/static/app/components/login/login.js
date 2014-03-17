@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  'login.controller'
+  './login.controller'
 ], function(angular, controller) {
 
 'use strict';

@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  'popoverTemplate.directive'
+  './popoverTemplate.directive'
 ], function(angular, directive) {
 
 'use strict';
