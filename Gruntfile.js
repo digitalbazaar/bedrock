@@ -127,7 +127,6 @@ module.exports = function(grunt) {
         'schemas/*.js',
         'site/static/app/*.js',
         'site/static/app/**/*.js',
-        'site/static/legacy/*.js',
         'test/*.js'
       ]
     }
