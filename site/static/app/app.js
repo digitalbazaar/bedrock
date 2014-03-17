@@ -20,7 +20,8 @@ define([
 'use strict';
 
 var module = angular.module('app', [
-  'ngRoute', 'ui.bootstrap', 'ui.utils', 'app.configs', 'app.components']);
+  'ngRoute', 'ui.bootstrap', 'ui.utils',
+  'app.configs', 'app.components', 'app.templates']);
 module.config(['$locationProvider', '$routeProvider', '$httpProvider',
   function($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
