@@ -16,9 +16,9 @@ define([
 
 var module = angular.module('app.settings', []);
 
+module.controller(settings.controller);
 module.controller(identitySettings);
 module.controller(keySettings);
-module.controller(settings.controller);
 
 module.config(['$routeProvider',
   function($routeProvider) {

@@ -7,13 +7,13 @@
  */
 define([
   'angular',
-  './tabs.controller'
-], function(angular, controller) {
+  './tabs.directive'
+], function(angular, directive) {
 
 'use strict';
 
 var module = angular.module('app.tabs', []);
 
-module.controller(controller.controller);
+module.directive(directive);
 
 });
