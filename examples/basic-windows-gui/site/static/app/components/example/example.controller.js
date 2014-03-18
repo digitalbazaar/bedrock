@@ -9,12 +9,13 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'config', 'http'];
-return {
-  controller: {ExampleCtrl: deps.concat(factory)}
-};
+var deps = ['config', '$http'];
+return {ExampleCtrl: deps.concat(factory)};
 
-function factory($scope, config, $http) {
+function factory(config, $http) {
+  this.name = config.data.siteTitle;
+  this.bedrock = 'Bedrock';
+
   console.log('ExampleCtrl initialized...');
 }
 

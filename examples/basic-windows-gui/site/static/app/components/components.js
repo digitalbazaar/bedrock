@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  'app/components/example.controller',
+  'app/components/example/example',
   'bedrock/app/components/fade/fade',
   'bedrock/app/components/feedback/feedback',
   'bedrock/app/components/modal/modal',
