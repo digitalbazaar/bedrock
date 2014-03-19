@@ -2,14 +2,16 @@
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
 var email = require('./email');
+var identifier = require('./identifier');
 var jsonldContext = require('./jsonldContext');
 var jsonldType = require('./jsonldType');
 var label = require('./label');
-var identifier = require('./identifier');
+var nonce = require('./nonce');
 var passcode = require('./passcode');
 var password = require('./password');
 var publicKeyPem = require('./publicKeyPem');
 var slug = require('./slug');
+var url = require('./url');
 var visibility = require('./propertyVisibility');
 
 var postIdentity = {
@@ -26,7 +28,29 @@ var postIdentity = {
 var getIdentitiesQuery = {
   title: 'Get Identities Query',
   type: 'object',
-  properties: {},
+  properties: {
+    service: {
+      required: false,
+      type: 'string',
+      enum: ['add-key']
+    },
+    'public-key-label': {
+      required: false,
+      type: label()
+    },
+    'public-key': {
+      required: false,
+      type: publicKeyPem()
+    },
+    'registration-callback': {
+      required: false,
+      type: url()
+    },
+    'response-nonce': {
+      required: false,
+      type: nonce()
+    }
+  },
   additionalProperties: true
 };
 
