@@ -69,7 +69,6 @@ function factory($location, $routeParams, $sce, $timeout, config, svcModal) {
           $timeout(function() {
             model.loading = false;
             $scope.$apply();
-
           }, 5000);
         }
         else {
