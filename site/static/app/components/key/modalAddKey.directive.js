@@ -66,7 +66,6 @@ function factory($location, $routeParams, $sce, $timeout, config, svcModal) {
           model.submit();
 
           // show the manual completion button after a timeout period
-          var registrationDelay = ($scope.registrationType === 'vendor') ? 5000 : 0;
           $timeout(function() {
             model.loading = false;
             $scope.$apply();
