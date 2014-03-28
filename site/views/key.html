@@ -2,49 +2,67 @@
 {% set clientData.pageTitle = "Cryptographic Key Details" %}
 {% include "head.html" %}
 
-<div class="row">
-  <h2 class="headline">{{pageTitle}}</h2>
+<div class="static-content">
+  {% if key.label %}
+  <div class="row">
+    <div class="title-section">
+      <h1 class="headline">{{key.label}}</h1>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="section">
+      <h3 class="headline">Cryptographic Key Details</h3>
+
+      <dl class="dl-horizontal" about="" typeof="sec:CryptographicKey">
+        {% if key.label %}
+        <dt>Label</dt>
+        <dd>
+          <ul class="unstyled">
+            <li property="rdfs:label">{{key.label}}</li>
+          </ul>
+        </dd>
+        {% endif %}
+
+        <dt>Status</dt>
+        <dd>
+          <ul class="unstyled">
+            <li>{{key.sysStatus}}</li>
+          </ul>
+        </dd>
+
+        {% if key.revoked %}
+        <dt>Revoked</dt>
+        <dd>
+          <ul class="unstyled">
+            <li property="sec:revoked" datatype="xsd:dateTime" content="{{key.revoked}}">{{key.revoked | date('MMM d, y h:mm:ss a')}}</li>
+          </ul>
+        </dd>
+        {% endif %}
+
+        <dt>Owner</dt>
+        <dd>
+          <ul class="unstyled">
+            <li><a rel="sec:owner" href="{{key.owner}}">{{key.owner}}</a></li>
+          </ul>
+        </dd>
+
+        {% if key.publicKeyPem %}
+        <dt>Public Key PEM</dt>
+        <dd>
+          <ul class="unstyled">
+            <li><pre property="sec:publicKeyPem">{{key.publicKeyPem}}</pre></li>
+          </ul>
+        </dd>
+        {% endif %}
+      </dl>
+    </div>
+  </div>
 </div>
 
-{% raw %}
-<div data-ng-controller="KeyCtrl" class="ng-cloak"
-  about="" typeof="sec:CryptographicKey">
+{# <div data-ng-view></div> #}
 
-  <div data-ng-show="key.label" class="row">
-    <h3 class="headline">
-      <span property="rdfs:label">{{key.label}}</span>
-      <span data-ng-show="key.sysStatus">({{key.sysStatus}})</span>
-    </h3>
-  </div>
-{% endraw %}
-
-{% if key.revoked %}
-  <div class="row">
-    <div class="offset3 span6">
-      <h3 class="headline">
-        Revoked: <span property="sec:revoked" datatype="xsd:dateTime">{{key.revoked}}</span>
-      </h3>
-    </div>
-  </div>
-{% endif %}
-
-{% raw %}
-  <div class="row">
-    <div class="offset3 span6">
-      <pre data-ng-show="key.publicKeyPem"
-        property="sec:publicKeyPem">{{key.publicKeyPem}}</pre>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="offset3 span6">
-      <h3 class="headline">
-        View: <span><a rel="sec:owner" href="{{key.owner}}">owner</a></span>
-      </h3>
-    </div>
-  </div>
-
-</div>
-{% endraw %}
+<div data-ng-include="'/app/components/util/demo-warning.html'"></div>
 
 {% include "foot.html" %}

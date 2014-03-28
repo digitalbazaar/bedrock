@@ -2,68 +2,75 @@
 {% set clientData.pageTitle = "Identity" %}
 {% include "head.html" %}
 
-<div about="" typeof="ps:{{identity.type}}" class="row">
-  <div class="span12">
-{% if identity.label %}
-    <h1 class="headline">
-      About <span property="rdfs:label">{{identity.label}}</span>
-    </h1>
-{% else %}
-    <h1 class="headline">About Identity</h1>
-{% endif %}
+<div class="static-content">
+  <div class="row">
+    <div class="title-section">
+      <h1 class="headline">{{identity.label}}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="section">
+      <h3 class="headline">Identity Details</h3>
+
+      <dl class="dl-horizontal" about="" typeof="bed:{{identity.type}}">
+        {% if identity.label %}
+        <dt>Label</dt>
+        <dd>
+          <ul class="unstyled">
+            <li property="rdfs:label">{{identity.label}}</li>
+          </ul>
+        </dd>
+        {% endif %}
+
+        {% if identity.description %}
+        <dt>Description</dt>
+        <dd>
+          <ul class="unstyled">
+            <li property="dc:description">{{identity.description}}</li>
+          </ul>
+        </dd>
+        {% endif %}
+
+        {% if identity.url %}
+        <dt>Website</dt>
+        <dd>
+          <ul class="unstyled">
+            <li><a property="schema:url" href="{{identity.url}}">{{identity.url}}</a></li>
+          </ul>
+        </dd>
+        {% endif %}
+
+        <dt>Cryptographic Keys</dt>
+        {% if keys.length > 0 %}
+        <dd>
+          <ul class="unstyled">
+            {% for key in keys %}
+            <li>
+              <a about="" rel="sec:publicKey" href="{{key.id}}">
+                <span property="rdfs:label">{{key.label}}</span>
+              </a>
+              <span about="{{key.id}}" typeof="sec:CryptographicKey">
+                <link rel="sec:owner" href="" />
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+        </dd>
+        {% else %}
+        <dd>
+          <ul class="unstyled">
+            <li>No publicKeyPem visible keys.</li>
+          </ul>
+        </dd>
+        {% endif %}
+      </dl>
+    </div>
   </div>
 </div>
 
-{% if identity.website || identity.description %}
-<hr />
-{% endif %}
-{% if identity.website %}
-<div class="row">
-  <div class="span4 offset4">
-    <h2>Website</h2>
-    <a property="schema:url" href="{{identity.url}}">
-      {{identity.website}}
-    </a>
-  </div>
-</div>
-{% endif %}
-{% if identity.website && identity.description %}
-<div class="row">
-  <div class="span12">&nbsp;</div>
-</div>
-{% endif %}
-{% if identity.description %}
-<div class="row">
-  <div class="span4 offset4">
-    <h2>Description</h2>
-    <p></p>
-    <p property="dc:description">{{identity.description}}</p>
-  </div>
-</div>
-{% endif %}
+{# <div data-ng-view></div> #}
 
-<hr />
-
-<div class="row">
-  <div class="span4 offset4">
-    <h2>Cryptographic Keys</h2>
-{% if keys.length > 0 %}
-  <ul>
-  {% for key in keys %}
-    <li>
-      <a about="" rel="sec:publicKey" href="{{key.id}}">
-        <span property="rdfs:label">{{key.label}}</span>
-      </a>
-      <span about="{{key.id}}" typeof="sec:CryptographicKey">
-        <link rel="sec:owner" href="" />
-      </span>
-    </li>
-  {% endfor %}
-  </ul>
-{% else %}
-    <p>No publicly visible keys.</p>
-{% endif %}
-  </div>
-</div>
+<div data-ng-include="'/app/components/util/demo-warning.html'"></div>
 
 {% include "foot.html" %}
