@@ -30,7 +30,7 @@ function factory(svcModal) {
     var forge = {pki: pki()};
 
     model.generateKeyPair = function() {
-      $scope.model.loading = true;
+      model.loading = true;
       var promise = new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
@@ -55,28 +55,28 @@ function factory(svcModal) {
         model.key.privateKeyPem = pem.privateKey;
         model.key.publicKeyPem = pem.publicKey;
 
-        $scope.model.loading = false;
-        $scope.model.success = true;
+        model.loading = false;
+        model.success = true;
         $scope.$apply();
       }).catch(function(err) {
-        $scope.model.loading = false;
-        $scope.model.success = false;
-        $scope.model.feedback.error = err;
+        model.loading = false;
+        model.success = false;
+        model.feedback.error = err;
         $scope.$apply();
       });
     };
 
     model.addKey = function() {
-      $scope.model.loading = true;
+      model.loading = true;
       var promise = svcKey.collection.add(model.key);
       promise.then(function(key) {
-        $scope.model.loading = false;
-        $scope.model.feedback.error = null;
+        model.loading = false;
+        model.feedback.error = null;
         $scope.modal.close(null, key);
         $scope.$apply();
       }).catch(function(err) {
-        $scope.model.feedback.error = err;
-        $scope.model.success = false;
+        model.feedback.error = err;
+        model.success = false;
         $scope.model.loading = false;
         $scope.$apply();
       });

@@ -15,32 +15,32 @@ return {modalEditKey: deps.concat(factory)};
 function factory(svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
-    $scope.data = config.data;
-    $scope.feedback = {};
-    $scope.identity = config.data.identity || {};
+    model.feedback = {};
+    model.identity = config.data.identity || {};
     model.mode = 'edit';
+    model.loading = false;
     // copy source budget for editing
-    $scope.key = {};
-    angular.extend($scope.key, $scope.sourceKey);
+    model.key = {};
+    angular.extend(model.key, $scope.sourceKey);
 
-    $scope.editKey = function() {
+    model.editKey = function() {
       // set all fields from UI
       var key = {
         '@context': config.data.contextUrl,
-        id: $scope.key.id,
-        label: $scope.key.label
+        id: model.key.id,
+        label: model.key.label
       };
 
-      $scope.loading = true;
+      model.loading = true;
       var promise = svcKey.collection.update(key);
       promise.then(function(key) {
-        $scope.loading = false;
+        model.loading = false;
         $scope.modal.close(null, key);
-        $scope.feedback.error = null;
+        model.feedback.error = null;
         $scope.$apply();
       }).catch(function(err) {
-        $scope.loading = false;
-        $scope.feedback.error = err;
+        model.loading = false;
+        model.feedback.error = err;
         $scope.$apply();
       });
     };
@@ -52,7 +52,7 @@ function factory(svcModal) {
     templateUrl: '/app/components/key/modal-edit-key.html',
     controller: ['$scope', 'config', 'svcKey', Ctrl],
     link: function(scope, element, attrs) {
-      scope.feedbackTarget = element;
+      scope.model.feedbackTarget = element;
     }
   });
 }

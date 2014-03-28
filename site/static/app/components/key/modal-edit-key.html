@@ -10,11 +10,11 @@
   <div class="modal-footer">
     <div class="modal-feedback"
       data-feedback="model.feedback" data-target="model.feedbackTarget"></div>
-    <span data-spinner="loading"
+    <span data-spinner="model.loading"
       data-spinner-class="prepend-btn-spinner"></span>
     <button class="btn btn-primary"
-      data-ng-disabled="loading"
-      data-ng-click="editKey()"><i class="icon-ok"></i> Save</button>
-    <button class="btn btn-close" data-ng-disabled="loading">Cancel</button>
+      data-ng-disabled="model.loading"
+      data-ng-click="model.editKey()"><i class="icon-ok"></i> Save</button>
+    <button class="btn btn-close" data-ng-disabled="model.loading">Cancel</button>
   </div>
 </div>
