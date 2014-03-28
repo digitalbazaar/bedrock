@@ -1,0 +1,45 @@
+<div class="modal">
+  <div class="modal-header">
+    <a class="close btn-close">&times;</a>
+    <h3>Create Signing Key</h3>
+  </div>
+  <div class="modal-body">
+    <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
+    <div data-ng-hide="model.success">
+      <p data-ng-include="'/app/components/key/generate-key-pair-help.html'"></p>
+      <p data-ng-hide="model.success">
+        Please be patient as it may take a couple of minutes to complete. Once
+        completed, you will have the opportunity to enter some details about
+        the key, such as a label, before saving it.
+      </p>
+      <button data-ng-hide="model.loading"
+        class="btn btn-primary"
+        data-ng-click="model.generateKeyPair()">Generate Key</button>
+      <span data-ng-show="model.loading"> This may take a minute...</span>
+      <span data-spinner="model.loading"
+        data-spinner-class="append-btn-spinner"></span>
+    </div>
+    <div data-ng-show="model.success">
+      <p>
+        Your new signing key has been generated. Please enter
+        information below about the key before saving it.
+      </p>
+      <div data-ng-include="'/app/components/key/key-form.html'"></div>
+      <p class="alert alert-success">
+        Key generated. Click "Save" to save the key.
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="modal-feedback" data-feedback="model.feedback"
+      data-target="model.feedbackTarget"></div>
+    <span data-spinner="model.loading"
+      data-spinner-class="prepend-btn-spinner"></span>
+    <span data-ng-show="model.success">
+      <button class="btn btn-primary"
+        data-ng-disabled="model.loading"
+        data-ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
+    </span>
+    <button class="btn btn-close" data-ng-disabled="model.loading">Cancel</button>
+  </div>
+</div>

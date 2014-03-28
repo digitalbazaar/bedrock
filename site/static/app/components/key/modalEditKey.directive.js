@@ -14,10 +14,11 @@ return {modalEditKey: deps.concat(factory)};
 
 function factory(svcModal) {
   function Ctrl($scope, config, svcKey) {
-    $scope.model = {};
+    var model = $scope.model = {};
     $scope.data = config.data;
     $scope.feedback = {};
     $scope.identity = config.data.identity || {};
+    model.mode = 'edit';
     // copy source budget for editing
     $scope.key = {};
     angular.extend($scope.key, $scope.sourceKey);

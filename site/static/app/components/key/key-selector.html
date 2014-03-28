@@ -1,0 +1,17 @@
+<div>
+  <div data-selector data-item-type="Key"
+    data-items="model.keys"
+    data-selected="selected"
+    data-invalid="invalid"
+    data-add-item="model.showAddKeyModal=true" data-fixed="{{fixed}}">
+    <div data-spinner="model.services.key.loading"
+      data-spinner-class="selector-spinner"></div>
+    <div data-ng-hide="model.services.key.loading">
+      <strong>{{selected.label}}</strong>
+      <br/>
+      <small>{{selected.id}}</small>
+    </div>
+  </div>
+  <div data-modal-generate-key-pair="model.showAddKeyModal"
+    data-modal-on-close="!err && (selected=result)"></div>
+</div>

@@ -1,0 +1,52 @@
+<div class="modal">
+  <div class="modal-header">
+    <a class="close btn-close">&times;</a>
+    <h3>Add Key</h3>
+  </div>
+  <div class="modal-body">
+    <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
+    <div data-ng-hide="model.success">
+      <div data-ng-include="'/app/components/key/key-form.html'"></div>
+    </div>
+    <div data-ng-show="model.success">
+      <p>
+        The key was added successfully. Below is the key ID that you may need
+        to configure external tools or websites.
+      </p>
+      <pre>{{model.key.id}}</pre>
+    </div>
+    <div data-ng-show="model.success && model.registrationCallback">
+      <p>
+        To complete registration, you will be redirected to the URL below. If
+        this page does not redirect automatically, please click the
+        &quot;Complete Registration&quot; button.
+      </p>
+      <pre>{{model.registrationCallback}}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <form id="registration-form" method="post" action="{{model.registrationCallback}}">
+      <div class="modal-feedback"
+        data-feedback="model.feedback" data-target="model.feedbackTarget"></div>
+      <span data-spinner="model.loading"
+        data-spinner-class="prepend-btn-spinner"></span>
+      <button class="btn btn-primary"
+        data-ng-hide="model.success"
+        data-ng-disabled="model.loading"
+        data-ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
+      <button class="btn btn-primary"
+        data-ng-show="model.success && !model.registrationCallback"
+        data-ng-disabled="model.loading"
+        data-ng-click="model.done()"><i class="icon-ok"></i> Done</button>
+      <input name="key" value="{{model.callbackKey|json}}"
+        type="hidden" />
+
+      <button class="btn btn-primary"
+        data-ng-click="model.submit()"
+        data-ng-show="model.success && model.registrationCallback" 
+        data-ng-disabled="model.loading"
+        type="submit"><i class="icon-ok"></i> Complete Registration</button>
+      <button class="btn btn-close" data-ng-disabled="model.loading">Cancel</button>
+    </form>
+  </div>
+</div>

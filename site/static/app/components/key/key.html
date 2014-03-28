@@ -1,0 +1,50 @@
+<div class="container ng-cloak" data-ng-controller="KeyCtrl">
+  <div data-ng-show="model.key.label" class="row">
+    <div class="title-section">
+      <h1 class="headline" data-ng-bind="model.key.label"></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="section">
+      <h3 class="headline">Cryptographic Key Details</h3>
+
+      <dl class="dl-horizontal" about="" typeof="sec:CryptographicKey">
+        <dt data-ng-show="model.key.label">Label</dt>
+        <dd data-ng-show="model.key.label">
+          <ul class="unstyled">
+            <li>{{model.key.label}}</li>
+          </ul>
+        </dd>
+
+        <dt>Status</dt>
+        <dd>
+          <ul class="unstyled">
+            <li>{{model.key.sysStatus}}</li>
+          </ul>
+        </dd>
+
+        <dt data-ng-show="model.key.revoked">Revoked</dt>
+        <dd data-ng-show="model.key.revoked">
+          <ul class="unstyled">
+            <li property="sec:revoked" datatype="xsd:dateTime" content="{{model.key.revoked}}">{{model.key.revoked | date:'medium'}}</li>
+          </ul>
+        </dd>
+
+        <dt>Owner</dt>
+        <dd>
+          <ul class="unstyled">
+            <li><a rel="sec:owner" href="{{model.key.owner}}">{{model.key.owner}}</a></li>
+          </ul>
+        </dd>
+
+        <dt data-ng-show="model.key.publicKeyPem">Public Key PEM</dt>
+        <dd data-ng-show="model.key.publicKeyPem">
+          <ul class="unstyled">
+            <li><pre property="sec:publicKeyPem">{{model.key.publicKeyPem}}</pre></li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
