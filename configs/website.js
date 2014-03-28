@@ -40,7 +40,11 @@ config.website.views.vars = {
   clientData: {
     baseUri: config.server.baseUri,
     siteTitle: config.brand.name,
-    productionMode: false
+    productionMode: false,
+    // key generation config
+    keygen: {
+      bits: 2048
+    }
   },
   // contact and social media details
   // blog, email, facebook, github, googlePlus, irc, twitter, youtube
