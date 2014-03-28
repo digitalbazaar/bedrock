@@ -1,7 +1,7 @@
 /*!
  * Key Selector directive.
  *
- * Copyright (c) 2014 Accreditrust, LLC. All rights reserved.
+ * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
  * @author Dave Longley
  */
