@@ -133,7 +133,8 @@
       <div class="form-actions">
         <div class="modal-feedback"
           data-feedback="feedback" data-target="feedbackTarget"></div>
-        <button data-ng-disabled="loading || !model.identitySlugAvailable || !model.emailAvailable || !agreementChecked"
+        <button id="create-button"
+          data-ng-disabled="loading || !model.identitySlugAvailable || !model.emailAvailable || !agreementChecked"
           class="btn btn-large btn-primary"
           data-submit-form>Create Identity</button>
         <span data-spinner="loading"
