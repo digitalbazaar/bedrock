@@ -8,9 +8,8 @@
 define([
   'angular',
   './identitySettings.controller',
-  './keySettings.controller',
   './settings.controller'
-], function(angular, identitySettings, keySettings, settings) {
+], function(angular, identitySettings, settings) {
 
 'use strict';
 
@@ -18,7 +17,6 @@ var module = angular.module('app.settings', []);
 
 module.controller(settings.controller);
 module.controller(identitySettings);
-module.controller(keySettings);
 
 module.config(['$routeProvider',
   function($routeProvider) {
