@@ -688,6 +688,11 @@ h1 > .rest-summary > .rest-path {
   text-align: left;
 }
 
+/* used when buttons are wrapped in a form to avoid margins */
+.modal-footer form {
+  margin: 0;
+}
+
 /*.modal-backdrop {
   background-color: white;
 }*/
