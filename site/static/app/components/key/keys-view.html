@@ -12,6 +12,10 @@
         <li>
           <a data-ng-click="modals.showAddKey=true"><i class="icon-plus"></i> Add Key</a>
         </li>
+        <li>
+          <a data-ng-click="model.showRevokedKeys=!model.showRevokedKeys"><i
+            data-ng-show="model.showRevokedKeys" class="icon-ok"></i> Show RevokedKeys</a>
+        </li>
       </ul>
     </span>
     <span data-ng-show="state.loading" class="pull-right">
@@ -28,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="key in keys | orderBy:'label' | orderBy:'sysStatus':reverse">
+      <tr data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys" data-ng-repeat="key in keys | orderBy:'label' | orderBy:'sysStatus':reverse">
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
