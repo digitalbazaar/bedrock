@@ -2,21 +2,12 @@
   <h3 class="headline">
     Keys
     <span data-ng-hide="state.loading" class="btn-group pull-right">
-      <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+      <a class="btn"
+        data-popover-template="/app/components/key/keys-view-menu.html"
+        data-popover-visible="model.showKeysMenu"
+        data-placement="bottom">
         <i class="icon-reorder"></i>
       </a>
-      <ul class="dropdown-menu pull-right">
-        <li>
-          <a data-ng-click="modals.showGenerateKeyPair=true"><i class="icon-plus"></i> Generate Key Pair</a>
-        </li>
-        <li>
-          <a data-ng-click="modals.showAddKey=true"><i class="icon-plus"></i> Add Key</a>
-        </li>
-        <li>
-          <a data-ng-click="model.showRevokedKeys=!model.showRevokedKeys"><i
-            data-ng-show="model.showRevokedKeys" class="icon-ok"></i> Show Revoked Keys</a>
-        </li>
-      </ul>
     </span>
     <span data-ng-show="state.loading" class="pull-right">
       <span data-spinner="state.loading" data-spinner-class="h3-spinner"></span>
