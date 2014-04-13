@@ -54,35 +54,78 @@ var getIdentitiesQuery = {
   additionalProperties: true
 };
 
-var postIdentities = {
-  title: 'Create Identity',
-  description: 'Create an Identity',
+var postIdentitiesQuery = {
+  title: 'Post Identities Query',
   type: 'object',
   properties: {
-    '@context': jsonldContext(),
-    type: {
+    action: {
+      required: false,
+      type: 'string',
+      enum: ['query']
+    },
+    credentials: {
+      required: false,
+      type: 'string',
+      enum: ['true', 'false']
+    },
+    token: {
       required: true,
       type: 'string',
-      enum: ['Identity']
+      minLength: 1,
+      maxLength: 100
     },
-    sysSlug: slug(),
-    label: label(),
-    email: email(),
-    sysPassword: password(),
-    url: {
+    callback: {
       required: false,
-      type: 'string'
-    },
-    description: {
-      required: false,
-      type: 'string'
-    },
-    sysPublic: {
-      required: false,
-      type: visibility()
+      type: url()
     }
   },
-  additionalProperties: false
+  additionalProperties: true
+};
+
+var postIdentities = {
+  title: 'Post Identities',
+  description: 'Identity credentials query or Identity creation',
+  type: [{
+    title: 'Identity Query',
+    description: 'Query Identity credentials',
+    type: 'object',
+    properties: {
+      query: {
+        required: true,
+        type: 'string'
+      }
+    },
+    additionalProperties: false
+  }, {
+    title: 'Create Identity',
+    description: 'Create an Identity',
+    type: 'object',
+    properties: {
+      '@context': jsonldContext(),
+      type: {
+        required: true,
+        type: 'string',
+        enum: ['Identity']
+      },
+      sysSlug: slug(),
+      label: label(),
+      email: email(),
+      sysPassword: password(),
+      url: {
+        required: false,
+        type: 'string'
+      },
+      description: {
+        required: false,
+        type: 'string'
+      },
+      sysPublic: {
+        required: false,
+        type: visibility()
+      }
+    },
+    additionalProperties: false
+  }]
 };
 
 var postPreferences = {
@@ -126,6 +169,9 @@ module.exports.postIdentity = function() {
 };
 module.exports.getIdentitiesQuery = function() {
   return getIdentitiesQuery;
+};
+module.exports.postIdentitiesQuery = function() {
+  return postIdentitiesQuery;
 };
 module.exports.postIdentities = function() {
   return postIdentities;
