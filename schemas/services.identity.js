@@ -68,7 +68,7 @@ var postIdentitiesQuery = {
       type: 'string',
       enum: ['true', 'false']
     },
-    token: {
+    domain: {
       required: true,
       type: 'string',
       minLength: 1,
