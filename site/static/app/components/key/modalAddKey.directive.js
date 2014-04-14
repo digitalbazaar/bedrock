@@ -11,11 +11,11 @@ define(['angular'], function(angular) {
 'use strict';
 
 var deps = [
-  '$location', '$routeParams', '$sce', '$timeout', 'config', 'svcModal'
+  '$location', '$routeParams', '$sce', '$timeout', 'svcModal'
 ];
 return {modalAddKey: deps.concat(factory)};
 
-function factory($location, $routeParams, $sce, $timeout, config, svcModal) {
+function factory($location, $routeParams, $sce, $timeout, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
     model.feedback = {};
