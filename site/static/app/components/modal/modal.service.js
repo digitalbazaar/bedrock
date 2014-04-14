@@ -10,12 +10,12 @@ define(['angular', 'jquery'], function(angular, $) {
 'use strict';
 
 var deps = [
-  '$compile', '$controller', '$rootScope',
+  '$compile', '$parse', '$controller', '$rootScope',
   '$templateCache', 'svcTemplateCache'];
 return {svcModal: deps.concat(factory)};
 
 function factory(
-  $compile, $controller, $rootScope, $templateCache, svcTemplateCache) {
+  $compile, $parse, $controller, $rootScope, $templateCache, svcTemplateCache) {
   var service = {};
 
   // the stack of currently open modals
@@ -33,7 +33,10 @@ function factory(
     if(e.keyCode === 27) {
       e.stopPropagation();
       if(modals.length > 0) {
-        modals[modals.length - 1]._angular.destroy(true);
+        var modal = modals[modals.length - 1];
+        if(modal._angular.allowEscape) {
+          modal._angular.destroy(true);
+        }
       }
     }
   });
@@ -87,7 +90,7 @@ function factory(
             scope.modal = scope.modal || {};
 
             // ignore enter presses in the modal by default
-            scope.modal.allowEnter = attrs.modalEnter || false;
+            scope.modal.allowEnter = $parse(attrs.modalEnter)(scope) || false;
 
             // does any custom init work when modal opens
             scope.modal.open = scope.modal.open || angular.noop;
@@ -195,6 +198,13 @@ function factory(
 
     // additional angular API on bootstrap modal
     modal._angular = {};
+
+    // allow escape presses in modal by default
+    modal._angular.allowEscape = true;
+    if('modalEscape' in attrs) {
+      modal._angular.allowEscape = $parse(attrs.modalEscape)(
+      directiveScope) || false;
+    }
 
     /** Run modal controller and show the modal. */
     modal._angular.openAndShow = function() {
