@@ -7,13 +7,15 @@
  */
 define([
   'angular',
-  './login.controller'
-], function(angular, controller) {
+  './login.controller',
+  './modalLogin.directive'
+], function(angular, controller, modalLogin) {
 
 'use strict';
 
 var module = angular.module('app.login', []);
 
 module.controller(controller);
+module.directive(modalLogin);
 
 });

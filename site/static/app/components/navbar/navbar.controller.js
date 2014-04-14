@@ -21,6 +21,10 @@ function factory($scope, $rootScope, config) {
     $rootScope.$broadcast('refreshData');
     $scope.setVisible(false);
   };
+
+  $rootScope.$on('showLoginModal', function() {
+    model.showLogin = true;
+  });
 }
 
 });

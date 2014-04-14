@@ -32,8 +32,8 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
 
     // TODO: interceptor API changed after angular 1.0.x
     // normalize errors, deal w/auth redirection
-    $httpProvider.responseInterceptors.push(['$q', '$timeout', function(
-      $q, $timeout) {
+    $httpProvider.responseInterceptors.push([
+      '$rootScope', '$q', '$timeout', function($rootScope, $q, $timeout) {
       return function(promise) {
         return promise.then(function(response) {
           if('delay' in response.config) {
@@ -54,11 +54,8 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
           }
           // check for invalid session or missing session
           else if(error.type === 'bedrock.website.PermissionDenied') {
-            // redirect to login
-            // TODO: support modal login to keep state vs forced redirect
-            window.location = '/session/login?ref=' +
-              encodeURIComponent(window.location.pathname) +
-              '&expired=true';
+            // show login modal
+            $rootScope.$emit('showLoginModal');
           }
           return $q.reject(error);
         });

@@ -1,0 +1,36 @@
+<div class="modal">
+  <div class="modal-header">
+    <h3>Sign In</h3>
+  </div>
+  <div class="modal-body">
+    <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
+    <p class="alert alert-warning">
+      Your session has expired, please sign back in to continue.
+    </p>
+    <form class="well form-vertical" action="">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label">Identity</label>
+          <p><strong>{{model.sysIdentifier}}</strong></p>
+        </div>
+        <div class="control-group" data-binding="password">
+          <label class="control-label" for="password">Password</label>
+          <div class="controls">
+            <input name="password" type="password" placeholder="Password"
+              autofocus="autofocus" data-ng-model="model.password"
+              data-ng-disabled="model.loading" />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="modal-feedback"
+      data-feedback="model.feedback" data-target="model.feedbackTarget"></div>
+    <span data-spinner="model.loading"
+      data-spinner-class="prepend-btn-spinner"></span>
+    <button class="btn btn-primary"
+      data-ng-disabled="model.loading"
+      data-ng-click="model.login()"><i class="icon-signin"></i> Sign In</button>
+  </div>
+</div>
