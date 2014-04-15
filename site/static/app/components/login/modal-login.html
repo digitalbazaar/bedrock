@@ -18,6 +18,7 @@
           <div class="controls">
             <input name="password" type="password" placeholder="Password"
               autofocus="autofocus" data-ng-model="model.password"
+              data-ui-keypress="{enter:'model.login()'}"
               data-ng-disabled="model.loading" />
           </div>
         </div>

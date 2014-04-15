@@ -33,7 +33,7 @@ function factory(svcModal) {
         model.loading = false;
         if(err.type === 'bedrock.validation.ValidationError') {
           model.feedback.error = {
-            message: 'The password did not match our records; please try again.'
+            message: 'The password you entered was incorrect. Please try again.'
           };
         }
         else {
