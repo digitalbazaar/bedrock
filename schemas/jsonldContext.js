@@ -10,7 +10,7 @@ var schema = {
   description: 'A JSON-LD Context',
   type: [{
     type: 'string',
-    pattern: '^' + config.constants.CONTEXT_URL + '$'
+    enum: [config.constants.CONTEXT_URL]
   }, {
     type: 'object'
     // FIXME: improve context object validator
