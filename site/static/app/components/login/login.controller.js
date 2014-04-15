@@ -9,40 +9,54 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$scope', 'config', '$http'];
+var deps = ['$scope', 'config', '$http', '$compile'];
 return {LoginCtrl: deps.concat(factory)};
 
-function factory($scope, config, $http) {
+function factory($scope, config, $http, $compile) {
   var model = $scope.model = {};
   $scope.multiple = false;
   $scope.loading = false;
   $scope.error = '';
   $scope.sysIdentifier = '';
   $scope.password = '';
-  $scope.ref = config.data.ref;
+  model.request = config.data.queuedRequest;
   model.siteTitle = config.data.siteTitle;
-  model.sessionExpired = config.data.sessionExpired || false;
   model.navbar = config.site.navbar;
 
   $scope.submit = function() {
     // do login
     $scope.error = '';
     $scope.loading = true;
-
-    var data = {
+    Promise.cast($http.post('/session/login', {
       sysIdentifier: $scope.sysIdentifier,
       password: $scope.password
-    };
-    if($scope.ref) {
-      data.ref = $scope.ref;
-    }
-    Promise.cast($http.post('/session/login', data))
-      .then(function(response) {
+    })).then(function(response) {
+      // if a single 'identity' is returned, login was successful
       var data = response.data;
-      // if a 'ref' is returned, login was successful
-      if(data.ref) {
-        // redirect to referral URL
-        window.location = data.ref;
+      if(data.identity) {
+        // if there's no queued request, go to dashboard
+        var request = model.request;
+        if(!request) {
+          window.location = data.identity.id + '/dashboard';
+        }
+        // redirect to queued URL
+        else if(request.method === 'GET') {
+          window.location = request.url;
+        }
+        // add form to page and submit it
+        else {
+          var element = angular.element([
+            '<form data-ng-hide="!!model.request" method="post" ',
+            'action="{{model.request.url}}">',
+            '<input data-ng-repeat="(name, value) in model.request.body" ',
+            'type="hidden" name="{{name}}" value="{{value}}" />',
+            '</form>'
+          ].join(''));
+          angular.element('body').append(element);
+          $compile(element)($scope);
+          $scope.$apply();
+          element.submit();
+        }
       }
       else {
         // show multiple identities

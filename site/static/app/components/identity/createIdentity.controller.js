@@ -39,8 +39,8 @@ function factory($scope, $http) {
     $scope.loading = true;
     $http.post('/join', $scope.identity)
       .success(function(response) {
-        // redirect to referral URL
-        window.location = response.ref;
+        //  redirect to new dashboard
+        window.location = response.id + '/dashboard';
       })
       .error(function(err) {
         $scope.loading = false;

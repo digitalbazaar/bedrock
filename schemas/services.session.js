@@ -94,21 +94,6 @@ var postJoin = {
   additionalProperties: false
 };
 
-var getLoginQuery = {
-  type: 'object',
-  properties: {
-    ref: {
-      required: false,
-      type: 'string'
-    },
-    expired: {
-      required: false,
-      type: 'string'
-    }
-  },
-  additionalProperties: true
-};
-
 var postLogin = {
   title: 'Login',
   description: 'Login.',
@@ -118,8 +103,7 @@ var postLogin = {
       required: true,
       type: [slug(), email(), identifier()]
     },
-    password: password(),
-    ref: url({required: false})
+    password: password()
   },
   additionalProperties: false
 };
@@ -138,9 +122,6 @@ module.exports.postPasswordReset = function() {
 };
 module.exports.postJoin = function() {
   return postJoin;
-};
-module.exports.getLoginQuery = function() {
-  return getLoginQuery;
 };
 module.exports.postLogin = function() {
   return postLogin;

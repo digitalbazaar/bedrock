@@ -8,11 +8,7 @@
 
 <h2 class="headline">Sign in to {{model.siteTitle}}</h2>
 
-<div class="alert alert-info headline" data-ng-show="model.sessionExpired">
-  Your session has expired so you've been taken to the login screen.
-</div>
-
-<div class="alert alert-info headline" data-ng-show="ref">
+<div class="alert alert-info headline" data-ng-show="model.request">
   Please sign in to complete your request.
 </div>
 
@@ -40,8 +36,6 @@
         </div>
       </div>
 
-      <input type="hidden" name="ref" value="{{ref}}"/>
-
       <div class="controls">
         <input name="password" type="password" placeholder="Password"
           data-ng-model="password" data-ng-disabled="loading" />
@@ -52,7 +46,8 @@
 
       <div data-ng-hide="loading" class="controls btn-group">
         <button class="btn btn-primary" data-submit-form
-          data-ng-disabled="loading">Sign In</button>
+          data-ng-disabled="loading"><i
+          class="icon-signin"></i> Sign In</button>
         <button class="btn btn-primary dropdown-toggle"
           data-toggle="dropdown"
           data-ng-disabled="loading">
