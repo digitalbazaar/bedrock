@@ -50,8 +50,7 @@ var getIdentitiesQuery = {
       required: false,
       type: nonce()
     }
-  },
-  additionalProperties: true
+  }
 };
 
 var postIdentitiesQuery = {
@@ -78,8 +77,7 @@ var postIdentitiesQuery = {
       required: false,
       type: url()
     }
-  },
-  additionalProperties: true
+  }
 };
 
 var postIdentities = {

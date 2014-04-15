@@ -9,8 +9,7 @@ var getDocsQuery = {
       type: 'string',
       minLength: 1
     }
-  },
-  additionalProperties: true
+  }
 };
 
 module.exports.getDocsQuery = function() {

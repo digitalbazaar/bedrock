@@ -19,8 +19,7 @@ var getPasscodeQuery = {
       type: 'string',
       minLength: 1
     }
-  },
-  additionalProperties: true
+  }
 };
 
 var postPasscode = {
