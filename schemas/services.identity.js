@@ -62,6 +62,11 @@ var postIdentitiesQuery = {
       type: 'string',
       enum: ['query']
     },
+    authorize: {
+      required: false,
+      type: 'string',
+      enum: ['true']
+    },
     credentials: {
       required: false,
       type: 'string',
