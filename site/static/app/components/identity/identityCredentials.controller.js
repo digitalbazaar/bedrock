@@ -38,13 +38,11 @@ function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
     else {
       query = {'@context': 'https://w3id.org/identity/v1'};
     }
-
     model.loading = true;
     Promise.cast($http.post($location.absUrl() + '&authorize=true', {
-      query: query
+      query: JSON.stringify(query)
     })).then(function(response) {
       // TODO: support no callback case
-
       // submit response to callback
       response = $sanitize(JSON.stringify(response.data));
       var form = document.createElement('form');
