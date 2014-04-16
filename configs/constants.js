@@ -73,6 +73,7 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   claim: {'@id': 'sec:claim', '@type': '@id'},
   digestAlgorithm: 'sec:digestAlgorithm',
   digestValue: 'sec:digestValue',
+  domain: 'sec:domain',
   expires: {'@id': 'sec:expiration', '@type': 'xsd:dateTime'},
   initializationVector: 'sec:initializationVector',
   nonce: 'sec:nonce',
