@@ -44,12 +44,12 @@ function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
     })).then(function(response) {
       // TODO: support no callback case
       // submit response to callback
-      response = $sanitize(JSON.stringify(response.data));
+      var identity = $sanitize(JSON.stringify(response.data));
       var form = document.createElement('form');
       form.setAttribute('method', 'post');
       form.setAttribute('action', model.identityCredentials.callback);
       form.innerHTML =
-        '<input type="hidden" name="response" value="' + response + '" />';
+        '<input type="hidden" name="identity" value="' + identity + '" />';
       form.submit();
     }).catch(function(err) {
       model.loading = false;
