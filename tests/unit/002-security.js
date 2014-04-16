@@ -62,15 +62,17 @@ describe('bedrock.security', function() {
 
   describe('JSON-LD signatures', function() {
     it('should be verifiable', function(done) {
-      bedrock.security.signJsonLd(
-        testObject, privateKey, publicKey.id, function(err, signed) {
-          should.not.exist(err);
-          bedrock.security.verifyJsonLd(signed, publicKey,
-            function(err, verified) {
-              should.not.exist(err);
-              verified.should.be.true;
-              done();
-        });
+      bedrock.security.signJsonLd(testObject, {
+        key: privateKey,
+        creator: publicKey.id
+      }, function(err, signed) {
+        should.not.exist(err);
+        bedrock.security.verifyJsonLd(signed, publicKey,
+          function(err, verified) {
+            should.not.exist(err);
+            verified.should.be.true;
+            done();
+          });
       });
     });
   });
