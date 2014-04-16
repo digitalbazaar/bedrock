@@ -18,6 +18,7 @@ require.config({
   paths: {
     angular: 'angular/angular',
     'angular-route': 'angular/angular-route',
+    'angular-sanitize': 'angular/angular-sanitize',
     bedrock: '.',
     bootstrap: 'bootstrap/js/bootstrap',
     jquery: 'jquery/jquery',
@@ -34,6 +35,7 @@ require.config({
     // export globals for non-requireJS libs
     angular: {exports: 'angular', deps: ['jquery']},
     'angular-route': {deps: ['angular']},
+    'angular-sanitize': {deps: ['angular']},
     bootstrap: {deps: ['jquery']},
     jquery: {exports: 'jQuery'},
     'jquery.placeholder': {deps: ['jquery']},

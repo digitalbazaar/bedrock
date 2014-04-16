@@ -8,6 +8,7 @@
 define([
   'angular',
   'angular-route',
+  'angular-sanitize',
   'bootstrap',
   'ui-bootstrap',
   'ui-utils',
@@ -20,7 +21,7 @@ define([
 'use strict';
 
 var module = angular.module('app', [
-  'ngRoute', 'ui.bootstrap', 'ui.utils',
+  'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.utils',
   'app.configs', 'app.components', 'app.templates']);
 module.config(['$locationProvider', '$routeProvider', '$httpProvider',
   function($locationProvider, $routeProvider, $httpProvider) {
