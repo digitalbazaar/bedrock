@@ -3,6 +3,17 @@ var config = require(__libdir + '/bedrock').config;
 // identities
 config.identity.identities.push({
   type: 'Identity',
+  sysSlug: 'bedrock',
+  label: 'Bedrock',
+  email: 'bedrock@bedrock.dev',
+  sysPassword: 'password',
+  sysResourceRole: [{
+    sysRole: 'identity.registered',
+    generateResource: 'id'
+  }]
+});
+config.identity.identities.push({
+  type: 'Identity',
   sysSlug: 'dev',
   label: 'Dev',
   email: 'dev@bedrock.dev',
@@ -12,3 +23,7 @@ config.identity.identities.push({
     generateResource: 'id'
   }]
 });
+
+// identity service
+config.identity.owner =
+  config.server.baseUri + config.identity.basePath + '/bedrock';
