@@ -139,7 +139,6 @@ var postPreferences = {
   properties: {
     '@context': jsonldContext(),
     type: jsonldType('IdentityPreferences'),
-    signingKey: identifier({required: false}),
     publicKey: {
       required: false,
       type: [{
