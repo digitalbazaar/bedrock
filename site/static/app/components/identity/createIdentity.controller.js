@@ -10,19 +10,18 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$http'];
+var deps = ['$scope', '$http', 'config'];
 return {CreateIdentityCtrl: deps.concat(factory)};
 
-function factory($scope, $http) {
+function factory($scope, $http, config) {
   $scope.model = {};
-  $scope.data = window.data || {};
   $scope.feedback = {};
   // FIXME: temporary code to be removed after feedback improvements.
   //      : also remove the id fom the form in create.tpl.
   $scope.feedbackTarget = $('#createIdentityFeedbackTarget');
   $scope.loading = false;
   $scope.identity = {
-    '@context': $scope.data.contextUrl,
+    '@context': config.data.contextUrl,
     type: 'Identity',
     label: '',
     email: '',
