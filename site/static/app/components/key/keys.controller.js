@@ -10,7 +10,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$routeParams', 'svcKey'];
+var deps = ['$scope', '$routeParams', 'config', 'svcIdentity', 'svcKey'];
 return {
   controller: {KeysCtrl: deps.concat(factory)},
   routes: [{
@@ -24,7 +24,7 @@ return {
   }]
 };
 
-function factory($scope, $routeParams, svcKey) {
+function factory($scope, $routeParams, config, svcIdentity, svcKey) {
   var model = $scope.model = {};
   $scope.state = svcKey.state;
   $scope.keys = svcKey.keys;
@@ -43,6 +43,21 @@ function factory($scope, $routeParams, svcKey) {
   $scope.editKey = function(key) {
     $scope.modals.showEditKey = true;
     $scope.modals.key = key;
+  };
+  $scope.setDefaultSigningKeyId = function(keyId) {
+    var update = {
+      '@context': config.data.contextUrl,
+      id: config.data.session.identity.id,
+      signingKey: keyId
+    };
+
+    svcIdentity.collection.update(update)
+      .catch(function(err) {
+        // FIXME: show error feedback
+        if(err) {
+          console.error('setDefaultSigningKeyId error:', err);
+        }
+      });
   };
   $scope.revokeKey = function(key) {
     $scope.modals.showRevokeKeyAlert = true;

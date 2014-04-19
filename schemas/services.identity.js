@@ -19,8 +19,10 @@ var postIdentity = {
   type: 'object',
   properties: {
     '@context': jsonldContext(),
+    id: identifier(),
     email: email({required: false}),
-    label: label({required: false})
+    label: label({required: false}),
+    signingKey: identifier({required: false})
   },
   additionalProperties: false
 };
@@ -137,8 +139,7 @@ var postPreferences = {
   properties: {
     '@context': jsonldContext(),
     type: jsonldType('IdentityPreferences'),
-    destination: identifier({required: false}),
-    source: identifier({required: false}),
+    signingKey: identifier({required: false}),
     publicKey: {
       required: false,
       type: [{

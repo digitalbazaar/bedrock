@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['config', '$http', '$rootScope'];
+var deps = ['config', '$http', '$rootScope', 'svcResource'];
 return {svcIdentity: deps.concat(factory)};
 
-function factory(config, $http, $rootScope) {
+function factory(config, $http, $rootScope, svcResource) {
   var service = {};
 
   var session = config.data.session || {auth: false};
@@ -22,28 +22,23 @@ function factory(config, $http, $rootScope) {
   angular.forEach(service.identityMap, function(identity) {
     service.identities.push(identity);
   });
-  service.state = {
-    loading: false
-  };
+
+  service.collection = new svcResource.Collection({
+    url: config.data.identityBaseUri
+  });
+  // FIXME: update other code so common collection can be used
+  //service.identities = service.collection.storage;
+  service.state = service.collection.state;
 
   // add a new identity
-  service.add = function(identity) {
-    return new Promise(function(resolve, reject) {
-      service.state.loading = true;
-      var promise = Promise.cast($http.post('/i', identity));
-      promise.then(function(response) {
+  service.add = function(identity, options) {
+    return service.collection.add(identity, options)
+      .then(function(newIdentity) {
+        // FIXME: use newIdentity?
         service.identityMap[identity.id] = identity;
         service.identities.push(identity);
-        service.state.loading = false;
-        resolve(response.data);
-        $rootScope.$apply();
-      }).catch(function(err) {
-        service.state.loading = false;
-        reject(err);
-        $rootScope.$apply();
       });
-    });
-  };
+    };
 
   return service;
 }
