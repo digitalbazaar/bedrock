@@ -38,30 +38,12 @@
         <!-- Action -->
         <td class="action">
           <div class="btn-group">
-            <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"
+              data-popover-template="/app/components/key/keys-action-menu.html"
+              data-popover-visible="model.showKeysActionMenu_{{$index}}"
+              data-placement="bottom">
               <i class="icon-chevron-down"></i>
             </a>
-            <ul class="dropdown-menu pull-right">
-              <!-- Edit -->
-              <li>
-                <a data-ng-click="editKey(key)">
-                  <i class="icon-pencil"></i> Edit
-                </a>
-              </li>
-              <!-- Default Signing Key -->
-              <li data-ng-show="identity.signingKey != key.id">
-                <a data-ng-click="setDefaultSigningKeyId(key.id)">
-                  <i class="icon-star"></i> Set as default
-                </a>
-              </li>
-              <li class="divider"></li>
-              <!-- Revoke -->
-              <li class="btn-danger" data-ng-hide="key.sysStatus == 'disabled'">
-                <a data-ng-click="revokeKey(key)">
-                  <i class="icon-remove"></i> Revoke
-                </a>
-              </li>
-            </ul>
           </div>
         </td>
       </tr>
