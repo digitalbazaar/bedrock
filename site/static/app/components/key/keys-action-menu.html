@@ -11,8 +11,8 @@
       <i class="icon-star"></i> Set as default
     </a>
   </li>
-  <li class="divider"></li>
   <!-- Revoke -->
+  <li class="divider" data-ng-hide="key.sysStatus == 'disabled'"></li>
   <li class="btn-danger" data-ng-hide="key.sysStatus == 'disabled'">
     <a data-ng-click="revokeKey(key)">
       <i class="icon-remove"></i> Revoke
