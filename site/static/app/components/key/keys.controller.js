@@ -48,7 +48,7 @@ function factory($scope, $routeParams, config, svcIdentity, svcKey) {
     var update = {
       '@context': config.data.contextUrl,
       id: config.data.session.identity.id,
-      signingKey: keyId
+      sysSigningKey: keyId
     };
 
     svcIdentity.collection.update(update)

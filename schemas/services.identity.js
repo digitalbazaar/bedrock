@@ -22,7 +22,7 @@ var postIdentity = {
     id: identifier(),
     email: email({required: false}),
     label: label({required: false}),
-    signingKey: identifier({required: false})
+    sysSigningKey: identifier({required: false})
   },
   additionalProperties: false
 };

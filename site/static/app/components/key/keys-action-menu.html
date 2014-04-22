@@ -6,7 +6,7 @@
     </a>
   </li>
   <!-- Default Signing Key -->
-  <li data-ng-show="identity.signingKey != key.id && key.sysStatus == 'active'">
+  <li data-ng-show="identity.sysSigningKey != key.id && key.sysStatus == 'active'">
     <a data-ng-click="setDefaultSigningKeyId(key.id)">
       <i class="icon-star"></i> Set as default
     </a>
