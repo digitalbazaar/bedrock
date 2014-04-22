@@ -39,6 +39,7 @@ function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
       query = {'@context': 'https://w3id.org/identity/v1'};
     }
     model.loading = true;
+    model.feedback.error = null;
     Promise.cast($http.post($location.absUrl() + '&authorize=true', {
       query: JSON.stringify(query)
     })).then(function(response) {
