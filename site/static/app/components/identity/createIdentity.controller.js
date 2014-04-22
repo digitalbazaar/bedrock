@@ -15,6 +15,7 @@ return {CreateIdentityCtrl: deps.concat(factory)};
 
 function factory($scope, $http, config) {
   $scope.model = {};
+  $scope.data = config.data;
   $scope.feedback = {};
   // FIXME: temporary code to be removed after feedback improvements.
   //      : also remove the id fom the form in create.tpl.
