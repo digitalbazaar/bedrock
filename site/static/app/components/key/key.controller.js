@@ -11,21 +11,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'config', 'svcModel', 'svcKey'];
-return {
-  controller: {KeyCtrl: deps.concat(factory)},
-  routes: [{
-    path:
-      window.data.identityBasePath +
-      '/:identity/keys/:keyId',
-    options: {
-      title: 'Key',
-      templateUrl: '/app/components/key/key.html'
-    }
-  }]
-};
+var deps = ['$scope', 'svcModel', 'svcKey'];
+return {KeyCtrl: deps.concat(factory)};
 
-function factory($scope, config, svcModel, svcKey) {
+function factory($scope, svcModel, svcKey) {
   var model = $scope.model = {};
   $scope.state = svcKey.state;
   $scope.modals = {};

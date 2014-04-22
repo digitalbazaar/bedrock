@@ -9,6 +9,7 @@ define([
   'angular',
   './key.controller',
   './keys.controller',
+  './key.routes',
   './key.service',
   './keys.directive',
   './modalGenerateKeyPair.directive',
@@ -16,15 +17,15 @@ define([
   './modalEditKey.directive',
   './keySelector.directive',
 ], function(
-  angular, keyCtrl, keysCtrl, keyService, keysDirective,
+  angular, keyCtrl, keysCtrl, routes, keyService, keysDirective,
   modalGenerateKeyPair, modalAddKey, modalEditKey, keySelector) {
 
 'use strict';
 
 var module = angular.module('app.key', []);
 
-module.controller(keyCtrl.controller);
-module.controller(keysCtrl.controller);
+module.controller(keyCtrl);
+module.controller(keysCtrl);
 module.service(keyService);
 module.directive(keysDirective);
 module.directive(modalGenerateKeyPair);
@@ -34,10 +35,7 @@ module.directive(keySelector);
 
 module.config(['$routeProvider',
   function($routeProvider) {
-    angular.forEach(keyCtrl.routes, function(route) {
-      $routeProvider.when(route.path, route.options);
-    });
-    angular.forEach(keysCtrl.routes, function(route) {
+    angular.forEach(routes, function(route) {
       $routeProvider.when(route.path, route.options);
     });
   }

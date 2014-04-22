@@ -11,18 +11,7 @@ define([], function() {
 'use strict';
 
 var deps = ['$scope', '$routeParams', 'config', 'svcIdentity', 'svcKey'];
-return {
-  controller: {KeysCtrl: deps.concat(factory)},
-  routes: [{
-    path:
-      window.data.identityBasePath +
-      '/:identity/keys',
-    options: {
-      title: 'Keys',
-      templateUrl: '/app/components/key/keys.html'
-    }
-  }]
-};
+return {KeysCtrl: deps.concat(factory)};
 
 function factory($scope, $routeParams, config, svcIdentity, svcKey) {
   var model = $scope.model = {};
