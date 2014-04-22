@@ -1,5 +1,5 @@
 /*!
- * Identity Dashboard.
+ * Identity Dashboard Controller.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -10,17 +10,8 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'config', 'svcIdentity'];
-return {
-  controller: {DashboardCtrl: deps.concat(factory)},
-  routes: [{
-    path: window.data.identityBasePath + '/:identity/dashboard',
-    options: {
-      title: 'Dashboard',
-      templateUrl: '/app/components/dashboard/dashboard.html'
-    }
-  }]
-};
+var deps = ['$scope', 'svcIdentity'];
+return {DashboardCtrl: deps.concat(factory)};
 
 function factory($scope, svcIdentity) {
   var model = $scope.model = {};

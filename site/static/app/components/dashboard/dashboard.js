@@ -7,18 +7,19 @@
  */
 define([
   'angular',
-  './dashboard.controller'
-], function(angular, controller) {
+  './dashboard.controller',
+  './dashboard.routes',
+], function(angular, controller, routes) {
 
 'use strict';
 
 var module = angular.module('app.dashboard', []);
 
-module.controller(controller.controller);
+module.controller(controller);
 
 module.config(['$routeProvider',
   function($routeProvider) {
-    angular.forEach(controller.routes, function(route) {
+    angular.forEach(routes, function(route) {
       $routeProvider.when(route.path, route.options);
     });
   }
