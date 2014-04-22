@@ -1,5 +1,5 @@
 /*!
- * Identity Settings.
+ * Identity Settings Controller.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -11,16 +11,7 @@ define([], function() {
 'use strict';
 
 var deps = ['$scope', 'config', 'svcIdentity'];
-return {
-  controller: {SettingsCtrl: deps.concat(factory)},
-  routes: [{
-    path: window.data.identityBasePath + '/:identity/settings',
-    options: {
-      title: 'Settings',
-      templateUrl: '/app/components/settings/settings.html'
-    }
-  }]
-};
+return {SettingsCtrl: deps.concat(factory)};
 
 function factory($scope, config, svcIdentity) {
   // TODO: use model instead of scope directly

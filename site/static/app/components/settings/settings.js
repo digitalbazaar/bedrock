@@ -8,19 +8,20 @@
 define([
   'angular',
   './identitySettings.controller',
-  './settings.controller'
-], function(angular, identitySettings, settings) {
+  './settings.controller',
+  './settings.routes'
+], function(angular, identitySettings, settings, routes) {
 
 'use strict';
 
 var module = angular.module('app.settings', []);
 
-module.controller(settings.controller);
+module.controller(settings);
 module.controller(identitySettings);
 
 module.config(['$routeProvider',
   function($routeProvider) {
-    angular.forEach(settings.routes, function(route) {
+    angular.forEach(routes, function(route) {
       $routeProvider.when(route.path, route.options);
     });
   }
