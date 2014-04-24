@@ -10,7 +10,6 @@ require('./configs/example');
 
 if(module.parent) {
   module.exports = br;
-}
-else {
+} else {
   br.start();
 }

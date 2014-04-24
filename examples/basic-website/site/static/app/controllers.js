@@ -20,8 +20,7 @@ define([
     if('controller' in controller || 'routes' in controller) {
       module.controller(controller.controller || {});
       routes.push.apply(routes, controller.routes || []);
-    }
-    else {
+    } else {
       module.controller(controller);
     }
   });

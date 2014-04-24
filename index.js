@@ -7,8 +7,7 @@ var bedrock = require(__libdir + '/bedrock');
 
 if(module.parent) {
   module.exports = bedrock;
-}
-else {
+} else {
   // running in development mode
   // load dev config and start
   require('./configs/dev');
