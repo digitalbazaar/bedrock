@@ -52,8 +52,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
           var title = this.getTitle();
           if(!title) {
             tip.find('.popover-title').hide();
-          }
-          else {
+          } else {
             tip.find('.popover-title').text(title);
             tip.find('.popover-title').show();
           }
@@ -176,8 +175,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
               element.addClass('active');
               element.popover('show');
             }
-          }
-          else if(visible) {
+          } else if(visible) {
             visible = false;
             element.removeClass('active');
             element.popover('hide');

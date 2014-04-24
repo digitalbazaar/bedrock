@@ -56,8 +56,7 @@ function factory($http, $filter) {
         if(value === undefined || value.length === 0 || !ownerReady) {
           scope.result = false;
           element.hide();
-        }
-        else if(value !== lastInput) {
+        } else if(value !== lastInput) {
           // show checking
           element
             .removeClass('alert-error alert-success')
@@ -71,20 +70,17 @@ function factory($http, $filter) {
             scope.$apply(function() {
               if(value.length === 0) {
                 element.hide();
-              }
-              else {
+              } else {
                 timer = null;
                 if(scope.type === 'email') {
                   lastInput = scope.input;
-                }
-                else {
+                } else {
                   lastInput = $filter('slug')(scope.input);
                 }
                 var data = {type: scope.type};
                 if(scope.type === 'email') {
                   data.email = lastInput;
-                }
-                else {
+                } else {
                   data.sysSlug = lastInput;
                 }
                 Promise.cast($http.post('/identifier', $.extend(
@@ -110,14 +106,12 @@ function factory($http, $filter) {
                         .text(scope.invalid)
                         .addClass('alert-error')
                         .fadeIn('slow');
-                    }
-                    else if(status === 409) {
+                    } else if(status === 409) {
                       element
                         .text(scope.taken)
                         .addClass('alert-error')
                         .fadeIn('slow');
-                    }
-                    else {
+                    } else {
                       // FIXME: report server errors
                     }
                     scope.$apply();

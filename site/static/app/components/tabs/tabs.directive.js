@@ -34,8 +34,7 @@ function tabsFactory() {
       }
       if(typeof index === undefined || index >= panes.length) {
         panes.push(pane);
-      }
-      else {
+      } else {
         panes.splice(index, 0, pane);
       }
     };

@@ -23,18 +23,15 @@ function factory() {
           if(key !== '$$hashKey') {
             delete dst[key];
           }
-        }
-        else {
+        } else {
           // do deep replacement
           var srcValue = src[key];
           if(angular.isArray(dstValue) && angular.isArray(srcValue)) {
             // assumes 'id' property means value match
             service.replaceArray(dstValue, srcValue);
-          }
-          else if(angular.isObject(dstValue) && angular.isObject(srcValue)) {
+          } else if(angular.isObject(dstValue) && angular.isObject(srcValue)) {
             service.replace(dstValue, srcValue);
-          }
-          else {
+          } else {
             dst[key] = srcValue;
           }
         }
@@ -90,8 +87,7 @@ function factory() {
           array.splice(i, 1);
           break;
         }
-      }
-      else if(array[i][id] === target) {
+      } else if(array[i][id] === target) {
         array.splice(i, 1);
         break;
       }

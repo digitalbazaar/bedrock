@@ -21,16 +21,13 @@ function factory($parse) {
         if(value) {
           if(element.is(':animated')) {
             element.stop(true, true).show();
-          }
-          else {
+          } else {
             element.fadeIn();
           }
-        }
-        else {
+        } else {
           if(element.is(':animated')) {
             element.stop(true, true).hide();
-          }
-          else {
+          } else {
             element.fadeOut();
           }
         }

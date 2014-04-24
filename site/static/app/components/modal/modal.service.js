@@ -80,8 +80,7 @@ function factory(
             scope.$watch('visible', function(value) {
               if(value) {
                 modal = createModal(options, scope, attrs, transcludeLinker);
-              }
-              else if(modal) {
+              } else if(modal) {
                 modal._angular.destroy();
               }
             });
@@ -161,8 +160,7 @@ function factory(
           if(event.target === modal.$backdrop[0]) {
             if(modal.options.backdrop === 'static') {
               element.focus();
-            }
-            else {
+            } else {
               modal.hide();
             }
           }
@@ -351,8 +349,7 @@ function factory(
         modal._angular.openAndShow();
       });
       parent._angular.hide();
-    }
-    else {
+    } else {
       modal._angular.openAndShow();
     }
 

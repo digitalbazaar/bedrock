@@ -41,8 +41,7 @@ function factory(svcModal) {
         }, function(err, keypair) {
           if(err) {
             reject(err);
-          }
-          else {
+          } else {
             resolve(keypair);
           }
         });

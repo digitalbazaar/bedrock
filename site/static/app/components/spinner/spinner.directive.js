@@ -43,8 +43,7 @@ function factory() {
         if(value) {
           spinner.spin();
           element.append(spinner.el);
-        }
-        else {
+        } else {
           spinner.stop();
         }
       });

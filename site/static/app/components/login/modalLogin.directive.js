@@ -35,8 +35,7 @@ function factory(svcModal) {
           model.feedback.error = {
             message: 'The password you entered was incorrect. Please try again.'
           };
-        }
-        else {
+        } else {
           model.feedback.error = err;
         }
         $scope.$apply();

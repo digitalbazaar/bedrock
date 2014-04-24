@@ -52,10 +52,8 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
             error.message =
               'An error occurred while communicating with the server: ' +
               (response.statusText || ('HTTP ' + response.status));
-          }
-          // check for invalid session or missing session
-          else if(error.type === 'bedrock.website.PermissionDenied') {
-            // show login modal
+          } else if(error.type === 'bedrock.website.PermissionDenied') {
+            // invalid session or missing session, show login modal
             $rootScope.$emit('showLoginModal');
           }
           return $q.reject(error);
@@ -84,8 +82,7 @@ jsonld.isType = function(obj, value) {
 util.w3cDate = function(date) {
   if(date === undefined || date === null) {
     date = new Date();
-  }
-  else if(typeof date === 'number' || typeof date === 'string') {
+  } else if(typeof date === 'number' || typeof date === 'string') {
     date = new Date(date);
   }
   return (

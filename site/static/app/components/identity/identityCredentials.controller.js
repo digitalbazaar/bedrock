@@ -34,8 +34,7 @@ function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
     var query;
     if(accept) {
       query = model.identityCredentials.query;
-    }
-    else {
+    } else {
       query = {'@context': 'https://w3id.org/identity/v1'};
     }
     model.loading = true;

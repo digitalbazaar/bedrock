@@ -70,8 +70,7 @@ function factory($location, $routeParams, $sce, $timeout, svcModal) {
             model.loading = false;
             $scope.$apply();
           }, 5000);
-        }
-        else {
+        } else {
           // clear query params
           $location.search({});
           model.loading = false;

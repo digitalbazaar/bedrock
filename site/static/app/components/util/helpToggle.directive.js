@@ -47,8 +47,7 @@ function factory($parse) {
           state.show = state.pressed;
           if(state.pressed) {
             element.addClass('active');
-          }
-          else {
+          } else {
             element.removeClass('active');
           }
           set(scope, state);
@@ -96,19 +95,16 @@ function factory($parse) {
           if(element.is(':animated')) {
             // cancel current fade in/out
             element.stop(true, true).css('opacity', '1');
-          }
-          else {
+          } else {
             // use opacity to preserve layout
             $(element).animate({opacity: '1'}, 400);
           }
-        }
-        else {
+        } else {
           element.parent().removeClass('help-toggle-on');
           if(element.is(':animated')) {
             // cancel current fade in/out
             element.stop(true, true).css('opacity', '0');
-          }
-          else {
+          } else {
             // use opacity to preserve layout
             $(element).animate({opacity: '0'}, 400);
           }

@@ -38,13 +38,11 @@ function factory($scope, config, $http, $compile) {
         var request = model.request;
         if(!request) {
           window.location = data.identity.id + '/dashboard';
-        }
-        // redirect to queued URL
-        else if(request.method === 'GET') {
+        } else if(request.method === 'GET') {
+          // redirect to queued URL
           window.location = request.url;
-        }
-        // add form to page and submit it
-        else {
+        } else {
+          // add form to page and submit it
           var element = angular.element([
             '<form data-ng-hide="!!model.request" method="post" ',
             'action="{{model.request.url}}">',
@@ -57,8 +55,7 @@ function factory($scope, config, $http, $compile) {
           $scope.$apply();
           element.submit();
         }
-      }
-      else {
+      } else {
         // show multiple identities
         $scope.multiple = true;
         $scope.email = data.email;
@@ -74,8 +71,7 @@ function factory($scope, config, $http, $compile) {
       // FIXME: use directive to show feedback?
       if(err.type === 'bedrock.validation.ValidationError') {
         $scope.error = 'Please enter your email address and password.';
-      }
-      else {
+      } else {
         $scope.error = err.message;
       }
       $scope.loading = false;

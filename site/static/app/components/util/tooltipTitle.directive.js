@@ -40,8 +40,7 @@ function factory() {
           if(tooltip) {
             tooltip.show();
           }
-        }
-        else {
+        } else {
           show = false;
           if(tooltip) {
             tooltip.hide();
