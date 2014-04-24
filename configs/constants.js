@@ -31,6 +31,7 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   // prefixes
   bed: 'http://w3id.org/bedrock#',
   dc: 'http://purl.org/dc/terms/',
+  identity: 'https://w3id.org/identity#',
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
   sec: 'https://w3id.org/security#',
@@ -38,6 +39,7 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   xsd: 'http://www.w3.org/2001/XMLSchema#',
 
   // bedrock
+  // FIXME: change to identity:Identity
   Identity: 'bed:Identity',
 
   // general
@@ -64,6 +66,9 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   // error
   // FIXME: add error terms
   // 'errorMessage': 'err:message'
+
+  // identity
+  identityService: {'@id': 'identity:identityService', '@type': '@id'},
 
   // security
   credential: {'@id': 'sec:credential', '@type': '@id'},
