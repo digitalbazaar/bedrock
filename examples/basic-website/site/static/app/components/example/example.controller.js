@@ -5,19 +5,17 @@
  *
  * @author Manu Sporny
  */
-define(['angular'], function(angular) {
+define([], function() {
 
 'use strict';
 
 var deps = ['$scope'];
-return {
-  controller: {ExampleCtrl: deps.concat(factory)}
-};
+return {ExampleCtrl: deps.concat(factory)};
 
-function factory($scope, $http) {
+function factory($scope) {
   var model = $scope.model = {};
   var data = window.data || {};
-  
+
   console.log('ExampleCtrl initialized...');
 }
 
