@@ -1,0 +1,19 @@
+<div class="modal">
+  <div class="modal-header">
+    <a class="close btn-close">&times;</a>
+    <h3>Load file...</h3>
+  </div>
+  <div class="modal-body">
+    <div data-ng-include="'/app/components/remoteFileSelector/file-browser.html'"></div>
+  </div>
+  <div class="modal-footer">
+    <div class="modal-feedback"
+      data-feedback="model.feedback" data-target="model.feedbackTarget"></div>
+    <span data-spinner="model.loading"
+      data-spinner-class="prepend-btn-spinner"></span>
+    <button class="btn btn-primary"
+      data-ng-disabled="model.loading"
+      data-ng-click="model.loadSelectedFile()"><i class="icon-ok"></i> Load</button>
+    <button class="btn btn-close" data-ng-disabled="loading">Cancel</button>
+  </div>
+</div>
