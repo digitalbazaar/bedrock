@@ -43,6 +43,7 @@ constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
   Identity: 'bed:Identity',
 
   // general
+  about: {'@id': 'schema:about', '@type': '@id'},
   address: {'@id': 'schema:address', '@type': '@id'},
   addressCountry: 'schema:addressCountry',
   addressLocality: 'schema:addressLocality',
