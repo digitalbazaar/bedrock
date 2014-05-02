@@ -54,3 +54,15 @@ api.logout = function() {
   element(by.linkText('Sign Out')).click();
   api.get('/');
 };
+
+// runs a script in the browser's context
+// pass fn($injector) for a sync script, fn($injector, callback) for async
+api.run = function(fn) {
+  fn = fn.toString();
+  var isAsync = (fn.split('\n')[0].indexOf(',') !== -1);
+  var execute = isAsync ? browser.executeAsyncScript : browser.executeScript;
+  return execute(
+    "var $injector = angular.element('body').data('$injector');" +
+    "var callback = arguments[arguments.length - 1];" +
+    'return (' + fn + ')($injector, callback);');
+};
