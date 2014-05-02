@@ -57,7 +57,7 @@ exports.config = {
   //
   // Spec patterns are relative to the location of this config.
   specs: [
-    'site/static/app/**/*test.js',
+    'tests/protractor/**/*test.js',
   ],
 
   // Patterns to exclude.
@@ -105,40 +105,14 @@ exports.config = {
     // will be available. For example, you can add a Jasmine reporter with:
     //     jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter(
     //         'outputdir/', true, true));
-    var app = browser.app = {};
-    app.baseUrl = baseUrl;
-
-    // gets a URL that returns an AngularJS page and waits for it to bootstrap
-    app.get = function(url) {
-      // wait for ng-app to appear
-      browser.driver.get(baseUrl + url);
-      browser.driver.wait(function() {
-        var body = browser.driver.findElement(by.tagName(rootElement));
-        return body && body.getAttribute('ng-app');
-      });
-    };
-
-    // logs in via the navbar
-    app.login = function(identifier, password) {
-      app.get('/');
-      element.all(by.model('sysIdentifier')).each(function(e) {
-        e.getTagName().then(function(tagName) {
-          if(tagName === 'input') {
-            e.sendKeys(identifier);
-          }
-        });
-      });
-      element(by.model('password')).sendKeys(password);
-      element(by.linkText('Sign In')).click();
-    };
-
-    // logs out via navbar
-    app.logout = function() {
-      app.get('/');
-      element(by.binding('model.session.identity.label')).click();
-      element(by.linkText('Sign Out')).click();
-      app.get('/');
-    };
+    var helper = require(__dirname + '/tests/protractor/helper');
+    helper.init({
+      browser: browser,
+      protractor: protractor,
+      baseUrl: baseUrl,
+      rootElement: rootElement,
+      element: element
+    });
   },
 
   // The params object will be passed directly to the protractor instance,
