@@ -14,7 +14,9 @@
     "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js > reports/coverage.html && rm -rf lib-cov",
     "install-selenium": "test ! -e /tmp/sv-selenium/selenium-server-standalone.jar && ./node_modules/.bin/install_selenium; test ! -e /tmp/sv-selenium/chromedriver && ./node_modules/.bin/install_chromedriver; echo 'Selenium and chromedriver have been successfully installed.'",
     "bootstrap": "make -C ../bedrock-bootstrap bootstrap && rsync -av --exclude=js/bootstrap.min.js ../bedrock-bootstrap/bootstrap/ ./site/static/bootstrap/",
-    "minify": "grunt"
+    "minify": "grunt",
+    "install-protractor": "webdriver-manager update",
+    "protractor": "protractor"
   },
   "dependencies": {
     "almond": "~0.2.6",
@@ -66,6 +68,7 @@
     "grunt-contrib-jshint": "~0.8.0",
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
+    "protractor": "~0.22.0",
     "superagent": "0.16.0",
     "sv-selenium": "~0.2.3",
     "visionmedia-jscoverage": "~1.0.0",
