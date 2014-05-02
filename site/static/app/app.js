@@ -162,10 +162,10 @@ module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
   $rootScope.jsonld = util.jsonld;
 }]);
 
-angular.bootstrap(document, ['app']);
+angular.bootstrap(document.body, ['app']);
 
 // set ng-app to indicate to test runner that application has bootstrapped
-document.body.setAttribute('ng-app', 'app');
+angular.element('body').attr('ng-app', 'app');
 
 // from angular.js for route matching
 // TODO: could probably be simplified
