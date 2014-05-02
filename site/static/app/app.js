@@ -164,6 +164,9 @@ module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
 
 angular.bootstrap(document, ['app']);
 
+// set ng-app to indicate to test runner that application has bootstrapped
+document.body.setAttribute('ng-app', 'app');
+
 // from angular.js for route matching
 // TODO: could probably be simplified
 function getRouteRegex(when) {
