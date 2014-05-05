@@ -16,6 +16,10 @@ Running the Development Bedrock Server
 Running the Tests
 -----------------
 
+Install protractor (before first test run):
+
+    npm run install-protractor
+
 Run all backend and frontend tests:
 
     npm run test
