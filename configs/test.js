@@ -34,11 +34,11 @@ config.loggers.console.level = 'emergency';
 // server info
 // 0 means use # of cpus
 config.server.workers = 0;
-config.server.port = 18443;
-config.server.httpPort = 18080;
+config.server.port = 19443;
+config.server.httpPort = 19080;
 config.server.bindAddr = ['bedrock.dev'];
 config.server.domain = 'bedrock.dev';
-config.server.host = 'bedrock.dev:18443';
+config.server.host = 'bedrock.dev:19443';
 config.server.key = __dirname + '/../pki/test-bedrock.key';
 config.server.cert = __dirname + '/../pki/test-bedrock.crt';
 
@@ -76,9 +76,8 @@ config.mail.vars = {
   machine: require('os').hostname()
 };
 
-
 // base URL for tests
-config.website.baseUrl = 'https://bedrock.dev:18443/';
+config.server.baseUri = 'https://' + config.server.host;
 
 config.test = {};
 config.test.backend = {};
