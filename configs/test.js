@@ -39,6 +39,7 @@ config.server.httpPort = 19080;
 config.server.bindAddr = ['bedrock.dev'];
 config.server.domain = 'bedrock.dev';
 config.server.host = 'bedrock.dev:19443';
+config.server.baseUri = 'https://' + config.server.host;
 config.server.key = __dirname + '/../pki/test-bedrock.key';
 config.server.cert = __dirname + '/../pki/test-bedrock.crt';
 
@@ -77,7 +78,10 @@ config.mail.vars = {
 };
 
 // base URL for tests
-config.server.baseUri = 'https://' + config.server.host;
+config.website.views.vars.serviceHost = config.server.host;
+config.website.views.vars.serviceDomain = config.server.domain;
+config.website.views.vars.baseUri = config.server.baseUri;
+config.website.views.vars.clientData.baseUri = config.server.baseUri;
 
 config.test = {};
 config.test.backend = {};
@@ -85,7 +89,8 @@ config.test.backend.tests = [
   path.resolve(__dirname, '..', 'tests', 'backend')
 ];
 config.test.frontend = {};
-config.test.frontend.configFile = __dirname + '/../protractor.conf.js';
+config.test.frontend.configFile = path.resolve(
+  __dirname, '..', 'protractor.conf.js');
 
 require('./roles');
 require('./common-data');
