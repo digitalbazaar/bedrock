@@ -9,28 +9,30 @@ var br = require(__libdir + '/bedrock');
 var program = require('commander');
 
 program
-  .version('0.0.1')
+  .version('0.0.2')
   .usage('[options]')
   .option('-c, --config [config]',
     'Set config file to use. [./configs/test.js]',
     './configs/test.js')
-  .option('-u, --unit', 'Perform all unit tests')
-  .option('-s, --system', 'Perform all system tests')
-  .option('-d, --display', 'The X display to use for system tests')
+  .option('-b, --backend', 'Perform all backend tests')
+  .option('-f, --frontend', 'Perform all frontend tests')
+  //.option('-d, --display', 'The X display to use for frontend tests')
   .parse(process.argv);
 
+// TODO: allow selenium addr and port to be given instead to connect to a
+// different selenium server
 // browser-based system tests should connect to an X display
-if(!process.env.DISPLAY) {
+/*if(!process.env.DISPLAY) {
   process.env.DISPLAY = program.display ? program.display : ':0';
-}
+}*/
 
 // check to see which test suites to run
 var tests = [];
-if(program.unit) {
-  tests.push('unit');
+if(program.backend) {
+  tests.push('backend');
 }
-if(program.system) {
-  tests.push('system');
+if(program.frontend) {
+  tests.push('frontend');
 }
 
 if(tests.length < 1) {
@@ -39,8 +41,6 @@ if(tests.length < 1) {
   process.exit(1);
 }
 
-// notify superagent that it should ignore self-signed certs
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 process.env.NODE_ENV = 'test';
 process.env.TEST_ENV = tests.join(',');
 

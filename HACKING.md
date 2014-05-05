@@ -24,9 +24,9 @@ To use, run commands like the following:
 Testing
 -------
 
-* Unit tests are located in `tests/unit/`.
-* System tests are located in `tests/system/`. These tests use
-  webdriver to test the system via a web browser.
+* Backend tests are located in `tests/backend/`.
+* Frontend tests are located in `tests/frontend/`. These tests use
+  protractor to test a web browser.
 * Use BEDROCK_DEBUG=test to show additional debug info.
 
 The following projects are used for creating tests:

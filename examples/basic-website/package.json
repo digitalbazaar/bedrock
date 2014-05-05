@@ -1,14 +1,9 @@
 {
-  "name": "basic-windows-gui",
+  "name": "basic-website",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodejs index.js",
-    "install-selenium": "test ! -e /tmp/sv-selenium/selenium-server-standalone.jar && ./node_modules/.bin/install_selenium; test ! -e /tmp/sv-selenium/chromedriver && ./node_modules/.bin/install_chromedriver; echo 'Selenium and chromedriver have been successfully installed.'",
-    "test": "node ./node_modules/bedrock/test.js --unit --system --config `pwd`/configs/test.js",
-    "test-unit": "node ./node_modules/bedrock/test.js --unit --config `pwd`/configs/test.js",
-    "test-system": "node ./node_modules/bedrock/test.js --system --config `pwd`/configs/test.js",
-    "minify": "grunt"
+    "start": "nodejs index.js"
   },
   "dependencies": {
     "bedrock": "~1.0.0"

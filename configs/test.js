@@ -80,13 +80,13 @@ config.mail.vars = {
 // base URL for tests
 config.website.baseUrl = 'https://bedrock.dev:18443/';
 
-config.tests = {};
-config.tests.unit = [
-  path.resolve(__dirname, '..', 'tests', 'unit')
+config.test = {};
+config.test.backend = {};
+config.test.backend.tests = [
+  path.resolve(__dirname, '..', 'tests', 'backend')
 ];
-config.tests.system = [
-  path.resolve(__dirname, '..', 'tests', 'system')
-];
+config.test.frontend = {};
+config.test.frontend.configFile = __dirname + '/../protractor.conf.js';
 
 require('./roles');
 require('./common-data');

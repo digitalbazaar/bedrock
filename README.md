@@ -16,17 +16,17 @@ Running the Development Bedrock Server
 Running the Tests
 -----------------
 
-Run all unit and system tests:
+Run all backend and frontend tests:
 
     npm run test
 
-Run just the unit tests:
+Run just the backend tests:
 
-    npm run test-unit
+    npm run test-backend
 
-Run just the system tests:
+Run just the frontend tests:
 
-    npm run test-system
+    npm run test-frontend
 
 Running the Code Coverage Tool
 ------------------------------

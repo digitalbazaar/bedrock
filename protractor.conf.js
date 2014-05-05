@@ -1,7 +1,3 @@
-// TODO: set baseUrl via external config?
-var baseUrl = 'https://bedrock.dev:18443';
-var rootElement = 'body';
-
 // A reference configuration file.
 exports.config = {
   // ----- How to setup Selenium -----
@@ -66,8 +62,8 @@ exports.config = {
   // all suites will run. If run with --suite=smoke, only the patterns matched
   // by that suite will run.
   suites: {
-    login: 'tests/protractor/login/**/*.js',
-    util: 'tests/protractor/util/**/*.js'
+    login: 'tests/frontend/login/**/*.js',
+    util: 'tests/frontend/util/**/*.js'
   },
 
   // ----- Capabilities to be passed to the webdriver instance ----
@@ -89,11 +85,11 @@ exports.config = {
   //
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  baseUrl: baseUrl,
+  baseUrl: 'https://bedrock.dev:18443',
 
   // Selector for the element housing the angular app - this defaults to
   // body, but is necessary if ng-app is on a descendant of <body>
-  rootElement: rootElement,
+  rootElement: 'body',
 
   // A callback function called once protractor is ready and available, and
   // before the specs are executed
@@ -104,12 +100,10 @@ exports.config = {
     // will be available. For example, you can add a Jasmine reporter with:
     //     jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter(
     //         'outputdir/', true, true));
-    var helper = require(__dirname + '/tests/protractor/helper');
+    var helper = require(__dirname + '/tests/frontend/helper');
     helper.init({
       browser: browser,
       protractor: protractor,
-      baseUrl: baseUrl,
-      rootElement: rootElement,
       element: element
     });
   },

@@ -9,12 +9,11 @@ var protractor;
 var by;
 var element;
 
-// callbed by onPrepare in config script
+// called by onPrepare in config script
 api.init = function(options) {
   api.browser = options.browser;
+  api.baseUrl = options.browser.baseUrl;
   api.protractor = options.protractor;
-  api.baseUrl = options.baseUrl;
-  api.rootElement = options.rootElement;
   api.element = options.element;
 
   browser = api.browser;
@@ -26,9 +25,9 @@ api.init = function(options) {
 // gets a URL that returns an AngularJS page and waits for it to bootstrap
 api.get = function(url) {
   // wait for ng-app to appear
-  browser.driver.get(api.baseUrl + url);
+  browser.driver.get(browser.baseUrl + url);
   browser.driver.wait(function() {
-    var body = browser.driver.findElement(by.tagName(api.rootElement));
+    var body = browser.driver.findElement(by.tagName(browser.rootEl));
     return body && body.getAttribute('ng-app');
   });
 };

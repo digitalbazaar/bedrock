@@ -227,11 +227,11 @@ regressions are caught before deploying the software to production.
 
 ### Testing and Continuous Integration Subsystem
 
-A modular testing subsystem that is capable of running both unit tests and
-browser-based system tests. The tests are designed to be run inside
-continuous integration frameworks to provide constant feedback on code
-coverage and test status as new changes are made to the software built using
-Bedrock.
+A modular testing subsystem that is capable of running both backend unit
+tests and browser-based frontend tests. The tests are designed to be run
+inside continuous integration frameworks to provide constant feedback on
+code coverage and test status as new changes are made to the software built
+using Bedrock.
 
 ### Chained Exception/Error Reporting
 

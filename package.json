@@ -5,18 +5,16 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js",
-    "test": "node test.js --unit --system",
-    "test-unit": "node test.js --unit",
-    "test-system": "node test.js --system",
+    "test": "node test.js --backend --frontend",
+    "test-backend": "node test.js --backend",
+    "test-frontend": "node test.js --frontend",
     "lint": "grunt jshint",
-    "ci-test": "node test.js --unit --system",
+    "ci-test": "node test.js --backend --frontend",
     "ci-lint": "grunt jshint --mode=ci || exit 0",
-    "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js > reports/coverage.html && rm -rf lib-cov",
-    "install-selenium": "test ! -e /tmp/sv-selenium/selenium-server-standalone.jar && ./node_modules/.bin/install_selenium; test ! -e /tmp/sv-selenium/chromedriver && ./node_modules/.bin/install_chromedriver; echo 'Selenium and chromedriver have been successfully installed.'",
+    "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js --backend > reports/coverage.html && rm -rf lib-cov",
     "bootstrap": "make -C ../bedrock-bootstrap bootstrap && rsync -av --exclude=js/bootstrap.min.js ../bedrock-bootstrap/bootstrap/ ./site/static/bootstrap/",
     "minify": "grunt",
-    "install-protractor": "webdriver-manager update",
-    "protractor": "protractor"
+    "install-protractor": "webdriver-manager update"
   },
   "dependencies": {
     "almond": "~0.2.6",
@@ -69,8 +67,6 @@
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
     "protractor": "~0.22.0",
-    "superagent": "0.16.0",
-    "sv-selenium": "~0.2.3",
     "visionmedia-jscoverage": "~1.0.0",
     "wd": "~0.2.10",
     "colors": "~0.6.2"
