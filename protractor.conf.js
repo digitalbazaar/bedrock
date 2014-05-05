@@ -26,7 +26,7 @@ exports.config = {
   // find chromedriver. This will be passed to the selenium jar as
   // the system property webdriver.chrome.driver. If null, selenium will
   // attempt to find chromedriver using PATH.
-  chromeDriver: './node_modules/protractor/selenium/chromedriver',
+  chromeDriver: __dirname + '/node_modules/protractor/selenium/chromedriver',
   // If true, only chromedriver will be started, not a standalone selenium.
   // Tests for browsers other than chrome will not run.
   chromeOnly: false,
@@ -62,8 +62,8 @@ exports.config = {
   // all suites will run. If run with --suite=smoke, only the patterns matched
   // by that suite will run.
   suites: {
-    login: 'tests/frontend/login/**/*.js',
-    util: 'tests/frontend/util/**/*.js'
+    login: __dirname + '/tests/frontend/login/**/*.js',
+    util: __dirname + '/tests/frontend/util/**/*.js'
   },
 
   // ----- Capabilities to be passed to the webdriver instance ----
