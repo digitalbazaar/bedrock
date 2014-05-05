@@ -1,4 +1,4 @@
-var helper = require('./helper');
+var helper = require('../helper');
 
 describe('login component', function() {
   var ptor = protractor.getInstance();

@@ -56,9 +56,8 @@ exports.config = {
   // ----- What tests to run -----
   //
   // Spec patterns are relative to the location of this config.
-  specs: [
-    'tests/protractor/**/*test.js',
-  ],
+  /*specs: [
+  ],*/
 
   // Patterns to exclude.
   exclude: [],
@@ -66,10 +65,10 @@ exports.config = {
   // Alternatively, suites may be used. When run without a commad line parameter,
   // all suites will run. If run with --suite=smoke, only the patterns matched
   // by that suite will run.
-  /*suites: {
-    smoke: 'spec/smoketests/*.js',
-    full: 'spec/*.js'
-  },*/
+  suites: {
+    login: 'tests/protractor/login/**/*.js',
+    util: 'tests/protractor/util/**/*.js'
+  },
 
   // ----- Capabilities to be passed to the webdriver instance ----
   //
