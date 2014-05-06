@@ -16,6 +16,7 @@ program
     './configs/test.js')
   .option('-b, --backend', 'Perform all backend tests')
   .option('-f, --frontend', 'Perform all frontend tests')
+  .option('-s, --suite [suite]', 'Run a specific frontend test suite')
   //.option('-d, --display', 'The X display to use for frontend tests')
   .parse(process.argv);
 
@@ -26,7 +27,7 @@ program
   process.env.DISPLAY = program.display ? program.display : ':0';
 }*/
 
-// check to see which test suites to run
+// check to see which tests to run
 var tests = [];
 if(program.backend) {
   tests.push('backend');
@@ -44,6 +45,13 @@ if(tests.length < 1) {
 process.env.NODE_ENV = 'test';
 process.env.TEST_ENV = tests.join(',');
 
-// load test config and start
+// load test config
 require(program.config);
+
+// set frontend test suite
+if(program.suite) {
+  br.config.test.frontend.suite = program.suite;
+}
+
+// start
 br.start();
