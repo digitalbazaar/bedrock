@@ -4,8 +4,8 @@
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
-var browser = GLOBAL.browser;
-var by = GLOBAL.by;
+var browser;
+var by;
 
 function Helper() {
   EventEmitter.call(this);
@@ -17,6 +17,9 @@ module.exports = api;
 
 // called by onPrepare in config script
 Helper.prototype.init = function(options) {
+  browser = GLOBAL.browser;
+  by = GLOBAL.by;
+
   options = options || {};
   this.browser = browser;
   this.baseUrl = browser.baseUrl;
