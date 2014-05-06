@@ -32,6 +32,10 @@ Run just the frontend tests:
 
     npm run test-frontend
 
+Run a specific frontend test suite:
+
+    nodejs test.js --frontend --suite unit
+
 Running the Code Coverage Tool
 ------------------------------
 
