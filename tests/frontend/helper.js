@@ -4,10 +4,8 @@
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
-var browser;
-var protractor;
-var by;
-var element;
+var browser = GLOBAL.browser;
+var by = GLOBAL.by;
 
 function Helper() {
   EventEmitter.call(this);
@@ -19,11 +17,9 @@ module.exports = api;
 
 // called by onPrepare in config script
 Helper.prototype.init = function(options) {
-  this.browser = browser = options.browser;
-  this.baseUrl = options.browser.baseUrl;
-  this.protractor = protractor = options.protractor;
-  this.element = element = options.element;
-  this.by = by = protractor.By;
+  options = options || {};
+  this.browser = browser;
+  this.baseUrl = browser.baseUrl;
   this.pages = require('./pages');
 
   this.emit('init');
@@ -49,6 +45,19 @@ Helper.prototype.run = function(fn) {
     "var $injector = angular.element('body').data('$injector');" +
     "var callback = arguments[arguments.length - 1];" +
     'return (' + fn + ')($injector, callback);');
+};
+
+// gets a random alphabetical string
+Helper.prototype.randomString = function(length) {
+  // min = 65 = 'A', max = 122 = 'z'
+  // max - min + 1 = 58
+  length = length || 10;
+  var rval = '';
+  while(rval.length < length) {
+    rval += String.fromCharCode(
+      Math.floor(Math.random() * 58) + 65);
+  }
+  return rval;
 };
 
 // logs in via the navbar

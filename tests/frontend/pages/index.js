@@ -1,4 +1,6 @@
 module.exports = {
+  dashboard: require('./dashboard'),
   join: require('./join'),
-  navbar: require('./navbar')
+  navbar: require('./navbar'),
+  settings: require('./settings')
 };

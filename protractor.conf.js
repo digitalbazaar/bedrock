@@ -62,8 +62,8 @@ exports.config = {
   // all suites will run. If run with --suite=smoke, only the patterns matched
   // by that suite will run.
   suites: {
-    login: __dirname + '/tests/frontend/login/**/*.js',
-    util: __dirname + '/tests/frontend/util/**/*.js'
+    e2e: __dirname + '/tests/frontend/e2e/**/*.js',
+    unit: __dirname + '/tests/frontend/unit/**/*.js'
   },
 
   // ----- Capabilities to be passed to the webdriver instance ----
@@ -101,11 +101,7 @@ exports.config = {
     //     jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter(
     //         'outputdir/', true, true));
     var helper = require(__dirname + '/tests/frontend/helper');
-    helper.init({
-      browser: browser,
-      protractor: protractor,
-      element: element
-    });
+    helper.init();
   },
 
   // The params object will be passed directly to the protractor instance,

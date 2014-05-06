@@ -3,13 +3,9 @@ var helper = require('../helper.js');
 var api = {};
 module.exports = api;
 
-var element;
-var by;
-
-helper.on('init', function() {
-  element = helper.element;
-  by = helper.by;
-});
+var by = GLOBAL.by;
+var element = GLOBAL.element;
+var expect = GLOBAL.expect;
 
 api.login = function(identifier, password) {
   helper.get('/');
@@ -29,4 +25,5 @@ api.logout = function() {
   element(by.binding('model.session.identity.label')).click();
   element(by.linkText('Sign Out')).click();
   helper.get('/');
+  expect(element(by.model('sysIdentifier')).isPresent()).toBe(true);
 };
