@@ -19,15 +19,12 @@ module.exports = api;
 
 // called by onPrepare in config script
 Helper.prototype.init = function(options) {
-  this.browser = options.browser;
+  this.browser = browser = options.browser;
   this.baseUrl = options.browser.baseUrl;
-  this.protractor = options.protractor;
-  this.element = options.element;
-
-  browser = this.browser;
-  protractor = this.protractor;
-  by = protractor.By;
-  element = this.element;
+  this.protractor = protractor = options.protractor;
+  this.element = element = options.element;
+  this.by = by = protractor.By;
+  this.pages = require('./pages');
 
   this.emit('init');
 };
@@ -42,28 +39,6 @@ Helper.prototype.get = function(url) {
   });
 };
 
-// logs in via the navbar
-Helper.prototype.login = function(identifier, password) {
-  this.get('/');
-  element.all(by.model('sysIdentifier')).each(function(e) {
-    e.getTagName().then(function(tagName) {
-      if(tagName === 'input') {
-        e.sendKeys(identifier);
-      }
-    });
-  });
-  element(by.model('password')).sendKeys(password);
-  element(by.linkText('Sign In')).click();
-};
-
-// logs out via navbar
-Helper.prototype.logout = function() {
-  this.get('/');
-  element(by.binding('model.session.identity.label')).click();
-  element(by.linkText('Sign Out')).click();
-  this.get('/');
-};
-
 // runs a script in the browser's context
 // pass fn($injector) for a sync script, fn($injector, callback) for async
 Helper.prototype.run = function(fn) {
@@ -74,4 +49,14 @@ Helper.prototype.run = function(fn) {
     "var $injector = angular.element('body').data('$injector');" +
     "var callback = arguments[arguments.length - 1];" +
     'return (' + fn + ')($injector, callback);');
+};
+
+// logs in via the navbar
+Helper.prototype.login = function(identifier, password) {
+  this.pages.navbar.login(identifier, password);
+};
+
+// logs out via navbar
+Helper.prototype.logout = function() {
+  this.pages.navbar.logout();
 };
