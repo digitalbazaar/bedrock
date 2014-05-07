@@ -20,20 +20,13 @@ api.createIdentity = function(options) {
   element(by.model('agreementChecked')).click();
   element(by.model('identity.sysSlug')).getAttribute('value')
     .then(function(slug) {
-      browser.wait(function() {
-        var button = element(by.buttonText('Create Identity'));
-        return button.getAttribute('disabled').then(function(disabled) {
-          return disabled !== 'true';
-        });
+      var button = element(by.buttonText('Create Identity'));
+      helper.waitForAttribute(button, 'disabled', function(disabled) {
+        return disabled !== 'true';
       });
       element(by.buttonText('Create Identity')).click();
-      var ptor = protractor.getInstance();
-      browser.wait(function() {
-        var url = '/i/' + slug + '/dashboard';
-        return ptor.getCurrentUrl().then(function(currentUrl) {
-          return currentUrl === (helper.baseUrl + url);
-        });
-      });
+      helper.waitForUrl('/i/' + slug + '/dashboard');
+      helper.waitForAngular();
     });
   return api;
 };

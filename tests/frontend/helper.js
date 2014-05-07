@@ -63,6 +63,17 @@ Helper.prototype.waitForAttribute = function(el, attr, fn) {
   });
 };
 
+// waits for a particular URL to load
+Helper.prototype.waitForUrl = function(url) {
+  url = this.baseUrl + url;
+  var ptor = GLOBAL.protractor.getInstance();
+  return browser.wait(function() {
+    return ptor.getCurrentUrl().then(function(currentUrl) {
+      return currentUrl === url;
+    });
+  });
+};
+
 // runs a script in the browser's context
 // pass fn($injector) for a sync script, fn($injector, callback) for async
 Helper.prototype.run = function(fn) {
