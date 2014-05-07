@@ -20,7 +20,7 @@ function factory($rootScope, $http, $location, svcModel) {
   // config: {
   //   storage: reference to external array of data (optional)
   //   url: url to collection (string)
-  //   expires: url to collection (ms, optional [0])
+  //   expires: time data expires (timestamp, optional [0])
   //   maxAge: maximum cache age (ms, optional [2m])
   // }
   service.Collection = function(config) {
