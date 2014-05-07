@@ -52,13 +52,14 @@ Helper.prototype.run = function(fn) {
 
 // gets a random alphabetical string
 Helper.prototype.randomString = function(length) {
-  // min = 65 = 'A', max = 122 = 'z'
-  // max - min + 1 = 58
+  var idx_A = 'A'.charCodeAt(0);
+  var idx_a = 'a'.charCodeAt(0) - 26;
   length = length || 10;
   var rval = '';
   while(rval.length < length) {
-    rval += String.fromCharCode(
-      Math.floor(Math.random() * 58) + 65);
+    var code = Math.floor(Math.random() * 52);
+    code += (code < 26) ? idx_A : idx_a;
+    rval += String.fromCharCode(code);
   }
   return rval;
 };
