@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$scope', 'config', '$http', '$compile'];
+var deps = ['$scope', 'config', '$http', '$compile', '$window'];
 return {LoginCtrl: deps.concat(factory)};
 
-function factory($scope, config, $http, $compile) {
+function factory($scope, config, $http, $compile, $window) {
   var model = $scope.model = {};
   $scope.multiple = false;
   $scope.loading = false;
@@ -37,24 +37,24 @@ function factory($scope, config, $http, $compile) {
         // if there's no queued request, go to dashboard
         var request = model.request;
         if(!request) {
-          window.location = data.identity.id + '/dashboard';
-        } else if(request.method === 'GET') {
-          // redirect to queued URL
-          window.location = request.url;
-        } else {
-          // add form to page and submit it
-          var element = angular.element([
-            '<form data-ng-hide="!!model.request" method="post" ',
-            'action="{{model.request.url}}">',
-            '<input data-ng-repeat="(name, value) in model.request.body" ',
-            'type="hidden" name="{{name}}" value="{{value}}" />',
-            '</form>'
-          ].join(''));
-          angular.element('body').append(element);
-          $compile(element)($scope);
-          $scope.$apply();
-          element.submit();
+          return $window.location = data.identity.id + '/dashboard';
         }
+        if(request.method === 'GET') {
+          // redirect to queued URL
+          return $window.location = request.url;
+        }
+        // add form to page and submit it
+        var element = angular.element([
+          '<form data-ng-hide="!!model.request" method="post" ',
+          'action="{{model.request.url}}">',
+          '<input data-ng-repeat="(name, value) in model.request.body" ',
+          'type="hidden" name="{{name}}" value="{{value}}" />',
+          '</form>'
+        ].join(''));
+        angular.element('body').append(element);
+        $compile(element)($scope);
+        $scope.$apply();
+        element.submit();
       } else {
         // show multiple identities
         $scope.multiple = true;

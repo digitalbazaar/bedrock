@@ -10,10 +10,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$http', 'config'];
+var deps = ['$scope', '$http', '$window', 'config'];
 return {CreateIdentityCtrl: deps.concat(factory)};
 
-function factory($scope, $http, config) {
+function factory($scope, $http, $window, config) {
   $scope.model = {};
   $scope.data = config.data;
   $scope.feedback = {};
@@ -39,8 +39,8 @@ function factory($scope, $http, config) {
     $scope.loading = true;
     $http.post('/join', $scope.identity)
       .success(function(response) {
-        //  redirect to new dashboard
-        window.location = response.id + '/dashboard';
+        // redirect to new dashboard
+        $window.location = response.id + '/dashboard';
       })
       .error(function(err) {
         $scope.loading = false;
