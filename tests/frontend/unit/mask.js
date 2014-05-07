@@ -1,6 +1,10 @@
 var helper = require('../helper');
 
 describe('mask', function() {
+  beforeEach(function() {
+    helper.waitForAngular();
+  });
+
   it('should convert 12345 to *2345', function() {
     expect(helper.run(function($injector) {
       var filter = $injector.get('maskFilter');

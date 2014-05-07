@@ -2,7 +2,7 @@ var helper = require('../helper');
 
 describe('ceil', function() {
   beforeEach(function() {
-    helper.get('/');
+    helper.waitForAngular();
   });
 
   it('should convert 1.123 to 1.13', function() {

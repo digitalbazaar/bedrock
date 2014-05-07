@@ -1,6 +1,10 @@
 var helper = require('../helper');
 
 describe('floor', function() {
+  beforeEach(function() {
+    helper.waitForAngular();
+  });
+
   it('should convert 1.128 to 1.12', function() {
     expect(helper.run(function($injector) {
       var filter = $injector.get('floorFilter');

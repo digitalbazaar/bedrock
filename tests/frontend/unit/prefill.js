@@ -1,6 +1,10 @@
 var helper = require('../helper');
 
 describe('prefill', function() {
+  beforeEach(function() {
+    helper.waitForAngular();
+  });
+
   it('should convert 1 to 01', function() {
     expect(helper.run(function($injector) {
       var filter = $injector.get('prefillFilter');

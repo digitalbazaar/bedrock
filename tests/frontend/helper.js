@@ -25,6 +25,7 @@ Helper.prototype.init = function(options) {
   this.baseUrl = browser.baseUrl;
   this.pages = require('./pages');
 
+  this.get('/');
   this.emit('init');
 };
 
@@ -32,9 +33,33 @@ Helper.prototype.init = function(options) {
 Helper.prototype.get = function(url) {
   // wait for ng-app to appear
   browser.driver.get(browser.baseUrl + url);
-  browser.driver.wait(function() {
-    var body = browser.driver.findElement(by.tagName(browser.rootEl));
-    return body && body.getAttribute('ng-app');
+  return this.waitForAngular();
+};
+
+// waits for AngularJS to be bootstrapped
+Helper.prototype.waitForAngular = function() {
+  return browser.driver.wait(function() {
+    return browser.driver.isElementPresent(by.tagName(browser.rootEl))
+      .then(function(present) {
+        if(!present) {
+          return false;
+        }
+        return browser.driver.findElement(by.tagName(browser.rootEl))
+          .then(function(body) {
+            return body.getAttribute('ng-app').then(function(value) {
+              return !!value;
+            });
+          });
+      });
+  });
+};
+
+// waits for an attribute to meet a certain criteria
+Helper.prototype.waitForAttribute = function(el, attr, fn) {
+  return browser.wait(function() {
+    return el.getAttribute(attr).then(function(value) {
+      return fn(value);
+    });
   });
 };
 
@@ -67,9 +92,11 @@ Helper.prototype.randomString = function(length) {
 // logs in via the navbar
 Helper.prototype.login = function(identifier, password) {
   this.pages.navbar.login(identifier, password);
+  return this;
 };
 
 // logs out via navbar
 Helper.prototype.logout = function() {
   this.pages.navbar.logout();
+  return this;
 };

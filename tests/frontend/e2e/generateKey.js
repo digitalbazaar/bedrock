@@ -2,13 +2,15 @@ var helper = require('../helper');
 
 describe('generate key', function() {
   var sysIdentifier = helper.randomString().toLowerCase();
+  var email = sysIdentifier + '@bedrock.dev';
   var password = 'password';
 
-  /*it('should create a new user', function() {
-    var join = helper.pages.join;
-    join.get();
-    join.createIdentity(sysIdentifier, password);
-    helper.pages.dashboard.get(sysIdentifier);
+  it('should create a new user', function() {
+    helper.pages.join.get().createIdentity({
+      email: email,
+      label: sysIdentifier,
+      password: password
+    });
   });
 
   it('should generate a key', function() {
@@ -17,5 +19,5 @@ describe('generate key', function() {
 
   it('should logout', function() {
     helper.logout();
-  });*/
+  });
 });

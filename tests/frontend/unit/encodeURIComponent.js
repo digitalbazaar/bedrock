@@ -1,6 +1,10 @@
 var helper = require('../helper');
 
 describe('encodeURIComponent', function() {
+  beforeEach(function() {
+    helper.waitForAngular();
+  });
+
   it('should URI encode the string http://foo.bar?baz=fuzz', function() {
     expect(helper.run(function($injector) {
       var filter = $injector.get('encodeURIComponentFilter');

@@ -1,6 +1,10 @@
 var helper = require('../helper');
 
 describe('ellipsis', function() {
+  beforeEach(function() {
+    helper.waitForAngular();
+  });
+
   it('should replace text with ...', function() {
     expect(helper.run(function($injector) {
       var filter = $injector.get('ellipsisFilter');
