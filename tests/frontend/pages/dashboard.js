@@ -10,4 +10,5 @@ api.get = function(slug) {
   var url = '/i/' + slug + '/dashboard';
   helper.get(url);
   expect(ptor.getCurrentUrl()).toEqual(helper.baseUrl + url);
+  return api;
 };

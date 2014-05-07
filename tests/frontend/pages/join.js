@@ -8,6 +8,7 @@ var element = GLOBAL.element;
 
 api.get = function() {
   helper.get('/join');
+  return api;
 };
 
 api.createIdentity = function(options) {
@@ -16,4 +17,5 @@ api.createIdentity = function(options) {
   element(by.binding('identity.label')).sendKeys(options.label);
   element(by.binding('agreementChecked')).click();
   element(by.linkText('Create Identity')).click();
+  return api;
 };

@@ -18,6 +18,7 @@ api.login = function(identifier, password) {
   });
   element(by.model('password')).sendKeys(password);
   element(by.linkText('Sign In')).click();
+  return api;
 };
 
 api.logout = function() {
@@ -26,4 +27,5 @@ api.logout = function() {
   element(by.linkText('Sign Out')).click();
   helper.get('/');
   expect(element(by.model('sysIdentifier')).isPresent()).toBe(true);
+  return api;
 };
