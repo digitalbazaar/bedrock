@@ -111,3 +111,27 @@ Helper.prototype.logout = function() {
   this.pages.navbar.logout();
   return this;
 };
+
+api.on('init', function() {
+  by.addLocator('attribute', function(attr, value, parent) {
+    if(arguments.length === 2) {
+      parent = value;
+      value = undefined;
+    }
+    var using = parent || document;
+    var query = attr;
+    if(typeof value !== 'undefined') {
+      query += "='" + value + "'";
+    }
+    query += ']';
+    query = '[' + query + ', [data-' + query;
+    return using.querySelectorAll(query);
+  });
+
+  by.addLocator('popover', function(model, parent) {
+    var using = parent || document;
+    var query = "popover-visible='" + model + "']";
+    query = '[' + query + ', [data-' + query;
+    return using.querySelectorAll(query);
+  });
+});
