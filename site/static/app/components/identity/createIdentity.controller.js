@@ -37,15 +37,14 @@ function factory($scope, $http, $window, config) {
       return false;
     }
     $scope.loading = true;
-    $http.post('/join', $scope.identity)
-      .success(function(response) {
-        // redirect to new dashboard
-        $window.location = response.id + '/dashboard';
-      })
-      .error(function(err) {
-        $scope.loading = false;
-        $scope.feedback.error = err;
-      });
+    Promise.cast($http.post('/join', $scope.identity)).then(function(response) {
+      // redirect to new dashboard
+      $window.location = response.data.id + '/dashboard';
+    }).catch(function(err) {
+      $scope.loading = false;
+      $scope.feedback.error = err;
+      $scope.$apply();
+    });
   };
 }
 
