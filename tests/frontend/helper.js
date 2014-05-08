@@ -54,6 +54,13 @@ Helper.prototype.waitForAngular = function() {
   });
 };
 
+// waits for an element to be displayed
+Helper.prototype.waitForElement = function(el) {
+  return browser.wait(function() {
+    return el.isDisplayed();
+  });
+};
+
 // waits for an attribute to meet a certain criteria
 Helper.prototype.waitForAttribute = function(el, attr, fn) {
   return browser.wait(function() {
@@ -133,5 +140,13 @@ api.on('init', function() {
     var query = "popover-visible='" + model + "']";
     query = '[' + query + ', [data-' + query;
     return using.querySelectorAll(query);
+  });
+
+  by.addLocator('modal', function() {
+    var wrapper = document.querySelector('.modal-wrapper');
+    if(!wrapper) {
+      return [];
+    }
+    return wrapper.querySelectorAll('.modal');
   });
 });
