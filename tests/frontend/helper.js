@@ -143,10 +143,6 @@ api.on('init', function() {
   });
 
   by.addLocator('modal', function() {
-    var wrapper = document.querySelector('.modal-wrapper');
-    if(!wrapper) {
-      return [];
-    }
-    return wrapper.querySelectorAll('.modal');
+    return document.querySelectorAll('.modal-wrapper > .modal');
   });
 });
