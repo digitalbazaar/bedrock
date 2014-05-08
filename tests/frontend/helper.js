@@ -36,6 +36,18 @@ Helper.prototype.get = function(url) {
   return this.waitForAngular();
 };
 
+// runs a script in the browser's context
+// pass fn($injector) for a sync script, fn($injector, callback) for async
+Helper.prototype.run = function(fn) {
+  fn = fn.toString();
+  var isAsync = (fn.split('\n')[0].indexOf(',') !== -1);
+  var execute = isAsync ? browser.executeAsyncScript : browser.executeScript;
+  return execute(
+    "var $injector = angular.element('body').data('$injector');" +
+    "var callback = arguments[arguments.length - 1];" +
+    'return (' + fn + ')($injector, callback);');
+};
+
 // waits for AngularJS to be bootstrapped
 Helper.prototype.waitForAngular = function() {
   return browser.driver.wait(function() {
@@ -81,16 +93,12 @@ Helper.prototype.waitForUrl = function(url) {
   });
 };
 
-// runs a script in the browser's context
-// pass fn($injector) for a sync script, fn($injector, callback) for async
-Helper.prototype.run = function(fn) {
-  fn = fn.toString();
-  var isAsync = (fn.split('\n')[0].indexOf(',') !== -1);
-  var execute = isAsync ? browser.executeAsyncScript : browser.executeScript;
-  return execute(
-    "var $injector = angular.element('body').data('$injector');" +
-    "var callback = arguments[arguments.length - 1];" +
-    'return (' + fn + ')($injector, callback);');
+// waits for a client-side script to return true
+Helper.prototype.waitForScript = function(fn) {
+  var self = this;
+  return browser.wait(function() {
+    return self.run(fn);
+  });
 };
 
 // gets a random alphabetical string
