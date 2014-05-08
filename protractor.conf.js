@@ -62,8 +62,8 @@ exports.config = {
   // all suites will run. If run with --suite=smoke, only the patterns matched
   // by that suite will run.
   suites: {
-    e2e: __dirname + '/tests/frontend/e2e/**/*.js',
-    unit: __dirname + '/tests/frontend/unit/**/*.js'
+    unit: __dirname + '/tests/frontend/unit/**/*.js',
+    e2e: __dirname + '/tests/frontend/e2e/**/*.js'
   },
 
   // ----- Capabilities to be passed to the webdriver instance ----
