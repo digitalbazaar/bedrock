@@ -94,6 +94,7 @@ Helper.prototype.waitForUrl = function(url) {
 };
 
 // waits for a client-side script to return true
+// eg: can check angular.element('.foo').scope().model.bar against some value
 Helper.prototype.waitForScript = function(fn) {
   var self = this;
   return browser.wait(function() {
