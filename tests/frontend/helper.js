@@ -129,6 +129,7 @@ Helper.prototype.logout = function() {
 };
 
 api.on('init', function() {
+  // return an element via an attribute value
   by.addLocator('attribute', function(attr, value, parent) {
     if(arguments.length === 2) {
       parent = value;
@@ -144,6 +145,7 @@ api.on('init', function() {
     return using.querySelectorAll(query);
   });
 
+  // return a popover that is controlled by the given model var
   by.addLocator('popover', function(model, parent) {
     var using = parent || document;
     var query = "popover-visible='" + model + "']";
@@ -151,7 +153,40 @@ api.on('init', function() {
     return using.querySelectorAll(query);
   });
 
+  // return the top-level modal
   by.addLocator('modal', function() {
     return document.querySelectorAll('.modal-wrapper > .modal');
+  });
+
+  // return a button to open a menu that contains an item with the given text
+  by.addLocator('menuButtonForItem', function(value, parent) {
+    value = value.trim();
+    var using = parent || document;
+
+    // get menu buttons
+    var buttons = using.querySelectorAll('.dropdown-toggle');
+    return Array.prototype.filter.call(buttons, function(button) {
+      // if a menu the button opens has the item text, allow the button
+      var menus = button.parentElement.querySelectorAll('.dropdown-menu');
+      for(var mi = 0; mi < menus.length; ++mi) {
+        var items = menus[mi].querySelectorAll('li > a');
+        for(var ii = 0; ii < items.length; ++ii) {
+          if(items[ii].textContent.trim() === value) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  });
+
+  // return a menu item with the given text
+  by.addLocator('menuItem', function(value, parent) {
+    value = value.trim();
+    var using = parent || document;
+    var items = using.querySelectorAll('.dropdown-menu > li > a');
+    return Array.prototype.filter.call(items, function(item) {
+      return item.textContent.trim() === value;
+    });
   });
 });
