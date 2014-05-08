@@ -14,9 +14,7 @@ describe('generate key', function() {
   });
 
   it('should generate a key', function() {
-    helper.pages.settings.get(sysIdentifier);
-    element(by.linkText('Keys')).click();
-    element(by.popover('model.showKeysMenu')).click();
+    helper.pages.settings.get(sysIdentifier).generateKey();
   });
 
   it('should logout', function() {
