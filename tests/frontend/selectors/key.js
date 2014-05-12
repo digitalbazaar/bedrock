@@ -3,9 +3,6 @@ var helper = require('../helper.js');
 var api = {};
 module.exports = api;
 
-var expect = GLOBAL.expect;
-var ptor = GLOBAL.protractor.getInstance();
-
 // TODO: much of the selector code could be potentially abstracted and reused
 api.create = function(options) {
   var el = options.element.element(by.attribute('selector'));
