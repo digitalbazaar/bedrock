@@ -141,9 +141,9 @@ Helper.prototype.formatDate = function(date, format) {
 
 api.on('init', function() {
   // locate elements by controller
-  by.addLocator('controller', function() {
+  by.addLocator('controller', function(value, parent) {
     var using = parent || document;
-    var query = "ng-controller='" + model + "']";
+    var query = "ng-controller='" + value + "']";
     query = '[' + query + ', [data-' + query;
     return using.querySelectorAll(query);
   });
