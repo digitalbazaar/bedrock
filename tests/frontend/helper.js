@@ -140,7 +140,15 @@ Helper.prototype.formatDate = function(date, format) {
 };
 
 api.on('init', function() {
-  // return an element via an attribute value
+  // locate elements by controller
+  by.addLocator('controller', function() {
+    var using = parent || document;
+    var query = "ng-controller='" + model + "']";
+    query = '[' + query + ', [data-' + query;
+    return using.querySelectorAll(query);
+  });
+
+  // locate elements via an attribute value
   by.addLocator('attribute', function(attr, value, parent) {
     if(arguments.length === 2) {
       parent = value;
@@ -156,7 +164,7 @@ api.on('init', function() {
     return using.querySelectorAll(query);
   });
 
-  // return a popover that is controlled by the given model var
+  // locate popovers that are controlled by the given model var
   by.addLocator('popover', function(model, parent) {
     var using = parent || document;
     var query = "popover-visible='" + model + "']";
@@ -164,17 +172,17 @@ api.on('init', function() {
     return using.querySelectorAll(query);
   });
 
-  // return the top-level modal
+  // locate the top-level modal
   by.addLocator('modal', function() {
     return document.querySelectorAll('.modal-wrapper > .modal');
   });
 
-  // return the top level modal footer
+  // locate the top level modal footer
   by.addLocator('modalFooter', function() {
     return document.querySelectorAll('.modal-wrapper > .modal > .modal-footer');
   });
 
-  // return a button to open a menu that contains an item with the given text
+  // locate buttons to open a menu that contains an item with the given text
   by.addLocator('menuButtonForItem', function(value, parent) {
     value = value.trim();
     var using = parent || document;
@@ -196,7 +204,7 @@ api.on('init', function() {
     });
   });
 
-  // return a menu item with the given text
+  // locate menu items with the given text
   by.addLocator('menuItem', function(value, parent) {
     value = value.trim();
     var using = parent || document;
@@ -206,7 +214,7 @@ api.on('init', function() {
     });
   });
 
-  // return an option from a select element by its label (case-insensitive)
+  // locate options from a select element by label (case-insensitive)
   by.addLocator('option', function(label, parent) {
     label = label.trim().toLowerCase();
     var using = parent || document;
