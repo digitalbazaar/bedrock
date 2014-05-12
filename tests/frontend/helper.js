@@ -23,6 +23,7 @@ Helper.prototype.init = function(options) {
   options = options || {};
   this.browser = browser;
   this.baseUrl = browser.baseUrl;
+  this.selectors = require('./selectors');
   this.pages = require('./pages');
 
   this.get('/');
@@ -128,6 +129,16 @@ Helper.prototype.logout = function() {
   return this;
 };
 
+// uses AngularJS to format a date
+Helper.prototype.formatDate = function(date, format) {
+  return this.run(['function($injector, callback) {',
+    'var filter = $injector.get("dateFilter");',
+    'var date = new Date("' + date + '");',
+    'var format = "' + format + '";',
+    'return callback(filter(date, format));',
+  '}'].join(''));
+};
+
 api.on('init', function() {
   // return an element via an attribute value
   by.addLocator('attribute', function(attr, value, parent) {
@@ -156,6 +167,11 @@ api.on('init', function() {
   // return the top-level modal
   by.addLocator('modal', function() {
     return document.querySelectorAll('.modal-wrapper > .modal');
+  });
+
+  // return the top level modal footer
+  by.addLocator('modalFooter', function() {
+    return document.querySelectorAll('.modal-wrapper > .modal > .modal-footer');
   });
 
   // return a button to open a menu that contains an item with the given text
@@ -187,6 +203,16 @@ api.on('init', function() {
     var items = using.querySelectorAll('.dropdown-menu > li > a');
     return Array.prototype.filter.call(items, function(item) {
       return item.textContent.trim() === value;
+    });
+  });
+
+  // return an option from a select element by its label (case-insensitive)
+  by.addLocator('option', function(label, parent) {
+    label = label.trim().toLowerCase();
+    var using = parent || document;
+    var options = using.querySelectorAll('option');
+    return Array.prototype.filter.call(options, function(option) {
+      return (option.textContent.trim().toLowerCase() === label);
     });
   });
 });
