@@ -47,7 +47,6 @@ api.select = function(options) {
     }
 
     el.element(by.partialButtonText('Change')).click();
-    GLOBAL.browser.sleep(2000);
     var modal = element(by.modal());
     var toSelect = null;
     modal.element.all(by.repeater('selected in')).then(function(rows) {
