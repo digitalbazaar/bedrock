@@ -2,7 +2,12 @@
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
 var EventEmitter = require('events').EventEmitter;
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
 var util = require('util');
+
+chai.use(chaiAsPromised);
+GLOBAL.expect = chai.expect;
 
 var browser;
 var by;

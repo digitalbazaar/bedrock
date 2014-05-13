@@ -121,12 +121,12 @@ exports.config = {
   // Jasmine and Cucumber are fully supported as a test and assertion framework.
   // Mocha has limited beta support. You will need to include your own
   // assertion framework if working with mocha.
-  framework: 'jasmine',
+  framework: 'mocha',
 
   // ----- Options to be passed to minijasminenode -----
   //
   // See the full list at https://github.com/juliemr/minijasminenode
-  jasmineNodeOpts: {
+  /*jasmineNodeOpts: {
     // onComplete will be called just before the driver quits.
     onComplete: null,
     // If true, display spec names.
@@ -137,15 +137,18 @@ exports.config = {
     includeStackTrace: true,
     // Default time to wait in ms before a test fails.
     defaultTimeoutInterval: 30000
-  },
+  },*/
 
   // ----- Options to be passed to mocha -----
   //
   // See the full list at http://visionmedia.github.io/mocha/
-  /*mochaOpts: {
+  mochaOpts: {
     ui: 'bdd',
-    reporter: 'spec'
-  },*/
+    reporter: 'spec',
+    ignoreLeaks: false,
+    timeout: 30000,
+    bail: true
+  },
 
   // ----- Options to be passed to cucumber -----
   /*cucumberOpts: {

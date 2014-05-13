@@ -11,7 +11,7 @@ var ptor = GLOBAL.protractor.getInstance();
 api.get = function(slug) {
   var url = '/i/' + slug + '/settings';
   helper.get(url);
-  expect(ptor.getCurrentUrl()).toEqual(helper.baseUrl + url);
+  expect(ptor.getCurrentUrl()).to.eventually.equal(helper.baseUrl + url);
   return api;
 };
 

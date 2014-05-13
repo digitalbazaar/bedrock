@@ -9,6 +9,6 @@ describe('embeddedString', function() {
     expect(helper.run(function($injector) {
       var filter = $injector.get('embeddedStringFilter');
       return filter('\r\n');
-    })).toEqual('\\r\\n');
+    })).to.eventually.equal('\\r\\n');
   });
 });

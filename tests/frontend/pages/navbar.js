@@ -26,6 +26,6 @@ api.logout = function() {
   element(by.binding('model.session.identity.label')).click();
   element(by.linkText('Sign Out')).click();
   helper.get('/');
-  expect(element(by.model('sysIdentifier')).isPresent()).toBe(true);
+  expect(element(by.model('sysIdentifier')).isPresent()).to.eventually.be.true;
   return api;
 };
