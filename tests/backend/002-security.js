@@ -140,4 +140,6 @@ describe('bedrock.security', function() {
       });
     });
   });
+
+  // FIXME: add test that revokes a key and signJsonLd fails with it
 });
