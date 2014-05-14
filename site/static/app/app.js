@@ -33,10 +33,10 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
 
     // TODO: interceptor API changed after angular 1.0.x
     // normalize errors, deal w/auth redirection
-    $httpProvider.responseInterceptors.push([
+    $httpProvider.interceptors.push([
       '$rootScope', '$q', '$timeout', function($rootScope, $q, $timeout) {
-      return function(promise) {
-        return promise.then(function(response) {
+      return {
+        response: function(response) {
           if('delay' in response.config) {
             var defer = $q.defer();
             $timeout(function() {
@@ -45,7 +45,8 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
             return defer.promise;
           }
           return response;
-        }, function(response) {
+        },
+        responseError: function(response) {
           var error = response.data || {};
           if(error.type === undefined) {
             error.type = 'website.Exception';
@@ -57,7 +58,7 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
             $rootScope.$emit('showLoginModal');
           }
           return $q.reject(error);
-        });
+        }
       };
     }]);
 }]);
