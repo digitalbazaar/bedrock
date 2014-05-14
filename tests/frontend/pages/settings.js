@@ -50,7 +50,7 @@ api.revokeKey = function(options) {
     element(by.linkText('Revoke')).click();
     var modal = element(by.modal());
     modal.element(by.partialButtonText('Revoke')).click();
-    return api.getKey('id', key.id);
+    return api.getKey({id: key.id});
   }).then(function(key) {
     expect(key).to.exist;
     expect(key.revoked).to.exist;
@@ -61,14 +61,8 @@ api.getKeys = function() {
   return element(by.controller('KeysCtrl')).evaluate('keys');
 };
 
-api.getKey = function(property, value) {
+api.getKey = function(query) {
   return api.getKeys().then(function(keys) {
-    for(var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-      if(key[property] === value) {
-        return key;
-      }
-    }
-    return null;
+    return helper.findOne(keys, query);
   });
 };

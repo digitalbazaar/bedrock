@@ -5,6 +5,7 @@ var EventEmitter = require('events').EventEmitter;
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var util = require('util');
+var _ = require('underscore');
 
 chai.use(chaiAsPromised);
 GLOBAL.expect = chai.expect;
@@ -142,6 +143,20 @@ Helper.prototype.formatDate = function(date, format) {
     'var format = "' + format + '";',
     'return callback(filter(date, format));',
   '}'].join(''));
+};
+
+// performs a simple equality-based query on an array of items
+Helper.prototype.find = function(items, query) {
+  return Array.prototype.filter.call(items, _.matches(query));
+};
+
+// performs a simple equality-based query on an array of items
+Helper.prototype.findOne = function(items, query) {
+  items = this.find(items, query);
+  if(items.length > 0) {
+    return items[0];
+  }
+  return null;
 };
 
 api.on('init', function() {
