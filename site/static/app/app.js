@@ -31,7 +31,6 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
     // add non-route
     $routeProvider.otherwise({none: true});
 
-    // TODO: interceptor API changed after angular 1.0.x
     // normalize errors, deal w/auth redirection
     $httpProvider.interceptors.push([
       '$rootScope', '$q', '$timeout', function($rootScope, $q, $timeout) {
