@@ -18,7 +18,7 @@ function factory() {
     model.services = {
       key: svcKey.state
     };
-    model.keys = svcKey.keys;
+    model.keys = svcKey.unrevokedKeys;
     $scope.$watch('model.keys', function(keys) {
       if(!$scope.selected || $.inArray($scope.selected, keys) === -1) {
         $scope.selected = keys[0] || null;
