@@ -157,9 +157,12 @@ module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
     }
   });
 
-  // utility functions
-  $rootScope.util = util;
-  $rootScope.jsonld = util.jsonld;
+  // access to app core (utility functions, services, etc.)
+  $rootScope.app = {
+    jsonld: util.jsonld,
+    services: {},
+    util: util
+  };
 }]);
 
 angular.bootstrap(document.body, ['app']);

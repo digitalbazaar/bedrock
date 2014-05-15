@@ -38,7 +38,10 @@ function factory(config, $http, $rootScope, svcResource) {
         service.identityMap[identity.id] = identity;
         service.identities.push(identity);
       });
-    };
+  };
+
+  // expose service to scope
+  $rootScope.app.services.identity = service;
 
   return service;
 }

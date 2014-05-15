@@ -356,6 +356,9 @@ function factory(
     return modal;
   }
 
+  // expose service to scope
+  $rootScope.app.services.modal = service;
+
   return service;
 }
 

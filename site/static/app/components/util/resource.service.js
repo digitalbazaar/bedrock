@@ -188,6 +188,9 @@ function factory($rootScope, $http, $location, svcModel) {
     });
   };
 
+  // expose service to scope
+  $rootScope.app.services.resource = service;
+
   return service;
 }
 

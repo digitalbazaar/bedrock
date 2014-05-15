@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = [];
+var deps = ['$rootScope'];
 return {svcModel: deps.concat(factory)};
 
-function factory() {
+function factory($rootScope) {
   var service = {};
 
   service.replace = function(dst, src) {
@@ -93,6 +93,9 @@ function factory() {
       }
     }
   };
+
+  // expose service to scope
+  $rootScope.app.services.model = service;
 
   return service;
 }

@@ -9,16 +9,17 @@ define([], function() {
 
 'use strict';
 
-var deps = ['config', 'svcIdentity', 'svcResource'];
+var deps = ['$rootScope', 'config', 'svcIdentity', 'svcResource'];
 return {svcKey: deps.concat(factory)};
 
-function factory(config, svcIdentity, svcResource) {
+function factory($rootScope, config, svcIdentity, svcResource) {
   var service = {};
 
   service.collection = new svcResource.Collection({
     url: svcIdentity.identity.id + '/keys'
   });
   service.keys = service.collection.storage;
+  service.unrevokedKeys = [];
   service.state = service.collection.state;
 
   service.collection.revoke = function(keyId, options) {
@@ -28,6 +29,9 @@ function factory(config, svcIdentity, svcResource) {
       revoked: ''
     }, options);
   };
+
+  // expose service to scope
+  $rootScope.app.services.key = service;
 
   return service;
 }
