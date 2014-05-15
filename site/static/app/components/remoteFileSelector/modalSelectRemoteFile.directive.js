@@ -45,12 +45,12 @@ function factory($http, svcModal) {
     // change directory by fetching the file list for the new path
     model.changeDirectory = function(path) {
       model.getFileList(path);
-    }
+    };
 
     // note that a file has been selected in the UI
     model.selectFile = function(path) {
       model.selectedFilename = path;
-    }
+    };
 
     // load a selected file from the server
     model.loadSelectedFile = function() {
@@ -63,7 +63,7 @@ function factory($http, svcModal) {
         $scope.modal.close(null, response.data);
         $scope.$apply();
       });
-    }
+    };
 
     // retrieve a list of files from the server given a path
     model.getFileList = function(path) {
@@ -78,7 +78,7 @@ function factory($http, svcModal) {
         model.separator = response.data.separator;
         $scope.$apply();
       });
-    }
+    };
 
     // initialize the file list
     model.getFileList();

@@ -25,7 +25,7 @@ function factory($rootScope, config, svcIdentity, svcModel, svcResource) {
   // TODO: could be more efficiently implemented as an observer pattern
   // that can be accessed via svcResource.collection creation API
   // maybe angular 2.0 will fix
-  $rootScope.$watch(function() {return service.keys}, function(value) {
+  $rootScope.$watch(function() {return service.keys;}, function(value) {
     if(!value) {
       return;
     }
