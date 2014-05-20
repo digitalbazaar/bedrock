@@ -63,7 +63,7 @@
   "devDependencies": {
     "chai": "~1.9.0",
     "chai-as-promised": "~4.1.0",
-    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-jshint": "^0.10.0",
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
     "protractor": "~0.22.0",
