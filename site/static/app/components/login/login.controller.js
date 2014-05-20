@@ -37,11 +37,13 @@ function factory($scope, config, $http, $compile, $window) {
         // if there's no queued request, go to dashboard
         var request = model.request;
         if(!request) {
-          return $window.location = data.identity.id + '/dashboard';
+          $window.location = data.identity.id + '/dashboard';
+          return;
         }
         if(request.method === 'GET') {
           // redirect to queued URL
-          return $window.location = request.url;
+          $window.location = request.url;
+          return;
         }
         // add form to page and submit it
         var element = angular.element([
