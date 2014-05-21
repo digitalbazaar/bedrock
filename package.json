@@ -8,6 +8,8 @@
     "test": "node test.js --backend --frontend",
     "test-backend": "node test.js --backend",
     "test-frontend": "node test.js --frontend",
+    "test-chrome": "node test.js --frontend --browser chrome",
+    "test-firefox": "node test.js --frontend --browser firefox",
     "lint": "grunt jshint",
     "ci-test": "node test.js --backend --frontend",
     "ci-lint": "grunt jshint --mode=ci || exit 0",

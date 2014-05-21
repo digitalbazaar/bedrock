@@ -17,6 +17,8 @@ program
   .option('-b, --backend', 'Perform all backend tests')
   .option('-f, --frontend', 'Perform all frontend tests')
   .option('-s, --suite [suite]', 'Run a specific frontend test suite')
+  .option('-u, --browser [browser]',
+    'Run frontend tests on a specific browser (chrome, firefox)')
   //.option('-d, --display', 'The X display to use for frontend tests')
   .parse(process.argv);
 
@@ -51,6 +53,10 @@ require(program.config);
 // set frontend test suite
 if(program.suite) {
   br.config.test.frontend.suite = program.suite;
+}
+// set frontend browser
+if(program.browser) {
+  br.config.test.frontend.browser = program.browser;
 }
 
 // start
