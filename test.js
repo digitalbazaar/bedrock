@@ -19,6 +19,7 @@ program
   .option('-s, --suite [suite]', 'Run a specific frontend test suite')
   .option('-u, --browser [browser]',
     'Run frontend tests on a specific browser (chrome, firefox)')
+  .option('-h, --hide', 'Hide the browser window during tests')
   //.option('-d, --display', 'The X display to use for frontend tests')
   .parse(process.argv);
 
@@ -48,7 +49,8 @@ process.env.NODE_ENV = 'test';
 process.env.TEST_ENV = tests.join(',');
 
 // load test config
-require(program.config);
+var configFile = path.resolve(__dirname, program.config);
+require(configFile);
 
 // set frontend test suite
 if(program.suite) {
@@ -57,6 +59,10 @@ if(program.suite) {
 // set frontend browser
 if(program.browser) {
   br.config.test.frontend.browser = program.browser;
+}
+// set hide window
+if(program.hide) {
+  br.config.test.frontend.hideBrowser = true;
 }
 
 // start

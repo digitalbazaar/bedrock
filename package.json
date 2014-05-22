@@ -8,8 +8,11 @@
     "test": "node test.js --backend --frontend",
     "test-backend": "node test.js --backend",
     "test-frontend": "node test.js --frontend",
+    "test-frontend-hide": "node test.js --frontend --hide",
     "test-chrome": "node test.js --frontend --browser chrome",
+    "test-chrome-hide": "node test.js --frontend --browser chrome --hide",
     "test-firefox": "node test.js --frontend --browser firefox",
+    "test-firefox-hide": "node test.js --frontend --browser firefox --hide",
     "lint": "grunt jshint",
     "ci-test": "node test.js --backend --frontend",
     "ci-lint": "grunt jshint --mode=ci || exit 0",
@@ -65,13 +68,14 @@
   "devDependencies": {
     "chai": "~1.9.0",
     "chai-as-promised": "~4.1.0",
+    "colors": "~0.6.2",
     "grunt-contrib-jshint": "^0.10.0",
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
     "protractor": "^0.23.0",
+    "temp": "^0.7.0",
     "visionmedia-jscoverage": "~1.0.0",
-    "wd": "~0.2.10",
-    "colors": "~0.6.2"
+    "wd": "~0.2.10"
   },
   "engines": {
     "node": ">=0.10.0"

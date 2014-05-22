@@ -32,9 +32,10 @@ Helper.prototype.init = function(options) {
   this.selectors = require('./selectors');
   this.pages = require('./pages');
 
-  // TODO: make command line option
-  // move window out of way (no way to minimize)
-  //browser.driver.manage().window().setPosition(-2000, 0);
+  if(GLOBAL.bedrock.config.test.frontend.hideBrowser) {
+    // move window out of way (currently no way to minimize)
+    browser.driver.manage().window().setPosition(-2000, 0);
+  }
 
   this.get('/');
   this.emit('init');
