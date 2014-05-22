@@ -20,6 +20,8 @@ program
   .option('-u, --browser [browser]',
     'Run frontend tests on a specific browser (chrome, firefox)')
   .option('-h, --hide', 'Hide the browser window during tests')
+  .option('-t, --tests [tests]',
+    'Run specific tests from a comma-separated list')
   //.option('-d, --display', 'The X display to use for frontend tests')
   .parse(process.argv);
 
@@ -55,6 +57,9 @@ require(configFile);
 // set frontend test suite
 if(program.suite) {
   br.config.test.frontend.suite = program.suite;
+}
+if(program.tests) {
+  br.config.test.frontend.tests = program.tests;
 }
 // set frontend browser
 if(program.browser) {
