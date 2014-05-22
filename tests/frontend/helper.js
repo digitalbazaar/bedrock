@@ -44,7 +44,8 @@ Helper.prototype.init = function(options) {
 // gets a URL that returns an AngularJS page and waits for it to bootstrap
 Helper.prototype.get = function(url) {
   // wait for ng-app to appear
-  browser.driver.get(browser.baseUrl + url);
+  browser.driver.get(this.baseUrl + url);
+  this.waitForUrl(url);
   return this.waitForAngular();
 };
 
