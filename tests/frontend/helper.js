@@ -98,8 +98,7 @@ Helper.prototype.waitForAttribute = function(el, attr, fn) {
 Helper.prototype.waitForUrl = function(url) {
   url = this.baseUrl + url;
   return browser.wait(function() {
-    var ptor = GLOBAL.protractor.getInstance();
-    return ptor.getCurrentUrl().then(function(currentUrl) {
+    return browser.driver.getCurrentUrl().then(function(currentUrl) {
       return currentUrl === url;
     });
   });
