@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js",
-    "test": "node test.js --backend --frontend",
+    "test": "node test.js --backend --frontend --hide",
     "test-backend": "node test.js --backend",
     "test-frontend": "node test.js --frontend",
     "test-frontend-hide": "node test.js --frontend --hide",
