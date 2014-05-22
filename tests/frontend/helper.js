@@ -32,6 +32,10 @@ Helper.prototype.init = function(options) {
   this.selectors = require('./selectors');
   this.pages = require('./pages');
 
+  // TODO: make command line option
+  // move window out of way (no way to minimize)
+  //browser.driver.manage().window().setPosition(-2000, 0);
+
   this.get('/');
   this.emit('init');
 };
@@ -92,8 +96,8 @@ Helper.prototype.waitForAttribute = function(el, attr, fn) {
 // waits for a particular URL to load
 Helper.prototype.waitForUrl = function(url) {
   url = this.baseUrl + url;
-  var ptor = GLOBAL.protractor.getInstance();
   return browser.wait(function() {
+    var ptor = GLOBAL.protractor.getInstance();
     return ptor.getCurrentUrl().then(function(currentUrl) {
       return currentUrl === url;
     });

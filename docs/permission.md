@@ -87,7 +87,7 @@ Examples
 Suppose the config file permissions.js defines:
 
 ```js
-var config = require(__libdir + '/bedrock').config;
+var config = require(GLOBAL.__libdir + '/bedrock').config;
 var permissions = config.permission.permissions;
 
 permissions.IDENTITY_EDIT = {
@@ -100,7 +100,7 @@ permissions.IDENTITY_EDIT = {
 Suppose the config file roles.js defines:
 
 ```js
-var config = require(__libdir + '/bedrock').config;
+var config = require(GLOBAL.__libdir + '/bedrock').config;
 var permissions = config.permission.roles;
 
 roles['identity.manager'] = {

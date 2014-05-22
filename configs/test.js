@@ -1,8 +1,8 @@
 var path = require('path');
-__libdir = process.env.BEDROCK_COV ?
+GLOBAL.__libdir = process.env.BEDROCK_COV ?
   path.resolve(__dirname, '../lib-cov') :
   path.resolve(__dirname, '../lib');
-var config = require(__libdir + '/config');
+var config = require(GLOBAL.__libdir + '/config');
 module.exports = config;
 
 // add test module

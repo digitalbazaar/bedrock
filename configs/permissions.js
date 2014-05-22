@@ -1,4 +1,4 @@
-var config = require(__libdir + '/bedrock').config;
+var config = require(GLOBAL.__libdir + '/bedrock').config;
 
 var permissions = config.permission.permissions;
 

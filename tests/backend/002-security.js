@@ -4,9 +4,9 @@
 
 'use strict';
 
-var jsonld = require(__libdir + '/bedrock/jsonld');
+var jsonld = require(GLOBAL.__libdir + '/bedrock/jsonld');
 var bedrock = {
-  security: require(__libdir + '/bedrock/security', true)
+  security: require(GLOBAL.__libdir + '/bedrock/security', true)
 };
 var should = GLOBAL.should;
 

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
-var tools = require(__libdir + '/bedrock/tools');
+var tools = require(GLOBAL.__libdir + '/bedrock/tools');
 
 var jsonldType = require('./jsonldType');
 var w3cDateTime = require('./w3cDateTime');

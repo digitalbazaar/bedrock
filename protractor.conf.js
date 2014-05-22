@@ -1,4 +1,7 @@
-// A reference configuration file.
+// load bedrock
+GLOBAL.__libdir = require('path').resolve(__dirname, 'lib');
+var bedrock = require(GLOBAL.__libdir + '/bedrock');
+
 exports.config = {
   // ----- How to setup Selenium -----
   //
@@ -73,7 +76,10 @@ exports.config = {
   // and
   // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome'//,
+    //'chromeOptions': {
+    //  'args': ['no-startup-window']
+    //}
   },
 
   // If you would like to run more than one instance of webdriver on the same
@@ -85,7 +91,7 @@ exports.config = {
   //
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  baseUrl: 'https://bedrock.dev:18443',
+  baseUrl: bedrock.config.server.baseUri,
 
   // Selector for the element housing the angular app - this defaults to
   // body, but is necessary if ng-app is on a descendant of <body>
