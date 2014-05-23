@@ -110,7 +110,9 @@ Helper.prototype.waitForUrl = function(url) {
   if(typeof url === 'function') {
     filter = url;
   } else {
-    url = this.baseUrl + url;
+    if(url.indexOf('http') !== 0) {
+      url = this.baseUrl + url;
+    }
     filter = function(currentUrl) {
       return currentUrl === url;
     };
