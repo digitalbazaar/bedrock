@@ -164,6 +164,13 @@ Helper.prototype.findOne = function(items, query) {
   return null;
 };
 
+// gets data from a loaded angular service
+// pass service name or path (dot-delimited) to specific data
+Helper.prototype.getServiceData = function(service) {
+  return GLOBAL.element(by.attribute('ng-app')).evaluate(
+    'app.services.' + service);
+};
+
 api.on('init', function() {
   // locate elements by controller
   by.addLocator('controller', function(value, parent) {
