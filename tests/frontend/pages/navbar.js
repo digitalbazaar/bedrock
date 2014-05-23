@@ -18,6 +18,10 @@ api.login = function(identifier, password) {
   });
   element(by.model('password')).sendKeys(password);
   element(by.linkText('Sign In')).click();
+  helper.waitForUrl(function(url) {
+    return url.indexOf('dashboard') !== -1;
+  });
+  helper.waitForAngular();
   return api;
 };
 

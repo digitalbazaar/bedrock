@@ -6,6 +6,10 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var util = require('util');
 var _ = require('underscore');
+var Promise = require('es6-promise').Promise;
+if(!GLOBAL.Promise) {
+  GLOBAL.Promise = Promise;
+}
 
 chai.use(chaiAsPromised);
 GLOBAL.expect = chai.expect;
@@ -95,13 +99,20 @@ Helper.prototype.waitForAttribute = function(el, attr, fn) {
   });
 };
 
-// waits for a particular URL to load
+// waits for a particular URL to load (via a URL value or a function that takes
+// the current URL to compare against and returns true for success)
 Helper.prototype.waitForUrl = function(url) {
-  url = this.baseUrl + url;
-  return browser.wait(function() {
-    return browser.driver.getCurrentUrl().then(function(currentUrl) {
+  var filter;
+  if(typeof url === 'function') {
+    filter = url;
+  } else {
+    url = this.baseUrl + url;
+    filter = function(currentUrl) {
       return currentUrl === url;
-    });
+    };
+  }
+  return browser.wait(function() {
+    return browser.driver.getCurrentUrl().then(filter);
   });
 };
 
