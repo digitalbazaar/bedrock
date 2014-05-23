@@ -182,6 +182,31 @@ Helper.prototype.getServiceData = function(service) {
     'app.services.' + service);
 };
 
+// find a row in a repeater by evaluating an expression in its scope
+// and checking its value via the given function
+Helper.prototype.findRowByEval = function(repeater, expr, fn, parent) {
+  parent = parent || GLOBAL.element(by.css('document'));
+  var match = null;
+  if(typeof fn !== 'function') {
+    var y = fn;
+    fn = function(x) {return x === y;};
+  }
+  return parent.element.all(by.repeater(repeater))
+    .map(function(row, index) {
+      return row.evaluate(expr).then(fn).then(function(result) {
+        if(result) {
+          match = index;
+        }
+      });
+    })
+    .then(function() {
+      if(match === null) {
+        return null;
+      }
+      return parent.element(by.repeater(repeater).row(match));
+    });
+};
+
 api.on('init', function() {
   // locate elements by controller
   by.addLocator('controller', function(value, parent) {
