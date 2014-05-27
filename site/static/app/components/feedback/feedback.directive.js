@@ -84,9 +84,13 @@ function factory() {
   return {
     scope: {
       feedback: '=',
-      target: '='
+      target: '=?'
     },
     link: function(scope, element, attrs) {
+      // no target specified
+      if(!('target' in scope)) {
+        scope.target = element.closest('form');
+      }
       var ignore;
       scope.$watch('feedback', function(value) {
         // ignore feedback if it was set to be ignored and there have been
