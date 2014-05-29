@@ -37,8 +37,8 @@ config.server.bindAddr = ['bedrock.dev'];
 config.server.domain = 'bedrock.dev';
 config.server.host = 'bedrock.dev:18443';
 config.server.baseUri = 'https://' + config.server.host;
-config.server.key = __dirname + '/../pki/test-bedrock.key';
-config.server.cert = __dirname + '/../pki/test-bedrock.crt';
+config.server.key = path.join(__dirname, '..', 'pki', 'test-bedrock.key');
+config.server.cert = path.join(__dirname, '..', 'pki', 'test-bedrock.crt');
 
 // session info
 config.server.session.secret = '0123456789abcdef';
