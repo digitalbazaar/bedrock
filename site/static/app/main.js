@@ -43,9 +43,12 @@ require.config({
     'ui-bootstrap': {deps: ['angular']},
     'ui-utils': {deps: ['angular', 'ui-utils-ieshiv']},
     underscore: {exports: '_'}
+  },
+  // preload customizable app bootstrap module
+  deps: ['app/bootstrap'],
+  callback: function() {
+    require(['app/app'], function() {});
   }
 });
-
-require(['app/app'], function() {});
 
 })();
