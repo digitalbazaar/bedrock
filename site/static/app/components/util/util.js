@@ -12,6 +12,7 @@ define([
   './ellipsis.filter',
   './embeddedString.filter',
   './encodeURIComponent.filter',
+  './error.directive',
   './floor.filter',
   './focusToggle.directive',
   './helpToggle.directive',
@@ -27,14 +28,16 @@ define([
   './trackState.directive'
 ], function(
   angular, animate, ceil, ellipsis, embeddedString, encodeURIComponent_,
-  floor, focusToggle, helpToggle, inputWatcher, mask, model, mouseoverToggle,
-  now, prefill, resource, templateCache, tooltipTitle, trackState) {
+  error, floor, focusToggle, helpToggle, inputWatcher, mask, model,
+  mouseoverToggle, now, prefill, resource, templateCache, tooltipTitle,
+  trackState) {
 
 'use strict';
 
 var module = angular.module('app.util', []);
 
 module.directive(animate);
+module.directive(error);
 module.directive(focusToggle);
 module.directive(helpToggle);
 module.directive(inputWatcher);

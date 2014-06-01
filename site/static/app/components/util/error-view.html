@@ -1,0 +1,28 @@
+<dl class="dl-horizontal">
+  <dt data-ng-show="model.error.name">Name</dt>
+  <dd data-ng-show="model.error.name">
+    <ul class="unstyled">
+      <li>{{model.error.name}}</li>
+    </ul>
+  </dd>
+
+  <dt data-ng-show="model.error.message">Message</dt>
+  <dd data-ng-show="model.error.message">
+    <ul class="unstyled">
+      <li>{{model.error.message}}</li>
+    </ul>
+  </dd>
+
+  <dt>Details</dt>
+  <dd data-ng-show="model.error.details">
+    <ul class="unstyled">
+      <li><pre>{{model.error.details|json}}</pre></li>
+    </ul>
+  </dd>
+  <dd data-ng-hide="model.error.details">
+    <ul class="unstyled">
+      <li>Details unavailable.  Please contact a support representative.</li>
+      <li data-ng-show="model.error.stack"><pre>{{model.error.stack}}</pre></li>
+    </ul>
+  </dd>
+</dl>
