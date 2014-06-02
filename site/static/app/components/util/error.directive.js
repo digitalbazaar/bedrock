@@ -14,7 +14,6 @@ var deps = [];
 return {errorView: deps.concat(factory)};
 
 function Ctrl($scope) {
-  console.log('E CTRL');
   var model = $scope.model = {};
   model.error = null;
   // guess at useful simple cause output
