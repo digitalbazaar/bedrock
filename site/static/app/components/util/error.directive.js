@@ -21,7 +21,6 @@ function Ctrl($scope) {
   model.cause = null;
 
   $scope.$watch('error', function(error) {
-    console.log('E ERR', error);
     if(!error) {
       return;
     }
