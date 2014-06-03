@@ -56,9 +56,10 @@ api.verifyCredential = function(credential) {
     tests.signed = false;
     tests.publicKeyOwner = false;
     tests.signatureVerified = false;
+    tests.notExpired = true;
     tests.verified = false;
 
-    // check if signature present
+    // test if signature present
     tests.signed = !!params.signature;
 
     // done if no signature to check
@@ -105,7 +106,6 @@ api.verifyCredential = function(credential) {
         var signature = forge.util.decode64(params.signature.signatureValue);
         tests.signatureVerified = publicKey.verify(
           md.digest().getBytes(), signature);
-        tests.verified = tests.signatureVerified;
       }
     }
 
@@ -118,8 +118,11 @@ api.verifyCredential = function(credential) {
       params.hasExpiration = true;
       params.expiration = new Date(params.data.expires);
       tests.notExpired = (params.expiration > new Date());
-      tests.verified = tests.verified && tests.notExpired;
     }
+
+    // verified if all tests pass
+    tests.verified = true;
+    tests.verified = tests.signed && _.chain(_.values(tests)).all().value();
 
     // ensure data is compacted (remove non-context properties from local data)
     return jsonld.promises().compact(params.data, CONTEXT_URL)
@@ -196,16 +199,16 @@ function _getCredentialParams(data) {
       return _getJson(publicKey.owner)
         .then(function(identity) {
           // frame identity
-          return _frame(identity, FRAME_IDENTITY);
+          return _frame(identity, FRAME_IDENTITY).then(function(identity) {
+            params.identity = identity;
+          });
         })
         .catch(function(err) {
           errors.publicKeyOwner = err;
-          throw results;
         });
     })
-    .then(function(identity) {
+    .then(function() {
       // normalize
-      params.identity = identity;
       var options = {format: 'application/nquads'};
       return jsonld.promises().normalize(params.data, options)
         .then(function(normalized) {
