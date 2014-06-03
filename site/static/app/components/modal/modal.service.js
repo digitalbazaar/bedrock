@@ -36,7 +36,6 @@ function factory(
         var modal = modals[modals.length - 1];
         if(modal._angular.allowEscape) {
           modal._angular.scope.modal.close('canceled', null);
-          $rootScope.$apply();
         }
       }
     }
@@ -98,23 +97,36 @@ function factory(
 
             // closes and destroys modal (unless aborted by callback)
             scope.modal.close = function(err, result) {
-              var abort = false;
+              // ignore if already closing
+              if(modal._angular.closing) {
+                return;
+              }
+              modal._angular.closing = true;
               scope.modal.error = err;
               scope.modal.result = result;
               scope.modal.success = !err;
+              var promise;
               if(scope._closingCallback) {
-                abort = (scope._closingCallback.call(scope, {
+                promise = Promise.cast(scope._closingCallback.call(scope, {
                   err: err,
                   result: result
-                }) === false);
+                })).catch(function() {
+                  // always abort on error
+                  return false;
+                });
+              } else {
+                promise.resolve();
               }
-              if(abort) {
-                scope.modal.error = null;
-                scope.modal.result = null;
-                scope.modal.success = false;
-              } else if(modal) {
-                modal._angular.destroy();
-              }
+              promise.then(function(close) {
+                modal._angular.closing = false;
+                if(close === false) {
+                  scope.modal.error = null;
+                  scope.modal.result = null;
+                  scope.modal.success = false;
+                } else if(modal) {
+                  modal._angular.destroy(true);
+                }
+              });
             };
           });
         };
@@ -210,6 +222,7 @@ function factory(
     // additional angular API on bootstrap modal
     modal._angular = {};
     modal._angular.scope = directiveScope;
+    modal._angular.closing = false;
 
     // allow escape presses in modal by default
     modal._angular.allowEscape = true;
