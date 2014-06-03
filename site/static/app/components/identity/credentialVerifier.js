@@ -53,6 +53,7 @@ var CONTEXT_URL = 'https://w3id.org/openbadges/v1';
  *           any tests that were run.
  */
 api.verifyCredential = function(credential) {
+  // TODO: remove open badge verification support
   var rval = {};
   return Promise.all([
     api.verifyOpenCredential(credential).then(function(results) {
@@ -88,7 +89,7 @@ api.verifyOpenCredential = function(credential) {
     tests.verified = false;
 
     // check if signature present
-    tests.signed = !!results.signature;
+    tests.signed = !!params.signature;
 
     // done if no signature to check
     if(!tests.signed) {
@@ -172,11 +173,16 @@ api.verifyOpenCredential = function(credential) {
  * @return a promise that resolves to a results object with the parameters
  *           used during verification, any errors, and any tests that were run.
  */
+// TODO: remove open badge verification support
 api.verifyOpenBadge = function(badge) {
   return _getOpenBadgesParams(badge).then(function(results) {
     var params = results.params;
     var errors = results.errors;
     var tests = results.tests = {};
+
+    if(!params.data) {
+      return results;
+    }
 
     params.signed = (params.data.assertion.verify.type === 'signed');
     if(params.signed) {
