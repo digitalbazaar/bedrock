@@ -20,17 +20,22 @@ var _browser = !_nodejs &&
  * Attaches the credential verifier API to the given object.
  *
  * @param api the object to attach the verifier API to.
- * @param [inject] the dependencies to inject, available global defaults will
- *          be used otherwise.
- *          [forge] forge API.
- *          [jsonld] jsonld.js API, a secure, promise-based document loader
- *            must be configured.
- *          [_] underscore API.
+ * @param [options] the options to use:
+ *          [inject] the dependencies to inject, available global defaults will
+ *            be used otherwise.
+ *            [forge] forge API.
+ *            [jsonld] jsonld.js API, a secure, promise-based document loader
+ *              must be configured.
+ *            [_] underscore API.
+ *          [disableLocalFraming] true to disable framing of local
+ *            documents based on the given local base URI (default: false).
+ *          [localBaseUri] must be given if disabling local framing.
  */
-function wrap(api, inject) {
+function wrap(api, options) {
 
 // handle dependency injection
-inject = inject || {};
+options = options || {};
+var inject = options.inject || {};
 var forge = inject.forge || global.forge;
 var jsonld = inject.jsonld || global.jsonldjs;
 var _ = inject._ || global._;
@@ -235,17 +240,32 @@ function _getCredentialParams(data) {
  *           otherwise.
  */
 function _frame(input, frame) {
-  // frame with null base
-  var ctx = frame['@context'];
-  frame['@context'] = [ctx, {'@base': null}];
-  return jsonld.promises().frame(input, frame).then(function(framed) {
-    var output = framed['@graph'][0];
-    if(!output) {
-      throw new Error('No matching object found for frame.');
+  var api = jsonld.promises();
+  var promise;
+  if(options.disableLocalFraming && options.localBaseUri) {
+    // skip framing if data is local, assume framed properly
+    if((typeof input === 'string' &&
+      input.indexOf(options.localBaseUri) === 0)) {
+      promise = _getJson(input);
+    } else if('id' in input && input.id.indexOf(options.localBaseUri) === 0) {
+      promise = jsonld.Promise.resolve(input);
     }
-    output['@context'] = ctx;
-    return output;
-  });
+  }
+  // local framing not disabled or input is not local; do regular framing
+  if(!promise) {
+    // frame with null base
+    var ctx = frame['@context'];
+    frame['@context'] = [ctx, {'@base': null}];
+    promise = api.frame(input, frame).then(function(framed) {
+      var output = framed['@graph'][0];
+      if(!output) {
+        throw new Error('No matching object found for frame.');
+      }
+      output['@context'] = ctx;
+      return output;
+    });
+  }
+  return promise;
 }
 
 function _getJson(url) {

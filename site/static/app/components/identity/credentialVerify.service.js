@@ -24,7 +24,7 @@ function factory(config, $rootScope) {
    * @param options the options to use:
    *          [documentLoader] a custom JSON-LD document loader to use.
    *          [disableLocalFraming] true to disable framing of local
-   *            documents (default: true).
+   *            documents (default: false).
    *
    * @return the credential verifier API.
    */
@@ -51,43 +51,14 @@ function createVerifier(config, options) {
     jsonld.useDocumentLoader('xhr', {secure: true});
   }
 
-  if(options.disableLocalFraming) {
-    // override jsonld framing for local documents
-    var _promises = jsonld.promises;
-    jsonld.promises = function() {
-      var api = _promises();
-      var _frame = api.frame;
-      api.frame = function(input, frame, options) {
-        // skip framing if data is local, already framed properly
-        if((typeof input === 'string' &&
-          input.indexOf(config.data.baseUri) === 0)) {
-          return jsonld.documentLoader(input).then(function(response) {
-            if(typeof response.document === 'string') {
-              response.document = JSON.parse(response.document);
-            }
-            return {
-              '@context': response.document['@context'],
-              '@graph': [response.document]
-            };
-          });
-        }
-        if('id' in input && input.id.indexOf(config.data.baseUri) === 0) {
-          return Promise.resolve({
-            '@context': input['@context'],
-            '@graph': [input]
-          });
-        }
-        // input is non-local, do regular framing
-        return _frame(input, frame, options);
-      };
-      return api;
-    };
-  }
-
   return verifierFactory({
-    forge: forge,
-    jsonld: jsonld,
-    _: _
+    inject: {
+      forge: forge,
+      jsonld: jsonld,
+      _: _
+    },
+    disableLocalFraming: options.disableLocalFraming,
+    localBaseUri: config.data.baseUri
   });
 }
 
