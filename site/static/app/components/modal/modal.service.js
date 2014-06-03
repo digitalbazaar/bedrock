@@ -35,7 +35,8 @@ function factory(
       if(modals.length > 0) {
         var modal = modals[modals.length - 1];
         if(modal._angular.allowEscape) {
-          modal._angular.destroy(true);
+          modal._angular.scope.modal.close('canceled', null);
+          $rootScope.$apply();
         }
       }
     }
@@ -59,7 +60,8 @@ function factory(
   service.directive = function(options) {
     var isolatedScope = {
       visible: '=modalVisible',
-      _callback: '&modalOnClose'
+      _closingCallback: '&?modalOnClosing',
+      _closeCallback: '&modalOnClose'
     };
     if('name' in options) {
       isolatedScope.visible = '=modal' + options.name;
@@ -94,12 +96,23 @@ function factory(
             // does any custom init work when modal opens
             scope.modal.open = scope.modal.open || angular.noop;
 
-            // closes and destroys modal on success
+            // closes and destroys modal (unless aborted by callback)
             scope.modal.close = function(err, result) {
+              var abort = false;
               scope.modal.error = err;
               scope.modal.result = result;
-              scope.modal.success = true;
-              if(modal) {
+              scope.modal.success = !err;
+              if(scope._closingCallback) {
+                abort = (scope._closingCallback.call(scope, {
+                  err: err,
+                  result: result
+                }) === false);
+              }
+              if(abort) {
+                scope.modal.error = null;
+                scope.modal.result = null;
+                scope.modal.success = false;
+              } else if(modal) {
                 modal._angular.destroy();
               }
             };
@@ -196,6 +209,7 @@ function factory(
 
     // additional angular API on bootstrap modal
     modal._angular = {};
+    modal._angular.scope = directiveScope;
 
     // allow escape presses in modal by default
     modal._angular.allowEscape = true;
@@ -270,8 +284,8 @@ function factory(
       modal._angular.hide();
 
       // call directive scope's callback
-      if(directiveScope._callback) {
-        directiveScope._callback.call(directiveScope, {
+      if(directiveScope._closeCallback) {
+        directiveScope._closeCallback.call(directiveScope, {
           err: directiveScope.modal.error,
           result: directiveScope.modal.result
         });
@@ -331,7 +345,7 @@ function factory(
     // auto-bind any .btn-close classes here
     $('.btn-close', element).click(function(e) {
       e.preventDefault();
-      modal._angular.destroy(true);
+      directiveScope.modal.close('canceled', null);
     });
 
     // get the parent modal, if any
