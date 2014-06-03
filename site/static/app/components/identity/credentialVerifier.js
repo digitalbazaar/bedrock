@@ -381,6 +381,8 @@ function _getJson(url) {
   });
 }
 
+return api;
+
 } // end wrap
 
 // used to generate a new verifier API instance
