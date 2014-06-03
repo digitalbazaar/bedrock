@@ -8,19 +8,22 @@
 define([
   'angular',
   './createIdentity.controller',
-  './identityCredentials.controller',
+  './identity.controller',
+  './identity.routes',
   './identity.service',
+  './identityCredentials.controller',
   './identitySelector.directive',
   './modalAddIdentity.directive'
 ], function(
-  angular, createIdentity, identityCredentials,
-  service, identitySelector, modalAddIdentity) {
+  angular, createIdentity, controller, routes, service, identityCredentials,
+  identitySelector, modalAddIdentity) {
 
 'use strict';
 
 var module = angular.module('app.identity', []);
 
 module.controller(createIdentity);
+module.controller(controller);
 module.controller(identityCredentials.controller);
 module.service(service);
 module.directive(identitySelector);
@@ -28,7 +31,7 @@ module.directive(modalAddIdentity);
 
 module.config(['$routeProvider',
   function($routeProvider) {
-    angular.forEach(identityCredentials.routes, function(route) {
+    angular.forEach(routes, function(route) {
       $routeProvider.when(route.path, route.options);
     });
   }

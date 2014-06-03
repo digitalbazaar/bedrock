@@ -1,0 +1,51 @@
+<div class="container ng-cloak" data-ng-controller="IdentityCtrl">
+  <div data-ng-show="model.identity.label" class="row">
+    <div class="title-section span12">
+      <h1 class="headline" data-ng-bind="model.identity.label"></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="section span12">
+      <h3 class="headline">Identity Details</h3>
+
+      <dl class="dl-horizontal" about="" typeof="bed:{{model.identity.type}}">
+        <dt data-ng-show="model.identity.label">Label</dt>
+        <dd data-ng-show="model.identity.label">
+          <ul class="unstyled">
+            <li property="rdfs:label">{{model.identity.label}}</li>
+          </ul>
+        </dd>
+
+        <dt data-ng-show="model.identity.description">Description</dt>
+        <dd data-ng-show="model.identity.description">
+          <ul class="unstyled">
+            <li property="dc:description">{{model.identity.description}}</li>
+          </ul>
+        </dd>
+
+        <dt data-ng-show="model.identity.url">Website</dt>
+        <dd data-ng-show="model.identity.url">
+          <ul class="unstyled">
+            <li><a property="schema:url" href="{{model.identity.url}}">{{model.identity.url}}</a></li>
+          </ul>
+        </dd>
+
+        <dt>Cryptographic Keys</dt>
+        <dd>
+          <ul class="unstyled">
+            <li data-ng-show="model.identity.publicKey.length > 0" data-ng-repeat="key in model.identity.publicKey">
+              <a about="" rel="sec:publicKey" href="{{key.id}}">
+                <span property="rdfs:label">{{key.label}}</span>
+              </a>
+              <span about="{{key.id}}" typeof="sec:CryptographicKey">
+                <link rel="sec:owner" href="" />
+              </span>
+            </li>
+            <li data-ng-show="model.identity.publicKey.length == 0">No publicly visible keys.</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>

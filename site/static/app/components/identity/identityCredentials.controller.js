@@ -11,16 +11,7 @@ define([], function() {
 
 var deps = [
   '$scope', 'config', '$http', '$location', '$sanitize', 'svcIdentity'];
-return {
-  controller: {IdentityCredentialsCtrl: deps.concat(factory)},
-  routes: [{
-    path: window.data.identityBasePath,
-    options: {
-      title: 'Identity Credentials',
-      templateUrl: '/app/components/identity/identity-credentials.html'
-    }
-  }]
-};
+return {IdentityCredentialsCtrl: deps.concat(factory)};
 
 function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
   var model = $scope.model = {};
