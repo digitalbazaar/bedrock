@@ -13,10 +13,11 @@ define([
   './identity.service',
   './identityCredentials.controller',
   './identitySelector.directive',
-  './modalAddIdentity.directive'
+  './modalAddIdentity.directive',
+  './credentialVerify.service'
 ], function(
   angular, createIdentity, controller, routes, service, identityCredentials,
-  identitySelector, modalAddIdentity) {
+  identitySelector, modalAddIdentity, credentialVerifyService) {
 
 'use strict';
 
@@ -26,6 +27,7 @@ module.controller(createIdentity);
 module.controller(controller);
 module.controller(identityCredentials.controller);
 module.service(service);
+module.service(credentialVerifyService);
 module.directive(identitySelector);
 module.directive(modalAddIdentity);
 
