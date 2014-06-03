@@ -25,7 +25,6 @@ var _browser = !_nodejs &&
  *          [forge] forge API.
  *          [jsonld] jsonld.js API, a secure, promise-based document loader
  *            must be configured.
- *          [Promise] Promise API.
  *          [_] underscore API.
  */
 function wrap(api, inject) {
@@ -34,38 +33,9 @@ function wrap(api, inject) {
 inject = inject || {};
 var forge = inject.forge || global.forge;
 var jsonld = inject.jsonld || global.jsonldjs;
-var Promise = inject.Promise || global.Promise;
 var _ = inject._ || global._;
 
 var CONTEXT_URL = 'https://w3id.org/openbadges/v1';
-
-/**
- * Attempts to verify the given credential. As many tests as possible are
- * run and results may include mixed success, failure, or not applicable
- * tests.
- *
- * @param credential the credential (JSON-LD object) or URL to the credential
- *          to verify.
- *
- * @return a promise that resolves to a results object with keys naming the
- *           the high-level verification algorithms run, where each value
- *           contains the parameters used during verification, any errors, and
- *           any tests that were run.
- */
-api.verifyCredential = function(credential) {
-  // TODO: remove open badge verification support
-  var rval = {};
-  return Promise.all([
-    api.verifyOpenCredential(credential).then(function(results) {
-      rval.openCredentials = results;
-    }),
-    api.verifyOpenBadge(credential).then(function(results) {
-      rval.openBadges = results;
-    })
-  ]).then(function() {
-    return rval;
-  });
-};
 
 /**
  * Attempts to verify the given credential using the Open Credential
@@ -77,8 +47,8 @@ api.verifyCredential = function(credential) {
  * @return a promise that resolves to a results object with the parameters
  *           used during verification, any errors, and any tests that were run.
  */
-api.verifyOpenCredential = function(credential) {
-  return _getOpenCredentialParams(credential).then(function(results) {
+api.verifyCredential = function(credential) {
+  return _getCredentialParams(credential).then(function(results) {
     var params = results.params;
     params.hasExpiration = false;
 
@@ -165,55 +135,7 @@ api.verifyOpenCredential = function(credential) {
 };
 
 /**
- * Attempts to verify the given badge using the Open Badge verification
- * algorithm.
- *
- * @param badge the badge (JSON-LD object) or URL to the badge to verify.
- *
- * @return a promise that resolves to a results object with the parameters
- *           used during verification, any errors, and any tests that were run.
- */
-// TODO: remove open badge verification support
-api.verifyOpenBadge = function(badge) {
-  return _getOpenBadgesParams(badge).then(function(results) {
-    var params = results.params;
-    var errors = results.errors;
-    var tests = results.tests = {};
-
-    if(!params.data) {
-      return results;
-    }
-
-    params.signed = (params.data.assertion.verify.type === 'signed');
-    if(params.signed) {
-      // FIXME: support signature checking
-      tests.signed = false;
-      errors.signature = new Error(
-        'OpenBadges signature checking not implemented.');
-      return results;
-    }
-
-    params.hosted = (params.data.assertion.verify.type === 'hosted');
-    if(params.hosted) {
-      tests.hosted = false;
-      params.hostedDataAvailable = !!params.hostedData;
-      if(!params.hostedData) {
-        errors.hosted = new Error(
-          'OpenBadges hosted verify data not available.');
-      } else if(!_.isEqual(params.data.assertion, params.hostedData)) {
-        errors.hosted = new Error(
-          'OpenBadges hosted verify check not implemented.');
-      } else {
-        tests.hosted = false;
-      }
-    }
-
-    return results;
-  });
-};
-
-/**
- * Gets all of the Open Credential parameters required to verify the given data.
+ * Gets all of the credential parameters required to verify the given data.
  * Some parameters may be fetched via the Web.
  *
  * @param data the data to verify; may be a URL or JSON-LD object.
@@ -221,7 +143,7 @@ api.verifyOpenBadge = function(badge) {
  * @return a promise that resolves to a results object:
  *           {params: <the verification parameters>, errors: <any errors>}
  */
-function _getOpenCredentialParams(data) {
+function _getCredentialParams(data) {
   var FRAME_SIGNED_OBJECT = {
     '@context': CONTEXT_URL,
     signature: {'@embed': true}
@@ -321,61 +243,6 @@ function _frame(input, frame) {
     output['@context'] = ctx;
     return output;
   });
-}
-
-/**
- * Gets all of the OpenBadge parameters required to verify the given data.
- * Some parameters may be fetched via the Web.
- *
- * @param data the data to verify; may be a URL or JSON-LD object.
- *
- * @return a promise that resolves to a results object:
- *           {params: <the verification parameters>, errors: <any errors>}
- */
-function _getOpenBadgesParams(data) {
-  var results = {};
-  var params = results.params = {};
-  var errors = results.errors = {};
-  var promise;
-  if(typeof data === 'string') {
-    promise = _getJson(data).catch(function(err) {
-      errors.data = err;
-      throw results;
-    });
-  } else {
-    promise = Promise.resolve(data);
-  }
-  return promise.then(function(badge) {
-    if('sysOpenBadges' in badge && 'assertion' in badge.sysOpenBadges) {
-      params.data = badge.sysOpenBadges;
-    } else {
-      // no OpenBadges data found
-      return;
-    }
-    var verify = params.data.assertion.verify;
-    if(verify.type === 'signed') {
-      // FIXME: handle sig
-      // get verify.url as issuer's public key
-      errors.verifyType = new Error('Signed verify type unsupported.');
-      throw results;
-    }
-    if(verify.type === 'hosted') {
-      return _getJson(verify.url)
-        .then(function(data) {
-          params.hostedData = data;
-          return results;
-        })
-        .catch(function(err) {
-          errors.hostedData = err;
-          throw results;
-        });
-    }
-    errors.verifyType = new Error('Unknown verify type.');
-    throw results;
-  })
-  // always return results
-  .then(function() {return results;})
-  .catch(function() {return results;});
 }
 
 function _getJson(url) {
