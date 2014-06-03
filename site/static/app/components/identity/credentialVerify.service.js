@@ -84,7 +84,7 @@ function createVerifier(config, options) {
     };
   }
 
-  return verifierFactory({}, {
+  return verifierFactory({
     forge: forge,
     jsonld: jsonld,
     Promise: Promise,
