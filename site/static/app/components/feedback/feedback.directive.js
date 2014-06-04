@@ -93,8 +93,13 @@ function factory() {
       }
       var ignore;
       scope.$watch('feedback', function(value) {
-        // ignore feedback if it was set to be ignored and there have been
-        // no changes to it
+        /* Note: Since we change scope.feedback from within a watch handler,
+        this will trigger the handler to run again which creates an infinite
+        loop if we don't check for that and exit early. We clear scope.feedback
+        after processing it, but we store the empty object we use to clear and
+        check that on the very next execution of the handler. We quit early if
+        scope.feedback is still the same "ignore" object and it still has no
+        properties in that object. */
         if(scope.feedback === ignore && Object.keys(ignore).length === 0) {
           scope.feedback = {};
           return;
