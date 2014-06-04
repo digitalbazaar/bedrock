@@ -66,6 +66,7 @@ function factory() {
         }
         alert.append(message);
       }
+
       feedbackElement.append(alert);
     }
   }
