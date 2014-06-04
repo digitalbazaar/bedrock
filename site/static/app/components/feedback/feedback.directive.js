@@ -90,6 +90,9 @@ function factory() {
       // no target specified
       if(!('target' in scope)) {
         scope.target = element.closest('form');
+        if(!scope.target[0]) {
+          scope.target = element;
+        }
       }
       var ignore;
       scope.$watch('feedback', function(value) {
