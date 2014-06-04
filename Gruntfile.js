@@ -90,6 +90,7 @@ module.exports = function(grunt) {
           'almond': '../../node_modules/almond/almond',
           'forge': '../../node_modules/node-forge/js',
           'jsonld': '../../node_modules/jsonld/js/jsonld',
+          'opencred-verifier': 'opencred-verifier/credentialVerifier',
           'promise': '../../node_modules/es6-promise/dist/promise-0.1.1',
           'underscore': '../../node_modules/underscore/underscore',
           // override templates

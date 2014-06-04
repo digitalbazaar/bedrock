@@ -7,7 +7,7 @@
  */
 define([
   'forge/md', 'forge/pki', 'forge/util', 'jsonld', 'underscore',
-  './credentialVerifier'],
+  'opencred-verifier'],
 function(md, pki, util, jsonld, _, verifierFactory) {
 
 'use strict';

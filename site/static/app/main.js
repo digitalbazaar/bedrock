@@ -24,6 +24,7 @@ require.config({
     jquery: 'jquery/jquery',
     'jquery.placeholder': 'jquery/jquery.placeholder',
     jsonld: 'jsonld/jsonld',
+    'opencred-verifier': 'opencred-verifier/credentialVerifier',
     promise: 'promise/promise',
     spin: 'spin/spin',
     'ui-bootstrap': 'angular-ui/ui-bootstrap-tpls',
