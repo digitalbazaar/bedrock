@@ -93,13 +93,13 @@ function factory() {
       }
       var ignore;
       scope.$watch('feedback', function(value) {
-        /* Note: Since we change scope.feedback from within a watch handler,
-        this will trigger the handler to run again which creates an infinite
-        loop if we don't check for that and exit early. We clear scope.feedback
-        after processing it, but we store the empty object we use to clear and
-        check that on the very next execution of the handler. We quit early if
-        scope.feedback is still the same "ignore" object and it still has no
-        properties in that object. */
+        /* Note: Since we clear scope.feedback from within its own watch
+        handler, this will trigger the handler to run again. To avoid an
+        infinite loop, we do a special check and exit early. When we clear
+        scope.feedback after processing it, we store the empty object we used
+        to clear it and then look for that on the next execution of the
+        handler. We quit early if scope.feedback is still the same "ignore"
+        object and it still has no properties in that object. */
         if(scope.feedback === ignore && Object.keys(ignore).length === 0) {
           scope.feedback = {};
           return;
