@@ -147,13 +147,12 @@ function factory(
   function createModal(options, directiveScope, attrs, transcludeLinker) {
     // create child scope for modal
     var childScope = directiveScope.$new();
+    var transcludedScopes = [];
     var transcludeFn = function(scope, cloneAttachFn) {
       // link and attach transcluded elements
-      var clone = transcludeLinker(
-        directiveScope.$parent.$new(), function(clone) {
-        cloneAttachFn(clone);
-      });
-      return clone;
+      var siblingScope = directiveScope.$parent.$new();
+      transcludedScopes.push(siblingScope);
+      return transcludeLinker(siblingScope, cloneAttachFn);
     };
 
     // create new modal element
@@ -303,6 +302,12 @@ function factory(
           result: directiveScope.modal.result
         });
       }
+
+      // destroy child scope and any transcluded scopes
+      childScope.$destroy();
+      angular.forEach(transcludedScopes, function(scope) {
+        scope.$destroy();
+      });
 
       if(doApply) {
         $rootScope.$apply();
