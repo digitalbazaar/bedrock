@@ -213,6 +213,15 @@ Helper.prototype.findRowByEval = function(repeater, expr, fn, parent) {
     });
 };
 
+// escape JSON to be transferred to browser
+Helper.prototype.escapeJson = function(json) {
+  return json
+    .replace(/\\n/g, '\\\\n')
+    .replace(/\\r/g, '\\\\r')
+    .replace(/\"/g, "\\\"")
+    .replace(/'/g, "\\'");
+};
+
 api.on('init', function() {
   // locate elements by controller
   by.addLocator('controller', function(value, parent) {
