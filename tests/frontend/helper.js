@@ -222,6 +222,11 @@ Helper.prototype.escapeJson = function(json) {
     .replace(/'/g, "\\'");
 };
 
+// clones 'x' via JSON serialization/deserialization
+Helper.prototype.clone = function(x) {
+  return JSON.parse(JSON.stringify(x));
+};
+
 api.on('init', function() {
   // locate elements by controller
   by.addLocator('controller', function(value, parent) {
