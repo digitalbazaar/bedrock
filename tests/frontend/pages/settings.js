@@ -31,26 +31,21 @@ api.generateKey = function(options) {
   save.click();
 };
 
-api.revokeKey = function(options) {
+api.revokeKey = function(query) {
   element(by.linkText('Keys')).click();
   api.getKeys().then(function(keys) {
-    // support look up by id or label
-    var i;
-    var key;
-    var prop = options.id ? 'id' : 'label';
-    for(i = 0; i < keys.length; ++i) {
-      if(keys[i][prop] === options[prop]) {
-        key = keys[i];
-        break;
-      }
-    }
+    var key = helper.findOne(keys, query);
     expect(key).to.exist;
+    return {key: key, index: keys.indexOf(key)};
+  }).then(function(result) {
+    expect(result.index).to.not.equal(-1);
+    var i = result.index;
     var row = element(by.repeater('key in keys').row(i));
     row.element(by.popover('model.showKeysActionMenu_' + i)).click();
     element(by.linkText('Revoke')).click();
     var modal = element(by.modal());
     modal.element(by.partialButtonText('Revoke')).click();
-    return api.getKey({id: key.id});
+    return api.getKey({id: result.key.id});
   }).then(function(key) {
     expect(key).to.exist;
     expect(key.revoked).to.exist;
@@ -59,6 +54,22 @@ api.revokeKey = function(options) {
 
 api.getKeys = function() {
   return element(by.controller('KeysCtrl')).evaluate('keys');
+};
+
+api.getActiveKeys = function() {
+  return api.getKeys().then(function(keys) {
+    return keys.filter(function(key) {
+      return !key.revoked;
+    });
+  });
+};
+
+api.getRevokedKeys = function() {
+  return api.getKeys().then(function(keys) {
+    return keys.filter(function(key) {
+      return key.revoked;
+    });
+  });
 };
 
 api.getKey = function(query) {
