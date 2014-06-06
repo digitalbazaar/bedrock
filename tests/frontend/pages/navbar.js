@@ -33,3 +33,9 @@ api.logout = function() {
   expect(element(by.model('sysIdentifier')).isPresent()).to.eventually.be.true;
   return api;
 };
+
+api.refresh = function() {
+  element(by.binding('model.session.identity.label')).click();
+  element(by.linkText('Refresh')).click();
+  return api;
+};
