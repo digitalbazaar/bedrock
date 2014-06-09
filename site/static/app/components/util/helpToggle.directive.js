@@ -111,7 +111,7 @@ function factory($parse) {
       var expression = attr + '.focus || ' + attr + '.mouseover';
       scope.$watch(expression, function(value) {
         // only make changes if not pressed
-        if(!state.pressed) {
+        if(state && !state.pressed) {
           toggleElement(value);
         }
       });
