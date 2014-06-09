@@ -27,16 +27,21 @@ function factory($parse) {
       }
 
       var state;
+      var helpState;
       attrs.$observe('helpToggle', function(value) {
         // init scope state object
         var get = $parse(value);
         var set = get.assign || angular.noop;
         state = get(scope) || {};
-        if(!('pressed' in state)) {
-          state.pressed = false;
+        if(!('help' in state)) {
+          state.help = {};
         }
-        if(!('mouseover' in state)) {
-          state.mouseover = false;
+        helpState = state.help;
+        if(!('pressed' in helpState)) {
+          helpState.pressed = false;
+        }
+        if(!('mouseover' in helpState)) {
+          helpState.mouseover = false;
         }
         set(scope, state);
       });
@@ -45,9 +50,9 @@ function factory($parse) {
       element.click(function(event) {
         event.preventDefault();
         scope.$apply(function() {
-          state.pressed = !state.pressed;
-          state.show = state.pressed;
-          if(state.pressed) {
+          helpState.pressed = !helpState.pressed;
+          state.show = helpState.show = helpState.pressed;
+          if(helpState.pressed) {
             element.addClass('active');
           } else {
             element.removeClass('active');
@@ -58,14 +63,14 @@ function factory($parse) {
       var showId = null;
       element.mouseenter(function() {
         scope.$apply(function() {
-          state.mouseover = true;
+          helpState.mouseover = true;
           localMouseover = true;
-          if(!state.pressed) {
+          if(!helpState.pressed) {
             // show help after a short delay
             showId = setTimeout(function() {
               scope.$apply(function() {
                 if(localMouseover) {
-                  state.show = true;
+                  state.show = helpState.show = true;
                 }
               });
             }, 500);
@@ -74,12 +79,12 @@ function factory($parse) {
       });
       element.mouseleave(function() {
         scope.$apply(function() {
-          state.mouseover = false;
+          helpState.mouseover = false;
           localMouseover = false;
           clearTimeout(showId);
-          if(!state.pressed) {
+          if(!helpState.pressed) {
             // hide immediately
-            state.show = false;
+            state.show = helpState.show = false;
           }
         });
       });
@@ -108,10 +113,11 @@ function factory($parse) {
 
       // when focus changes, toggle element
       var attr = attrs.helpToggle;
-      var expression = attr + '.focus || ' + attr + '.mouseover';
+      var expression = attr + '.focus || ' + attr + '.mouseover || ' +
+        attr + '.help.mouseover';
       scope.$watch(expression, function(value) {
         // only make changes if not pressed
-        if(state && !state.pressed) {
+        if(state && !helpState.pressed) {
           toggleElement(value);
         }
       });
