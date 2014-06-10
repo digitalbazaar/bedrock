@@ -115,7 +115,8 @@ select.form-field-vspaced {
 }
 
 /* Help toggle */
-.input-append.help-toggle input {
+.input-append.help-toggle input,
+.input-append.help-toggle textarea {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -124,6 +125,11 @@ select.form-field-vspaced {
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
+}
+.input-prepend.input-append.help-toggle textarea {
+  -webkit-border-radius: 0 4px 4px 4px;
+  -moz-border-radius: 0 4px 4px 4px;
+  border-radius: 0 4px 4px 4px;
 }
 .input-append.help-toggle.help-toggle-on input {
   -webkit-border-radius: 4px 0 0 4px;
@@ -134,6 +140,31 @@ select.form-field-vspaced {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+}
+.input-prepend.input-append .add-on:last-child,
+.input-prepend.input-append .btn:last-child {
+  padding: 4px 7px;
+}
+
+.input-prepend.input-append .add-on:last-child, .input-prepend.input-append .btn:last-child
+
+/* Overlay help toggle */
+.input-prepend.input-append.help-toggle .add-on:last-child.help-toggle-overlay,
+.input-prepend.input-append.help-toggle .btn:last-child.help-toggle-overlay,
+.input-prepend.input-append.help-toggle > textarea + :last-child,
+.input-prepend.input-append.help-toggle > textarea + .btn,
+.input-append.help-toggle .add-on:last-child.help-toggle-overlay,
+.input-append.help-toggle .btn:last-child.help-toggle-overlay,
+.input-append.help-toggle > textarea + :last-child,
+.input-append.help-toggle > textarea + .btn,
+.help-toggle-overlay {
+  position: relative;
+  top: 4px;
+  left: -29px;
+  padding: 2px 6px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 /* Short alert displays */
