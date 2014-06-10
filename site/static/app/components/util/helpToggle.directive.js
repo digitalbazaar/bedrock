@@ -59,17 +59,15 @@ function factory($parse) {
           }
         });
       });
-      var localMouseover = false;
       var showId = null;
       element.mouseenter(function() {
         scope.$apply(function() {
           helpState.mouseover = true;
-          localMouseover = true;
           if(!helpState.pressed) {
             // show help after a short delay
             showId = setTimeout(function() {
               scope.$apply(function() {
-                if(localMouseover) {
+                if(helpState.mouseover) {
                   state.show = helpState.show = true;
                 }
               });
@@ -80,7 +78,6 @@ function factory($parse) {
       element.mouseleave(function() {
         scope.$apply(function() {
           helpState.mouseover = false;
-          localMouseover = false;
           clearTimeout(showId);
           if(!helpState.pressed) {
             // hide immediately
@@ -89,8 +86,32 @@ function factory($parse) {
         });
       });
 
+      // toggle help button display when mouse over
+      var attr = attrs.helpToggle;
+      scope.$watch(
+        attr + '.mouseover || ' + attr + '.help.mouseover', toggleElement);
+
+      // toggle help button when focus changes unless state var prohibits it
+      scope.$watch(attr + '.focus', function(value) {
+        if(!state || state.help.ignoreFocus) {
+          return;
+        }
+        toggleElement(value);
+      });
+
       function toggleElement(value) {
-        if(value) {
+        // state not initialized yet
+        if(!state) {
+          return;
+        }
+
+        // only make changes if not pressed
+        if(helpState.pressed) {
+          return;
+        }
+
+        if(state.mouseover || state.help.mouseover) {
+          // mouse over element or help toggle, show help element
           element.parent().addClass('help-toggle-on');
           if(element.is(':animated')) {
             // cancel current fade in/out
@@ -100,6 +121,7 @@ function factory($parse) {
             $(element).animate({opacity: '1'}, 400);
           }
         } else {
+          // mouse not over element or help toggle, hide help element
           element.parent().removeClass('help-toggle-on');
           if(element.is(':animated')) {
             // cancel current fade in/out
@@ -110,17 +132,6 @@ function factory($parse) {
           }
         }
       }
-
-      // when focus changes, toggle element
-      var attr = attrs.helpToggle;
-      var expression = attr + '.focus || ' + attr + '.mouseover || ' +
-        attr + '.help.mouseover';
-      scope.$watch(expression, function(value) {
-        // only make changes if not pressed
-        if(state && !helpState.pressed) {
-          toggleElement(value);
-        }
-      });
     }
   };
 }
