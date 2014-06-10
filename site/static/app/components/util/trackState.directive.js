@@ -21,6 +21,13 @@ function factory($parse) {
         var get = $parse(value);
         var set = get.assign || angular.noop;
         state = get(scope) || {};
+        // expose tag name for use by other directives that operate
+        // on state information
+        if(!('element' in state)) {
+          state.element = {
+            tagName: element.prop('tagName').toLowerCase()
+          };
+        }
         if(!('pressed' in state)) {
           state.pressed = false;
         }

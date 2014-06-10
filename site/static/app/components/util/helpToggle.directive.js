@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$parse'];
+var deps = ['$parse', '$timeout'];
 return {helpToggle: deps.concat(factory)};
 
-function factory($parse) {
+function factory($parse, $timeout) {
   return {
     link: function(scope, element, attrs) {
       // hide (use opacity to preserve layout), make element untabbable
@@ -34,7 +34,10 @@ function factory($parse) {
         var set = get.assign || angular.noop;
         state = get(scope) || {};
         if(!('help' in state)) {
-          state.help = {};
+          state.help = {
+            // ignore focus changes by default w/textarea
+            ignoreFocus: (state.element.tagName === 'textarea')
+          };
         }
         helpState = state.help;
         if(!('pressed' in helpState)) {
@@ -59,18 +62,16 @@ function factory($parse) {
           }
         });
       });
-      var showId = null;
+      var showPromise = null;
       element.mouseenter(function() {
         scope.$apply(function() {
           helpState.mouseover = true;
           if(!helpState.pressed) {
             // show help after a short delay
-            showId = setTimeout(function() {
-              scope.$apply(function() {
-                if(helpState.mouseover) {
-                  state.show = helpState.show = true;
-                }
-              });
+            showPromise = $timeout(function() {
+              if(helpState.mouseover) {
+                state.show = helpState.show = true;
+              }
             }, 500);
           }
         });
@@ -78,7 +79,7 @@ function factory($parse) {
       element.mouseleave(function() {
         scope.$apply(function() {
           helpState.mouseover = false;
-          clearTimeout(showId);
+          $timeout.cancel(showPromise);
           if(!helpState.pressed) {
             // hide immediately
             state.show = helpState.show = false;
@@ -86,51 +87,56 @@ function factory($parse) {
         });
       });
 
-      // toggle help button display when mouse over
+      // toggle help button display based on focus/mouse over changes
       var attr = attrs.helpToggle;
-      scope.$watch(
-        attr + '.mouseover || ' + attr + '.help.mouseover', toggleElement);
-
-      // toggle help button when focus changes unless state var prohibits it
-      scope.$watch(attr + '.focus', function(value) {
-        if(!state || state.help.ignoreFocus) {
-          return;
-        }
-        toggleElement(value);
-      });
+      scope.$watch(attr + '.focus', toggleElement);
+      scope.$watch(attr + '.mouseover', toggleElement);
+      scope.$watch(attr + '.help.mouseover', toggleElement);
 
       function toggleElement(value) {
-        // state not initialized yet
-        if(!state) {
-          return;
-        }
+        // use timeout to allow mouse to transition smoothly from
+        // element to help element (avoids canceling the animation that shows
+        // the help element in that case)
+        $timeout(function() {
+          // state not initialized yet
+          if(!state) {
+            return;
+          }
+          // nothing to change if help element is pressed (active)
+          if(helpState.pressed) {
+            return;
+          }
 
-        // only make changes if not pressed
-        if(helpState.pressed) {
-          return;
-        }
-
-        if(state.mouseover || state.help.mouseover) {
-          // mouse over element or help toggle, show help element
-          element.parent().addClass('help-toggle-on');
-          if(element.is(':animated')) {
-            // cancel current fade in/out
-            element.stop(true, true).css('opacity', '1');
-          } else {
+          if(state.mouseover || state.help.mouseover ||
+            (state.focus && !state.help.ignoreFocus)) {
+            // already shown/showing
+            if(element.parent().hasClass('help-toggle-on')) {
+              return;
+            }
+            // mouse over element or help element or element is in focus and
+            // focus is not ignored, so show help element
+            element.parent().addClass('help-toggle-on');
+            // cancel current animation
+            if(element.is(':animated')) {
+              element.stop(true, true);
+            }
             // use opacity to preserve layout
             $(element).animate({opacity: '1'}, 400);
-          }
-        } else {
-          // mouse not over element or help toggle, hide help element
-          element.parent().removeClass('help-toggle-on');
-          if(element.is(':animated')) {
-            // cancel current fade in/out
-            element.stop(true, true).css('opacity', '0');
           } else {
+            // already hidden/hiding
+            if(!element.parent().hasClass('help-toggle-on')) {
+              return;
+            }
+            // mouse not over element or help element, hide help element
+            element.parent().removeClass('help-toggle-on');
+            // cancel current animation
+            if(element.is(':animated')) {
+              element.stop(true, true);
+            }
             // use opacity to preserve layout
             $(element).animate({opacity: '0'}, 400);
           }
-        }
+        });
       }
     }
   };
