@@ -22,7 +22,7 @@ function factory(svcModal) {
 
     model.login = function() {
       $scope.loading = true;
-      Promise.cast($http.post('/session/login', {
+      Promise.resolve($http.post('/session/login', {
         sysIdentifier: model.sysIdentifier,
         password: model.password
       })).then(function(response) {

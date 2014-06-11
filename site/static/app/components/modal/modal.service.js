@@ -107,7 +107,7 @@ function factory(
               scope.modal.success = !err;
               var promise;
               if(scope._closingCallback) {
-                promise = Promise.cast(scope._closingCallback.call(scope, {
+                promise = Promise.resolve(scope._closingCallback.call(scope, {
                   err: err,
                   result: result
                 })).catch(function() {

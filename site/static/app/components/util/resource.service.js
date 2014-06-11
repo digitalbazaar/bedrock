@@ -58,7 +58,7 @@ function factory($rootScope, $http, $location, svcModel) {
       self.startLoading();
       var config = _buildConfig(options);
       var url = _getUrl(self.config, 'getAll');
-      var promise = Promise.cast($http.get(url, config));
+      var promise = Promise.resolve($http.get(url, config));
       promise.then(function(response) {
         // update expriation time and collection
         self.expires = Date.now() + self.maxAge;
@@ -89,7 +89,7 @@ function factory($rootScope, $http, $location, svcModel) {
     return new Promise(function(resolve, reject) {
       self.startLoading();
       var config = _buildConfig(options);
-      var promise = Promise.cast($http.get(resourceId, config));
+      var promise = Promise.resolve($http.get(resourceId, config));
       promise.then(function(response) {
         // update collection but not collection expiration time
         svcModel.replaceInArray(self.storage, response.data);
@@ -121,7 +121,7 @@ function factory($rootScope, $http, $location, svcModel) {
       self.startLoading();
       var config = _buildConfig(options);
       var url = _getUrl(self.config, 'add');
-      var promise = Promise.cast($http.post(url, resource, config));
+      var promise = Promise.resolve($http.post(url, resource, config));
       promise.then(function(response) {
         // don't update collection expiration time
         // update collection if resource not present
@@ -146,7 +146,7 @@ function factory($rootScope, $http, $location, svcModel) {
     return new Promise(function(resolve, reject) {
       self.startLoading();
       var config = _buildConfig(options);
-      var promise = Promise.cast($http.post(resource.id, resource, config));
+      var promise = Promise.resolve($http.post(resource.id, resource, config));
       promise.then(function(response) {
         // don't update collection expiration time
         // re-get resource to update collection
@@ -170,7 +170,7 @@ function factory($rootScope, $http, $location, svcModel) {
     return new Promise(function(resolve, reject) {
       self.startLoading();
       var config = _buildConfig(options);
-      var promise = Promise.cast($http.delete(resourceId, config));
+      var promise = Promise.resolve($http.delete(resourceId, config));
       promise.then(function(response) {
         // don't update collection expiration time
         // update collection if resource present

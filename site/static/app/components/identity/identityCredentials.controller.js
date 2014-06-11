@@ -30,7 +30,7 @@ function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
     }
     model.loading = true;
     model.feedback.error = null;
-    Promise.cast($http.post($location.absUrl() + '&authorize=true', {
+    Promise.resolve($http.post($location.absUrl() + '&authorize=true', {
       query: JSON.stringify(query)
     })).then(function(response) {
       // TODO: support no callback case

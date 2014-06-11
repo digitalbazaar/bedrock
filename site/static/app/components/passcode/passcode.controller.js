@@ -28,7 +28,7 @@ function factory($scope, config, $http) {
   $scope.sendReset = function() {
     // request a passcode
     resetFeedback();
-    Promise.cast($http.post('/session/passcode?usage=reset', {
+    Promise.resolve($http.post('/session/passcode?usage=reset', {
       sysIdentifier: $scope.email
     })).then(function() {
       $scope.feedback.email.success = {
@@ -45,7 +45,7 @@ function factory($scope, config, $http) {
   $scope.updatePassword = function() {
     // request a password reset using the given passcode
     resetFeedback();
-    Promise.cast($http.post('/session/password/reset', {
+    Promise.resolve($http.post('/session/password/reset', {
       sysIdentifier: $scope.email,
       sysPasscode: $scope.sysPasscode,
       sysPasswordNew: $scope.sysPasswordNew

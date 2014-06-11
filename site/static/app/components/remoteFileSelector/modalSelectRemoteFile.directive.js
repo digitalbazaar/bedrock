@@ -58,7 +58,7 @@ function factory($http, svcModal) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
-      Promise.cast($http.get(url)).then(function(response) {
+      Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         $scope.modal.close(null, response.data);
         $scope.$apply();
@@ -72,7 +72,7 @@ function factory($http, svcModal) {
         url += '&path=' + encodeURIComponent(path);
       }
 
-      Promise.cast($http.get(url)).then(function(response) {
+      Promise.resolve($http.get(url)).then(function(response) {
         model.pathContents = response.data;
         model.path = response.data.path;
         model.separator = response.data.separator;

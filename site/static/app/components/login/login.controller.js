@@ -27,7 +27,7 @@ function factory($scope, config, $http, $compile, $window) {
     // do login
     $scope.error = '';
     $scope.loading = true;
-    Promise.cast($http.post('/session/login', {
+    Promise.resolve($http.post('/session/login', {
       sysIdentifier: $scope.sysIdentifier,
       password: $scope.password
     })).then(function(response) {

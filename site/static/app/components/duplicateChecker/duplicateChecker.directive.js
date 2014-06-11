@@ -83,7 +83,7 @@ function factory($http, $filter) {
                 } else {
                   data.sysSlug = lastInput;
                 }
-                Promise.cast($http.post('/identifier', $.extend(
+                Promise.resolve($http.post('/identifier', $.extend(
                   data, scope.owner ? {owner: scope.owner} : {})))
                   .then(function() {
                     // available
