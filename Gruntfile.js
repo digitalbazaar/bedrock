@@ -91,7 +91,7 @@ module.exports = function(grunt) {
           'forge': '../../node_modules/node-forge/js',
           'jsonld': '../../node_modules/jsonld/js/jsonld',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
-          'promise': '../../node_modules/es6-promise/dist/promise-0.1.1',
+          'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
           'underscore': '../../node_modules/underscore/underscore',
           // override templates
           'app/templates': 'app/templates.min'
