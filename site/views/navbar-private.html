@@ -1,38 +1,41 @@
-<div data-ng-controller="NavbarCtrl" class="navbar ng-cloak">
-  <div class="navbar-inner navbar-inner-banner">
-    <div class="container">
-      {% if session.loaded %}
-        {% if pageLayout == "normal" %}
-          <a class="brand" href="/">
-            {% if style.brand.src %}
-            <img src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
-            {% else %}
-            {{siteTitle}}
-            {% endif %}
-          </a>
+<div data-ng-controller="NavbarCtrl" class="ng-cloak">
+  <div class="navbar">
+    <div class="navbar-inner navbar-inner-banner">
+      <div class="container">
+        {% if session.loaded %}
+          {% if pageLayout == "normal" %}
+            <a class="brand" href="/">
+              {% if style.brand.src %}
+              <img src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
+              {% else %}
+              {{siteTitle}}
+              {% endif %}
+            </a>
+            {% raw %}
+            <ul class="nav">
+              <li data-ng-repeat="item in model.navbar.private" data-ng-class="{active: pageTitle == item.pageTitle}"><a href="{{item.url || (model.session.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a></li>
+            </ul>
+            {% endraw %}
+          {% else %}
+            <img class="brand-minimal" src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
+          {% endif %}
           {% raw %}
-          <ul class="nav">
-            <li data-ng-repeat="item in model.navbar.private" data-ng-class="{active: pageTitle == item.pageTitle}"><a href="{{item.url || (model.session.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a></li>
-          </ul>
+          <a class="btn btn-nav btn-small show pull-right{{model.showHovercard && ' active' || ''}}"
+            data-popover-template="/app/components/navbar/hovercard.html"
+            data-popover-visible="model.showHovercard"
+            data-title="{{model.session.identity.label}}"
+            data-placement="bottom">
+          <div data-modal-login="model.showLogin" data-modal-escape="model.allowLoginEscape"></div>
+            <i class="icon-user"></i>
+          </a>
+          <a class="navbar-link pull-right" style="line-height:45px"
+            data-ng-click="model.showHovercard=!model.showHovercard">
+            {{model.session.identity.label || '-'}}
+          </a>
           {% endraw %}
-        {% else %}
-          <img class="brand-minimal" src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
         {% endif %}
-        {% raw %}
-        <a class="btn btn-nav btn-small show pull-right{{model.showHovercard && ' active' || ''}}"
-          data-popover-template="/app/components/navbar/hovercard.html"
-          data-popover-visible="model.showHovercard"
-          data-title="{{model.session.identity.label}}"
-          data-placement="bottom">
-        <div data-modal-login="model.showLogin" data-modal-escape="model.allowLoginEscape"></div>
-          <i class="icon-user"></i>
-        </a>
-        <a class="navbar-link pull-right" style="line-height:45px"
-          data-ng-click="model.showHovercard=!model.showHovercard">
-          {{model.session.identity.label || '-'}}
-        </a>
-        {% endraw %}
-      {% endif %}
+      </div>
     </div>
   </div>
+  <div data-errors-view data-filter-origin="page"></div>
 </div>

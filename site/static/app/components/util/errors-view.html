@@ -1,0 +1,10 @@
+<div data-ng-repeat="(category, list) in app.services.error.errors">
+  <div data-ng-repeat="info in list">
+    <div data-ng-show="filterOrigin == 'all' || filterOrigin == info.origin">
+      <div data-ng-show="category == app.services.error.category.FEEDBACK"
+        data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
+        data-feedback="feedback[$index]"
+        data-ng-init="feedback[$index]={error: info.error}"></div>
+    </div>
+  </div>
+</div>

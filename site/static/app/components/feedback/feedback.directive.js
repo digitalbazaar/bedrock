@@ -9,11 +9,11 @@ define(['angular', 'jquery'], function(angular, $) {
 
 'use strict';
 
-var deps = [];
+var deps = ['$compile', 'svcError'];
 return {feedback: deps.concat(factory)};
 
-function factory() {
-  /*
+function factory($compile, svcError) {
+  /**
    * Show stack of feedback items ordered as:
    *   errors, alerts, successes, infos
    * scope.feedback is the source of feedback info. It is an object with
@@ -37,14 +37,16 @@ function factory() {
         alert.addClass('alert-' + type);
       }
 
-      alert.append('<button type="button" class="close" data-dismiss="alert">&times;</button>');
+      alert.append(
+        '<button type="button" class="close" data-ng-click="closeAlert(' +
+        "'" + type + "', " + i + ')">&times;</button>');
 
       // handle form feedback
       switch(item.type) {
       // generic form errors
       case 'bedrock.validation.ValidationError':
         alert.append('Please correct the information you entered.');
-        $.each(item.details.errors, function(i, detailError) {
+        angular.forEach(item.details.errors, function(detailError, i) {
           var binding = detailError.details.path;
           if(binding) {
             // highlight element using data-binding
@@ -67,6 +69,7 @@ function factory() {
         alert.append(message);
       }
 
+      $compile(alert)(scope);
       feedbackElement.append(alert);
     }
   }
@@ -81,6 +84,7 @@ function factory() {
     processFeedbackType(scope, feedbackElement, 'success');
     processFeedbackType(scope, feedbackElement, 'info');
   }
+
   return {
     scope: {
       feedback: '=',
@@ -94,6 +98,7 @@ function factory() {
           scope.target = element;
         }
       }
+      var displayedFeedback;
       var ignore;
       scope.$watch('feedback', function(value) {
         /* Note: Since we clear scope.feedback from within its own watch
@@ -109,8 +114,17 @@ function factory() {
         }
         ignore = {};
         processFeedback(scope, element);
+        displayedFeedback = scope.feedback;
         scope.feedback = ignore;
       }, true);
+
+      scope.closeAlert = function(type, index) {
+        var items = (displayedFeedback && displayedFeedback[type]) || [];
+        if(!angular.isArray(items)) {
+          items = [items];
+        }
+        svcError.removeError(items[index]);
+      };
     }
   };
 }
