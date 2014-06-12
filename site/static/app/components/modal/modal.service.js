@@ -28,18 +28,24 @@ function factory(
     show: false
   };
 
-  // destroy top modal when escape is pressed
-  $(document).keyup(function(e) {
-    if(e.keyCode === 27) {
-      e.stopPropagation();
-      if(modals.length > 0) {
-        var modal = modals[modals.length - 1];
-        if(modal._angular.allowEscape) {
-          modal._angular.scope.modal.close('canceled', null);
-        }
-      }
+  /**
+   * Returns whether or not a modal (any) is open.
+   *
+   * @return true if any modal is open, false if not.
+   */
+  service.isModalOpen = function() {
+    return modals.length > 0;
+  };
+
+  /**
+   * Cancels the top-level modal, if one is open.
+   */
+  service.cancelTopModal = function() {
+    if(modals.length > 0) {
+      var modal = modals[modals.length - 1];
+      modal._angular.scope.modal.close('canceled', null);
     }
-  });
+  };
 
   /**
    * Creates a customized modal directive. The return value of this
@@ -360,6 +366,7 @@ function factory(
       }
     });
 
+    // TODO: change to directive for closing top-level modal
     // auto-bind any .btn-close classes here
     $('.btn-close', element).click(function(e) {
       e.preventDefault();
@@ -387,6 +394,19 @@ function factory(
 
     return modal;
   }
+
+  // destroy top modal when escape is pressed
+  $(document).keyup(function(e) {
+    if(e.keyCode === 27) {
+      e.stopPropagation();
+      if(modals.length > 0) {
+        var modal = modals[modals.length - 1];
+        if(modal._angular.allowEscape) {
+          modal._angular.scope.modal.close('canceled', null);
+        }
+      }
+    }
+  });
 
   // expose service to scope
   $rootScope.app.services.modal = service;
