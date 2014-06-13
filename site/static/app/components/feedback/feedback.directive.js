@@ -9,10 +9,10 @@ define(['angular', 'jquery'], function(angular, $) {
 
 'use strict';
 
-var deps = ['$compile', 'svcError'];
+var deps = ['$compile', 'svcAlert'];
 return {feedback: deps.concat(factory)};
 
-function factory($compile, svcError) {
+function factory($compile, svcAlert) {
   /**
    * Show stack of feedback items ordered as:
    *   errors, alerts, successes, infos
@@ -131,7 +131,7 @@ function factory($compile, svcError) {
         if(!angular.isArray(items)) {
           items = [items];
         }
-        svcError.removeError(items[index]);
+        svcAlert.remove(type, items[index]);
       };
     }
   };

@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcError', 'svcModal'];
+var deps = ['svcAlert', 'svcModal'];
 return {modalEditKey: deps.concat(factory)};
 
-function factory(svcError, svcModal) {
+function factory(svcAlert, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
     model.identity = config.data.identity || {};
@@ -31,7 +31,7 @@ function factory(svcError, svcModal) {
       };
 
       model.loading = true;
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       var promise = svcKey.collection.update(key);
       promise.then(function(key) {
         model.loading = false;
@@ -39,7 +39,7 @@ function factory(svcError, svcModal) {
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcError.addError(err);
+        svcAlert.add('error', err);
         $scope.$apply();
       });
     };

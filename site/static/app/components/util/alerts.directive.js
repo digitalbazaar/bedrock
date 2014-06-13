@@ -1,5 +1,5 @@
 /*!
- * Errors directive.
+ * Alerts directive.
  *
  * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -10,12 +10,12 @@ define([], function() {
 'use strict';
 
 var deps = ['$rootScope'];
-return {errorsView: deps.concat(factory)};
+return {alerts: deps.concat(factory)};
 
 function factory($rootScope) {
   return {
     scope: {filterOrigin: '@?'},
-    templateUrl: '/app/components/util/errors-view.html',
+    templateUrl: '/app/components/util/alerts.html',
     link: function(scope, element, attrs) {
       scope.app = $rootScope.app;
       scope.feedback = [];

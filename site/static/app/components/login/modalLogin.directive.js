@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcError', 'svcModal'];
+var deps = ['svcAlert', 'svcModal'];
 return {modalLogin: deps.concat(factory)};
 
-function factory(svcError, svcModal) {
+function factory(svcAlert, svcModal) {
   function Ctrl($scope, config, $http) {
     var model = $scope.model = {};
     model.sysIdentifier = config.data.identity.id;
@@ -21,7 +21,7 @@ function factory(svcError, svcModal) {
 
     model.login = function() {
       $scope.loading = true;
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       Promise.resolve($http.post('/session/login', {
         sysIdentifier: model.sysIdentifier,
         password: model.password
@@ -32,10 +32,11 @@ function factory(svcError, svcModal) {
       }).catch(function(err) {
         model.loading = false;
         if(err.type === 'bedrock.validation.ValidationError') {
-          svcError.addError(
+          svcAlert.add(
+            'error',
             'The password you entered was incorrect. Please try again.');
         } else {
-          svcError.addError(err);
+          svcAlert.add('error', err);
         }
         $scope.$apply();
       });

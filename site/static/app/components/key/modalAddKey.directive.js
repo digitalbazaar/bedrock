@@ -11,11 +11,11 @@ define(['angular'], function(angular) {
 'use strict';
 
 var deps = [
-  '$location', '$routeParams', '$sce', '$timeout', 'svcError', 'svcModal'
+  '$location', '$routeParams', '$sce', '$timeout', 'svcAlert', 'svcModal'
 ];
 return {modalAddKey: deps.concat(factory)};
 
-function factory($location, $routeParams, $sce, $timeout, svcError, svcModal) {
+function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
     model.identity = config.data.identity;
@@ -43,7 +43,7 @@ function factory($location, $routeParams, $sce, $timeout, svcError, svcModal) {
     model.needPem = !model.key.publicKeyPem;
 
     model.addKey = function() {
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       model.loading = true;
       var promise = svcKey.collection.add(model.key);
       promise.then(function(key) {
@@ -77,7 +77,7 @@ function factory($location, $routeParams, $sce, $timeout, svcError, svcModal) {
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcError.addError(err);
+        svcAlert.add('error', err);
         $scope.$apply();
       });
     };

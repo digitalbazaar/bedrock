@@ -7,14 +7,14 @@
  */
 define([
   'angular',
+  './alert.service',
+  './alerts.directive',
   './animate.directive',
   './ceil.filter',
   './ellipsis.filter',
   './embeddedString.filter',
   './encodeURIComponent.filter',
   './error.directive',
-  './error.service',
-  './errors.directive',
   './floor.filter',
   './focusToggle.directive',
   './helpToggle.directive',
@@ -29,18 +29,18 @@ define([
   './tooltipTitle.directive',
   './trackState.directive'
 ], function(
-  angular, animate, ceil, ellipsis, embeddedString, encodeURIComponent_,
-  error, errorService, errors, floor, focusToggle, helpToggle, inputWatcher,
-  mask, model, mouseoverToggle, now, prefill, resource, templateCache,
-  tooltipTitle, trackState) {
+  angular, alertService, alerts, animate, ceil, ellipsis, embeddedString,
+  encodeURIComponent_, error, floor, focusToggle, helpToggle,
+  inputWatcher, mask, model, mouseoverToggle, now, prefill, resource,
+  templateCache, tooltipTitle, trackState) {
 
 'use strict';
 
 var module = angular.module('app.util', []);
 
+module.directive(alerts);
 module.directive(animate);
 module.directive(error);
-module.directive(errors);
 module.directive(focusToggle);
 module.directive(helpToggle);
 module.directive(inputWatcher);
@@ -57,7 +57,7 @@ module.filter(mask);
 module.filter(now);
 module.filter(prefill);
 
-module.service(errorService);
+module.service(alertService);
 module.service(model);
 module.service(resource);
 module.service(templateCache);

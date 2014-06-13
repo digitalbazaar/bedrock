@@ -9,10 +9,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$http', 'svcError', 'svcModal'];
+var deps = ['$http', 'svcAlert', 'svcModal'];
 return {modalSelectRemoteFile: deps.concat(factory)};
 
-function factory($http, svcError, svcModal) {
+function factory($http, svcAlert, svcModal) {
   function Ctrl($scope) {
     var model = $scope.model = {};
 
@@ -57,14 +57,14 @@ function factory($http, svcError, svcModal) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         $scope.modal.close(null, response.data);
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcError.addError(err);
+        svcAlert.add('error', err);
         $scope.$apply();
       });
     };
@@ -77,7 +77,7 @@ function factory($http, svcError, svcModal) {
       }
 
       model.loading = true;
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       Promise.resolve($http.get(url)).then(function(response) {
         modal.loading = false;
         model.pathContents = response.data;
@@ -86,7 +86,7 @@ function factory($http, svcError, svcModal) {
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcError.addError(err);
+        svcAlert.add('error', err);
         $scope.$apply();
       });
     };

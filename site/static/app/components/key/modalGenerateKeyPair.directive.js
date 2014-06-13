@@ -7,10 +7,10 @@
  */
 define(['forge/pki'], function(pki) {
 
-var deps = ['svcError', 'svcModal', 'svcKey'];
+var deps = ['svcAlert', 'svcModal', 'svcKey'];
 return {modalGenerateKeyPair: deps.concat(factory)};
 
-function factory(svcError, svcModal) {
+function factory(svcAlert, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
     model.identity = config.data.identity;
@@ -30,7 +30,7 @@ function factory(svcError, svcModal) {
 
     model.generateKeyPair = function() {
       model.loading = true;
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       var promise = new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
@@ -60,21 +60,21 @@ function factory(svcError, svcModal) {
       }).catch(function(err) {
         model.loading = false;
         model.success = false;
-        svcError.addError(err);
+        svcAlert.add('error', err);
         $scope.$apply();
       });
     };
 
     model.addKey = function() {
       model.loading = true;
-      svcError.clearModalErrors($scope);
+      svcAlert.clearModalFeedback($scope);
       var promise = svcKey.collection.add(model.key);
       promise.then(function(key) {
         model.loading = false;
         $scope.modal.close(null, key);
         $scope.$apply();
       }).catch(function(err) {
-        svcError.addError(err);
+        svcAlert.add('error', err);
         model.success = false;
         $scope.model.loading = false;
         $scope.$apply();
