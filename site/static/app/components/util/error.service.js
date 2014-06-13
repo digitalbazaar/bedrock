@@ -40,27 +40,23 @@ function factory($rootScope, svcModal) {
       error = {message: error};
     }
     category = category || service.category.FEEDBACK;
-    var origin;
+    var info = {error: error};
     if(category === service.category.FEEDBACK) {
       var modal = svcModal.getTopModal();
       if(modal === null) {
-        origin = 'page';
+        info.origin = 'page';
       } else {
-        origin = 'modal';
-        // store feedback errors assigned to the modal
-        // and remove them when it is destroyed
-        modal.data.errors = modal.data.errors || [];
-        modal.data.errors.push(error);
+        info.origin = 'modal';
+        info.source = modal;
+        // remove error when the modal is destroyed
         modal.scope.$on('$destroy', function() {
-          angular.forEach(modal.data.errors, function(error) {
-            service.removeError(error);
-          });
+          service.removeError(error);
         });
       }
     } else {
-      origin = 'background';
+      info.origin = 'background';
     }
-    service.errors[category].push({error: error, origin: origin});
+    service.errors[category].push(info);
     $rootScope.$apply();
   };
 

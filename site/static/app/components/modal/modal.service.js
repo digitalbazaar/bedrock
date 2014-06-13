@@ -238,7 +238,6 @@ function factory(
 
     // additional angular API on bootstrap modal
     modal._angular = {};
-    modal._angular.data = {};
     modal._angular.scope = childScope;
     modal._angular.directiveScope = directiveScope;
     modal._angular.closing = false;
