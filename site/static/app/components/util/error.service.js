@@ -42,7 +42,21 @@ function factory($rootScope, svcModal) {
     category = category || service.category.FEEDBACK;
     var origin;
     if(category === service.category.FEEDBACK) {
-      origin = svcModal.isModalOpen() ? 'modal' : 'page';
+      var modal = svcModal.getTopModal();
+      if(modal === null) {
+        origin = 'page';
+      } else {
+        origin = 'modal';
+        // store feedback errors assigned to the modal
+        // and remove them when it is destroyed
+        modal.data.errors = modal.data.errors || [];
+        modal.data.errors.push(error);
+        modal.scope.$on('$destroy', function() {
+          angular.forEach(modal.data.errors, function(error) {
+            service.removeError(error);
+          });
+        });
+      }
     } else {
       origin = 'background';
     }
