@@ -93,8 +93,16 @@ function factory($compile, svcError) {
     link: function(scope, element, attrs) {
       // no target specified
       if(!('target' in scope)) {
-        scope.target = element.closest('form');
-        if(!scope.target[0]) {
+        // select forms in an adjacent modal-body first, then any parent form,
+        // then self
+        scope.target = element.closest('.modal-footer').prev('.modal-body');
+        if(scope.target.length) {
+          scope.target = $('form', scope.target);
+        }
+        if(!scope.target.length) {
+          scope.target = element.closest('form');
+        }
+        if(!scope.target.length) {
           scope.target = element;
         }
       }
