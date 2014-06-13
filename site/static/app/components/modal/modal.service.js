@@ -38,12 +38,24 @@ function factory(
   };
 
   /**
+   * Gets the API for the top-level modal, if one is open.
+   *
+   * @return the API for the top-level modal or null if there is none.
+   */
+  service.getTopModal = function() {
+    if(modals.length > 0) {
+      return modals[modals.length - 1]._angular;
+    }
+    return null;
+  };
+
+  /**
    * Cancels the top-level modal, if one is open.
    */
   service.cancelTopModal = function() {
     if(modals.length > 0) {
       var modal = modals[modals.length - 1];
-      modal._angular.scope.modal.close('canceled', null);
+      modal._angular.directiveScope.modal.close('canceled', null);
     }
   };
 
@@ -226,7 +238,9 @@ function factory(
 
     // additional angular API on bootstrap modal
     modal._angular = {};
-    modal._angular.scope = directiveScope;
+    modal._angular.data = {};
+    modal._angular.scope = childScope;
+    modal._angular.directiveScope = directiveScope;
     modal._angular.closing = false;
 
     // allow escape presses in modal by default
@@ -240,7 +254,7 @@ function factory(
     modal._angular.openAndShow = function() {
       // create modal controller
       var locals = {
-        $scope: childScope,
+        $scope: modal._angular.scope,
         $element: element,
         $attrs: attrs,
         $transclude: transcludeFn
@@ -248,7 +262,7 @@ function factory(
       modal._angular.controller = $controller(options.controller, locals);
 
       // do custom linking on modal element
-      options.link(childScope, element, attrs);
+      options.link(modal._angular.scope, element, attrs);
 
       // only do fade transition if no parent
       if(!modal._angular.parent) {
@@ -310,7 +324,7 @@ function factory(
       }
 
       // destroy child scope and any transcluded scopes
-      childScope.$destroy();
+      modal._angular.scope.$destroy();
       angular.forEach(transcludedScopes, function(scope) {
         scope.$destroy();
       });
@@ -402,7 +416,7 @@ function factory(
       if(modals.length > 0) {
         var modal = modals[modals.length - 1];
         if(modal._angular.allowEscape) {
-          modal._angular.scope.modal.close('canceled', null);
+          modal._angular.directiveScope.modal.close('canceled', null);
         }
       }
     }
