@@ -57,7 +57,6 @@ function factory($rootScope, svcModal, svcModel) {
       info.origin = 'background';
     }
     service.errors[category].push(info);
-    $rootScope.$apply();
   };
 
   /**
