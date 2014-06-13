@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$rootScope', 'svcModal'];
+var deps = ['$rootScope', 'svcModal', 'svcModel'];
 return {svcError: deps.concat(factory)};
 
-function factory($rootScope, svcModal) {
+function factory($rootScope, svcModal, svcModel) {
   var service = {};
 
   // defined categories
@@ -94,6 +94,30 @@ function factory($rootScope, svcModal) {
     angular.forEach(service.errors, function(list) {
       list.length = 0;
     });
+  };
+
+  /**
+   * Clears all feedback errors from the given modal.
+   *
+   * @param modal the modal to remove errors for (modal may be the modal API,
+   *          its scope, or scope.modal).
+   */
+  service.clearModalErrors = function(modal) {
+    if(!modal) {
+      return;
+    }
+    var list = service.errors[service.category.FEEDBACK];
+    svcModel.removeAllFromArray(list, function(e) {
+      return (e.source && (e.source === modal || e.source.scope === modal ||
+        e.source.scope.modal === modal));
+    });
+  };
+
+  /**
+   * Clears all feedback errors from the top-level modal.
+   */
+  service.clearTopModalErrors = function() {
+    service.clearModalErrors(svcModal.getTopModal());
   };
 
   // expose service to scope
