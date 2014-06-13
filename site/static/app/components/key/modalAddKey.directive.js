@@ -11,14 +11,13 @@ define(['angular'], function(angular) {
 'use strict';
 
 var deps = [
-  '$location', '$routeParams', '$sce', '$timeout', 'svcModal'
+  '$location', '$routeParams', '$sce', '$timeout', 'svcError', 'svcModal'
 ];
 return {modalAddKey: deps.concat(factory)};
 
-function factory($location, $routeParams, $sce, $timeout, svcModal) {
+function factory($location, $routeParams, $sce, $timeout, svcError, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
-    model.feedback = {};
     model.identity = config.data.identity;
     model.mode = 'add';
     model.loading = false;
@@ -44,13 +43,13 @@ function factory($location, $routeParams, $sce, $timeout, svcModal) {
     model.needPem = !model.key.publicKeyPem;
 
     model.addKey = function() {
+      svcError.clearModalErrors($scope);
       model.loading = true;
       var promise = svcKey.collection.add(model.key);
       promise.then(function(key) {
         // replace key with newly created key data
         model.key = key;
         model.success = true;
-        model.feedback.error = null;
         if(model.registrationCallback) {
           // setup form and submit page to the callback
           // if it fails, provide a manual submission backup
@@ -78,7 +77,7 @@ function factory($location, $routeParams, $sce, $timeout, svcModal) {
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        model.feedback.error = err;
+        svcError.addError(err);
         $scope.$apply();
       });
     };
@@ -98,10 +97,7 @@ function factory($location, $routeParams, $sce, $timeout, svcModal) {
     name: 'AddKey',
     scope: {},
     templateUrl: '/app/components/key/modal-add-key.html',
-    controller: ['$scope', 'config', 'svcKey', Ctrl],
-    link: function(scope, element, attrs) {
-      scope.model.feedbackTarget = element;
-    }
+    controller: ['$scope', 'config', 'svcKey', Ctrl]
   });
 }
 

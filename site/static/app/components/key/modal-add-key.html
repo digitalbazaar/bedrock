@@ -24,10 +24,8 @@
       <pre>{{model.registrationCallback}}</pre>
     </div>
   </div>
-  <div class="modal-footer">
+  <div data-modal-footer>
     <form id="registration-form" method="post" action="{{model.registrationCallback}}">
-      <div class="modal-feedback"
-        data-feedback="model.feedback" data-target="model.feedbackTarget"></div>
       <span data-spinner="model.loading"
         data-spinner-class="prepend-btn-spinner"></span>
       <button class="btn btn-primary"
@@ -43,7 +41,7 @@
 
       <button class="btn btn-primary"
         data-ng-click="model.submit()"
-        data-ng-show="model.success && model.registrationCallback" 
+        data-ng-show="model.success && model.registrationCallback"
         data-ng-disabled="model.loading"
         type="submit"><i class="icon-ok"></i> Complete Registration</button>
       <button class="btn btn-close" data-ng-disabled="model.loading">Cancel</button>
