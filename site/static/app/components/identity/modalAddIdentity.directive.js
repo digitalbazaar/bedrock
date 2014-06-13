@@ -9,15 +9,14 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcModal', 'svcIdentity'];
+var deps = ['svcError', 'svcModal', 'svcIdentity'];
 return {modalAddIdentity: deps.concat(factory)};
 
-function factory(svcModal, svcIdentity) {
+function factory(svcError, svcModal, svcIdentity) {
   function Ctrl($scope, config) {
     $scope.model = {};
     $scope.data = config.data;
     $scope.baseUrl = config.data.baseUri;
-    $scope.feedback = {};
     $scope.loading = false;
     // identity
     $scope.identityType = $scope.identityTypes[0];
@@ -39,15 +38,15 @@ function factory(svcModal, svcIdentity) {
       identity.label = $scope.identityLabel;
       identity.sysSlug = $scope.identitySlug;
       $scope.loading = true;
+      svcError.clearModalErrors($scope);
       var promise = svcIdentity.add(identity);
       promise.then(function(identity) {
         $scope.loading = false;
-        $scope.feedback.error = null;
         $scope.modal.close(null, {identity: identity});
         $scope.$apply();
       }).catch(function(err) {
         $scope.loading = false;
-        $scope.feedback.error = err;
+        svcError.addError(err);
         $scope.$apply();
       });
     };
@@ -59,10 +58,7 @@ function factory(svcModal, svcIdentity) {
       identityTypes: '='
     },
     templateUrl: '/app/components/identity/modal-add-identity.html',
-    controller: ['$scope', 'config', Ctrl],
-    link: function(scope, element, attrs) {
-      scope.feedbackTarget = element;
-    }
+    controller: ['$scope', 'config', Ctrl]
   });
 }
 

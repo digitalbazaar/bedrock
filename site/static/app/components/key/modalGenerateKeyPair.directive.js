@@ -7,13 +7,12 @@
  */
 define(['forge/pki'], function(pki) {
 
-var deps = ['svcModal', 'svcKey'];
+var deps = ['svcError', 'svcModal', 'svcKey'];
 return {modalGenerateKeyPair: deps.concat(factory)};
 
-function factory(svcModal) {
+function factory(svcError, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
-    model.feedback = {};
     model.identity = config.data.identity;
     model.mode = 'generate';
     model.loading = false;
@@ -31,6 +30,7 @@ function factory(svcModal) {
 
     model.generateKeyPair = function() {
       model.loading = true;
+      svcError.clearModalErrors($scope);
       var promise = new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
@@ -60,21 +60,21 @@ function factory(svcModal) {
       }).catch(function(err) {
         model.loading = false;
         model.success = false;
-        model.feedback.error = err;
+        svcError.addError(err);
         $scope.$apply();
       });
     };
 
     model.addKey = function() {
       model.loading = true;
+      svcError.clearModalErrors($scope);
       var promise = svcKey.collection.add(model.key);
       promise.then(function(key) {
         model.loading = false;
-        model.feedback.error = null;
         $scope.modal.close(null, key);
         $scope.$apply();
       }).catch(function(err) {
-        model.feedback.error = err;
+        svcError.addError(err);
         model.success = false;
         $scope.model.loading = false;
         $scope.$apply();
@@ -86,10 +86,7 @@ function factory(svcModal) {
     name: 'GenerateKeyPair',
     scope: {},
     templateUrl: '/app/components/key/modal-generate-key-pair.html',
-    controller: ['$scope', 'config', 'svcKey', Ctrl],
-    link: function(scope, element, attrs) {
-      scope.model.feedbackTarget = element;
-    }
+    controller: ['$scope', 'config', 'svcKey', Ctrl]
   });
 }
 

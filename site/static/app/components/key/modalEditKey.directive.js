@@ -9,13 +9,12 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcModal'];
+var deps = ['svcError', 'svcModal'];
 return {modalEditKey: deps.concat(factory)};
 
-function factory(svcModal) {
+function factory(svcError, svcModal) {
   function Ctrl($scope, config, svcKey) {
     var model = $scope.model = {};
-    model.feedback = {};
     model.identity = config.data.identity || {};
     model.mode = 'edit';
     model.loading = false;
@@ -32,15 +31,15 @@ function factory(svcModal) {
       };
 
       model.loading = true;
+      svcError.clearModalErrors($scope);
       var promise = svcKey.collection.update(key);
       promise.then(function(key) {
         model.loading = false;
         $scope.modal.close(null, key);
-        model.feedback.error = null;
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        model.feedback.error = err;
+        svcError.addError(err);
         $scope.$apply();
       });
     };
@@ -50,10 +49,7 @@ function factory(svcModal) {
     name: 'EditKey',
     scope: {sourceKey: '=key'},
     templateUrl: '/app/components/key/modal-edit-key.html',
-    controller: ['$scope', 'config', 'svcKey', Ctrl],
-    link: function(scope, element, attrs) {
-      scope.model.feedbackTarget = element;
-    }
+    controller: ['$scope', 'config', 'svcKey', Ctrl]
   });
 }
 

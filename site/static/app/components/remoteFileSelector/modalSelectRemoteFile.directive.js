@@ -9,15 +9,14 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$http', 'svcModal'];
+var deps = ['$http', 'svcError', 'svcModal'];
 return {modalSelectRemoteFile: deps.concat(factory)};
 
-function factory($http, svcModal) {
+function factory($http, svcError, svcModal) {
   function Ctrl($scope) {
     var model = $scope.model = {};
 
     model.remoteFileData = $scope.remoteFileData;
-    model.feedback = {};
     model.loading = false;
     model.path = null;
     model.pathSeparator = '';
@@ -58,9 +57,14 @@ function factory($http, svcModal) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
+      svcError.clearModalErrors($scope);
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         $scope.modal.close(null, response.data);
+        $scope.$apply();
+      }).catch(function(err) {
+        model.loading = false;
+        svcError.addError(err);
         $scope.$apply();
       });
     };
@@ -72,10 +76,17 @@ function factory($http, svcModal) {
         url += '&path=' + encodeURIComponent(path);
       }
 
+      model.loading = true;
+      svcError.clearModalErrors($scope);
       Promise.resolve($http.get(url)).then(function(response) {
+        modal.loading = false;
         model.pathContents = response.data;
         model.path = response.data.path;
         model.separator = response.data.separator;
+        $scope.$apply();
+      }).catch(function(err) {
+        model.loading = false;
+        svcError.addError(err);
         $scope.$apply();
       });
     };
@@ -84,16 +95,11 @@ function factory($http, svcModal) {
     model.getFileList();
   }
 
-  function Link(scope, element, attrs) {
-    scope.model.feedbackTarget = element;
-  }
-
   return svcModal.directive({
     name: 'SelectRemoteFile',
     templateUrl:
       '/app/components/remoteFileSelector/modal-remote-file-selector.html',
-    controller: ['$scope', Ctrl],
-    link: Link
+    controller: ['$scope', Ctrl]
   });
 }
 

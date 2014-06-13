@@ -9,19 +9,19 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcModal'];
+var deps = ['svcError', 'svcModal'];
 return {modalLogin: deps.concat(factory)};
 
-function factory(svcModal) {
+function factory(svcError, svcModal) {
   function Ctrl($scope, config, $http) {
     var model = $scope.model = {};
-    model.feedback = {};
     model.sysIdentifier = config.data.identity.id;
     model.password = '';
     model.loading = false;
 
     model.login = function() {
       $scope.loading = true;
+      svcError.clearModalErrors($scope);
       Promise.resolve($http.post('/session/login', {
         sysIdentifier: model.sysIdentifier,
         password: model.password
@@ -32,11 +32,10 @@ function factory(svcModal) {
       }).catch(function(err) {
         model.loading = false;
         if(err.type === 'bedrock.validation.ValidationError') {
-          model.feedback.error = {
-            message: 'The password you entered was incorrect. Please try again.'
-          };
+          svcError.addError(
+            'The password you entered was incorrect. Please try again.');
         } else {
-          model.feedback.error = err;
+          svcError.addError(err);
         }
         $scope.$apply();
       });
@@ -47,10 +46,7 @@ function factory(svcModal) {
     name: 'Login',
     scope: {},
     templateUrl: '/app/components/login/modal-login.html',
-    controller: ['$scope', 'config', '$http', Ctrl],
-    link: function(scope, element, attrs) {
-      scope.model.feedbackTarget = element;
-    }
+    controller: ['$scope', 'config', '$http', Ctrl]
   });
 }
 
