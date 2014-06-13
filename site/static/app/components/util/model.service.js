@@ -15,7 +15,7 @@ return {svcModel: deps.concat(factory)};
 function factory($rootScope) {
   var service = {};
 
-  service.replace = function(dst, src) {
+  service.replace = function(dst, src, fn) {
     if(dst !== src) {
       angular.forEach(dst, function(dstValue, key) {
         if(!(key in src)) {
@@ -27,8 +27,7 @@ function factory($rootScope) {
           // do deep replacement
           var srcValue = src[key];
           if(angular.isArray(dstValue) && angular.isArray(srcValue)) {
-            // assumes 'id' property means value match
-            service.replaceArray(dstValue, srcValue);
+            service.replaceArray(dstValue, srcValue, fn);
           } else if(angular.isObject(dstValue) && angular.isObject(srcValue)) {
             service.replace(dstValue, srcValue);
           } else {
@@ -47,9 +46,15 @@ function factory($rootScope) {
 
   service.replaceInArray = function(array, src, id) {
     id = id || 'id';
+    var fn = id;
+    if(!angular.isFunction(id)) {
+      fn = function(element, candidate) {
+        return element[id] === candidate[id];
+      };
+    }
     var found = false;
     for(var i = 0; !found && i < array.length; ++i) {
-      if(array[i][id] === src[id]) {
+      if(fn(array[i], src)) {
         service.replace(array[i], src);
         found = true;
       }
@@ -61,14 +66,19 @@ function factory($rootScope) {
 
   service.replaceArray = function(dst, src, id) {
     id = id || 'id';
+    var fn = id;
+    if(!angular.isFunction(id)) {
+      fn = function(element, candidate) {
+        return (angular.isObject(element) && angular.isObject(candidate) &&
+          element[id] === candidate[id]);
+      };
+    }
     var dst_ = dst.slice();
     dst.splice(0, dst.length);
     angular.forEach(src, function(value) {
-      var valueIsObject = angular.isObject(value);
       // overwrite existing object value in dst_ if exists
       for(var i = 0; i < dst_.length; ++i) {
-        if(angular.isObject(dst_[i]) && valueIsObject &&
-          dst_[i][id] === value[id]) {
+        if(fn(dst_[i], value)) {
           value = service.replace(dst_[i], value);
           dst_.splice(i, 1);
           break;
@@ -79,17 +89,46 @@ function factory($rootScope) {
     return dst;
   };
 
-  service.removeFromArray = function(target, array, id) {
-    id = id || 'id';
-    for(var i = 0; i < array.length; ++i) {
-      if(typeof target === 'object') {
-        if(array[i][id] === target[id]) {
-          array.splice(i, 1);
-          break;
+  service.removeFromArray = function(array, fn, id) {
+    if(!(angular.isArray(array) && angular.isFunction(fn))) {
+      // backwards-compatibility, treat 'array' as target to remove,
+      // 'fn' as array and 'id' as optional key to compare
+      id = id || 'id';
+      var target = array;
+      array = fn;
+      fn = function(element) {
+        if(typeof target === 'object') {
+          return element[id] === target[id];
         }
-      } else if(array[i][id] === target) {
+        return element[id] === target;
+      };
+    }
+    for(var i = 0; i < array.length; ++i) {
+      if(fn(array[i])) {
         array.splice(i, 1);
         break;
+      }
+    }
+  };
+
+  service.removeAllFromArray = function(array, fn, key) {
+    if(!(angular.isArray(array) && angular.isFunction(fn))) {
+      // backwards-compatibility, treat 'array' as target to remove,
+      // 'fn' as array and 'key' as optional key to compare
+      key = key || 'id';
+      var target = array;
+      array = fn;
+      fn = function(element) {
+        if(typeof target === 'object') {
+          return element[key] === target[key];
+        }
+        return element[key] === target;
+      };
+    }
+    for(var i = 0; i < array.length; ++i) {
+      if(fn(array[i])) {
+        array.splice(i, 1);
+        --i;
       }
     }
   };
