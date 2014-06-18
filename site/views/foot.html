@@ -3,39 +3,43 @@
       {% if pageLayout == "normal" %}
       <hr/>
       {% endif %}
-      <footer class="footer row">
+      <footer class="footer">
         {% if pageLayout != "error" %}
-        <div class="span12">
-          <ul>
-            {% if pageLayout == "normal" %}
-            <li><a href="/">Home</a></li><!--
-            --><li><a href="/about">About</a></li><!--
-            --><li><a href="/help">Help</a></li><!--
-            --><li><a href="/docs">API</a></li><!--
-            --><li><a href="/legal#tos">Terms of Service</a></li><!--
-            --><li><a href="/legal#pp">Privacy Policy</a></li><!--
-            --><li><a href="/contact">Contact</a></li><!--
-            -->{% if contact.blog %}<li><!--
-              --><a href="{{contact.blog.url}}">Blog</a><!--
-            --></li>{% endif %}
-            {% else %}
-            <li><a href="/help">Help</a></li><!--
-            --><li><a href="/legal#tos">Terms of Service</a></li><!--
-            --><li><a href="/legal#pp">Privacy Policy</a></li>
-            {% endif %}
-          </ul>
+        <div class="row">
+          <div class="span12">
+            <ul>
+              {% if pageLayout == "normal" %}
+              <li><a href="/">Home</a></li><!--
+              --><li><a href="/about">About</a></li><!--
+              --><li><a href="/help">Help</a></li><!--
+              --><li><a href="/docs">API</a></li><!--
+              --><li><a href="/legal#tos">Terms of Service</a></li><!--
+              --><li><a href="/legal#pp">Privacy Policy</a></li><!--
+              --><li><a href="/contact">Contact</a></li><!--
+              -->{% if contact.blog %}<li><!--
+                --><a href="{{contact.blog.url}}">Blog</a><!--
+              --></li>{% endif %}
+              {% else %}
+              <li><a href="/help">Help</a></li><!--
+              --><li><a href="/legal#tos">Terms of Service</a></li><!--
+              --><li><a href="/legal#pp">Privacy Policy</a></li>
+              {% endif %}
+            </ul>
+          </div>
         </div>
         {% endif %}
-        <div class="span12">
-          <ul>
-            <li><!--
-              -->Copyright &#169; 2013
-              <span about="http://digitalbazaar.com/contact#company"
-                typeof="vcard:VCard com:Business gr:BusinessEntity"
-                property="rdfs:label vcard:fn gr:legalName"><a href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a></span>
-                All rights reserved.<!--
-            --></li>
-          </ul>
+        <div class="row">
+          <div class="span12">
+            <ul>
+              <li><!--
+                -->Copyright &#169; 2013
+                <span about="http://digitalbazaar.com/contact#company"
+                  typeof="vcard:VCard com:Business gr:BusinessEntity"
+                  property="rdfs:label vcard:fn gr:legalName"><a href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a></span>
+                  All rights reserved.<!--
+              --></li>
+            </ul>
+          </div>
         </div>
       </footer>
     </div>
