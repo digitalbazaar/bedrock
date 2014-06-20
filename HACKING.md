@@ -23,7 +23,7 @@ Reason To (TM).
   and other generator-related tech begin to become popular in node.js then
   we will switch to that. We want our code to be as compatible as possible
   with the community and idiomatic in the environments in which it is run.
-* Use async for callback management: https://github.com/caolan/async
+* Use async for callback management: [https://github.com/caolan/async]()
 * Prefer single quotes for strings. Only use double quotes when it would
   result in fewer escape sequences. If there's any HTML that must be written
   in a JS-string, it will be easier with single-quotes as you won't have
@@ -56,21 +56,21 @@ Organize files according to "components". Components are collections of
 controllers, services, directives, filters, and templates that are all
 part of the same submodule or feature:
 
-.
-+-- app
-|   +-- components
-|       +-- fooBar
-|           +-- foo-bar.js
-|           +-- foo-bar-controller.js
-|           +-- foo-bar-service.js
-|           +-- foo-bar-directive.js
-|           +-- foo-bar-filter.js
-|           +-- foo-bar.html
-|           +-- foo-bar-modal-directive.js
-|           +-- foo-bar-modal.html
-|           +-- foo-bar-selector-directive.js
-|           +-- foo-bar-selector.html
-|   +-- components.js
+    .
+    `-- app
+        +-- components
+        |   `-- fooBar
+        |       +-- foo-bar.js
+        |       +-- foo-bar-controller.js
+        |       +-- foo-bar-service.js
+        |       +-- foo-bar-directive.js
+        |       +-- foo-bar-filter.js
+        |       +-- foo-bar.html
+        |       +-- foo-bar-modal-directive.js
+        |       +-- foo-bar-modal.html
+        |       +-- foo-bar-selector-directive.js
+        |       `-- foo-bar-selector.html
+        `-- components.js
 
 Each JavaScript file will be an AMD file. The file "foo-bar.js" will be
 responsible for loading all of the controllers, services, directives, and
@@ -88,27 +88,40 @@ All files use lowercase and hyphens as a word delimiter. Variables use
 camelCase and controllers are services .
 
 Controllers:
- * Name: FooBarController (PascalCase)
- * File: foo-bar-controller.js
+
+* Name: FooBarController (PascalCase)
+* File: foo-bar-controller.js
+
 Services:
- * Name: FooBarService (PascalCase)
- * File: foo-bar-service.js
+
+* Name: FooBarService (PascalCase)
+* File: foo-bar-service.js
+
 Directives:
- * Name: fooBar (camelCase)
- * File: foo-bar-directive.js
+
+* Name: fooBar (camelCase)
+* File: foo-bar-directive.js
+
 Filters:
- * Name: fooBar (camelCase)
- * File: foo-bar-filter.js
+
+* Name: fooBar (camelCase)
+* File: foo-bar-filter.js
+
 Templates:
- * Name: foo-bar.html
+
+* Name: foo-bar.html
+
 Modals:
- * Name: fooBarModal (camelCase)
- * File: foo-bar-modal-directive.js
- * Template: foo-bar-modal.html
+
+* Name: fooBarModal (camelCase)
+* File: foo-bar-modal-directive.js
+* Template: foo-bar-modal.html
+
 Selectors:
- * Name: fooBarSelector (camelCase)
- * File: foo-bar-selector-directive.js
- * Template: foo-bar-selector.html
+
+* Name: fooBarSelector (camelCase)
+* File: foo-bar-selector-directive.js
+* Template: foo-bar-selector.html
 
 ## Debugging
 
