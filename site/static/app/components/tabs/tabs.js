@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  './tabs.directive'
+  './tabs-directive'
 ], function(angular, directive) {
 
 'use strict';

@@ -7,9 +7,9 @@
  */
 define([
   'angular',
-  './modal.service',
-  './modalAlert.directive',
-  './modalFooter.directive'
+  './modal-service',
+  './alert-modal-directive',
+  './modal-footer-directive'
 ], function(angular, service, modalAlert, modalFooter) {
 
 'use strict';

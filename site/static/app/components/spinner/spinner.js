@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  './spinner.directive'
+  './spinner-directive'
 ], function(angular, directive) {
 
 'use strict';

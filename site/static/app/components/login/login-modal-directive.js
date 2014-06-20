@@ -46,7 +46,7 @@ function factory(svcAlert, svcModal) {
   return svcModal.directive({
     name: 'Login',
     scope: {},
-    templateUrl: '/app/components/login/modal-login.html',
+    templateUrl: '/app/components/login/login-modal.html',
     controller: ['$scope', 'config', '$http', Ctrl]
   });
 }

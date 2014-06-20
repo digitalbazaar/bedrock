@@ -85,7 +85,7 @@ function factory(svcAlert, svcModal) {
   return svcModal.directive({
     name: 'GenerateKeyPair',
     scope: {},
-    templateUrl: '/app/components/key/modal-generate-key-pair.html',
+    templateUrl: '/app/components/key/generate-key-pair-modal.html',
     controller: ['$scope', 'config', 'svcKey', Ctrl]
   });
 }

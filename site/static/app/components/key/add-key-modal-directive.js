@@ -96,7 +96,7 @@ function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
   return svcModal.directive({
     name: 'AddKey',
     scope: {},
-    templateUrl: '/app/components/key/modal-add-key.html',
+    templateUrl: '/app/components/key/add-key-modal.html',
     controller: ['$scope', 'config', 'svcKey', Ctrl]
   });
 }

@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  './passcode.controller'
+  './passcode-controller'
 ], function(angular, controller) {
 
 'use strict';

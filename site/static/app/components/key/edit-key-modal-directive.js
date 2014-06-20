@@ -48,7 +48,7 @@ function factory(svcAlert, svcModal) {
   return svcModal.directive({
     name: 'EditKey',
     scope: {sourceKey: '=key'},
-    templateUrl: '/app/components/key/modal-edit-key.html',
+    templateUrl: '/app/components/key/edit-key-modal.html',
     controller: ['$scope', 'config', 'svcKey', Ctrl]
   });
 }

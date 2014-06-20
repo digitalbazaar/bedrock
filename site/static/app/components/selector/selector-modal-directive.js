@@ -1,5 +1,5 @@
 /*!
- * Alert Modal.
+ * Selector Modal.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -10,18 +10,18 @@ define([], function() {
 'use strict';
 
 var deps = ['svcModal'];
-return {modalAlert: deps.concat(factory)};
+return {modalSelector: deps.concat(factory)};
 
 function factory(svcModal) {
   return svcModal.directive({
-    name: 'Alert',
-    transclude: true,
-    templateUrl: '/app/components/modal/modal-alert.html',
+    name: 'Selector',
     scope: {
-      header: '@modalHeader',
-      ok: '@modalOk',
-      cancel: '@modalCancel'
-    }
+      modalTitle: '=',
+      items: '=',
+      itemType: '='
+    },
+    transclude: true,
+    templateUrl: '/app/components/selector/selector-modal.html'
   });
 }
 

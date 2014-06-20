@@ -8,7 +8,7 @@
 define([
   'angular',
   './dashboard/dashboard',
-  './duplicateChecker/duplicateChecker',
+  './duplicate-checker/duplicate-checker',
   './fade/fade',
   './feedback/feedback',
   './identity/identity',
@@ -18,13 +18,13 @@ define([
   './navbar/navbar',
   './passcode/passcode',
   './placeholder/placeholder',
-  './popoverTemplate/popoverTemplate',
-  './remoteFileSelector/remoteFileSelector',
+  './popover-template/popover-template',
+  './remote-file-selector/remote-file-selector',
   './selector/selector',
   './settings/settings',
   './slug/slug',
   './spinner/spinner',
-  './submitForm/submitForm',
+  './submit-form/submit-form',
   './tabs/tabs',
   './util/util'
 ], function(angular) {

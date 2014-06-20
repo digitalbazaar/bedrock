@@ -7,15 +7,15 @@
  */
 define([
   'angular',
-  './key.controller',
-  './keys.controller',
-  './key.routes',
-  './key.service',
-  './keys.directive',
-  './modalGenerateKeyPair.directive',
-  './modalAddKey.directive',
-  './modalEditKey.directive',
-  './keySelector.directive',
+  './key-controller',
+  './keys-controller',
+  './key-routes',
+  './key-service',
+  './keys-directive',
+  './generate-key-pair-modal-directive',
+  './add-key-modal-directive',
+  './edit-key-modal-directive',
+  './key-selector-directive',
 ], function(
   angular, keyCtrl, keysCtrl, routes, keyService, keysDirective,
   modalGenerateKeyPair, modalAddKey, modalEditKey, keySelector) {

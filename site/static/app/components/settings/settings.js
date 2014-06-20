@@ -7,9 +7,9 @@
  */
 define([
   'angular',
-  './identitySettings.controller',
-  './settings.controller',
-  './settings.routes'
+  './identity-settings-controller',
+  './settings-controller',
+  './settings-routes'
 ], function(angular, identitySettings, settings, routes) {
 
 'use strict';

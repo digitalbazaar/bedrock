@@ -7,8 +7,8 @@
  */
 define([
   'angular',
-  './modalSelector.directive',
-  './selector.directive'
+  './selector-modal-directive',
+  './selector-directive'
 ], function(angular, modalSelector, selector) {
 
 'use strict';

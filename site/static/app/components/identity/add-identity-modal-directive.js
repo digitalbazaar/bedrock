@@ -57,7 +57,7 @@ function factory(svcAlert, svcModal, svcIdentity) {
     scope: {
       identityTypes: '='
     },
-    templateUrl: '/app/components/identity/modal-add-identity.html',
+    templateUrl: '/app/components/identity/add-identity-modal.html',
     controller: ['$scope', 'config', Ctrl]
   });
 }

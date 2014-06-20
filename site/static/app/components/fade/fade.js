@@ -7,9 +7,9 @@
  */
 define([
   'angular',
-  './fadein.directive',
-  './fadeout.directive',
-  './fadeToggle.directive'
+  './fadein-directive',
+  './fadeout-directive',
+  './fade-toggle-directive'
 ], function(angular, fadein, fadeout, fadeToggle) {
 
 'use strict';

@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  './feedback.directive'
+  './feedback-directive'
 ], function(angular, directive) {
 
 'use strict';

@@ -1,5 +1,5 @@
 /*!
- * Submit Form module.
+ * Duplicate checker module.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -7,12 +7,12 @@
  */
 define([
   'angular',
-  './submitForm.directive'
+  './duplicate-checker-directive'
 ], function(angular, directive) {
 
 'use strict';
 
-var module = angular.module('app.submitForm', []);
+var module = angular.module('app.duplicateChecker', []);
 
 module.directive(directive);
 

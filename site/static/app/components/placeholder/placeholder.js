@@ -7,7 +7,7 @@
  */
 define([
   'angular',
-  './placeholder.directive'
+  './placeholder-directive'
 ], function(angular, directive) {
 
 'use strict';

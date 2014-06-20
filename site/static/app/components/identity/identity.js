@@ -7,14 +7,14 @@
  */
 define([
   'angular',
-  './createIdentity.controller',
-  './identity.controller',
-  './identity.routes',
-  './identity.service',
-  './identityCredentials.controller',
-  './identitySelector.directive',
-  './modalAddIdentity.directive',
-  './credentialVerify.service'
+  './create-identity-controller',
+  './identity-controller',
+  './identity-routes',
+  './identity-service',
+  './identity-credentials-controller',
+  './identity-selector-directive',
+  './add-identity-modal-directive',
+  './credential-verify-service'
 ], function(
   angular, createIdentity, controller, routes, service, identityCredentials,
   identitySelector, modalAddIdentity, credentialVerifyService) {

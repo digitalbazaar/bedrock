@@ -7,13 +7,13 @@
  */
 define([
   'angular',
-  './modalSelectRemoteFile.directive'
-], function(angular, modalSelectRemoteFile) {
+  './remote-file-selector-modal-directive'
+], function(angular, remoteFileSelectorModal) {
 
 'use strict';
 
 var module = angular.module('app.remoteFileSelector', []);
 
-module.directive(modalSelectRemoteFile);
+module.directive(remoteFileSelectorModal);
 
 });

@@ -7,8 +7,8 @@
  */
 define([
   'angular',
-  './login.controller',
-  './modalLogin.directive'
+  './login-controller',
+  './login-modal-directive'
 ], function(angular, controller, modalLogin) {
 
 'use strict';
