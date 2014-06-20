@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Reset Password" %}
 {% set clientData.pageTitle = "Reset Password" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <div class="row">
   <div class="span12">
@@ -128,4 +131,4 @@
 </div>
 {% endraw %}
 
-{% include "foot.html" %}
+{% endblock %}

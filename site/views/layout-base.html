@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html prefix="
+  {% block prefixes %}
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dc: http://purl.org/dc/terms/
+  bed: https://w3id.org/bedrock#
+  sec: https://w3id.org/security#
+  vcard: http://www.w3.org/2006/vcard/ns#
+  {% endblock %}" {% block headAttrs %}{% endblock %}>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-ng-bind="(pageTitle && (siteTitle + ': ' + pageTitle)) || siteTitle"></title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
+    {% if productionMode %}
+      <link href="/css/bundle.min.css" rel="stylesheet" type="text/css" />
+    {% else %}
+      {% if minify %}
+        <link href="/css/bundle.min.css" rel="stylesheet" type="text/css" />
+      {% else %}
+        {% block css %}
+        <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+        <link href="/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link href="/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="/css/custom.css" rel="stylesheet" type="text/css" />
+        {% endblock %}
+      {% endif %}
+    {% endif %}
+    <!--[if IE]>
+    <link href="/css/ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    {% if pageLayout != "error" %}
+      {% if productionMode %}
+        <script src="/app/main.min.js"></script>
+      {% else %}
+        {% if minify %}
+          <script src="/app/main.min.js"></script>
+        {% else %}
+          <script data-main="/app/main.js" src="/requirejs/require.js"></script>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </head>
+
+  <body>
+    {% if pageLayout == "error" %}
+      {% include "navbar-plain.html" %}
+    {% else %}
+      {% if session.auth %}
+        {% include "navbar-private.html" %}
+      {% else %}
+        {% include "navbar-public.html" %}
+      {% endif %}
+    {% endif %}
+
+    {% if userAgent.obsolete %}
+    <div class="alert alert-error">
+      Your browser ({{userAgent.family}} {{userAgent.major}}) is <strong>out of date</strong>.
+      Please <a href="http://www.updateyourbrowser.net/">update your browser.</a>
+    </div>
+    {% endif %}
+
+    <div class="container ng-cloak">
+
+      <!-- Javascript warning -->
+      <noscript>
+        <div class="alert alert-error">
+          <p>Javascript must be enabled to use this site.</p>
+        </div>
+      </noscript>
+
+      {% if pageLayout != "error" %}
+      {% block forcedFonts %}{% endblock %}
+      {% include "data.html" %}
+      {% endif %}
+
+      {% block content %}
+        <p>Missing content.</p>
+      {% endblock %}
+
+      {# Avoid extra whitespace between elements for proper inline layout #}
+
+      {% if pageLayout == "normal" %}
+      <hr/>
+      {% endif %}
+      <footer class="footer">
+        {% if pageLayout != "error" %}
+        {% block footerBrandRow %}{% endblock %}
+        <div class="row">
+          <div class="span12">
+            <ul>
+              {% if pageLayout == "normal" %}
+              <li><a href="/">Home</a></li><!--
+              --><li><a href="/about">About</a></li><!--
+              -->{% block faqLink %}{% endblock %}<!--
+              --><li><a href="/help">Help</a></li><!--
+              -->{% block docsLink %}<li><a href="/docs">API</a></li>{% endblock %}<!--
+              --><li><a href="/legal#tos">Terms of Service</a></li><!--
+              --><li><a href="/legal#pp">Privacy Policy</a></li><!--
+              --><li><a href="/contact">Contact</a></li><!--
+              -->{% if contact.blog %}<li><!--
+                --><a href="{{contact.blog.url}}">Blog</a><!--
+              --></li>{% endif %}<!--
+              --><li><!--
+                -->{% if contact.twitter %}<!--
+                --><a href="{{contact.twitter.url}}"><i class="icon-twitter"></i></a><!--
+                -->{% endif %}<!--
+                -->{% if contact.facebook %}<!--
+                --><a href="{{contact.facebook.url}}"><i class="icon-facebook"></i></a><!--
+                -->{% endif %}<!--
+                -->{% if contact.googlePlus %}<!--
+                --><a href="{{contact.googlePlus.url}}"><i class="icon-google-plus"></i></a><!--
+                -->{% endif %}<!--
+              --></li>
+              {% else %}
+              <li><a href="/help">Help</a></li><!--
+              --><li><a href="/legal#tos">Terms of Service</a></li><!--
+              --><li><a href="/legal#pp">Privacy Policy</a></li><!--
+              -->{% endif %}<!--
+            --></ul>
+          </div>
+        </div>
+        {% endif %}
+        <div class="row">
+          <div class="span12">
+            <ul>
+              <li><!--
+                -->Copyright &#169; {% block copyrightDate %}2014{% endblock %}
+                {% block copyrightAgent %}<span about="http://digitalbazaar.com/contact#company"
+                  typeof="vcard:VCard com:Business gr:BusinessEntity"
+		  property="rdfs:label vcard:fn gr:legalName"><a href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a></span>{% endblock %}
+                  All rights reserved.<!--
+              --></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    {# Analytics #}
+    {% if googleAnalytics.enabled %}
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{googleAnalytics.account}}']);
+        _gaq.push(['_trackPageview']);
+            (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+    {% endif %}
+
+  </body>
+</html>

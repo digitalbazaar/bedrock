@@ -1,6 +1,9 @@
+{% extends '../layout.html' %}
+
 {% set pageTitle = "Help" %}
 {% set clientData.pageTitle = "Help" %}
-{% include "../head.html" %}
+
+{% block content %}
 
 <div class="row">
   <div class="span12">
@@ -41,4 +44,4 @@
   </div>
 </div>
 
-{% include "../foot.html" %}
+{% endblock %}

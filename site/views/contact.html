@@ -1,7 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Contact" %}
 {% set clientData.pageTitle = "Contact" %}
-{% include "head.html" %}
 
+{% block content %}
 
 <h2>{{pageTitle}}</h2>
 
@@ -31,4 +33,4 @@ company that operates this developer sandbox.
   </ul>
 </div>
 
-{% include "foot.html" %}
+{% endblock %}

@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Terms of Service" %}
 {% set clientData.pageTitle = "Terms of Service" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <div id="tos">
    <div id="tos-toc">
@@ -165,4 +168,4 @@
    information as has been outlined by this policy.</p>
 </div>
 
-{% include "foot.html" %}
+{% endblock %}

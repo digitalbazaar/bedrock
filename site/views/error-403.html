@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Unauthorized Access" %}
 {% set clientData.pageTitle = "Unauthorized Access" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <h2>Forbidden</h2>
 
@@ -10,4 +13,4 @@
   <a href="mailto:support@{{supportDomain}}">Customer Support</a>.</p>
 </div>
 
-{% include "foot.html" %}
+{% endblock %}

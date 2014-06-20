@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Example" %}
 {% set clientData.pageTitle = "Example" %}
-{% include "head.html" %}
+
+{% block content %}
 
 {% raw %}
 <div class="container ng-cloak" data-ng-controller="ExampleCtrl as example">
@@ -15,4 +18,4 @@
 </div>
 {% endraw %}
 
-{% include "foot.html" %}
+{% endblock %}

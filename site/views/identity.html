@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Identity" %}
 {% set clientData.pageTitle = "Identity" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <div class="static-content">
   <div class="row">
@@ -74,4 +77,4 @@
 <hr />
 <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
 
-{% include "foot.html" %}
+{% endblock %}

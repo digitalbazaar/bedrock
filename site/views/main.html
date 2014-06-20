@@ -1,10 +1,13 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "App" %}
 {% set clientData.pageTitle = "App" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <div data-ng-view></div>
 
 <hr />
 <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
 
-{% include "foot.html" %}
+{% endblock %}

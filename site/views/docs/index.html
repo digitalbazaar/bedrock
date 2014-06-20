@@ -1,6 +1,9 @@
+{% extends '../layout.html' %}
+
 {% set pageTitle = "API Documentation" %}
 {% set clientData.pageTitle = "API Documentation" %}
-{% include "../head.html" %}
+
+{% block content %}
 
 <div class="row">
   <div class="span10 offset1">
@@ -21,5 +24,4 @@ This page contains RESTful API documentation.
   </div>
 </div>
 
-
-{% include "../foot.html" %}
+{% endblock %}

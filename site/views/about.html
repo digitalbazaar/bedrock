@@ -1,5 +1,8 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "About" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <h2>{{pageTitle}}</h2>
 
@@ -7,4 +10,4 @@
 
 {% include "credits.html" %}
 
-{% include "foot.html" %}
+{% endblock %}

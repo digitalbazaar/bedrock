@@ -1,5 +1,8 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Error" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <h2>Sorry!</h2>
 
@@ -15,4 +18,4 @@
   {% endif %}
 </div>
 
-{% include "foot.html" %}
+{% endblock %}

@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Create Identity" %}
 {% set clientData.pageTitle = "Create Identity" %}
-{% include "head.html" %}
+
+{% block content %}
 
 {% raw %}
 <div class="row ng-cloak" data-ng-controller="CreateIdentityCtrl">
@@ -146,4 +149,4 @@
 </div>
 {% endraw %}
 
-{% include "foot.html" %}
+{% endblock %}

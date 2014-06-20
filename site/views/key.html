@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Cryptographic Key Details" %}
 {% set clientData.pageTitle = "Cryptographic Key Details" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <div class="static-content">
   {% if key.label %}
@@ -66,4 +69,4 @@
 <hr />
 <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
 
-{% include "foot.html" %}
+{% endblock %}

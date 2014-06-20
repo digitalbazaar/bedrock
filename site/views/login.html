@@ -1,7 +1,10 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Sign In" %}
 {% set clientData.pageTitle = "Sign In" %}
 {% set pageLayout = "minimal" %}
-{% include "head.html" %}
+
+{% block content %}
 
 {% raw %}
 <div data-ng-controller="LoginCtrl">
@@ -81,4 +84,4 @@
 </div>
 {% endraw %}
 
-{% include "foot.html" %}
+{% endblock %}

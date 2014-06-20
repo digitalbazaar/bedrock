@@ -1,7 +1,10 @@
+{% extends 'layout.html' %}
+
 {% set pageTitle = "Service Unavailable" %}
 {% set pageLayout = "error" %}
 {% set clientData.pageTitle = "Service Unavailable" %}
-{% include "head.html" %}
+
+{% block content %}
 
 <h2>Service Unavailable</h2>
 
@@ -23,4 +26,4 @@
   </ul>
 </div>
 
-{% include "foot.html" %}
+{% endblock %}
