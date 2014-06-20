@@ -197,7 +197,7 @@ Helper.prototype.findRowByEval = function(repeater, expr, fn, parent) {
     var y = fn;
     fn = function(x) {return x === y;};
   }
-  return parent.element.all(by.repeater(repeater))
+  return parent.all(by.repeater(repeater))
     .map(function(row, index) {
       return row.evaluate(expr).then(fn).then(function(result) {
         if(result) {

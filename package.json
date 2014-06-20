@@ -73,7 +73,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "mocha": "~1.17.1",
     "mocha-as-promised": "~2.0.0",
-    "protractor": "^0.23.0",
+    "protractor": "^0.24.2",
     "temp": "^0.7.0",
     "visionmedia-jscoverage": "~1.0.0",
     "wd": "~0.2.10"

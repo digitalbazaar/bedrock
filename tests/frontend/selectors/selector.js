@@ -32,7 +32,7 @@ api.create = function(options) {
 
         // back to change modal
         modal = element(by.modal());
-        modal.element.all(by.repeater('selected in')).last().click();
+        modal.all(by.repeater('selected in')).last().click();
       } else {
         // add modal
         el.element(by.partialButtonText('Add')).click();
@@ -52,7 +52,7 @@ api.create = function(options) {
       el.element(by.partialButtonText('Change')).click();
       var modal = element(by.modal());
       var toSelect = null;
-      modal.element.all(by.repeater('selected in')).then(function(rows) {
+      modal.all(by.repeater('selected in')).then(function(rows) {
         rows.forEach(function(row) {
           row.evaluate('selected').then(function(selected) {
             if(selected.id === options.id) {
