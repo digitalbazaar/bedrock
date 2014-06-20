@@ -89,6 +89,7 @@ module.exports = function(grunt) {
         paths: {
           'almond': '../../node_modules/almond/almond',
           'forge': '../../node_modules/node-forge/js',
+          'iso8601': '../../lib/iso8601/is8601',
           'jsonld': '../../node_modules/jsonld/js/jsonld',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
           'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
@@ -123,7 +124,6 @@ module.exports = function(grunt) {
         'email-templates/*.js',
         'lib/*.js',
         'lib/**/*.js',
-        'lib/**/**/*.js',
         'locales/*.js',
         'schemas/*.js',
         'site/static/app/*.js',
