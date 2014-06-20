@@ -47,7 +47,7 @@ function factory($rootScope, $http, $location, svcModel) {
     this.loadingCount = this.loadingCount - count;
     this.state.loading = (this.loadingCount !== 0);
     if(this.config.finishLoading) {
-      return this.config.finishLoading();
+      return Promise.resolve(this.config.finishLoading());
     }
     return Promise.resolve();
   };
@@ -67,12 +67,12 @@ function factory($rootScope, $http, $location, svcModel) {
         // update expiration time and collection
         self.expires = Date.now() + self.maxAge;
         svcModel.replaceArray(self.storage, response.data);
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           return self.storage;
         });
       }).catch(function(err) {
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           throw err;
         });
@@ -97,12 +97,12 @@ function factory($rootScope, $http, $location, svcModel) {
       .then(function(response) {
         // update collection but not collection expiration time
         svcModel.replaceInArray(self.storage, response.data);
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           return response.data;
         });
       }).catch(function(err) {
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           throw err;
         });
@@ -132,12 +132,12 @@ function factory($rootScope, $http, $location, svcModel) {
         if(!_.findWhere(self.storage, {id: response.data.id})) {
           self.storage.push(response.data);
         }
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           return response.data;
         });
       }).catch(function(err) {
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           throw err;
         });
@@ -156,12 +156,12 @@ function factory($rootScope, $http, $location, svcModel) {
         // re-get resource to update collection
         return self.get(options.get || resource.id, {force: true});
       }).then(function(updatedResource) {
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           return updatedResource;
         });
       }).catch(function(err) {
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           throw err;
         });
@@ -181,11 +181,11 @@ function factory($rootScope, $http, $location, svcModel) {
         if(_.findWhere(self.storage, {id: resourceId})) {
           svcModel.removeFromArray(resourceId, self.storage);
         }
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
         });
       }).catch(function(err) {
-        return Promise.resolve(self.finishLoading()).then(function() {
+        return self.finishLoading().then(function() {
           $rootScope.$apply();
           throw err;
         });
