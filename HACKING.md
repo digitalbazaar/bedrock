@@ -58,17 +58,17 @@ part of the same submodule or feature:
 
     .
     `-- app
-        +-- components
+        |-- components
         |   `-- fooBar
-        |       +-- foo-bar.js
-        |       +-- foo-bar-controller.js
-        |       +-- foo-bar-service.js
-        |       +-- foo-bar-directive.js
-        |       +-- foo-bar-filter.js
-        |       +-- foo-bar.html
-        |       +-- foo-bar-modal-directive.js
-        |       +-- foo-bar-modal.html
-        |       +-- foo-bar-selector-directive.js
+        |       |-- foo-bar.js
+        |       |-- foo-bar-controller.js
+        |       |-- foo-bar-service.js
+        |       |-- foo-bar-directive.js
+        |       |-- foo-bar-filter.js
+        |       |-- foo-bar.html
+        |       |-- foo-bar-modal-directive.js
+        |       |-- foo-bar-modal.html
+        |       |-- foo-bar-selector-directive.js
         |       `-- foo-bar-selector.html
         `-- components.js
 
