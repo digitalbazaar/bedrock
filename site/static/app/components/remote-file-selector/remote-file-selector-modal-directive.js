@@ -9,10 +9,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$http', 'svcAlert', 'svcModal'];
-return {modalSelectRemoteFile: deps.concat(factory)};
+var deps = ['$http', 'AlertService', 'ModalService'];
+return {remoteFileSelectorModal: deps.concat(factory)};
 
-function factory($http, svcAlert, svcModal) {
+function factory($http, AlertService, ModalService) {
   function Ctrl($scope) {
     var model = $scope.model = {};
 
@@ -57,14 +57,14 @@ function factory($http, svcAlert, svcModal) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
-      svcAlert.clearModalFeedback($scope);
+      AlertService.clearModalFeedback($scope);
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         $scope.modal.close(null, response.data);
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         $scope.$apply();
       });
     };
@@ -77,16 +77,16 @@ function factory($http, svcAlert, svcModal) {
       }
 
       model.loading = true;
-      svcAlert.clearModalFeedback($scope);
+      AlertService.clearModalFeedback($scope);
       Promise.resolve($http.get(url)).then(function(response) {
-        modal.loading = false;
+        model.loading = false;
         model.pathContents = response.data;
         model.path = response.data.path;
         model.separator = response.data.separator;
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         $scope.$apply();
       });
     };
@@ -95,10 +95,10 @@ function factory($http, svcAlert, svcModal) {
     model.getFileList();
   }
 
-  return svcModal.directive({
-    name: 'SelectRemoteFile',
+  return ModalService.directive({
+    name: 'remoteFileSelector',
     templateUrl:
-      '/app/components/remoteFileSelector/modal-remote-file-selector.html',
+      '/app/components/remote-file-selector/remote-file-selector-modal.html',
     controller: ['$scope', Ctrl]
   });
 }

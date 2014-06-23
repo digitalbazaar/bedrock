@@ -10,59 +10,59 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'config', '$http'];
-return {PasscodeCtrl: deps.concat(factory)};
+var deps = ['$scope', '$http', 'config'];
+return {PasscodeController: deps.concat(factory)};
 
-function factory($scope, config, $http) {
-  $scope.model = {};
-  $scope.email = config.data.session ? config.data.session.identity.email : '';
-  $scope.sysPasscode = config.data.sysPasscode || '';
-  $scope.sysPasswordNew = '';
-  $scope.feedback = {
+function factory($scope, $http, config) {
+  var self = this;
+  self.email = config.data.session ? config.data.session.identity.email : '';
+  self.sysPasscode = config.data.sysPasscode || '';
+  self.sysPasswordNew = '';
+  self.feedback = {
     email: {},
     password: {}
   };
-  $scope.emailFeedbackTarget = $('#emailFeedbackTarget');
-  $scope.passwordFeedbackTarget = $('#passwordFeedbackTarget');
+  self.emailFeedbackTarget = $('#emailFeedbackTarget');
+  self.passwordFeedbackTarget = $('#passwordFeedbackTarget');
 
-  $scope.sendReset = function() {
+  self.sendReset = function() {
     // request a passcode
     resetFeedback();
     Promise.resolve($http.post('/session/passcode?usage=reset', {
-      sysIdentifier: $scope.email
+      sysIdentifier: self.email
     })).then(function() {
-      $scope.feedback.email.success = {
+      self.feedback.email.success = {
         message:
           'An email has been sent to you with password reset instructions.'
       };
       $scope.$apply();
     }).catch(function(err) {
-      $scope.feedback.email.error = err;
+      self.feedback.email.error = err;
       $scope.$apply();
     });
   };
 
-  $scope.updatePassword = function() {
+  self.updatePassword = function() {
     // request a password reset using the given passcode
     resetFeedback();
     Promise.resolve($http.post('/session/password/reset', {
-      sysIdentifier: $scope.email,
-      sysPasscode: $scope.sysPasscode,
-      sysPasswordNew: $scope.sysPasswordNew
+      sysIdentifier: self.email,
+      sysPasscode: self.sysPasscode,
+      sysPasswordNew: self.sysPasswordNew
     })).then(function() {
-      $scope.feedback.password.success = {
+      self.feedback.password.success = {
         message: 'Your password has been updated successfully.'
       };
       $scope.$apply();
     }).catch(function(err) {
-      $scope.feedback.password.error = err;
+      self.feedback.password.error = err;
       $scope.$apply();
     });
   };
 
   function resetFeedback() {
-    $scope.feedback.email = {};
-    $scope.feedback.password = {};
+    self.feedback.email = {};
+    self.feedback.password = {};
   }
 }
 

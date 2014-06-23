@@ -6,7 +6,7 @@
 {% block content %}
 
 {% raw %}
-<div class="row ng-cloak" data-ng-controller="CreateIdentityCtrl">
+<div class="row ng-cloak" data-ng-controller="CreateIdentityController as model">
   <div class="span8 offset2">
     <h2>Create an Identity</h2>
 
@@ -19,7 +19,7 @@
 
     <hr />
 
-    <form id="createIdentityFeedbackTarget" class="form-horizontal" action="" data-ng-submit="submit()">
+    <form id="createIdentityFeedbackTarget" class="form-horizontal" action="" data-ng-submit="model.submit()">
       <fieldset>
         <legend>Your Email and Password</legend>
 
@@ -29,15 +29,15 @@
             <div class="input-append">
               <input class="input-xlarge form-field-vspaced"
                 name="email" data-binding="email" type="text"
-                data-ng-model="identity.email"
+                data-ng-model="model.identity.email"
                 data-track-state="model.help.email"
-                data-ng-disabled="loading"
+                data-ng-disabled="model.loading"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.email">
                 <i class="icon-question-sign"></i>
               </button>
             </div>
-            <div data-duplicate-checker="identity.email"
+            <div data-duplicate-checker="model.identity.email"
               data-duplicate-checker-type="email"
               data-duplicate-checker-available="This email address is available!"
               data-duplicate-checker-invalid="Email address is invalid."
@@ -59,9 +59,9 @@
               <input class="input-xlarge"
                 name="password" data-binding="sysPassword"
                 maxlength="32" type="password"
-                data-ng-model="identity.sysPassword"
+                data-ng-model="model.identity.sysPassword"
                 data-track-state="model.help.password"
-                data-ng-disabled="loading" />
+                data-ng-disabled="model.loading" />
               <button class="btn" data-help-toggle="model.help.password">
                 <i class="icon-question-sign"></i>
               </button>
@@ -92,10 +92,10 @@
             <div class="input-append">
               <input class="input-xlarge"
                 name="identity-label" type="text"
-                data-slug-out="identity.sysSlug"
-                data-ng-model="identity.label"
+                data-slug-out="model.identity.sysSlug"
+                data-ng-model="model.identity.label"
                 data-track-state="model.help.identityLabel"
-                data-ng-disabled="loading"
+                data-ng-disabled="model.loading"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.identityLabel">
                 <i class="icon-question-sign"></i>
@@ -107,13 +107,13 @@
               name like 'janedoe'. You can also customize your identity vanity
               address below:
             </p>
-            <p><small>{{data.identityBaseUri}}/</small><input
+            <p><small>{{model.data.identityBaseUri}}/</small><input
               data-binding="identity.sysSlug" class="slug"
               name="identity-slug" type="text" maxlength="32"
               placeholder="IDENTITY-NAME"
-              data-slug-in data-ng-model="identity.sysSlug"
-              data-ng-disabled="loading" /></p>
-            <div data-duplicate-checker="identity.sysSlug"
+              data-slug-in data-ng-model="model.identity.sysSlug"
+              data-ng-disabled="model.loading" /></p>
+            <div data-duplicate-checker="model.identity.sysSlug"
               data-duplicate-checker-type="Identity"
               data-duplicate-checker-available="This identity name is available!"
               data-duplicate-checker-invalid="Identity name is invalid."
@@ -129,17 +129,17 @@
         <legend>Service Agreement</legend>
 
         <label class="checkbox">
-          <input type="checkbox" data-ng-model="agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
+          <input type="checkbox" data-ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
         </label>
       </fieldset>
 
       <div class="form-actions">
-        <div data-feedback="feedback" data-target="feedbackTarget"></div>
+        <div data-feedback="model.feedback" data-target="model.feedbackTarget"></div>
         <button id="create-button"
-          data-ng-disabled="loading || !model.identitySlugAvailable || !model.emailAvailable || !agreementChecked"
+          data-ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
           class="btn btn-large btn-primary"
           data-submit-form>Create Identity</button>
-        <span data-spinner="loading"
+        <span data-spinner="model.loading"
           data-spinner-class="append-btn-spinner"></span>
       </div>
 

@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcTemplateCache', '$compile', '$parse', '$timeout'];
+var deps = ['$compile', '$parse', '$timeout', 'TemplateCacheService'];
 return {popoverTemplate: deps.concat(factory)};
 
-function factory(svcTemplateCache, $compile, $parse, $timeout) {
+function factory($compile, $parse, $timeout, TemplateCacheService) {
   // FIXME: popover needs cleanup/rewrite to handle scopes properly and
   // to better deal with placement, etc. -- but wait for bootstrap update to
   // popovers/modals, would be nice to use transclusion
@@ -27,7 +27,7 @@ function factory(svcTemplateCache, $compile, $parse, $timeout) {
       scope.setVisible = function(visible) {
         setVisible(scope, visible);
       };
-      svcTemplateCache.get(attrs.popoverTemplate, function(err, data) {
+      TemplateCacheService.get(attrs.popoverTemplate, function(err, data) {
         // initialize popover, toggle on click
         var container = element.closest('.modal-body');
         if(!container.length) {

@@ -9,33 +9,33 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$scope', 'config', '$http', '$compile', '$window'];
-return {LoginCtrl: deps.concat(factory)};
+var deps = ['$scope', '$http', '$compile', '$window', 'config'];
+return {LoginController: deps.concat(factory)};
 
-function factory($scope, config, $http, $compile, $window) {
-  var model = $scope.model = {};
-  $scope.multiple = false;
-  $scope.loading = false;
-  $scope.error = '';
-  $scope.sysIdentifier = '';
-  $scope.password = '';
-  model.request = config.data.queuedRequest;
-  model.siteTitle = config.data.siteTitle;
-  model.navbar = config.site.navbar;
+function factory($scope, $http, $compile, $window, config) {
+  var self = this;
+  self.multiple = false;
+  self.loading = false;
+  self.error = '';
+  self.sysIdentifier = '';
+  self.password = '';
+  self.request = config.data.queuedRequest;
+  self.siteTitle = config.data.siteTitle;
+  self.navbar = config.site.navbar;
 
-  $scope.submit = function() {
+  self.submit = function() {
     // do login
-    $scope.error = '';
-    $scope.loading = true;
+    self.error = '';
+    self.loading = true;
     Promise.resolve($http.post('/session/login', {
-      sysIdentifier: $scope.sysIdentifier,
-      password: $scope.password
+      sysIdentifier: self.sysIdentifier,
+      password: self.password
     })).then(function(response) {
       // if a single 'identity' is returned, login was successful
       var data = response.data;
       if(data.identity) {
         // if there's no queued request, go to dashboard
-        var request = model.request;
+        var request = self.request;
         if(!request) {
           $window.location = data.identity.id + '/dashboard';
           return;
@@ -59,24 +59,24 @@ function factory($scope, config, $http, $compile, $window) {
         element.submit();
       } else {
         // show multiple identities
-        $scope.multiple = true;
-        $scope.email = data.email;
-        $scope.choices = [];
+        self.multiple = true;
+        self.email = data.email;
+        self.choices = [];
         angular.forEach(data.identities, function(identity, identityId) {
-          $scope.choices.push({id: identityId, label: identity.label});
+          self.choices.push({id: identityId, label: identity.label});
         });
-        $scope.sysIdentifier = $scope.choices[0].id;
-        $scope.loading = false;
+        self.sysIdentifier = self.choices[0].id;
+        self.loading = false;
         $scope.$apply();
       }
     }).catch(function(err) {
       // FIXME: use directive to show feedback?
       if(err.type === 'bedrock.validation.ValidationError') {
-        $scope.error = 'Please enter your email address and password.';
+        self.error = 'Please enter your email address and password.';
       } else {
-        $scope.error = err.message;
+        self.error = err.message;
       }
-      $scope.loading = false;
+      self.loading = false;
       $scope.$apply();
     });
   };

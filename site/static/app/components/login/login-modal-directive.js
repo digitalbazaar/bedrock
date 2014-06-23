@@ -9,11 +9,11 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcAlert', 'svcModal'];
-return {modalLogin: deps.concat(factory)};
+var deps = ['$http', 'AlertService', 'ModalService', 'config'];
+return {loginModal: deps.concat(factory)};
 
-function factory(svcAlert, svcModal) {
-  function Ctrl($scope, config, $http) {
+function factory($http, AlertService, ModalService, config) {
+  function Ctrl($scope) {
     var model = $scope.model = {};
     model.sysIdentifier = config.data.identity.id;
     model.password = '';
@@ -21,7 +21,7 @@ function factory(svcAlert, svcModal) {
 
     model.login = function() {
       $scope.loading = true;
-      svcAlert.clearModalFeedback($scope);
+      AlertService.clearModalFeedback($scope);
       Promise.resolve($http.post('/session/login', {
         sysIdentifier: model.sysIdentifier,
         password: model.password
@@ -32,22 +32,22 @@ function factory(svcAlert, svcModal) {
       }).catch(function(err) {
         model.loading = false;
         if(err.type === 'bedrock.validation.ValidationError') {
-          svcAlert.add(
+          AlertService.add(
             'error',
             'The password you entered was incorrect. Please try again.');
         } else {
-          svcAlert.add('error', err);
+          AlertService.add('error', err);
         }
         $scope.$apply();
       });
     };
   }
 
-  return svcModal.directive({
-    name: 'Login',
+  return ModalService.directive({
+    name: 'login',
     scope: {},
     templateUrl: '/app/components/login/login-modal.html',
-    controller: ['$scope', 'config', '$http', Ctrl]
+    controller: ['$scope', Ctrl]
   });
 }
 

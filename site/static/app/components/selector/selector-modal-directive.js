@@ -9,12 +9,12 @@ define([], function() {
 
 'use strict';
 
-var deps = ['svcModal'];
-return {modalSelector: deps.concat(factory)};
+var deps = ['ModalService'];
+return {selectorModal: deps.concat(factory)};
 
-function factory(svcModal) {
-  return svcModal.directive({
-    name: 'Selector',
+function factory(ModalService) {
+  return ModalService.directive({
+    name: 'selector',
     scope: {
       modalTitle: '=',
       items: '=',

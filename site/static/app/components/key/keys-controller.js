@@ -10,14 +10,16 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$routeParams', 'config', 'svcIdentity', 'svcKey'];
-return {KeysCtrl: deps.concat(factory)};
+var deps = [
+  '$scope', '$routeParams', 'IdentityService', 'KeyService', 'config'];
+return {KeysController: deps.concat(factory)};
 
-function factory($scope, $routeParams, config, svcIdentity, svcKey) {
-  var model = $scope.model = {};
-  $scope.state = svcKey.state;
-  $scope.keys = svcKey.keys;
-  $scope.modals = {
+function factory($scope, $routeParams, IdentityService, KeyService, config) {
+  var self = this;
+  self.identity = IdentityService.identity;
+  self.state = KeyService.state;
+  self.keys = KeyService.keys;
+  self.modals = {
     showGenerateKeyPair: false,
     showAddKey: false,
     showEditKey: false,
@@ -26,21 +28,21 @@ function factory($scope, $routeParams, config, svcIdentity, svcKey) {
   };
 
   if($routeParams.service === 'add-key') {
-    $scope.modals.showAddKey = true;
+    self.modals.showAddKey = true;
   }
 
-  $scope.editKey = function(key) {
-    $scope.modals.showEditKey = true;
-    $scope.modals.key = key;
+  self.editKey = function(key) {
+    self.modals.showEditKey = true;
+    self.modals.key = key;
   };
-  $scope.setDefaultSigningKeyId = function(keyId) {
+  self.setDefaultSigningKeyId = function(keyId) {
     var update = {
       '@context': config.data.contextUrl,
-      id: config.data.session.identity.id,
+      id: self.identity.id,
       sysSigningKey: keyId
     };
 
-    svcIdentity.collection.update(update)
+    IdentityService.collection.update(update)
       .catch(function(err) {
         // FIXME: show error feedback
         if(err) {
@@ -48,20 +50,20 @@ function factory($scope, $routeParams, config, svcIdentity, svcKey) {
         }
       });
   };
-  $scope.revokeKey = function(key) {
-    $scope.modals.showRevokeKeyAlert = true;
-    $scope.modals.key = key;
+  self.revokeKey = function(key) {
+    self.modals.showRevokeKeyAlert = true;
+    self.modals.key = key;
   };
-  $scope.confirmRevokeKey = function(err, result) {
+  self.confirmRevokeKey = function(err, result) {
     if(!err && result === 'ok') {
-      svcKey.collection.revoke($scope.modals.key.id);
+      KeyService.collection.revoke(self.modals.key.id);
     }
-    $scope.modals.key = null;
+    self.modals.key = null;
   };
 
   function refresh(force) {
     var opts = {force: !!force};
-    svcKey.collection.getAll(opts);
+    KeyService.collection.getAll(opts);
   }
   $scope.$on('refreshData', function() {
     refresh(true);

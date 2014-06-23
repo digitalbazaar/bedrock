@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$rootScope', 'svcModal', 'svcModel'];
-return {svcAlert: deps.concat(factory)};
+var deps = ['$rootScope', 'ModalService', 'ModelService'];
+return {AlertService: deps.concat(factory)};
 
-function factory($rootScope, svcModal, svcModel) {
+function factory($rootScope, ModalService, ModelService) {
   var service = {};
 
   // defined categories
@@ -42,7 +42,7 @@ function factory($rootScope, svcModal, svcModel) {
     category = category || service.category.FEEDBACK;
     var info = {type: type, value: value};
     if(category === service.category.FEEDBACK) {
-      var modal = svcModal.getTopModal();
+      var modal = ModalService.getTopModal();
       if(modal === null) {
         info.origin = 'page';
       } else {
@@ -98,7 +98,7 @@ function factory($rootScope, svcModal, svcModel) {
         list.length = 0;
         return;
       }
-      svcModel.removeAllFromArray(list, function(e) {
+      ModelService.removeAllFromArray(list, function(e) {
         return e.type === type;
       });
     });
@@ -120,7 +120,7 @@ function factory($rootScope, svcModal, svcModel) {
       return;
     }
     var list = service.log[service.category.FEEDBACK];
-    svcModel.removeAllFromArray(list, function(e) {
+    ModelService.removeAllFromArray(list, function(e) {
       return ((!type || e.type === type) && e.source &&
         (e.source === modal || e.source.scope === modal ||
         e.source.scope.modal === modal));
@@ -133,7 +133,7 @@ function factory($rootScope, svcModal, svcModel) {
    * @param [type] the alert type.
    */
   service.clearTopModalFeedback = function(type) {
-    service.clearModalFeedback(svcModal.getTopModal(), type);
+    service.clearModalFeedback(ModalService.getTopModal(), type);
   };
 
   // expose service to scope

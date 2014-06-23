@@ -9,10 +9,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['svcModal'];
+var deps = ['ModalService'];
 return {modalFooter: deps.concat(factory)};
 
-function factory(svcModal) {
+function factory(ModalService) {
   return {
     replace: true,
     transclude: true,
@@ -22,7 +22,7 @@ function factory(svcModal) {
       // auto-bind any .btn-close classes
       $('.btn-close', element).click(function(e) {
         e.preventDefault();
-        svcModal.cancelTopModal();
+        ModalService.cancelTopModal();
       });
     }
   };

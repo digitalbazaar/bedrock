@@ -11,23 +11,20 @@ define(['jsonld'], function(jsonld) {
 
 'use strict';
 
-var deps = ['$scope', 'svcModel', 'svcIdentity'];
-return {IdentityCtrl: deps.concat(factory)};
+var deps = ['$scope', 'IdentityService', 'ModelService'];
+return {IdentityController: deps.concat(factory)};
 
-function factory($scope, svcModel, svcIdentity) {
-  var model = $scope.model = {};
-  $scope.state = svcIdentity.state;
-  $scope.modals = {};
-
-  model.identity = {};
+function factory($scope, IdentityService, ModelService) {
+  var self = this;
+  self.identity = {};
 
   function refresh(force) {
     var opts = {force: !!force};
-    svcIdentity.collection.getCurrent(opts)
+    IdentityService.collection.getCurrent(opts)
       .then(function(identity) {
         // ensure an array of zero or more publicKeys
-        identity.publicKey = jsonld.getValues(identity, 'publicKey');
-        svcModel.replace(model.identity, identity);
+        self.identity.publicKey = jsonld.getValues(identity, 'publicKey');
+        ModelService.replace(self.identity, identity);
         $scope.$apply();
       });
   }

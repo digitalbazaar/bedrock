@@ -10,16 +10,16 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'svcIdentity'];
-return {IdentitySettingsCtrl: deps.concat(factory)};
+var deps = ['$scope', 'IdentityService'];
+return {IdentitySettingsController: deps.concat(factory)};
 
-function factory($scope, svcIdentity) {
-  $scope.state = svcIdentity.state;
-  $scope.modals = {};
+function factory($scope, IdentityService) {
+  var self = this;
+  self.state = IdentityService.state;
 
   function refresh(force) {
     var opts = {force: !!force};
-    //svcIdentity.get(opts);
+    //IdentityService.get(opts);
   }
   $scope.$on('refreshData', function() {
     refresh(true);

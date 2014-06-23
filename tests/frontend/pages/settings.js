@@ -40,7 +40,7 @@ api.revokeKey = function(query) {
   }).then(function(result) {
     expect(result.index).to.not.equal(-1);
     var i = result.index;
-    var row = element(by.repeater('key in keys').row(i));
+    var row = element(by.repeater('key in model.keys').row(i));
     row.element(by.popover('model.showKeysActionMenu_' + i)).click();
     element(by.linkText('Revoke')).click();
     var modal = element(by.modal());
@@ -53,7 +53,7 @@ api.revokeKey = function(query) {
 };
 
 api.getKeys = function() {
-  return element(by.controller('KeysCtrl')).evaluate('keys');
+  return element(by.controller('KeysController')).evaluate('model.keys');
 };
 
 api.getActiveKeys = function() {

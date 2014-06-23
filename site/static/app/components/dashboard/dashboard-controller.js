@@ -10,14 +10,14 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'svcIdentity'];
-return {DashboardCtrl: deps.concat(factory)};
+var deps = ['$scope', 'IdentityService'];
+return {DashboardController: deps.concat(factory)};
 
-function factory($scope, svcIdentity) {
-  var model = $scope.model = {};
-  $scope.identity = svcIdentity.identity;
-  $scope.state = {};
-  $scope.modals = {};
+function factory($scope, IdentityService) {
+  var self = this;
+  self.identity = IdentityService.identity;
+  self.state = {};
+  self.modals = {};
 
   function refresh(force) {
     var opts = {force: !!force};

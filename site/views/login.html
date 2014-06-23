@@ -7,7 +7,7 @@
 {% block content %}
 
 {% raw %}
-<div data-ng-controller="LoginCtrl">
+<div data-ng-controller="LoginController as model">
 
 <h2 class="headline">Sign in to {{model.siteTitle}}</h2>
 
@@ -15,16 +15,16 @@
   Please sign in to complete your request.
 </div>
 
-<form class="headline" method="post" action="" data-ng-submit="submit()">
+<form class="headline" method="post" action="" data-ng-submit="model.submit()">
   <fieldset>
     <div class="control-group">
-      <div data-ng-hide="multiple" class="controls">
+      <div data-ng-hide="model.multiple" class="controls">
         <input name="sysIdentifier" type="text" autofocus="autofocus"
-          data-ng-model="sysIdentifier"
-          placeholder="Email" data-ng-disabled="loading" />
+          data-ng-model="model.sysIdentifier"
+          placeholder="Email" data-ng-disabled="model.loading" />
       </div>
 
-      <div data-ng-show="multiple">
+      <div data-ng-show="model.multiple">
         <p class="alert alert-info">
           <strong>Note:</strong>
           Your email address ({{email}}) is associated with multiple
@@ -33,27 +33,27 @@
         <div class="controls">
           <select name="identity" autofocus="autofocus"
             data-ng-model="identity"
-            data-ng-options="value.id as value.label for value in choices"
-            data-ng-disabled="loading">
+            data-ng-options="value.id as value.label for value in model.choices"
+            data-ng-disabled="model.loading">
           </select>
         </div>
       </div>
 
       <div class="controls">
         <input name="password" type="password" placeholder="Password"
-          data-ng-model="password" data-ng-disabled="loading" />
+          data-ng-model="model.password" data-ng-disabled="model.loading" />
       </div>
 
-      <div data-spinner="loading"
+      <div data-spinner="model.loading"
         data-spinner-class="center-spinner"></div>
 
-      <div data-ng-hide="loading" class="controls btn-group">
+      <div data-ng-hide="model.loading" class="controls btn-group">
         <button class="btn btn-primary" data-submit-form
-          data-ng-disabled="loading"><i
+          data-ng-disabled="model.loading"><i
           class="icon-signin"></i> Sign In</button>
         <button class="btn btn-primary dropdown-toggle"
           data-toggle="dropdown"
-          data-ng-disabled="loading">
+          data-ng-disabled="model.loading">
           <span class="caret"></span>
         </button>
         <div></div>
@@ -73,9 +73,9 @@
         </ul>
       </div>
 
-      <div data-ng-show="error">
+      <div data-ng-show="model.error">
         <hr />
-        <div class="alert alert-error">{{error}}</div>
+        <div class="alert alert-error">{{model.error}}</div>
       </div>
     </div>
   </fieldset>

@@ -12,10 +12,10 @@ function(md, pki, util, jsonld, _, verifierFactory) {
 
 'use strict';
 
-var deps = ['config', '$rootScope'];
-return {svcCredentialVerify: deps.concat(factory)};
+var deps = ['$rootScope', 'config'];
+return {CredentialVerifyService: deps.concat(factory)};
 
-function factory(config, $rootScope) {
+function factory($rootScope, config) {
   var service = {};
 
   /**

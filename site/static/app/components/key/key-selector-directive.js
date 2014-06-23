@@ -13,18 +13,18 @@ var deps = [];
 return {keySelector: deps.concat(factory)};
 
 function factory() {
-  function Ctrl($scope, svcKey) {
+  function Ctrl($scope, KeyService) {
     var model = $scope.model = {};
     model.services = {
-      key: svcKey.state
+      key: KeyService.state
     };
-    model.keys = svcKey.unrevokedKeys;
+    model.keys = KeyService.unrevokedKeys;
     $scope.$watch('model.keys', function(keys) {
       if(!$scope.selected || $.inArray($scope.selected, keys) === -1) {
         $scope.selected = keys[0] || null;
       }
     }, true);
-    svcKey.collection.getAll();
+    KeyService.collection.getAll();
   }
 
   function Link(scope, element, attrs) {
@@ -39,7 +39,7 @@ function factory() {
       invalid: '=',
       fixed: '@'
     },
-    controller: ['$scope', 'svcKey', Ctrl],
+    controller: ['$scope', 'KeyService', Ctrl],
     templateUrl: '/app/components/key/key-selector.html',
     link: Link
   };

@@ -10,12 +10,12 @@ define([], function() {
 'use strict';
 
 var deps = ['$scope', '$rootScope', 'config'];
-return {NavbarCtrl: deps.concat(factory)};
+return {NavbarController: deps.concat(factory)};
 
 function factory($scope, $rootScope, config) {
-  var model = $scope.model = {};
-  model.session = config.data.session;
-  model.navbar = config.site.navbar;
+  var self = this;
+  self.session = config.data.session;
+  self.navbar = config.site.navbar;
 
   $scope.refreshData = function() {
     $rootScope.$broadcast('refreshData');
@@ -23,7 +23,7 @@ function factory($scope, $rootScope, config) {
   };
 
   $rootScope.$on('showLoginModal', function() {
-    model.showLogin = true;
+    self.showLogin = true;
   });
 }
 

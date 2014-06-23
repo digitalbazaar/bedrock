@@ -12,12 +12,12 @@
 </div>
 
 {% raw %}
-<div class="ng-cloak" data-ng-controller="PasscodeCtrl">
+<div class="ng-cloak" data-ng-controller="PasscodeController as model">
 
 <div class="row">
   <div class="span6 offset3">
 
-    <form id="emailFeedbackTarget" class="form-horizontal" action="" data-ng-submit="sendReset()">
+    <form id="emailFeedbackTarget" class="form-horizontal" action="" data-ng-submit="model.sendReset()">
       <fieldset>
       <legend>Get Passcode</legend>
         <div class="control-group" data-binding="sysIdentifier">
@@ -25,7 +25,7 @@
           <div class="controls">
             <div class="input-append">
               <input name="sysIdentifier" type="text" maxlength="320"
-                data-ng-model="email"
+                data-ng-model="model.email"
                 data-track-state="model.help.email"
                 data-ng-disabled="loading" />
               <button class="btn" data-help-toggle="model.help.email">
@@ -45,7 +45,7 @@
           data-spinner-class="append-btn-spinner"></span>
       </div>
       </fieldset>
-      <div data-feedback="feedback.email" data-target="emailFeedbackTarget"></div>
+      <div data-feedback="model.feedback.email" data-target="model.emailFeedbackTarget"></div>
     </form>
 
   </div>
@@ -54,7 +54,7 @@
 <div class="row">
   <div class="span6 offset3">
 
-    <form id="passwordFeedbackTarget" class="form-horizontal" action="" data-ng-submit="updatePassword()">
+    <form id="passwordFeedbackTarget" class="form-horizontal" action="" data-ng-submit="model.updatePassword()">
       <fieldset>
       <legend>Update Your Password</legend>
 
@@ -63,7 +63,7 @@
         <div class="controls">
           <div class="input-append">
             <input name="input" type="text" maxlength="320"
-              data-ng-model="email"
+              data-ng-model="model.email"
               data-track-state="model.help.resetEmail"
               data-ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.resetEmail">
@@ -82,7 +82,7 @@
         <div class="controls">
           <div class="input-append">
             <input name="sysPasscode" type="text" maxlength="8"
-              data-ng-model="sysPasscode"
+              data-ng-model="model.sysPasscode"
               data-track-state="model.help.passcode"
               data-ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.passcode">
@@ -101,7 +101,7 @@
         <div class="controls">
           <div class="input-append">
             <input name="sysPasswordNew" type="password" maxlength="32"
-              data-ng-model= "sysPasswordNew"
+              data-ng-model="model.sysPasswordNew"
               data-track-state="model.help.password"
               data-ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.password">
@@ -122,7 +122,7 @@
            data-spinner-class="append-btn-spinner"></span>
       </div>
       </fieldset>
-      <div data-feedback="feedback.password" data-target="passwordFeedbackTarget"></div>
+      <div data-feedback="model.feedback.password" data-target="model.passwordFeedbackTarget"></div>
     </form>
 
   </div>

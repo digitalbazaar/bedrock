@@ -14,11 +14,11 @@ api.get = function() {
 };
 
 api.createIdentity = function(options) {
-  element(by.model('identity.email')).sendKeys(options.email);
-  element(by.model('identity.sysPassword')).sendKeys(options.password);
-  element(by.model('identity.label')).sendKeys(options.label);
-  element(by.model('agreementChecked')).click();
-  element(by.model('identity.sysSlug')).getAttribute('value')
+  element(by.model('model.identity.email')).sendKeys(options.email);
+  element(by.model('model.identity.sysPassword')).sendKeys(options.password);
+  element(by.model('model.identity.label')).sendKeys(options.label);
+  element(by.model('model.agreementChecked')).click();
+  element(by.model('model.identity.sysSlug')).getAttribute('value')
     .then(function(slug) {
       var button = element(by.buttonText('Create Identity'));
       helper.waitForAttribute(button, 'disabled', function(disabled) {

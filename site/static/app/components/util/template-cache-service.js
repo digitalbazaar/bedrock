@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 var deps = ['$rootScope', '$http', '$templateCache'];
-return {svcTemplateCache: deps.concat(factory)};
+return {TemplateCacheService: deps.concat(factory)};
 
 function factory($rootScope, $http, $templateCache) {
   var service = {};

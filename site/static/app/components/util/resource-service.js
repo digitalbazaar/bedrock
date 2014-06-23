@@ -10,10 +10,10 @@ define(['underscore'], function(_) {
 
 'use strict';
 
-var deps = ['$rootScope', '$http', '$location', 'svcModel'];
-return {svcResource: deps.concat(factory)};
+var deps = ['$rootScope', '$http', '$location', 'ModelService'];
+return {ResourceService: deps.concat(factory)};
 
-function factory($rootScope, $http, $location, svcModel) {
+function factory($rootScope, $http, $location, ModelService) {
   var service = {};
 
   // create a new collection
@@ -66,7 +66,7 @@ function factory($rootScope, $http, $location, svcModel) {
       .then(function(response) {
         // update expiration time and collection
         self.expires = Date.now() + self.maxAge;
-        svcModel.replaceArray(self.storage, response.data);
+        ModelService.replaceArray(self.storage, response.data);
         return self.finishLoading().then(function() {
           $rootScope.$apply();
           return self.storage;
@@ -96,7 +96,7 @@ function factory($rootScope, $http, $location, svcModel) {
     return Promise.resolve($http.get(resourceId, config))
       .then(function(response) {
         // update collection but not collection expiration time
-        svcModel.replaceInArray(self.storage, response.data);
+        ModelService.replaceInArray(self.storage, response.data);
         return self.finishLoading().then(function() {
           $rootScope.$apply();
           return response.data;
@@ -179,7 +179,7 @@ function factory($rootScope, $http, $location, svcModel) {
         // don't update collection expiration time
         // update collection if resource present
         if(_.findWhere(self.storage, {id: resourceId})) {
-          svcModel.removeFromArray(resourceId, self.storage);
+          ModelService.removeFromArray(resourceId, self.storage);
         }
         return self.finishLoading().then(function() {
           $rootScope.$apply();

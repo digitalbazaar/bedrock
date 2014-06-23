@@ -9,11 +9,11 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcAlert', 'svcModal'];
-return {modalEditKey: deps.concat(factory)};
+var deps = ['AlertService', 'KeyService', 'ModalService', 'config'];
+return {editKeyModal: deps.concat(factory)};
 
-function factory(svcAlert, svcModal) {
-  function Ctrl($scope, config, svcKey) {
+function factory(AlertService, KeyService, ModalService, config) {
+  function Ctrl($scope) {
     var model = $scope.model = {};
     model.identity = config.data.identity || {};
     model.mode = 'edit';
@@ -31,25 +31,25 @@ function factory(svcAlert, svcModal) {
       };
 
       model.loading = true;
-      svcAlert.clearModalFeedback($scope);
-      var promise = svcKey.collection.update(key);
+      AlertService.clearModalFeedback($scope);
+      var promise = KeyService.collection.update(key);
       promise.then(function(key) {
         model.loading = false;
         $scope.modal.close(null, key);
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         $scope.$apply();
       });
     };
   }
 
-  return svcModal.directive({
-    name: 'EditKey',
+  return ModalService.directive({
+    name: 'editKey',
     scope: {sourceKey: '=key'},
     templateUrl: '/app/components/key/edit-key-modal.html',
-    controller: ['$scope', 'config', 'svcKey', Ctrl]
+    controller: ['$scope', Ctrl]
   });
 }
 

@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['svcAlert', 'svcModal', 'svcIdentity'];
-return {modalAddIdentity: deps.concat(factory)};
+var deps = ['AlertService', 'ModalService', 'IdentityService'];
+return {addIdentityModal: deps.concat(factory)};
 
-function factory(svcAlert, svcModal, svcIdentity) {
+function factory(AlertService, ModalService, IdentityService) {
   function Ctrl($scope, config) {
     $scope.model = {};
     $scope.data = config.data;
@@ -38,22 +38,22 @@ function factory(svcAlert, svcModal, svcIdentity) {
       identity.label = $scope.identityLabel;
       identity.sysSlug = $scope.identitySlug;
       $scope.loading = true;
-      svcAlert.clearModalFeedback($scope);
-      var promise = svcIdentity.add(identity);
+      AlertService.clearModalFeedback($scope);
+      var promise = IdentityService.add(identity);
       promise.then(function(identity) {
         $scope.loading = false;
         $scope.modal.close(null, {identity: identity});
         $scope.$apply();
       }).catch(function(err) {
         $scope.loading = false;
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         $scope.$apply();
       });
     };
   }
 
-  return svcModal.directive({
-    name: 'AddIdentity',
+  return ModalService.directive({
+    name: 'addIdentity',
     scope: {
       identityTypes: '='
     },

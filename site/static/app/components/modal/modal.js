@@ -10,14 +10,14 @@ define([
   './modal-service',
   './alert-modal-directive',
   './modal-footer-directive'
-], function(angular, service, modalAlert, modalFooter) {
+], function(angular, service, alertModal, modalFooter) {
 
 'use strict';
 
 var module = angular.module('app.modal', []);
 
 module.service(service);
-module.directive(modalAlert);
+module.directive(alertModal);
 module.directive(modalFooter);
 
 });

@@ -7,18 +7,18 @@
  */
 define(['forge/pki'], function(pki) {
 
-var deps = ['svcAlert', 'svcModal', 'svcKey'];
-return {modalGenerateKeyPair: deps.concat(factory)};
+var deps = ['AlertService', 'ModalService', 'KeyService'];
+return {generateKeyPairModal: deps.concat(factory)};
 
-function factory(svcAlert, svcModal) {
-  function Ctrl($scope, config, svcKey) {
+function factory(AlertService, ModalService, KeyService) {
+  function Ctrl($scope, config) {
     var model = $scope.model = {};
     model.identity = config.data.identity;
     model.mode = 'generate';
     model.loading = false;
     model.success = false;
     model.state = {
-      keys: svcKey.state
+      keys: KeyService.state
     };
     model.key = {
       '@context': config.data.contextUrl,
@@ -30,7 +30,7 @@ function factory(svcAlert, svcModal) {
 
     model.generateKeyPair = function() {
       model.loading = true;
-      svcAlert.clearModalFeedback($scope);
+      AlertService.clearModalFeedback($scope);
       var promise = new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
@@ -60,21 +60,21 @@ function factory(svcAlert, svcModal) {
       }).catch(function(err) {
         model.loading = false;
         model.success = false;
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         $scope.$apply();
       });
     };
 
     model.addKey = function() {
       model.loading = true;
-      svcAlert.clearModalFeedback($scope);
-      var promise = svcKey.collection.add(model.key);
+      AlertService.clearModalFeedback($scope);
+      var promise = KeyService.collection.add(model.key);
       promise.then(function(key) {
         model.loading = false;
         $scope.modal.close(null, key);
         $scope.$apply();
       }).catch(function(err) {
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         model.success = false;
         $scope.model.loading = false;
         $scope.$apply();
@@ -82,11 +82,11 @@ function factory(svcAlert, svcModal) {
     };
   }
 
-  return svcModal.directive({
-    name: 'GenerateKeyPair',
+  return ModalService.directive({
+    name: 'generateKeyPair',
     scope: {},
     templateUrl: '/app/components/key/generate-key-pair-modal.html',
-    controller: ['$scope', 'config', 'svcKey', Ctrl]
+    controller: ['$scope', 'config', Ctrl]
   });
 }
 

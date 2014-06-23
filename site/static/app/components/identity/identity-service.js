@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['config', '$http', '$rootScope', 'svcResource'];
-return {svcIdentity: deps.concat(factory)};
+var deps = ['$rootScope', 'ResourceService', 'config'];
+return {IdentityService: deps.concat(factory)};
 
-function factory(config, $http, $rootScope, svcResource) {
+function factory($rootScope, ResourceService, config) {
   var service = {};
 
   var session = config.data.session || {auth: false};
@@ -23,7 +23,7 @@ function factory(config, $http, $rootScope, svcResource) {
     service.identities.push(identity);
   });
 
-  service.collection = new svcResource.Collection({
+  service.collection = new ResourceService.Collection({
     url: config.data.identityBaseUri
   });
   // FIXME: update other code so common collection can be used

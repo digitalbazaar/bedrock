@@ -11,12 +11,15 @@ define(['angular'], function(angular) {
 'use strict';
 
 var deps = [
-  '$location', '$routeParams', '$sce', '$timeout', 'svcAlert', 'svcModal'
+  '$location', '$routeParams', '$sce', '$timeout',
+  'AlertService', 'KeyService', 'ModalService', 'config'
 ];
-return {modalAddKey: deps.concat(factory)};
+return {addKeyModal: deps.concat(factory)};
 
-function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
-  function Ctrl($scope, config, svcKey) {
+function factory(
+  $location, $routeParams, $sce, $timeout,
+  AlertService, KeyService, ModalService, config) {
+  function Ctrl($scope) {
     var model = $scope.model = {};
     model.identity = config.data.identity;
     model.mode = 'add';
@@ -25,7 +28,7 @@ function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
     model.registrationCallback = null;
     model.callbackKey = null;
     model.state = {
-      keys: svcKey.state
+      keys: KeyService.state
     };
     model.key = {
       '@context': config.data.contextUrl,
@@ -43,9 +46,9 @@ function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
     model.needPem = !model.key.publicKeyPem;
 
     model.addKey = function() {
-      svcAlert.clearModalFeedback($scope);
+      AlertService.clearModalFeedback($scope);
       model.loading = true;
-      var promise = svcKey.collection.add(model.key);
+      var promise = KeyService.collection.add(model.key);
       promise.then(function(key) {
         // replace key with newly created key data
         model.key = key;
@@ -77,7 +80,7 @@ function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
         $scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        svcAlert.add('error', err);
+        AlertService.add('error', err);
         $scope.$apply();
       });
     };
@@ -93,11 +96,11 @@ function factory($location, $routeParams, $sce, $timeout, svcAlert, svcModal) {
     };
   }
 
-  return svcModal.directive({
-    name: 'AddKey',
+  return ModalService.directive({
+    name: 'addKey',
     scope: {},
     templateUrl: '/app/components/key/add-key-modal.html',
-    controller: ['$scope', 'config', 'svcKey', Ctrl]
+    controller: ['$scope', Ctrl]
   });
 }
 

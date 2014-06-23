@@ -10,17 +10,13 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'config', 'svcIdentity'];
-return {SettingsCtrl: deps.concat(factory)};
+var deps = ['$scope', 'IdentityService', 'config'];
+return {SettingsController: deps.concat(factory)};
 
-function factory($scope, config, svcIdentity) {
-  // TODO: use model instead of scope directly
-  var model = $scope.model = {};
-  $scope.identity = svcIdentity.identity;
-  $scope.state = {};
-  $scope.modals = {};
-
-  $scope.panes = config.settings.panes;
+function factory($scope, IdentityService, config) {
+  var self = this;
+  self.identity = IdentityService.identity;
+  self.panes = config.settings.panes;
 
   function refresh(force) {
     var opts = {force: !!force};

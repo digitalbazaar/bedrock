@@ -11,21 +11,18 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'svcModel', 'svcKey'];
-return {KeyCtrl: deps.concat(factory)};
+var deps = ['$scope', 'ModelService', 'KeyService'];
+return {KeyController: deps.concat(factory)};
 
-function factory($scope, svcModel, svcKey) {
-  var model = $scope.model = {};
-  $scope.state = svcKey.state;
-  $scope.modals = {};
-
-  model.key = {};
+function factory($scope, ModelService, KeyService) {
+  var self = this;
+  self.key = {};
 
   function refresh(force) {
     var opts = {force: !!force};
-    svcKey.collection.getCurrent(opts)
+    KeyService.collection.getCurrent(opts)
       .then(function(key) {
-        svcModel.replace(model.key, key);
+        ModelService.replace(self.key, key);
         $scope.$apply();
       });
   }

@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 var deps = ['$rootScope'];
-return {svcModel: deps.concat(factory)};
+return {ModelService: deps.concat(factory)};
 
 function factory($rootScope) {
   var service = {};

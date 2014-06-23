@@ -1,4 +1,4 @@
-<div data-ng-controller="NavbarCtrl" class="ng-cloak">
+<div data-ng-controller="NavbarController as model" class="ng-cloak">
   <div class="navbar">
     <div class="navbar-inner navbar-inner-banner">
       <div class="container">
@@ -36,7 +36,7 @@
             data-popover-visible="model.showHovercard"
             data-title="{{model.session.identity.label}}"
             data-placement="bottom">
-          <div data-modal-login="model.showLogin" data-modal-escape="model.allowLoginEscape"></div>
+          <div data-login-modal="model.showLogin" data-modal-escape="model.allowLoginEscape"></div>
             <i class="icon-user"></i>
           </a>
           <a class="navbar-link pull-right" style="line-height:45px"

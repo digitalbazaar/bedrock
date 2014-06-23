@@ -10,26 +10,26 @@ define([], function() {
 'use strict';
 
 var deps = [
-  '$scope', 'config', '$http', '$location', '$sanitize', 'svcIdentity'];
-return {IdentityCredentialsCtrl: deps.concat(factory)};
+  '$scope', 'config', '$http', '$location', '$sanitize', 'IdentityService'];
+return {IdentityCredentialsController: deps.concat(factory)};
 
-function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
-  var model = $scope.model = {};
-  model.loading = false;
-  model.feedback = {};
-  model.identity = svcIdentity.identity;
-  model.identityCredentials = config.data.identityCredentials;
+function factory($scope, config, $http, $location, $sanitize, IdentityService) {
+  var self = this;
+  self.loading = false;
+  self.feedback = {};
+  self.identity = IdentityService.identity;
+  self.identityCredentials = config.data.identityCredentials;
 
-  model.authorize = function(accept) {
+  self.authorize = function(accept) {
     // TODO: modify query to reflect user's choices from UI
     var query;
     if(accept) {
-      query = model.identityCredentials.query;
+      query = self.identityCredentials.query;
     } else {
       query = {'@context': 'https://w3id.org/identity/v1'};
     }
-    model.loading = true;
-    model.feedback.error = null;
+    self.loading = true;
+    self.feedback.error = null;
     Promise.resolve($http.post($location.absUrl() + '&authorize=true', {
       query: JSON.stringify(query)
     })).then(function(response) {
@@ -38,13 +38,13 @@ function factory($scope, config, $http, $location, $sanitize, svcIdentity) {
       var identity = $sanitize(JSON.stringify(response.data));
       var form = document.createElement('form');
       form.setAttribute('method', 'post');
-      form.setAttribute('action', model.identityCredentials.callback);
+      form.setAttribute('action', self.identityCredentials.callback);
       form.innerHTML =
         '<input type="hidden" name="identity" value="' + identity + '" />';
       form.submit();
     }).catch(function(err) {
-      model.loading = false;
-      model.feedback.error = err;
+      self.loading = false;
+      self.feedback.error = err;
       $scope.$apply();
     });
   };

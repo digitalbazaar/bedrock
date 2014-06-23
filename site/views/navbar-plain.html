@@ -1,4 +1,4 @@
-<div data-ng-controller="NavbarCtrl" class="ng-cloak">
+<div data-ng-controller="NavbarController as model" class="ng-cloak">
   <div class="navbar">
     <div class="navbar-inner navbar-inner-banner">
       <div class="container">
@@ -6,7 +6,7 @@
           {% if style.brand.src %}
           <img class="brand-minimal" src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
           {% else %}
-          {{siteTitle}
+          {{siteTitle}}
           {% endif %}
         </a>
       </div>

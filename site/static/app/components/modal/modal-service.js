@@ -11,11 +11,12 @@ define(['angular', 'jquery'], function(angular, $) {
 
 var deps = [
   '$compile', '$parse', '$controller', '$rootScope',
-  '$templateCache', 'svcTemplateCache'];
-return {svcModal: deps.concat(factory)};
+  '$templateCache', 'TemplateCacheService'];
+return {ModalService: deps.concat(factory)};
 
 function factory(
-  $compile, $parse, $controller, $rootScope, $templateCache, svcTemplateCache) {
+  $compile, $parse, $controller, $rootScope, $templateCache,
+  TemplateCacheService) {
   var service = {};
 
   // the stack of currently open modals
@@ -81,7 +82,7 @@ function factory(
       _closeCallback: '&modalOnClose'
     };
     if('name' in options) {
-      isolatedScope.visible = '=modal' + options.name;
+      isolatedScope.visible = '=' + options.name + 'Modal';
     }
     angular.extend(isolatedScope, options.scope || {});
     options.controller = options.controller || angular.noop;
@@ -93,7 +94,7 @@ function factory(
         // link function
         return function(scope, element, attrs) {
           // pre-fetch modal template
-          svcTemplateCache.get(options.templateUrl, function(err, data) {
+          TemplateCacheService.get(options.templateUrl, function(err, data) {
             // create modal when visible is true, destroy when false
             var modal = null;
             scope.$watch('visible', function(value) {

@@ -11,17 +11,17 @@ define([], function() {
 'use strict';
 
 var deps = ['$scope', '$http', '$window', 'config'];
-return {CreateIdentityCtrl: deps.concat(factory)};
+return {CreateIdentityController: deps.concat(factory)};
 
 function factory($scope, $http, $window, config) {
-  $scope.model = {};
-  $scope.data = config.data;
-  $scope.feedback = {};
+  var self = this;
+  self.data = config.data;
+  self.feedback = {};
   // FIXME: temporary code to be removed after feedback improvements.
   //      : also remove the id fom the form in create.tpl.
-  $scope.feedbackTarget = $('#createIdentityFeedbackTarget');
-  $scope.loading = false;
-  $scope.identity = {
+  self.feedbackTarget = $('#createIdentityFeedbackTarget');
+  self.loading = false;
+  self.identity = {
     '@context': config.data.contextUrl,
     type: 'Identity',
     label: '',
@@ -30,20 +30,20 @@ function factory($scope, $http, $window, config) {
     sysPublic: [],
     sysSlug: ''
   };
-  $scope.agreementChecked = false;
+  self.agreementChecked = false;
 
-  $scope.submit = function() {
-    if(!$scope.agreementChecked) {
+  self.submit = function() {
+    if(!self.agreementChecked) {
       return false;
     }
-    $scope.loading = true;
-    Promise.resolve($http.post('/join', $scope.identity))
+    self.loading = true;
+    Promise.resolve($http.post('/join', self.identity))
       .then(function(response) {
         // redirect to new dashboard
         $window.location = response.data.id + '/dashboard';
       }).catch(function(err) {
-        $scope.loading = false;
-        $scope.feedback.error = err;
+        self.loading = false;
+        self.feedback.error = err;
         $scope.$apply();
       });
   };

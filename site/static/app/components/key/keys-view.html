@@ -1,7 +1,7 @@
-<div class="section section-keys" data-ng-controller="KeysCtrl">
+<div class="section section-keys" data-ng-controller="KeysController as model">
   <h3 class="headline">
     Keys
-    <span data-ng-hide="state.loading" class="btn-group pull-right">
+    <span data-ng-hide="model.state.loading" class="btn-group pull-right">
       <a class="btn"
         data-popover-template="/app/components/key/keys-view-menu.html"
         data-popover-visible="model.showKeysMenu"
@@ -9,11 +9,11 @@
         <i class="icon-reorder"></i>
       </a>
     </span>
-    <span data-ng-show="state.loading" class="pull-right">
-      <span data-spinner="state.loading" data-spinner-class="h3-spinner"></span>
+    <span data-ng-show="model.state.loading" class="pull-right">
+      <span data-spinner="model.state.loading" data-spinner-class="h3-spinner"></span>
     </span>
   </h3>
-  <table class="table table-condensed" data-ng-show="state.loading || keys.length > 0">
+  <table class="table table-condensed" data-ng-show="model.state.loading || model.keys.length > 0">
     <thead>
       <tr>
         <th>Name</th>
@@ -22,11 +22,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys" data-ng-repeat="key in keys | orderBy:'label' | orderBy:'sysStatus':reverse">
+      <tr data-ng-repeat="key in model.keys | orderBy:'label' | orderBy:'sysStatus':reverse"
+        data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys">
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
-          <span data-ng-show="identity.sysSigningKey == key.id"
+          <span data-ng-show="model.identity.sysSigningKey == key.id"
             data-tooltip-title="This is the default signing key."
             data-placement="bottom" data-trigger="hover"><i class="icon icon-star"></i></span>
         </td>
@@ -49,21 +50,21 @@
       </tr>
     </tbody>
   </table>
-  <div data-ng-show="!state.loading && keys.length == 0">
+  <div data-ng-show="!model.state.loading && model.keys.length == 0">
     <p class="center">You have no keys associated with this identity.
     Access keys can be added by using an external website or application
     or one can be generated that this site controls.</p>
   </div>
-  <div data-modal-generate-key-pair="modals.showGenerateKeyPair"></div>
-  <div data-modal-add-key="modals.showAddKey"></div>
-  <div data-modal-edit-key="modals.showEditKey" data-key="modals.key"></div>
+  <div data-generate-key-pair-modal="model.modals.showGenerateKeyPair"></div>
+  <div data-add-key-modal="model.modals.showAddKey"></div>
+  <div data-edit-key-modal="model.modals.showEditKey" data-key="model.modals.key"></div>
 
   <!-- Revoking key alert -->
-  <div data-modal-alert="modals.showRevokeKeyAlert"
+  <div data-alert-modal="model.modals.showRevokeKeyAlert"
     data-modal-header="Warning"
     data-modal-ok="Revoke"
     data-modal-cancel="Cancel"
-    data-modal-on-close="confirmRevokeKey(err, result)">
+    data-modal-on-close="model.confirmRevokeKey(err, result)">
     <div class="center alert">
       <strong>Warning!</strong>
       Revoking a key is permanent.
