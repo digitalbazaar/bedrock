@@ -12,9 +12,9 @@ define([
   'bedrock/app/components/feedback/feedback',
   'bedrock/app/components/modal/modal',
   'bedrock/app/components/placeholder/placeholder',
-  'bedrock/app/components/popoverTemplate/popoverTemplate',
+  'bedrock/app/components/popover-template/popover-template',
   'bedrock/app/components/spinner/spinner',
-  'bedrock/app/components/submitForm/submitForm',
+  'bedrock/app/components/submit-form/submit-form',
   'bedrock/app/components/tabs/tabs',
   'bedrock/app/components/util/util'
 ], function(angular) {
