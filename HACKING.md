@@ -32,7 +32,7 @@ Reason To (TM).
   declare nearest to where variables are used. You may declare simple iterator
   vars for loops multiple times in the same function, functional-scope
   notwithstanding.
-* Do not use trailing commas.
+* Do not use trailing commas (for example: [foo, bar,]).
 * Line break at 80 chars; if you must line break for function parameters, line
   break at the opening parenthesis and move all parameters down, do not
   break in the middle of the parameter list. The only exception to this is
