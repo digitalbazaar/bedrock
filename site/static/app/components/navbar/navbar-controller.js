@@ -9,16 +9,16 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$rootScope', 'config'];
+var deps = ['$scope', '$rootScope', 'RefreshService', 'config'];
 return {NavbarController: deps.concat(factory)};
 
-function factory($scope, $rootScope, config) {
+function factory($scope, $rootScope, RefreshService, config) {
   var self = this;
   self.session = config.data.session;
   self.navbar = config.site.navbar;
 
-  $scope.refreshData = function() {
-    $rootScope.$broadcast('refreshData');
+  self.refreshData = function() {
+    RefreshService.refresh();
     $scope.setVisible(false);
   };
 

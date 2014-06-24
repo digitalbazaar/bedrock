@@ -24,6 +24,7 @@ define([
   './mouseover-toggle-directive',
   './now-filter',
   './prefill-filter',
+  './refresh-service',
   './resource-service',
   './template-cache-service',
   './tooltip-title-directive',
@@ -31,8 +32,9 @@ define([
 ], function(
   angular, alertService, alerts, animate, ceil, ellipsis, embeddedString,
   encodeURIComponent_, error, floor, focusToggle, helpToggle,
-  inputWatcher, mask, model, mouseoverToggle, now, prefill, resource,
-  templateCache, tooltipTitle, trackState) {
+  inputWatcher, mask, modelService, mouseoverToggle, now, prefill,
+  refreshService, resourceService, templateCacheService,
+  tooltipTitle, trackState) {
 
 'use strict';
 
@@ -58,8 +60,9 @@ module.filter(now);
 module.filter(prefill);
 
 module.service(alertService);
-module.service(model);
-module.service(resource);
-module.service(templateCache);
+module.service(modelService);
+module.service(refreshService);
+module.service(resourceService);
+module.service(templateCacheService);
 
 });
