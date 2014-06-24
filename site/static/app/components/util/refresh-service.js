@@ -9,31 +9,44 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$rootScope'];
+var deps = ['$rootScope', 'ResourceService'];
 return {RefreshService: deps.concat(factory)};
 
-function factory($rootScope) {
+function factory($rootScope, ResourceService) {
   var service = {};
 
   /**
-   * Registers a new listener for refresh events.
+   * Registers a ResourceService.Collection or a new listener for refresh
+   * events.
    *
    * @param [scope] the scope to register with (default: $rootScope).
-   * @param fn the function to call when a refresh event occurs.
-   * @param [call] true to call the refresh function after registration.
+   * @param fn the ResourceService.Collection to refresh or the function to
+   *          call when a refresh event occurs.
+   *
+   * @return the registered ResourceService.Collection or function.
    */
-  service.register = function(scope, fn, call) {
-    if(typeof scope === 'function') {
-      if(typeof fn === 'boolean') {
-        call = fn;
-      }
+  service.register = function(scope, fn) {
+    if(typeof scope === 'function' ||
+      scope instanceof ResourceService.Collection) {
       fn = scope;
       scope = $rootScope;
     }
-    scope.$on('refreshData', fn);
-    if(call) {
-      fn();
+    if(fn instanceof ResourceService.Collection) {
+      // TODO: add a 'refreshIfAfter' datetime option to collection API
+      var collection = fn;
+      fn = function() {
+        collection.getAll({force: true});
+      };
     }
+
+    if(typeof fn !== 'function') {
+      throw new TypeError(
+        'Registration parameter must be a ' +
+        'ResourceService.Collection or a function.');
+    }
+
+    scope.$on('refreshData', fn);
+    return fn;
   };
 
   /**

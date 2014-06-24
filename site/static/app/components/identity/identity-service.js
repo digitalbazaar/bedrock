@@ -9,10 +9,10 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$rootScope', 'ResourceService', 'config'];
+var deps = ['$rootScope', 'RefreshService', 'ResourceService', 'config'];
 return {IdentityService: deps.concat(factory)};
 
-function factory($rootScope, ResourceService, config) {
+function factory($rootScope, RefreshService, ResourceService, config) {
   var service = {};
 
   var session = config.data.session || {auth: false};
@@ -39,6 +39,14 @@ function factory($rootScope, ResourceService, config) {
         service.identities.push(identity);
       });
   };
+
+  // register for system-wide refreshes
+  RefreshService.register(function() {
+    if(service.identity) {
+      service.collection.get(service.identity.id);
+    }
+    // TODO: refresh all identities in the map?
+  });
 
   // expose service to scope
   $rootScope.app.services.identity = service;

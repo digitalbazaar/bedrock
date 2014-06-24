@@ -10,11 +10,10 @@ define([], function() {
 
 'use strict';
 
-var deps = [
-  '$scope', '$routeParams', 'IdentityService', 'KeyService', 'config'];
+var deps = ['$routeParams', 'IdentityService', 'KeyService', 'config'];
 return {KeysController: deps.concat(factory)};
 
-function factory($scope, $routeParams, IdentityService, KeyService, config) {
+function factory($routeParams, IdentityService, KeyService, config) {
   var self = this;
   self.identity = IdentityService.identity;
   self.state = KeyService.state;
@@ -61,14 +60,7 @@ function factory($scope, $routeParams, IdentityService, KeyService, config) {
     self.modals.key = null;
   };
 
-  function refresh(force) {
-    var opts = {force: !!force};
-    KeyService.collection.getAll(opts);
-  }
-  $scope.$on('refreshData', function() {
-    refresh(true);
-  });
-  refresh();
+  KeyService.collection.getAll();
 }
 
 });

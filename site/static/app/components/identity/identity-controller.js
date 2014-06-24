@@ -11,14 +11,14 @@ define(['jsonld'], function(jsonld) {
 
 'use strict';
 
-var deps = ['$scope', 'IdentityService', 'ModelService'];
+var deps = ['$scope', 'IdentityService', 'ModelService', 'RefreshService'];
 return {IdentityController: deps.concat(factory)};
 
-function factory($scope, IdentityService, ModelService) {
+function factory($scope, IdentityService, ModelService, RefreshService) {
   var self = this;
   self.identity = {};
 
-  function refresh(force) {
+  RefreshService.register($scope, function(force) {
     var opts = {force: !!force};
     IdentityService.collection.getCurrent(opts)
       .then(function(identity) {
@@ -27,11 +27,7 @@ function factory($scope, IdentityService, ModelService) {
         ModelService.replace(self.identity, identity);
         $scope.$apply();
       });
-  }
-  $scope.$on('refreshData', function() {
-    refresh(true);
-  });
-  refresh();
+  })();
 }
 
 });

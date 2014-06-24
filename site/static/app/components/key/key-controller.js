@@ -11,25 +11,21 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'ModelService', 'KeyService'];
+var deps = ['$scope', 'ModelService', 'KeyService', 'RefreshService'];
 return {KeyController: deps.concat(factory)};
 
-function factory($scope, ModelService, KeyService) {
+function factory($scope, ModelService, KeyService, RefreshService) {
   var self = this;
   self.key = {};
 
-  function refresh(force) {
+  RefreshService.register($scope, function(force) {
     var opts = {force: !!force};
     KeyService.collection.getCurrent(opts)
       .then(function(key) {
         ModelService.replace(self.key, key);
         $scope.$apply();
       });
-  }
-  $scope.$on('refreshData', function() {
-    refresh(true);
-  });
-  refresh();
+  })();
 }
 
 });

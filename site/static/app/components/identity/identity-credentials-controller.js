@@ -48,14 +48,6 @@ function factory($scope, config, $http, $location, $sanitize, IdentityService) {
       $scope.$apply();
     });
   };
-
-  function refresh(force) {
-    var opts = {force: !!force};
-  }
-  $scope.$on('refreshData', function() {
-    refresh(true);
-  });
-  refresh();
 }
 
 });

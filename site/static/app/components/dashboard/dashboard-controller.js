@@ -10,22 +10,14 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'IdentityService'];
+var deps = ['IdentityService'];
 return {DashboardController: deps.concat(factory)};
 
-function factory($scope, IdentityService) {
+function factory(IdentityService) {
   var self = this;
   self.identity = IdentityService.identity;
   self.state = {};
   self.modals = {};
-
-  function refresh(force) {
-    var opts = {force: !!force};
-  }
-  $scope.$on('refreshData', function() {
-    refresh(true);
-  });
-  refresh();
 }
 
 });

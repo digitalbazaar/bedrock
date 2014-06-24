@@ -10,11 +10,13 @@ define([], function() {
 'use strict';
 
 var deps = [
-  '$rootScope', 'IdentityService', 'ModelService', 'ResourceService', 'config'];
+  '$rootScope', 'IdentityService', 'ModelService', 'RefreshService',
+  'ResourceService', 'config'];
 return {KeyService: deps.concat(factory)};
 
 function factory(
-  $rootScope, IdentityService, ModelService, ResourceService, config) {
+  $rootScope, IdentityService, ModelService, RefreshService,
+  ResourceService, config) {
   var service = {};
 
   service.collection = new ResourceService.Collection({
@@ -42,6 +44,9 @@ function factory(
       revoked: ''
     }, options);
   };
+
+  // register for system-wide refreshes
+  RefreshService.register(service.collection);
 
   // expose service to scope
   $rootScope.app.services.key = service;
