@@ -1,0 +1,52 @@
+{% extends '../layout.html' %}
+
+{% set pageTitle = "API Documentation" %}
+{% set clientData.pageTitle = "API Documentation" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="span10 offset1">
+    <h1 class="headline">REST API Documentation (Coming Soon!)</h1>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="span10 offset1">
+    <p>
+This page contains the RESTful API documentation for {% block docsSystemName %}this system{% endblock %}.
+    </p>
+    <p>
+If you are a developer, this page will help you figure out what you need to
+send to this system in order to access many features:
+<ul>
+{% block docsFeaturesListItems %}
+  <li>Register access keys</li>
+{% endblock %}
+</ul>
+    </p>
+  </div>
+</div>
+
+{#
+{% for category, endpoints in docIndex %}
+<div class="row">
+  <div class="span10 offset1">
+    <h2>{{category}}</h2>
+  </div>
+</div>
+  {% for topic, endpoint in endpoints %}
+<div class="row">
+  <div class="span8 offset2 rest-summary {{endpoint.method}}-background">
+    <span class="rest-verb {{endpoint.method}}">{{endpoint.method}}</span>
+    <a href="?topic={{topic}}" class="rest-path">{{endpoint.path}}</a>
+    <div class="rest-description">{{endpoint.shortDescription}}</div>
+  </div>
+</div>
+  {% endfor %}
+{% endfor %}
+#}
+
+{% endblock %}
