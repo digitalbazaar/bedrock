@@ -23,7 +23,7 @@ function factory($rootScope, ResourceService) {
    * @param fn the ResourceService.Collection to refresh or the function to
    *          call when a refresh event occurs.
    *
-   * @return the registered ResourceService.Collection or function.
+   * @return the registered function that can be called independently.
    */
   service.register = function(scope, fn) {
     if(typeof scope === 'function' ||
@@ -48,6 +48,11 @@ function factory($rootScope, ResourceService) {
     scope.$on('refreshData', fn);
     return fn;
   };
+
+  // TODO: in order to implement unregister, fns would have to be stored
+  // in a separate container and called from a single handler as $scope.$on
+  // has no remove (then $scope.$on('$destroy') would also have to be
+  // attached to remove listeners)
 
   /**
    * Sends a refresh event to all listeners.
