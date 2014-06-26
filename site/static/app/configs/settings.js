@@ -13,10 +13,10 @@ return {
   settings: {
     panes: [
       {
-        templateUrl: '/app/components/settings/identity.html'
+        templateUrl: '/app/components/identity/identity-settings.html'
       },
       {
-        templateUrl: '/app/components/settings/keys.html'
+        templateUrl: '/app/components/key/key-settings.html'
       }
     ]
   }

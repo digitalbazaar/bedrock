@@ -13,11 +13,13 @@ define([
   './identity-service',
   './identity-credentials-controller',
   './identity-selector-directive',
+  './identity-settings-controller',
   './add-identity-modal-directive',
   './credential-verify-service'
 ], function(
   angular, createIdentity, controller, routes, service, identityCredentials,
-  identitySelector, modalAddIdentity, credentialVerifyService) {
+  identitySelector, identitySettingsController, modalAddIdentity,
+  credentialVerifyService) {
 
 'use strict';
 
@@ -26,6 +28,7 @@ var module = angular.module('app.identity', []);
 module.controller(createIdentity);
 module.controller(controller);
 module.controller(identityCredentials.controller);
+module.controller(identitySettingsController);
 module.service(service);
 module.service(credentialVerifyService);
 module.directive(identitySelector);

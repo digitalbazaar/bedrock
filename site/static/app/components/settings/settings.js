@@ -7,17 +7,15 @@
  */
 define([
   'angular',
-  './identity-settings-controller',
   './settings-controller',
   './settings-routes'
-], function(angular, identitySettings, settings, routes) {
+], function(angular, settings, routes) {
 
 'use strict';
 
 var module = angular.module('app.settings', []);
 
 module.controller(settings);
-module.controller(identitySettings);
 
 module.config(['$routeProvider',
   function($routeProvider) {
