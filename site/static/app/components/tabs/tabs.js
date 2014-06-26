@@ -16,4 +16,6 @@ var module = angular.module('app.tabs', []);
 
 module.directive(directive);
 
+return module.name;
+
 });

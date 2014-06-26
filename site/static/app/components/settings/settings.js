@@ -25,4 +25,6 @@ module.config(['$routeProvider',
   }
 ]);
 
+return module.name;
+
 });

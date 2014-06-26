@@ -65,4 +65,6 @@ module.service(refreshService);
 module.service(resourceService);
 module.service(templateCacheService);
 
+return module.name;
+
 });

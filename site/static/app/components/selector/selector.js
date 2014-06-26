@@ -18,4 +18,6 @@ var module = angular.module('app.selector', []);
 module.directive(modalSelector);
 module.directive(selector);
 
+return module.name;
+
 });

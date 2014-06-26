@@ -20,4 +20,6 @@ module.service(service);
 module.directive(alertModal);
 module.directive(modalFooter);
 
+return module.name;
+
 });

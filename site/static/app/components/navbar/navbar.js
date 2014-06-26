@@ -16,4 +16,6 @@ var module = angular.module('app.navbar', []);
 
 module.controller(controller);
 
+return module.name;
+
 });

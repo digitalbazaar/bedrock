@@ -18,4 +18,6 @@ var module = angular.module('app.login', []);
 module.controller(controller);
 module.directive(modalLogin);
 
+return module.name;
+
 });

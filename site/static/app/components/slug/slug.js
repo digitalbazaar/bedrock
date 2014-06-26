@@ -20,4 +20,6 @@ module.filter(filter);
 module.directive(slugIn);
 module.directive(slugOut);
 
+return module.name;
+
 });

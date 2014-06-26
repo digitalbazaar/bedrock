@@ -20,4 +20,6 @@ module.directive(fadein);
 module.directive(fadeout);
 module.directive(fadeToggle);
 
+return module.name;
+
 });

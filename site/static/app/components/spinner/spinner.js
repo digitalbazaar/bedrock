@@ -16,4 +16,6 @@ var module = angular.module('app.spinner', []);
 
 module.directive(directive);
 
+return module.name;
+
 });

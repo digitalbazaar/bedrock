@@ -16,4 +16,6 @@ var module = angular.module('app.popoverTemplate', []);
 
 module.directive(directive);
 
+return module.name;
+
 });

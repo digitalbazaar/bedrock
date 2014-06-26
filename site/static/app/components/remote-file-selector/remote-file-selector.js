@@ -16,4 +16,6 @@ var module = angular.module('app.remoteFileSelector', []);
 
 module.directive(remoteFileSelectorModal);
 
+return module.name;
+
 });
