@@ -9,10 +9,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$parse'];
+var deps = [];
 return {fadeToggle: deps.concat(factory)};
 
-function factory($parse) {
+function factory() {
   return {
     link: function(scope, element, attrs) {
       // init to hidden
