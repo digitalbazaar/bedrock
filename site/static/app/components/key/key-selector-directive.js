@@ -9,40 +9,36 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
+var deps = ['KeyService'];
 return {keySelector: deps.concat(factory)};
 
-function factory() {
-  function Ctrl($scope, KeyService) {
-    var model = $scope.model = {};
-    model.services = {
-      key: KeyService.state
-    };
-    model.keys = KeyService.unrevokedKeys;
-    $scope.$watch('model.keys', function(keys) {
-      if(!$scope.selected || $.inArray($scope.selected, keys) === -1) {
-        $scope.selected = keys[0] || null;
-      }
-    }, true);
-    KeyService.collection.getAll();
-  }
-
-  function Link(scope, element, attrs) {
-    attrs.$observe('fixed', function(value) {
-      scope.fixed = value;
-    });
-  }
-
+function factory(KeyService) {
   return {
     scope: {
       selected: '=',
       invalid: '=',
       fixed: '@'
     },
-    controller: ['$scope', 'KeyService', Ctrl],
     templateUrl: '/app/components/key/key-selector.html',
     link: Link
   };
+
+  function Link(scope, element, attrs) {
+    var model = scope.model = {};
+    model.services = {
+      key: KeyService.state
+    };
+    model.keys = KeyService.unrevokedKeys;
+    scope.$watch('model.keys', function(keys) {
+      if(!scope.selected || $.inArray(scope.selected, keys) === -1) {
+        scope.selected = keys[0] || null;
+      }
+    }, true);
+    attrs.$observe('fixed', function(value) {
+      scope.fixed = value;
+    });
+    KeyService.collection.getAll();
+  }
 }
 
 });

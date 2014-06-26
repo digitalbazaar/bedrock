@@ -9,57 +9,54 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['AlertService', 'ModalService', 'IdentityService'];
+var deps = ['AlertService', 'ModalService', 'IdentityService', 'config'];
 return {addIdentityModal: deps.concat(factory)};
 
-function factory(AlertService, ModalService, IdentityService) {
-  function Ctrl($scope, config) {
-    $scope.model = {};
-    $scope.data = config.data;
-    $scope.baseUrl = config.data.baseUri;
-    $scope.loading = false;
+function factory(AlertService, ModalService, IdentityService, config) {
+  return ModalService.directive({
+    name: 'addIdentity',
+    scope: {identityTypes: '='},
+    templateUrl: '/app/components/identity/add-identity-modal.html',
+    link: Link
+  });
+
+  function Link(scope) {
+    scope.model = {};
+    scope.data = config.data;
+    scope.baseUrl = config.data.baseUri;
+    scope.loading = false;
     // identity
-    $scope.identityType = $scope.identityTypes[0];
-    $scope.identityLabel = '';
-    $scope.identitySlug = '';
-    $scope.identity = {};
-    $scope.identityTypeLabels = {
+    scope.identityType = scope.identityTypes[0];
+    scope.identityLabel = '';
+    scope.identitySlug = '';
+    scope.identity = {};
+    scope.identityTypeLabels = {
       'Identity': 'Identity'
     };
-    angular.forEach($scope.identityTypes, function(type) {
-      $scope.identity[type] = {
+    angular.forEach(scope.identityTypes, function(type) {
+      scope.identity[type] = {
         '@context': config.data.contextUrl,
         type: type
       };
     });
 
-    $scope.addIdentity = function() {
-      var identity = $scope.identity[$scope.identityType];
-      identity.label = $scope.identityLabel;
-      identity.sysSlug = $scope.identitySlug;
-      $scope.loading = true;
-      AlertService.clearModalFeedback($scope);
-      var promise = IdentityService.add(identity);
-      promise.then(function(identity) {
-        $scope.loading = false;
-        $scope.modal.close(null, {identity: identity});
-        $scope.$apply();
+    scope.addIdentity = function() {
+      var identity = scope.identity[scope.identityType];
+      identity.label = scope.identityLabel;
+      identity.sysSlug = scope.identitySlug;
+      scope.loading = true;
+      AlertService.clearModalFeedback(scope);
+      IdentityService.add(identity).then(function(identity) {
+        scope.loading = false;
+        scope.modal.close(null, {identity: identity});
+        scope.$apply();
       }).catch(function(err) {
-        $scope.loading = false;
+        scope.loading = false;
         AlertService.add('error', err);
-        $scope.$apply();
+        scope.$apply();
       });
     };
   }
-
-  return ModalService.directive({
-    name: 'addIdentity',
-    scope: {
-      identityTypes: '='
-    },
-    templateUrl: '/app/components/identity/add-identity-modal.html',
-    controller: ['$scope', 'config', Ctrl]
-  });
 }
 
 });

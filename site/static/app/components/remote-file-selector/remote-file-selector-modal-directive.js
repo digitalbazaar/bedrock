@@ -13,10 +13,17 @@ var deps = ['$http', 'AlertService', 'ModalService'];
 return {remoteFileSelectorModal: deps.concat(factory)};
 
 function factory($http, AlertService, ModalService) {
-  function Ctrl($scope) {
-    var model = $scope.model = {};
+  return ModalService.directive({
+    name: 'remoteFileSelector',
+    templateUrl:
+      '/app/components/remote-file-selector/remote-file-selector-modal.html',
+    link: Link
+  });
 
-    model.remoteFileData = $scope.remoteFileData;
+  function Link(scope) {
+    var model = scope.model = {};
+
+    model.remoteFileData = scope.remoteFileData;
     model.loading = false;
     model.path = null;
     model.pathSeparator = '';
@@ -24,18 +31,18 @@ function factory($http, AlertService, ModalService) {
     model.selectedDirectory = '';
 
     // watch the selected path, file, directory, and path components
-    $scope.$watch('model.path', function(value) {
+    scope.$watch('model.path', function(value) {
       if(value) {
         model.changeDirectory(value);
       }
     });
-    $scope.$watch('model.selectedFile', function(value) {
+    scope.$watch('model.selectedFile', function(value) {
       if(value) {
         var filename = model.path + model.separator + value.filename;
         model.selectFile(filename);
       }
     });
-    $scope.$watch('model.selectedDirectory', function(value) {
+    scope.$watch('model.selectedDirectory', function(value) {
       var directory =
         model.path + model.separator + model.selectedDirectory.filename;
       model.changeDirectory(directory);
@@ -57,15 +64,15 @@ function factory($http, AlertService, ModalService) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
-      AlertService.clearModalFeedback($scope);
+      AlertService.clearModalFeedback(scope);
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
-        $scope.modal.close(null, response.data);
-        $scope.$apply();
+        scope.modal.close(null, response.data);
+        scope.$apply();
       }).catch(function(err) {
         model.loading = false;
         AlertService.add('error', err);
-        $scope.$apply();
+        scope.$apply();
       });
     };
 
@@ -77,30 +84,23 @@ function factory($http, AlertService, ModalService) {
       }
 
       model.loading = true;
-      AlertService.clearModalFeedback($scope);
+      AlertService.clearModalFeedback(scope);
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         model.pathContents = response.data;
         model.path = response.data.path;
         model.separator = response.data.separator;
-        $scope.$apply();
+        scope.$apply();
       }).catch(function(err) {
         model.loading = false;
         AlertService.add('error', err);
-        $scope.$apply();
+        scope.$apply();
       });
     };
 
     // initialize the file list
     model.getFileList();
   }
-
-  return ModalService.directive({
-    name: 'remoteFileSelector',
-    templateUrl:
-      '/app/components/remote-file-selector/remote-file-selector-modal.html',
-    controller: ['$scope', Ctrl]
-  });
 }
 
 });

@@ -90,7 +90,7 @@ function factory($compile, AlertService) {
       feedback: '=',
       target: '=?'
     },
-    link: function(scope, element, attrs) {
+    link: function(scope, element) {
       // no target specified
       if(!('target' in scope)) {
         // select forms in an adjacent modal-body first, then any parent form,

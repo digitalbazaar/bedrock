@@ -19,8 +19,15 @@ return {addKeyModal: deps.concat(factory)};
 function factory(
   $location, $routeParams, $sce, $timeout,
   AlertService, KeyService, ModalService, config) {
-  function Ctrl($scope) {
-    var model = $scope.model = {};
+  return ModalService.directive({
+    name: 'addKey',
+    scope: {},
+    templateUrl: '/app/components/key/add-key-modal.html',
+    link: Link
+  });
+
+  function Link(scope) {
+    var model = scope.model = {};
     model.identity = config.data.identity;
     model.mode = 'add';
     model.loading = false;
@@ -46,10 +53,9 @@ function factory(
     model.needPem = !model.key.publicKeyPem;
 
     model.addKey = function() {
-      AlertService.clearModalFeedback($scope);
+      AlertService.clearModalFeedback(scope);
       model.loading = true;
-      var promise = KeyService.collection.add(model.key);
-      promise.then(function(key) {
+      KeyService.collection.add(model.key).then(function(key) {
         // replace key with newly created key data
         model.key = key;
         model.success = true;
@@ -62,7 +68,7 @@ function factory(
             '@context': config.data.contextUrl,
             id: key.id
           };
-          $scope.$apply();
+          scope.$apply();
 
           // attempt to auto-submit the form back to the registering site
           model.submit();
@@ -70,18 +76,18 @@ function factory(
           // show the manual completion button after a timeout period
           $timeout(function() {
             model.loading = false;
-            $scope.$apply();
+            scope.$apply();
           }, 5000);
         } else {
           // clear query params
           $location.search({});
           model.loading = false;
         }
-        $scope.$apply();
+        scope.$apply();
       }).catch(function(err) {
         model.loading = false;
         AlertService.add('error', err);
-        $scope.$apply();
+        scope.$apply();
       });
     };
 
@@ -91,17 +97,10 @@ function factory(
     };
 
     model.done = function() {
-      $scope.modal.close(null, model.key);
-      $scope.$apply();
+      scope.modal.close(null, model.key);
+      scope.$apply();
     };
   }
-
-  return ModalService.directive({
-    name: 'addKey',
-    scope: {},
-    templateUrl: '/app/components/key/add-key-modal.html',
-    controller: ['$scope', Ctrl]
-  });
 }
 
 });

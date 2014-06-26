@@ -13,12 +13,6 @@ var deps = [];
 return {identitySelector: deps.concat(factory)};
 
 function factory() {
-  function Link(scope, element, attrs) {
-    attrs.$observe('fixed', function(value) {
-      scope.fixed = value;
-    });
-  }
-
   return {
     scope: {
       identityTypes: '=',
@@ -30,6 +24,12 @@ function factory() {
     templateUrl: '/app/components/identity/identity-selector.html',
     link: Link
   };
+
+  function Link(scope, element, attrs) {
+    attrs.$observe('fixed', function(value) {
+      scope.fixed = value;
+    });
+  }
 }
 
 });

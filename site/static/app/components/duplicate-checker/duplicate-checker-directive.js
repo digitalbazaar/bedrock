@@ -28,7 +28,7 @@ function factory($http, $filter, AlertService, config) {
     link: Link
   };
 
-  function Link(scope, element, attrs) {
+  function Link(scope, element) {
     scope.data = config.data || {};
 
     // hide feedback until input changes

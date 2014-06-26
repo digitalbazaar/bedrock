@@ -7,12 +7,19 @@
  */
 define(['forge/pki'], function(pki) {
 
-var deps = ['AlertService', 'ModalService', 'KeyService'];
+var deps = ['AlertService', 'ModalService', 'KeyService', 'config'];
 return {generateKeyPairModal: deps.concat(factory)};
 
-function factory(AlertService, ModalService, KeyService) {
-  function Ctrl($scope, config) {
-    var model = $scope.model = {};
+function factory(AlertService, ModalService, KeyService, config) {
+  return ModalService.directive({
+    name: 'generateKeyPair',
+    scope: {},
+    templateUrl: '/app/components/key/generate-key-pair-modal.html',
+    link: Link
+  });
+
+  function Link(scope) {
+    var model = scope.model = {};
     model.identity = config.data.identity;
     model.mode = 'generate';
     model.loading = false;
@@ -30,8 +37,8 @@ function factory(AlertService, ModalService, KeyService) {
 
     model.generateKeyPair = function() {
       model.loading = true;
-      AlertService.clearModalFeedback($scope);
-      var promise = new Promise(function(resolve, reject) {
+      AlertService.clearModalFeedback(scope);
+      new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
           bits: bits,
@@ -45,8 +52,7 @@ function factory(AlertService, ModalService, KeyService) {
             resolve(keypair);
           }
         });
-      });
-      promise.then(function(keypair) {
+      }).then(function(keypair) {
         var pem = {
           privateKey: forge.pki.privateKeyToPem(keypair.privateKey),
           publicKey: forge.pki.publicKeyToPem(keypair.publicKey)
@@ -56,38 +62,31 @@ function factory(AlertService, ModalService, KeyService) {
 
         model.loading = false;
         model.success = true;
-        $scope.$apply();
+        scope.$apply();
       }).catch(function(err) {
         model.loading = false;
         model.success = false;
         AlertService.add('error', err);
-        $scope.$apply();
+        scope.$apply();
       });
     };
 
     model.addKey = function() {
       model.loading = true;
-      AlertService.clearModalFeedback($scope);
+      AlertService.clearModalFeedback(scope);
       var promise = KeyService.collection.add(model.key);
       promise.then(function(key) {
         model.loading = false;
-        $scope.modal.close(null, key);
-        $scope.$apply();
+        scope.modal.close(null, key);
+        scope.$apply();
       }).catch(function(err) {
         AlertService.add('error', err);
         model.success = false;
-        $scope.model.loading = false;
-        $scope.$apply();
+        scope.model.loading = false;
+        scope.$apply();
       });
     };
   }
-
-  return ModalService.directive({
-    name: 'generateKeyPair',
-    scope: {},
-    templateUrl: '/app/components/key/generate-key-pair-modal.html',
-    controller: ['$scope', 'config', Ctrl]
-  });
 }
 
 });
