@@ -69,9 +69,10 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
   // verifies an email address for the current identity
   service.verifyEmail = function(passcode) {
     if(!service.identity) {
-      $rootScope.$emit('showLoginModal');
-      return Promise.reject(new Error(
-        'You must be logged in to verify an email address.'));
+      var err = new Error(
+        'You must be logged in to verify an email address.');
+      err.type = 'bedrock.website.PermissionDenied';
+      return Promise.reject(err);
     }
     return Promise.resolve($http.post(service.identity.id + '/email/verify', {
       sysPasscode: passcode
