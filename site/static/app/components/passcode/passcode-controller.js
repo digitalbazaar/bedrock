@@ -10,10 +10,10 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$http', 'config'];
+var deps = ['$scope', 'IdentityService', 'config'];
 return {PasscodeController: deps.concat(factory)};
 
-function factory($scope, $http, config) {
+function factory($scope, IdentityService, config) {
   var self = this;
   self.email = config.data.session ? config.data.session.identity.email : '';
   self.sysPasscode = config.data.sysPasscode || '';
@@ -28,9 +28,10 @@ function factory($scope, $http, config) {
   self.sendReset = function() {
     // request a passcode
     resetFeedback();
-    Promise.resolve($http.post('/session/passcode?usage=reset', {
-      sysIdentifier: self.email
-    })).then(function() {
+    IdentityService.sendPasscode({
+      sysIdentifier: self.email,
+      usage: 'reset'
+    }).then(function() {
       self.feedback.email.success = {
         message:
           'An email has been sent to you with password reset instructions.'
@@ -45,11 +46,11 @@ function factory($scope, $http, config) {
   self.updatePassword = function() {
     // request a password reset using the given passcode
     resetFeedback();
-    Promise.resolve($http.post('/session/password/reset', {
+    IdentityService.updatePassword({
       sysIdentifier: self.email,
       sysPasscode: self.sysPasscode,
       sysPasswordNew: self.sysPasswordNew
-    })).then(function() {
+    }).then(function() {
       self.feedback.password.success = {
         message: 'Your password has been updated successfully.'
       };

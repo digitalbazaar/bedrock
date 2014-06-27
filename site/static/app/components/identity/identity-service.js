@@ -9,10 +9,11 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$rootScope', 'RefreshService', 'ResourceService', 'config'];
+var deps = [
+  '$http', '$rootScope', 'RefreshService', 'ResourceService', 'config'];
 return {IdentityService: deps.concat(factory)};
 
-function factory($rootScope, RefreshService, ResourceService, config) {
+function factory($http, $rootScope, RefreshService, ResourceService, config) {
   var service = {};
 
   var session = config.data.session || {auth: false};
@@ -38,6 +39,57 @@ function factory($rootScope, RefreshService, ResourceService, config) {
         service.identityMap[identity.id] = identity;
         service.identities.push(identity);
       });
+  };
+
+  /**
+   * Sends a passcode to the email address associated with the given
+   * identifier to use to either verify an email address or reset a
+   * password.
+   *
+   * @param options the options to use.
+   *          sysIdentifier the identifier to use (ID, email, slug).
+   *          usage 'verify' for a verify email passcode, 'reset' for a
+   *            password-reset passcode.
+   *
+   * @return a Promise.
+   */
+  service.sendPasscode = function(options) {
+    options = options || {};
+    if(['verify', 'reset'].indexOf(options.usage) === -1) {
+      return Promise.reject(new Error(
+        'Invalid usage option: ' + options.usage));
+    }
+    return Promise.resolve($http.post('/session/passcode', {
+      sysIdentifier: options.sysIdentifier
+    }, {
+      params: {usage: options.usage}
+    }));
+  };
+
+  // verifies an email address for the current identity
+  service.verifyEmail = function(passcode) {
+    return Promise.resolve($http.post(identity.id + '/email/verify', {
+      sysPasscode: passcode
+    }));
+  };
+
+  /**
+   * Updates the password for an identity.
+   *
+   * @param options the options to use.
+   *          sysIdentifier the identifier to use (ID, email, slug).
+   *          sysPasscode the passcode required to update the password.
+   *          sysPasswordNew the new password.
+   *
+   * @return a Promise.
+   */
+  service.updatePassword = function(options) {
+    options = options || {};
+    return Promise.resolve($http.post('/session/password/reset', {
+      sysIdentifier: options.sysIdentifier,
+      sysPasscode: options.sysPasscode,
+      sysPasswordNew: options.sysPasswordNew
+    }));
   };
 
   // register for system-wide refreshes
