@@ -12,7 +12,11 @@
       <div data-ng-if="info.type == 'info' && category == app.services.alert.category.FEEDBACK"
         data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
         data-feedback="feedback[$index]"
-        data-ng-init="feedback[$index]={info: info.value}"></div>
+        data-ng-init="feedback[$index]={success: info.value}"></div>
+      <div data-ng-if="info.type == 'success' && category == app.services.alert.category.FEEDBACK"
+        data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
+        data-feedback="feedback[$index]"
+        data-ng-init="feedback[$index]={success: info.value}"></div>
     </div>
   </div>
 </div>

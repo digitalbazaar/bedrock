@@ -68,7 +68,12 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
 
   // verifies an email address for the current identity
   service.verifyEmail = function(passcode) {
-    return Promise.resolve($http.post(identity.id + '/email/verify', {
+    if(!service.identity) {
+      $rootScope.$emit('showLoginModal');
+      return Promise.reject(new Error(
+        'You must be logged in to verify an email address.'));
+    }
+    return Promise.resolve($http.post(service.identity.id + '/email/verify', {
       sysPasscode: passcode
     }));
   };
