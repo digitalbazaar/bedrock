@@ -39,6 +39,7 @@ var postIdentity = {
     url: url({required: false}),
     sysImageType: sysImageType,
     sysGravatarType: sysGravatarType,
+    sysPublic: visibility({required: false}),
     sysSigningKey: identifier({required: false})
   },
   additionalProperties: false
@@ -138,10 +139,7 @@ var postIdentities = {
       description: description({required: false}),
       sysImageType: sysImageType,
       sysGravatarType: sysGravatarType,
-      sysPublic: {
-        required: false,
-        type: visibility()
-      }
+      sysPublic: visibility({required: false})
     },
     additionalProperties: false
   }]
