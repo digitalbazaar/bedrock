@@ -52,16 +52,13 @@ function factory($rootScope) {
         return element[id] === candidate[id];
       };
     }
-    var found = false;
-    for(var i = 0; !found && i < array.length; ++i) {
+    for(var i = 0; i < array.length; ++i) {
       if(fn(array[i], src)) {
-        service.replace(array[i], src);
-        found = true;
+        return service.replace(array[i], src);
       }
     }
-    if(!found) {
-      array.push(src);
-    }
+    array.push(src);
+    return src;
   };
 
   service.replaceArray = function(dst, src, id) {
