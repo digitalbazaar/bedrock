@@ -1,14 +1,13 @@
 <div data-tabs-pane
   data-title="Identity"
   data-tab-id="identity">
-<div class="section" data-ng-controller="IdentitySettingsController as model">
-  <h3 class="headline">
-    Identity
-    <span data-ng-show="model.state.loading" class="pull-right">
-      <span data-spinner="model.state.loading" data-spinner-class="h3-spinner"></span>
-    </span>
-  </h3>
-  <div>
+  <div class="section" data-ng-controller="IdentitySettingsController as model">
+    <h3 class="headline">
+      Identity
+      <span data-ng-show="model.state.loading" class="pull-right">
+        <span data-spinner="model.state.loading" data-spinner-class="h3-spinner"></span>
+      </span>
+    </h3>
+    <div data-ng-include="'/app/components/identity/identity-form.html'"></div>
   </div>
-</div>
 </div>

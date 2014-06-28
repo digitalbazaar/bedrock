@@ -2,6 +2,7 @@
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
 var email = require('./email');
+var description = require('./description');
 var identifier = require('./identifier');
 var jsonldContext = require('./jsonldContext');
 var jsonldType = require('./jsonldType');
@@ -14,14 +15,30 @@ var slug = require('./slug');
 var url = require('./url');
 var visibility = require('./propertyVisibility');
 
+var sysImageType = {
+  required: false,
+  type: 'string',
+  enum: ['url', 'gravatar']
+};
+var sysGravatarType = {
+  required: false,
+  type: 'string',
+  enum: ['gravatar', 'mm', 'identicon', 'monsterid', 'wavatar', 'retro']
+};
+
 var postIdentity = {
   title: 'Post Identity',
   type: 'object',
   properties: {
     '@context': jsonldContext(),
     id: identifier(),
-    email: email({required: false}),
+    description: description({required: false}),
+    //email: email({required: false}),
+    image: url({required: false}),
     label: label({required: false}),
+    url: url({required: false}),
+    sysImageType: sysImageType,
+    sysGravatarType: sysGravatarType,
     sysSigningKey: identifier({required: false})
   },
   additionalProperties: false
@@ -114,16 +131,13 @@ var postIdentities = {
       },
       sysSlug: slug(),
       label: label(),
+      image: url({required: false}),
       email: email(),
       sysPassword: password(),
-      url: {
-        required: false,
-        type: 'string'
-      },
-      description: {
-        required: false,
-        type: 'string'
-      },
+      url: url({required: false}),
+      description: description({required: false}),
+      sysImageType: sysImageType,
+      sysGravatarType: sysGravatarType,
       sysPublic: {
         required: false,
         type: visibility()
