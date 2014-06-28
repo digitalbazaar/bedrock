@@ -96,10 +96,11 @@ function factory($rootScope, $http, $location, ModelService) {
     return Promise.resolve($http.get(resourceId, config))
       .then(function(response) {
         // update collection but not collection expiration time
-        ModelService.replaceInArray(self.storage, response.data);
+        var storedObject =
+          ModelService.replaceInArray(self.storage, response.data);
         return self.finishLoading().then(function() {
           $rootScope.$apply();
-          return response.data;
+          return storedObject;
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
@@ -118,6 +119,16 @@ function factory($rootScope, $http, $location, ModelService) {
     return this.get(currentId, options);
   };
 
+  // add one resource to collection storage
+  service.Collection.prototype.addToStorage = function(resource) {
+    var self = this;
+    // update collection if resource not present
+    if(!_.findWhere(self.storage, {id: resource.id})) {
+      self.storage.push(resource);
+    }
+    return Promise.resolve(resource);
+  };
+
   // add one resource
   service.Collection.prototype.add = function(resource, options) {
     var self = this;
@@ -129,13 +140,16 @@ function factory($rootScope, $http, $location, ModelService) {
       .then(function(response) {
         // don't update collection expiration time
         // update collection if resource not present
-        if(!_.findWhere(self.storage, {id: response.data.id})) {
-          self.storage.push(response.data);
-        }
-        return self.finishLoading().then(function() {
-          $rootScope.$apply();
-          return response.data;
-        });
+        var storedData;
+        return self.addToStorage(response.data)
+          .then(function(_storedData) {
+            storedData = _storedData;
+          })
+          .then(finishLoading)
+          .then(function() {
+            $rootScope.$apply();
+            return storedData;
+          });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
           $rootScope.$apply();
