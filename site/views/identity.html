@@ -44,6 +44,15 @@
         </dd>
         {% endif %}
 
+        {% if identity.image %}
+        <dt>Image</dt>
+        <dd>
+          <ul class="unstyled">
+            <li><img property="schema:image" style="max-width: 80px; max-height: 80px" src="{{identity.image}}"/></li>
+          </ul>
+        </dd>
+        {% endif %}
+
         <dt>Cryptographic Keys</dt>
         {% if keys.length > 0 %}
         <dd>

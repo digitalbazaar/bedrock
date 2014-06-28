@@ -31,6 +31,14 @@
           </ul>
         </dd>
 
+        <dt data-ng-show="model.identity.image">Image</dt>
+        <dd data-ng-show="model.identity.image">
+          <ul class="unstyled">
+            <li><img property="schema:image" data-ng-style="{'max-width': '80px', 'max-height': '80px'}" data-ng-src="{{model.identity.image}}"/></li>
+          </ul>
+        </dd>
+
+        <pre>{{model|json}}</pre>
         <dt>Cryptographic Keys</dt>
         <dd>
           <ul class="unstyled">
