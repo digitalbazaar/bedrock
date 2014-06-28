@@ -33,14 +33,16 @@ var sysPublic = {
   items: {
     type: 'string',
     enum: [
-      'label',
-      'url',
+      'description',
+      'email',
       'image',
-      'description'
+      'label',
+      'url'
     ]
   },
   errors: {
-    invalid: 'Only "label", "url", "image", and "description" are permitted.',
+    invalid: 'Only "description", "email", "image", "label", and "url" are ' +
+      'permitted.',
     missing: 'Please enter the properties that should be publicly visible.'
   }
 };

@@ -17,10 +17,10 @@ function factory($scope, config, AlertService, IdentityService) {
   var self = this;
   self.state = IdentityService.state;
   self.help = {};
-  self.identity = null
+  self.identity = null;
   self.emailHash = null;
   self.imagePreview = null;
-  self.allPublic = true;
+  self.publicMode = 'most';
   self.public = {};
   self.loading = true;
 
@@ -36,7 +36,7 @@ function factory($scope, config, AlertService, IdentityService) {
       url += '&f=y&d=' + self.identity.sysGravatarType;
     }
     return url;
-  }
+  };
 
   var _updateImagePreview = function() {
     switch(self.identity.sysImageType) {
@@ -77,37 +77,63 @@ function factory($scope, config, AlertService, IdentityService) {
     // setup public values
     self.public = {};
     if(self.identity.sysPublic) {
-      var _checkPublic = function(property) {
-        var isPublic = false;
-        self.public[property] = self.identity.sysPublic.indexOf(property) > -1;
+      var sp = self.identity.sysPublic;
+      // setup each public field flag
+      var _setupPublic = function(property) {
+        self.public[property] = sp.indexOf(property) > -1;
       };
-      _checkPublic('label');
-      _checkPublic('url');
-      _checkPublic('image');
-      _checkPublic('description');
+      _setupPublic('description');
+      _setupPublic('email');
+      _setupPublic('image');
+      _setupPublic('label');
+      _setupPublic('url');
+      // setup public mode
+      if(_.isEqual(sp, ['description', 'email', 'image', 'label', 'url'])) {
+        self.publicMode = 'all';
+      } else if(_.isEqual(sp, ['description', 'image', 'label', 'url'])) {
+        self.publicMode = 'most';
+      } else if(_.isEqual(sp, [])) {
+        self.publicMode = 'none';
+      } else {
+        self.publicMode = 'some';
+      }
     }
-    self.allPublic = _.chain(self.public).values().every().value();
-
-    self.loading = false;
 
     // cache email hash for gravatar
     var md = forge.md.md5.create();
     md.update(IdentityService.identity.email, 'utf8');
     self.emailHash = md.digest().toHex();
+
+    self.loading = false;
   };
 
   self.update = function() {
     // setup public fields
     var sysPublic = [];
-    var _checkPublic = function(property) {
-      if(self.allPublic || self.public[property]) {
-        sysPublic.push(property);
+    var _setupPublic = function(property) {
+      switch(self.publicMode) {
+        case 'none':
+          break;
+        case 'some':
+          if(self.public[property]) {
+            sysPublic.push(property);
+          }
+          break;
+        case 'most':
+          if(property !== 'email') {
+            sysPublic.push(property);
+          }
+          break;
+        case 'all':
+          sysPublic.push(property);
+          break;
       }
     };
-    _checkPublic('label');
-    _checkPublic('url');
-    _checkPublic('image');
-    _checkPublic('description');
+    _setupPublic('description');
+    _setupPublic('email');
+    _setupPublic('image');
+    _setupPublic('label');
+    _setupPublic('url');
     var update = {
       '@context': config.data.contextUrl,
       id: self.identity.id,

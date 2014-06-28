@@ -44,6 +44,15 @@
         </dd>
         {% endif %}
 
+        {% if identity.email %}
+        <dt>Email</dt>
+        <dd>
+          <ul class="unstyled">
+            <li><a property="schema:email" href="mailto:{{identity.email}}">{{identity.email}}</a></li>
+          </ul>
+        </dd>
+        {% endif %}
+
         {% if identity.image %}
         <dt>Image</dt>
         <dd>

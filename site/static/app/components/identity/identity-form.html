@@ -12,7 +12,7 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-hide="model.allPublic" class="checkbox">
+        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
           <input type="checkbox" name="publicLabel" data-ng-model="model.public.label">
             Allow <strong>public</strong> access to identity label.
         </label>
@@ -34,12 +34,35 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-hide="model.allPublic" class="checkbox">
+        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
           <input type="checkbox" name="publicWebsite" data-ng-model="model.public.url">
             Allow <strong>public</strong> access to identity website.
         </label>
         <p data-fade-toggle="model.help.url.show" class="help-block">
           Optionally enter a website URL for this identity.
+        </p>
+      </div>
+    </div>
+
+    <div class="control-group" data-binding="email">
+      <label class="control-label" for="email">Email</label>
+      <div class="controls">
+        <div class="input-prepend input-append">
+          <span class="add-on"><i class="icon-envelope"></i></span><input
+            class="input-xlarge" type="email" name="email" disabled="disabled"
+            data-ng-model="model.identity.email"
+            data-track-state="model.help.email" />
+          <button class="btn" data-help-toggle="model.help.email">
+            <i class="icon-question-sign"></i>
+          </button>
+        </div>
+        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
+          <input type="checkbox" name="publicEmail" data-ng-model="model.public.email">
+            Allow <strong>public</strong> access to identity email.
+        </label>
+        <p data-fade-toggle="model.help.email.show" class="help-block">
+        <!-- Enter an email for this identity. -->
+          Identity email can not be changed on this page.
         </p>
       </div>
     </div>
@@ -113,7 +136,7 @@
       <label class="control-label" for="image">Image Preview</label>
       <div class="controls">
         <img data-ng-style="{'max-width': '80px', 'max-height': '80px'}" data-ng-src="{{model.imagePreview}}"/>
-        <label data-ng-hide="model.allPublic" class="checkbox">
+        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
           <input type="checkbox" name="publicImage" data-ng-model="model.public.image">
             Allow <strong>public</strong> access to identity image.
         </label>
@@ -133,7 +156,7 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-hide="model.allPublic" class="checkbox">
+        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
           <input type="checkbox" name="publicDescription" data-ng-model="model.public.description">
             Allow <strong>public</strong> access to identity description.
         </label>
@@ -144,17 +167,27 @@
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="allPublic">Visibility</label>
+      <label class="control-label" for="imageType">Visibility</label>
       <div class="controls">
-        <label class="checkbox">
-          <input type="checkbox" name="allPublic" data-ng-model="model.allPublic">
-            Allow <strong>public</strong> access to all above identity details.
+        <label class="radio">
+          <input type="radio" name="nonePublic" value="none" checked="checked" data-ng-model="model.publicMode" />
+            <i class="icon-eye-close"></i> No public access to <strong>any</strong> identity details.
         </label>
-        <p data-ng-hide="model.allPublic" class="help-block">
-          You can control public visibility of individual properties.
-        </p>
+        <label class="radio">
+          <input type="radio" name="somePublic" value="some" checked="checked" data-ng-model="model.publicMode" />
+            <i class="icon-eye-open"></i> Allow <strong>public</strong> access to specified properties.
+        </label>
+        <label class="radio">
+          <input type="radio" name="mostPublic" value="most" checked="checked" data-ng-model="model.publicMode" />
+            <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
+        </label>
+        <label class="radio">
+          <input type="radio" name="allPublic" value="all" checked="checked" data-ng-model="model.publicMode" />
+            <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
+        </label>
       </div>
     </div>
+
 
     <div class="control-group">
       <div class="controls">

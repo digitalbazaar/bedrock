@@ -31,6 +31,13 @@
           </ul>
         </dd>
 
+        <dt data-ng-show="model.identity.email">Email</dt>
+        <dd data-ng-show="model.identity.email">
+          <ul class="unstyled">
+            <li><a property="schema:email" href="mailto:{{model.identity.email}}">{{model.identity.email}}</a></li>
+          </ul>
+        </dd>
+
         <dt data-ng-show="model.identity.image">Image</dt>
         <dd data-ng-show="model.identity.image">
           <ul class="unstyled">
