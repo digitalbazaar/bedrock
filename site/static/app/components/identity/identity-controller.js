@@ -23,7 +23,7 @@ function factory($scope, IdentityService, ModelService, RefreshService) {
     IdentityService.collection.getCurrent(opts)
       .then(function(identity) {
         // ensure an array of zero or more publicKeys
-        self.identity.publicKey = jsonld.getValues(identity, 'publicKey');
+        identity.publicKey = jsonld.getValues(identity, 'publicKey');
         ModelService.replace(self.identity, identity);
         $scope.$apply();
       });
