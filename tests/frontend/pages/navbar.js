@@ -27,7 +27,7 @@ api.login = function(identifier, password) {
 
 api.logout = function() {
   helper.get('/');
-  element(by.binding('model.session.identity.label')).click();
+  element(by.binding('model.identity.label')).click();
   element(by.linkText('Sign Out')).click();
   helper.get('/');
   expect(element(by.model('model.sysIdentifier')).isPresent())
@@ -36,7 +36,7 @@ api.logout = function() {
 };
 
 api.refresh = function() {
-  element(by.binding('model.session.identity.label')).click();
+  element(by.binding('model.identity.label')).click();
   element(by.linkText('Refresh')).click();
   return api;
 };
