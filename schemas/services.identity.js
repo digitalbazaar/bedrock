@@ -13,7 +13,6 @@ var password = require('./password');
 var publicKeyPem = require('./publicKeyPem');
 var slug = require('./slug');
 var url = require('./url');
-var visibility = require('./propertyVisibility');
 
 var sysImageType = {
   required: false,
@@ -24,6 +23,26 @@ var sysGravatarType = {
   required: false,
   type: 'string',
   enum: ['gravatar', 'mm', 'identicon', 'monsterid', 'wavatar', 'retro']
+};
+var sysPublic = {
+  required: false,
+  title: 'Identity Property Visibility',
+  description: 'A list of Identity properties that are publicly visible.',
+  type: 'array',
+  uniqueItems: true,
+  items: {
+    type: 'string',
+    enum: [
+      'label',
+      'url',
+      'image',
+      'description'
+    ]
+  },
+  errors: {
+    invalid: 'Only "label", "url", "image", and "description" are permitted.',
+    missing: 'Please enter the properties that should be publicly visible.'
+  }
 };
 
 var postIdentity = {
@@ -39,7 +58,7 @@ var postIdentity = {
     url: url({required: false}),
     sysImageType: sysImageType,
     sysGravatarType: sysGravatarType,
-    sysPublic: visibility({required: false}),
+    sysPublic: sysPublic,
     sysSigningKey: identifier({required: false})
   },
   additionalProperties: false
@@ -139,7 +158,7 @@ var postIdentities = {
       description: description({required: false}),
       sysImageType: sysImageType,
       sysGravatarType: sysGravatarType,
-      sysPublic: visibility({required: false})
+      sysPublic: sysPublic
     },
     additionalProperties: false
   }]
