@@ -79,15 +79,17 @@
 
         <div class="control-group">
           <p class="help-block">
-    Your identity will be used to keep track of and verify your online
-    activity with this service. It is usually a good idea to use some
-    shortened form of your full name here, similar to how people choose
-    email addresses or twitter handles.
+            Your identity will be used to keep track of and verify your online
+            activity with this service. Please enter your full name and then
+            select a short name that is used for your identity.  It is usually
+            a good idea to use some shortened form of your full name for your
+            id, similar to how people choose email addresses or Twitter
+            handles.
           </p>
         </div>
 
-        <div class="control-group" data-binding="sysIdentity.label">
-          <label class="control-label" for="identity">Identity Name</label>
+        <div class="control-group" data-binding="identity.label">
+          <label class="control-label" for="identity-label">Full Name</label>
           <div class="controls">
             <div class="input-append">
               <input class="input-xlarge"
@@ -96,6 +98,7 @@
                 data-ng-model="model.identity.label"
                 data-track-state="model.help.identityLabel"
                 data-ng-disabled="model.loading"
+                placeholder="John Smith"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.identityLabel">
                 <i class="icon-question-sign"></i>
@@ -103,16 +106,38 @@
             </div>
             <p data-fade-toggle="model.help.identityLabel.show"
               class="help-block">
-              Enter your online handle, for example, some form of your full
-              name like 'janedoe'. You can also customize your identity vanity
-              address below:
+              Enter the full name that is associated with this new identity.
+              For instance "John Smith" or "Mega Corp".
             </p>
-            <p><small>{{model.data.identityBaseUri}}/</small><input
-              data-binding="identity.sysSlug" class="slug"
-              name="identity-slug" type="text" maxlength="32"
-              placeholder="IDENTITY-NAME"
-              data-slug-in data-ng-model="model.identity.sysSlug"
-              data-ng-disabled="model.loading" /></p>
+          </div>
+        </div>
+
+        <div class="control-group" data-binding="identity.sysSlug">
+          <label class="control-label" for="identity-slug">Short Name</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="input-xlarge"
+                name="identity-slug" type="text"
+                data-ng-model="model.identity.sysSlug"
+                data-track-state="model.help.identity"
+                data-ng-disabled="model.loading"
+                data-slug-in maxlength="32"
+                data-binding="identity.sysSlug"
+                placeholder="john-smith"
+                autocomplete="off" />
+              <button class="btn" data-help-toggle="model.help.identity">
+                <i class="icon-question-sign"></i>
+              </button>
+            </div>
+            <p data-fade-toggle="model.help.identity.show" class="help-block">
+              Enter a short name for this identity. A name similar to your full
+              name will help people to identify you. This short name will be
+              used in your identity address as shown below. An example would be
+              "john-smith", "johnsmith", or "megacorp".
+            </p>
+            <p>
+              <small>{{model.data.identityBaseUri}}/</small><strong>{{model.identity.sysSlug}}</strong>
+            </p>
             <div data-duplicate-checker="model.identity.sysSlug"
               data-duplicate-checker-type="Identity"
               data-duplicate-checker-available="This identity name is available!"
@@ -128,9 +153,13 @@
       <fieldset>
         <legend>Service Agreement</legend>
 
-        <label class="checkbox">
-          <input type="checkbox" data-ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
-        </label>
+        <div class="control-group" data-binding="agreementChecked">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" data-ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
+            </label>
+          </div>
+        </div>
       </fieldset>
 
       <div class="form-actions">
