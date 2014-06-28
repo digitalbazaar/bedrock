@@ -16,17 +16,28 @@ return {IdentityService: deps.concat(factory)};
 function factory($http, $rootScope, RefreshService, ResourceService, config) {
   var service = {};
 
+  service.collection = new ResourceService.Collection({
+    url: config.data.identityBaseUri
+  });
+
   var session = config.data.session || {auth: false};
   service.identity = session.identity || null;
   service.identityMap = session.identities || {};
   service.identities = [];
-  angular.forEach(service.identityMap, function(identity) {
-    service.identities.push(identity);
+
+  // add session identities to identity storage and save result references
+  if(service.identity) {
+    service.collection.addToStorage(service.identity).then(function(identity) {
+      service.identity = identity;
+    });
+  }
+  angular.forEach(service.identityMap, function(identity, id) {
+    service.collection.addToStorage(identity).then(function() {
+      service.identityMap[id] = identity;
+      service.identities.push(identity);
+    });
   });
 
-  service.collection = new ResourceService.Collection({
-    url: config.data.identityBaseUri
-  });
   // FIXME: update other code so common collection can be used
   //service.identities = service.collection.storage;
   service.state = service.collection.state;
@@ -103,7 +114,9 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
     if(service.identity) {
       service.collection.get(service.identity.id);
     }
-    // TODO: refresh all identities in the map?
+    angular.forEach(service.identityMap, function(identity) {
+      service.collection.get(identity.id);
+    });
   });
 
   // expose service to scope

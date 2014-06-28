@@ -1,17 +1,17 @@
 <div>
-  <table>
+  <table data-ng-show="model.identity">
     <tbody>
-      <tr data-ng-show="model.session.identity">
+      <tr data-ng-show="model.identity">
         <td><strong>Identity:</strong></td>
-        <td>{{model.session.identity.label}}</td>
+        <td>{{model.identity.label}}</td>
       </tr>
       <tr>
         <td><strong>Email:</strong></td>
-        <td>{{model.session.identity.email}}</td>
+        <td>{{model.identity.email}}</td>
       </tr>
     </tbody>
   </table>
-  <div class="divider"></div>
+  <div data-ng-show="model.identity" class="divider"></div>
   <table>
     <tbody>
       <tr>

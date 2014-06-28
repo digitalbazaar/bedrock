@@ -14,14 +14,14 @@
             {% raw %}
             <ul class="nav">
               <li data-ng-repeat="item in model.navbar.private" data-ng-class="{active: pageTitle == item.pageTitle, dropdown: item.items}">
-                <a data-ng-if="!item.items" href="{{item.url || (model.session.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a>
+                <a data-ng-if="!item.items" href="{{item.url || (model.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a>
                 <a data-ng-if="item.items" href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="{{item.icon}}"></i> {{item.label}}
                   <b class="caret"></b>
                 </a>
                 <ul data-ng-if="item.items" class="dropdown-menu">
                   <li data-ng-repeat="subitem in item.items" data-ng-class="{active: pageTitle == subitem.pageTitle, divider: subitem.divider}">
-                    <a data-ng-if="!subitem.divider" href="{{subitem.url || (model.session.identity.id + '/' + subitem.slug)}}"><i class="{{subitem.icon}}"></i> {{subitem.label}}</a>
+                    <a data-ng-if="!subitem.divider" href="{{subitem.url || (model.identity.id + '/' + subitem.slug)}}"><i class="{{subitem.icon}}"></i> {{subitem.label}}</a>
                   </li>
                 </ul>
               </li>
@@ -34,14 +34,14 @@
           <a class="btn btn-nav btn-small show pull-right{{model.showHovercard && ' active' || ''}}"
             data-popover-template="/app/components/navbar/hovercard.html"
             data-popover-visible="model.showHovercard"
-            data-title="{{model.session.identity.label}}"
+            data-title="{{model.identity.label}}"
             data-placement="bottom">
           <div data-login-modal="model.showLogin" data-modal-escape="model.allowLoginEscape"></div>
             <i class="icon-user"></i>
           </a>
           <a class="navbar-link pull-right" style="line-height:45px"
             data-ng-click="model.showHovercard=!model.showHovercard">
-            {{model.session.identity.label || '-'}}
+            {{model.identity.label || '-'}}
           </a>
           {% endraw %}
         {% endif %}

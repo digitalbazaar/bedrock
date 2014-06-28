@@ -9,13 +9,16 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$rootScope', 'RefreshService', 'config'];
+var deps = [
+  '$scope', '$rootScope', 'RefreshService', 'IdentityService', 'config'
+];
 return {NavbarController: deps.concat(factory)};
 
-function factory($scope, $rootScope, RefreshService, config) {
+function factory($scope, $rootScope, RefreshService, IdentityService, config) {
   var self = this;
   self.session = config.data.session;
   self.navbar = config.site.navbar;
+  self.identity = IdentityService.identity;
 
   self.refreshData = function() {
     RefreshService.refresh();
