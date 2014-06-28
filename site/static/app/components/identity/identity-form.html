@@ -12,6 +12,10 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
+        <label data-ng-hide="model.allPublic" class="checkbox">
+          <input type="checkbox" name="publicLabel" data-ng-model="model.public.label">
+            Allow <strong>public</strong> access to identity label.
+        </label>
         <p data-fade-toggle="model.help.label.show" class="help-block">
           Enter the public label for this identity.
         </p>
@@ -30,6 +34,10 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
+        <label data-ng-hide="model.allPublic" class="checkbox">
+          <input type="checkbox" name="publicWebsite" data-ng-model="model.public.url">
+            Allow <strong>public</strong> access to identity website.
+        </label>
         <p data-fade-toggle="model.help.url.show" class="help-block">
           Optionally enter a website URL for this identity.
         </p>
@@ -105,6 +113,10 @@
       <label class="control-label" for="image">Image Preview</label>
       <div class="controls">
         <img data-ng-style="{'max-width': '80px', 'max-height': '80px'}" data-ng-src="{{model.imagePreview}}"/>
+        <label data-ng-hide="model.allPublic" class="checkbox">
+          <input type="checkbox" name="publicImage" data-ng-model="model.public.image">
+            Allow <strong>public</strong> access to identity image.
+        </label>
       </div>
     </div>
 
@@ -121,8 +133,25 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
+        <label data-ng-hide="model.allPublic" class="checkbox">
+          <input type="checkbox" name="publicDescription" data-ng-model="model.public.description">
+            Allow <strong>public</strong> access to identity description.
+        </label>
         <p data-fade-toggle="model.help.description.show" class="help-block">
           Optionally enter a description of this identity.
+        </p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="allPublic">Visibility</label>
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox" name="allPublic" data-ng-model="model.allPublic">
+            Allow <strong>public</strong> access to all above identity details.
+        </label>
+        <p data-ng-hide="model.allPublic" class="help-block">
+          You can control public visibility of individual properties.
         </p>
       </div>
     </div>

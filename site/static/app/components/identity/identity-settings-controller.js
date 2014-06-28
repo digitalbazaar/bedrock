@@ -20,6 +20,8 @@ function factory($scope, config, AlertService, IdentityService) {
   self.identity = null
   self.emailHash = null;
   self.imagePreview = null;
+  self.allPublic = true;
+  self.public = {};
   self.loading = true;
 
   var _gravatarUrl = function() {
@@ -71,6 +73,21 @@ function factory($scope, config, AlertService, IdentityService) {
     angular.extend(self.identity, IdentityService.identity);
     self.identity.sysImageType = self.identity.sysImageType || 'gravatar';
     self.identity.sysGravatarType = self.identity.sysGravatarType || 'gravatar';
+
+    // setup public values
+    self.public = {};
+    if(self.identity.sysPublic) {
+      var _checkPublic = function(property) {
+        var isPublic = false;
+        self.public[property] = self.identity.sysPublic.indexOf(property) > -1;
+      };
+      _checkPublic('label');
+      _checkPublic('url');
+      _checkPublic('image');
+      _checkPublic('description');
+    }
+    self.allPublic = _.chain(self.public).values().every().value();
+
     self.loading = false;
 
     // cache email hash for gravatar
@@ -80,6 +97,17 @@ function factory($scope, config, AlertService, IdentityService) {
   };
 
   self.update = function() {
+    // setup public fields
+    var sysPublic = [];
+    var _checkPublic = function(property) {
+      if(self.allPublic || self.public[property]) {
+        sysPublic.push(property);
+      }
+    };
+    _checkPublic('label');
+    _checkPublic('url');
+    _checkPublic('image');
+    _checkPublic('description');
     var update = {
       '@context': config.data.contextUrl,
       id: self.identity.id,
@@ -88,6 +116,7 @@ function factory($scope, config, AlertService, IdentityService) {
       label: self.identity.label,
       sysGravatarType: self.identity.sysGravatarType,
       sysImageType: self.identity.sysImageType,
+      sysPublic: sysPublic,
       url: self.identity.url
     };
     self.loading = true;
