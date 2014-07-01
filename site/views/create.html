@@ -98,7 +98,7 @@
                 data-ng-model="model.identity.label"
                 data-track-state="model.help.identityLabel"
                 data-ng-disabled="model.loading"
-                placeholder="John Smith"
+                placeholder="My Full Name"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.identityLabel">
                 <i class="icon-question-sign"></i>
@@ -107,7 +107,7 @@
             <p data-fade-toggle="model.help.identityLabel.show"
               class="help-block">
               Enter the full name that is associated with this new identity.
-              For instance "John Smith" or "Mega Corp".
+              For instance "My Full Name" or "Mega Corp".
             </p>
           </div>
         </div>
@@ -123,7 +123,7 @@
                 data-ng-disabled="model.loading"
                 data-slug-in maxlength="32"
                 data-binding="identity.sysSlug"
-                placeholder="john-smith"
+                placeholder="my-short-name"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.identity">
                 <i class="icon-question-sign"></i>
@@ -133,7 +133,7 @@
               Enter a short name for this identity. A name similar to your full
               name will help people to identify you. This short name will be
               used in your identity address as shown below. An example would be
-              "john-smith", "johnsmith", or "megacorp".
+              "my-short-name", "myshortname", or "megacorp".
             </p>
             <p>
               <small>{{model.data.identityBaseUri}}/</small><strong>{{model.identity.sysSlug}}</strong>
