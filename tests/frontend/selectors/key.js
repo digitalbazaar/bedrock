@@ -11,6 +11,6 @@ function add(options) {
   var modal = element(by.modal());
   modal.element(by.partialButtonText('Generate Key')).click();
   var save = modal.element(by.partialButtonText('Save'));
-  helper.waitForElement(save);
+  helper.waitForElementToShow(save);
   save.click();
 };

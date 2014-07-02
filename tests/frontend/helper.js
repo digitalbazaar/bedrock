@@ -88,9 +88,16 @@ Helper.prototype.waitForAngular = function() {
 };
 
 // waits for an element to be displayed
-Helper.prototype.waitForElement = function(el) {
+Helper.prototype.waitForElementToShow = function(el) {
   return browser.wait(function() {
     return el.isDisplayed();
+  });
+};
+
+// waits for an element to be hidden
+Helper.prototype.waitForElementToHide = function(el) {
+  return browser.wait(function() {
+    return !el.isDisplayed();
   });
 };
 
