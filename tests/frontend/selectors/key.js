@@ -10,6 +10,7 @@ module.exports = api;
 function add() {
   var modal = element(by.modal());
   modal.element(by.partialButtonText('Generate Key')).click();
+  helper.waitForModalTransition();
   var save = modal.element(by.partialButtonText('Save'));
   helper.waitForElementToShow(save);
   save.click();

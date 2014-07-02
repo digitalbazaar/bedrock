@@ -20,6 +20,7 @@ api.generateKey = function(options) {
   element(by.linkText('Keys')).click();
   element(by.popover('model.showKeysMenu')).click();
   element(by.linkText('Generate Key Pair')).click();
+  helper.waitForModalTransition();
   var modal = element(by.modal());
   modal.element(by.partialButtonText('Generate Key')).click();
   var save = modal.element(by.partialButtonText('Save'));
