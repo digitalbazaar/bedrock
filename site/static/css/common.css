@@ -288,9 +288,13 @@ body {
   border-right: 1px solid #ddd;
 }
 
-/* Headlines in tab content */
-.tab-pane h3:nth-of-type(1) {
+/* First headline in a tab pane section has no top margin to align with top
+  of tab, others do. */
+.tab-pane .section h3 {
   margin-top: 0;
+}
+.tab-pane .section~.section h3 {
+  margin-top: 10px;
 }
 
 /* First tabbable below headline */
