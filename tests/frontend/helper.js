@@ -94,13 +94,6 @@ Helper.prototype.waitForElementToShow = function(el) {
   });
 };
 
-// waits for an element to be hidden
-Helper.prototype.waitForElementToHide = function(el) {
-  return browser.wait(function() {
-    return !el.isDisplayed();
-  });
-};
-
 // waits for an attribute to meet a certain criteria
 Helper.prototype.waitForAttribute = function(el, attr, fn) {
   return browser.wait(function() {
@@ -135,6 +128,16 @@ Helper.prototype.waitForScript = function(fn) {
   var self = this;
   return browser.wait(function() {
     return self.run(fn);
+  });
+};
+
+// waits for a model transition (show or hide) to complete
+Helper.prototype.waitForModalTransition = function() {
+  return browser.wait(function() {
+    return browser.driver.findElements(by.css('.modal.fade'))
+      .then(function(result) {
+        return result.length === 0;
+      });
   });
 };
 

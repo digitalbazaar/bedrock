@@ -29,6 +29,7 @@ api.generateKey = function(options) {
     modal.element(by.model('model.key.label')).sendKeys(options.label);
   }
   save.click();
+  helper.waitForModalTransition();
 };
 
 api.revokeKey = function(query) {
