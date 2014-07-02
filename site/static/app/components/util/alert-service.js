@@ -39,6 +39,13 @@ function factory($rootScope, ModalService, ModelService) {
     if(typeof value === 'string') {
       value = {message: value};
     }
+    if(type === 'error' &&
+      'stack' in value &&
+      typeof console !== 'undefined') {
+      var log = ('error' in console) ? console.error : console.log;
+      log.call(console, 'Error value:', value);
+      log.call(console, 'Error stack:', value.stack);
+    }
     category = category || service.category.FEEDBACK;
     var info = {type: type, value: value};
     if(category === service.category.FEEDBACK) {
