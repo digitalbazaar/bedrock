@@ -145,7 +145,9 @@ function factory($rootScope, $http, $location, ModelService) {
           .then(function(_storedData) {
             storedData = _storedData;
           })
-          .then(self.finishLoading)
+          .then(function() {
+            return self.finishLoading();
+          })
           .then(function() {
             $rootScope.$apply();
             return storedData;
