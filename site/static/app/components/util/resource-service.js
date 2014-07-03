@@ -96,8 +96,8 @@ function factory($rootScope, $http, $location, ModelService) {
     return Promise.resolve($http.get(resourceId, config))
       .then(function(response) {
         // update collection but not collection expiration time
-        var storedObject =
-          ModelService.replaceInArray(self.storage, response.data);
+        var storedObject = ModelService.replaceInArray(
+          self.storage, response.data);
         return self.finishLoading().then(function() {
           $rootScope.$apply();
           return storedObject;
