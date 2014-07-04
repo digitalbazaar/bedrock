@@ -134,17 +134,27 @@ function factory($scope, config, AlertService, IdentityService) {
     _setupPublic('image');
     _setupPublic('label');
     _setupPublic('url');
+
     var update = {
       '@context': config.data.contextUrl,
       id: self.identity.id,
       description: self.identity.description,
-      image: _gravatarUrl(),
       label: self.identity.label,
-      sysGravatarType: self.identity.sysGravatarType,
       sysImageType: self.identity.sysImageType,
       sysPublic: sysPublic,
       url: self.identity.url
     };
+
+    switch(self.identity.sysImageType) {
+      case 'url':
+        update.image = self.identity.image;
+        break;
+      case 'gravatar':
+        update.image = _gravatarUrl();
+        update.sysGravatarType = self.identity.sysGravatarType;
+        break;
+    }
+
     self.loading = true;
     AlertService.clear();
     IdentityService.collection.update(update)
