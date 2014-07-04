@@ -35,6 +35,8 @@
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
+    {% block beforeMain %}{% endblock %}
+
     {% if pageLayout != "error" %}
       {% if productionMode %}
         <script src="/app/main.min.js"></script>
