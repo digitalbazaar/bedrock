@@ -378,6 +378,10 @@ body {
   /* shrink column to fit **single word** text */
   width: 1%;
 }
+.table th.nowrap, .table td.nowrap {
+  /* shrink column to fit with out word wrapping text */
+  white-space: nowrap;
+}
 .table .center {
   text-align: center;
 }
