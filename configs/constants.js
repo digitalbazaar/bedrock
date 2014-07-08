@@ -1,4 +1,5 @@
 var config = require(GLOBAL.__libdir + '/config');
+var fs = require('fs');
 
 var constants = config.constants = {};
 
@@ -23,82 +24,9 @@ constants.CONTEXTS = {};
  * then the new context must still define all of the properties that are used
  * by any bedrock modules that the application relies upon.
  */
-constants.CONTEXTS[constants.CONTEXT_V1_URL] = {
-  // aliases
-  id: '@id',
-  type: '@type',
-
-  // prefixes
-  bed: 'http://w3id.org/bedrock#',
-  dc: 'http://purl.org/dc/terms/',
-  identity: 'https://w3id.org/identity#',
-  rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-  rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-  sec: 'https://w3id.org/security#',
-  schema: 'http://schema.org/',
-  xsd: 'http://www.w3.org/2001/XMLSchema#',
-
-  // bedrock
-  // FIXME: change to identity:Identity
-  Identity: 'bed:Identity',
-
-  // general
-  about: {'@id': 'schema:about', '@type': '@id'},
-  address: {'@id': 'schema:address', '@type': '@id'},
-  addressCountry: 'schema:addressCountry',
-  addressLocality: 'schema:addressLocality',
-  addressRegion: 'schema:addressRegion',
-  comment: 'rdfs:comment',
-  created: {'@id': 'dc:created', '@type': 'xsd:dateTime'},
-  creator: {'@id': 'dc:creator', '@type': '@id'},
-  description: 'schema:description',
-  email: 'schema:email',
-  familyName: 'schema:familyName',
-  givenName: 'schema:givenName',
-  image: {'@id': 'schema:image', '@type': '@id'},
-  label: 'rdfs:label',
-  name: 'schema:name',
-  postalCode: 'schema:postalCode',
-  streetAddress: 'schema:streetAddress',
-  title: 'dc:title',
-  url: {'@id': 'schema:url', '@type': '@id'},
-  PostalAddress: 'schema:PostalAddress',
-
-  // error
-  // FIXME: add error terms
-  // 'errorMessage': 'err:message'
-
-  // identity
-  identityService: {'@id': 'identity:identityService', '@type': '@id'},
-
-  // security
-  credential: {'@id': 'sec:credential', '@type': '@id'},
-  cipherAlgorithm: 'sec:cipherAlgorithm',
-  cipherData: 'sec:cipherData',
-  cipherKey: 'sec:cipherKey',
-  claim: {'@id': 'sec:claim', '@type': '@id'},
-  digestAlgorithm: 'sec:digestAlgorithm',
-  digestValue: 'sec:digestValue',
-  domain: 'sec:domain',
-  expires: {'@id': 'sec:expiration', '@type': 'xsd:dateTime'},
-  initializationVector: 'sec:initializationVector',
-  nonce: 'sec:nonce',
-  normalizationAlgorithm: 'sec:normalizationAlgorithm',
-  owner: {'@id': 'sec:owner', '@type': '@id'},
-  password: 'sec:password',
-  privateKey: {'@id': 'sec:privateKey', '@type': '@id'},
-  privateKeyPem: 'sec:privateKeyPem',
-  publicKey: {'@id': 'sec:publicKey', '@type': '@id'},
-  publicKeyPem: 'sec:publicKeyPem',
-  publicKeyService: {'@id': 'sec:publicKeyService', '@type': '@id'},
-  revoked: {'@id': 'sec:revoked', '@type': 'xsd:dateTime'},
-  signature: 'sec:signature',
-  signatureAlgorithm: 'sec:signatureAlgorithm',
-  signatureValue: 'sec:signatureValue',
-  EncryptedMessage: 'sec:EncryptedMessage',
-  CryptographicKey: 'sec:Key',
-  GraphSignature2012: 'sec:GraphSignature2012'
-};
+constants.CONTEXTS[constants.CONTEXT_V1_URL] = JSON.parse(fs.readFileSync(
+  __dirname + '/../site/static/contexts/bedrock-v1.jsonld',
+  {encoding: 'utf8'}));
 
 /**
  * Default main application JSON-LD context URL.
