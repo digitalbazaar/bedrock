@@ -37,7 +37,7 @@ against the permission.
 For example, an identity may have a resource role that contains the permission
 to edit a resource, R. When code is written for editing that resource, the
 permission API may be used to check to see if the acting identity (the
-identity attemping the edit) has been granted the permission to edit the
+identity attempting the edit) has been granted the permission to edit the
 resource. However, it could alternatively be implemented to instead check
 the resource's "owner" property and use the identifier it finds there instead
 when running the permission check. This, in effect, means that if the identity
