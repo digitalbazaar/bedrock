@@ -22,8 +22,7 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
 
   var session = config.data.session || {auth: false};
   service.identity = session.identity || null;
-  service.identityMap = session.identities || {};
-  service.identities = [];
+  service.state = service.collection.state;
 
   // add session identities to identity storage and save result references
   if(service.identity) {
@@ -31,26 +30,6 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
       service.identity = identity;
     });
   }
-  angular.forEach(service.identityMap, function(identity, id) {
-    service.collection.addToStorage(identity).then(function() {
-      service.identityMap[id] = identity;
-      service.identities.push(identity);
-    });
-  });
-
-  // FIXME: update other code so common collection can be used
-  //service.identities = service.collection.storage;
-  service.state = service.collection.state;
-
-  // add a new identity
-  service.add = function(identity, options) {
-    return service.collection.add(identity, options)
-      .then(function(newIdentity) {
-        // FIXME: use newIdentity?
-        service.identityMap[identity.id] = identity;
-        service.identities.push(identity);
-      });
-  };
 
   /**
    * Sends a passcode to the email address associated with the given
@@ -114,9 +93,6 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
     if(service.identity) {
       service.collection.get(service.identity.id);
     }
-    angular.forEach(service.identityMap, function(identity) {
-      service.collection.get(identity.id);
-    });
   });
 
   // expose service to scope

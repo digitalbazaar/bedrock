@@ -46,7 +46,7 @@ function factory(AlertService, ModalService, IdentityService, config) {
       identity.sysSlug = scope.identitySlug;
       scope.loading = true;
       AlertService.clearModalFeedback(scope);
-      IdentityService.add(identity).then(function(identity) {
+      IdentityService.collection.add(identity).then(function(identity) {
         scope.loading = false;
         scope.modal.close(null, {identity: identity});
         scope.$apply();
