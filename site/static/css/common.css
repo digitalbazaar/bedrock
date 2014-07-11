@@ -797,7 +797,7 @@ input:-moz-placeholder {
 
 /* Fixed alert error area */
 .fixed-alert-area {
-  position: absolute;
+  position: fixed;
   top: -1000px;
   left: 50%;
   z-index: 1100;
