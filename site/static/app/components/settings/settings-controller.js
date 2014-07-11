@@ -1,5 +1,5 @@
 /*!
- * Identity Settings Controller.
+ * Settings Controller.
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -10,14 +10,13 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'IdentityService', 'config'];
-return {SettingsController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, IdentityService, config) {
   var self = this;
   self.identity = IdentityService.identity;
   self.panes = config.settings.panes;
 
+  // FIXME: use RefreshService
   function refresh(force) {
     var opts = {force: !!force};
   }
@@ -26,5 +25,7 @@ function factory($scope, IdentityService, config) {
   });
   refresh();
 }
+
+return {SettingsController: factory};
 
 });

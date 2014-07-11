@@ -104,7 +104,24 @@ module.exports = function(grunt) {
         out: 'site/static/app/main.min.js',
         wrap: true,
         preserveLicenseComments: false,
-        optimize: grunt.config('optimize')
+        optimize: grunt.config('optimize'),
+        onBuildRead: function(moduleName, path, contents) {
+          if(path.indexOf('site/static/app') === -1) {
+            return contents;
+          }
+          var ngAnnotate = require('ng-annotate');
+          var result = ngAnnotate(contents, {
+            add: true,
+            single_quotes: true
+          });
+          if(result.errors) {
+            console.log('ng-annotate failed for ' +
+              'moduleName="' + moduleName + '", path="' + path + '", ' +
+              'errors=', result.errors);
+            process.exit();
+          }
+          return result.src;
+        }
       }
     }
   });

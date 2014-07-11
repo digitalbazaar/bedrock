@@ -23,8 +23,8 @@ define([
 var module = angular.module('app', [
   'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.utils',
   'app.configs', 'app.components', 'app.templates']);
-module.config(['$locationProvider', '$routeProvider', '$httpProvider',
-  function($locationProvider, $routeProvider, $httpProvider) {
+/* @ngInject */
+module.config(function($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
 
@@ -32,8 +32,8 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
     $routeProvider.otherwise({none: true});
 
     // normalize errors, deal w/auth redirection
-    $httpProvider.interceptors.push([
-      '$rootScope', '$q', '$timeout', function($rootScope, $q, $timeout) {
+    /* @ngInject */
+    $httpProvider.interceptors.push(function($rootScope, $q, $timeout) {
       return {
         response: function(response) {
           if('delay' in response.config) {
@@ -59,8 +59,8 @@ module.config(['$locationProvider', '$routeProvider', '$httpProvider',
           return $q.reject(error);
         }
       };
-    }]);
-}]);
+    });
+});
 
 // utility functions
 var util = {};
@@ -97,8 +97,8 @@ util.zeroFill = function(num) {
   return (num < 10) ? '0' + num : '' + num;
 };
 
-module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
-  $rootScope, $location, $route, $http, util) {
+/* @ngInject */
+module.run(function($rootScope, $location, $route, $http, util) {
   /* Note: $route is injected above to trigger watching routes to ensure
     pages are loaded properly. */
 
@@ -163,7 +163,7 @@ module.run(['$rootScope', '$location', '$route', '$http', 'util', function(
     services: {},
     util: util
   };
-}]);
+});
 
 angular.bootstrap(document.body, ['app']);
 
