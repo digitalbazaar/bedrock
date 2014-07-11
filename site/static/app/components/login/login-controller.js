@@ -9,14 +9,13 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$scope', '$http', '$compile', '$window', 'config'];
+var deps = ['$scope', '$http', '$compile', '$window', 'AlertService', 'config'];
 return {LoginController: deps.concat(factory)};
 
-function factory($scope, $http, $compile, $window, config) {
+function factory($scope, $http, $compile, $window, AlertService, config) {
   var self = this;
   self.multiple = false;
   self.loading = false;
-  self.error = '';
   self.sysIdentifier = '';
   self.password = '';
   self.request = config.data.queuedRequest;
@@ -25,7 +24,6 @@ function factory($scope, $http, $compile, $window, config) {
 
   self.submit = function() {
     // do login
-    self.error = '';
     self.loading = true;
     Promise.resolve($http.post('/session/login', {
       sysIdentifier: self.sysIdentifier,
@@ -72,10 +70,9 @@ function factory($scope, $http, $compile, $window, config) {
     }).catch(function(err) {
       // FIXME: use directive to show feedback?
       if(err.type === 'bedrock.validation.ValidationError') {
-        self.error = 'Please enter your email address and password.';
-      } else {
-        self.error = err.message;
+        err = new Error('Please enter your email address and password.');
       }
+      AlertService.add('error', err);
       self.loading = false;
       $scope.$apply();
     });
