@@ -1,6 +1,6 @@
 <div data-ng-class="{'fixed-alert-area': fixed == 'true', 'fixed-alert-area-show': fixed == 'true' && app.services.alert.total}">
   <div data-ng-class="{'fixed-alert-area-body': fixed == 'true'}">
-    <p data-ng-show="fixed == 'true'">The following error(s) occurred:</p>
+    <p data-ng-show="fixed == 'true'">Please see following alert(s):</p>
     <div data-ng-repeat="(category, list) in app.services.alert.log">
       <div data-ng-repeat="info in list">
         <div data-ng-show="filterOrigin == 'all' || filterOrigin == info.origin">
