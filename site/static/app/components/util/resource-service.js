@@ -10,9 +10,6 @@ define(['underscore'], function(_) {
 
 'use strict';
 
-var deps = ['$rootScope', '$http', '$location', 'ModelService'];
-return {ResourceService: deps.concat(factory)};
-
 /* @ngInject */
 function factory($rootScope, $http, $location, ModelService) {
   var service = {};
@@ -243,5 +240,7 @@ function _getUrl(config, method) {
   }
   return config.url;
 }
+
+return {ResourceService: factory};
 
 });
