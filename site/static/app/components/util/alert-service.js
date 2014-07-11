@@ -27,6 +27,9 @@ function factory($rootScope, ModalService, ModelService) {
     service.log[c] = [];
   });
 
+  // the total number of alerts
+  service.total = 0;
+
   /**
    * Adds an alert to the log.
    *
@@ -64,6 +67,7 @@ function factory($rootScope, ModalService, ModelService) {
       info.origin = 'background';
     }
     service.log[category].push(info);
+    service.total += 1;
   };
 
   /**
@@ -77,6 +81,7 @@ function factory($rootScope, ModalService, ModelService) {
       for(var i = 0; i < list.length; ++i) {
         if(list[i].type === type && list[i].value === value) {
           list.splice(i, 1);
+          service.total -= 1;
           break;
         }
       }
@@ -95,6 +100,7 @@ function factory($rootScope, ModalService, ModelService) {
       if(!(category in service.category)) {
         throw new Error('Invalid error category: ' + category);
       }
+      service.total -= service.log[category].length;
       service.log[category].length = 0;
       return;
     }
@@ -102,11 +108,16 @@ function factory($rootScope, ModalService, ModelService) {
     // clear all categories
     angular.forEach(service.log, function(list) {
       if(!type) {
+        service.total -= list.length;
         list.length = 0;
         return;
       }
       ModelService.removeAllFromArray(list, function(e) {
-        return e.type === type;
+        if(e.type === type) {
+          service.total -= 1;
+          return true;
+        }
+        return false;
       });
     });
   };
@@ -128,9 +139,13 @@ function factory($rootScope, ModalService, ModelService) {
     }
     var list = service.log[service.category.FEEDBACK];
     ModelService.removeAllFromArray(list, function(e) {
-      return ((!type || e.type === type) && e.source &&
+      if((!type || e.type === type) && e.source &&
         (e.source === modal || e.source.scope === modal ||
-        e.source.scope.modal === modal));
+        e.source.scope.modal === modal)) {
+        service.total -= 1;
+        return true;
+      }
+      return false;
     });
   };
 
