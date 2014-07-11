@@ -85,7 +85,7 @@ that are used by the app and register them as dependencies for an
 Naming conventions:
 
 All files use lowercase and hyphens as a word delimiter. Variables use
-camelCase and controllers are services .
+camelCase and controllers and services use PascalCase.
 
 Controllers:
 
@@ -130,6 +130,8 @@ Best practices:
   case where the view is simple and only one controller is used.
 * Use 'link' not 'controller' for controller code in directives that
   do not expose a controller API for reuse.
+* Use the annotation /* @ngInject */ before dependency-injected functions
+  to ensure the build tools can appropriately deal with minification.
 
 ## Debugging
 
