@@ -10,12 +10,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = [
-  '$location', '$routeParams', '$sce', '$timeout',
-  'AlertService', 'KeyService', 'ModalService', 'config'
-];
-return {addKeyModal: deps.concat(factory)};
-
+/* @ngInject */
 function factory(
   $location, $routeParams, $sce, $timeout,
   AlertService, KeyService, ModalService, config) {
@@ -102,5 +97,7 @@ function factory(
     };
   }
 }
+
+return {addKeyModal: factory};
 
 });

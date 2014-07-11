@@ -5,13 +5,11 @@
  *
  * @author Dave Longley
  */
-define(['angular'], function(angular) {
+define([], function() {
 
 'use strict';
 
-var deps = ['$rootScope', '$http', '$templateCache'];
-return {TemplateCacheService: deps.concat(factory)};
-
+/* @ngInject */
 function factory($rootScope, $http, $templateCache) {
   var service = {};
 
@@ -30,5 +28,7 @@ function factory($rootScope, $http, $templateCache) {
 
   return service;
 }
+
+return {TemplateCacheService: factory};
 
 });

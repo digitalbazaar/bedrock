@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {submitForm: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return function(scope, element, attrs) {
     // manually prevent form default action
@@ -32,5 +30,7 @@ function factory() {
     });
   };
 }
+
+return {submitForm: factory};
 
 });

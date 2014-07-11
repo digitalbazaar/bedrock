@@ -9,11 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [
-  '$scope', '$rootScope', 'RefreshService', 'IdentityService', 'config'
-];
-return {NavbarController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, $rootScope, RefreshService, IdentityService, config) {
   var self = this;
   self.session = config.data.session;
@@ -29,5 +25,7 @@ function factory($scope, $rootScope, RefreshService, IdentityService, config) {
     self.showLogin = true;
   });
 }
+
+return {NavbarController: factory};
 
 });

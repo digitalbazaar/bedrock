@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$rootScope'];
-return {alerts: deps.concat(factory)};
-
+/* @ngInject */
 function factory($rootScope) {
   return {
     scope: {filterOrigin: '@?', fixed: '@?'},
@@ -27,5 +25,7 @@ function factory($rootScope) {
     }
   };
 }
+
+return {alerts: factory};
 
 });

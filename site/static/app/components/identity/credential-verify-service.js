@@ -12,9 +12,7 @@ function(md, pki, util, jsonld, _, verifierFactory) {
 
 'use strict';
 
-var deps = ['$rootScope', 'config'];
-return {CredentialVerifyService: deps.concat(factory)};
-
+/* @ngInject */
 function factory($rootScope, config) {
   var service = {};
 
@@ -61,5 +59,7 @@ function createVerifier(config, options) {
     localBaseUri: config.data.baseUri
   });
 }
+
+return {CredentialVerifyService: factory};
 
 });

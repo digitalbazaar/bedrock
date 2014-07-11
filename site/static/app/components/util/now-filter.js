@@ -9,13 +9,13 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$filter'];
-return {now: deps.concat(factory)};
-
+/* @ngInject */
 function factory($filter) {
   return function(value, format) {
     return $filter('date')(new Date(), format);
   };
 }
+
+return {now: factory};
 
 });

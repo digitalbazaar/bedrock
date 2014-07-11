@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {prefill: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return function(value, length, ch) {
     if(length === undefined) {
@@ -24,5 +22,7 @@ function factory() {
     return new Array(length - value.length + 1).join(ch) + value;
   };
 }
+
+return {prefill: factory};
 
 });

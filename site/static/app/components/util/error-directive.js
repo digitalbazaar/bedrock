@@ -10,16 +10,22 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {errorView: deps.concat(factory)};
+/* @ngInject */
+function factory() {
+  return {
+    scope: {error: '=errorView'},
+    templateUrl: '/app/components/util/error-view.html',
+    link: Link
+  };
+}
 
-function Ctrl($scope) {
-  var model = $scope.model = {};
+function Link(scope) {
+  var model = scope.model = {};
   model.error = null;
   // guess at useful simple cause output
   model.cause = null;
 
-  $scope.$watch('error', function(error) {
+  scope.$watch('error', function(error) {
     if(!error) {
       return;
     }
@@ -38,12 +44,6 @@ function Ctrl($scope) {
   });
 }
 
-function factory() {
-  return {
-    scope: {error: '=errorView'},
-    templateUrl: '/app/components/util/error-view.html',
-    controller: ['$scope', Ctrl]
-  };
-}
+return {errorView: factory};
 
 });

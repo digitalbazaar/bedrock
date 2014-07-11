@@ -11,9 +11,7 @@ define(['jsonld'], function(jsonld) {
 
 'use strict';
 
-var deps = ['$scope', 'IdentityService', 'ModelService', 'RefreshService'];
-return {IdentityController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, IdentityService, ModelService, RefreshService) {
   var self = this;
   self.identity = {};
@@ -29,5 +27,7 @@ function factory($scope, IdentityService, ModelService, RefreshService) {
       });
   })();
 }
+
+return {IdentityController: factory};
 
 });

@@ -9,11 +9,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
 'use strict';
 
-var deps = [
-  '$compile', '$parse', '$controller', '$rootScope',
-  '$templateCache', 'TemplateCacheService'];
-return {ModalService: deps.concat(factory)};
-
+/* @ngInject */
 function factory(
   $compile, $parse, $controller, $rootScope, $templateCache,
   TemplateCacheService) {
@@ -427,5 +423,7 @@ function factory(
 
   return service;
 }
+
+return {ModalService: factory};
 
 });

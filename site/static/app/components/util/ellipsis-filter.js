@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {ellipsis: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return function(value, length) {
     length = Math.max(3, length);
@@ -22,5 +20,7 @@ function factory() {
     return value;
   };
 }
+
+return {ellipsis: factory};
 
 });

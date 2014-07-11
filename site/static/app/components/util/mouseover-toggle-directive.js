@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$parse'];
-return {mouseoverToggle: deps.concat(factory)};
-
+/* @ngInject */
 function factory($parse) {
   return function(scope, element, attrs) {
     var get = $parse(attrs.mouseoverToggle);
@@ -28,5 +26,7 @@ function factory($parse) {
     });
   };
 }
+
+return {mouseoverToggle: factory};
 
 });

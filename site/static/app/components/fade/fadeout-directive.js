@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$parse'];
-return {fadeout: deps.concat(factory)};
-
+/* @ngInject */
 function factory($parse) {
   return {
     link: function(scope, element, attrs) {
@@ -28,5 +26,7 @@ function factory($parse) {
     }
   };
 }
+
+return {fadeout: factory};
 
 });

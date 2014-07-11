@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$http', 'AlertService', 'ModalService', 'config'];
-return {loginModal: deps.concat(factory)};
-
+/* @ngInject */
 function factory($http, AlertService, ModalService, config) {
   return ModalService.directive({
     name: 'login',
@@ -50,5 +48,7 @@ function factory($http, AlertService, ModalService, config) {
     };
   }
 }
+
+return {loginModal: factory};
 
 });

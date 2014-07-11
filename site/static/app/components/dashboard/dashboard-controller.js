@@ -10,14 +10,14 @@ define([], function() {
 
 'use strict';
 
-var deps = ['IdentityService'];
-return {DashboardController: deps.concat(factory)};
-
+/* @ngInject */
 function factory(IdentityService) {
   var self = this;
   self.identity = IdentityService.identity;
   self.state = {};
   self.modals = {};
 }
+
+return {DashboardController: factory};
 
 });

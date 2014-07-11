@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$parse'];
-return {trackState: deps.concat(factory)};
-
+/* @ngInject */
 function factory($parse) {
   return {
     link: function(scope, element, attrs) {
@@ -61,5 +59,7 @@ function factory($parse) {
     }
   };
 }
+
+return {trackState: factory};
 
 });

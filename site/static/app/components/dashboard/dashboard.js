@@ -17,13 +17,12 @@ var module = angular.module('app.dashboard', []);
 
 module.controller(controller);
 
-module.config(['$routeProvider',
-  function($routeProvider) {
-    angular.forEach(routes, function(route) {
-      $routeProvider.when(route.path, route.options);
-    });
-  }
-]);
+/* @ngInject */
+module.config(function($routeProvider) {
+  angular.forEach(routes, function(route) {
+    $routeProvider.when(route.path, route.options);
+  });
+});
 
 return module.name;
 

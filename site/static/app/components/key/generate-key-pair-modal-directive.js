@@ -7,9 +7,7 @@
  */
 define(['forge/pki'], function(pki) {
 
-var deps = ['AlertService', 'ModalService', 'KeyService', 'config'];
-return {generateKeyPairModal: deps.concat(factory)};
-
+/* @ngInject */
 function factory(AlertService, ModalService, KeyService, config) {
   return ModalService.directive({
     name: 'generateKeyPair',
@@ -88,5 +86,7 @@ function factory(AlertService, ModalService, KeyService, config) {
     };
   }
 }
+
+return {generateKeyPairModal: factory};
 
 });

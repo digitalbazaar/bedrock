@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$scope', '$http', '$compile', '$window', 'AlertService', 'config'];
-return {LoginController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, $http, $compile, $window, AlertService, config) {
   var self = this;
   self.multiple = false;
@@ -78,5 +76,7 @@ function factory($scope, $http, $compile, $window, AlertService, config) {
     });
   };
 }
+
+return {LoginController: factory};
 
 });

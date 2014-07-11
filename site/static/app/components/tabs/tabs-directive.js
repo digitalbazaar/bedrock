@@ -18,6 +18,7 @@ return {
 };
 
 function tabsFactory() {
+  /* @ngInject */
   function Ctrl($scope) {
     var panes = $scope.panes = [];
 
@@ -44,7 +45,7 @@ function tabsFactory() {
     restrict: 'A',
     transclude: true,
     scope: {},
-    controller: ['$scope', Ctrl],
+    controller: Ctrl,
     templateUrl: '/app/components/tabs/tabs.html'
   };
 }

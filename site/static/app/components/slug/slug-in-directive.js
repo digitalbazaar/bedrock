@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$filter', '$parse'];
-return {slugIn: deps.concat(factory)};
-
+/* @ngInject */
 function factory($filter, $parse) {
   return {
     restrict: 'A',
@@ -58,5 +56,7 @@ function factory($filter, $parse) {
     }
   };
 }
+
+return {slugIn: factory};
 
 });

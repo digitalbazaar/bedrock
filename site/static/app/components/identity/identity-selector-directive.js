@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {identitySelector: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return {
     scope: {
@@ -22,14 +20,14 @@ function factory() {
       fixed: '@'
     },
     templateUrl: '/app/components/identity/identity-selector.html',
-    link: Link
+    link: function(scope, element, attrs) {
+      attrs.$observe('fixed', function(value) {
+        scope.fixed = value;
+      });
+    }
   };
-
-  function Link(scope, element, attrs) {
-    attrs.$observe('fixed', function(value) {
-      scope.fixed = value;
-    });
-  }
 }
+
+return {identitySelector: factory};
 
 });

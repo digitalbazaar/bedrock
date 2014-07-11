@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {embeddedString: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return function(value) {
     if(value === undefined || value === null) {
@@ -20,5 +18,7 @@ function factory() {
     return value.replace(/\r/g, '\\r').replace(/\n/g, '\\n');
   };
 }
+
+return {embeddedString: factory};
 
 });

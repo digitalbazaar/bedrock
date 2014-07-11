@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['AlertService', 'KeyService', 'ModalService', 'config'];
-return {editKeyModal: deps.concat(factory)};
-
+/* @ngInject */
 function factory(AlertService, KeyService, ModalService, config) {
   return ModalService.directive({
     name: 'editKey',
@@ -52,5 +50,7 @@ function factory(AlertService, KeyService, ModalService, config) {
     };
   }
 }
+
+return {editKeyModal: factory};
 
 });

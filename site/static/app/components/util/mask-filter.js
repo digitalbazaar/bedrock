@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {mask: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return function(value, length) {
     if(length === undefined) {
@@ -21,5 +19,7 @@ function factory() {
     return new Array(length - value.length + 1).join('*') + value;
   };
 }
+
+return {mask: factory};
 
 });

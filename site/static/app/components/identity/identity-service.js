@@ -9,10 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = [
-  '$http', '$rootScope', 'RefreshService', 'ResourceService', 'config'];
-return {IdentityService: deps.concat(factory)};
-
+/* @ngInject */
 function factory($http, $rootScope, RefreshService, ResourceService, config) {
   var service = {};
 
@@ -100,5 +97,7 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
 
   return service;
 }
+
+return {IdentityService: factory};
 
 });

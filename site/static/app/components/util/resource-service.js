@@ -13,6 +13,7 @@ define(['underscore'], function(_) {
 var deps = ['$rootScope', '$http', '$location', 'ModelService'];
 return {ResourceService: deps.concat(factory)};
 
+/* @ngInject */
 function factory($rootScope, $http, $location, ModelService) {
   var service = {};
 

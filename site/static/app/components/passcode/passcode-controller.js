@@ -10,9 +10,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'IdentityService', 'config'];
-return {PasscodeController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, IdentityService, config) {
   var self = this;
   self.email = config.data.session ? config.data.session.identity.email : '';
@@ -66,5 +64,7 @@ function factory($scope, IdentityService, config) {
     self.feedback.password = {};
   }
 }
+
+return {PasscodeController: factory};
 
 });

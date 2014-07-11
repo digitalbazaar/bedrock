@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$parse', '$timeout'];
-return {helpToggle: deps.concat(factory)};
-
+/* @ngInject */
 function factory($parse, $timeout) {
   return {
     link: function(scope, element, attrs) {
@@ -141,5 +139,7 @@ function factory($parse, $timeout) {
     }
   };
 }
+
+return {helpToggle: factory};
 
 });

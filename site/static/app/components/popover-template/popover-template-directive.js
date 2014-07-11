@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$compile', '$parse', '$timeout', 'TemplateCacheService'];
-return {popoverTemplate: deps.concat(factory)};
-
+/* @ngInject */
 function factory($compile, $parse, $timeout, TemplateCacheService) {
   // FIXME: popover needs cleanup/rewrite to handle scopes properly and
   // to better deal with placement, etc. -- but wait for bootstrap update to
@@ -190,5 +188,7 @@ function factory($compile, $parse, $timeout, TemplateCacheService) {
     });
   }
 }
+
+return {popoverTemplate: factory};
 
 });

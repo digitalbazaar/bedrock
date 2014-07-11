@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {tooltipTitle: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return function(scope, element, attrs) {
     var show = false;
@@ -50,5 +48,7 @@ function factory() {
     });
   };
 }
+
+return {tooltipTitle: factory};
 
 });

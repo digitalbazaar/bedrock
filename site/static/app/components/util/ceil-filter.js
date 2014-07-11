@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {ceil: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   // Note: does not deal w/values w/leading zeros
   return function(value, digits) {
@@ -37,5 +35,7 @@ function factory() {
     return value + new Array(length - value.length + 1).join('0');
   };
 }
+
+return {ceil: factory};
 
 });

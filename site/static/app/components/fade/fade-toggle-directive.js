@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {fadeToggle: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return {
     link: function(scope, element, attrs) {
@@ -35,5 +33,7 @@ function factory() {
     }
   };
 }
+
+return {fadeToggle: factory};
 
 });

@@ -9,9 +9,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
 'use strict';
 
-var deps = ['$compile', 'AlertService'];
-return {feedback: deps.concat(factory)};
-
+/* @ngInject */
 function factory($compile, AlertService) {
   /**
    * Show stack of feedback items ordered as:
@@ -136,5 +134,7 @@ function factory($compile, AlertService) {
     }
   };
 }
+
+return {feedback: factory};
 
 });

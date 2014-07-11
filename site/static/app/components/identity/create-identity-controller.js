@@ -10,9 +10,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$http', '$window', 'AlertService', 'config'];
-return {CreateIdentityController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, $http, $window, AlertService, config) {
   var self = this;
   self.data = config.data;
@@ -44,5 +42,7 @@ function factory($scope, $http, $window, AlertService, config) {
       });
   };
 }
+
+return {CreateIdentityController: factory};
 
 });

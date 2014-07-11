@@ -9,10 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [
-  '$scope', 'config', '$http', '$location', '$sanitize', 'IdentityService'];
-return {IdentityCredentialsController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, config, $http, $location, $sanitize, IdentityService) {
   var self = this;
   self.loading = false;
@@ -49,5 +46,7 @@ function factory($scope, config, $http, $location, $sanitize, IdentityService) {
     });
   };
 }
+
+return {IdentityCredentialsController: factory};
 
 });

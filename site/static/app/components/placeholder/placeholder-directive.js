@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [];
-return {placeholder: deps.concat(factory)};
-
+/* @ngInject */
 function factory() {
   return {
     restrict: 'A',
@@ -23,5 +21,7 @@ function factory() {
     }
   };
 }
+
+return {placeholder: factory};
 
 });

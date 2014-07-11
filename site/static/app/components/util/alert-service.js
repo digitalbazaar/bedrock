@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$rootScope', 'ModalService', 'ModelService'];
-return {AlertService: deps.concat(factory)};
-
+/* @ngInject */
 function factory($rootScope, ModalService, ModelService) {
   var service = {};
 
@@ -163,5 +161,7 @@ function factory($rootScope, ModalService, ModelService) {
 
   return service;
 }
+
+return {AlertService: factory};
 
 });

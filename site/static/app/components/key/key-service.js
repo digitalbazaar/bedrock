@@ -9,11 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = [
-  '$rootScope', 'IdentityService', 'ModelService', 'RefreshService',
-  'ResourceService', 'config'];
-return {KeyService: deps.concat(factory)};
-
+/* @ngInject */
 function factory(
   $rootScope, IdentityService, ModelService, RefreshService,
   ResourceService, config) {
@@ -53,5 +49,7 @@ function factory(
 
   return service;
 }
+
+return {KeyService: factory};
 
 });

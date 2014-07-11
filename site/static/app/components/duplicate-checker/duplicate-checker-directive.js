@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$http', '$filter', 'AlertService', 'config'];
-return {duplicateChecker: deps.concat(factory)};
-
+/* @ngInject */
 function factory($http, $filter, AlertService, config) {
   return {
     restrict: 'A',
@@ -131,5 +129,7 @@ function factory($http, $filter, AlertService, config) {
     });
   }
 }
+
+return {duplicateChecker: factory};
 
 });

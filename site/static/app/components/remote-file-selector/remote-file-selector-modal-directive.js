@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$http', 'AlertService', 'ModalService'];
-return {remoteFileSelectorModal: deps.concat(factory)};
-
+/* @ngInject */
 function factory($http, AlertService, ModalService) {
   return ModalService.directive({
     name: 'remoteFileSelector',
@@ -102,5 +100,7 @@ function factory($http, AlertService, ModalService) {
     model.getFileList();
   }
 }
+
+return {remoteFileSelectorModal: factory};
 
 });

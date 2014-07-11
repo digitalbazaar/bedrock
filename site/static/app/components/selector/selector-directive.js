@@ -9,9 +9,7 @@ define(['angular'], function(angular) {
 
 'use strict';
 
-var deps = ['$filter'];
-return {selector: deps.concat(factory)};
-
+/* @ngInject */
 function factory($filter) {
   return {
     transclude: true,
@@ -87,5 +85,7 @@ function factory($filter) {
     };
   }
 }
+
+return {selector: factory};
 
 });

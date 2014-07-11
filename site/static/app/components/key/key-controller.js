@@ -11,9 +11,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', 'ModelService', 'KeyService', 'RefreshService'];
-return {KeyController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, ModelService, KeyService, RefreshService) {
   var self = this;
   self.key = {};
@@ -27,5 +25,7 @@ function factory($scope, ModelService, KeyService, RefreshService) {
       });
   })();
 }
+
+return {KeyController: factory};
 
 });

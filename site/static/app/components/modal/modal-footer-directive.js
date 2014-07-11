@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['ModalService'];
-return {modalFooter: deps.concat(factory)};
-
+/* @ngInject */
 function factory(ModalService) {
   return {
     replace: true,
@@ -27,5 +25,7 @@ function factory(ModalService) {
     }
   };
 }
+
+return {modalFooter: factory};
 
 });

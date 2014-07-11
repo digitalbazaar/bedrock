@@ -9,9 +9,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['KeyService'];
-return {keySelector: deps.concat(factory)};
-
+/* @ngInject */
 function factory(KeyService) {
   return {
     scope: {
@@ -40,5 +38,7 @@ function factory(KeyService) {
     KeyService.collection.getAll();
   }
 }
+
+return {keySelector: factory};
 
 });

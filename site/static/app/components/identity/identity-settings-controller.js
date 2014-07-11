@@ -10,9 +10,7 @@ define(['angular', 'forge/forge', 'underscore'], function(angular, forge, _) {
 
 'use strict';
 
-var deps = ['$scope', 'config', 'AlertService', 'IdentityService'];
-return {IdentitySettingsController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($scope, config, AlertService, IdentityService) {
   var self = this;
   self.state = IdentityService.state;
@@ -170,5 +168,7 @@ function factory($scope, config, AlertService, IdentityService) {
   // reset
   self.cancel();
 }
+
+return {IdentitySettingsController: factory};
 
 });

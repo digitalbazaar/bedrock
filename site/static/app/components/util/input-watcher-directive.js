@@ -9,10 +9,8 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$parse', '$http'];
-return {inputWatcher: deps.concat(factory)};
-
-function factory($parse, $http) {
+/* @ngInject */
+function factory() {
   return {
     restrict: 'A',
     scope: {
@@ -20,59 +18,63 @@ function factory($parse, $http) {
       state: '=inputWatcherState',
       change: '&inputChange'
     },
-    link: function(scope, element, attrs) {
-      // init state object
-      var state = {
-        loading: false
-      };
-      scope.$watch('state', function(value) {
-        if(value === undefined) {
-          scope.state = state;
-        }
-      });
+    link: Link
+  };
 
-      // watch for changes to input
-      var timer = null;
-      scope.$watch('input', function(value) {
-        // stop previous check
-        clearTimeout(timer);
+  function Link(scope) {
+    // init state object
+    var state = {
+      loading: false
+    };
+    scope.$watch('state', function(value) {
+      if(value === undefined) {
+        scope.state = state;
+      }
+    });
 
-        // nothing to check
-        if(value === undefined || value.length === 0) {
+    // watch for changes to input
+    var timer = null;
+    scope.$watch('input', function(value) {
+      // stop previous check
+      clearTimeout(timer);
+
+      // nothing to check
+      if(value === undefined || value.length === 0) {
+        state.loading = false;
+        scope.change({
+          input: '',
+          state: scope.state,
+          callback: function() {
+            scope.$apply();
+          }
+        });
+        return;
+      }
+
+      // start countdown to do check
+      state.loading = true;
+      timer = setTimeout(function() {
+        timer = null;
+
+        if(scope.input.length === 0) {
           state.loading = false;
-          scope.change({
-            input: '',
-            state: scope.state,
-            callback: function() {
-              scope.$apply();
-            }
-          });
+          scope.$apply();
           return;
         }
 
-        // start countdown to do check
-        state.loading = true;
-        timer = setTimeout(function() {
-          timer = null;
-
-          if(scope.input.length === 0) {
+        scope.change({
+          input: scope.input,
+          state: scope.state,
+          callback: function() {
             state.loading = false;
             scope.$apply();
-            return;
           }
-
-          scope.change({
-            input: scope.input,
-            state: scope.state,
-            callback: function() {
-              state.loading = false;
-              scope.$apply();
-            }
-          });
-        }, 1000);
-      });
-    }
-  };
+        });
+      }, 1000);
+    });
+  }
 }
+
+return {inputWatcher: factory};
 
 });
