@@ -93,9 +93,9 @@ function factory($compile, AlertService) {
     link: function(scope, element) {
       // no target specified
       if(!('target' in scope)) {
-        // select forms in an adjacent modal-body first, then any parent form,
+        // select forms in a visible modal-body first, then any parent form,
         // then self
-        scope.target = element.closest('.modal-footer').prev('.modal-body');
+        scope.target = $('.modal:visible').children('.modal-body');
         if(scope.target.length) {
           scope.target = $('form', scope.target);
         }

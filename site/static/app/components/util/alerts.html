@@ -1,22 +1,21 @@
-<div data-ng-repeat="(category, list) in app.services.alert.log">
-  <div data-ng-repeat="info in list">
-    <div data-ng-show="filterOrigin == 'all' || filterOrigin == info.origin">
-      <div data-ng-if="info.type == 'error' && category == app.services.alert.category.FEEDBACK"
-        data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
-        data-feedback="feedback[$index]"
-        data-ng-init="feedback[$index]={error: info.value}"></div>
-      <div data-ng-if="info.type == 'warning' && category == app.services.alert.category.FEEDBACK"
-        data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
-        data-feedback="feedback[$index]"
-        data-ng-init="feedback[$index]={warning: info.value}"></div>
-      <div data-ng-if="info.type == 'info' && category == app.services.alert.category.FEEDBACK"
-        data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
-        data-feedback="feedback[$index]"
-        data-ng-init="feedback[$index]={success: info.value}"></div>
-      <div data-ng-if="info.type == 'success' && category == app.services.alert.category.FEEDBACK"
-        data-ng-class="{'modal-feedback': filterOrigin == 'modal'}"
-        data-feedback="feedback[$index]"
-        data-ng-init="feedback[$index]={success: info.value}"></div>
+<div data-ng-class="{'fixed-alert-area': fixed == 'true', 'fixed-alert-area-show': fixed == 'true' && app.services.alert.total}">
+  <p data-ng-show="fixed == 'true'">The following error(s) occurred:</p>
+  <div data-ng-repeat="(category, list) in app.services.alert.log">
+    <div data-ng-repeat="info in list">
+      <div data-ng-show="filterOrigin == 'all' || filterOrigin == info.origin">
+        <div data-ng-if="info.type == 'error'"
+          data-feedback="feedback[$index]"
+          data-ng-init="feedback[$index]={error: info.value}"></div>
+        <div data-ng-if="info.type == 'warning'"
+          data-feedback="feedback[$index]"
+          data-ng-init="feedback[$index]={warning: info.value}"></div>
+        <div data-ng-if="info.type == 'info'"
+          data-feedback="feedback[$index]"
+          data-ng-init="feedback[$index]={success: info.value}"></div>
+        <div data-ng-if="info.type == 'success'"
+          data-feedback="feedback[$index]"
+          data-ng-init="feedback[$index]={success: info.value}"></div>
+      </div>
     </div>
   </div>
 </div>

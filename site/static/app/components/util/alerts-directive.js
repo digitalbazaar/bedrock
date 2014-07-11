@@ -14,12 +14,16 @@ return {alerts: deps.concat(factory)};
 
 function factory($rootScope) {
   return {
-    scope: {filterOrigin: '@?'},
+    scope: {filterOrigin: '@?', fixed: '@?'},
     templateUrl: '/app/components/util/alerts.html',
     link: function(scope, element, attrs) {
       scope.app = $rootScope.app;
       scope.feedback = [];
-      scope.filterOrigin = scope.filterOrigin || 'all';
+      attrs.$observe('filterOrigin', function(value) {
+        if(value === undefined) {
+          scope.filterOrigin = 'all';
+        }
+      });
     }
   };
 }
