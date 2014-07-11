@@ -10,16 +10,12 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope', '$http', '$window', 'config'];
+var deps = ['$scope', '$http', '$window', 'AlertService', 'config'];
 return {CreateIdentityController: deps.concat(factory)};
 
-function factory($scope, $http, $window, config) {
+function factory($scope, $http, $window, AlertService, config) {
   var self = this;
   self.data = config.data;
-  self.feedback = {};
-  // FIXME: temporary code to be removed after feedback improvements.
-  //      : also remove the id fom the form in create.tpl.
-  self.feedbackTarget = $('#createIdentityFeedbackTarget');
   self.loading = false;
   self.identity = {
     '@context': config.data.contextUrl,
@@ -42,8 +38,8 @@ function factory($scope, $http, $window, config) {
         // redirect to new dashboard
         $window.location = response.data.id + '/dashboard';
       }).catch(function(err) {
+        AlertService.add('error', err);
         self.loading = false;
-        self.feedback.error = err;
         $scope.$apply();
       });
   };
