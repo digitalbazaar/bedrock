@@ -8,6 +8,7 @@ var jsonschema = require('json-schema');
 
 var _schema_dir = '../../schemas';
 var comment = require(_schema_dir + '/comment');
+var nonce = require(_schema_dir + '/nonce');
 var slug = require(_schema_dir + '/slug');
 
 // FIXME: add more tests, test for proper errors
@@ -61,6 +62,54 @@ describe('JSON-LD REST API input schema', function() {
     });
     it('should reject newline characters', function(done) {
       var result = jsonschema('\n', schema);
+      result.valid.should.be.false;
+      done();
+    });
+  });
+
+  describe('nonce', function() {
+    var schema = nonce();
+    it('should be an Object', function(done) {
+      schema.should.be.an.instanceof(Object);
+      done();
+    });
+    it('should reject empty nonces', function(done) {
+      var result = jsonschema('', schema);
+      result.valid.should.be.false;
+      done();
+    });
+    it('should reject nonces that are too short', function(done) {
+      var result = jsonschema('1234567', schema);
+      result.valid.should.be.false;
+      done();
+    });
+    it('should reject nonces that are too long', function(done) {
+      var result = jsonschema(
+        // 65 chars
+        '1234567890123456789012345678901234567890' +
+        '1234567890123456789012345',
+        schema);
+      result.valid.should.be.false;
+      done();
+    });
+    it('should accept valid nonces', function(done) {
+      var small = jsonschema('12345678', schema);
+      small.valid.should.be.true;
+      var large = jsonschema(
+        // 64 chars
+        '1234567890123456789012345678901234567890' +
+        '123456789012345678901234',
+        schema);
+      large.valid.should.be.true;
+      done();
+    });
+    it('should accept normal non-letter characters', function(done) {
+      var result = jsonschema('-a-zA-Z0-9~!$%^&*()_=+. ', schema);
+      result.valid.should.be.true;
+      done();
+    });
+    it('should reject invalid characters', function(done) {
+      var result = jsonschema('|||||||||', schema);
       result.valid.should.be.false;
       done();
     });
