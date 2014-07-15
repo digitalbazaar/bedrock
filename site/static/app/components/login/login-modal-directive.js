@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($http, AlertService, ModalService, config) {
+function factory($http, AlertService, ModalService, RefreshService, config) {
   return ModalService.directive({
     name: 'login',
     scope: {},
@@ -33,6 +33,7 @@ function factory($http, AlertService, ModalService, config) {
       })).then(function(response) {
         // success, close modal
         scope.modal.close(null);
+        RefreshService.refresh();
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
