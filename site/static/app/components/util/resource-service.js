@@ -20,6 +20,7 @@ function factory($rootScope, $http, $location, ModelService) {
   //   storage: reference to external array of data (optional)
   //   expires: time data expires (timestamp, optional [0])
   //   maxAge: maximum cache age (ms, optional [2m])
+  //   query: default params object to use for getAll() (optional)
   //   finishLoading: custom callback to call after every load (fn, optional)
   // }
   service.Collection = function(config) {
@@ -58,7 +59,7 @@ function factory($rootScope, $http, $location, ModelService) {
       return Promise.resolve(self.storage);
     }
     self.startLoading();
-    var config = _buildConfig(options);
+    var config = self._buildConfig(options);
     var url = _getUrl(self.config, 'getAll');
     return Promise.resolve($http.get(url, config))
       .then(function(response) {
@@ -90,7 +91,7 @@ function factory($rootScope, $http, $location, ModelService) {
     }
     // FIXME: reject if resourceId not a sub-url of collection
     self.startLoading();
-    var config = _buildConfig(options);
+    var config = self._buildConfig(options);
     return Promise.resolve($http.get(resourceId, config))
       .then(function(response) {
         // update collection but not collection expiration time
@@ -132,7 +133,7 @@ function factory($rootScope, $http, $location, ModelService) {
     var self = this;
     options = options || {};
     self.startLoading();
-    var config = _buildConfig(options);
+    var config = self._buildConfig(options);
     var url = _getUrl(self.config, 'add');
     return Promise.resolve($http.post(url, resource, config))
       .then(function(response) {
@@ -163,7 +164,7 @@ function factory($rootScope, $http, $location, ModelService) {
     var self = this;
     options = options || {};
     self.startLoading();
-    var config = _buildConfig(options);
+    var config = self._buildConfig(options);
     return Promise.resolve($http.post(resource.id, resource, config))
       .then(function(response) {
         // don't update collection expiration time
@@ -187,7 +188,7 @@ function factory($rootScope, $http, $location, ModelService) {
     var self = this;
     options = options || {};
     self.startLoading();
-    var config = _buildConfig(options);
+    var config = self._buildConfig(options);
     return Promise.resolve($http.delete(resourceId, config))
       .then(function(response) {
         // don't update collection expiration time
@@ -206,24 +207,48 @@ function factory($rootScope, $http, $location, ModelService) {
       });
   };
 
+  /**
+   * Clear all data.
+   */
+  service.Collection.prototype.clear = function() {
+    var self = this;
+    ModelService.replaceArray(self.storage, []);
+  };
+
+  /**
+   * Set the query params object.
+   */
+  service.Collection.prototype.setQuery = function(params) {
+    var self = this;
+
+    self.config.query = params;
+  }
+
+  /**
+   * Build a $http config from collection options.
+   */
+  service.Collection.prototype._buildConfig = function(options, config) {
+    var self = this;
+
+    config = config || {};
+    if('delay' in options) {
+      config.delay = options.delay;
+    }
+    // add global params if set
+    if(self.config.query) {
+      config.params = angular.copy(self.config.query);
+    }
+    // extend with current param options
+    if('params' in options) {
+      config.params = angular.extend(config.params || {}, options.params);
+    }
+    return config;
+  }
+
   // expose service to scope
   $rootScope.app.services.resource = service;
 
   return service;
-}
-
-/**
- * Build a $http config from collection options.
- */
-function _buildConfig(options, config) {
-  config = config || {};
-  if('delay' in options) {
-    config.delay = options.delay;
-  }
-  if('params' in options) {
-    config.params = options.params;
-  }
-  return config;
 }
 
 /**
