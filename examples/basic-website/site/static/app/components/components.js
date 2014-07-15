@@ -32,28 +32,6 @@ define([
 
 'use strict';
 
-angular.module('app.components', [
-  'app.example',
-  'app.dashboard',
-  'app.duplicateChecker',
-  'app.fade',
-  'app.feedback',
-  'app.identity',
-  'app.key',
-  'app.login',
-  'app.modal',
-  'app.navbar',
-  'app.passcode',
-  'app.placeholder',
-  'app.popoverTemplate',
-  'app.remoteFileSelector',
-  'app.selector',
-  'app.settings',
-  'app.slug',
-  'app.spinner',
-  'app.submitForm',
-  'app.tabs',
-  'app.util'
-]);
+angular.module('app.components', Array.prototype.slice.call(arguments, 1));
 
 });

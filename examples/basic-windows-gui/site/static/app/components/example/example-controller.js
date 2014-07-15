@@ -9,14 +9,13 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$scope'];
-return {ExampleCtrl: deps.concat(factory)};
-
-function factory($scope) {
-  var model = $scope.model = {};
-  var data = window.data || {};
-
+function factory(config, $http) {
+  this.name = config.data.siteTitle;
+  this.bedrock = 'Bedrock';
   console.log('ExampleCtrl initialized...');
 }
+
+/* @ngInject */
+return {ExampleController: factory};
 
 });

@@ -7,13 +7,15 @@
  */
 define([
   'angular',
-  './example.controller'
-], function(angular, exampleCtrl) {
+  './example-controller'
+], function(angular, exampleController) {
 
 'use strict';
 
 var module = angular.module('app.example', []);
 
-module.controller(exampleCtrl);
+module.controller(exampleController);
+
+return module;
 
 });

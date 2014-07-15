@@ -21,17 +21,6 @@ define([
 
 'use strict';
 
-angular.module('app.components', [
-  'app.example',
-  'app.fade',
-  'app.feedback',
-  'app.modal',
-  'app.placeholder',
-  'app.popoverTemplate',
-  'app.spinner',
-  'app.submitForm',
-  'app.tabs',
-  'app.util'
-]);
+angular.module('app.components', Array.prototype.slice.call(arguments, 1));
 
 });
