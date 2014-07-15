@@ -10,9 +10,7 @@ define([], function() {
 
 'use strict';
 
-var deps = ['$routeParams', 'IdentityService', 'KeyService', 'config'];
-return {KeysController: deps.concat(factory)};
-
+/* @ngInject */
 function factory($routeParams, IdentityService, KeyService, config) {
   var self = this;
   self.identity = IdentityService.identity;
@@ -62,5 +60,7 @@ function factory($routeParams, IdentityService, KeyService, config) {
 
   KeyService.collection.getAll();
 }
+
+return {KeysController: factory};
 
 });
