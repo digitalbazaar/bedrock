@@ -222,7 +222,7 @@ function factory($rootScope, $http, $location, ModelService) {
     var self = this;
 
     self.config.query = params;
-  }
+  };
 
   /**
    * Build a $http config from collection options.
@@ -243,7 +243,7 @@ function factory($rootScope, $http, $location, ModelService) {
       config.params = angular.extend(config.params || {}, options.params);
     }
     return config;
-  }
+  };
 
   // expose service to scope
   $rootScope.app.services.resource = service;
