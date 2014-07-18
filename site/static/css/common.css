@@ -833,6 +833,16 @@ input:-moz-placeholder {
   padding: 15px 15px 5px 15px;
 }
 
+/* Fixes to Select2 widgets */
+
+.select2-container .select2-choice > .select2-chosen,
+.select2-drop {
+  font-size: 14px;
+}
+.select2-container {
+  width: 220px;
+}
+
 /* Responsive changes */
 
 /* Fix for responsive fixed-size input fields */
