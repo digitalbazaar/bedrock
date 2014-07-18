@@ -1,0 +1,9 @@
+{
+  "name": "bedrock",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "Bedrock bower dependencies.",
+  "dependencies": {
+    "angular-ui-select2": "0.0.5"
+  }
+}

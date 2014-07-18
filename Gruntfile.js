@@ -35,6 +35,7 @@ module.exports = function(grunt) {
           'site/static/bootstrap/css/bootstrap.css',
           'site/static/bootstrap/css/bootstrap-responsive.css',
           'site/static/font-awesome/css/font-awesome.css',
+          'bower_components/select2/select2.css',
           'site/static/css/common.css',
           'site/static/css/custom.css'
         ]
@@ -88,11 +89,13 @@ module.exports = function(grunt) {
         baseUrl: 'site/static',
         paths: {
           'almond': '../../node_modules/almond/almond',
+          'angular-ui-select2': '../../bower_components/angular-ui-select2/src/select2',
           'forge': '../../node_modules/node-forge/js',
           'iso8601': '../../lib/iso8601/is8601',
           'jsonld': '../../node_modules/jsonld/js/jsonld',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
           'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
+          'select2': '../../bower_components/select2/select2',
           'underscore': '../../node_modules/underscore/underscore',
           // override templates
           'app/templates': 'app/templates.min'

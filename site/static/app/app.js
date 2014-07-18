@@ -9,6 +9,7 @@ define([
   'angular',
   'angular-route',
   'angular-sanitize',
+  'angular-ui-select2',
   'bootstrap',
   'ui-bootstrap',
   'ui-utils',
@@ -21,7 +22,7 @@ define([
 'use strict';
 
 var module = angular.module('app', [
-  'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.utils',
+  'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.select2', 'ui.utils',
   'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */
 module.config(function($locationProvider, $routeProvider, $httpProvider) {

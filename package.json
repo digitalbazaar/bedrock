@@ -19,7 +19,10 @@
     "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js --backend > reports/coverage.html && rm -rf lib-cov",
     "bootstrap": "make -C ../bedrock-bootstrap bootstrap && rsync -av --exclude=js/bootstrap.min.js ../bedrock-bootstrap/bootstrap/ ./site/static/bootstrap/",
     "minify": "grunt",
-    "install-protractor": "webdriver-manager update"
+    "install-protractor": "webdriver-manager update",
+    "postinstall": "bower install",
+    "bower-install": "bower install",
+    "bower-update": "bower update"
   },
   "dependencies": {
     "almond": "~0.2.6",
