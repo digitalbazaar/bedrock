@@ -17,6 +17,7 @@ require.config({
   baseUrl: '/',
   paths: {
     angular: 'angular/angular',
+    'angular-animate': 'angular/angular-animate',
     'angular-route': 'angular/angular-route',
     'angular-sanitize': 'angular/angular-sanitize',
     'angular-ui-select2': 'bower-components/angular-ui-select2/src/select2',
@@ -40,6 +41,7 @@ require.config({
   shim: {
     // export globals for non-requireJS libs
     angular: {exports: 'angular', deps: ['jquery']},
+    'angular-animate': {deps: ['angular']},
     'angular-route': {deps: ['angular']},
     'angular-sanitize': {deps: ['angular']},
     'angular-ui-select2': {deps: ['angular', 'select2']},

@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  'angular-animate',
   'angular-route',
   'angular-sanitize',
   'angular-ui-select2',
@@ -23,8 +24,10 @@ define([
 'use strict';
 
 var module = angular.module('app', [
-  'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.select2', 'ui.utils',
-  'stackables', 'app.configs', 'app.components', 'app.templates']);
+  'ngAnimate', 'ngRoute', 'ngSanitize',
+  'ui.bootstrap', 'ui.select2', 'ui.utils',
+  'stackables',
+  'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */
 module.config(function($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
