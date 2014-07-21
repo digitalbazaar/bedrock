@@ -38,7 +38,7 @@
     "grunt": "~0.4.1",
     "grunt-angular-templates": "git://github.com/digitalbazaar/grunt-angular-templates",
     "grunt-cli": "~0.1.13",
-    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-cssmin": "~0.10.0",
     "grunt-contrib-requirejs": "~0.4.1",
     "http-proxy": "git://github.com/digitalbazaar/node-http-proxy#mod-header-event",
     "http-signature": "git://github.com/digitalbazaar/node-http-signature",
