@@ -50,7 +50,7 @@ require.config({
     'jquery.placeholder': {deps: ['jquery']},
     select2: {deps: ['angular'], exports: 'Select2'},
     spin: {exports: 'Spinner'},
-    stackables: {deps: ['angular']},
+    stackables: {deps: ['angular', 'dialog-polyfill']},
     'ui-bootstrap': {deps: ['angular']},
     'ui-utils': {deps: ['angular', 'ui-utils-ieshiv']},
     underscore: {exports: '_'}
