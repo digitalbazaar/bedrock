@@ -14,6 +14,7 @@ define([
   'ui-bootstrap',
   'ui-utils',
   'promise',
+  'stackables',
   'app/configs',
   'app/components/components',
   'app/templates'
@@ -23,7 +24,7 @@ define([
 
 var module = angular.module('app', [
   'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ui.select2', 'ui.utils',
-  'app.configs', 'app.components', 'app.templates']);
+  'stackables', 'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */
 module.config(function($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
