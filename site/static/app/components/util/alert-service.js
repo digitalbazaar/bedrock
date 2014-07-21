@@ -33,10 +33,13 @@ function factory($rootScope, ModalService, ModelService) {
    *
    * @param type the type of alert ('error', 'warning', 'info').
    * @param value the alert to add.
-   * @param category an optional category for the alert,
-   *          default: service.category.FEEDBACK.
+   * @param options the options to use:
+   *          [category] an optional category for the alert,
+   *            default: service.category.FEEDBACK.
+   *          [scope] a scope to attach a listener to destroy the alert
+   *            when the scope is destroyed.
    */
-  service.add = function(type, value, category) {
+  service.add = function(type, value, options) {
     if(typeof value === 'string') {
       value = {message: value};
     }
@@ -47,13 +50,16 @@ function factory($rootScope, ModalService, ModelService) {
       log.call(console, 'Error value:', value);
       log.call(console, 'Error stack:', value.stack);
     }
-    category = category || service.category.FEEDBACK;
+    var options = options || {};
+    var category = options.category || service.category.FEEDBACK;
+    var scope = options.scope || null;
     var info = {type: type, value: value};
     if(category === service.category.FEEDBACK) {
       var modal = ModalService.getTopModal();
       if(modal === null) {
         info.origin = 'page';
       } else {
+        // FIXME: remove now unnecessary 'modal' differentiation
         info.origin = 'modal';
         info.source = modal;
         // remove alert when the modal is destroyed
@@ -63,6 +69,12 @@ function factory($rootScope, ModalService, ModelService) {
       }
     } else {
       info.origin = 'background';
+    }
+    // remove alert when scope is destroyed
+    if(scope) {
+      scope.$on('$destroy', function() {
+        service.remove(type, value);
+      });
     }
     service.log[category].push(info);
     service.total += 1;
@@ -90,7 +102,7 @@ function factory($rootScope, ModalService, ModelService) {
    * Clears all alerts of a given type or all alerts of a given type in a
    * particular category.
    *
-   * @param [type] the alert type.
+   * @param [type] the alert type, null for all..
    * @param [category] the category to clear, omit for all.
    */
   service.clear = function(type, category) {
@@ -118,6 +130,19 @@ function factory($rootScope, ModalService, ModelService) {
         return false;
       });
     });
+  };
+
+  /**
+   * Clears all feedback alerts.
+   *
+   * @param [type] the alert type.
+   */
+  service.clearFeedback = function(type) {
+    if(type) {
+      service.clear(type, service.category.FEEDBACK);
+    } else {
+      service.clear(null, service.category.FEEDBACK);
+    }
   };
 
   /**
