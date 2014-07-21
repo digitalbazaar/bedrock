@@ -78,13 +78,14 @@ function factory($http, $filter, AlertService, config) {
               } else {
                 lastInput = $filter('slug')(scope.input);
               }
-              var data = {type: scope.type};
+              var data = {};
               if(scope.type === 'email') {
                 data.email = lastInput;
               } else {
                 data.sysSlug = lastInput;
               }
-              Promise.resolve($http.post('/identifier', $.extend(
+              Promise.resolve(
+                $http.post('/identifier/' + scope.type, $.extend(
                 data, scope.owner ? {owner: scope.owner} : {})))
                 .then(function() {
                   // available

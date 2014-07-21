@@ -4,32 +4,25 @@
 var email = require('./email');
 var slug = require('./slug');
 
-var postIdentifier = {
-  type: [{
-    type: 'object',
-    properties: {
-      type: {
-        required: true,
-        type: 'string',
-        enum: ['Identity']
-      },
-      sysSlug: slug()
-    },
-    additionalProperties: false
-  }, {
-    type: 'object',
-    properties: {
-      type: {
-        required: true,
-        type: 'string',
-        enum: ['email']
-      },
-      email: email()
-    },
-    additionalProperties: false
-  }]
+var postEmailIdentifier = {
+  type: 'object',
+  properties: {
+    email: email()
+  },
+  additionalProperties: false
 };
 
-module.exports.postIdentifier = function() {
-  return postIdentifier;
+var postIdentityIdentifier = {
+  type: 'object',
+  properties: {
+    sysSlug: slug()
+  },
+  additionalProperties: false
+};
+
+module.exports.postEmailIdentifier = function() {
+  return postEmailIdentifier;
+};
+module.exports.postIdentityIdentifier = function() {
+  return postIdentityIdentifier;
 };
