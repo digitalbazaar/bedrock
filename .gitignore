@@ -4,6 +4,7 @@
 .project
 .settings
 TAGS
+bower_components
 chromedriver
 coverage.html
 lib-cov
