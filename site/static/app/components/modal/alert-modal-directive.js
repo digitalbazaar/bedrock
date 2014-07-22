@@ -10,17 +10,20 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory(ModalService) {
-  return ModalService.directive({
-    name: 'alert',
-    transclude: true,
-    templateUrl: '/app/components/modal/alert-modal.html',
+function factory() {
+  return {
+    require: '^stackable',
     scope: {
       header: '@modalHeader',
       ok: '@modalOk',
       cancel: '@modalCancel'
+    },
+    transclude: true,
+    templateUrl: '/app/components/modal/alert-modal.html',
+    link: function(scope, element, attrs, stackable) {
+      scope.stackable = stackable;
     }
-  });
+  };
 }
 
 return {alertModal: factory};

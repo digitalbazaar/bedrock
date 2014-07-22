@@ -10,15 +10,15 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($http, AlertService, ModalService) {
-  return ModalService.directive({
-    name: 'remoteFileSelector',
+function factory($http, AlertService) {
+  return {
+    require: '^stackable',
     templateUrl:
       '/app/components/remote-file-selector/remote-file-selector-modal.html',
     link: Link
-  });
+  };
 
-  function Link(scope) {
+  function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
 
     model.remoteFileData = scope.remoteFileData;
@@ -62,14 +62,14 @@ function factory($http, AlertService, ModalService) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
-        scope.modal.close(null, response.data);
+        stackable.close(null, response.data);
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };
@@ -82,7 +82,7 @@ function factory($http, AlertService, ModalService) {
       }
 
       model.loading = true;
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         model.pathContents = response.data;
@@ -91,7 +91,7 @@ function factory($http, AlertService, ModalService) {
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

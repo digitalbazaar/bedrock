@@ -1,13 +1,13 @@
 <div class="modal">
   <div class="modal-header">
-    <a class="close btn-close">&times;</a>
+    <a class="close stackable-cancel">&times;</a>
     <h3>{{header}}</h3>
   </div>
   <div class="modal-body">
     <div data-ng-transclude></div>
   </div>
   <div data-modal-footer>
-    <button class="btn btn-primary" data-ng-click="modal.close(null, 'ok')">{{ok || 'Ok'}}</button>
-    <button class="btn btn-close">{{cancel || 'Cancel'}}</button>
+    <button class="btn btn-primary" data-ng-click="stackable.close(null, 'ok')">{{ok || 'Ok'}}</button>
+    <button class="btn stackable-cancel">{{cancel || 'Cancel'}}</button>
   </div>
 </div>

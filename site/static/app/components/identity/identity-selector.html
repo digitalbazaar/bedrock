@@ -10,7 +10,9 @@
       </span>
     </div>
   </div>
-  <div data-add-identity-modal="showAddIdentityModal"
-    data-identity-types="identityTypes"
-    data-modal-on-close="!err && (selected=result.identity)"></div>
+  <div stackable="showAddIdentityModal" stackable-modal="true"
+    stackable-closed="!err && (selected=result.identity)">
+    <div data-add-identity-modal data-identity-types="identityTypes">
+    </div>
+  </div>
 </div>

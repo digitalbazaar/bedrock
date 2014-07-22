@@ -10,15 +10,15 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService, ModalService, IdentityService, config) {
-  return ModalService.directive({
-    name: 'addIdentity',
+function factory(AlertService, IdentityService, config) {
+  return {
     scope: {identityTypes: '='},
+    require: '^stackable',
     templateUrl: '/app/components/identity/add-identity-modal.html',
     link: Link
-  });
+  };
 
-  function Link(scope) {
+  function Link(scope, element, attrs, stackable) {
     scope.model = {};
     scope.data = config.data;
     scope.baseUrl = config.data.baseUri;
@@ -43,14 +43,14 @@ function factory(AlertService, ModalService, IdentityService, config) {
       identity.label = scope.identityLabel;
       identity.sysSlug = scope.identitySlug;
       scope.loading = true;
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       IdentityService.collection.add(identity).then(function(identity) {
         scope.loading = false;
-        scope.modal.close(null, {identity: identity});
+        stackable.close(null, {identity: identity});
         scope.$apply();
       }).catch(function(err) {
         scope.loading = false;
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

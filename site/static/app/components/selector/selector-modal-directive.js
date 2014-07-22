@@ -10,17 +10,17 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory(ModalService) {
-  return ModalService.directive({
-    name: 'selector',
+function factory() {
+  return {
     scope: {
       modalTitle: '=',
       items: '=',
       itemType: '='
     },
+    require: '^stackable',
     transclude: true,
     templateUrl: '/app/components/selector/selector-modal.html'
-  });
+  };
 }
 
 return {selectorModal: factory};

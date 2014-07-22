@@ -13,15 +13,15 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory(
   $location, $routeParams, $sce, $timeout,
-  AlertService, KeyService, ModalService, config) {
-  return ModalService.directive({
-    name: 'addKey',
+  AlertService, KeyService, config) {
+  return {
     scope: {},
+    require: '^stackable',
     templateUrl: '/app/components/key/add-key-modal.html',
     link: Link
-  });
+  };
 
-  function Link(scope) {
+  function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
     model.identity = config.data.identity;
     model.mode = 'add';
@@ -48,7 +48,7 @@ function factory(
     model.needPem = !model.key.publicKeyPem;
 
     model.addKey = function() {
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       model.loading = true;
       KeyService.collection.add(model.key).then(function(key) {
         // replace key with newly created key data
@@ -81,18 +81,19 @@ function factory(
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };
 
     model.submit = function() {
+      // FIXME: use ng-submit ... or rework this entirely
       $location.search({});
       angular.element('#registration-form').submit();
     };
 
     model.done = function() {
-      scope.modal.close(null, model.key);
+      stackable.close(null, model.key);
       scope.$apply();
     };
   }

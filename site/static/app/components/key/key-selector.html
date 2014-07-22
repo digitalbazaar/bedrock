@@ -12,6 +12,8 @@
       <small>{{selected.id}}</small>
     </div>
   </div>
-  <div data-generate-key-pair-modal="model.showAddKeyModal"
-    data-modal-on-close="!err && (selected=result)"></div>
+  <div stackable="model.showAddKeyModal" stackable-modal="true"
+    stackable-closed="!err && (selected=result)">
+    <div data-generate-key-pair-modal></div>
+  </div>
 </div>

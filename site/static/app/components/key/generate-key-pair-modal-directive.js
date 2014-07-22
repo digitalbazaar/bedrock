@@ -8,15 +8,15 @@
 define(['forge/pki'], function(pki) {
 
 /* @ngInject */
-function factory(AlertService, ModalService, KeyService, config) {
-  return ModalService.directive({
-    name: 'generateKeyPair',
+function factory(AlertService, KeyService, config) {
+  return {
     scope: {},
+    require: '^stackable',
     templateUrl: '/app/components/key/generate-key-pair-modal.html',
     link: Link
-  });
+  };
 
-  function Link(scope) {
+  function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
     model.identity = config.data.identity;
     model.mode = 'generate';
@@ -35,7 +35,7 @@ function factory(AlertService, ModalService, KeyService, config) {
 
     model.generateKeyPair = function() {
       model.loading = true;
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
@@ -64,21 +64,21 @@ function factory(AlertService, ModalService, KeyService, config) {
       }).catch(function(err) {
         model.loading = false;
         model.success = false;
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };
 
     model.addKey = function() {
       model.loading = true;
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       var promise = KeyService.collection.add(model.key);
       promise.then(function(key) {
         model.loading = false;
-        scope.modal.close(null, key);
+        stackable.close(null, key);
         scope.$apply();
       }).catch(function(err) {
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         model.success = false;
         scope.model.loading = false;
         scope.$apply();

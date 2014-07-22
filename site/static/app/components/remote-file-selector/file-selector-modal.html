@@ -1,6 +1,6 @@
 <div class="modal">
   <div class="modal-header">
-    <a class="close btn-close">&times;</a>
+    <a class="close stackable-cancel">&times;</a>
     <h3>Load file...</h3>
   </div>
   <div class="modal-body">
@@ -12,6 +12,6 @@
     <button class="btn btn-primary"
       data-ng-disabled="model.loading"
       data-ng-click="model.loadSelectedFile()"><i class="icon-ok"></i> Load</button>
-    <button class="btn btn-close" data-ng-disabled="loading">Cancel</button>
+    <button class="btn stackable-cancel" data-ng-disabled="model.loading">Cancel</button>
   </div>
 </div>

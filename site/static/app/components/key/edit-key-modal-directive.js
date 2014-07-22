@@ -10,15 +10,15 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService, KeyService, ModalService, config) {
-  return ModalService.directive({
-    name: 'editKey',
+function factory(AlertService, KeyService, config) {
+  return {
     scope: {sourceKey: '=key'},
+    require: '^stackable',
     templateUrl: '/app/components/key/edit-key-modal.html',
     link: Link
-  });
+  };
 
-  function Link(scope) {
+  function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
     model.identity = config.data.identity || {};
     model.mode = 'edit';
@@ -36,15 +36,15 @@ function factory(AlertService, KeyService, ModalService, config) {
       };
 
       model.loading = true;
-      AlertService.clearModalFeedback(scope);
+      AlertService.clearFeedback();
       var promise = KeyService.collection.update(key);
       promise.then(function(key) {
         model.loading = false;
-        scope.modal.close(null, key);
+        stackable.close(null, key);
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err);
+        AlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

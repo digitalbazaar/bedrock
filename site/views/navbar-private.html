@@ -36,7 +36,9 @@
             data-popover-visible="model.showHovercard"
             data-title="{{model.identity.label}}"
             data-placement="bottom">
-          <div data-login-modal="model.showLogin" data-modal-escape="model.allowLoginEscape"></div>
+          <div stackable="model.showLogin" stackable-disable-escape="true">
+            <div data-login-modal></div>
+          </div>
             <i class="icon-user"></i>
           </a>
           <a class="navbar-link pull-right" style="line-height:45px"

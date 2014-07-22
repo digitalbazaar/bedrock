@@ -131,10 +131,10 @@ Helper.prototype.waitForScript = function(fn) {
   });
 };
 
-// waits for a model transition (show or hide) to complete
+// waits for a model animation to complete
 Helper.prototype.waitForModalTransition = function() {
   return browser.wait(function() {
-    return browser.driver.findElements(by.css('.modal.fade'))
+    return browser.driver.findElements(by.css('.stackable.ng-animate'))
       .then(function(result) {
         return result.length === 0;
       });
@@ -272,12 +272,12 @@ api.on('init', function() {
 
   // locate the top-level modal
   by.addLocator('modal', function() {
-    return document.querySelectorAll('.modal-wrapper > .modal');
+    return document.querySelectorAll('.modal');
   });
 
   // locate the top level modal footer
   by.addLocator('modalFooter', function() {
-    return document.querySelectorAll('.modal-wrapper > .modal > .modal-footer');
+    return document.querySelectorAll('.modal > .modal-footer');
   });
 
   // locate buttons to open a menu that contains an item with the given text

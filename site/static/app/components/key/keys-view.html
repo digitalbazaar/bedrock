@@ -55,24 +55,32 @@
     Access keys can be added by using an external website or application
     or one can be generated that this site controls.</p>
   </div>
-  <div data-generate-key-pair-modal="model.modals.showGenerateKeyPair"></div>
-  <div data-add-key-modal="model.modals.showAddKey"></div>
-  <div data-edit-key-modal="model.modals.showEditKey" data-key="model.modals.key"></div>
+  <div stackable="model.modals.showGenerateKeyPair" stackable-modal="true">
+    <div data-generate-key-pair-modal></div>
+  </div>
+  <div stackable="model.modals.showAddKey" stackable-modal="true">
+    <div data-add-key-modal></div>
+  </div>
+  <div stackable="model.modals.showEditKey" stackable-modal="true">
+    <div data-edit-key-modal data-key="model.modals.key"></div>
+  </div>
 
   <!-- Revoking key alert -->
-  <div data-alert-modal="model.modals.showRevokeKeyAlert"
-    data-modal-header="Warning"
-    data-modal-ok="Revoke"
-    data-modal-cancel="Cancel"
-    data-modal-on-close="model.confirmRevokeKey(err, result)">
-    <div class="center alert">
-      <strong>Warning!</strong>
-      Revoking a key is permanent.
+  <div stackable="model.modals.showRevokeKeyAlert" stackable-modal="true"
+    stackable-closed="model.confirmRevokeKey(err, result)">
+    <div data-alert-modal
+      data-modal-header="Warning"
+      data-modal-ok="Revoke"
+      data-modal-cancel="Cancel">
+      <div class="center alert">
+        <strong>Warning!</strong>
+        Revoking a key is permanent.
+      </div>
+      <p>Any functionality provided by this key will be invalidated and any
+      applications that use this key will be disabled.
+      You can re-enable your access and applications by registering a new
+      key.</p>
+      <p>Are you sure that you want to revoke this key?</p>
     </div>
-    <p>Any funtionality provided by this key will be invalidated and any
-    applications that use this key will be disabled.
-    You can re-enable your access and applications by registering a new
-    key.</p>
-    <p>Are you sure that you want to revoke this key?</p>
   </div>
 </div>
