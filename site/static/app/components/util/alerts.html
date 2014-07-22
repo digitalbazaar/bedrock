@@ -1,6 +1,6 @@
 <div data-ng-class="{'fixed-alert-area': fixed == 'true', 'fixed-alert-area-show': fixed == 'true' && app.services.alert.total}">
   <div data-ng-class="{'fixed-alert-area-body': fixed == 'true'}">
-    <p data-ng-show="fixed == 'true'">
+    <p data-ng-show="fixed == 'true' && app.services.alert.total">
       Please see the following <data-ng-pluralize
         count="app.services.alert.total"
         when="{'1': 'alert', 'other': 'alerts'}"></data-ng-pluralize>:
