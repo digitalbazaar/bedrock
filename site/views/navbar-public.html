@@ -42,11 +42,8 @@
             <div class="btn-group btn-group-banner">
               <a class="btn btn-primary" data-submit-form>Sign In</a>
               <a class="btn btn-primary"
-                data-popover-template="/app/components/navbar/actions.html"
-                data-popover-visible="showNavbarActions"
-                data-title="Actions"
-                data-placement="bottom">
-                  <i class="caret"></i>
+                stackable-popover-trigger="model.navbarActionPopoverState">
+                <i class="caret"></i>
               </a>
             </div>
             <div class="btn-group btn-group-banner">
@@ -55,6 +52,21 @@
           </div>
         </fieldset>
       </form>
+      <div stackable-popover="model.navbarActionPopoverState"
+        stackable-placement="bottom"
+        stackable-enable-escape="true">
+        <h3 class="stackable-popover-title">Actions</h3>
+        <div class="stackable-popover-body">
+          <ul class="unstyled">
+            <li>
+              <a href="/session/passcode">
+                <i class="icon-refresh"></i>
+                Password Reset
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
       {% endraw %}
       {% endif %}
     </div>
