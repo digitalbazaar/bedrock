@@ -58,15 +58,18 @@ function factory($rootScope, $http, $location, ModelService) {
     }
     self.startLoading();
     var config = self._buildConfig(options);
-    var url = _getUrl(self.config, 'getAll');
+    var url = self._getUrl('getAll');
     return Promise.resolve($http.get(url, config))
       .then(function(response) {
         // update expiration time and collection
-        self.expires = Date.now() + self.maxAge;
-        ModelService.replaceArray(self.storage, response.data);
+        var doUpdate = self._doUpdate(options);
+        if(doUpdate) {
+          self.expires = Date.now() + self.maxAge;
+          ModelService.replaceArray(self.storage, response.data);
+        }
         return self.finishLoading().then(function() {
           $rootScope.$apply();
-          return self.storage;
+          return doUpdate ? self.storage : response.data;
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
@@ -93,11 +96,15 @@ function factory($rootScope, $http, $location, ModelService) {
     return Promise.resolve($http.get(resourceId, config))
       .then(function(response) {
         // update collection but not collection expiration time
-        var storedObject = ModelService.replaceInArray(
-          self.storage, response.data);
+        var doUpdate = self._doUpdate(options);
+        var storedObject;
+        if(doUpdate) {
+          storedObject = ModelService.replaceInArray(
+            self.storage, response.data);
+        }
         return self.finishLoading().then(function() {
           $rootScope.$apply();
-          return storedObject;
+          return doUpdate ? storedObject : response.data;
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
@@ -117,11 +124,14 @@ function factory($rootScope, $http, $location, ModelService) {
   };
 
   // add one resource to collection storage
-  service.Collection.prototype.addToStorage = function(resource) {
+  service.Collection.prototype.addToStorage = function(resource, options) {
     var self = this;
+    options = options || {};
     // update collection if resource not present
-    if(!_.findWhere(self.storage, {id: resource.id})) {
-      self.storage.push(resource);
+    if(self._doUpdate(options)) {
+      if(!_.findWhere(self.storage, {id: resource.id})) {
+        self.storage.push(resource);
+      }
     }
     return Promise.resolve(resource);
   };
@@ -132,13 +142,13 @@ function factory($rootScope, $http, $location, ModelService) {
     options = options || {};
     self.startLoading();
     var config = self._buildConfig(options);
-    var url = _getUrl(self.config, 'add');
+    var url = self._getUrl('add');
     return Promise.resolve($http.post(url, resource, config))
       .then(function(response) {
         // don't update collection expiration time
         // update collection if resource not present
         var storedData;
-        return self.addToStorage(response.data)
+        return self.addToStorage(response.data, options)
           .then(function(_storedData) {
             storedData = _storedData;
           })
@@ -167,7 +177,11 @@ function factory($rootScope, $http, $location, ModelService) {
       .then(function(response) {
         // don't update collection expiration time
         // re-get resource to update collection
-        return self.get(options.get || resource.id, {force: true});
+        var getOpts = {
+          force: true,
+          update: self._doUpdate(options)
+        };
+        return self.get(options.get || resource.id, getOpts);
       }).then(function(updatedResource) {
         return self.finishLoading().then(function() {
           $rootScope.$apply();
@@ -191,8 +205,10 @@ function factory($rootScope, $http, $location, ModelService) {
       .then(function(response) {
         // don't update collection expiration time
         // update collection if resource present
-        if(_.findWhere(self.storage, {id: resourceId})) {
-          ModelService.removeFromArray(resourceId, self.storage);
+        if(self._doUpdate(options)) {
+          if(_.findWhere(self.storage, {id: resourceId})) {
+            ModelService.removeFromArray(resourceId, self.storage);
+          }
         }
         return self.finishLoading().then(function() {
           $rootScope.$apply();
@@ -225,10 +241,10 @@ function factory($rootScope, $http, $location, ModelService) {
   /**
    * Build a $http config from collection options.
    */
-  service.Collection.prototype._buildConfig = function(options, config) {
+  service.Collection.prototype._buildConfig = function(options) {
     var self = this;
 
-    config = config || {};
+    var config = {};
     if('delay' in options) {
       config.delay = options.delay;
     }
@@ -243,25 +259,41 @@ function factory($rootScope, $http, $location, ModelService) {
     return config;
   };
 
+  /**
+   * Gets the URL from the config for the given collection method.
+   *
+   * @param method the collection method, eg: 'getAll', 'add'.
+   *
+   * @return the URL to use for the collection method.
+   */
+  service.Collection.prototype._getUrl = function(method) {
+    var self = this;
+
+    if(self.config.urls && method in self.config.urls) {
+      return self.config.urls[method];
+    }
+    return self.config.url;
+  }
+
+  /**
+   * Check if storage should be updated. If the options object has
+   * an 'update' flag, it is used, otherwise always update.
+   *
+   * @param options collection method options.
+   *
+   * @return true if the collection storage should be updated.
+   */
+  service.Collection.prototype._doUpdate = function(options) {
+    if('update' in options) {
+      return options.update;
+    }
+    return true;
+  }
+
   // expose service to scope
   $rootScope.app.services.resource = service;
 
   return service;
-}
-
-/**
- * Gets the URL from the config for the given collection method.
- *
- * @param config the config to check.
- * @param method the collection method, eg: 'getAll', 'add'.
- *
- * @return the URL to use for the collection method.
- */
-function _getUrl(config, method) {
-  if(config.urls && method in config.urls) {
-    return config.urls[method];
-  }
-  return config.url;
 }
 
 return {ResourceService: factory};
