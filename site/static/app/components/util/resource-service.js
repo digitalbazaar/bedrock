@@ -36,16 +36,14 @@ function factory($rootScope, $http, $location, ModelService) {
   };
 
   service.Collection.prototype.startLoading = function(count) {
-    count = count || 1;
-    this.loadingCount = this.loadingCount + count;
+    this.loadingCount = this.loadingCount + (count || 1);
     this.state.loading = true;
   };
 
   service.Collection.prototype.finishLoading = function(count) {
-    count = count || 1;
-    this.loadingCount = this.loadingCount - count;
+    this.loadingCount = this.loadingCount - (count || 1);
     this.state.loading = (this.loadingCount !== 0);
-    if(this.config.finishLoading) {
+    if(!this.state.loading && this.config.finishLoading) {
       return Promise.resolve(this.config.finishLoading());
     }
     return Promise.resolve();
