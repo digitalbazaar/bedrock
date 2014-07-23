@@ -7,9 +7,17 @@
 
   <div class="row">
     <div class="section span12">
-      <h3 class="headline">Cryptographic Key Details</h3>
+      <h3 class="headline">
+        Cryptographic Key Details
+        <span data-ng-show="model.state.keys.loading" class="pull-right"
+          <span data-spinner="model.state.keys.loading" data-spinner-class="h3-spinner"></span>
+        </span>
+      </h3>
+      <div class="alert alert-error" data-ng-show="model.key === null && !model.state.keys.loading">
+        <strong>Error!</strong> Key not found or access not allowed.
+      </div>
 
-      <dl class="dl-horizontal" about="" typeof="sec:CryptographicKey">
+      <dl data-ng-show="model.key" class="dl-horizontal" about="" typeof="sec:CryptographicKey">
         <dt data-ng-show="model.key.label">Label</dt>
         <dd data-ng-show="model.key.label">
           <ul class="unstyled">

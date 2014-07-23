@@ -7,9 +7,17 @@
 
   <div class="row">
     <div class="section span12">
-      <h3 class="headline">Identity Details</h3>
+      <h3 class="headline">
+        Identity Details
+        <span data-ng-show="model.state.identites.loading" class="pull-right"
+          <span data-spinner="model.state.identites.loading" data-spinner-class="h3-spinner"></span>
+        </span>
+      </h3>
+      <div class="alert alert-error" data-ng-show="model.identity === null && !model.state.identites.loading">
+        <strong>Error!</strong> Identity not found or access not allowed.
+      </div>
 
-      <dl class="dl-horizontal" about="" typeof="bed:{{model.identity.type}}">
+      <dl data-ng-show="model.identity" class="dl-horizontal" about="" typeof="bed:{{model.identity.type}}">
         <dt data-ng-show="model.identity.label">Label</dt>
         <dd data-ng-show="model.identity.label">
           <ul class="unstyled">
