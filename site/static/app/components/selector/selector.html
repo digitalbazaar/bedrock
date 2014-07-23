@@ -13,20 +13,22 @@
     </div>
   </div>
 
-  <div data-selector-modal="showSelectorModal"
-    data-modal-title="modalTitle"
-    data-items="items" data-item-type="itemType">
-    <ul class="unstyled item">
-      <li class="item-hover well" data-ng-repeat="selected in ((!custom && items) || []) | orderBy:'label'"
-        data-ng-click="select(selected)">
-        <div data-ng-show="!custom" data-ng-transclude></div>
-      </li>
-    </ul>
-    <div data-ng-show="custom" data-ng-transclude></div>
-    <div class="pull-right">
-      <button class="btn btn-success btn-add"
-        data-ng-click="addItem()"><i class="icon-plus"></i> Add {{itemType}}</button>
+  <div stackable="showSelectorModal" stackable-modal="true">
+    <div data-selector-modal="showSelectorModal"
+      data-modal-title="modalTitle"
+      data-items="items" data-item-type="itemType">
+      <ul class="unstyled item">
+        <li class="item-hover well" data-ng-repeat="selected in ((!custom && items) || []) | orderBy:'label'"
+          data-ng-click="select(selected)">
+          <div data-ng-show="!custom" data-ng-transclude></div>
+        </li>
+      </ul>
+      <div data-ng-show="custom" data-ng-transclude></div>
+      <div class="pull-right">
+        <button class="btn btn-success btn-add"
+          data-ng-click="addItem()"><i class="icon-plus"></i> Add {{itemType}}</button>
+      </div>
+      <div style="clear:both"></div>
     </div>
-    <div style="clear:both"></div>
   </div>
 </div>
