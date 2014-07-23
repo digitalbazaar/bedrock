@@ -42,7 +42,7 @@
             <div class="btn-group btn-group-banner">
               <a class="btn btn-primary" data-submit-form>Sign In</a>
               <a class="btn btn-primary"
-                stackable-popover-trigger="model.navbarActionPopoverState">
+                stackable-trigger="model.navbarActionPopoverState">
                 <i class="caret"></i>
               </a>
             </div>
@@ -53,7 +53,9 @@
         </fieldset>
       </form>
       <div stackable-popover="model.navbarActionPopoverState"
+        stackable-hide-arrow="true"
         stackable-placement="bottom"
+        stackable-alignment="right"
         stackable-enable-escape="true">
         <h3 class="stackable-popover-title">Actions</h3>
         <div class="stackable-popover-body">
