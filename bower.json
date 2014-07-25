@@ -4,7 +4,7 @@
   "private": "true",
   "description": "Bedrock bower dependencies.",
   "dependencies": {
-    "angular-stackables": "~0.0.11",
+    "angular-stackables": "~0.0.12",
     "angular-ui-select2": "0.0.5"
   }
 }
