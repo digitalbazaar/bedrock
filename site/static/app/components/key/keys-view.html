@@ -21,9 +21,10 @@
         <th class="action">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody data-ng-init="model.keyActionMenus = []">
       <tr data-ng-repeat="key in model.keys | orderBy:'label' | orderBy:'sysStatus':reverse"
-        data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys">
+        data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys"
+        data-ng-init="model.keyActionMenus[$index] = {}">
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
@@ -39,12 +40,37 @@
         <!-- Action -->
         <td class="action">
           <div class="btn-group">
-            <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"
-              data-popover-template="/app/components/key/keys-action-menu.html"
-              data-popover-visible="model.showKeysActionMenu_{{$index}}"
-              data-placement="bottom">
+            <a href="#" class="btn"
+              stackable-trigger="model.keyActionMenus[$index]"
+              stackable-toggle="'active'">
               <i class="icon-chevron-down"></i>
             </a>
+          </div>
+          <div stackable-popover="model.keyActionMenus[$index]"
+            stackable-hide-arrow="true"
+            stackable-placement="bottom"
+            stackable-alignment="right">
+            <ul class="stackable-menu">
+              <!-- Edit -->
+              <li>
+                <a class="stackable-cancel" data-ng-click="model.editKey(key)">
+                  <i class="icon-pencil"></i> Edit
+                </a>
+              </li>
+              <!-- Default Signing Key -->
+              <li data-ng-show="model.identity.sysSigningKey != key.id && key.sysStatus == 'active'">
+                <a class="stackable-cancel" data-ng-click="model.setDefaultSigningKeyId(key.id)">
+                  <i class="icon-star"></i> Set as default
+                </a>
+              </li>
+              <!-- Revoke -->
+              <li class="divider" data-ng-hide="key.sysStatus == 'disabled'"></li>
+              <li class="btn-danger" data-ng-hide="key.sysStatus == 'disabled'">
+                <a class="stackable-cancel" data-ng-click="model.revokeKey(key)">
+                  <i class="icon-remove"></i> Revoke
+                </a>
+              </li>
+            </ul>
           </div>
         </td>
       </tr>
