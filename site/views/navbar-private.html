@@ -31,18 +31,50 @@
             <img class="brand-minimal" src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
           {% endif %}
           {% raw %}
-          <a class="btn btn-nav btn-small show pull-right{{model.showHovercard && ' active' || ''}}"
-            data-popover-template="/app/components/navbar/hovercard.html"
-            data-popover-visible="model.showHovercard"
-            data-title="{{model.identity.label}}"
-            data-placement="bottom">
+          <a class="btn btn-nav btn-small show pull-right"
+            stackable-trigger="model.hovercard"
+            stackable-toggle="'active'">
+          <div stackable-popover="model.hovercard"
+            stackable-placement="bottom"
+            stackable-alignment="right">
+            <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
+            <div class="stackable-popover-body">
+              <table data-ng-show="model.identity">
+                <tbody>
+                  <tr data-ng-show="model.identity">
+                    <td><strong>Identity:</strong></td>
+                    <td>{{model.identity.label}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{model.identity.email}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div data-ng-show="model.identity" class="divider"></div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td colspan="2"><a
+                      data-ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><a href="/session/logout"><i
+                      class="icon-off"></i> Sign Out</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div stackable="model.showLogin" stackable-disable-escape="true">
             <div data-login-modal></div>
           </div>
             <i class="icon-user"></i>
           </a>
           <a class="navbar-link pull-right" style="line-height:45px"
-            data-ng-click="model.showHovercard=!model.showHovercard">
+            data-ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">
             {{model.identity.label || '-'}}
           </a>
           {% endraw %}
