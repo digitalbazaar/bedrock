@@ -33,7 +33,7 @@
           {% raw %}
           <a class="btn btn-nav btn-small show pull-right"
             stackable-trigger="model.hovercard"
-            stackable-toggle="'active'">
+            stackable-toggle="'active'"><i class="icon-user"></i></a>
           <div stackable-popover="model.hovercard"
             stackable-placement="bottom"
             stackable-alignment="right">
@@ -52,27 +52,20 @@
                 </tbody>
               </table>
               <div data-ng-show="model.identity" class="divider"></div>
-              <table>
-                <tbody>
-                  <tr>
-                    <td colspan="2"><a
-                      data-ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><a href="/session/logout"><i
-                      class="icon-off"></i> Sign Out</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <ul class="stackable-menu">
+                <li>
+                  <a class="stackable-cancel" style="padding-left: 3px"
+                    data-ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
+                </li>
+                <li>
+                  <a href="/session/logout" style="padding-left: 3px"><i class="icon-off"></i> Sign Out</a>
+                </li>
+              </ul>
             </div>
           </div>
           <div stackable="model.showLogin" stackable-disable-escape="true">
             <div data-login-modal></div>
           </div>
-            <i class="icon-user"></i>
-          </a>
           <a class="navbar-link pull-right" style="line-height:45px"
             data-ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">
             {{model.identity.label || '-'}}
