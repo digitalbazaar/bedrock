@@ -47,31 +47,38 @@
       <div data-spinner="model.loading"
         data-spinner-class="center-spinner"></div>
 
-      <div data-ng-hide="model.loading" class="controls btn-group">
-        <button class="btn btn-primary" data-submit-form
-          data-ng-disabled="model.loading"><i
-          class="icon-signin"></i> Sign In</button>
-        <button class="btn btn-primary dropdown-toggle"
-          data-toggle="dropdown"
-          data-ng-disabled="model.loading">
-          <span class="caret"></span>
-        </button>
-        <div></div>
-        <ul class="center dropdown-menu">
-          <li>
-            <a href="/join">
-              <i class="icon-user"></i>
-              Create an Identity
-            </a>
-          </li>
-          <li>
-            <a href="/session/passcode">
-              <i class="icon-refresh"></i>
-              Password Reset
-            </a>
-          </li>
-        </ul>
+      <div data-ng-hide="model.loading">
+        <div class="btn-group">
+          <a class="btn btn-primary" data-submit-form><i
+            class="icon-signin"></i> Sign In</a>
+          <a class="btn btn-primary"
+            stackable-trigger="model.signInMenu">
+            <i class="caret"></i>
+          </a>
+        </div>
+        <div stackable-popover="model.signInMenu"
+          stackable-hide-arrow="true"
+          stackable-placement="bottom"
+          stackable-alignment="right">
+          <div class="stackable-popover-body">
+            <ul class="unstyled">
+              <li>
+                <a href="/join">
+                  <i class="icon-user"></i>
+                  Create an Identity
+                </a>
+              </li>
+              <li>
+                <a href="/session/passcode">
+                  <i class="icon-refresh"></i>
+                  Password Reset
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
+
     </div>
   </fieldset>
 </form>
