@@ -40,12 +40,10 @@ define([
   encodeURIComponent_,
   error,
   floor,
-  focusToggle,
   helpToggle,
   inputWatcher,
   mask,
   modelService,
-  mouseoverToggle,
   now,
   prefill,
   refreshService,
@@ -68,12 +66,10 @@ module.filter(embeddedString);
 module.filter(encodeURIComponent_);
 module.directive(error);
 module.filter(floor);
-module.directive(focusToggle);
 module.directive(helpToggle);
 module.directive(inputWatcher);
 module.filter(mask);
 module.service(modelService);
-module.directive(mouseoverToggle);
 module.filter(now);
 module.filter(prefill);
 module.service(refreshService);
