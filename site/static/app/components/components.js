@@ -18,7 +18,6 @@ define([
   './navbar/navbar',
   './passcode/passcode',
   './placeholder/placeholder',
-  './popover-template/popover-template',
   './remote-file-selector/remote-file-selector',
   './selector/selector',
   './settings/settings',
