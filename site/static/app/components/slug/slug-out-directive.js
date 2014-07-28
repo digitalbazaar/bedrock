@@ -16,7 +16,7 @@ function factory($filter, $parse) {
     link: function(scope, element, attrs) {
       var slug = $filter('slug');
       var set = $parse(attrs.slugOut).assign || angular.noop;
-      var namespace = 'slugOutDirective';
+      var namespace = '.slugOutDirective';
       element.on(
         'propertychange' + namespace +
         ' change' + namespace +
