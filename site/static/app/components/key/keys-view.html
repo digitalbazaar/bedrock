@@ -3,9 +3,8 @@
     Keys
     <span data-ng-hide="model.state.loading" class="btn-group pull-right">
       <a class="btn"
-        data-popover-template="/app/components/key/keys-view-menu.html"
-        data-popover-visible="model.showKeysMenu"
-        data-placement="bottom">
+        stackable-trigger="model.keysViewMenu"
+        stackable-toggle="'active'">
         <i class="icon-reorder"></i>
       </a>
     </span>
@@ -13,6 +12,26 @@
       <span data-spinner="model.state.loading" data-spinner-class="h3-spinner"></span>
     </span>
   </h3>
+  <div stackable-popover="model.keysViewMenu"
+    stackable-hide-arrow="true"
+    stackable-placement="bottom"
+    stackable-alignment="right">
+    <ul class="stackable-menu">
+      <li>
+        <a class="stackable-cancel"
+          data-ng-click="model.modals.showGenerateKeyPair=true"><i class="icon-plus"></i> Generate Key Pair</a>
+      </li>
+      <li>
+        <a class="stackable-cancel"
+          data-ng-click="model.modals.showAddKey=true"><i class="icon-plus"></i> Add Key</a>
+      </li>
+      <li>
+        <a class="stackable-cancel"
+          data-ng-click="model.showRevokedKeys=!model.showRevokedKeys"><i
+          data-ng-show="model.showRevokedKeys" class="icon-ok"></i> Show Revoked Keys</a>
+      </li>
+    </ul>
+  </div>
   <table class="table table-condensed" data-ng-show="model.state.loading || model.keys.length > 0">
     <thead>
       <tr>
