@@ -18,12 +18,20 @@ function factory($filter, $parse) {
       var slug = $filter('slug');
       var set = $parse(attrs.ngModel).assign || angular.noop;
 
+      var namespace = '.slugInDirective';
+      scope.$on('$destroy', function() {
+        element.off(namespace);
+      });
+      element.on('$destroy' + namespace, function() {
+        element.off(namespace);
+      });
+
       // replace with previous initial value on blur if value is blank
       var last = '';
-      element.bind('focus', function(e) {
+      element.on('focus' + namespace, function() {
         last = ngModel.$modelValue;
       });
-      element.bind('blur', function(e) {
+      element.on('blur' + namespace, function() {
         if(ngModel.$modelValue === '') {
           scope.$apply(function() {
             set(scope, last);
@@ -32,7 +40,12 @@ function factory($filter, $parse) {
       });
 
       // ensure view is updated after any input event
-      element.bind('propertychange change input keyup paste', function(e) {
+      element.on(
+        'propertychange' + namespace +
+        ' change' + namespace +
+        ' input' + namespace +
+        ' keyup' + namespace +
+        ' paste' + namespace, function() {
         if(ngModel.$viewValue !== element.val()) {
           ngModel.$setViewValue(element.val());
         }

@@ -16,10 +16,21 @@ function factory($filter, $parse) {
     link: function(scope, element, attrs) {
       var slug = $filter('slug');
       var set = $parse(attrs.slugOut).assign || angular.noop;
-      element.on('propertychange change input keyup paste', function(e) {
-        scope.$apply(function() {
-          set(scope, slug(element.val()));
-        });
+      var namespace = 'slugOutDirective';
+      element.on(
+        'propertychange' + namespace +
+        ' change' + namespace +
+        ' input' + namespace +
+        ' keyup' + namespace +
+        ' paste' + namespace, function() {
+        set(scope, slug(element.val()));
+        scope.$apply();
+      });
+      scope.$on('$destroy', function() {
+        element.off(namespace);
+      });
+      element.on('$destroy' + namespace, function() {
+        element.off(namespace);
       });
     }
   };

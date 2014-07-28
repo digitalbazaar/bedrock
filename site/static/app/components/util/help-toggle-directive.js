@@ -48,7 +48,14 @@ function factory($parse, $timeout) {
       });
 
       // track events
-      element.click(function(event) {
+      var namespace = '.helpToggleDirective';
+      scope.$on('$destroy', function() {
+        element.off(namespace);
+      });
+      element.on('$destroy' + namespace, function() {
+        element.off(namespace);
+      });
+      element.on('click' + namespace, function(event) {
         event.preventDefault();
         scope.$apply(function() {
           helpState.pressed = !helpState.pressed;
@@ -61,7 +68,7 @@ function factory($parse, $timeout) {
         });
       });
       var showPromise = null;
-      element.mouseenter(function() {
+      element.on('mouseenter' + namespace, function() {
         scope.$apply(function() {
           helpState.mouseover = true;
           if(!helpState.pressed) {
@@ -74,7 +81,7 @@ function factory($parse, $timeout) {
           }
         });
       });
-      element.mouseleave(function() {
+      element.on('mouseleave' + namespace, function() {
         scope.$apply(function() {
           helpState.mouseover = false;
           $timeout.cancel(showPromise);
