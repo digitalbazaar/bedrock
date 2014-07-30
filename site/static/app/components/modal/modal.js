@@ -8,9 +8,8 @@
 define([
   'angular',
   './modal-service',
-  './alert-modal-directive',
-  './modal-footer-directive'
-], function(angular, service, alertModal, modalFooter) {
+  './alert-modal-directive''
+], function(angular, service, alertModal) {
 
 'use strict';
 
@@ -18,7 +17,6 @@ var module = angular.module('app.modal', []);
 
 module.service(service);
 module.directive(alertModal);
-module.directive(modalFooter);
 
 return module.name;
 
