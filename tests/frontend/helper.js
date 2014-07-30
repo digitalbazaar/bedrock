@@ -281,7 +281,7 @@ api.on('init', function() {
     return document.querySelectorAll('.modal > .modal-footer');
   });
 
-  /* TODO: remove ... use popover locator for finding menus
+  /* TODO: remove ... use trigger locator for finding menus
   // locate buttons to open a menu that contains an item with the given text
   by.addLocator('menuButtonForItem', function(value, parent) {
     value = value.trim();
