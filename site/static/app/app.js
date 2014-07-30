@@ -170,10 +170,11 @@ module.run(function($rootScope, $location, $route, $http, util) {
   };
 });
 
-angular.bootstrap(document.body, ['app']);
-
-// set ng-app to indicate to test runner that application has bootstrapped
-angular.element('body').attr('ng-app', 'app');
+// bootstrap and set ng-app to indicate to test runner/other external apps
+// that application has bootstrapped
+var root = angular.element('html');
+angular.bootstrap(root, ['app']);
+root.attr('ng-app', 'app');
 
 // from angular.js for route matching
 // TODO: could probably be simplified

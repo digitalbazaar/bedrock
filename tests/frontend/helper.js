@@ -64,7 +64,8 @@ Helper.prototype.run = function(fn) {
   var isAsync = (fn.split('\n')[0].indexOf(',') !== -1);
   var execute = isAsync ? browser.executeAsyncScript : browser.executeScript;
   return execute(
-    "var $injector = angular.element('body').data('$injector');" +
+    "var $injector = angular.element('" + browser.rootEl + "')" +
+      ".data('$injector');" +
     "var callback = arguments[arguments.length - 1];" +
     'return (' + fn + ')($injector, callback);');
 };
@@ -78,8 +79,8 @@ Helper.prototype.waitForAngular = function() {
           return false;
         }
         return browser.driver.findElement(by.tagName(browser.rootEl))
-          .then(function(body) {
-            return body.getAttribute('ng-app').then(function(value) {
+          .then(function(root) {
+            return root.getAttribute('ng-app').then(function(value) {
               return !!value;
             });
           });
