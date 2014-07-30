@@ -2,7 +2,7 @@
   <div data-ng-class="{'fixed-alert-area-body': fixed == 'true'}">
     <div data-ng-repeat="(category, list) in app.services.alert.log">
       <div data-ng-repeat="info in list">
-        <div data-ng-show="filterOrigin == 'all' || filterOrigin == info.origin">
+        <div data-ng-show="alertCategory == 'all' || alertCategory == app.services.alert.category.FEEDBACK">
           <div data-ng-if="info.type == 'error'"
             data-feedback="feedback[$index]"
             data-ng-init="feedback[$index]={error: info.value}"></div>
@@ -16,6 +16,7 @@
             data-feedback="feedback[$index]"
             data-ng-init="feedback[$index]={success: info.value}"></div>
         </div>
+        <!-- TODO: show background alerts -->
       </div>
     </div>
   </div>

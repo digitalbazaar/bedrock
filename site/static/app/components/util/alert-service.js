@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($rootScope, ModalService, ModelService) {
+function factory($rootScope, ModelService) {
   var service = {};
 
   // defined categories
@@ -54,22 +54,6 @@ function factory($rootScope, ModalService, ModelService) {
     var category = options.category || service.category.FEEDBACK;
     var scope = options.scope || null;
     var info = {type: type, value: value};
-    if(category === service.category.FEEDBACK) {
-      var modal = ModalService.getTopModal();
-      if(modal === null) {
-        info.origin = 'page';
-      } else {
-        // FIXME: remove now unnecessary 'modal' differentiation
-        info.origin = 'modal';
-        info.source = modal;
-        // remove alert when the modal is destroyed
-        modal.scope.$on('$destroy', function() {
-          service.remove(type, value);
-        });
-      }
-    } else {
-      info.origin = 'background';
-    }
     // remove alert when scope is destroyed
     if(scope) {
       scope.$on('$destroy', function() {
@@ -143,42 +127,6 @@ function factory($rootScope, ModalService, ModelService) {
     } else {
       service.clear(null, service.category.FEEDBACK);
     }
-  };
-
-  /**
-   * Clears all feedback alerts from the given modal.
-   *
-   * @param [type] the alert type.
-   * @param modal the modal to remove alerts for (modal may be the modal API,
-   *          its scope, or scope.modal).
-   */
-  service.clearModalFeedback = function(type, modal) {
-    if(arguments.length === 1) {
-      modal = type;
-      type = undefined;
-    }
-    if(!modal) {
-      return;
-    }
-    var list = service.log[service.category.FEEDBACK];
-    ModelService.removeAllFromArray(list, function(e) {
-      if((!type || e.type === type) && e.source &&
-        (e.source === modal || e.source.scope === modal ||
-        e.source.scope.modal === modal)) {
-        service.total -= 1;
-        return true;
-      }
-      return false;
-    });
-  };
-
-  /**
-   * Clears all feedback alerts of the given type from the top-level modal.
-   *
-   * @param [type] the alert type.
-   */
-  service.clearTopModalFeedback = function(type) {
-    service.clearModalFeedback(ModalService.getTopModal(), type);
   };
 
   // expose service to scope

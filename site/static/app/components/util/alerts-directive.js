@@ -17,9 +17,9 @@ function factory($rootScope) {
     link: function(scope, element, attrs) {
       scope.app = $rootScope.app;
       scope.feedback = [];
-      attrs.$observe('filterOrigin', function(value) {
+      attrs.$observe('alertCategory', function(value) {
         if(value === undefined) {
-          scope.filterOrigin = 'all';
+          scope.alertCategory = 'all';
         }
       });
     }
