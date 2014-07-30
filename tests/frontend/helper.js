@@ -262,10 +262,10 @@ api.on('init', function() {
     return using.querySelectorAll(query);
   });
 
-  // locate popovers that are controlled by the given model var
-  by.addLocator('popover', function(model, parent) {
+  // locate stackable trigger elements
+  by.addLocator('trigger', function(model, parent) {
     var using = parent || document;
-    var query = "popover-visible='" + model + "']";
+    var query = "stackable-trigger^='" + model + "']";
     query = '[' + query + ', [data-' + query;
     return using.querySelectorAll(query);
   });
@@ -280,6 +280,7 @@ api.on('init', function() {
     return document.querySelectorAll('.modal > .modal-footer');
   });
 
+  /* TODO: remove ... use popover locator for finding menus
   // locate buttons to open a menu that contains an item with the given text
   by.addLocator('menuButtonForItem', function(value, parent) {
     value = value.trim();
@@ -289,7 +290,7 @@ api.on('init', function() {
     var buttons = using.querySelectorAll('.dropdown-toggle');
     return Array.prototype.filter.call(buttons, function(button) {
       // if a menu the button opens has the item text, allow the button
-      var menus = button.parentElement.querySelectorAll('.dropdown-menu');
+      var menus = button.parentElement.querySelectorAll('.stackable-menu');
       for(var mi = 0; mi < menus.length; ++mi) {
         var items = menus[mi].querySelectorAll('li > a');
         for(var ii = 0; ii < items.length; ++ii) {
@@ -300,13 +301,13 @@ api.on('init', function() {
       }
       return false;
     });
-  });
+  });*/
 
   // locate menu items with the given text
   by.addLocator('menuItem', function(value, parent) {
     value = value.trim();
     var using = parent || document;
-    var items = using.querySelectorAll('.dropdown-menu > li > a');
+    var items = using.querySelectorAll('.stackable-menu > li > a');
     return Array.prototype.filter.call(items, function(item) {
       return item.textContent.trim() === value;
     });
