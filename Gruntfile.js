@@ -95,6 +95,8 @@ module.exports = function(grunt) {
           'forge': '../../node_modules/node-forge/js',
           'iso8601': '../../lib/iso8601/is8601',
           'jsonld': '../../node_modules/jsonld/js/jsonld',
+          'jquery': '../../bower_components/jquery/dist/jquery',
+          'jquery-migrate': '../../bower_components/jquery-migrate/jquery-migrate',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
           'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
           'select2': '../../bower_components/select2/select2',
