@@ -8,7 +8,7 @@
 define([
   'angular',
   './modal-service',
-  './alert-modal-directive''
+  './alert-modal-directive'
 ], function(angular, service, alertModal) {
 
 'use strict';
