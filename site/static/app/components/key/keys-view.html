@@ -40,10 +40,9 @@
         <th class="action">Action</th>
       </tr>
     </thead>
-    <tbody data-ng-init="model.keyActionMenus = []">
+    <tbody>
       <tr data-ng-repeat="key in model.keys | orderBy:'label' | orderBy:'sysStatus':reverse"
-        data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys"
-        data-ng-init="model.keyActionMenus[$index] = {}">
+        data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys">
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
@@ -58,17 +57,7 @@
         </td>
         <!-- Action -->
         <td class="action">
-          <div class="btn-group">
-            <a href="#" class="btn"
-              stackable-trigger="model.keyActionMenus[$index]"
-              stackable-toggle="'active'">
-              <i class="icon-chevron-down"></i>
-            </a>
-          </div>
-          <stackable-popover stackable="model.keyActionMenus[$index]"
-            stackable-hide-arrow="true"
-            stackable-placement="bottom"
-            stackable-alignment="right">
+          <action-menu>
             <ul class="stackable-menu">
               <!-- Edit -->
               <li>
@@ -90,7 +79,7 @@
                 </a>
               </li>
             </ul>
-          </stackable-popover>
+          </action-menu>
         </td>
       </tr>
     </tbody>

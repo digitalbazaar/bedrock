@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  './action-menu-directive',
   './alert-service',
   './alerts-directive',
   './animate-directive',
@@ -30,6 +31,7 @@ define([
   './track-state-directive'
 ], function(
   angular,
+  actionMenu,
   alertService,
   alerts,
   animate,
@@ -56,6 +58,7 @@ define([
 
 var module = angular.module('app.util', []);
 
+module.directive(actionMenu);
 module.service(alertService);
 module.directive(alerts);
 module.directive(animate);
