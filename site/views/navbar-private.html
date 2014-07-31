@@ -34,7 +34,7 @@
           <a class="btn btn-nav btn-small show pull-right"
             stackable-trigger="model.hovercard"
             stackable-toggle="'active'"><i class="icon-user"></i></a>
-          <div stackable-popover="model.hovercard"
+          <stackable-popover stackable="model.hovercard"
             stackable-placement="bottom"
             stackable-alignment="right">
             <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
@@ -62,10 +62,10 @@
                 </li>
               </ul>
             </div>
-          </div>
-          <div stackable="model.showLogin" stackable-disable-escape="true">
+          </stackable-popover>
+          <stackable-modal stackable="model.showLogin" stackable-disable-escape="true">
             <div data-login-modal></div>
-          </div>
+          </stackable-modal>
           <a class="navbar-link pull-right" style="line-height:45px"
             data-ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">
             {{model.identity.label || '-'}}

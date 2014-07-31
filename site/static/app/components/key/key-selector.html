@@ -12,8 +12,8 @@
       <small>{{selected.id}}</small>
     </div>
   </div>
-  <div stackable="model.showAddKeyModal" stackable-modal="true"
+  <stackable-modal stackable="model.showAddKeyModal"
     stackable-closed="!err && (selected=result)">
     <div data-generate-key-pair-modal></div>
-  </div>
+  </stackable-modal>
 </div>

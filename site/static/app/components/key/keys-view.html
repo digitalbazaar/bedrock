@@ -12,7 +12,7 @@
       <span data-spinner="model.state.loading" data-spinner-class="h3-spinner"></span>
     </span>
   </h3>
-  <div stackable-popover="model.keysViewMenu"
+  <stackable-popover stackable="model.keysViewMenu"
     stackable-hide-arrow="true"
     stackable-placement="bottom"
     stackable-alignment="right">
@@ -31,7 +31,7 @@
           data-ng-show="model.showRevokedKeys" class="icon-ok"></i> Show Revoked Keys</a>
       </li>
     </ul>
-  </div>
+  </stackable-popover>
   <table class="table table-condensed" data-ng-show="model.state.loading || model.keys.length > 0">
     <thead>
       <tr>
@@ -65,7 +65,7 @@
               <i class="icon-chevron-down"></i>
             </a>
           </div>
-          <div stackable-popover="model.keyActionMenus[$index]"
+          <stackable-popover stackable="model.keyActionMenus[$index]"
             stackable-hide-arrow="true"
             stackable-placement="bottom"
             stackable-alignment="right">
@@ -90,7 +90,7 @@
                 </a>
               </li>
             </ul>
-          </div>
+          </stackable-popover>
         </td>
       </tr>
     </tbody>
@@ -100,18 +100,18 @@
     Access keys can be added by using an external website or application
     or one can be generated that this site controls.</p>
   </div>
-  <div stackable="model.modals.showGenerateKeyPair" stackable-modal="true">
+  <stackable-modal stackable="model.modals.showGenerateKeyPair">
     <div data-generate-key-pair-modal></div>
-  </div>
-  <div stackable="model.modals.showAddKey" stackable-modal="true">
+  </stackable-modal>
+  <stackable-modal stackable="model.modals.showAddKey">
     <div data-add-key-modal></div>
-  </div>
-  <div stackable="model.modals.showEditKey" stackable-modal="true">
+  </stackable-modal>
+  <stackable-modal stackable="model.modals.showEditKey">
     <div data-edit-key-modal data-key="model.modals.key"></div>
-  </div>
+  </stackable-modal>
 
   <!-- Revoking key alert -->
-  <div stackable="model.modals.showRevokeKeyAlert" stackable-modal="true"
+  <stackable-modal stackable="model.modals.showRevokeKeyAlert"
     stackable-closed="model.confirmRevokeKey(err, result)">
     <div data-alert-modal
       data-modal-header="Warning"
@@ -127,5 +127,5 @@
       key.</p>
       <p>Are you sure that you want to revoke this key?</p>
     </div>
-  </div>
+  </stackable-modal>
 </div>
