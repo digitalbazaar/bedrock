@@ -723,15 +723,19 @@ h1 > .rest-summary > .rest-path {
 
 /* Modals */
 
-/* Allow modals to scroll */
 .modal {
+  /* Allow modals to scroll */
   position: absolute;
+  /* Account for scrollbar always being present to avoid jumping content */
+  margin-left: -273px;
+  /* Ensure there is always space at top/bottom of the modal (aesthetic) */
+  top: 70px;
+  margin-bottom: 70px;
 }
 .modal-body {
   max-height: none;
 }
-
-/* used when buttons are wrapped in a form to avoid margins */
+/* Used when buttons are wrapped in a form to avoid margins */
 .modal-footer form {
   margin: 0;
 }
