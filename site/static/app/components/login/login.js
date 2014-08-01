@@ -8,15 +8,28 @@
 define([
   'angular',
   './login-controller',
-  './login-modal-directive'
-], function(angular, controller, modalLogin) {
+  './login-modal-directive',
+  './login-routes'
+], function(
+  angular,
+  loginController,
+  loginModalDirective,
+  loginRoutes
+) {
 
 'use strict';
 
 var module = angular.module('app.login', []);
 
-module.controller(controller);
-module.directive(modalLogin);
+module.controller(loginController);
+module.directive(loginModalDirective);
+
+/* @ngInject */
+module.config(function($routeProvider) {
+  angular.forEach(loginRoutes, function(route) {
+    $routeProvider.when(route.path, route.options);
+  });
+});
 
 return module.name;
 

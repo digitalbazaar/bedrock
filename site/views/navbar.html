@@ -1,0 +1,126 @@
+<div data-ng-controller="NavbarController as model" class="ng-cloak">
+  <div class="navbar" data-ng-class="{'navbar-login': app.services.identity.identity}">
+    <div class="navbar-inner navbar-inner-banner">
+      <div class="container">
+        {% if style.brand.src %}
+        <a class="brand" href="/">
+          <img src="{{style.brand.src}}" width="{{style.brand.width}}" height="{{style.brand.height}}" alt="{{style.brand.alt}}" />
+        </a>
+        {% else %}
+        <a href="/">{{siteTitle}}</a>
+        {% endif %}
+
+        {% raw %}
+        <!-- nav menu -->
+        <ul class="nav">
+          <li data-ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" data-ng-class="{active: pageTitle == item.pageTitle, dropdown: item.items}">
+            <a data-ng-if="!item.items" href="{{item.url || (model.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a>
+            <a data-ng-if="item.items" href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="{{item.icon}}"></i> {{item.label}}
+              <b class="caret"></b>
+            </a>
+            <ul data-ng-if="item.items" class="dropdown-menu">
+              <li data-ng-repeat="subitem in item.items" data-ng-class="{active: pageTitle == subitem.pageTitle, divider: subitem.divider}">
+                <a data-ng-if="!subitem.divider" href="{{subitem.url || (model.identity.id + '/' + subitem.slug)}}"><i class="{{subitem.icon}}"></i> {{subitem.label}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- signed out -->
+        <div data-ng-show="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" data-ng-controller="LoginController as model">
+          <form class="navbar-form pull-right" data-ng-submit="model.submit()">
+            <fieldset>
+              <input data-ng-hide="model.multiple"
+                class="input-medium" name="sysIdentifier" type="text"
+                data-ng-model="model.sysIdentifier" autofocus="autofocus"
+                placeholder="Email" data-ng-disabled="model.loading" />
+              <select data-ng-show="model.multiple" name="sysIdentifier" autofocus="autofocus"
+                data-tooltip-title="Your email address ({{email}}) is associated with multiple
+                identities. Please select the identity you'd like to sign in with."
+                data-placement="bottom" data-trigger="hover"
+                data-ng-model="model.sysIdentifier"
+                data-ng-options="value.id as value.label for value in model.choices"
+                data-ng-disabled="model.loading">
+              </select>
+              <input class="input-medium" name="password" type="password"
+                data-ng-model="model.password" placeholder="Password"
+                data-ng-disabled="model.loading" />
+              <div class="btn-toolbar btn-group-banner">
+                <div class="btn-group btn-group-banner">
+                  <a class="btn btn-primary" data-submit-form>Sign In</a>
+                  <a class="btn btn-primary"
+                    stackable-trigger="model.navbarActionMenu"
+                    stackable-toggle="'active'">
+                    <i class="caret"></i>
+                  </a>
+                </div>
+                <div class="btn-group btn-group-banner">
+                  <a id="join" class="btn btn-inverse" href="/join">Join</a>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+          <stackable-popover stackable="model.navbarActionMenu"
+            stackable-hide-arrow="true"
+            stackable-placement="bottom"
+            stackable-alignment="right">
+            <ul class="stackable-menu">
+              <li>
+                <a href="/session/passcode">
+                  <i class="icon-refresh"></i>
+                  Password Reset
+                </a>
+              </li>
+            </ul>
+          </stackable-popover>
+        </div>
+
+        <!-- signed in -->
+        <div data-ng-if="app.services.identity.identity">
+          <a class="btn btn-nav btn-small show pull-right"
+            stackable-trigger="model.hovercard"
+            stackable-toggle="'active'"><i class="icon-user"></i></a>
+          <stackable-popover stackable="model.hovercard"
+            stackable-placement="bottom"
+            stackable-alignment="right">
+            <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
+            <div class="stackable-popover-body">
+              <table data-ng-show="model.identity">
+                <tbody>
+                  <tr data-ng-show="model.identity">
+                    <td><strong>Identity:</strong></td>
+                    <td>{{model.identity.label}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{model.identity.email}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div data-ng-show="model.identity" class="divider"></div>
+              <ul class="stackable-menu">
+                <li>
+                  <a class="stackable-cancel" style="padding-left: 3px"
+                    data-ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
+                </li>
+                <li>
+                  <a href="/session/logout" style="padding-left: 3px"><i class="icon-off"></i> Sign Out</a>
+                </li>
+              </ul>
+            </div>
+          </stackable-popover>
+          <stackable-modal stackable="model.showLogin" stackable-disable-escape="true">
+            <div data-login-modal></div>
+          </stackable-modal>
+          <a class="navbar-link pull-right" style="line-height:45px"
+            data-ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">
+            {{model.identity.label || '-'}}
+          </a>
+        </div>
+        {% endraw %}
+      </div>
+    </div>
+  </div>
+  <div data-alerts data-fixed="true"></div>
+</div>

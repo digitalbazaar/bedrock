@@ -154,12 +154,35 @@ module.run(function($rootScope, $location, $route, $http, util) {
     usingView = true;
   });
 
-  // set page title when route changes
+  // route info
+  $rootScope.route = {
+    changing: false
+  };
+
+  $rootScope.$on('$routeChangeStart', function(event) {
+    $rootScope.route.changing = true;
+  });
+
+  // set page vars when route changes
   $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
+    $rootScope.route.changing = false;
     // FIXME: angular13 fix this
-    if(current && current.$$route) {
-      $rootScope.pageTitle = current.$$route.title;
+    if(current) {
+      $rootScope.route.current = current;
+      $rootScope.route.vars = current.vars || {};
+      // FIXME: remove once routes switched to above vars object
+      if(current.title) {
+        $rootScope.route.vars.title = current.title;
+      }
+    } else {
+      $rootScope.route.current = null;
+      $rootScope.route.vars = {};
     }
+  });
+
+  // set page title when route changes
+  $rootScope.$on('$routeChangeError', function(event) {
+    $rootScope.route.changing = false;
   });
 
   // access to app core (utility functions, services, etc.)

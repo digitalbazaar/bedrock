@@ -1,12 +1,3 @@
-{% extends 'layout.html' %}
-
-{% set pageTitle = "Sign In" %}
-{% set clientData.pageTitle = "Sign In" %}
-{% set pageLayout = "minimal" %}
-
-{% block content %}
-
-{% raw %}
 <div data-ng-controller="LoginController as model">
 
 <h2 class="headline">Sign in to {{model.siteTitle}}</h2>
@@ -83,6 +74,3 @@
 </form>
 
 </div>
-{% endraw %}
-
-{% endblock %}
