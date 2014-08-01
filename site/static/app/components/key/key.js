@@ -7,35 +7,44 @@
  */
 define([
   'angular',
-  './key-controller',
-  './keys-controller',
-  './key-routes',
-  './key-service',
-  './keys-directive',
-  './generate-key-pair-modal-directive',
   './add-key-modal-directive',
   './edit-key-modal-directive',
+  './generate-key-pair-modal-directive',
+  './key-controller',
+  './key-routes',
   './key-selector-directive',
+  './key-service',
+  './keys-controller',
+  './keys-directive',
 ], function(
-  angular, keyCtrl, keysCtrl, routes, keyService, keysDirective,
-  modalGenerateKeyPair, modalAddKey, modalEditKey, keySelector) {
+  angular,
+  addKeyModalDirective,
+  editKeyModalDirective,
+  generateKeyPairModalDirective,
+  keyController,
+  keyRoutes,
+  keySelectorDirective,
+  keyService,
+  keysController,
+  keysDirective
+) {
 
 'use strict';
 
 var module = angular.module('app.key', []);
 
-module.controller(keyCtrl);
-module.controller(keysCtrl);
+module.directive(addKeyModalDirective);
+module.directive(editKeyModalDirective);
+module.directive(generateKeyPairModalDirective);
+module.controller(keyController);
+module.directive(keySelectorDirective);
 module.service(keyService);
+module.controller(keysController);
 module.directive(keysDirective);
-module.directive(modalGenerateKeyPair);
-module.directive(modalAddKey);
-module.directive(modalEditKey);
-module.directive(keySelector);
 
 /* @ngInject */
 module.config(function($routeProvider) {
-  angular.forEach(routes, function(route) {
+  angular.forEach(keyRoutes, function(route) {
     $routeProvider.when(route.path, route.options);
   });
 });
