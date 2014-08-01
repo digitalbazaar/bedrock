@@ -40,13 +40,13 @@
 
       <div data-ng-hide="model.loading">
         <div class="btn-group">
-          <a class="btn btn-primary" data-submit-form><i
-            class="icon-signin"></i> Sign In</a>
-          <a class="btn btn-primary"
+          <button class="btn btn-primary" type="button" data-submit-form><i
+            class="icon-signin"></i> Sign In</button>
+          <button class="btn btn-primary" type="button"
             stackable-trigger="model.signInMenu"
             stackable-toggle="'active'">
             <i class="caret"></i>
-          </a>
+          </button>
         </div>
         <stackable-popover stackable="model.signInMenu"
           stackable-hide-arrow="true"
@@ -68,7 +68,6 @@
           </ul>
         </stackable-popover>
       </div>
-
     </div>
   </fieldset>
 </form>
