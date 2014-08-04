@@ -470,10 +470,6 @@ body {
 .headline {
   text-align: center;
 }
-.headline .dropdown-menu,
-.center .dropdown-menu {
-  text-align: left;
-}
 .text-align-center {
   text-align: center;
 }
@@ -831,6 +827,8 @@ input:-moz-placeholder {
   left: auto;
   position: static;
   top: auto;
+  border: none;
+  box-shadow: none;
 }
 
 /* Responsive changes */
