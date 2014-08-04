@@ -1,38 +1,22 @@
-<div class="section section-keys" data-ng-controller="KeysController as model">
-  <h3 class="headline">
-    Keys
-    <span data-ng-hide="model.state.loading" class="btn-group pull-right">
-      <a class="btn"
-        stackable-trigger="model.keysViewMenu"
-        stackable-toggle="'active'">
-        <i class="icon-reorder"></i>
-      </a>
-    </span>
-    <span data-ng-show="model.state.loading" class="pull-right">
-      <span data-spinner="model.state.loading" data-spinner-class="h3-spinner"></span>
-    </span>
-  </h3>
-  <stackable-popover stackable="model.keysViewMenu"
-    stackable-hide-arrow="true"
-    stackable-placement="bottom"
-    stackable-alignment="right">
-    <ul class="dropdown-menu stackable-menu">
+<div class="section section-keys" ng-controller="KeysController as model">
+  <headline-menu headline="Keys" loading="model.state.loading">
+    <ul class="stackable-menu dropdown-menu">
       <li>
         <a class="stackable-cancel"
-          data-ng-click="model.modals.showGenerateKeyPair=true"><i class="icon-plus"></i> Generate Key Pair</a>
+          ng-click="model.modals.showGenerateKeyPair=true"><i class="icon-plus"></i> Generate Key Pair</a>
       </li>
       <li>
         <a class="stackable-cancel"
-          data-ng-click="model.modals.showAddKey=true"><i class="icon-plus"></i> Add Key</a>
+          ng-click="model.modals.showAddKey=true"><i class="icon-plus"></i> Add Key</a>
       </li>
       <li>
         <a class="stackable-cancel"
-          data-ng-click="model.showRevokedKeys=!model.showRevokedKeys"><i
-          data-ng-show="model.showRevokedKeys" class="icon-ok"></i> Show Revoked Keys</a>
+          ng-click="model.showRevokedKeys=!model.showRevokedKeys"><i
+          ng-show="model.showRevokedKeys" class="icon-ok"></i> Show Revoked Keys</a>
       </li>
     </ul>
-  </stackable-popover>
-  <table class="table table-condensed" data-ng-show="model.state.loading || model.keys.length > 0">
+  </headline-menu>
+  <table class="table table-condensed" ng-show="model.state.loading || model.keys.length > 0">
     <thead>
       <tr>
         <th>Name</th>
@@ -41,19 +25,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="key in model.keys | orderBy:'label' | orderBy:'sysStatus':reverse"
-        data-ng-show="key.sysStatus == 'active' || model.showRevokedKeys">
+      <tr ng-repeat="key in model.keys | orderBy:'label' | orderBy:'sysStatus':reverse"
+        ng-show="key.sysStatus == 'active' || model.showRevokedKeys">
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
-          <span data-ng-show="model.identity.sysSigningKey == key.id"
+          <span ng-show="model.identity.sysSigningKey == key.id"
             data-tooltip-title="This is the default signing key."
             data-placement="bottom" data-trigger="hover"><i class="icon icon-star"></i></span>
         </td>
         <!-- Status -->
         <td class="compact">
-          <span data-ng-show="key.sysStatus == 'disabled'">Revoked</span>
-          <span data-ng-show="key.sysStatus == 'active'">Active</span>
+          <span ng-show="key.sysStatus == 'disabled'">Revoked</span>
+          <span ng-show="key.sysStatus == 'active'">Active</span>
         </td>
         <!-- Action -->
         <td class="action">
@@ -61,20 +45,20 @@
             <ul class="dropdown-menu stackable-menu">
               <!-- Edit -->
               <li>
-                <a class="stackable-cancel" data-ng-click="model.editKey(key)">
+                <a class="stackable-cancel" ng-click="model.editKey(key)">
                   <i class="icon-pencil"></i> Edit
                 </a>
               </li>
               <!-- Default Signing Key -->
-              <li data-ng-show="model.identity.sysSigningKey != key.id && key.sysStatus == 'active'">
-                <a class="stackable-cancel" data-ng-click="model.setDefaultSigningKeyId(key.id)">
+              <li ng-show="model.identity.sysSigningKey != key.id && key.sysStatus == 'active'">
+                <a class="stackable-cancel" ng-click="model.setDefaultSigningKeyId(key.id)">
                   <i class="icon-star"></i> Set as default
                 </a>
               </li>
               <!-- Revoke -->
-              <li class="divider" data-ng-hide="key.sysStatus == 'disabled'"></li>
-              <li class="btn-danger" data-ng-hide="key.sysStatus == 'disabled'">
-                <a class="stackable-cancel" data-ng-click="model.revokeKey(key)">
+              <li class="divider" ng-hide="key.sysStatus == 'disabled'"></li>
+              <li class="btn-danger" ng-hide="key.sysStatus == 'disabled'">
+                <a class="stackable-cancel" ng-click="model.revokeKey(key)">
                   <i class="icon-remove"></i> Revoke
                 </a>
               </li>
@@ -84,7 +68,7 @@
       </tr>
     </tbody>
   </table>
-  <div data-ng-show="!model.state.loading && model.keys.length == 0">
+  <div ng-show="!model.state.loading && model.keys.length == 0">
     <p class="center">You have no keys associated with this identity.
     Access keys can be added by using an external website or application
     or one can be generated that this site controls.</p>
