@@ -92,6 +92,7 @@ module.exports = function(grunt) {
         paths: {
           'almond': '../../node_modules/almond/almond',
           'angular-ui-select2': '../../bower_components/angular-ui-select2/src/select2',
+          'dialog-polyfill': '../../bower_components/dialog-polyfill/dialog-polyfill',
           'forge': '../../node_modules/node-forge/js',
           'iso8601': '../../lib/iso8601/is8601',
           'jsonld': '../../node_modules/jsonld/js/jsonld',
