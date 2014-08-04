@@ -18,6 +18,7 @@ define([
   './encodeuricomponent-filter',
   './error-directive',
   './floor-filter',
+  './headline-menu',
   './help-toggle-directive',
   './input-watcher-directive',
   './mask-filter',
@@ -42,6 +43,7 @@ define([
   encodeURIComponent_,
   error,
   floor,
+  headlineMenu,
   helpToggle,
   inputWatcher,
   mask,
@@ -69,6 +71,7 @@ module.filter(embeddedString);
 module.filter(encodeURIComponent_);
 module.directive(error);
 module.filter(floor);
+module.directive(headlineMenu);
 module.directive(helpToggle);
 module.directive(inputWatcher);
 module.filter(mask);
