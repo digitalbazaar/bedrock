@@ -827,6 +827,7 @@ input:-moz-placeholder {
   left: auto;
   position: static;
   top: auto;
+  float: none;
   border: none;
   box-shadow: none;
 }
