@@ -736,6 +736,18 @@ h1 > .rest-summary > .rest-path {
   margin: 0;
 }
 
+/* Responsive fix for modals */
+@media (max-width: 767px) {
+  .modal {
+    position: absolute;
+    margin-left: -273px;
+    top: 70px;
+    left: 50%;
+    right: auto;
+    width: 560px;
+  }
+}
+
 /* Placeholder fixes */
 input.placeholder,
 textarea.placeholder {
@@ -868,3 +880,4 @@ input:-moz-placeholder {
     margin-top: 3px;
   }
 }
+
