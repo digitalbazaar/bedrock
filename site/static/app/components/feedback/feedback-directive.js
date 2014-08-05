@@ -36,7 +36,7 @@ function factory($compile, AlertService) {
       }
 
       alert.append(
-        '<button type="button" class="close" data-ng-click="closeAlert(' +
+        '<button type="button" class="close" ng-click="closeAlert(' +
         "'" + type + "', " + i + ')">&times;</button>');
 
       // handle form feedback
@@ -54,17 +54,21 @@ function factory($compile, AlertService) {
         });
         break;
       default:
-        var message = item.message;
-        // FIXME: this should be limited as needed
-        if(item.cause && item.cause.message) {
-          message = message + ' ' + item.cause.message;
+        if(item.html) {
+          alert.append($(item.html));
+        } else {
+          var message = item.message;
+          // FIXME: this should be limited as needed
+          if(item.cause && item.cause.message) {
+            message = message + ' ' + item.cause.message;
+          }
+          if(scope.feedback.contactSupport) {
+            message = message +
+              ' Please <a target="_blank" href="/contact">contact</a> us if ' +
+              'you need assistance.';
+          }
+          alert.append(message);
         }
-        if(scope.feedback.contactSupport) {
-          message = message +
-            ' Please <a target="_blank" href="/contact">contact</a> us if ' +
-            'you need assistance.';
-        }
-        alert.append(message);
       }
 
       $compile(alert)(scope);
