@@ -748,6 +748,78 @@ h1 > .rest-summary > .rest-path {
   }
 }
 
+@media (max-width: 540px) {
+  .modal {
+    position: absolute;
+    margin-left: -265px;
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: 530px;
+    margin-bottom: 20;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    position: absolute;
+    margin-left: -245px;
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: 470px;
+    margin-bottom: 20;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal {
+    position: absolute;
+    margin-left: -195px;
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: 390px;
+    margin-bottom: 20;
+  }
+}
+
+@media (max-width: 384px) {
+  .modal {
+    position: absolute;
+    margin-left: -187px;
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: 374px;
+    margin-bottom: 20;
+  }
+}
+
+@media (max-width: 360px) {
+  .modal {
+    position: absolute;
+    margin-left: -175px;
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: 350px;
+    margin-bottom: 20;
+  }
+}
+
+@media (max-width: 320px) {
+  .modal {
+    position: absolute;
+    margin-left: -155px;
+    top: 20px;
+    left: 50%;
+    right: auto;
+    width: 310px;
+    margin-bottom: 20;
+  }
+}
+
 /* Placeholder fixes */
 input.placeholder,
 textarea.placeholder {
