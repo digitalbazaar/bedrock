@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($http, AlertService, RefreshService, config) {
+function factory($http, $timeout, AlertService, RefreshService, config) {
   return {
     scope: {},
     require: '^stackable',
@@ -19,6 +19,11 @@ function factory($http, AlertService, RefreshService, config) {
   };
 
   function Link(scope, element, attrs, stackable) {
+    // clear existing feedback when showing this modal
+    $timeout(function() {
+      AlertService.clearFeedback();
+    });
+
     var model = scope.model = {};
     model.sysIdentifier = config.data.identity.id;
     model.password = '';
