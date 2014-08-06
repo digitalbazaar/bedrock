@@ -266,9 +266,7 @@ api.on('init', function() {
   // locate stackable trigger elements
   by.addLocator('trigger', function(model, parent) {
     var using = parent || document;
-    var query = "stackable-trigger^='" + model + "']";
-    query = '[' + query + ', [data-' + query;
-    return using.querySelectorAll(query);
+    return using.querySelectorAll("[stackable-trigger^='" + model + "']");
   });
 
   // locate the top-level modal
@@ -276,33 +274,10 @@ api.on('init', function() {
     return document.querySelectorAll('.modal');
   });
 
-  // locate the top level modal footer
+  // locate the top-level modal footer
   by.addLocator('modalFooter', function() {
     return document.querySelectorAll('.modal > .modal-footer');
   });
-
-  /* TODO: remove ... use trigger locator for finding menus
-  // locate buttons to open a menu that contains an item with the given text
-  by.addLocator('menuButtonForItem', function(value, parent) {
-    value = value.trim();
-    var using = parent || document;
-
-    // get menu buttons
-    var buttons = using.querySelectorAll('.dropdown-toggle');
-    return Array.prototype.filter.call(buttons, function(button) {
-      // if a menu the button opens has the item text, allow the button
-      var menus = button.parentElement.querySelectorAll('.stackable-menu');
-      for(var mi = 0; mi < menus.length; ++mi) {
-        var items = menus[mi].querySelectorAll('li > a');
-        for(var ii = 0; ii < items.length; ++ii) {
-          if(items[ii].textContent.trim() === value) {
-            return true;
-          }
-        }
-      }
-      return false;
-    });
-  });*/
 
   // locate menu items with the given text
   by.addLocator('menuItem', function(value, parent) {
