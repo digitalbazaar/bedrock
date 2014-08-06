@@ -113,7 +113,7 @@ function factory($rootScope, ModelService) {
     options = options || {};
     var category = options.category || service.category.FEEDBACK;
     var scope = options.scope || null;
-    var info = {type: type, value: value};
+    var info = {type: type, value: value, category: category};
     // remove alert when scope is destroyed
     if(scope) {
       // provide access to scope
