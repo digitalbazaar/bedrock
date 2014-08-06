@@ -37,24 +37,20 @@ function factory($parse) {
 
       // track events
       element.focus(function() {
-        scope.$apply(function() {
-          state.focus = true;
-        });
+        state.focus = true;
+        scope.$apply();
       });
       element.blur(function() {
-        scope.$apply(function() {
-          state.focus = false;
-        });
+        state.focus = false;
+        scope.$apply();
       });
       element.mouseenter(function() {
-        scope.$apply(function() {
-          state.mouseover = true;
-        });
+        state.mouseover = true;
+        scope.$apply();
       });
       element.mouseleave(function() {
-        scope.$apply(function() {
-          state.mouseover = false;
-        });
+        state.mouseover = false;
+        scope.$apply();
       });
     }
   };
