@@ -13,12 +13,12 @@ define(['angular'], function(angular) {
 function factory($parse) {
   return {
     link: function(scope, element, attrs) {
-      var state;
+      var state = {};
       attrs.$observe('trackState', function(value) {
         // init scope state object
         var get = $parse(value);
         var set = get.assign || angular.noop;
-        state = get(scope) || {};
+        state = get(scope) || state || {};
         // expose tag name for use by other directives that operate
         // on state information
         if(!('element' in state)) {
