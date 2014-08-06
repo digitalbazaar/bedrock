@@ -18,7 +18,8 @@ api.get = function(slug) {
 api.generateKey = function(options) {
   options = options || {};
   element(by.linkText('Keys')).click();
-  element(by.trigger('model.keysViewMenu')).click();
+  var headline = element(by.attribute('headline', 'Keys'));
+  headline.element(by.trigger('menu')).click();
   element(by.linkText('Generate Key Pair')).click();
   helper.waitForModalTransition();
   var modal = element(by.modal());
@@ -43,7 +44,7 @@ api.revokeKey = function(query) {
     expect(result.index).to.not.equal(-1);
     var i = result.index;
     var row = element(by.repeater('key in model.keys').row(i));
-    row.element(by.trigger('model.keyActionMenus')).click();
+    row.element(by.trigger('menu')).click();
     element(by.linkText('Revoke')).click();
     var modal = element(by.modal());
     modal.element(by.partialButtonText('Revoke')).click();
