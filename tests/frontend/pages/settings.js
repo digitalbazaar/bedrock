@@ -44,7 +44,7 @@ api.revokeKey = function(query) {
     expect(result.index).to.not.equal(-1);
     var i = result.index;
     var row = element(by.repeater('key in model.keys').row(i));
-    row.element(by.trigger('menu')).click();
+    row.element(by.trigger('actionMenu')).click();
     element(by.linkText('Revoke')).click();
     var modal = element(by.modal());
     modal.element(by.partialButtonText('Revoke')).click();
@@ -56,7 +56,10 @@ api.revokeKey = function(query) {
 };
 
 api.getKeys = function() {
-  return element(by.controller('KeysController')).evaluate('model.keys');
+  // FIXME: temporary hack to get keys -- figure out why commented line
+  // is broken
+  return element(by.repeater('key in model.keys')).evaluate('model.keys');
+  //return element(by.controller('KeysController')).evaluate('model.keys');
 };
 
 api.getActiveKeys = function() {
