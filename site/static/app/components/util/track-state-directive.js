@@ -38,7 +38,9 @@ function factory($parse) {
       // track events
       element.focus(function() {
         state.focus = true;
-        scope.$apply();
+        // use timeout because dialog.show[Modal]() can trigger this
+        // event handler in the same tick
+        setTimeout(function() {scope.$apply();});
       });
       element.blur(function() {
         state.focus = false;
