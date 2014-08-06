@@ -28,7 +28,6 @@ define([
   './prefill-filter',
   './refresh-service',
   './resource-service',
-  './template-cache-service',
   './tooltip-title-directive',
   './track-state-directive'
 ], function(
@@ -54,7 +53,6 @@ define([
   prefill,
   refreshService,
   resourceService,
-  templateCacheService,
   tooltipTitle,
   trackState) {
 
@@ -83,7 +81,6 @@ module.filter(now);
 module.filter(prefill);
 module.service(refreshService);
 module.service(resourceService);
-module.service(templateCacheService);
 module.directive(tooltipTitle);
 module.directive(trackState);
 
