@@ -76,7 +76,7 @@
     "colors": "~0.6.2",
     "grunt-contrib-jshint": "^0.10.0",
     "mocha": "^1.20.0",
-    "protractor": "^0.24.2",
+    "protractor": "^1.0.0",
     "temp": "^0.7.0",
     "visionmedia-jscoverage": "~1.0.0",
     "wd": "~0.2.10"
