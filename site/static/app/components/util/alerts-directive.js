@@ -25,8 +25,10 @@ function factory(AlertService, $compile, $rootScope) {
       }
     });
 
-    var feedbackArea = element.find('alert-feedback-area');
-    var elements = [];
+    var elements = {};
+    for(var key in AlertService.category) {
+      elements[AlertService.category[key]] = [];
+    }
 
     scope.closeAlert = function(info) {
       AlertService.remove(info.type, info.value);
@@ -35,31 +37,42 @@ function factory(AlertService, $compile, $rootScope) {
     AlertService
       .on('add', addAlert)
       .on('remove', function(info) {
-        // find info+element pair and remove element
-        for(var i = 0; i < elements.length; ++i) {
-          if(elements[i].info === info) {
-            elements[i].element.remove();
-            elements.splice(i, 1);
-            break;
+        // find info+element pairs and remove elements
+        var list = elements[info.category];
+        for(var i = 0; i < list.length; ++i) {
+          if(list[i].info === info) {
+            list[i].element.remove();
+            list.splice(i, 1);
           }
         }
       })
       .on('clear', function(category, type) {
-        if(!category || category === AlertService.category.FEEDBACK) {
-          feedbackArea.empty();
-          elements = [];
-          if(type) {
-            // not all alerts were removed, so rebuild feedback area
-            var log = AlertService.log[AlertService.category.FEEDBACK];
-            log.forEach(function(info) {
-              addAlert(info);
-            });
-          }
+        if(category) {
+          return clearAlerts(category, type);
+        }
+        for(var key in elements) {
+          clearAlerts(key, type);
         }
       });
 
     function addAlert(info) {
       var value = info.value;
+
+      // transclude
+      if(value.html) {
+        var el = angular.element('<div class="alert"></div>');
+        el.addClass('alert-' + info.type);
+        el.append('<button type="button" class="close">&times;</button>');
+        el.append(value.html);
+        el.first().one('click', function() {
+          scope.closeAlert(info);
+          scope.$apply();
+        });
+        var transclusionScope = value.getScope ? value.getScope() : scope;
+        $compile(el)(transclusionScope);
+        element.find('.alert-area-' + info.category).append(el);
+        return;
+      }
 
       // form error
       if(value.type === 'bedrock.validation.ValidationError') {
@@ -84,16 +97,16 @@ function factory(AlertService, $compile, $rootScope) {
             target.find('[data-binding="' + binding + '"]').addClass('error');
           }
         });
-
-        return;
       }
+    }
 
-      // transclude
-      if(value.html) {
-        var el = angular.element(value.html);
-        var transclusionScope = value.getScope ? value.getScope() : scope;
-        $compile(el)(transclusionScope);
-        feedbackArea.append(el);
+    function clearAlerts(category, type) {
+      element.find('.alert-area-' + category).empty();
+      elements[category] = [];
+      if(type) {
+        // not all alerts were removed, so rebuild alert area
+        var log = AlertService.log[category];
+        log.forEach(addAlert);
       }
     }
   }
