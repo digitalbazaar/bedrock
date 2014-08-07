@@ -10,10 +10,10 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, config, $http, $location, $sanitize, IdentityService) {
+function factory(
+  $http, $location, $sanitize, $scope, AlertService, IdentityService, config) {
   var self = this;
   self.loading = false;
-  self.feedback = {};
   self.identity = IdentityService.identity;
   self.identityCredentials = config.data.identityCredentials;
 
@@ -26,7 +26,7 @@ function factory($scope, config, $http, $location, $sanitize, IdentityService) {
       query = {'@context': 'https://w3id.org/identity/v1'};
     }
     self.loading = true;
-    self.feedback.error = null;
+    AlertService.clearFeedback();
     Promise.resolve($http.post($location.absUrl() + '&authorize=true', {
       query: JSON.stringify(query)
     })).then(function(response) {
@@ -41,7 +41,7 @@ function factory($scope, config, $http, $location, $sanitize, IdentityService) {
       form.submit();
     }).catch(function(err) {
       self.loading = false;
-      self.feedback.error = err;
+      AlertService.add('error', err);
       $scope.$apply();
     });
   };
