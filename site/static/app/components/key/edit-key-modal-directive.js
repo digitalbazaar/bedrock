@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService, KeyService, config) {
+function factory(AlertService, IdentityService, KeyService, config) {
   return {
     scope: {sourceKey: '=key'},
     require: '^stackable',
@@ -20,7 +20,7 @@ function factory(AlertService, KeyService, config) {
 
   function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
-    model.identity = config.data.identity || {};
+    model.identity = IdentityService.identity || {};
     model.mode = 'edit';
     model.loading = false;
     // copy source budget for editing
