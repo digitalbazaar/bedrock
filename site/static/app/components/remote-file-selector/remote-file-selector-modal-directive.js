@@ -12,6 +12,7 @@ define([], function() {
 /* @ngInject */
 function factory($http, AlertService) {
   return {
+    restrict: 'A',
     require: '^stackable',
     templateUrl:
       '/app/components/remote-file-selector/remote-file-selector-modal.html',

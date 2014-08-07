@@ -12,50 +12,53 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory($parse) {
   return {
-    link: function(scope, element, attrs) {
-      var state = {};
-      attrs.$observe('trackState', function(value) {
-        // init scope state object
-        var get = $parse(value);
-        var set = get.assign || angular.noop;
-        state = get(scope) || state || {};
-        // expose tag name for use by other directives that operate
-        // on state information
-        if(!('element' in state)) {
-          state.element = {
-            tagName: element.prop('tagName').toLowerCase()
-          };
-        }
-        if(!('pressed' in state)) {
-          state.pressed = false;
-        }
-        if(!('mouseover' in state)) {
-          state.mouseover = false;
-        }
-        set(scope, state);
-      });
-
-      // track events
-      element.focus(function() {
-        state.focus = true;
-        // use timeout because dialog.show[Modal]() can trigger this
-        // event handler in the same tick
-        setTimeout(function() {scope.$apply();});
-      });
-      element.blur(function() {
-        state.focus = false;
-        scope.$apply();
-      });
-      element.mouseenter(function() {
-        state.mouseover = true;
-        scope.$apply();
-      });
-      element.mouseleave(function() {
-        state.mouseover = false;
-        scope.$apply();
-      });
-    }
+    restrict: 'A',
+    link: Link
   };
+
+  function Link(scope, element, attrs) {
+    var state = {};
+    attrs.$observe('trackState', function(value) {
+      // init scope state object
+      var get = $parse(value);
+      var set = get.assign || angular.noop;
+      state = get(scope) || state || {};
+      // expose tag name for use by other directives that operate
+      // on state information
+      if(!('element' in state)) {
+        state.element = {
+          tagName: element.prop('tagName').toLowerCase()
+        };
+      }
+      if(!('pressed' in state)) {
+        state.pressed = false;
+      }
+      if(!('mouseover' in state)) {
+        state.mouseover = false;
+      }
+      set(scope, state);
+    });
+
+    // track events
+    element.focus(function() {
+      state.focus = true;
+      // use timeout because dialog.show[Modal]() can trigger this
+      // event handler in the same tick
+      setTimeout(function() {scope.$apply();});
+    });
+    element.blur(function() {
+      state.focus = false;
+      scope.$apply();
+    });
+    element.mouseenter(function() {
+      state.mouseover = true;
+      scope.$apply();
+    });
+    element.mouseleave(function() {
+      state.mouseover = false;
+      scope.$apply();
+    });
+  }
 }
 
 return {trackState: factory};

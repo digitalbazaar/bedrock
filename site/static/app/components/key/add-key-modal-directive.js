@@ -15,6 +15,7 @@ function factory(
   $location, $routeParams, $sce, $timeout,
   AlertService, KeyService, config) {
   return {
+    restrict: 'A',
     scope: {},
     require: '^stackable',
     templateUrl: '/app/components/key/add-key-modal.html',

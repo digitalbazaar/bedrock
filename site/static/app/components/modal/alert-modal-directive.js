@@ -12,6 +12,7 @@ define([], function() {
 /* @ngInject */
 function factory() {
   return {
+    restrict: 'A',
     require: '^stackable',
     scope: {
       header: '@modalHeader',

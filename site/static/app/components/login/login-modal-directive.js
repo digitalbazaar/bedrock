@@ -12,6 +12,7 @@ define([], function() {
 /* @ngInject */
 function factory($http, $timeout, AlertService, RefreshService, config) {
   return {
+    restrict: 'A',
     scope: {},
     require: '^stackable',
     templateUrl: '/app/components/login/login-modal.html',

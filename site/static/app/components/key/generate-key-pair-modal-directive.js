@@ -10,6 +10,7 @@ define(['forge/pki'], function(pki) {
 /* @ngInject */
 function factory(AlertService, KeyService, config) {
   return {
+    restrict: 'A',
     scope: {},
     require: '^stackable',
     templateUrl: '/app/components/key/generate-key-pair-modal.html',

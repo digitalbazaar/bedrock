@@ -12,6 +12,7 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory(AlertService, IdentityService, KeyService, config) {
   return {
+    restrict: 'A',
     scope: {sourceKey: '=key'},
     require: '^stackable',
     templateUrl: '/app/components/key/edit-key-modal.html',

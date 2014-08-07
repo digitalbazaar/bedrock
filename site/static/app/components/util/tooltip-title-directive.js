@@ -11,7 +11,12 @@ define([], function() {
 
 /* @ngInject */
 function factory() {
-  return function(scope, element, attrs) {
+  return {
+    restrict: 'A',
+    link: Link
+  };
+
+  function Link(scope, element, attrs) {
     var show = false;
     attrs.$observe('tooltipTitle', function(value) {
       if(element.data('tooltip')) {

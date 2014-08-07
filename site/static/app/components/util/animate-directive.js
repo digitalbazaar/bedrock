@@ -12,6 +12,7 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory($parse) {
   return {
+    restrict: 'A',
     link: function(scope, element, attrs) {
       scope.$watch(attrs.animate, function(value) {
         if(value) {

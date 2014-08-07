@@ -12,6 +12,7 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory(AlertService, IdentityService, config) {
   return {
+    restrict: 'A',
     scope: {identityTypes: '='},
     require: '^stackable',
     templateUrl: '/app/components/identity/add-identity-modal.html',

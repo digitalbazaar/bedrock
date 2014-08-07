@@ -12,6 +12,7 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory(AlertService, $compile, $rootScope) {
   return {
+    restrict: 'A',
     scope: {filterOrigin: '@?', fixed: '@?'},
     templateUrl: '/app/components/alert/alerts.html',
     link: Link

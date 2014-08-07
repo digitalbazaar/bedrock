@@ -13,6 +13,7 @@ define([], function() {
 /* @ngInject */
 function factory() {
   return {
+    restrict: 'A',
     scope: {error: '=errorView'},
     templateUrl: '/app/components/util/error-view.html',
     link: Link

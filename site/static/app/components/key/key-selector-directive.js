@@ -12,6 +12,7 @@ define([], function() {
 /* @ngInject */
 function factory(KeyService) {
   return {
+    restrict: 'A',
     scope: {
       selected: '=',
       invalid: '=',

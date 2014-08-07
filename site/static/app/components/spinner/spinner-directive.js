@@ -12,6 +12,7 @@ define(['spin'], function(Spinner) {
 /* @ngInject */
 function factory() {
   return {
+    restrict: 'A',
     scope: {
       spin: '=spinner',
       className: '@spinnerClass'

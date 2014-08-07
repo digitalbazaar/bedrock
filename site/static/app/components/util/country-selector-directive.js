@@ -12,8 +12,8 @@ define([], function() {
 /* @ngInject */
 function factory(config) {
   return {
-    scope: {},
     restrict: 'E',
+    scope: {},
     replace: true,
     require: 'ngModel',
     link: Link,

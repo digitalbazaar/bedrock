@@ -12,6 +12,7 @@ define([], function() {
 /* @ngInject */
 function factory() {
   return {
+    restrict: 'A',
     link: function(scope, element, attrs) {
       // init to hidden
       element.addClass('hide');
