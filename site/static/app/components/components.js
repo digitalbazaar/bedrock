@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  './alert/alert',
   './dashboard/dashboard',
   './duplicate-checker/duplicate-checker',
   './fade/fade',

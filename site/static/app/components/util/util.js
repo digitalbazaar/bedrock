@@ -8,9 +8,6 @@
 define([
   'angular',
   './action-menu-directive',
-  './add-alert-directive',
-  './alert-service',
-  './alerts-directive',
   './animate-directive',
   './ceil-filter',
   './country-selector-directive',
@@ -33,9 +30,6 @@ define([
 ], function(
   angular,
   actionMenu,
-  addAlert,
-  alertService,
-  alerts,
   animate,
   ceil,
   countrySelector,
@@ -61,9 +55,6 @@ define([
 var module = angular.module('app.util', []);
 
 module.directive(actionMenu);
-module.directive(addAlert);
-module.service(alertService);
-module.directive(alerts);
 module.directive(animate);
 module.filter(ceil);
 module.directive(countrySelector);

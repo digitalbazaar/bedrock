@@ -13,7 +13,7 @@ define(['angular'], function(angular) {
 function factory(AlertService, $compile, $rootScope) {
   return {
     scope: {filterOrigin: '@?', fixed: '@?'},
-    templateUrl: '/app/components/util/alerts.html',
+    templateUrl: '/app/components/alert/alerts.html',
     link: Link
   };
 
