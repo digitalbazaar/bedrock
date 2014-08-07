@@ -12,12 +12,12 @@
 </div>
 
 {% raw %}
-<div class="ng-cloak" data-ng-controller="PasscodeController as model">
+<div class="ng-cloak" ng-controller="PasscodeController as model">
 
 <div class="row">
   <div class="span6 offset3">
 
-    <form id="emailFeedbackTarget" class="form-horizontal" action="" data-ng-submit="model.sendReset()">
+    <form class="form-horizontal" action="" ng-submit="model.sendReset()">
       <fieldset>
       <legend>Get Passcode</legend>
         <div class="control-group" data-binding="sysIdentifier">
@@ -25,9 +25,9 @@
           <div class="controls">
             <div class="input-append">
               <input name="sysIdentifier" type="text" maxlength="320"
-                data-ng-model="model.email"
+                ng-model="model.email"
                 data-track-state="model.help.email"
-                data-ng-disabled="loading" />
+                ng-disabled="loading" />
               <button class="btn" data-help-toggle="model.help.email">
                 <i class="icon-question-sign"></i>
               </button>
@@ -39,13 +39,12 @@
           </div>
         </div>
       <div class="form-actions">
-        <button data-ng-disabled="loading"
+        <button ng-disabled="loading"
           class="btn btn-primary" data-submit-form>Send Reset Instructions</button>
         <span data-spinner="loading"
           data-spinner-class="append-btn-spinner"></span>
       </div>
       </fieldset>
-      <div data-feedback="model.feedback.email" data-target="model.emailFeedbackTarget"></div>
     </form>
 
   </div>
@@ -54,7 +53,7 @@
 <div class="row">
   <div class="span6 offset3">
 
-    <form id="passwordFeedbackTarget" class="form-horizontal" action="" data-ng-submit="model.updatePassword()">
+    <form class="form-horizontal" action="" ng-submit="model.updatePassword()">
       <fieldset>
       <legend>Update Your Password</legend>
 
@@ -63,9 +62,9 @@
         <div class="controls">
           <div class="input-append">
             <input name="input" type="text" maxlength="320"
-              data-ng-model="model.email"
+              ng-model="model.email"
               data-track-state="model.help.resetEmail"
-              data-ng-disabled="loading" />
+              ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.resetEmail">
               <i class="icon-question-sign"></i>
             </button>
@@ -82,9 +81,9 @@
         <div class="controls">
           <div class="input-append">
             <input name="sysPasscode" type="text" maxlength="8"
-              data-ng-model="model.sysPasscode"
+              ng-model="model.sysPasscode"
               data-track-state="model.help.passcode"
-              data-ng-disabled="loading" />
+              ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.passcode">
               <i class="icon-question-sign"></i>
             </button>
@@ -101,9 +100,9 @@
         <div class="controls">
           <div class="input-append">
             <input name="sysPasswordNew" type="password" maxlength="32"
-              data-ng-model="model.sysPasswordNew"
+              ng-model="model.sysPasswordNew"
               data-track-state="model.help.password"
-              data-ng-disabled="loading" />
+              ng-disabled="loading" />
             <button class="btn" data-help-toggle="model.help.password">
               <i class="icon-question-sign"></i>
             </button>
@@ -116,13 +115,12 @@
       </div>
 
       <div class="form-actions">
-         <button data-ng-disabled="loading"
-           class="btn btn-primary" data-submit-form>Set Password</button>
-         <span data-spinner="loading"
-           data-spinner-class="append-btn-spinner"></span>
+        <button ng-disabled="loading"
+          class="btn btn-primary" data-submit-form>Set Password</button>
+        <span data-spinner="loading"
+          data-spinner-class="append-btn-spinner"></span>
       </div>
       </fieldset>
-      <div data-feedback="model.feedback.password" data-target="model.passwordFeedbackTarget"></div>
     </form>
 
   </div>
