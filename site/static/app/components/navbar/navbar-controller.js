@@ -18,7 +18,6 @@ function factory($scope, $rootScope, RefreshService, IdentityService, config) {
 
   self.refreshData = function() {
     RefreshService.refresh();
-    $scope.setVisible(false);
   };
 
   $rootScope.$on('showLoginModal', function() {
