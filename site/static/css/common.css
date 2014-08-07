@@ -835,7 +835,7 @@ input:-moz-placeholder {
   color: #aaa;
 }
 
-/* Fixed alert error area */
+/* Fixed alert area */
 .fixed-alert-area {
   position: fixed;
   top: -1000px;
@@ -871,6 +871,49 @@ input:-moz-placeholder {
 }
 .fixed-alert-area-body {
   padding: 15px 15px 5px 15px;
+}
+
+/* Responsive fix for alert area */
+@media (max-width: 540px) {
+  .fixed-alert-area {
+    margin-left: -265px;
+    width: 530px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fixed-alert-area {
+    margin-left: -245px;
+    width: 470px;
+  }
+}
+
+@media (max-width: 400px) {
+  .fixed-alert-area {
+    margin-left: -195px;
+    width: 390px;
+  }
+}
+
+@media (max-width: 384px) {
+  .fixed-alert-area {
+    margin-left: -187px;
+    width: 374px;
+  }
+}
+
+@media (max-width: 360px) {
+  .fixed-alert-area {
+    margin-left: -175px;
+    width: 350px;
+  }
+}
+
+@media (max-width: 320px) {
+  .fixed-alert-area {
+    margin-left: -155px;
+    width: 310px;
+  }
 }
 
 /* Fixes to Select2 widgets */
