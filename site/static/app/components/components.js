@@ -10,7 +10,6 @@ define([
   './dashboard/dashboard',
   './duplicate-checker/duplicate-checker',
   './fade/fade',
-  './feedback/feedback',
   './identity/identity',
   './key/key',
   './login/login',
