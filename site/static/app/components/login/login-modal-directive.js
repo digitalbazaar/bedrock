@@ -46,9 +46,10 @@ function factory($http, $timeout, AlertService, RefreshService, config) {
         if(err.type === 'bedrock.validation.ValidationError') {
           AlertService.add(
             'error',
-            'The password you entered was incorrect. Please try again.');
+            'The password you entered was incorrect. Please try again.',
+            {scope: scope});
         } else {
-          AlertService.add('error', err);
+          AlertService.add('error', err, {scope: scope});
         }
         scope.$apply();
       });
