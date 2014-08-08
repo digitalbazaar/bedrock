@@ -8,7 +8,6 @@
 define([
   'angular',
   './action-menu-directive',
-  './animate-directive',
   './ceil-filter',
   './country-selector-directive',
   './ellipsis-filter',
@@ -30,7 +29,6 @@ define([
 ], function(
   angular,
   actionMenu,
-  animate,
   ceil,
   countrySelector,
   ellipsis,
@@ -55,7 +53,6 @@ define([
 var module = angular.module('app.util', []);
 
 module.directive(actionMenu);
-module.directive(animate);
 module.filter(ceil);
 module.directive(countrySelector);
 module.filter(ellipsis);
