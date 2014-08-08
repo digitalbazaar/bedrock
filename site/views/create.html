@@ -45,7 +45,7 @@
               data-duplicate-checker-checking="Checking Availability..."
               data-duplicate-checker-result="model.emailAvailable">
             </div>
-            <p data-fade-toggle="model.help.email.show" class="help-block">
+            <p ng-show="model.help.email.show" class="help-block br-fadein br-fadeout">
               A valid email address is required so that we can reset
               your password if you get locked out.
             </p>
@@ -66,7 +66,7 @@
                 <i class="icon-question-sign"></i>
               </button>
             </div>
-            <p data-fade-toggle="model.help.password.show" class="help-block">
+            <p ng-show="model.help.password.show" class="help-block br-fadein br-fadeout">
               Please enter a secure password that is between 6 and 32 characters long. The best passwords are
               lengthy, memorable phrases like: the<strong>lemurs</strong>ride<strong>on</strong>the<strong>fortnight</strong>
             </p>
@@ -104,8 +104,7 @@
                 <i class="icon-question-sign"></i>
               </button>
             </div>
-            <p data-fade-toggle="model.help.identityLabel.show"
-              class="help-block">
+            <p ng-show="model.help.identityLabel.show" class="help-block br-fadein br-fadeout">
               Enter the full name that is associated with this new identity.
               For instance "My Full Name" or "Mega Corp".
             </p>
@@ -129,7 +128,7 @@
                 <i class="icon-question-sign"></i>
               </button>
             </div>
-            <p data-fade-toggle="model.help.identity.show" class="help-block">
+            <p ng-show="model.help.identity.show" class="help-block br-fadein br-fadeout">
               Enter a short name for this identity. A name similar to your full
               name will help people to identify you. This short name will be
               used in your identity address as shown below. An example would be

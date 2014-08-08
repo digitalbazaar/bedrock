@@ -16,7 +16,7 @@
           <input type="checkbox" name="publicLabel" data-ng-model="model.public.label">
             Allow <strong>public</strong> access to identity label.
         </label>
-        <p data-fade-toggle="model.help.label.show" class="help-block">
+        <p ng-show="model.help.label.show" class="help-block br-fadein br-fadeout">
           Enter the public label for this identity.
         </p>
       </div>
@@ -38,7 +38,7 @@
           <input type="checkbox" name="publicWebsite" data-ng-model="model.public.url">
             Allow <strong>public</strong> access to identity website.
         </label>
-        <p data-fade-toggle="model.help.url.show" class="help-block">
+        <p ng-show="model.help.url.show" class="help-block br-fadein br-fadeout">
           Optionally enter a website URL for this identity.
         </p>
       </div>
@@ -60,7 +60,7 @@
           <input type="checkbox" name="publicEmail" data-ng-model="model.public.email">
             Allow <strong>public</strong> access to identity email.
         </label>
-        <p data-fade-toggle="model.help.email.show" class="help-block">
+        <p ng-show="model.help.email.show" class="help-block br-fadein br-fadeout">
         <!-- Enter an email for this identity. -->
           Identity email can not be changed on this page.
         </p>
@@ -126,7 +126,7 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <p data-fade-toggle="model.help.image.show" class="help-block">
+        <p ng-show="model.help.image.show" class="help-block br-fadein br-fadeout">
           Enter the URL to an image for this identity.
         </p>
       </div>
@@ -160,7 +160,7 @@
           <input type="checkbox" name="publicDescription" data-ng-model="model.public.description">
             Allow <strong>public</strong> access to identity description.
         </label>
-        <p data-fade-toggle="model.help.description.show" class="help-block">
+        <p ng-show="model.help.description.show" class="help-block br-fadein br-fadeout">
           Optionally enter a description of this identity.
         </p>
       </div>

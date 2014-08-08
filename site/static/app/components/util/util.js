@@ -15,7 +15,6 @@ define([
   './embedded-string-filter',
   './encodeuricomponent-filter',
   './error-directive',
-  './fade-toggle-directive',
   './floor-filter',
   './headline-menu',
   './help-toggle-directive',
@@ -38,7 +37,6 @@ define([
   embeddedString,
   encodeURIComponent_,
   error,
-  fadeToggleDirective,
   floor,
   headlineMenu,
   helpToggle,
@@ -64,7 +62,6 @@ module.filter(ellipsis);
 module.filter(embeddedString);
 module.filter(encodeURIComponent_);
 module.directive(error);
-module.directive(fadeToggleDirective);
 module.filter(floor);
 module.directive(headlineMenu);
 module.directive(helpToggle);

@@ -12,7 +12,8 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <p data-fade-toggle="model.help.label.show" class="help-block" data-ng-include="'/app/components/key/key-help.html'"></p>
+        <p ng-show="model.help.label.show" class="help-block br-fadein br-fadeout"
+          data-ng-include="'/app/components/key/key-help.html'"></p>
       </div>
     </div>
 
@@ -30,7 +31,7 @@
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <p data-fade-toggle="model.help.publicKeyPem.show" class="help-block">
+        <p ng-show="model.help.publicKeyPem.show" class="help-block br-fadein br-fadeout">
           Enter the public key PEM data.
         </p>
       </div>
