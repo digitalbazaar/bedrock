@@ -16,10 +16,10 @@ window.console.log = window.console.log || function() {};
 require.config({
   baseUrl: '/',
   paths: {
-    angular: 'angular/angular',
-    'angular-animate': 'angular/angular-animate',
-    'angular-route': 'angular/angular-route',
-    'angular-sanitize': 'angular/angular-sanitize',
+    angular: 'bower-components/angular/angular',
+    'angular-animate': 'bower-components/angular-animate/angular-animate',
+    'angular-route': 'bower-components/angular-route/angular-route',
+    'angular-sanitize': 'bower-components/angular-sanitize/angular-sanitize',
     'angular-ui-select2': 'bower-components/angular-ui-select2/src/select2',
     bedrock: '.',
     bootstrap: 'bootstrap/js/bootstrap',

@@ -91,6 +91,10 @@ module.exports = function(grunt) {
         baseUrl: 'site/static',
         paths: {
           'almond': '../../node_modules/almond/almond',
+          'angular': '../../bower_components/angular/angular',
+          'angular-animate': '../../bower_components/angular-animate/angular-animate',
+          'angular-route': '../../bower_components/angular-route/angular-route',
+          'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
           'angular-ui-select2': '../../bower_components/angular-ui-select2/src/select2',
           'dialog-polyfill': '../../bower_components/dialog-polyfill/dialog-polyfill',
           'forge': '../../node_modules/node-forge/js',
