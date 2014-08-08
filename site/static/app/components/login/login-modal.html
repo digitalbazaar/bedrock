@@ -18,7 +18,7 @@
           <div class="controls">
             <input name="password" type="password" placeholder="Password"
               autofocus="autofocus" ng-model="model.password"
-              data-ui-keypress="{enter:'model.login()'}"
+              ng-keypress="$event.which == 13 && model.login()"
               ng-disabled="model.loading" />
           </div>
         </div>
