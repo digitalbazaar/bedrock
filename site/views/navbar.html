@@ -1,5 +1,5 @@
-<div data-ng-controller="NavbarController as model" class="ng-cloak">
-  <div class="navbar" data-ng-class="{'navbar-login': app.services.identity.identity}">
+<div ng-controller="NavbarController as model" class="ng-cloak">
+  <div class="navbar" ng-class="{'navbar-login': app.services.identity.identity}">
     <div class="navbar-inner navbar-inner-banner">
       <div class="container">
         {% if style.brand.src %}
@@ -13,39 +13,39 @@
         {% raw %}
         <!-- nav menu -->
         <ul class="nav">
-          <li data-ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" data-ng-class="{active: pageTitle == item.pageTitle, dropdown: item.items}">
-            <a data-ng-if="!item.items" href="{{item.url || (model.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a>
-            <a data-ng-if="item.items" href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <li ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" ng-class="{active: pageTitle == item.pageTitle, dropdown: item.items}">
+            <a ng-if="!item.items" href="{{item.url || (model.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a>
+            <a ng-if="item.items" href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="{{item.icon}}"></i> {{item.label}}
               <b class="caret"></b>
             </a>
-            <ul data-ng-if="item.items" class="dropdown-menu">
-              <li data-ng-repeat="subitem in item.items" data-ng-class="{active: pageTitle == subitem.pageTitle, divider: subitem.divider}">
-                <a data-ng-if="!subitem.divider" href="{{subitem.url || (model.identity.id + '/' + subitem.slug)}}"><i class="{{subitem.icon}}"></i> {{subitem.label}}</a>
+            <ul ng-if="item.items" class="dropdown-menu">
+              <li ng-repeat="subitem in item.items" ng-class="{active: pageTitle == subitem.pageTitle, divider: subitem.divider}">
+                <a ng-if="!subitem.divider" href="{{subitem.url || (model.identity.id + '/' + subitem.slug)}}"><i class="{{subitem.icon}}"></i> {{subitem.label}}</a>
               </li>
             </ul>
           </li>
         </ul>
 
         <!-- signed out -->
-        <div data-ng-show="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" data-ng-controller="LoginController as model">
-          <form class="navbar-form pull-right" data-ng-submit="model.submit()">
+        <div ng-show="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" ng-controller="LoginController as model">
+          <form class="navbar-form pull-right" ng-submit="model.submit()">
             <fieldset>
-              <input data-ng-hide="model.multiple"
+              <input ng-hide="model.multiple"
                 class="input-medium" name="sysIdentifier" type="text"
-                data-ng-model="model.sysIdentifier" autofocus="autofocus"
-                placeholder="Email" data-ng-disabled="model.loading" />
-              <select data-ng-show="model.multiple" name="sysIdentifier" autofocus="autofocus"
+                ng-model="model.sysIdentifier" autofocus="autofocus"
+                placeholder="Email" ng-disabled="model.loading" />
+              <select ng-show="model.multiple" name="sysIdentifier" autofocus="autofocus"
                 data-tooltip-title="Your email address ({{email}}) is associated with multiple
                 identities. Please select the identity you'd like to sign in with."
                 data-placement="bottom" data-trigger="hover"
-                data-ng-model="model.sysIdentifier"
-                data-ng-options="value.id as value.label for value in model.choices"
-                data-ng-disabled="model.loading">
+                ng-model="model.sysIdentifier"
+                ng-options="value.id as value.label for value in model.choices"
+                ng-disabled="model.loading">
               </select>
               <input class="input-medium" name="password" type="password"
-                data-ng-model="model.password" placeholder="Password"
-                data-ng-disabled="model.loading" />
+                ng-model="model.password" placeholder="Password"
+                ng-disabled="model.loading" />
               <div class="btn-toolbar btn-group-banner">
                 <div class="btn-group btn-group-banner">
                   <button class="btn btn-primary" type="button" data-submit-form>Sign In</button>
@@ -77,7 +77,7 @@
         </div>
 
         <!-- signed in -->
-        <div data-ng-if="app.services.identity.identity">
+        <div ng-if="app.services.identity.identity">
           <a class="btn btn-nav btn-small show pull-right"
             stackable-trigger="model.hovercard"
             stackable-toggle="'active'"><i class="icon-user"></i></a>
@@ -86,9 +86,9 @@
             stackable-alignment="right">
             <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
             <div class="stackable-popover-body">
-              <table data-ng-show="model.identity">
+              <table ng-show="model.identity">
                 <tbody>
-                  <tr data-ng-show="model.identity">
+                  <tr ng-show="model.identity">
                     <td><strong>Identity:</strong></td>
                     <td>{{model.identity.label}}</td>
                   </tr>
@@ -98,11 +98,11 @@
                   </tr>
                 </tbody>
               </table>
-              <div data-ng-show="model.identity" class="divider"></div>
+              <div ng-show="model.identity" class="divider"></div>
               <ul class="dropdown-menu stackable-menu">
                 <li>
                   <a class="stackable-cancel" style="padding-left: 3px"
-                    data-ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
+                    ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
                 </li>
                 <li>
                   <a href="/session/logout" style="padding-left: 3px"><i class="icon-off"></i> Sign Out</a>
@@ -114,7 +114,7 @@
             <div data-login-modal></div>
           </stackable-modal>
           <a class="navbar-link pull-right" style="line-height:45px"
-            data-ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">
+            ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">
             {{model.identity.label || '-'}}
           </a>
         </div>

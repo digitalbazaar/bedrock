@@ -43,9 +43,9 @@ function factory($scope, $http, $compile, $window, AlertService, config) {
         }
         // add form to page and submit it
         var element = angular.element([
-          '<form data-ng-hide="!!model.request" method="post" ',
+          '<form ng-hide="!!model.request" method="post" ',
           'action="{{model.request.url}}">',
-          '<input data-ng-repeat="(name, value) in model.request.body" ',
+          '<input ng-repeat="(name, value) in model.request.body" ',
           'type="hidden" name="{{name}}" value="{{value}}" />',
           '</form>'
         ].join(''));

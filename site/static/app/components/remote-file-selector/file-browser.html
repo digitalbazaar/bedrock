@@ -1,11 +1,11 @@
 
 <div>Path</div>
-<input data-ng-model="model.path" type='text' style="width: 97%;"></input>
+<input ng-model="model.path" type='text' style="width: 97%;"></input>
 
 <div>Directories</div>
-<select data-ng-model="model.selectedDirectory" style="width: 100%" size="10"
+<select ng-model="model.selectedDirectory" style="width: 100%" size="10"
   ng-options="dir.filename for dir in model.pathContents.directories"></select>
 
 <div>Select File</div>
-<select data-ng-model="model.selectedFile" style="width: 100%" size="10"
+<select ng-model="model.selectedFile" style="width: 100%" size="10"
   ng-options="file.filename for file in model.pathContents.files"></select>

@@ -6,7 +6,7 @@
 {% block content %}
 
 {% raw %}
-<div class="row ng-cloak" data-ng-controller="CreateIdentityController as model">
+<div class="row ng-cloak" ng-controller="CreateIdentityController as model">
   <div class="span8 offset2">
     <h2>Create an Identity</h2>
 
@@ -15,11 +15,11 @@
     the service.
     </p>
 
-    <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
+    <div ng-include="'/app/components/util/demo-warning.html'"></div>
 
     <hr />
 
-    <form class="form-horizontal" action="" data-ng-submit="model.submit()">
+    <form class="form-horizontal" action="" ng-submit="model.submit()">
       <fieldset>
         <legend>Your Email and Password</legend>
 
@@ -29,9 +29,9 @@
             <div class="input-append">
               <input class="input-xlarge form-field-vspaced"
                 name="email" data-binding="email" type="text"
-                data-ng-model="model.identity.email"
+                ng-model="model.identity.email"
                 data-track-state="model.help.email"
-                data-ng-disabled="model.loading"
+                ng-disabled="model.loading"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.email">
                 <i class="icon-question-sign"></i>
@@ -59,9 +59,9 @@
               <input class="input-xlarge"
                 name="password" data-binding="sysPassword"
                 maxlength="32" type="password"
-                data-ng-model="model.identity.sysPassword"
+                ng-model="model.identity.sysPassword"
                 data-track-state="model.help.password"
-                data-ng-disabled="model.loading" />
+                ng-disabled="model.loading" />
               <button class="btn" data-help-toggle="model.help.password">
                 <i class="icon-question-sign"></i>
               </button>
@@ -95,9 +95,9 @@
               <input class="input-xlarge"
                 name="identity-label" type="text"
                 data-slug-out="model.identity.sysSlug"
-                data-ng-model="model.identity.label"
+                ng-model="model.identity.label"
                 data-track-state="model.help.identityLabel"
-                data-ng-disabled="model.loading"
+                ng-disabled="model.loading"
                 placeholder="My Full Name"
                 autocomplete="off" />
               <button class="btn" data-help-toggle="model.help.identityLabel">
@@ -117,9 +117,9 @@
             <div class="input-append">
               <input class="input-xlarge"
                 name="identity-slug" type="text"
-                data-ng-model="model.identity.sysSlug"
+                ng-model="model.identity.sysSlug"
                 data-track-state="model.help.identity"
-                data-ng-disabled="model.loading"
+                ng-disabled="model.loading"
                 data-slug-in maxlength="32"
                 data-binding="identity.sysSlug"
                 placeholder="my-short-name"
@@ -155,7 +155,7 @@
         <div class="control-group" data-binding="agreementChecked">
           <div class="controls">
             <label class="checkbox">
-              <input type="checkbox" data-ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
+              <input type="checkbox" ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
             </label>
           </div>
         </div>
@@ -163,7 +163,7 @@
 
       <div class="form-actions">
         <button id="create-button"
-          data-ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
+          ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
           class="btn btn-large btn-primary"
           data-submit-form>Create Identity</button>
         <span data-spinner="model.loading"

@@ -3,7 +3,7 @@
     <div ng-repeat="(category, list) in app.services.alert.log">
       <div ng-show="alertCategory == 'all' || alertCategory == category">
         <div class="alert-area-{{category}}"></div>
-        <div data-ng-repeat="info in list">
+        <div ng-repeat="info in list">
           <div ng-if="!info.value.html" class="alert alert-{{info.type}}">
             <button type="button" class="close" ng-click="closeAlert(info)">&times;</button>
             <span ng-if="info.value.type == 'bedrock.validation.ValidationError'">

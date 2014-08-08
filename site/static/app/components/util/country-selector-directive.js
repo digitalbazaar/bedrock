@@ -19,12 +19,12 @@ function factory(config) {
     link: Link,
     template: '\
       <div> \
-      <select ui-select2 data-ng-model="model.selected" \
+      <select ui-select2 ng-model="model.selected" \
         data-placeholder="Pick a country..."> \
         <option value=""></option> \
-        <option data-ng-repeat="country in model.countries" \
+        <option ng-repeat="country in model.countries" \
           value="{{country.code}}" \
-          data-ng-selected="model.selected == country.code"> \
+          ng-selected="model.selected == country.code"> \
           {{country.name}}</option> \
       </select> \
       </div>'

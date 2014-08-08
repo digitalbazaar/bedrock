@@ -1,21 +1,21 @@
-<div data-ng-controller="LoginController as model">
+<div ng-controller="LoginController as model">
 
 <h2 class="headline">Sign in to {{model.siteTitle}}</h2>
 
-<div class="alert alert-info headline" data-ng-show="model.request">
+<div class="alert alert-info headline" ng-show="model.request">
   Please sign in to complete your request.
 </div>
 
-<form class="headline" method="post" action="" data-ng-submit="model.submit()">
+<form class="headline" method="post" action="" ng-submit="model.submit()">
   <fieldset>
     <div class="control-group">
-      <div data-ng-hide="model.multiple" class="controls">
+      <div ng-hide="model.multiple" class="controls">
         <input name="sysIdentifier" type="text" autofocus="autofocus"
-          data-ng-model="model.sysIdentifier"
-          placeholder="Email" data-ng-disabled="model.loading" />
+          ng-model="model.sysIdentifier"
+          placeholder="Email" ng-disabled="model.loading" />
       </div>
 
-      <div data-ng-show="model.multiple">
+      <div ng-show="model.multiple">
         <p class="alert alert-info">
           <strong>Note:</strong>
           Your email address ({{email}}) is associated with multiple
@@ -23,22 +23,22 @@
         </p>
         <div class="controls">
           <select name="identity" autofocus="autofocus"
-            data-ng-model="identity"
-            data-ng-options="value.id as value.label for value in model.choices"
-            data-ng-disabled="model.loading">
+            ng-model="identity"
+            ng-options="value.id as value.label for value in model.choices"
+            ng-disabled="model.loading">
           </select>
         </div>
       </div>
 
       <div class="controls">
         <input name="password" type="password" placeholder="Password"
-          data-ng-model="model.password" data-ng-disabled="model.loading" />
+          ng-model="model.password" ng-disabled="model.loading" />
       </div>
 
       <div data-spinner="model.loading"
         data-spinner-class="center-spinner"></div>
 
-      <div data-ng-hide="model.loading">
+      <div ng-hide="model.loading">
         <div class="btn-group">
           <button class="btn btn-primary" type="button" data-submit-form><i
             class="icon-signin"></i> Sign In</button>

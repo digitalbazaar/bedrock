@@ -1,7 +1,7 @@
-<div class="container ng-cloak" data-ng-controller="KeyController as model">
-  <div data-ng-show="model.key.label" class="row">
+<div class="container ng-cloak" ng-controller="KeyController as model">
+  <div ng-show="model.key.label" class="row">
     <div class="title-section span12">
-      <h1 class="headline" data-ng-bind="model.key.label"></h1>
+      <h1 class="headline" ng-bind="model.key.label"></h1>
     </div>
   </div>
 
@@ -9,17 +9,17 @@
     <div class="section span12">
       <h3 class="headline">
         Cryptographic Key Details
-        <span data-ng-show="model.state.keys.loading" class="pull-right">
+        <span ng-show="model.state.keys.loading" class="pull-right">
           <span data-spinner="model.state.keys.loading" data-spinner-class="h3-spinner"></span>
         </span>
       </h3>
-      <div class="alert alert-error" data-ng-show="model.key === null && !model.state.keys.loading">
+      <div class="alert alert-error" ng-show="model.key === null && !model.state.keys.loading">
         <strong>Error!</strong> Key not found or access not allowed.
       </div>
 
-      <dl data-ng-show="model.key" class="dl-horizontal" about="" typeof="sec:CryptographicKey">
-        <dt data-ng-show="model.key.label">Label</dt>
-        <dd data-ng-show="model.key.label">
+      <dl ng-show="model.key" class="dl-horizontal" about="" typeof="sec:CryptographicKey">
+        <dt ng-show="model.key.label">Label</dt>
+        <dd ng-show="model.key.label">
           <ul class="unstyled">
             <li property="rdfs:label">{{model.key.label}}</li>
           </ul>
@@ -32,8 +32,8 @@
           </ul>
         </dd>
 
-        <dt data-ng-show="model.key.revoked">Revoked</dt>
-        <dd data-ng-show="model.key.revoked">
+        <dt ng-show="model.key.revoked">Revoked</dt>
+        <dd ng-show="model.key.revoked">
           <ul class="unstyled">
             <li property="sec:revoked" datatype="xsd:dateTime" content="{{model.key.revoked}}">{{model.key.revoked | date:'medium'}}</li>
           </ul>
@@ -46,8 +46,8 @@
           </ul>
         </dd>
 
-        <dt data-ng-show="model.key.publicKeyPem">Public Key PEM</dt>
-        <dd data-ng-show="model.key.publicKeyPem">
+        <dt ng-show="model.key.publicKeyPem">Public Key PEM</dt>
+        <dd ng-show="model.key.publicKeyPem">
           <ul class="unstyled">
             <li><pre property="sec:publicKeyPem">{{model.key.publicKeyPem}}</pre></li>
           </ul>

@@ -6,18 +6,18 @@
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-tag"></i></span><input
             type="text" name="label"
-            data-ng-model="model.key.label"
+            ng-model="model.key.label"
             data-track-state="model.help.label" />
           <button class="btn" data-help-toggle="model.help.label">
             <i class="icon-question-sign"></i>
           </button>
         </div>
         <p ng-show="model.help.label.show" class="help-block br-fadein br-fadeout"
-          data-ng-include="'/app/components/key/key-help.html'"></p>
+          ng-include="'/app/components/key/key-help.html'"></p>
       </div>
     </div>
 
-    <div class="control-group" data-binding="publicKeyPem" data-ng-show="model.needPem">
+    <div class="control-group" data-binding="publicKeyPem" ng-show="model.needPem">
       <label class="control-label" for="publicKeyPem">Public Key PEM</label>
       <div class="controls">
         <div class="input-prepend input-append">
@@ -25,7 +25,7 @@
             name="publicKeyPem"
             rows="5"
             placeholder="Public Key PEM"
-            data-ng-model="model.key.publicKeyPem"
+            ng-model="model.key.publicKeyPem"
             data-track-state="model.help.publicKeyPem" />
           <button class="btn" data-help-toggle="model.help.publicKeyPem">
             <i class="icon-question-sign"></i>

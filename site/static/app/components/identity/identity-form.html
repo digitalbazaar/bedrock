@@ -6,14 +6,14 @@
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-tag"></i></span><input
             class="input-xlarge" type="text" name="label"
-            data-ng-model="model.identity.label"
+            ng-model="model.identity.label"
             data-track-state="model.help.label" />
           <button class="btn" data-help-toggle="model.help.label">
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicLabel" data-ng-model="model.public.label">
+        <label ng-show="model.publicMode == 'some'" class="checkbox">
+          <input type="checkbox" name="publicLabel" ng-model="model.public.label">
             Allow <strong>public</strong> access to identity label.
         </label>
         <p ng-show="model.help.label.show" class="help-block br-fadein br-fadeout">
@@ -28,14 +28,14 @@
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-globe"></i></span><input
             class="input-xlarge" type="url" name="url"
-            data-ng-model="model.identity.url"
+            ng-model="model.identity.url"
             data-track-state="model.help.url" />
           <button class="btn" data-help-toggle="model.help.url">
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicWebsite" data-ng-model="model.public.url">
+        <label ng-show="model.publicMode == 'some'" class="checkbox">
+          <input type="checkbox" name="publicWebsite" ng-model="model.public.url">
             Allow <strong>public</strong> access to identity website.
         </label>
         <p ng-show="model.help.url.show" class="help-block br-fadein br-fadeout">
@@ -50,14 +50,14 @@
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-envelope"></i></span><input
             class="input-xlarge" type="email" name="email" disabled="disabled"
-            data-ng-model="model.identity.email"
+            ng-model="model.identity.email"
             data-track-state="model.help.email" />
           <button class="btn" data-help-toggle="model.help.email">
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicEmail" data-ng-model="model.public.email">
+        <label ng-show="model.publicMode == 'some'" class="checkbox">
+          <input type="checkbox" name="publicEmail" ng-model="model.public.email">
             Allow <strong>public</strong> access to identity email.
         </label>
         <p ng-show="model.help.email.show" class="help-block br-fadein br-fadeout">
@@ -71,41 +71,41 @@
       <label class="control-label" for="imageType">Image Type</label>
       <div class="controls">
         <label class="radio inline">
-          <input type="radio" name="gravatarImage" value="gravatar" checked="checked" data-ng-model="model.identity.sysImageType" />
+          <input type="radio" name="gravatarImage" value="gravatar" checked="checked" ng-model="model.identity.sysImageType" />
           Gravatar
         </label>
         <label class="radio inline">
-          <input type="radio" name="urlImage" value="url" checked="checked" data-ng-model="model.identity.sysImageType" />
+          <input type="radio" name="urlImage" value="url" checked="checked" ng-model="model.identity.sysImageType" />
           URL
         </label>
       </div>
     </div>
 
-    <div data-ng-show="model.identity.sysImageType == 'gravatar'" class="control-group">
+    <div ng-show="model.identity.sysImageType == 'gravatar'" class="control-group">
       <label class="control-label" for="imageType">Gravatar Type</label>
       <div class="controls">
         <label class="radio inline">
-          <input type="radio" name="gravatarType" value="gravatar" checked="checked" data-ng-model="model.identity.sysGravatarType" />
+          <input type="radio" name="gravatarType" value="gravatar" checked="checked" ng-model="model.identity.sysGravatarType" />
           Gravatar
         </label>
         <label class="radio inline">
-          <input type="radio" name="gravatarType" value="mm" checked="checked" data-ng-model="model.identity.sysGravatarType" />
+          <input type="radio" name="gravatarType" value="mm" checked="checked" ng-model="model.identity.sysGravatarType" />
           Mystery Man
         </label>
         <label class="radio inline">
-          <input type="radio" name="gravatarType" value="identicon" checked="checked" data-ng-model="model.identity.sysGravatarType" />
+          <input type="radio" name="gravatarType" value="identicon" checked="checked" ng-model="model.identity.sysGravatarType" />
           Identicon
         </label>
         <label class="radio inline">
-          <input type="radio" name="gravatarType" value="monsterid" checked="checked" data-ng-model="model.identity.sysGravatarType" />
+          <input type="radio" name="gravatarType" value="monsterid" checked="checked" ng-model="model.identity.sysGravatarType" />
           MonsterID
         </label>
         <label class="radio inline">
-          <input type="radio" name="gravatarType" value="wavatar" checked="checked" data-ng-model="model.identity.sysGravatarType" />
+          <input type="radio" name="gravatarType" value="wavatar" checked="checked" ng-model="model.identity.sysGravatarType" />
           Wavatar
         </label>
         <label class="radio inline">
-          <input type="radio" name="gravatarType" value="retro" checked="checked" data-ng-model="model.identity.sysGravatarType" />
+          <input type="radio" name="gravatarType" value="retro" checked="checked" ng-model="model.identity.sysGravatarType" />
           Retro
         </label>
         <p class="help-block">
@@ -114,13 +114,13 @@
       </div>
     </div>
 
-    <div data-ng-show="model.identity.sysImageType == 'url'" class="control-group" data-binding="image">
+    <div ng-show="model.identity.sysImageType == 'url'" class="control-group" data-binding="image">
       <label class="control-label" for="image">Image URL</label>
       <div class="controls">
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-picture"></i></span><input
             class="input-xlarge" type="url" name="image"
-            data-ng-model="model.identity.image"
+            ng-model="model.identity.image"
             data-track-state="model.help.image" />
           <button class="btn" data-help-toggle="model.help.image">
             <i class="icon-question-sign"></i>
@@ -132,12 +132,12 @@
       </div>
     </div>
 
-    <div data-ng-show="model.imagePreview" class="control-group">
+    <div ng-show="model.imagePreview" class="control-group">
       <label class="control-label" for="image">Image Preview</label>
       <div class="controls">
-        <img data-ng-style="{'max-width': '80px', 'max-height': '80px'}" data-ng-src="{{model.imagePreview}}"/>
-        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicImage" data-ng-model="model.public.image">
+        <img ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{model.imagePreview}}"/>
+        <label ng-show="model.publicMode == 'some'" class="checkbox">
+          <input type="checkbox" name="publicImage" ng-model="model.public.image">
             Allow <strong>public</strong> access to identity image.
         </label>
       </div>
@@ -150,14 +150,14 @@
           <span class="add-on"><i class="icon-comment"></i></span><textarea
             class="input-xlarge" rows="5"
             placeholder="Description"
-            data-ng-model="model.identity.description"
+            ng-model="model.identity.description"
             data-track-state="model.help.description"></textarea>
           <button class="btn" data-help-toggle="model.help.description">
             <i class="icon-question-sign"></i>
           </button>
         </div>
-        <label data-ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicDescription" data-ng-model="model.public.description">
+        <label ng-show="model.publicMode == 'some'" class="checkbox">
+          <input type="checkbox" name="publicDescription" ng-model="model.public.description">
             Allow <strong>public</strong> access to identity description.
         </label>
         <p ng-show="model.help.description.show" class="help-block br-fadein br-fadeout">
@@ -170,19 +170,19 @@
       <label class="control-label" for="imageType">Visibility</label>
       <div class="controls">
         <label class="radio">
-          <input type="radio" name="nonePublic" value="none" checked="checked" data-ng-model="model.publicMode" />
+          <input type="radio" name="nonePublic" value="none" checked="checked" ng-model="model.publicMode" />
             <i class="icon-eye-close"></i> No public access to <strong>any</strong> identity details.
         </label>
         <label class="radio">
-          <input type="radio" name="somePublic" value="some" checked="checked" data-ng-model="model.publicMode" />
+          <input type="radio" name="somePublic" value="some" checked="checked" ng-model="model.publicMode" />
             <i class="icon-eye-open"></i> Allow <strong>public</strong> access to specified properties.
         </label>
         <label class="radio">
-          <input type="radio" name="mostPublic" value="most" checked="checked" data-ng-model="model.publicMode" />
+          <input type="radio" name="mostPublic" value="most" checked="checked" ng-model="model.publicMode" />
             <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
         </label>
         <label class="radio">
-          <input type="radio" name="allPublic" value="all" checked="checked" data-ng-model="model.publicMode" />
+          <input type="radio" name="allPublic" value="all" checked="checked" ng-model="model.publicMode" />
             <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
         </label>
       </div>
@@ -194,11 +194,11 @@
         <span data-spinner="model.loading"
           data-spinner-class="prepend-btn-spinner"></span>
         <button class="btn btn-primary"
-          data-ng-disabled="model.loading || !model.identity"
-          data-ng-click="model.update()"><i class="icon-ok"></i> Update</button>
+          ng-disabled="model.loading || !model.identity"
+          ng-click="model.update()"><i class="icon-ok"></i> Update</button>
         <button class="btn"
-          data-ng-disabled="model.loading"
-          data-ng-click="model.cancel()">Cancel</button>
+          ng-disabled="model.loading"
+          ng-click="model.cancel()">Cancel</button>
       </div>
     </div>
   </fieldset>

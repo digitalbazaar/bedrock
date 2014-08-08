@@ -3,7 +3,7 @@
     <h3>Sign In</h3>
   </div>
   <div class="modal-body">
-    <div data-ng-include="'/app/components/util/demo-warning.html'"></div>
+    <div ng-include="'/app/components/util/demo-warning.html'"></div>
     <p class="alert alert-warning">
       Your session has expired, please sign back in to continue.
     </p>
@@ -17,9 +17,9 @@
           <label class="control-label" for="password">Password</label>
           <div class="controls">
             <input name="password" type="password" placeholder="Password"
-              autofocus="autofocus" data-ng-model="model.password"
+              autofocus="autofocus" ng-model="model.password"
               data-ui-keypress="{enter:'model.login()'}"
-              data-ng-disabled="model.loading" />
+              ng-disabled="model.loading" />
           </div>
         </div>
       </fieldset>
@@ -29,7 +29,7 @@
     <span data-spinner="model.loading"
       data-spinner-class="prepend-btn-spinner"></span>
     <button class="btn btn-primary"
-      data-ng-disabled="model.loading"
-      data-ng-click="model.login()"><i class="icon-signin"></i> Sign In</button>
+      ng-disabled="model.loading"
+      ng-click="model.login()"><i class="icon-signin"></i> Sign In</button>
   </div>
 </div>

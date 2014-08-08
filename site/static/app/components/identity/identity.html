@@ -1,7 +1,7 @@
-<div class="container ng-cloak" data-ng-controller="IdentityController as model">
-  <div data-ng-show="model.identity.label" class="row">
+<div class="container ng-cloak" ng-controller="IdentityController as model">
+  <div ng-show="model.identity.label" class="row">
     <div class="title-section span12">
-      <h1 class="headline" data-ng-bind="model.identity.label"></h1>
+      <h1 class="headline" ng-bind="model.identity.label"></h1>
     </div>
   </div>
 
@@ -9,54 +9,54 @@
     <div class="section span12">
       <h3 class="headline">
         Identity Details
-        <span data-ng-show="model.state.identites.loading" class="pull-right">
+        <span ng-show="model.state.identites.loading" class="pull-right">
           <span data-spinner="model.state.identites.loading" data-spinner-class="h3-spinner"></span>
         </span>
       </h3>
-      <div class="alert alert-error" data-ng-show="model.identity === null && !model.state.identites.loading">
+      <div class="alert alert-error" ng-show="model.identity === null && !model.state.identites.loading">
         <strong>Error!</strong> Identity not found or access not allowed.
       </div>
 
-      <dl data-ng-show="model.identity" class="dl-horizontal" about="" typeof="bed:{{model.identity.type}}">
-        <dt data-ng-show="model.identity.label">Label</dt>
-        <dd data-ng-show="model.identity.label">
+      <dl ng-show="model.identity" class="dl-horizontal" about="" typeof="bed:{{model.identity.type}}">
+        <dt ng-show="model.identity.label">Label</dt>
+        <dd ng-show="model.identity.label">
           <ul class="unstyled">
             <li property="rdfs:label">{{model.identity.label}}</li>
           </ul>
         </dd>
 
-        <dt data-ng-show="model.identity.description">Description</dt>
-        <dd data-ng-show="model.identity.description">
+        <dt ng-show="model.identity.description">Description</dt>
+        <dd ng-show="model.identity.description">
           <ul class="unstyled">
             <li property="dc:description">{{model.identity.description}}</li>
           </ul>
         </dd>
 
-        <dt data-ng-show="model.identity.url">Website</dt>
-        <dd data-ng-show="model.identity.url">
+        <dt ng-show="model.identity.url">Website</dt>
+        <dd ng-show="model.identity.url">
           <ul class="unstyled">
             <li><a property="schema:url" href="{{model.identity.url}}">{{model.identity.url}}</a></li>
           </ul>
         </dd>
 
-        <dt data-ng-show="model.identity.email">Email</dt>
-        <dd data-ng-show="model.identity.email">
+        <dt ng-show="model.identity.email">Email</dt>
+        <dd ng-show="model.identity.email">
           <ul class="unstyled">
             <li><a property="schema:email" href="mailto:{{model.identity.email}}">{{model.identity.email}}</a></li>
           </ul>
         </dd>
 
-        <dt data-ng-show="model.identity.image">Image</dt>
-        <dd data-ng-show="model.identity.image">
+        <dt ng-show="model.identity.image">Image</dt>
+        <dd ng-show="model.identity.image">
           <ul class="unstyled">
-            <li><img property="schema:image" data-ng-style="{'max-width': '80px', 'max-height': '80px'}" data-ng-src="{{model.identity.image}}"/></li>
+            <li><img property="schema:image" ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{model.identity.image}}"/></li>
           </ul>
         </dd>
 
         <dt>Cryptographic Keys</dt>
         <dd>
           <ul class="unstyled">
-            <li data-ng-show="model.identity.publicKey.length > 0" data-ng-repeat="key in model.identity.publicKey">
+            <li ng-show="model.identity.publicKey.length > 0" ng-repeat="key in model.identity.publicKey">
               <a about="" rel="sec:publicKey" href="{{key.id}}">
                 <span property="rdfs:label">{{key.label}}</span>
               </a>
@@ -64,7 +64,7 @@
                 <link rel="sec:owner" href="" />
               </span>
             </li>
-            <li data-ng-show="model.identity.publicKey.length == 0">No publicly visible keys.</li>
+            <li ng-show="model.identity.publicKey.length == 0">No publicly visible keys.</li>
           </ul>
         </dd>
       </dl>
