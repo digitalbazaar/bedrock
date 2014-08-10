@@ -1,50 +1,54 @@
 <div class="modal">
-  <div class="modal-header">
-    <a class="close stackable-cancel">&times;</a>
-    <h3>Add Key</h3>
-  </div>
-  <div class="modal-body">
-    <div ng-include="'/app/components/util/demo-warning.html'"></div>
-    <div ng-hide="model.success">
-      <div ng-include="'/app/components/key/key-form.html'"></div>
-    </div>
-    <div ng-show="model.success">
-      <p>
-        The key was added successfully. Below is the key ID that you may need
-        to configure external tools or websites.
-      </p>
-      <pre>{{model.key.id}}</pre>
-    </div>
-    <div ng-show="model.success && model.registrationCallback">
-      <p>
-        To complete registration, you will be redirected to the URL below. If
-        this page does not redirect automatically, please click the
-        &quot;Complete Registration&quot; button.
-      </p>
-      <pre>{{model.registrationCallback}}</pre>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <form id="registration-form" method="post" action="{{model.registrationCallback}}">
-      <span data-spinner="model.loading"
-        data-spinner-class="prepend-btn-spinner"></span>
-      <button class="btn btn-primary"
-        ng-hide="model.success"
-        ng-disabled="model.loading"
-        ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
-      <button class="btn btn-primary"
-        ng-show="model.success && !model.registrationCallback"
-        ng-disabled="model.loading"
-        ng-click="model.done()"><i class="icon-ok"></i> Done</button>
-      <input name="key" value="{{model.callbackKey|json}}"
-        type="hidden" />
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close stackable-cancel">&times;<span class="sr-only">Close</span></a>
+        <h3 class="modal-title">Add Key</h3>
+      </div>
+      <div class="modal-body">
+        <div ng-include="'/app/components/util/demo-warning.html'"></div>
+        <div ng-hide="model.success">
+          <div ng-include="'/app/components/key/key-form.html'"></div>
+        </div>
+        <div ng-show="model.success">
+          <p>
+            The key was added successfully. Below is the key ID that you may need
+            to configure external tools or websites.
+          </p>
+          <pre>{{model.key.id}}</pre>
+        </div>
+        <div ng-show="model.success && model.registrationCallback">
+          <p>
+            To complete registration, you will be redirected to the URL below. If
+            this page does not redirect automatically, please click the
+            &quot;Complete Registration&quot; button.
+          </p>
+          <pre>{{model.registrationCallback}}</pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <form id="registration-form" method="post" action="{{model.registrationCallback}}">
+          <span data-spinner="model.loading"
+            data-spinner-class="prepend-btn-spinner"></span>
+          <button type="button" class="btn btn-primary"
+            ng-hide="model.success"
+            ng-disabled="model.loading"
+            ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
+          <button type="button" class="btn btn-primary"
+            ng-show="model.success && !model.registrationCallback"
+            ng-disabled="model.loading"
+            ng-click="model.done()"><i class="icon-ok"></i> Done</button>
+          <input name="key" value="{{model.callbackKey|json}}"
+            type="hidden" />
 
-      <button class="btn btn-primary"
-        ng-click="model.submit()"
-        ng-show="model.success && model.registrationCallback"
-        ng-disabled="model.loading"
-        type="submit"><i class="icon-ok"></i> Complete Registration</button>
-      <button class="btn stackable-cancel" ng-disabled="model.loading">Cancel</button>
-    </form>
-  </div>
-</div>
+          <button class="btn btn-primary"
+            ng-click="model.submit()"
+            ng-show="model.success && model.registrationCallback"
+            ng-disabled="model.loading"
+            type="submit"><i class="icon-ok"></i> Complete Registration</button>
+          <button type="button" class="btn btn-default stackable-cancel" ng-disabled="model.loading">Cancel</button>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

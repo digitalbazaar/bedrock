@@ -1,78 +1,80 @@
 <div class="modal">
-  <div class="modal-header">
-    <a class="close stackable-cancel">&times;</a>
-    <h3>New Identity</h3>
-  </div>
-  <div class="modal-body">
-    <div ng-include="'/app/components/util/demo-warning.html'"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close stackable-cancel">&times;<span class="sr-only">Close</span></a>
+        <h3 class="modal-title">New Identity</h3>
+      </div>
+      <div class="modal-body">
+        <div ng-include="'/app/components/util/demo-warning.html'"></div>
 
-    <p>To add a new identity please fill out the form below.</p>
+        <p>To add a new identity please fill out the form below.</p>
 
-    <div class="section">
-      <h4 class="headline">New Identity</h4>
-      <form class="well form-vertical" action="">
-        <fieldset>
-          <div class="control-group" data-binding="label">
-            <label class="control-label" for="name">Name</label>
-            <div class="controls">
-              <div class="input-prepend input-append">
-                <span class="add-on"><i class="icon-tag"></i></span><input
-                  type="text" name="label"
-                  ng-model="identityLabel"
-                  data-slug-out="identitySlug"
-                  data-track-state="model.help.identityLabel"
-                  autocomplete="off" />
-                <button class="btn"
-                  data-help-toggle="model.help.identityLabel">
-                  <i class="icon-question-sign"></i>
-                </button>
+        <div class="section">
+          <h4 class="headline">New Identity</h4>
+          <form class="well form-vertical">
+            <fieldset>
+              <div class="form-group" data-binding="label">
+                <label for="name">Name</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="icon-tag"></i></span>
+                  <input class="form-control" type="text" name="label"
+                    ng-model="identityLabel"
+                    data-slug-out="identitySlug"
+                    data-track-state="model.help.identityLabel"
+                    autocomplete="off" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default"
+                      data-help-toggle="model.help.identityLabel">
+                      <i class="icon-question-sign"></i>
+                    </button>
+                  </span>
+                </div>
+                <p ng-show="model.help.identityLabel.show"
+                  class="help-block br-fadein br-fadeout">
+                  Enter your online handle, for example, some form of your full
+                  name like 'janedoe'. The name you choose will become part of
+                  your identity URL. You can also customize your identity
+                  URL:
+                </p>
+                <p><small>{{data.identityBaseUri}}/</small><input
+                  data-binding="sysSlug" class="slug" name="slug"
+                  placeholder="IDENTITY-NAME"
+                  data-slug-in ng-model="identitySlug" /></p>
+                <div data-duplicate-checker="identitySlug"
+                  data-duplicate-checker-type="identity"
+                  data-duplicate-checker-available="This identity name is available!"
+                  data-duplicate-checker-invalid="Identity name is invalid."
+                  data-duplicate-checker-taken="Identity name has already been taken."
+                  data-duplicate-checker-checking="Checking Availability..."
+                  data-duplicate-checker-result="model.identitySlugAvailable">
+                </div>
               </div>
-              <p ng-show="model.help.identityLabel.show"
-                class="help-block br-fadein br-fadeout">
-                Enter your online handle, for example, some form of your full
-                name like 'janedoe'. The name you choose will become part of
-                your identity URL. You can also customize your identity
-                URL:
-              </p>
-              <p><small>{{data.identityBaseUri}}/</small><input
-                data-binding="sysSlug" class="slug" name="slug"
-                placeholder="IDENTITY-NAME"
-                data-slug-in ng-model="identitySlug" /></p>
-              <div data-duplicate-checker="identitySlug"
-                data-duplicate-checker-type="identity"
-                data-duplicate-checker-available="This identity name is available!"
-                data-duplicate-checker-invalid="Identity name is invalid."
-                data-duplicate-checker-taken="Identity name has already been taken."
-                data-duplicate-checker-checking="Checking Availability..."
-                data-duplicate-checker-result="model.identitySlugAvailable">
+              <div class="form-group">
+                <label for="type">Type</label>
+                <div class="input-group-addon">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <select name="type"
+                    ng-model="identityType"
+                    ng-options="identityTypeLabels[type] for type in identityTypes">
+                  </select>
+                </div>
+                <p class="help-block"
+                  ng-show="identityType == 'Identity'">Choose this type if this identity is for a person.</p>
               </div>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="type">Type</label>
-            <div class="controls">
-              <div class="input-prepend">
-                <span class="add-on"><i class="icon-user"></i></span>
-                <select name="type"
-                  ng-model="identityType"
-                  ng-options="identityTypeLabels[type] for type in identityTypes">
-                </select>
-              </div>
-              <p class="help-block"
-                ng-show="identityType == 'Identity'">Choose this type if this identity is for a person.</p>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
+            </fieldset>
+          </form>
+        </div>
 
-  </div>
-  <div class="modal-footer">
-    <span data-spinner="loading"
-      data-spinner-class="prepend-btn-spinner"></span>
-    <button class="btn btn-primary"
-      ng-disabled="loading || !model.identitySlugAvailable"
-      ng-click="addIdentity()"><i class="icon-ok"></i> Add</button>
-    <button class="btn stackable-cancel" ng-disabled="loading">Cancel</button>
-  </div>
-</div>
+      </div>
+      <div class="modal-footer">
+        <span data-spinner="loading"
+          data-spinner-class="prepend-btn-spinner"></span>
+        <button type="button" class="btn btn-primary"
+          ng-disabled="loading || !model.identitySlugAvailable"
+          ng-click="addIdentity()"><i class="icon-ok"></i> Add</button>
+        <button type="button" class="btn btn-default stackable-cancel" ng-disabled="loading">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

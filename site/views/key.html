@@ -8,21 +8,21 @@
 <div class="static-content">
   {% if key.label %}
   <div class="row">
-    <div class="title-section span12">
+    <div class="col-md-12">
       <h1 class="headline">{{key.label}}</h1>
     </div>
   </div>
   {% endif %}
 
   <div class="row">
-    <div class="section span12">
+    <div class="section col-md-12">
       <h3 class="headline">Cryptographic Key Details</h3>
 
       <dl class="dl-horizontal" about="" typeof="sec:CryptographicKey">
         {% if key.label %}
         <dt>Label</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li property="rdfs:label">{{key.label}}</li>
           </ul>
         </dd>
@@ -30,7 +30,7 @@
 
         <dt>Status</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li>{{key.sysStatus}}</li>
           </ul>
         </dd>
@@ -38,7 +38,7 @@
         {% if key.revoked %}
         <dt>Revoked</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li property="sec:revoked" datatype="xsd:dateTime" content="{{key.revoked}}">{{key.revoked | date('M d, Y h:m:s a')}}</li>
           </ul>
         </dd>
@@ -46,7 +46,7 @@
 
         <dt>Owner</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><a rel="sec:owner" href="{{key.owner}}">{{key.owner}}</a></li>
           </ul>
         </dd>
@@ -54,7 +54,7 @@
         {% if key.publicKeyPem %}
         <dt>Public Key PEM</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><pre property="sec:publicKeyPem">{{key.publicKeyPem}}</pre></li>
           </ul>
         </dd>

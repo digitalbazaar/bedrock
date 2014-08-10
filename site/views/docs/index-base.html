@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="row">
-  <div class="span10 offset1">
+  <div class="col-md-10 col-md-offset-1">
     <h1 class="headline">REST API Documentation (Coming Soon!)</h1>
   </div>
 </div>
@@ -14,7 +14,7 @@
 <hr />
 
 <div class="row">
-  <div class="span10 offset1">
+  <div class="col-md-10 col-md-offset-1">
     <p>
 This page contains the RESTful API documentation for {% block docsSystemName %}this system{% endblock %}.
     </p>
@@ -33,13 +33,13 @@ send to this system in order to access many features:
 {#
 {% for category, endpoints in docIndex %}
 <div class="row">
-  <div class="span10 offset1">
+  <div class="col-md-10 col-md-offset-1">
     <h2>{{category}}</h2>
   </div>
 </div>
   {% for topic, endpoint in endpoints %}
 <div class="row">
-  <div class="span8 offset2 rest-summary {{endpoint.method}}-background">
+  <div class="col-md-8 col-md-offset-2 rest-summary {{endpoint.method}}-background">
     <span class="rest-verb {{endpoint.method}}">{{endpoint.method}}</span>
     <a href="?topic={{topic}}" class="rest-path">{{endpoint.path}}</a>
     <div class="rest-description">{{endpoint.shortDescription}}</div>

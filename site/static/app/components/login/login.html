@@ -8,8 +8,8 @@
 
 <form class="headline" method="post" action="" ng-submit="model.submit()">
   <fieldset>
-    <div class="control-group">
-      <div ng-hide="model.multiple" class="controls">
+    <div class="form-group">
+      <div ng-hide="model.multiple">
         <input name="sysIdentifier" type="text" autofocus="autofocus"
           ng-model="model.sysIdentifier"
           placeholder="Email" ng-disabled="model.loading" />
@@ -21,19 +21,15 @@
           Your email address ({{email}}) is associated with multiple
           identities. Please select the identity you'd like to sign in with.
         </p>
-        <div class="controls">
-          <select name="identity" autofocus="autofocus"
-            ng-model="identity"
-            ng-options="value.id as value.label for value in model.choices"
-            ng-disabled="model.loading">
-          </select>
-        </div>
+        <select name="identity" autofocus="autofocus"
+          ng-model="identity"
+          ng-options="value.id as value.label for value in model.choices"
+          ng-disabled="model.loading">
+        </select>
       </div>
 
-      <div class="controls">
-        <input name="password" type="password" placeholder="Password"
-          ng-model="model.password" ng-disabled="model.loading" />
-      </div>
+      <input name="password" type="password" placeholder="Password"
+        ng-model="model.password" ng-disabled="model.loading" />
 
       <div data-spinner="model.loading"
         data-spinner-class="center-spinner"></div>

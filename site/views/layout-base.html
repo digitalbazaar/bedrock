@@ -22,7 +22,6 @@
       {% else %}
         {% block css %}
         <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
         <link href="/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
         <link href="/bower-components/select2/select2.css" rel="stylesheet" type="text/css" />
         <link href="/bower-components/select2/select2-bootstrap.css" rel="stylesheet" type="text/css" />
@@ -61,7 +60,7 @@
     {% endif %}
 
     {% if userAgent.obsolete %}
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       Your browser ({{userAgent.family}} {{userAgent.major}}) is <strong>out of date</strong>.
       Please <a href="http://www.updateyourbrowser.net/">update your browser.</a>
     </div>
@@ -71,7 +70,7 @@
 
       <!-- Javascript warning -->
       <noscript>
-        <div class="alert alert-error">
+        <div class="alert alert-danger">
           <p>Javascript must be enabled to use this site.</p>
         </div>
       </noscript>
@@ -94,7 +93,7 @@
         {% if pageLayout != "error" %}
         {% block footerBrandRow %}{% endblock %}
         <div class="row">
-          <div class="span12">
+          <div class="col-md-12">
             <ul>
               {% if pageLayout == "normal" %}
               <li><a href="/">Home</a></li><!--
@@ -129,13 +128,13 @@
         </div>
         {% endif %}
         <div class="row">
-          <div class="span12">
+          <div class="col-md-12">
             <ul>
               <li><!--
                 -->Copyright &#169; {% block copyrightDate %}2014{% endblock %}
                 {% block copyrightAgent %}<span about="http://digitalbazaar.com/contact#company"
                   typeof="vcard:VCard com:Business gr:BusinessEntity"
-		  property="rdfs:label vcard:fn gr:legalName"><a href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a></span>{% endblock %}
+                  property="rdfs:label vcard:fn gr:legalName"><a href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a></span>{% endblock %}
                   All rights reserved.<!--
               --></li>
             </ul>

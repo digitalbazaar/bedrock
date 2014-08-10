@@ -60,7 +60,8 @@ function factory($http, $filter, AlertService, config) {
       } else if(value !== lastInput) {
         // show checking
         element
-          .removeClass('alert-error alert-success')
+          .removeClass('alert-danger alert-success alert-warning')
+          .addClass('alert-warning')
           .text(scope.checking)
           .fadeIn('show');
         lastInput = null;
@@ -92,26 +93,27 @@ function factory($http, $filter, AlertService, config) {
                   scope.result = true;
                   element
                     .hide()
-                    .removeClass('alert-error alert-success')
+                    .removeClass('alert-danger alert-success alert-warning')
                     .addClass('alert-success')
                     .text(scope.available)
                     .fadeIn('slow');
                   scope.$apply();
                 }).catch(function(err) {
                   scope.result = false;
-                  element.hide().removeClass('alert-error alert-success');
+                  element.hide().removeClass(
+                    'alert-danger alert-success alert-warning');
                   var status = (err.details && err.details.httpStatusCode ?
                     err.details.httpStatusCode : 500);
                   if(status === 400) {
                     // invalid
                     element
                       .text(scope.invalid)
-                      .addClass('alert-error')
+                      .addClass('alert-danger')
                       .fadeIn('slow');
                   } else if(status === 409) {
                     element
                       .text(scope.taken)
-                      .addClass('alert-error')
+                      .addClass('alert-danger')
                       .fadeIn('slow');
                   } else {
                     AlertService.add('error', err);
@@ -125,7 +127,7 @@ function factory($http, $filter, AlertService, config) {
     }
 
     scope.$watch('input', change);
-    scope.$watch('owner', function(value) {
+    scope.$watch('owner', function() {
       change(scope.input);
     });
   }

@@ -1,14 +1,13 @@
-<div class="dashboard container ng-cloak"
-  ng-controller="DashboardController as model">
+<div class="dashboard ng-cloak" ng-controller="DashboardController as model">
 
   <div class="row">
-    <div class="title-section span12">
+    <div class="col-md-12">
       <h1 class="headline">Dashboard</h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="section section-itemsX span6">
+    <div class="section section-itemsX col-md-6">
       <headline-menu headline="Items X" loading="model.state.items.loading">
         <ul class="stackable-menu dropdown-menu">
           <li>
@@ -18,13 +17,13 @@
       </headline-menu>
       <div ng-show="!model.state.items.loading && items.length == 0">
         <p class="center">You have no items for this identity.</p>
-        <button
+        <button type="button"
           class="btn btn-success btn-add-item pull-right"
           ng-click="modals.showAddItem=true"><i class="icon-plus"></i> Add Item</button>
       </div>
     </div>
 
-    <div class="section section-itemsY span6">
+    <div class="section section-itemsY col-md-6">
       <headline-menu headline="Items Y" loading="model.state.items.loading">
         <ul class="stackable-menu dropdown-menu">
           <li>
@@ -34,7 +33,7 @@
       </headline-menu>
       <div ng-show="!model.state.items.loading && items.length == 0">
         <p class="center">You have no items for this identity.</p>
-        <button
+        <button type="button"
           class="btn btn-success btn-add-item pull-right"
           ng-click="modals.showAddItem=true"><i class="icon-plus"></i> Add Item</button>
       </div>
@@ -42,7 +41,7 @@
   </div>
 
   <div class="row">
-    <div class="section section-recent-items span6">
+    <div class="section section-recent-items col-md-6">
       <h3 class="headline">
         Recent Items
         <span ng-show="model.state.items.loading" class="pull-right">
@@ -54,7 +53,7 @@
       </div>
     </div>
 
-    <div class="section section-messages span6">
+    <div class="section section-messages col-md-6">
       <h3 class="headline">Messages</h3>
       <p class="center">You have no new messages.</p>
     </div>

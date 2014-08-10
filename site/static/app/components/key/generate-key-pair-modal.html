@@ -1,43 +1,47 @@
 <div class="modal">
-  <div class="modal-header">
-    <a class="close stackable-cancel">&times;</a>
-    <h3>Create Signing Key</h3>
-  </div>
-  <div class="modal-body">
-    <div ng-include="'/app/components/util/demo-warning.html'"></div>
-    <div ng-hide="model.success">
-      <p ng-include="'/app/components/key/generate-key-pair-help.html'"></p>
-      <p ng-hide="model.success">
-        Please be patient as it may take a couple of minutes to complete. Once
-        completed, you will have the opportunity to enter some details about
-        the key, such as a label, before saving it.
-      </p>
-      <button ng-hide="model.loading"
-        class="btn btn-primary"
-        ng-click="model.generateKeyPair()">Generate Key</button>
-      <span ng-show="model.loading"> This may take a minute...</span>
-      <span data-spinner="model.loading"
-        data-spinner-class="append-btn-spinner"></span>
-    </div>
-    <div ng-show="model.success">
-      <p>
-        Your new signing key has been generated. Please enter
-        information below about the key before saving it.
-      </p>
-      <div ng-include="'/app/components/key/key-form.html'"></div>
-      <p class="alert alert-success">
-        Key generated. Click "Save" to save the key.
-      </p>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <span data-spinner="model.loading"
-      data-spinner-class="prepend-btn-spinner"></span>
-    <span ng-show="model.success">
-      <button class="btn btn-primary"
-        ng-disabled="model.loading"
-        ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
-    </span>
-    <button class="btn stackable-cancel" ng-disabled="model.loading">Cancel</button>
-  </div>
-</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close stackable-cancel">&times;<span class="sr-only">Close</span></a>
+        <h3 class="modal-title">Create Signing Key</h3>
+      </div>
+      <div class="modal-body">
+        <div ng-include="'/app/components/util/demo-warning.html'"></div>
+        <div ng-hide="model.success">
+          <p ng-include="'/app/components/key/generate-key-pair-help.html'"></p>
+          <p ng-hide="model.success">
+            Please be patient as it may take a couple of minutes to complete. Once
+            completed, you will have the opportunity to enter some details about
+            the key, such as a label, before saving it.
+          </p>
+          <button type="button" ng-hide="model.loading"
+            class="btn btn-primary"
+            ng-click="model.generateKeyPair()">Generate Key</button>
+          <span ng-show="model.loading"> This may take a minute...</span>
+          <span data-spinner="model.loading"
+            data-spinner-class="append-btn-spinner"></span>
+        </div>
+        <div ng-show="model.success">
+          <p>
+            Your new signing key has been generated. Please enter
+            information below about the key before saving it.
+          </p>
+          <div ng-include="'/app/components/key/key-form.html'"></div>
+          <p class="alert alert-success">
+            Key generated. Click "Save" to save the key.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span data-spinner="model.loading"
+          data-spinner-class="prepend-btn-spinner"></span>
+        <span ng-show="model.success">
+          <button type="button" class="btn btn-primary"
+            ng-disabled="model.loading"
+            ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
+        </span>
+        <button type="button" class="btn btn-default stackable-cancel" ng-disabled="model.loading">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

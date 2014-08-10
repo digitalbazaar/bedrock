@@ -1,18 +1,22 @@
 <div class="modal">
-  <div class="modal-header">
-    <a class="close stackable-cancel">&times;</a>
-    <h3>Edit Key</h3>
-  </div>
-  <div class="modal-body">
-    <div ng-include="'/app/components/util/demo-warning.html'"></div>
-    <div ng-include="'/app/components/key/key-form.html'"></div>
-  </div>
-  <div class="modal-footer">
-    <span data-spinner="model.loading"
-      data-spinner-class="prepend-btn-spinner"></span>
-    <button class="btn btn-primary"
-      ng-disabled="model.loading"
-      ng-click="model.editKey()"><i class="icon-ok"></i> Save</button>
-    <button class="btn stackable-cancel" ng-disabled="model.loading">Cancel</button>
-  </div>
-</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close stackable-cancel">&times;<span class="sr-only">Close</span></a>
+        <h3 class="modal-title">Edit Key</h3>
+      </div>
+      <div class="modal-body">
+        <div ng-include="'/app/components/util/demo-warning.html'"></div>
+        <div ng-include="'/app/components/key/key-form.html'"></div>
+      </div>
+      <div class="modal-footer">
+        <span data-spinner="model.loading"
+          data-spinner-class="prepend-btn-spinner"></span>
+        <button type="button" class="btn btn-primary"
+          ng-disabled="model.loading"
+          ng-click="model.editKey()"><i class="icon-ok"></i> Save</button>
+        <button type="button" class="btn btn-default stackable-cancel" ng-disabled="model.loading">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

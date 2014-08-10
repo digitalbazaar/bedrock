@@ -33,7 +33,6 @@ module.exports = function(grunt) {
       files: {
         'site/static/css/bundle.min.css': [
           'site/static/bootstrap/css/bootstrap.css',
-          'site/static/bootstrap/css/bootstrap-responsive.css',
           'site/static/font-awesome/css/font-awesome.css',
           'bower_components/select2/select2.css',
           'bower_components/select2/select2-bootstrap.css',

@@ -7,7 +7,7 @@
 {% block content %}
 
 <h1 class="row">
-  <div class="span12 rest-summary">
+  <div class="col-md-12 rest-summary">
     <span class="rest-verb {{docs.method}}">{{docs.method}}</span>
     <span class="rest-path">{{docs.path}}</span>
   </div>
@@ -16,15 +16,15 @@
 <hr />
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
     <h2>Overview</h2>
     <p>
-The <a href="http://web-payments.org/specs/source/secure-messaging/">Secure Messaging</a> 
-specification describes how to setup a Web-native  
-<a href="http://en.wikipedia.org/wiki/Public_key_infrastructure">Public 
+The <a href="http://web-payments.org/specs/source/secure-messaging/">Secure Messaging</a>
+specification describes how to setup a Web-native
+<a href="http://en.wikipedia.org/wiki/Public_key_infrastructure">Public
 Key Infrastructure</a>. The specification covers key registration, updates,
 revocation, and expiration. The specification also covers how developers
-may perform encryption and digital signatures for REST-based Web Services 
+may perform encryption and digital signatures for REST-based Web Services
 using Web Keys.
     </p>
     <p>
@@ -41,13 +41,13 @@ website's Web Keys services.
 <hr />
 
 <div class="row">
-  <div class="span8">
+  <div class="col-md-8">
     <table class="rest-details">
       <tr><th colspan="2">Path Parameters</th></tr>
       <tr><td>none</td></tr>
     </table>
   </div>
-  <div class="span4">
+  <div class="col-md-4">
     <table class="rest-details">
       <tr><th colspan="2">Security Parameters</th></tr>
       <tr><td class="rest-parameter">Rate Limit</td><td>{{freeLimit[0]}}</td></tr>
@@ -56,7 +56,7 @@ website's Web Keys services.
   </div>
 </div>
 <div class="row">
-  <div class="span8">
+  <div class="col-md-8">
     <table class="rest-details">
       <tr><th colspan="2">Query Parameters</th></tr>
       <tr><td>none</td></tr>
@@ -67,14 +67,14 @@ website's Web Keys services.
 <hr />
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
     <h2>Example</h2>
     <p>
 To retrieve the example below, a simple HTTP GET is performed on the following
 URL: <a href="https://{{host}}{{docs.path}}">https://{{host}}{{docs.path}}</a>
     </p>
     <table>
-      <tr><td>Response</td><td><pre class="span11">{
+      <tr><td>Response</td><td><pre class="col-md-11">{
   "@context": "https://w3id.org/keys/v1",
   "publicKeyService": "https://{{host}}/i?form=register"
 }

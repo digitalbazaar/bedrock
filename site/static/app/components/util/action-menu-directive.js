@@ -17,11 +17,11 @@ function factory() {
     transclude: true,
     template: '\
       <div class="btn-group"> \
-        <a href="#" class="btn" \
+        <button type="button" class="btn btn-default btn-sm" \
           stackable-trigger="actionMenu" \
           stackable-toggle="\'active\'"> \
           <i class="icon-chevron-down"></i> \
-        </a> \
+        </button> \
       </div> \
       <stackable-popover stackable="actionMenu" \
         stackable-hide-arrow="true" \

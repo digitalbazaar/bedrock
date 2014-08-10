@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
     <h2 class="headline">{{pageTitle}}</h2>
   </div>
 </div>
@@ -15,34 +15,39 @@
 <div class="ng-cloak" ng-controller="PasscodeController as model">
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="col-md-offset-2 col-md-8">
 
-    <form class="form-horizontal" action="" ng-submit="model.sendReset()">
+    <form class="form-horizontal" ng-submit="model.sendReset()">
       <fieldset>
       <legend>Get Passcode</legend>
-        <div class="control-group" data-binding="sysIdentifier">
-          <label class="control-label" for="email">Email</label>
-          <div class="controls">
-            <div class="input-append">
-              <input name="sysIdentifier" type="text" maxlength="320"
-                ng-model="model.email"
-                data-track-state="model.help.email"
-                ng-disabled="loading" />
-              <button class="btn" data-help-toggle="model.help.email">
-                <i class="icon-question-sign"></i>
-              </button>
-            </div>
-            <p ng-show="model.help.email.show" class="help-block br-fadein br-fadeout">
-              Please enter the email address that you used when you registered
-              with this website.
-            </p>
-          </div>
+      <div class="form-group" data-binding="sysIdentifier">
+        <label class="control-label col-md-2" for="email">Email</label>
+        <div class="input-group col-md-9">
+          <input class="form-control"
+            name="sysIdentifier" type="text" maxlength="320"
+            ng-model="model.email"
+            data-track-state="model.help.email"
+            ng-disabled="loading" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default"
+              data-help-toggle="model.help.email">
+              <i class="icon-question-sign"></i>
+            </button>
+          </span>
         </div>
-      <div class="form-actions">
-        <button ng-disabled="loading"
-          class="btn btn-primary" data-submit-form>Send Reset Instructions</button>
-        <span data-spinner="loading"
-          data-spinner-class="append-btn-spinner"></span>
+        <p ng-show="model.help.email.show"
+          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+          Please enter the email address that you used when you registered
+          with this website.
+        </p>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-2">
+          <button type="button" ng-disabled="loading"
+            class="btn btn-primary" data-submit-form>Send Reset Instructions</button>
+          <span data-spinner="loading"
+            data-spinner-class="append-btn-spinner"></span>
+        </div>
       </div>
       </fieldset>
     </form>
@@ -51,74 +56,84 @@
 </div>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="col-md-offset-2 col-md-8">
 
-    <form class="form-horizontal" action="" ng-submit="model.updatePassword()">
+    <form class="form-horizontal" ng-submit="model.updatePassword()">
       <fieldset>
       <legend>Update Your Password</legend>
 
-      <div class="control-group" data-binding="sysIdentifier">
-        <label class="control-label" for="reset-email">Email</label>
-        <div class="controls">
-          <div class="input-append">
-            <input name="input" type="text" maxlength="320"
-              ng-model="model.email"
-              data-track-state="model.help.resetEmail"
-              ng-disabled="loading" />
-            <button class="btn" data-help-toggle="model.help.resetEmail">
+      <div class="form-group" data-binding="sysIdentifier">
+        <label class="control-label col-md-2" for="reset-email">Email</label>
+        <div class="input-group col-md-9">
+          <input class="form-control" name="input" type="text" maxlength="320"
+            ng-model="model.email"
+            data-track-state="model.help.resetEmail"
+            ng-disabled="loading" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default"
+              data-help-toggle="model.help.resetEmail">
               <i class="icon-question-sign"></i>
             </button>
-          </div>
-          <p ng-show="model.help.resetEmail.show" class="help-block br-fadein br-fadeout">
-            Please enter the email address that you used above to retrieve
-            reset instructions and a reset passcode.
-          </p>
+          </span>
         </div>
+        <p ng-show="model.help.resetEmail.show"
+          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+          Please enter the email address that you used above to retrieve
+          reset instructions and a reset passcode.
+        </p>
       </div>
 
-      <div class="control-group" data-binding="sysPasscode">
-        <label class="control-label" for="passcode">Passcode</label>
-        <div class="controls">
-          <div class="input-append">
-            <input name="sysPasscode" type="text" maxlength="8"
-              ng-model="model.sysPasscode"
-              data-track-state="model.help.passcode"
-              ng-disabled="loading" />
-            <button class="btn" data-help-toggle="model.help.passcode">
+      <div class="form-group" data-binding="sysPasscode">
+        <label class="control-label col-md-2" for="passcode">Passcode</label>
+        <div class="input-group col-md-9">
+          <input class="form-control"
+            name="sysPasscode" type="text" maxlength="8"
+            ng-model="model.sysPasscode"
+            data-track-state="model.help.passcode"
+            ng-disabled="loading" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default"
+              data-help-toggle="model.help.passcode">
               <i class="icon-question-sign"></i>
             </button>
-          </div>
-          <p ng-show="model.help.passcode.show" class="help-block br-fadein br-fadeout">
-            Please enter the passcode that was sent to you in the password
-            reset email from this website.
-          </p>
+          </span>
         </div>
+        <p ng-show="model.help.passcode.show"
+          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+          Please enter the passcode that was sent to you in the password
+          reset email from this website.
+        </p>
       </div>
 
-      <div class="control-group" data-binding="sysPasswordNew">
-        <label class="control-label" for="new-password">New Password</label>
-        <div class="controls">
-          <div class="input-append">
-            <input name="sysPasswordNew" type="password" maxlength="32"
-              ng-model="model.sysPasswordNew"
-              data-track-state="model.help.password"
-              ng-disabled="loading" />
-            <button class="btn" data-help-toggle="model.help.password">
+      <div class="form-group" data-binding="sysPasswordNew">
+        <label class="control-label col-md-2" for="new-password">New Password</label>
+        <div class="input-group col-md-9">
+          <input class="form-control"
+            name="sysPasswordNew" type="password" maxlength="32"
+            ng-model="model.sysPasswordNew"
+            data-track-state="model.help.password"
+            ng-disabled="loading" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default"
+              data-help-toggle="model.help.password">
               <i class="icon-question-sign"></i>
             </button>
-          </div>
-          <p ng-show="model.help.password.show" class="help-block br-fadein br-fadeout">
-            Please enter the new password that you would like to use when
-            accessing this website.
-          </p>
+          </span>
         </div>
+        <p ng-show="model.help.password.show"
+          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+          Please enter the new password that you would like to use when
+          accessing this website.
+        </p>
       </div>
 
-      <div class="form-actions">
-        <button ng-disabled="loading"
-          class="btn btn-primary" data-submit-form>Set Password</button>
-        <span data-spinner="loading"
-          data-spinner-class="append-btn-spinner"></span>
+      <div class="form-group">
+        <div class="col-md-offset-2">
+          <button type="button" ng-disabled="loading"
+            class="btn btn-primary" data-submit-form>Set Password</button>
+          <span data-spinner="loading"
+            data-spinner-class="append-btn-spinner"></span>
+        </div>
       </div>
       </fieldset>
     </form>

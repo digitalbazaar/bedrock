@@ -7,7 +7,9 @@
 
 {% raw %}
 <div class="row ng-cloak" ng-controller="CreateIdentityController as model">
-  <div class="span8 offset2">
+  <div ng-include="'/app/components/util/demo-warning.html'"></div>
+
+  <div class="col-md-12">
     <h2>Create an Identity</h2>
 
     <p>
@@ -15,70 +17,73 @@
     the service.
     </p>
 
-    <div ng-include="'/app/components/util/demo-warning.html'"></div>
-
     <hr />
 
-    <form class="form-horizontal" action="" ng-submit="model.submit()">
+    <form class="form-horizontal" ng-submit="model.submit()">
       <fieldset>
         <legend>Your Email and Password</legend>
 
-        <div class="control-group" data-binding="email">
-          <label class="control-label" for="email">Email</label>
-          <div class="controls">
-            <div class="input-append">
-              <input class="input-xlarge form-field-vspaced"
-                name="email" data-binding="email" type="text"
-                ng-model="model.identity.email"
-                data-track-state="model.help.email"
-                ng-disabled="model.loading"
-                autocomplete="off" />
-              <button class="btn" data-help-toggle="model.help.email">
+        <div class="form-group" data-binding="email">
+          <label class="control-label col-md-2" for="email">Email</label>
+          <div class="input-group col-md-9">
+            <input class="form-control"
+              name="email" data-binding="email" type="text"
+              ng-model="model.identity.email"
+              data-track-state="model.help.email"
+              ng-disabled="model.loading"
+              autocomplete="off" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default"
+                data-help-toggle="model.help.email">
                 <i class="icon-question-sign"></i>
               </button>
-            </div>
-            <div data-duplicate-checker="model.identity.email"
-              data-duplicate-checker-type="email"
-              data-duplicate-checker-available="This email address is available!"
-              data-duplicate-checker-invalid="Email address is invalid."
-              data-duplicate-checker-taken="This email address is already in use. While you can create a new identity if you want to, you may want to log in as your existing identity instead."
-              data-duplicate-checker-checking="Checking Availability..."
-              data-duplicate-checker-result="model.emailAvailable">
-            </div>
-            <p ng-show="model.help.email.show" class="help-block br-fadein br-fadeout">
-              A valid email address is required so that we can reset
-              your password if you get locked out.
-            </p>
+            </span>
           </div>
+          <div class="col-md-offset-2 col-md-9"
+            data-duplicate-checker="model.identity.email"
+            data-duplicate-checker-type="email"
+            data-duplicate-checker-available="This email address is available!"
+            data-duplicate-checker-invalid="Email address is invalid."
+            data-duplicate-checker-taken="This email address is already in use. While you can create a new identity if you want to, you may want to log in as your existing identity instead."
+            data-duplicate-checker-checking="Checking Availability..."
+            data-duplicate-checker-result="model.emailAvailable">
+          </div>
+          <p ng-show="model.help.email.show"
+            class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+            A valid email address is required so that we can reset
+            your password if you get locked out.
+          </p>
         </div>
 
-        <div class="control-group" data-binding="sysPassword">
-          <label class="control-label" for="password">Password</label>
-          <div class="controls">
-            <div class="input-append">
-              <input class="input-xlarge"
-                name="password" data-binding="sysPassword"
-                maxlength="32" type="password"
-                ng-model="model.identity.sysPassword"
-                data-track-state="model.help.password"
-                ng-disabled="model.loading" />
-              <button class="btn" data-help-toggle="model.help.password">
+        <div class="form-group" data-binding="sysPassword">
+          <label class="control-label col-md-2" for="password">Password</label>
+          <div class="input-group col-md-9">
+            <input class="form-control"
+              name="password" data-binding="sysPassword"
+              maxlength="32" type="password"
+              ng-model="model.identity.sysPassword"
+              data-track-state="model.help.password"
+              ng-disabled="model.loading" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default"
+                data-help-toggle="model.help.password">
                 <i class="icon-question-sign"></i>
               </button>
-            </div>
-            <p ng-show="model.help.password.show" class="help-block br-fadein br-fadeout">
-              Please enter a secure password that is between 6 and 32 characters long. The best passwords are
-              lengthy, memorable phrases like: the<strong>lemurs</strong>ride<strong>on</strong>the<strong>fortnight</strong>
-            </p>
+            </span>
           </div>
+          <p ng-show="model.help.password.show"
+            class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+            Please enter a secure password that is between 6 and 32 characters long. The best passwords are
+            lengthy, memorable phrases like: the<strong>lemurs</strong>ride<strong>on</strong>the<strong>fortnight</strong>
+          </p>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Your Identity</legend>
 
-        <div class="control-group">
-          <p class="help-block">
+        <div class="form-group">
+          <p class="help-block col-md-12">
             Your identity will be used to keep track of and verify your online
             activity with this service. Please enter your full name and then
             select a short name that is used for your identity.  It is usually
@@ -88,63 +93,68 @@
           </p>
         </div>
 
-        <div class="control-group" data-binding="identity.label">
-          <label class="control-label" for="identity-label">Full Name</label>
-          <div class="controls">
-            <div class="input-append">
-              <input class="input-xlarge"
-                name="identity-label" type="text"
-                data-slug-out="model.identity.sysSlug"
-                ng-model="model.identity.label"
-                data-track-state="model.help.identityLabel"
-                ng-disabled="model.loading"
-                placeholder="My Full Name"
-                autocomplete="off" />
-              <button class="btn" data-help-toggle="model.help.identityLabel">
+        <div class="form-group" data-binding="identity.label">
+          <label class="control-label col-md-2" for="identity-label">Full Name</label>
+          <div class="input-group col-md-9">
+            <input class="form-control"
+              name="identity-label" type="text"
+              data-slug-out="model.identity.sysSlug"
+              ng-model="model.identity.label"
+              data-track-state="model.help.identityLabel"
+              ng-disabled="model.loading"
+              placeholder="My Full Name"
+              autocomplete="off" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default"
+                data-help-toggle="model.help.identityLabel">
                 <i class="icon-question-sign"></i>
               </button>
-            </div>
-            <p ng-show="model.help.identityLabel.show" class="help-block br-fadein br-fadeout">
+            </span>
+            <p ng-show="model.help.identityLabel.show"
+              class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
               Enter the full name that is associated with this new identity.
               For instance "My Full Name" or "Mega Corp".
             </p>
           </div>
         </div>
 
-        <div class="control-group" data-binding="identity.sysSlug">
-          <label class="control-label" for="identity-slug">Short Name</label>
-          <div class="controls">
-            <div class="input-append">
-              <input class="input-xlarge"
-                name="identity-slug" type="text"
-                ng-model="model.identity.sysSlug"
-                data-track-state="model.help.identity"
-                ng-disabled="model.loading"
-                data-slug-in maxlength="32"
-                data-binding="identity.sysSlug"
-                placeholder="my-short-name"
-                autocomplete="off" />
-              <button class="btn" data-help-toggle="model.help.identity">
+        <div class="form-group" data-binding="identity.sysSlug">
+          <label class="control-label col-md-2" for="identity-slug">Short Name</label>
+          <div class="input-group col-md-9">
+            <input class="form-control"
+              name="identity-slug" type="text"
+              ng-model="model.identity.sysSlug"
+              data-track-state="model.help.identity"
+              ng-disabled="model.loading"
+              data-slug-in maxlength="32"
+              data-binding="identity.sysSlug"
+              placeholder="my-short-name"
+              autocomplete="off" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default"
+                data-help-toggle="model.help.identity">
                 <i class="icon-question-sign"></i>
               </button>
-            </div>
-            <p ng-show="model.help.identity.show" class="help-block br-fadein br-fadeout">
-              Enter a short name for this identity. A name similar to your full
-              name will help people to identify you. This short name will be
-              used in your identity address as shown below. An example would be
-              "my-short-name", "myshortname", or "megacorp".
-            </p>
-            <p>
-              <small>{{model.data.identityBaseUri}}/</small><strong>{{model.identity.sysSlug}}</strong>
-            </p>
-            <div data-duplicate-checker="model.identity.sysSlug"
-              data-duplicate-checker-type="identity"
-              data-duplicate-checker-available="This identity name is available!"
-              data-duplicate-checker-invalid="Identity name is invalid."
-              data-duplicate-checker-taken="Identity name has already been taken."
-              data-duplicate-checker-checking="Checking Availability..."
-              data-duplicate-checker-result="model.identitySlugAvailable">
-            </div>
+            </span>
+          </div>
+          <p ng-show="model.help.identity.show"
+            class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+            Enter a short name for this identity. A name similar to your full
+            name will help people to identify you. This short name will be
+            used in your identity address as shown below. An example would be
+            "my-short-name", "myshortname", or "megacorp".
+          </p>
+          <p class="col-md-offset-2 col-md-9">
+            <small>{{model.data.identityBaseUri}}/</small><strong>{{model.identity.sysSlug}}</strong>
+          </p>
+          <div class="col-md-offset-2 col-md-9"
+            data-duplicate-checker="model.identity.sysSlug"
+            data-duplicate-checker-type="identity"
+            data-duplicate-checker-available="This identity name is available!"
+            data-duplicate-checker-invalid="Identity name is invalid."
+            data-duplicate-checker-taken="Identity name has already been taken."
+            data-duplicate-checker-checking="Checking Availability..."
+            data-duplicate-checker-result="model.identitySlugAvailable">
           </div>
         </div>
       </fieldset>
@@ -152,22 +162,26 @@
       <fieldset>
         <legend>Service Agreement</legend>
 
-        <div class="control-group" data-binding="agreementChecked">
-          <div class="controls">
-            <label class="checkbox">
-              <input type="checkbox" ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
-            </label>
+        <div class="form-group" data-binding="agreementChecked">
+          <div class="col-sm-offset-2 col-sm-9">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
+              </label>
+            </div>
           </div>
         </div>
       </fieldset>
 
-      <div class="form-actions">
-        <button id="create-button"
-          ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
-          class="btn btn-large btn-primary"
-          data-submit-form>Create Identity</button>
-        <span data-spinner="model.loading"
-          data-spinner-class="append-btn-spinner"></span>
+      <div class="form-group">
+        <div class="col-md-offset-2">
+          <button type="button"
+            ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
+            class="btn btn-primary btn-lg"
+            data-submit-form>Create Identity</button>
+          <span data-spinner="model.loading"
+            data-spinner-class="append-btn-spinner"></span>
+        </div>
       </div>
     </form>
   </div>

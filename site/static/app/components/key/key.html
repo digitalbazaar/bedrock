@@ -1,12 +1,12 @@
-<div class="container ng-cloak" ng-controller="KeyController as model">
+<div class="ng-cloak" ng-controller="KeyController as model">
   <div ng-show="model.key.label" class="row">
-    <div class="title-section span12">
+    <div class="col-md-12">
       <h1 class="headline" ng-bind="model.key.label"></h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="section span12">
+    <div class="section col-md-12">
       <h3 class="headline">
         Cryptographic Key Details
         <span ng-show="model.state.keys.loading" class="pull-right">
@@ -20,35 +20,35 @@
       <dl ng-show="model.key" class="dl-horizontal" about="" typeof="sec:CryptographicKey">
         <dt ng-show="model.key.label">Label</dt>
         <dd ng-show="model.key.label">
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li property="rdfs:label">{{model.key.label}}</li>
           </ul>
         </dd>
 
         <dt>Status</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li>{{model.key.sysStatus}}</li>
           </ul>
         </dd>
 
         <dt ng-show="model.key.revoked">Revoked</dt>
         <dd ng-show="model.key.revoked">
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li property="sec:revoked" datatype="xsd:dateTime" content="{{model.key.revoked}}">{{model.key.revoked | date:'medium'}}</li>
           </ul>
         </dd>
 
         <dt>Owner</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><a rel="sec:owner" href="{{model.key.owner}}">{{model.key.owner}}</a></li>
           </ul>
         </dd>
 
         <dt ng-show="model.key.publicKeyPem">Public Key PEM</dt>
         <dd ng-show="model.key.publicKeyPem">
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><pre property="sec:publicKeyPem">{{model.key.publicKeyPem}}</pre></li>
           </ul>
         </dd>

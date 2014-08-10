@@ -22,12 +22,6 @@ function factory($parse, $timeout) {
     element.attr('tabindex', '-1');
     element.parent().addClass('help-toggle');
 
-    // FIXME: hacks for bootstrap, prevent wiggling during fade in/out
-    if(element.parent().hasClass('input-append')) {
-      element.css('margin-left', '-1px');
-      element.parent().css('font-size', '0');
-    }
-
     var state;
     var helpState;
     attrs.$observe('helpToggle', function(value) {
@@ -102,7 +96,7 @@ function factory($parse, $timeout) {
     scope.$watch(attr + '.mouseover', toggleElement);
     scope.$watch(attr + '.help.mouseover', toggleElement);
 
-    function toggleElement(value) {
+    function toggleElement() {
       // use timeout to allow mouse to transition smoothly from
       // element to help element (avoids canceling the animation that shows
       // the help element in that case)

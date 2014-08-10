@@ -1,202 +1,243 @@
-<form class="form-horizontal" action="">
+<form class="form-horizontal" role="form">
   <fieldset>
-    <div class="control-group" data-binding="label">
-      <label class="control-label" for="label">Label</label>
-      <div class="controls">
-        <div class="input-prepend input-append">
-          <span class="add-on"><i class="icon-tag"></i></span><input
-            class="input-xlarge" type="text" name="label"
-            ng-model="model.identity.label"
-            data-track-state="model.help.label" />
-          <button class="btn" data-help-toggle="model.help.label">
+    <div class="form-group" data-binding="label">
+      <label class="control-label col-sm-2" for="label">Label</label>
+      <div class="input-group col-sm-9">
+        <span class="input-group-addon"><i class="icon-tag"></i></span>
+        <input class="form-control" type="text" name="label"
+          ng-model="model.identity.label"
+          data-track-state="model.help.label" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+            data-help-toggle="model.help.label">
             <i class="icon-question-sign"></i>
           </button>
+        </span>
+      </div>
+      <p ng-show="model.help.label.show"
+        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        Enter the public label for this identity.
+      </p>
+    </div>
+    <div class="form-group" ng-show="model.publicMode == 'some'">
+      <div class="col-sm-offset-2 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="publicLabel" ng-model="model.public.label">
+              Allow <strong>public</strong> access to identity label.
+          </label>
         </div>
-        <label ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicLabel" ng-model="model.public.label">
-            Allow <strong>public</strong> access to identity label.
-        </label>
-        <p ng-show="model.help.label.show" class="help-block br-fadein br-fadeout">
-          Enter the public label for this identity.
-        </p>
       </div>
     </div>
 
-    <div class="control-group" data-binding="url">
-      <label class="control-label" for="url">Website</label>
-      <div class="controls">
-        <div class="input-prepend input-append">
-          <span class="add-on"><i class="icon-globe"></i></span><input
-            class="input-xlarge" type="url" name="url"
-            ng-model="model.identity.url"
-            data-track-state="model.help.url" />
-          <button class="btn" data-help-toggle="model.help.url">
+    <div class="form-group" data-binding="url">
+      <label class="control-label col-sm-2" for="url">Website</label>
+      <div class="input-group col-sm-9">
+        <span class="input-group-addon"><i class="icon-globe"></i></span>
+        <input class="form-control" type="url" name="url"
+          ng-model="model.identity.url"
+          data-track-state="model.help.url" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+            data-help-toggle="model.help.url">
             <i class="icon-question-sign"></i>
           </button>
+        </span>
+      </div>
+      <p ng-show="model.help.url.show"
+        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        Optionally enter a website URL for this identity.
+      </p>
+    </div>
+    <div class="form-group" ng-show="model.publicMode == 'some'">
+      <div class="col-sm-offset-2 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="publicWebsite" ng-model="model.public.url">
+              Allow <strong>public</strong> access to identity website.
+          </label>
         </div>
-        <label ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicWebsite" ng-model="model.public.url">
-            Allow <strong>public</strong> access to identity website.
-        </label>
-        <p ng-show="model.help.url.show" class="help-block br-fadein br-fadeout">
-          Optionally enter a website URL for this identity.
-        </p>
       </div>
     </div>
 
-    <div class="control-group" data-binding="email">
-      <label class="control-label" for="email">Email</label>
-      <div class="controls">
-        <div class="input-prepend input-append">
-          <span class="add-on"><i class="icon-envelope"></i></span><input
-            class="input-xlarge" type="email" name="email" disabled="disabled"
-            ng-model="model.identity.email"
-            data-track-state="model.help.email" />
-          <button class="btn" data-help-toggle="model.help.email">
+    <div class="form-group" data-binding="email">
+      <label class="control-label col-sm-2" for="email">Email</label>
+      <div class="input-group col-sm-9">
+        <span class="input-group-addon"><i class="icon-envelope"></i></span>
+        <input class="form-control" type="email" name="email" disabled="disabled"
+          ng-model="model.identity.email"
+          data-track-state="model.help.email" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+            data-help-toggle="model.help.email">
             <i class="icon-question-sign"></i>
           </button>
+        </span>
+      </div>
+      <p ng-show="model.help.email.show"
+        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+      <!-- Enter an email for this identity. -->
+        Identity email can not be changed on this page.
+      </p>
+    </div>
+    <div class="form-group" ng-show="model.publicMode == 'some'">
+      <div class="col-sm-offset-2 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="publicEmail" ng-model="model.public.email">
+              Allow <strong>public</strong> access to identity email.
+          </label>
         </div>
-        <label ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicEmail" ng-model="model.public.email">
-            Allow <strong>public</strong> access to identity email.
-        </label>
-        <p ng-show="model.help.email.show" class="help-block br-fadein br-fadeout">
-        <!-- Enter an email for this identity. -->
-          Identity email can not be changed on this page.
-        </p>
       </div>
     </div>
 
-    <div class="control-group">
-      <label class="control-label" for="imageType">Image Type</label>
-      <div class="controls">
-        <label class="radio inline">
-          <input type="radio" name="gravatarImage" value="gravatar" checked="checked" ng-model="model.identity.sysImageType" />
-          Gravatar
-        </label>
-        <label class="radio inline">
-          <input type="radio" name="urlImage" value="url" checked="checked" ng-model="model.identity.sysImageType" />
-          URL
-        </label>
-      </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="imageType">Image Type</label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarImage" value="gravatar" checked="checked" ng-model="model.identity.sysImageType" />
+        Gravatar
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="urlImage" value="url" checked="checked" ng-model="model.identity.sysImageType" />
+        URL
+      </label>
     </div>
 
-    <div ng-show="model.identity.sysImageType == 'gravatar'" class="control-group">
-      <label class="control-label" for="imageType">Gravatar Type</label>
-      <div class="controls">
-        <label class="radio inline">
-          <input type="radio" name="gravatarType" value="gravatar" checked="checked" ng-model="model.identity.sysGravatarType" />
-          Gravatar
-        </label>
-        <label class="radio inline">
-          <input type="radio" name="gravatarType" value="mm" checked="checked" ng-model="model.identity.sysGravatarType" />
-          Mystery Man
-        </label>
-        <label class="radio inline">
-          <input type="radio" name="gravatarType" value="identicon" checked="checked" ng-model="model.identity.sysGravatarType" />
-          Identicon
-        </label>
-        <label class="radio inline">
-          <input type="radio" name="gravatarType" value="monsterid" checked="checked" ng-model="model.identity.sysGravatarType" />
-          MonsterID
-        </label>
-        <label class="radio inline">
-          <input type="radio" name="gravatarType" value="wavatar" checked="checked" ng-model="model.identity.sysGravatarType" />
-          Wavatar
-        </label>
-        <label class="radio inline">
-          <input type="radio" name="gravatarType" value="retro" checked="checked" ng-model="model.identity.sysGravatarType" />
-          Retro
-        </label>
-        <p class="help-block">
-          Setting up a <a href="https://www.gravatar.com" target="_blank">Gravatar</a> image for your email will allow you to use the same avatar image on many supported sites. You can also use a generated image unique to your email.
-        </p>
-      </div>
+    <div ng-show="model.identity.sysImageType == 'gravatar'" class="form-group">
+      <label class="control-label col-sm-2" for="imageType">Gravatar Type</label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarType" value="gravatar" checked="checked" ng-model="model.identity.sysGravatarType" />
+        Gravatar
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarType" value="mm" checked="checked" ng-model="model.identity.sysGravatarType" />
+        Mystery Man
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarType" value="identicon" checked="checked" ng-model="model.identity.sysGravatarType" />
+        Identicon
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarType" value="monsterid" checked="checked" ng-model="model.identity.sysGravatarType" />
+        MonsterID
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarType" value="wavatar" checked="checked" ng-model="model.identity.sysGravatarType" />
+        Wavatar
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="gravatarType" value="retro" checked="checked" ng-model="model.identity.sysGravatarType" />
+        Retro
+      </label>
+      <p class="help-block col-sm-offset-2 col-sm-9">
+        Setting up a <a href="https://www.gravatar.com" target="_blank">Gravatar</a> image for your email will allow you to use the same avatar image on many supported sites. You can also use a generated image unique to your email.
+      </p>
     </div>
 
-    <div ng-show="model.identity.sysImageType == 'url'" class="control-group" data-binding="image">
-      <label class="control-label" for="image">Image URL</label>
-      <div class="controls">
-        <div class="input-prepend input-append">
-          <span class="add-on"><i class="icon-picture"></i></span><input
-            class="input-xlarge" type="url" name="image"
-            ng-model="model.identity.image"
-            data-track-state="model.help.image" />
-          <button class="btn" data-help-toggle="model.help.image">
+    <div ng-show="model.identity.sysImageType == 'url'" class="form-group" data-binding="image">
+      <label class="control-label col-sm-2" for="image">Image URL</label>
+      <div class="input-group col-sm-9">
+        <span class="input-group-addon"><i class="icon-picture"></i></span>
+        <input type="url" name="image"
+          ng-model="model.identity.image"
+          data-track-state="model.help.image" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+            data-help-toggle="model.help.image">
             <i class="icon-question-sign"></i>
           </button>
+        </span>
+      </div>
+      <p ng-show="model.help.image.show"
+        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        Enter the URL to an image for this identity.
+      </p>
+    </div>
+
+    <div ng-show="model.imagePreview" class="form-group">
+      <label class="control-label col-sm-2" for="image">Image Preview</label>
+      <img ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{model.imagePreview}}"/>
+    </div>
+    <div class="form-group" ng-show="model.publicMode == 'some'">
+      <div class="col-sm-offset-2 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="publicImage" ng-model="model.public.image">
+              Allow <strong>public</strong> access to identity image.
+          </label>
         </div>
-        <p ng-show="model.help.image.show" class="help-block br-fadein br-fadeout">
-          Enter the URL to an image for this identity.
-        </p>
       </div>
     </div>
 
-    <div ng-show="model.imagePreview" class="control-group">
-      <label class="control-label" for="image">Image Preview</label>
-      <div class="controls">
-        <img ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{model.imagePreview}}"/>
-        <label ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicImage" ng-model="model.public.image">
-            Allow <strong>public</strong> access to identity image.
-        </label>
-      </div>
-    </div>
-
-    <div class="control-group" data-binding="description">
-      <label class="control-label" for="description">Description</label>
-      <div class="controls">
-        <div class="input-prepend input-append">
-          <span class="add-on"><i class="icon-comment"></i></span><textarea
-            class="input-xlarge" rows="5"
-            placeholder="Description"
-            ng-model="model.identity.description"
-            data-track-state="model.help.description"></textarea>
-          <button class="btn" data-help-toggle="model.help.description">
+    <div class="form-group" data-binding="description">
+      <label class="control-label col-sm-2" for="description">Description</label>
+      <div class="input-group col-sm-9">
+        <span class="input-group-addon"><i class="icon-comment"></i></span>
+        <textarea class="form-control" rows="5"
+          placeholder="Description"
+          ng-model="model.identity.description"
+          data-track-state="model.help.description"></textarea>
+        <span class="input-group-btn">
+          <button class="btn btn-default btn-xs"
+            data-help-toggle="model.help.description">
             <i class="icon-question-sign"></i>
           </button>
+        </span>
+      </div>
+      <p ng-show="model.help.description.show"
+        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        Optionally enter a description of this identity.
+      </p>
+    </div>
+    <div class="form-group" ng-show="model.publicMode == 'some'">
+      <div class="col-sm-offset-2 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="publicDescription" ng-model="model.public.description">
+              Allow <strong>public</strong> access to identity description.
+          </label>
         </div>
-        <label ng-show="model.publicMode == 'some'" class="checkbox">
-          <input type="checkbox" name="publicDescription" ng-model="model.public.description">
-            Allow <strong>public</strong> access to identity description.
-        </label>
-        <p ng-show="model.help.description.show" class="help-block br-fadein br-fadeout">
-          Optionally enter a description of this identity.
-        </p>
       </div>
     </div>
 
-    <div class="control-group">
-      <label class="control-label" for="imageType">Visibility</label>
-      <div class="controls">
-        <label class="radio">
-          <input type="radio" name="nonePublic" value="none" checked="checked" ng-model="model.publicMode" />
-            <i class="icon-eye-close"></i> No public access to <strong>any</strong> identity details.
-        </label>
-        <label class="radio">
-          <input type="radio" name="somePublic" value="some" checked="checked" ng-model="model.publicMode" />
-            <i class="icon-eye-open"></i> Allow <strong>public</strong> access to specified properties.
-        </label>
-        <label class="radio">
-          <input type="radio" name="mostPublic" value="most" checked="checked" ng-model="model.publicMode" />
-            <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
-        </label>
-        <label class="radio">
-          <input type="radio" name="allPublic" value="all" checked="checked" ng-model="model.publicMode" />
-            <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
-        </label>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="imageType">Visibility</label>
+      <div class="col-sm-9">
+        <div class="radio">
+          <label>
+            <input type="radio" name="nonePublic" value="none" checked="checked" ng-model="model.publicMode" />
+              <i class="icon-eye-close"></i> No public access to <strong>any</strong> identity details.
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="somePublic" value="some" checked="checked" ng-model="model.publicMode" />
+              <i class="icon-eye-open"></i> Allow <strong>public</strong> access to specified properties.
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="mostPublic" value="most" checked="checked" ng-model="model.publicMode" />
+              <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="allPublic" value="all" checked="checked" ng-model="model.publicMode" />
+              <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
+          </label>
+        </div>
       </div>
     </div>
 
-
-    <div class="control-group">
-      <div class="controls">
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-9">
         <span data-spinner="model.loading"
           data-spinner-class="prepend-btn-spinner"></span>
-        <button class="btn btn-primary"
+        <button type="button" class="btn btn-primary"
           ng-disabled="model.loading || !model.identity"
           ng-click="model.update()"><i class="icon-ok"></i> Update</button>
-        <button class="btn"
+        <button type="button" class="btn btn-default"
           ng-disabled="model.loading"
           ng-click="model.cancel()">Cancel</button>
       </div>

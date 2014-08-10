@@ -57,7 +57,7 @@
               </li>
               <!-- Revoke -->
               <li class="divider" ng-hide="key.sysStatus == 'disabled'"></li>
-              <li class="btn-danger" ng-hide="key.sysStatus == 'disabled'">
+              <li class="alert-danger" ng-hide="key.sysStatus == 'disabled'">
                 <a class="stackable-cancel" ng-click="model.revokeKey(key)">
                   <i class="icon-remove"></i> Revoke
                 </a>
@@ -90,7 +90,7 @@
       data-modal-header="Warning"
       data-modal-ok="Revoke"
       data-modal-cancel="Cancel">
-      <div class="center alert">
+      <div class="center alert alert-danger">
         <strong>Warning!</strong>
         Revoking a key is permanent.
       </div>

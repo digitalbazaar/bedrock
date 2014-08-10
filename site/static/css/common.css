@@ -14,20 +14,239 @@ a {
   cursor: pointer;
 }
 
-/* Fonts */
-
-/* Use a custom default font */
-body {
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 1em;
-  line-height: 1.2em;
+/* Alert area */
+.alert-area-fixed {
+  position: fixed;
+  top: -1000px;
+  left: 50%;
+  z-index: 1100;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #999;
+  border-color: rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  outline: none;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: visible;
+  transition: top 350ms cubic-bezier(0.17, 0.04, 0.03, 0.94),
+    top 500ms cubic-bezier(0.94, 0.03, 0.04, 0.17);
+}
+.alert-area-fixed-show {
+  top: 0px;
+}
+.alert-area-fixed-show .alert {
+  margin-bottom: 10px;
+}
+.alert-area-body-fixed {
+  padding: 15px 15px 5px 15px;
 }
 
-input, button, select, textarea {
-  font-family: 'Droid Sans', sans-serif;
+/* Alert area responsiveness */
+@media (max-width: 456px) {
+  .alert-area-fixed {
+    margin-left: -175px;
+    width: 350px;
+  }
+}
+@media (min-width: 456px) {
+  .alert-area-fixed {
+    margin-left: -187px;
+    width: 374px;
+  }
+}
+@media (min-width: 472px) {
+  .alert-area-fixed {
+    margin-left: -195px;
+    width: 390px;
+  }
+}
+@media (min-width: 530px) {
+  .alert-area-fixed {
+    margin-left: -245px;
+    width: 470px;
+  }
+}
+@media (min-width: 612px) {
+  .alert-area-fixed {
+    margin-left: -265px;
+    width: 530px;
+  }
+}
+@media (min-width: 768px) {
+  .alert-area-fixed {
+    width: 600px;
+    margin-left: -307px;
+  }
+  .modal-sm .alert-area-fixed {
+    width: 300px;
+    margin-left: -157px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-lg .alert-area-fixed {
+    width: 900px;
+    margin-left: -457px;
+  }
 }
 
-/* Input */
+/* Animation for fadein/fadeout; requires ng-animate */
+.br-fadein, .br-fadeout {
+  -webkit-transition: opacity 250ms ease-in-out;
+  -moz-transition: opacity 250ms ease-in-out;
+  -o-transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
+}
+
+.br-fadein.ng-hide-remove,
+.br-fadeout.ng-hide-add.ng-hide-add-active,
+.br-fadein.ng-enter,
+.br-fadeout.ng-leave.ng-leave-active {
+  opacity: 0;
+  display: block !important;
+}
+
+.br-fadeout.ng-hide-add,
+.br-fadein.ng-hide-remove.ng-hide-remove-active,
+.br-fadeout.ng-leave,
+.br-fadein.ng-enter.ng-enter-active {
+  opacity: 1;
+  display: block !important;
+}
+
+/* Footer */
+.footer {
+  font-size: small;
+  padding: 13px 0 13px 0;
+}
+.footer ul {
+  margin: 1px 0;
+  text-align: center;
+}
+.footer li {
+  border-left: thin solid #ccc;
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.footer li:first-child {
+  border-left: none;
+}
+
+/* Font effects */
+h1.headline {
+  font-weight: bold;
+}
+.headline {
+  text-align: center;
+}
+
+/* Help */
+.form-horizontal .help-block {
+  margin-top: 10px;
+}
+
+/* Help Toggle Overlay */
+.input-group textarea + .input-group-btn.help-toggle > .btn,
+.help-toggle-overlay {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  left: -27px;
+  top: -40px;
+  z-index: 3;
+}
+
+/* Menus */
+.stackable-menu.dropdown-menu {
+  border: none;
+  box-shadow: none;
+  display: block;
+  float: none;
+  left: auto;
+  position: static;
+  top: auto;
+}
+.stackable-menu.dropdown-menu li.alert-danger > a:hover,
+.stackable-menu.dropdown-menu li.alert-danger > a:focus {
+  color: #fff;
+  background-image: -webkit-linear-gradient(top, #d9534f 0%, #c12e2a 100%);
+  background-image: -o-linear-gradient(top, #d9534f 0%, #c12e2a 100%);
+  background-image: linear-gradient(to bottom, #d9534f 0%, #c12e2a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f', endColorstr='#ffc12e2a', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #b92c28;
+}
+
+/* Modals */
+.modal {
+  /* allow modals to scroll */
+  position: static;
+  /* show modal; stackables handle show/hide */
+  display: block;
+}
+
+/* Navbar */
+.navbar-nav.navbar-hovercard-link {
+  margin-right: -8px;
+}
+.navbar .btn-toolbar {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: -12px;
+}
+.navbar .btn-group .btn {
+  font-weight: bold;
+}
+
+/* Sections */
+.section .headline {
+  background: #f9f9f9;
+  border-top: thin solid #ccc;
+  font-weight: bold;
+  line-height: 36px;
+  padding: 5px 7px 0px;
+  text-align: left;
+}
+.section h4.headline {
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Select2 widgets */
+.select2-container .select2-choice > .select2-chosen,
+.select2-drop {
+  font-size: 14px;
+}
+.select2-container {
+  width: 220px;
+}
+.select2-drop,
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* Slug input */
 input.slug {
   display: inline-block;
   height: auto;
@@ -71,51 +290,90 @@ input.slug.error {
   border-color: #eed3d7;
 }
 
+/* Tables */
+.table .action {
+  text-align: right;
+}
+.table.hovercard {
+  margin-bottom: 10px;
+}
+.table.hovercard td {
+  border: none;
+  padding: 2px;
+}
+
+/* Tabs */
+.tab-content .section h3 {
+  border-top: none;
+}
+
+/* Unselectable */
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Utilities */
+.divider {
+  height: 1px;
+  margin: 5px 1px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+
+/* Old CSS */
+
 /* Fix for labeled horizontal fields */
-input.form-field-vspaced,
+/*input.form-field-vspaced,
 textarea.form-field-vspaced,
 select.form-field-vspaced {
   margin-bottom: 10px;
-}
+}*/
 
 /* Fix for input-prepend w/following help blocks */
-.input-prepend ~ .help-block {
+/*.input-prepend ~ .help-block {
   margin-top: 10px;
-}
+}*/
 /* Fix for input-append w/following help blocks */
-.input-append ~ .help-block {
+/*.input-append ~ .help-block {
   margin-top: 10px;
-}
+}*/
 
 /* Fix for popovers triggered by buttons in button groups */
-.btn-group > .btn:last-of-type {
+/*.btn-group > .btn:last-of-type {
   -webkit-border-top-right-radius: 4px;
   border-top-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   -moz-border-radius-bottomright: 4px;
-}
+}*/
 
 /* Fix for button active state */
-.input-append .active,
+/*.input-append .active,
 .input-prepend .active {
   border-color: #BBB;
-}
+}*/
 
 /* Fix for one-off left margin */
-.input-append .add-on {
+/*.input-append .add-on {
   margin-left: 0px;
-}
+}*/
 
 /* Fix to prevent unnecessary wrapping of inline radio text */
-.radio input[type="radio"], .checkbox input[type="checkbox"] {
+/*.radio input[type="radio"], .checkbox input[type="checkbox"] {
   float: none;
   margin-top: -1px;
-}
+}*/
 
 /* Help toggle */
-.input-append.help-toggle input,
+/*.input-append.help-toggle input,
 .input-append.help-toggle textarea {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -147,9 +405,9 @@ select.form-field-vspaced {
 }
 
 .input-prepend.input-append .add-on:last-child, .input-prepend.input-append .btn:last-child
-
+*/
 /* Overlay help toggle */
-.input-prepend.input-append.help-toggle .add-on:last-child.help-toggle-overlay,
+/*.input-prepend.input-append.help-toggle .add-on:last-child.help-toggle-overlay,
 .input-prepend.input-append.help-toggle .btn:last-child.help-toggle-overlay,
 .input-prepend.input-append.help-toggle > textarea + :last-child,
 .input-prepend.input-append.help-toggle > textarea + .btn,
@@ -166,32 +424,33 @@ select.form-field-vspaced {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-
+*/
 /* Short alert displays */
-.alert-short {
+/*.alert-short {
   width: 230px;
 }
-
+*/
 /* Text size modifiers */
-.small-text {
+/*.small-text {
   font-size: 0.75em;
-}
+}*/
 
 /* Variable field displays with fixed boundaries */
-.form-field-constrained {
+/*.form-field-constrained {
   width: 90%;
   min-width: 30%;
   max-width: 90%;
 }
-
+*/
 /* Always pad body */
-body {
+/*body {
   padding-left: 20px;
   padding-right: 20px;
 }
+*/
 
-/* Banner adjustments */
-.navbar {
+
+/*.navbar {
   margin-right: -20px;
   margin-left: -20px;
 }
@@ -214,14 +473,9 @@ body {
 }
 .navbar .popover {
   color: #333;
-}
-/* FIXME: temporary adjustment due to bootstrap changes */
-.navbar .navbar-link {
-  margin-right: 8px;
-}
-
+}*/
 /* Banner input boxes */
-.navbar .btn-group-banner, .navbar .btn-group-banner .btn {
+/*.navbar .btn-group-banner, .navbar .btn-group-banner .btn {
   display: inline-block;
   margin-top: 0px;
   margin-bottom: 0;
@@ -231,84 +485,40 @@ body {
   margin-left: -5px;
   font-weight: bold;
 }
-
-/* Footer */
-.footer {
-  padding: 13px 0 13px 0;
-  font-size: small;
-}
-.footer ul {
-  margin: 1px 0;
-  text-align: center;
-}
-.footer li {
-  display: inline;
-  list-style-type: none;
-  margin: 0;
-  padding-left: 6px;
-  padding-right: 6px;
-  border-left: thin solid #ccc;
-}
-.footer li:first-child {
-  border-left: none;
-}
+*/
 
 /* Align at the top of their rows. */
-.table .name td, .table .money td, .table .action td {
+/*.table .name td, .table .action td {
   vertical-align: top
-}
-.table .money td {
-  padding-top: 9px;
 }
 .table .name td {
   padding-top: 9px;
 }
-
+*/
 /* Override bootstrap to inherit vertical alignment for condensed tables. */
-.table-condensed {
+/*.table-condensed {
   margin-bottom: 0px;
 }
 .table-condensed td {
   vertical-align: inherit;
 }
-
-/* Stretch nav-tabs so vertical border is same height as tab content */
-.tabs-left > .nav-tabs {
-  margin-right: -1px;
-}
-.tabs-left > .tab-content {
-  padding-left: 19px;
-  border-left: 1px solid #ddd;
-}
-.tabs-right > .nav-tabs {
-  margin-left: -1px;
-}
-.tabs-right > .tab-content {
-  padding-right: 19px;
-  border-right: 1px solid #ddd;
-}
-
+*/
 /* First headline in a tab pane section has no top margin to align with top
   of tab, others do. */
-.tab-pane .section h3 {
+/*.tab-pane .section h3 {
   margin-top: 0;
 }
 .tab-pane .section~.section h3 {
   margin-top: 10px;
 }
-
-/* First tabbable below headline */
-.first-tabbable {
-  margin-top: 10px;
-}
-
+*/
 /* Remove bottom white border on breadcrumb divider */
-.breadcrumb > li > .divider {
+/*.breadcrumb > li > .divider {
   border-bottom: 0;
-}
+}*/
 
 /* Documentation */
-
+/*
 .indent0 {
   margin-left: 0px;
 }
@@ -327,9 +537,9 @@ body {
 .indent5 {
   margin-left: 50px;
 }
-
+*/
 /* Activity Spinner */
-.center-spinner {
+/*.center-spinner {
   text-align: center;
   display: inline-block;
 }
@@ -372,24 +582,21 @@ body {
   padding-right: 13px;
   margin-bottom: 9px;
 }
-
+*/
 /* Misc */
-.table th.compact, .table td.compact {
+/*.table th.compact, .table td.compact {*/
   /* shrink column to fit **single word** text */
-  width: 1%;
+/*  width: 1%;
 }
-.table th.nowrap, .table td.nowrap {
+.table th.nowrap, .table td.nowrap {*/
   /* shrink column to fit with out word wrapping text */
-  white-space: nowrap;
+/*  white-space: nowrap;
 }
 .table .center {
   text-align: center;
 }
 .table .alert {
   text-align: center;
-}
-.table .money {
-  text-align: right;
 }
 .table .action {
   text-align: center;
@@ -443,10 +650,10 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
+}*/
 
 /* Resize rules */
-.resize-both {
+/*.resize-both {
   resize: both;
 }
 .resize-horizontal {
@@ -465,31 +672,9 @@ body {
   text-decoration: line-through;
   color: grey;
 }
-
-/* Font effects */
-.headline {
-  text-align: center;
-}
-.text-align-center {
-  text-align: center;
-}
-.text-align-right {
-  text-align: right;
-}
-.section h4.headline {
-  text-align: left;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.help-block {
-  font-size: 0.9em;
-}
-.popover-content {
-  font-size: 14px;
-}
-
+*/
 /* Icon positioning */
-ul.nav a [class^="icon-"] {
+/*ul.nav a [class^="icon-"] {
   margin-top: 2px;
 }
 .btn [class^="icon-"],
@@ -502,9 +687,9 @@ ul.nav a [class^="icon-"] {
 [class^="icon-"], [class*=" icon-"] {
   vertical-align: baseline;
 }
-
+*/
 /* Documentation classes */
-.rest-summary {
+/*.rest-summary {
   float: none;
   clear: both;
   display: block;
@@ -601,21 +786,9 @@ h1 > .rest-summary > .rest-path {
 .rest-parameter {
   font-style: italic;
 }
-
-/* Sections */
-
-.title-section .headline {
-}
-
-.section .headline {
-  padding: 2px 9px;
-  border-top: thin solid #ccc;
-  text-align: left;
-  background: #f9f9f9;
-}
-
+*/
 /* Selectors */
-
+/*
 .item-hover:hover {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -627,9 +800,9 @@ h1 > .rest-summary > .rest-path {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted \9;*/
   /* IE6-8 */
-}
+/*}
 
 .item-selected {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -642,12 +815,12 @@ h1 > .rest-summary > .rest-path {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
   outline: 0;
-  outline: thin dotted \9;
+  outline: thin dotted \9;*/
   /* IE6-8 */
-}
-
+/*}
+*/
 /* Progress Bars */
-.progress {
+/*.progress {
   position: relative;
 }
 .progress .bar {
@@ -716,112 +889,10 @@ h1 > .rest-summary > .rest-path {
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
-
-/* Modals */
-
-.modal {
-  /* Allow modals to scroll */
-  position: absolute;
-  /* Account for scrollbar always being present to avoid jumping content */
-  margin-left: -273px;
-  /* Ensure there is always space at top/bottom of the modal (aesthetic) */
-  top: 70px;
-  margin-bottom: 70px;
-}
-.modal-body {
-  max-height: none;
-}
-/* Used when buttons are wrapped in a form to avoid margins */
-.modal-footer form {
-  margin: 0;
-}
-
-/* Responsive fix for modals */
-@media (max-width: 767px) {
-  .modal {
-    position: absolute;
-    margin-left: -273px;
-    top: 70px;
-    left: 50%;
-    right: auto;
-    width: 560px;
-  }
-}
-
-@media (max-width: 540px) {
-  .modal {
-    position: absolute;
-    margin-left: -265px;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    width: 530px;
-    margin-bottom: 20;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal {
-    position: absolute;
-    margin-left: -245px;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    width: 470px;
-    margin-bottom: 20;
-  }
-}
-
-@media (max-width: 400px) {
-  .modal {
-    position: absolute;
-    margin-left: -195px;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    width: 390px;
-    margin-bottom: 20;
-  }
-}
-
-@media (max-width: 384px) {
-  .modal {
-    position: absolute;
-    margin-left: -187px;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    width: 374px;
-    margin-bottom: 20;
-  }
-}
-
-@media (max-width: 360px) {
-  .modal {
-    position: absolute;
-    margin-left: -175px;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    width: 350px;
-    margin-bottom: 20;
-  }
-}
-
-@media (max-width: 320px) {
-  .modal {
-    position: absolute;
-    margin-left: -155px;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    width: 310px;
-    margin-bottom: 20;
-  }
-}
+*/
 
 /* Placeholder fixes */
-input.placeholder,
+/*input.placeholder,
 textarea.placeholder {
   color: #aaa;
 }
@@ -834,170 +905,12 @@ textarea.placeholder {
 input:-moz-placeholder {
   color: #aaa;
 }
-
-/* Fixed alert area */
-.fixed-alert-area {
-  position: fixed;
-  top: -1000px;
-  left: 50%;
-  z-index: 1100;
-  width: 560px;
-  margin-left: -280px;
-  background-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-  border-color: #999;
-  border-color: rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  outline: none;
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  background-clip: padding-box;
-  overflow: visible;
-  transition: top 350ms cubic-bezier(0.17, 0.04, 0.03, 0.94),
-    top 500ms cubic-bezier(0.94, 0.03, 0.04, 0.17);
-}
-.fixed-alert-area-show {
-  top: 0px;
-}
-.fixed-alert-area-show .alert {
-  margin-bottom: 10px;
-}
-.fixed-alert-area-body {
-  padding: 15px 15px 5px 15px;
-}
-
-/* Responsive fix for alert area */
-@media (max-width: 540px) {
-  .fixed-alert-area {
-    margin-left: -265px;
-    width: 530px;
-  }
-}
-
-@media (max-width: 480px) {
-  .fixed-alert-area {
-    margin-left: -245px;
-    width: 470px;
-  }
-}
-
-@media (max-width: 400px) {
-  .fixed-alert-area {
-    margin-left: -195px;
-    width: 390px;
-  }
-}
-
-@media (max-width: 384px) {
-  .fixed-alert-area {
-    margin-left: -187px;
-    width: 374px;
-  }
-}
-
-@media (max-width: 360px) {
-  .fixed-alert-area {
-    margin-left: -175px;
-    width: 350px;
-  }
-}
-
-@media (max-width: 320px) {
-  .fixed-alert-area {
-    margin-left: -155px;
-    width: 310px;
-  }
-}
-
-/* Fixes to Select2 widgets */
-
-.select2-container .select2-choice > .select2-chosen,
-.select2-drop {
-  font-size: 14px;
-}
-.select2-container {
-  width: 220px;
-}
-.select2-drop,
-.select2-container-active .select2-choice,
-.select2-container-active .select2-choices {
-  border-color: rgba(82, 168, 236, 0.8);
-  outline: 0;
-  outline: thin dotted \9;
-  /* IE6-9 */
-
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-}
-/*.select2-drop.select2-drop-above.select2-drop-active {
-  border-top: 1px solid rgba(82, 168, 236, 0.8);
-}
-.select2-drop.select2-drop-above {
-  border-bottom: 1px solid rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-}*/
-
-/* Make an element unselectable */
-.unselectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-/* stackable-menu fixes */
-
-.stackable-menu.dropdown-menu {
-  display: block;
-  left: auto;
-  position: static;
-  top: auto;
-  float: none;
-  border: none;
-  box-shadow: none;
-}
-
-/* Animation for fadein/fadeout; requires ng-animate */
-.br-fadein, .br-fadeout {
-  -webkit-transition: opacity 250ms ease-in-out;
-  -moz-transition: opacity 250ms ease-in-out;
-  -o-transition: opacity 250ms ease-in-out;
-  transition: opacity 250ms ease-in-out;
-}
-
-.br-fadein.ng-hide-remove,
-.br-fadeout.ng-hide-add.ng-hide-add-active,
-.br-fadein.ng-enter,
-.br-fadeout.ng-leave.ng-leave-active {
-  opacity: 0;
-  display: block !important;
-}
-
-.br-fadeout.ng-hide-add,
-.br-fadein.ng-hide-remove.ng-hide-remove-active,
-.br-fadeout.ng-leave,
-.br-fadein.ng-enter.ng-enter-active {
-  opacity: 1;
-  display: block !important;
-}
+*/
 
 /* Responsive changes */
 
 /* Fix for responsive fixed-size input fields */
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
   input.input-small {
     width: 90px;
   }
@@ -1030,4 +943,4 @@ input:-moz-placeholder {
     margin-top: 3px;
   }
 }
-
+*/

@@ -7,20 +7,20 @@
 
 <div class="static-content">
   <div class="row">
-    <div class="title-section span12">
+    <div class="col-md-12">
       <h1 class="headline">{{identity.label}}</h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="section span12">
+    <div class="section col-md-12">
       <h3 class="headline">Identity Details</h3>
 
       <dl class="dl-horizontal" about="" typeof="bed:{{identity.type}}">
         {% if identity.label %}
         <dt>Label</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li property="rdfs:label">{{identity.label}}</li>
           </ul>
         </dd>
@@ -29,7 +29,7 @@
         {% if identity.description %}
         <dt>Description</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li property="dc:description">{{identity.description}}</li>
           </ul>
         </dd>
@@ -38,7 +38,7 @@
         {% if identity.url %}
         <dt>Website</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><a property="schema:url" href="{{identity.url}}">{{identity.url}}</a></li>
           </ul>
         </dd>
@@ -47,7 +47,7 @@
         {% if identity.email %}
         <dt>Email</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><a property="schema:email" href="mailto:{{identity.email}}">{{identity.email}}</a></li>
           </ul>
         </dd>
@@ -56,7 +56,7 @@
         {% if identity.image %}
         <dt>Image</dt>
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li><img property="schema:image" style="max-width: 80px; max-height: 80px" src="{{identity.image}}"/></li>
           </ul>
         </dd>
@@ -65,7 +65,7 @@
         <dt>Cryptographic Keys</dt>
         {% if keys.length > 0 %}
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             {% for key in keys %}
             <li>
               <a about="" rel="sec:publicKey" href="{{key.id}}">
@@ -80,7 +80,7 @@
         </dd>
         {% else %}
         <dd>
-          <ul class="unstyled">
+          <ul class="list-unstyled">
             <li>No publicly visible keys.</li>
           </ul>
         </dd>

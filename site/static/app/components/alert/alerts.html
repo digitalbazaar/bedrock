@@ -1,10 +1,10 @@
-<div ng-class="{'fixed-alert-area': fixed == 'true', 'fixed-alert-area-show': fixed == 'true' && app.services.alert.total}">
-  <div ng-class="{'fixed-alert-area-body': fixed == 'true'}">
+<div ng-class="{'alert-area-fixed': fixed == 'true', 'alert-area-fixed-show': fixed == 'true' && app.services.alert.total}">
+  <div ng-class="{'alert-area-body-fixed': fixed == 'true'}">
     <div ng-repeat="(category, list) in app.services.alert.log">
       <div ng-show="alertCategory == 'all' || alertCategory == category">
         <div class="alert-area-{{category}}"></div>
         <div ng-repeat="info in list">
-          <div ng-if="!info.value.html" class="alert alert-{{info.type}}">
+          <div ng-if="!info.value.html" class="alert alert-{{(info.type == 'error' && 'danger') || info.type}}">
             <button type="button" class="close" ng-click="closeAlert(info)">&times;</button>
             <span ng-if="info.value.type == 'bedrock.validation.ValidationError'">
               Please correct the information you entered.

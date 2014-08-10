@@ -1,17 +1,21 @@
 <div class="modal">
-  <div class="modal-header">
-    <a class="close stackable-cancel">&times;</a>
-    <h3>Load file...</h3>
-  </div>
-  <div class="modal-body">
-    <div ng-include="'/app/components/remoteFileSelector/file-browser.html'"></div>
-  </div>
-  <div class="modal-footer">
-    <span data-spinner="model.loading"
-      data-spinner-class="prepend-btn-spinner"></span>
-    <button class="btn btn-primary"
-      ng-disabled="model.loading"
-      ng-click="model.loadSelectedFile()"><i class="icon-ok"></i> Load</button>
-    <button class="btn stackable-cancel" ng-disabled="model.loading">Cancel</button>
-  </div>
-</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close stackable-cancel">&times;<span class="sr-only">Close</span></a>
+        <h3 class="modal-title">Load file...</h3>
+      </div>
+      <div class="modal-body">
+        <div ng-include="'/app/components/remoteFileSelector/file-browser.html'"></div>
+      </div>
+      <div class="modal-footer">
+        <span data-spinner="model.loading"
+          data-spinner-class="prepend-btn-spinner"></span>
+        <button type="button" class="btn btn-primary"
+          ng-disabled="model.loading"
+          ng-click="model.loadSelectedFile()"><i class="icon-ok"></i> Load</button>
+        <button type="button" class="btn btn-default stackable-cancel" ng-disabled="model.loading">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
