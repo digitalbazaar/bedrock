@@ -15,13 +15,13 @@ return {
       private: [
         {
           slug: 'dashboard',
-          icon: 'icon-dashboard',
+          icon: 'fa fa-dashboard',
           label: 'Dashboard',
           pageTitle: 'Dashboard'
         },
         {
           slug: 'settings',
-          icon: 'icon-wrench',
+          icon: 'fa fa-wrench',
           label: 'Settings',
           pageTitle: 'Settings'
         }

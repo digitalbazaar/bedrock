@@ -3,14 +3,14 @@
     <div class="form-group" data-binding="label">
       <label class="control-label col-sm-3" for="label">Label</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-tag"></i></span>
+        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
         <input class="form-control" type="text" name="label"
           ng-model="model.identity.label"
           data-track-state="model.help.label" />
         <span class="input-group-btn">
           <button type="button" class="btn btn-default"
             data-help-toggle="model.help.label">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>
@@ -33,14 +33,14 @@
     <div class="form-group" data-binding="url">
       <label class="control-label col-sm-3" for="url">Website</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-globe"></i></span>
+        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
         <input class="form-control" type="url" name="url"
           ng-model="model.identity.url"
           data-track-state="model.help.url" />
         <span class="input-group-btn">
           <button type="button" class="btn btn-default"
             data-help-toggle="model.help.url">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>
@@ -63,14 +63,14 @@
     <div class="form-group" data-binding="email">
       <label class="control-label col-sm-3" for="email">Email</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-envelope"></i></span>
+        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
         <input class="form-control" type="email" name="email" disabled="disabled"
           ng-model="model.identity.email"
           data-track-state="model.help.email" />
         <span class="input-group-btn">
           <button type="button" class="btn btn-default"
             data-help-toggle="model.help.email">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>
@@ -137,14 +137,14 @@
     <div ng-show="model.identity.sysImageType == 'url'" class="form-group" data-binding="image">
       <label class="control-label col-sm-3" for="image">Image URL</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-picture"></i></span>
+        <span class="input-group-addon"><i class="fa fa-picture"></i></span>
         <input type="url" name="image"
           ng-model="model.identity.image"
           data-track-state="model.help.image" />
         <span class="input-group-btn">
           <button type="button" class="btn btn-default"
             data-help-toggle="model.help.image">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>
@@ -172,7 +172,7 @@
     <div class="form-group" data-binding="description">
       <label class="control-label col-sm-3" for="description">Description</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-comment"></i></span>
+        <span class="input-group-addon"><i class="fa fa-comment"></i></span>
         <textarea class="form-control" rows="5"
           placeholder="Description"
           ng-model="model.identity.description"
@@ -180,7 +180,7 @@
         <span class="input-group-btn">
           <button class="btn btn-default btn-xs"
             data-help-toggle="model.help.description">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>
@@ -206,25 +206,25 @@
         <div class="radio">
           <label>
             <input type="radio" name="nonePublic" value="none" checked="checked" ng-model="model.publicMode" />
-              <i class="icon-eye-close"></i> No public access to <strong>any</strong> identity details.
+              <i class="fa fa-eye-close"></i> No public access to <strong>any</strong> identity details.
           </label>
         </div>
         <div class="radio">
           <label>
             <input type="radio" name="somePublic" value="some" checked="checked" ng-model="model.publicMode" />
-              <i class="icon-eye-open"></i> Allow <strong>public</strong> access to specified properties.
+              <i class="fa fa-eye"></i> Allow <strong>public</strong> access to specified properties.
           </label>
         </div>
         <div class="radio">
           <label>
             <input type="radio" name="mostPublic" value="most" checked="checked" ng-model="model.publicMode" />
-              <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
+              <i class="fa fa-eye"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
           </label>
         </div>
         <div class="radio">
           <label>
             <input type="radio" name="allPublic" value="all" checked="checked" ng-model="model.publicMode" />
-              <i class="icon-eye-open"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
+              <i class="fa fa-eye"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
           </label>
         </div>
       </div>
@@ -236,7 +236,7 @@
           data-spinner-class="prepend-btn-spinner"></span>
         <button type="button" class="btn btn-primary"
           ng-disabled="model.loading || !model.identity"
-          ng-click="model.update()"><i class="icon-ok"></i> Update</button>
+          ng-click="model.update()"><i class="fa fa-check"></i> Update</button>
         <button type="button" class="btn btn-default"
           ng-disabled="model.loading"
           ng-click="model.cancel()">Cancel</button>

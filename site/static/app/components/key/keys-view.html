@@ -3,16 +3,16 @@
     <ul class="stackable-menu dropdown-menu">
       <li>
         <a class="stackable-cancel"
-          ng-click="model.modals.showGenerateKeyPair=true"><i class="icon-plus"></i> Generate Key Pair</a>
+          ng-click="model.modals.showGenerateKeyPair=true"><i class="fa fa-plus"></i> Generate Key Pair</a>
       </li>
       <li>
         <a class="stackable-cancel"
-          ng-click="model.modals.showAddKey=true"><i class="icon-plus"></i> Add Key</a>
+          ng-click="model.modals.showAddKey=true"><i class="fa fa-plus"></i> Add Key</a>
       </li>
       <li>
         <a class="stackable-cancel"
           ng-click="model.showRevokedKeys=!model.showRevokedKeys"><i
-          ng-show="model.showRevokedKeys" class="icon-ok"></i> Show Revoked Keys</a>
+          ng-show="model.showRevokedKeys" class="fa fa-check"></i> Show Revoked Keys</a>
       </li>
     </ul>
   </headline-menu>
@@ -32,7 +32,7 @@
           <a href="{{key.id}}">{{key.label}}</a>
           <span ng-show="model.identity.sysSigningKey == key.id"
             data-tooltip-title="This is the default signing key."
-            data-placement="bottom" data-trigger="hover"><i class="icon icon-star"></i></span>
+            data-placement="bottom" data-trigger="hover"><i class="icon fa fa-star"></i></span>
         </td>
         <!-- Status -->
         <td class="compact">
@@ -46,20 +46,20 @@
               <!-- Edit -->
               <li>
                 <a class="stackable-cancel" ng-click="model.editKey(key)">
-                  <i class="icon-pencil"></i> Edit
+                  <i class="fa fa-pencil"></i> Edit
                 </a>
               </li>
               <!-- Default Signing Key -->
               <li ng-show="model.identity.sysSigningKey != key.id && key.sysStatus == 'active'">
                 <a class="stackable-cancel" ng-click="model.setDefaultSigningKeyId(key.id)">
-                  <i class="icon-star"></i> Set as default
+                  <i class="fa fa-star"></i> Set as default
                 </a>
               </li>
               <!-- Revoke -->
               <li class="divider" ng-hide="key.sysStatus == 'disabled'"></li>
               <li class="alert-danger" ng-hide="key.sysStatus == 'disabled'">
                 <a class="stackable-cancel" ng-click="model.revokeKey(key)">
-                  <i class="icon-remove"></i> Revoke
+                  <i class="fa fa-times"></i> Revoke
                 </a>
               </li>
             </ul>

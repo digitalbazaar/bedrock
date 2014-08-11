@@ -12,16 +12,16 @@
   <p>Sorry, this service is temporarily unavailable.</p>
   <ul class="inline">
     {% if contact.twitter %}
-    <li><i class="icon-twitter"></i> <a href="{{contact.twitter.url}}">{{contact.twitter.label}}</a></li>
+    <li><i class="fa fa-twitter"></i> <a href="{{contact.twitter.url}}">{{contact.twitter.label}}</a></li>
     {% endif %}
     {% if contact.googlePlus %}
-    <li><i class="icon-google-plus"></i> <a href="{{contact.googlePlus.url}}">{{contact.googlePlus.label}}</a></li>
+    <li><i class="fa fa-google-plus"></i> <a href="{{contact.googlePlus.url}}">{{contact.googlePlus.label}}</a></li>
     {% endif %}
     {% if contact.blog %}
-    <li><i class="icon-comment"></i> <a href="{{contact.blog.url}}">{{contact.blog.label}}</a></li>
+    <li><i class="fa fa-comment"></i> <a href="{{contact.blog.url}}">{{contact.blog.label}}</a></li>
     {% endif %}
     {% if contact.email %}
-    <li><i class="icon-envelope"></i> <a href="{{contact.email.url}}">Email {{contact.email.label}}</a></li>
+    <li><i class="fa fa-envelope"></i> <a href="{{contact.email.url}}">Email {{contact.email.label}}</a></li>
     {% endif %}
   </ul>
 </div>

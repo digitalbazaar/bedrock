@@ -33,11 +33,11 @@
           <button type="button" class="btn btn-primary"
             ng-hide="model.success"
             ng-disabled="model.loading"
-            ng-click="model.addKey()"><i class="icon-ok"></i> Save</button>
+            ng-click="model.addKey()"><i class="fa fa-check"></i> Save</button>
           <button type="button" class="btn btn-primary"
             ng-show="model.success && !model.registrationCallback"
             ng-disabled="model.loading"
-            ng-click="model.done()"><i class="icon-ok"></i> Done</button>
+            ng-click="model.done()"><i class="fa fa-check"></i> Done</button>
           <input name="key" value="{{model.callbackKey|json}}"
             type="hidden" />
 
@@ -45,7 +45,7 @@
             ng-click="model.submit()"
             ng-show="model.success && model.registrationCallback"
             ng-disabled="model.loading"
-            type="submit"><i class="icon-ok"></i> Complete Registration</button>
+            type="submit"><i class="fa fa-check"></i> Complete Registration</button>
           <button type="button" class="btn btn-default stackable-cancel" ng-disabled="model.loading">Cancel</button>
         </form>
       </div>

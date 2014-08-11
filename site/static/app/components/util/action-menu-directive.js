@@ -20,7 +20,7 @@ function factory() {
         <button type="button" class="btn btn-default btn-sm" \
           stackable-trigger="actionMenu" \
           stackable-toggle="\'active\'"> \
-          <i class="icon-chevron-down"></i> \
+          <i class="fa fa-chevron-down"></i> \
         </button> \
       </div> \
       <stackable-popover stackable="actionMenu" \

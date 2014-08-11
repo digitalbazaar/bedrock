@@ -3,9 +3,9 @@
     <div ng-hide="fixed" class="pull-right">
       <button class="btn btn-success btn-change"
         ng-show="items.length > 0"
-        ng-click="showSelectorModal=true"><i class="icon-list"></i> Change</button>
+        ng-click="showSelectorModal=true"><i class="fa fa-list"></i> Change</button>
       <button ng-show="items.length == 0" class="btn btn-success"
-        ng-click="addItem()"><i class="icon-plus"></i> Add {{itemType}}</button>
+        ng-click="addItem()"><i class="fa fa-plus"></i> Add {{itemType}}</button>
     </div>
     <div ng-show="selected == null">None found.</div>
     <div ng-show="selected != null">
@@ -27,7 +27,7 @@
       <div ng-show="custom" ng-transclude></div>
       <div class="pull-right">
         <button class="btn btn-success"
-          ng-click="addItem()"><i class="icon-plus"></i> Add {{itemType}}</button>
+          ng-click="addItem()"><i class="fa fa-plus"></i> Add {{itemType}}</button>
       </div>
       <div style="clear:both"></div>
     </div>

@@ -3,14 +3,14 @@
     <div class="form-group" data-binding="label">
       <label class="control-label col-sm-3" for="label">Key Label</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-tag"></i></span>
+        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
         <input class="form-control" type="text" name="label"
           ng-model="model.key.label"
           data-track-state="model.help.label" />
         <span class="input-group-btn">
           <button type="button" class="btn btn-default"
             data-help-toggle="model.help.label">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>
@@ -22,7 +22,7 @@
     <div class="form-group" data-binding="publicKeyPem" ng-show="model.needPem">
       <label class="control-label col-sm-3" for="publicKeyPem">Public Key PEM</label>
       <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="icon-key"></i></span>
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
         <textarea class="form-control" name="publicKeyPem" rows="5"
           placeholder="Public Key PEM"
           ng-model="model.key.publicKeyPem"
@@ -30,7 +30,7 @@
         <span class="input-group-btn">
           <button type="button" class="btn btn-default btn-xs"
             data-help-toggle="model.help.publicKeyPem">
-            <i class="icon-question-sign"></i>
+            <i class="fa fa-question-circle"></i>
           </button>
         </span>
       </div>

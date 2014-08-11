@@ -22,7 +22,7 @@
       {% else %}
         {% block css %}
         <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link href="/bower-components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
         <link href="/bower-components/select2/select2.css" rel="stylesheet" type="text/css" />
         <link href="/bower-components/select2/select2-bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/bower-components/angular-stackables/stackables.css" rel="stylesheet" type="text/css" />
@@ -109,13 +109,13 @@
               --></li>{% endif %}<!--
               --><li><!--
                 -->{% if contact.twitter %}<!--
-                --><a href="{{contact.twitter.url}}"><i class="icon-twitter"></i></a><!--
+                --><a href="{{contact.twitter.url}}"><i class="fa fa-twitter"></i></a><!--
                 -->{% endif %}<!--
                 -->{% if contact.facebook %}<!--
-                --><a href="{{contact.facebook.url}}"><i class="icon-facebook"></i></a><!--
+                --><a href="{{contact.facebook.url}}"><i class="fa fa-facebook"></i></a><!--
                 -->{% endif %}<!--
                 -->{% if contact.googlePlus %}<!--
-                --><a href="{{contact.googlePlus.url}}"><i class="icon-google-plus"></i></a><!--
+                --><a href="{{contact.googlePlus.url}}"><i class="fa fa-google-plus"></i></a><!--
                 -->{% endif %}<!--
               --></li>
               {% else %}

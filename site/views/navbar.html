@@ -56,7 +56,8 @@
                 ng-disabled="model.loading" />
               <div class="btn-toolbar">
                 <div class="btn-group">
-                  <button class="btn btn-primary" type="button" data-submit-form>Sign In</button>
+                  <button class="btn btn-primary"
+                    type="button" data-submit-form><i class="fa fa-sign-in"></i> Sign In</button>
                   <button class="btn btn-primary" type="button"
                     stackable-trigger="model.navbarActionMenu"
                     stackable-toggle="'active'">
@@ -76,7 +77,7 @@
             <ul class="dropdown-menu stackable-menu">
               <li>
                 <a href="/session/passcode">
-                  <i class="icon-refresh"></i>
+                  <i class="fa fa-refresh"></i>
                   Password Reset
                 </a>
               </li>
@@ -88,7 +89,7 @@
         <div ng-if="app.services.identity.identity" class="navbar-right">
           <a class="btn navbar-btn pull-right"
             stackable-trigger="model.hovercard"
-            stackable-toggle="'active'"><i class="icon-user"></i></a>
+            stackable-toggle="'active'"><i class="fa fa-user"></i></a>
           <stackable-popover stackable="model.hovercard"
             stackable-placement="bottom"
             stackable-alignment="right">
@@ -110,10 +111,10 @@
               <ul class="dropdown-menu stackable-menu">
                 <li>
                   <a class="stackable-cancel" style="padding-left: 3px"
-                    ng-click="model.refreshData()"><i class="icon-refresh"></i> Refresh</a>
+                    ng-click="model.refreshData()"><i class="fa fa-refresh"></i> Refresh</a>
                 </li>
                 <li>
-                  <a href="/session/logout" style="padding-left: 3px"><i class="icon-off"></i> Sign Out</a>
+                  <a href="/session/logout" style="padding-left: 3px"><i class="fa fa-sign-out"></i> Sign Out</a>
                 </li>
               </ul>
             </div>

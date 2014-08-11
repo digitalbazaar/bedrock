@@ -17,7 +17,7 @@
               <div class="form-group" data-binding="label">
                 <label for="name">Name</label>
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="icon-tag"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                   <input class="form-control" type="text" name="label"
                     ng-model="identityLabel"
                     data-slug-out="identitySlug"
@@ -26,7 +26,7 @@
                   <span class="input-group-btn">
                     <button class="btn btn-default"
                       data-help-toggle="model.help.identityLabel">
-                      <i class="icon-question-sign"></i>
+                      <i class="fa fa-question-circle"></i>
                     </button>
                   </span>
                 </div>
@@ -53,7 +53,7 @@
               <div class="form-group">
                 <label for="type">Type</label>
                 <div class="input-group-addon">
-                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
                   <select name="type"
                     ng-model="identityType"
                     ng-options="identityTypeLabels[type] for type in identityTypes">
@@ -72,7 +72,7 @@
           data-spinner-class="prepend-btn-spinner"></span>
         <button type="button" class="btn btn-primary"
           ng-disabled="loading || !model.identitySlugAvailable"
-          ng-click="addIdentity()"><i class="icon-ok"></i> Add</button>
+          ng-click="addIdentity()"><i class="fa fa-check"></i> Add</button>
         <button type="button" class="btn btn-default stackable-cancel" ng-disabled="loading">Cancel</button>
       </div>
     </div><!-- /.modal-content -->

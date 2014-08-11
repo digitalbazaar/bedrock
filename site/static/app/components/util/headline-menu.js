@@ -25,7 +25,7 @@ function factory() {
           <button type="button" class="btn btn-default btn-sm" \
             stackable-trigger="menu" \
             stackable-toggle="\'active\'"> \
-            <i class="icon-reorder"></i> \
+            <i class="fa fa-bars"></i> \
           </button> \
         </span> \
         <span ng-show="loading" class="pull-right"> \
