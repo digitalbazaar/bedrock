@@ -1,8 +1,8 @@
 <form class="form-horizontal" role="form">
   <fieldset>
     <div class="form-group" data-binding="label">
-      <label class="control-label col-sm-2" for="label">Label</label>
-      <div class="input-group col-sm-9">
+      <label class="control-label col-sm-3" for="label">Label</label>
+      <div class="input-group col-sm-8">
         <span class="input-group-addon"><i class="icon-tag"></i></span>
         <input class="form-control" type="text" name="label"
           ng-model="model.identity.label"
@@ -15,12 +15,12 @@
         </span>
       </div>
       <p ng-show="model.help.label.show"
-        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
         Enter the public label for this identity.
       </p>
     </div>
     <div class="form-group" ng-show="model.publicMode == 'some'">
-      <div class="col-sm-offset-2 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
           <label>
             <input type="checkbox" name="publicLabel" ng-model="model.public.label">
@@ -31,8 +31,8 @@
     </div>
 
     <div class="form-group" data-binding="url">
-      <label class="control-label col-sm-2" for="url">Website</label>
-      <div class="input-group col-sm-9">
+      <label class="control-label col-sm-3" for="url">Website</label>
+      <div class="input-group col-sm-8">
         <span class="input-group-addon"><i class="icon-globe"></i></span>
         <input class="form-control" type="url" name="url"
           ng-model="model.identity.url"
@@ -45,12 +45,12 @@
         </span>
       </div>
       <p ng-show="model.help.url.show"
-        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
         Optionally enter a website URL for this identity.
       </p>
     </div>
     <div class="form-group" ng-show="model.publicMode == 'some'">
-      <div class="col-sm-offset-2 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
           <label>
             <input type="checkbox" name="publicWebsite" ng-model="model.public.url">
@@ -61,8 +61,8 @@
     </div>
 
     <div class="form-group" data-binding="email">
-      <label class="control-label col-sm-2" for="email">Email</label>
-      <div class="input-group col-sm-9">
+      <label class="control-label col-sm-3" for="email">Email</label>
+      <div class="input-group col-sm-8">
         <span class="input-group-addon"><i class="icon-envelope"></i></span>
         <input class="form-control" type="email" name="email" disabled="disabled"
           ng-model="model.identity.email"
@@ -75,13 +75,13 @@
         </span>
       </div>
       <p ng-show="model.help.email.show"
-        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
       <!-- Enter an email for this identity. -->
         Identity email can not be changed on this page.
       </p>
     </div>
     <div class="form-group" ng-show="model.publicMode == 'some'">
-      <div class="col-sm-offset-2 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
           <label>
             <input type="checkbox" name="publicEmail" ng-model="model.public.email">
@@ -92,7 +92,7 @@
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="imageType">Image Type</label>
+      <label class="control-label col-sm-3" for="imageType">Image Type</label>
       <label class="radio-inline">
         <input type="radio" name="gravatarImage" value="gravatar" checked="checked" ng-model="model.identity.sysImageType" />
         Gravatar
@@ -104,7 +104,7 @@
     </div>
 
     <div ng-show="model.identity.sysImageType == 'gravatar'" class="form-group">
-      <label class="control-label col-sm-2" for="imageType">Gravatar Type</label>
+      <label class="control-label col-sm-3" for="imageType">Gravatar Type</label>
       <label class="radio-inline">
         <input type="radio" name="gravatarType" value="gravatar" checked="checked" ng-model="model.identity.sysGravatarType" />
         Gravatar
@@ -129,14 +129,14 @@
         <input type="radio" name="gravatarType" value="retro" checked="checked" ng-model="model.identity.sysGravatarType" />
         Retro
       </label>
-      <p class="help-block col-sm-offset-2 col-sm-9">
+      <p class="help-block col-sm-offset-3 col-sm-8">
         Setting up a <a href="https://www.gravatar.com" target="_blank">Gravatar</a> image for your email will allow you to use the same avatar image on many supported sites. You can also use a generated image unique to your email.
       </p>
     </div>
 
     <div ng-show="model.identity.sysImageType == 'url'" class="form-group" data-binding="image">
-      <label class="control-label col-sm-2" for="image">Image URL</label>
-      <div class="input-group col-sm-9">
+      <label class="control-label col-sm-3" for="image">Image URL</label>
+      <div class="input-group col-sm-8">
         <span class="input-group-addon"><i class="icon-picture"></i></span>
         <input type="url" name="image"
           ng-model="model.identity.image"
@@ -149,17 +149,17 @@
         </span>
       </div>
       <p ng-show="model.help.image.show"
-        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
         Enter the URL to an image for this identity.
       </p>
     </div>
 
     <div ng-show="model.imagePreview" class="form-group">
-      <label class="control-label col-sm-2" for="image">Image Preview</label>
+      <label class="control-label col-sm-3" for="image">Image Preview</label>
       <img ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{model.imagePreview}}"/>
     </div>
     <div class="form-group" ng-show="model.publicMode == 'some'">
-      <div class="col-sm-offset-2 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
           <label>
             <input type="checkbox" name="publicImage" ng-model="model.public.image">
@@ -170,8 +170,8 @@
     </div>
 
     <div class="form-group" data-binding="description">
-      <label class="control-label col-sm-2" for="description">Description</label>
-      <div class="input-group col-sm-9">
+      <label class="control-label col-sm-3" for="description">Description</label>
+      <div class="input-group col-sm-8">
         <span class="input-group-addon"><i class="icon-comment"></i></span>
         <textarea class="form-control" rows="5"
           placeholder="Description"
@@ -185,12 +185,12 @@
         </span>
       </div>
       <p ng-show="model.help.description.show"
-        class="help-block col-sm-offset-2 col-sm-9 br-fadein br-fadeout">
+        class="help-block col-sm-offset-3 col-sm-3 br-fadein br-fadeout">
         Optionally enter a description of this identity.
       </p>
     </div>
     <div class="form-group" ng-show="model.publicMode == 'some'">
-      <div class="col-sm-offset-2 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
           <label>
             <input type="checkbox" name="publicDescription" ng-model="model.public.description">
@@ -201,8 +201,8 @@
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="imageType">Visibility</label>
-      <div class="col-sm-9">
+      <label class="control-label col-sm-3" for="imageType">Visibility</label>
+      <div class="col-sm-8">
         <div class="radio">
           <label>
             <input type="radio" name="nonePublic" value="none" checked="checked" ng-model="model.publicMode" />
@@ -231,7 +231,7 @@
     </div>
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-8">
         <span data-spinner="model.loading"
           data-spinner-class="prepend-btn-spinner"></span>
         <button type="button" class="btn btn-primary"
