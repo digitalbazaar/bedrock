@@ -68,8 +68,9 @@
 
       </div>
       <div class="modal-footer">
-        <span data-spinner="loading"
-          data-spinner-class="prepend-btn-spinner"></span>
+        <span ng-show="loading">
+          <i class="fa fa-refresh fa-spin"></i>
+        </span>
         <button type="button" class="btn btn-primary"
           ng-disabled="loading || !model.identitySlugAvailable"
           ng-click="addIdentity()"><i class="fa fa-check"></i> Add</button>

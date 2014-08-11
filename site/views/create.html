@@ -163,7 +163,7 @@
         <legend>Service Agreement</legend>
 
         <div class="form-group" data-binding="agreementChecked">
-          <div class="col-sm-offset-2 col-sm-9">
+          <div class="col-md-offset-2 col-md-9">
             <div class="checkbox">
               <label>
                 <input type="checkbox" ng-model="model.agreementChecked"> I agree to the <a target="_blank" href="/legal#tos">Terms of Service</a> and <a target="_blank" href="/legal#pp">Privacy Policy</a>.
@@ -179,8 +179,9 @@
             ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
             class="btn btn-primary btn-lg"
             data-submit-form>Create Identity</button>
-          <span data-spinner="model.loading"
-            data-spinner-class="append-btn-spinner"></span>
+          <span ng-show="model.loading">
+            <i class="fa fa-refresh fa-spin fa-lg"></i>
+          </span>
         </div>
       </div>
     </form>

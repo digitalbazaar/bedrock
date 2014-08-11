@@ -22,14 +22,15 @@ function factory() {
       <h3 class="headline"> \
         {{headline}} \
         <span ng-hide="loading" class="btn-group pull-right"> \
-          <button type="button" class="btn btn-default btn-sm" \
+          <button type="button" \
+            class="btn btn-default btn-sm" \
             stackable-trigger="menu" \
             stackable-toggle="\'active\'"> \
             <i class="fa fa-bars"></i> \
           </button> \
         </span> \
         <span ng-show="loading" class="pull-right"> \
-          <span data-spinner="loading" data-spinner-class="h3-spinner"></span> \
+          <i class="fa fa-refresh fa-spin"></i> \
         </span> \
       </h3> \
       <stackable-popover stackable="menu" \
