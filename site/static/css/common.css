@@ -167,6 +167,17 @@ h1.headline {
   background-repeat: repeat-x;
   border-color: #b92c28;
 }
+.stackable-menu.dropdown-menu li.alert-success > a:hover,
+.stackable-menu.dropdown-menu li.alert-success > a:focus {
+  color: #fff;
+  background-image: -webkit-linear-gradient(top, #5cb85c 0%, #419641 100%);
+  background-image: -o-linear-gradient(top, #5cb85c 0%, #419641 100%);
+  background-image: linear-gradient(to bottom, #5cb85c 0%, #419641 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff419641', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #3e8f3e;
+}
 
 /* Modals */
 .modal {
