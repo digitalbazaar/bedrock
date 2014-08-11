@@ -199,9 +199,14 @@ h1.headline {
 .navbar .btn-group .btn {
   font-weight: bold;
 }
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
+}
 
 /* Progress Bars */
-/*.progress {
+.progress {
   position: relative;
 }
 .progress .progress-bar {
@@ -270,7 +275,6 @@ h1.headline {
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
-*/
 
 /* Sections */
 .section .headline {
