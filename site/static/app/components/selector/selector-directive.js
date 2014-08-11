@@ -67,7 +67,7 @@ function factory($filter) {
 
     // keep item grid up-to-date
     scope.grid = [];
-    scope.$watch('items', function(value) {
+    scope.$watch('items', function() {
       if(scope.columns !== undefined) {
         buildGrid(Math.max(1, parseInt(scope.columns, 10)));
       }
