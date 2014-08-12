@@ -25,7 +25,8 @@ function factory() {
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
-          <input class="form-control" type="text" \
+          <input class="form-control" \
+            type="{{options.type}}" \
             name="{{options.name}}" \
             placeholder="{{options.placeholder}}" \
             ng-model="model" \
@@ -45,12 +46,19 @@ function factory() {
     link: function(scope, element, attrs) {
       scope.$watch(attrs.brOptions, function(options) {
         scope.options = options || {};
+        scope.options.type = scope.options.type || 'text';
         scope.options.placeholder = scope.options.placeholder || '';
+
         var columns = scope.options.columns = scope.options.columns || {};
         columns.label = columns.label || 'col-sm-3';
         columns.input = columns.input || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
-        console.log('scope.options' ,scope.options);
+
+        if(scope.options.disabled) {
+          element.find('input').attr('disabled', '');
+        } else {
+          element.find('input').removeAttr('disabled');
+        }
       }, true);
     }
   };
