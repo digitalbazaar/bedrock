@@ -10,6 +10,7 @@ define([
   './alert/alert',
   './dashboard/dashboard',
   './duplicate-checker/duplicate-checker',
+  './form/form',
   './identity/identity',
   './key/key',
   './login/login',

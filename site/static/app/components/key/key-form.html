@@ -1,43 +1,12 @@
 <form class="well form-horizontal" role="form">
   <fieldset>
-    <div class="form-group" data-binding="label">
-      <label class="control-label col-sm-3" for="label">Key Label</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-        <input class="form-control" type="text" name="label"
-          ng-model="model.key.label"
-          data-track-state="model.help.label" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default"
-            data-help-toggle="model.help.label">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.label.show"
-        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout"
-        ng-include="'/app/components/key/key-help.html'"></p>
-    </div>
-
-    <div class="form-group" data-binding="publicKeyPem" ng-show="model.needPem">
-      <label class="control-label col-sm-3" for="publicKeyPem">Public Key PEM</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-key"></i></span>
-        <textarea class="form-control" name="publicKeyPem" rows="5"
-          placeholder="Public Key PEM"
-          ng-model="model.key.publicKeyPem"
-          data-track-state="model.help.publicKeyPem" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default btn-xs"
-            data-help-toggle="model.help.publicKeyPem">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.publicKeyPem.show"
-        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
-        Enter the public key PEM data.
-      </p>
-    </div>
+    <br-input br-model="model.key.label"
+      br-options="{icon: 'fa-tag', name: 'label', label: 'Key Label'}">
+      <div ng-include="'/app/components/key/key-help.html'"></div>
+    </br-input>
+    <br-textarea ng-show="model.needPem" br-model="model.key.publicKeyPem"
+      br-options="{icon: 'fa-key', name: 'publicKeyPem', label: 'Public Key PEM'}">
+      Enter the public key PEM data.
+    </br-textarea>
   </fieldset>
 </form>
