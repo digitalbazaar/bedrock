@@ -46,13 +46,20 @@ function factory() {
     link: function(scope, element, attrs) {
       scope.$watch(attrs.brOptions, function(options) {
         scope.options = options || {};
-        scope.options.placeholder = scope.options.placeholder || '';
+        scope.options.placeholder = (scope.options.placeholder ||
+          scope.options.label);
         scope.options.rows = scope.options.rows || '5';
+
         var columns = scope.options.columns = scope.options.columns || {};
         columns.label = columns.label || 'col-sm-3';
         columns.input = columns.input || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
-        console.log('scope.options' ,scope.options);
+
+        if(scope.options.disabled) {
+          element.find('textarea').attr('disabled', '');
+        } else {
+          element.find('textarea').removeAttr('disabled');
+        }
       }, true);
     }
   };

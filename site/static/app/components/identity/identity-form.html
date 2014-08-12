@@ -1,24 +1,10 @@
 <form class="form-horizontal" role="form">
   <fieldset>
-    <div class="form-group" data-binding="label">
-      <label class="control-label col-sm-3" for="label">Label</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-        <input class="form-control" type="text" name="label"
-          ng-model="model.identity.label"
-          data-track-state="model.help.label" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default"
-            data-help-toggle="model.help.label">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.label.show"
-        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
-        Enter the public label for this identity.
-      </p>
-    </div>
+    <br-input br-model="model.identity.label"
+      br-options="{icon: 'fa-tag', name: 'label', label: 'Label'}">
+      Enter the public label for this identity.
+    </br-input>
+
     <div class="form-group" ng-show="model.publicMode == 'some'">
       <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
@@ -30,25 +16,11 @@
       </div>
     </div>
 
-    <div class="form-group" data-binding="url">
-      <label class="control-label col-sm-3" for="url">Website</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-        <input class="form-control" type="url" name="url"
-          ng-model="model.identity.url"
-          data-track-state="model.help.url" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default"
-            data-help-toggle="model.help.url">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.url.show"
-        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
-        Optionally enter a website URL for this identity.
-      </p>
-    </div>
+    <br-input br-model="model.identity.url"
+      br-options="{icon: 'fa-globe', type: 'url', name: 'url', label: 'Website'}">
+      Optionally enter a website URL for this identity.
+    </br-input>
+
     <div class="form-group" ng-show="model.publicMode == 'some'">
       <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
@@ -60,26 +32,12 @@
       </div>
     </div>
 
-    <div class="form-group" data-binding="email">
-      <label class="control-label col-sm-3" for="email">Email</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <input class="form-control" type="email" name="email" disabled="disabled"
-          ng-model="model.identity.email"
-          data-track-state="model.help.email" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default"
-            data-help-toggle="model.help.email">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.email.show"
-        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
+    <br-input br-model="model.identity.email"
+      br-options="{icon: 'fa-envelope', type: 'email', name: 'email', label: 'Email', disabled: true}">
       <!-- Enter an email for this identity. -->
-        Identity email can not be changed on this page.
-      </p>
-    </div>
+      Identity email can not be changed on this page.
+    </br-input>
+
     <div class="form-group" ng-show="model.publicMode == 'some'">
       <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
@@ -134,25 +92,11 @@
       </p>
     </div>
 
-    <div ng-show="model.identity.sysImageType == 'url'" class="form-group" data-binding="image">
-      <label class="control-label col-sm-3" for="image">Image URL</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-picture"></i></span>
-        <input type="url" name="image"
-          ng-model="model.identity.image"
-          data-track-state="model.help.image" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default"
-            data-help-toggle="model.help.image">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.image.show"
-        class="help-block col-sm-offset-3 col-sm-8 br-fadein br-fadeout">
-        Enter the URL to an image for this identity.
-      </p>
-    </div>
+    <br-input ng-show="model.identity.sysImageType == 'url'"
+      br-model="model.identity.image"
+      br-options="{icon: 'fa-picture', type: 'url', name: 'image', label: 'Image URL'}">
+      Enter the URL to an image for this identity.
+    </br-input>
 
     <div ng-show="model.imagePreview" class="form-group">
       <label class="control-label col-sm-3" for="image">Image Preview</label>
@@ -169,26 +113,11 @@
       </div>
     </div>
 
-    <div class="form-group" data-binding="description">
-      <label class="control-label col-sm-3" for="description">Description</label>
-      <div class="input-group col-sm-8">
-        <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-        <textarea class="form-control" rows="5"
-          placeholder="Description"
-          ng-model="model.identity.description"
-          data-track-state="model.help.description"></textarea>
-        <span class="input-group-btn">
-          <button class="btn btn-default btn-xs"
-            data-help-toggle="model.help.description">
-            <i class="fa fa-question-circle"></i>
-          </button>
-        </span>
-      </div>
-      <p ng-show="model.help.description.show"
-        class="help-block col-sm-offset-3 col-sm-3 br-fadein br-fadeout">
-        Optionally enter a description of this identity.
-      </p>
-    </div>
+    <br-textarea br-model="model.identity.description"
+      br-options="{icon: 'fa-comment', name: 'description', label: 'Description'}">
+      Optionally enter a description of this identity.
+    </br-textarea>
+
     <div class="form-group" ng-show="model.publicMode == 'some'">
       <div class="col-sm-offset-3 col-sm-8">
         <div class="checkbox">
