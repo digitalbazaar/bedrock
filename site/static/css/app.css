@@ -8465,6 +8465,77 @@ a {
   display: block !important;
 }
 /* Buttons */
+.br-btn-navbar {
+  color: #777777;
+  background-color: #e6e6e6;
+  border-color: #c7c7c7;
+  background-image: -webkit-linear-gradient(top, #e6e6e6 0%, #c7c7c7 100%);
+  background-image: -o-linear-gradient(top, #e6e6e6 0%, #c7c7c7 100%);
+  background-image: linear-gradient(to bottom, #e6e6e6 0%, #c7c7c7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffc7c7c7', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #c2c2c2;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.br-btn-navbar:hover,
+.br-btn-navbar:focus,
+.br-btn-navbar:active,
+.br-btn-navbar.active,
+.open > .dropdown-toggle.br-btn-navbar {
+  color: #777777;
+  background-color: #cccccc;
+  border-color: #a8a8a8;
+}
+.br-btn-navbar:active,
+.br-btn-navbar.active,
+.open > .dropdown-toggle.br-btn-navbar {
+  background-image: none;
+}
+.br-btn-navbar.disabled,
+.br-btn-navbar[disabled],
+fieldset[disabled] .br-btn-navbar,
+.br-btn-navbar.disabled:hover,
+.br-btn-navbar[disabled]:hover,
+fieldset[disabled] .br-btn-navbar:hover,
+.br-btn-navbar.disabled:focus,
+.br-btn-navbar[disabled]:focus,
+fieldset[disabled] .br-btn-navbar:focus,
+.br-btn-navbar.disabled:active,
+.br-btn-navbar[disabled]:active,
+fieldset[disabled] .br-btn-navbar:active,
+.br-btn-navbar.disabled.active,
+.br-btn-navbar[disabled].active,
+fieldset[disabled] .br-btn-navbar.active {
+  background-color: #e6e6e6;
+  border-color: #c7c7c7;
+}
+.br-btn-navbar .badge {
+  color: #e6e6e6;
+  background-color: #777777;
+}
+.br-btn-navbar:hover,
+.br-btn-navbar:focus {
+  background-color: #c7c7c7;
+  background-position: 0 -15px;
+}
+.br-btn-navbar:active,
+.br-btn-navbar.active {
+  background-color: #c7c7c7;
+  border-color: #c2c2c2;
+}
+.br-btn-navbar:disabled,
+.br-btn-navbar[disabled] {
+  background-color: #c7c7c7;
+  background-image: none;
+}
+.br-btn-navbar:active,
+.br-btn-navbar.active {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
 .br-btn-navbar-inverse {
   color: #ffffff;
   background-color: #444444;
