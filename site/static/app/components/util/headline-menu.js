@@ -30,7 +30,7 @@ function factory() {
           </button> \
         </span> \
         <span ng-show="loading" class="pull-right"> \
-          <i class="fa fa-refresh fa-spin"></i> \
+          <i class="fa fa-refresh fa-spin text-muted"></i> \
         </span> \
       </h3> \
       <stackable-popover stackable="menu" \

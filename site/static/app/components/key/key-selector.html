@@ -4,8 +4,9 @@
     data-selected="selected"
     data-invalid="invalid"
     data-add-item="model.showAddKeyModal=true" data-fixed="{{fixed}}">
-    <div data-spinner="model.services.key.loading"
-      data-spinner-class="selector-spinner"></div>
+    <span ng-show="model.services.key.loading">
+      <i class="fa fa-refresh fa-spin text-muted"></i>
+    </span>
     <div ng-hide="model.services.key.loading">
       <strong>{{selected.label}}</strong>
       <br/>

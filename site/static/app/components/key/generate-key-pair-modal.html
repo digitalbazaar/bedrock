@@ -17,9 +17,9 @@
           <button type="button" ng-hide="model.loading"
             class="btn btn-primary"
             ng-click="model.generateKeyPair()">Generate Key</button>
-          <span ng-show="model.loading"> This may take a minute...</span>
-          <span data-spinner="model.loading"
-            data-spinner-class="append-btn-spinner"></span>
+          <span ng-show="model.loading">
+            This may take a minute... <i class="fa fa-refresh fa-spin text-muted"></i>
+          </span>
         </div>
         <div ng-show="model.success">
           <p>
@@ -33,8 +33,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <span data-spinner="model.loading"
-          data-spinner-class="prepend-btn-spinner"></span>
+        <span ng-show="model.loading">
+          <i class="fa fa-refresh fa-spin text-muted"></i>
+        </span>
         <span ng-show="model.success">
           <button type="button" class="btn btn-primary"
             ng-disabled="model.loading"

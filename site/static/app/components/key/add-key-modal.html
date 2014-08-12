@@ -28,8 +28,9 @@
       </div>
       <div class="modal-footer">
         <form id="registration-form" method="post" action="{{model.registrationCallback}}">
-          <span data-spinner="model.loading"
-            data-spinner-class="prepend-btn-spinner"></span>
+          <span ng-show="model.loading">
+            <i class="fa fa-refresh fa-spin text-muted"></i>
+          </span>
           <button type="button" class="btn btn-primary"
             ng-hide="model.success"
             ng-disabled="model.loading"

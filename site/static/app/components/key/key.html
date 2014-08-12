@@ -10,7 +10,7 @@
       <h3 class="headline">
         Cryptographic Key Details
         <span ng-show="model.state.keys.loading" class="pull-right">
-          <span data-spinner="model.state.keys.loading" data-spinner-class="h3-spinner"></span>
+          <i class="fa fa-refresh fa-spin text-muted"></i>
         </span>
       </h3>
       <div class="alert alert-error" ng-show="model.key === null && !model.state.keys.loading">

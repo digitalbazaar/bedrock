@@ -31,8 +31,9 @@
       <input name="password" type="password" placeholder="Password"
         ng-model="model.password" ng-disabled="model.loading" />
 
-      <div data-spinner="model.loading"
-        data-spinner-class="center-spinner"></div>
+      <div ng-show="model.loading">
+        <i class="fa fa-refresh fa-spin text-muted"></i>
+      </div>
 
       <div ng-hide="model.loading">
         <div class="btn-group">

@@ -232,8 +232,9 @@
 
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-8">
-        <span data-spinner="model.loading"
-          data-spinner-class="prepend-btn-spinner"></span>
+        <span ng-show="model.loading">
+          <i class="fa fa-refresh fa-spin text-muted"></i>
+        </span>
         <button type="button" class="btn btn-primary"
           ng-disabled="model.loading || !model.identity"
           ng-click="model.update()"><i class="fa fa-check"></i> Update</button>
