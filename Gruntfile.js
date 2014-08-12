@@ -32,12 +32,7 @@ module.exports = function(grunt) {
       },
       files: {
         'site/static/css/bundle.min.css': [
-          'site/static/bootstrap/css/bootstrap.css',
-          'site/static/font-awesome/css/font-awesome.css',
-          'bower_components/select2/select2.css',
-          'bower_components/select2/select2-bootstrap.css',
-          'bower_components/angular-stackables/stackables.css',
-          'site/static/css/common.css',
+          'site/static/css/app.css',
           'site/static/css/custom.css'
         ]
       }
@@ -164,19 +159,19 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.config('less', {
-    compileBootstrap: {
+    compileApp: {
       options: {
         strictMath: true,
         sourceMap: false,
         outputSourceFiles: false
       },
       files: {
-        'site/static/bootstrap/css/bootstrap.css': 'less/bootstrap.less'
+        'site/static/css/app.css': 'less/app.less'
       }
     }
   });
 
-  grunt.registerTask('compile-bootstrap', ['less:compileBootstrap']);
+  grunt.registerTask('compile-css', ['less:compileApp']);
 
   // default tasks
   grunt.registerTask('default', ['ngtemplates', 'cssmin', 'requirejs']);

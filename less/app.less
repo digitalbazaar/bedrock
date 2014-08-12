@@ -3,6 +3,10 @@
  *
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
+@import "base.less";
+@import "../bower-components/select2/select2.css";
+@import "../bower-components/select2/select2-bootstrap.css";
+@import "../bower-components/angular-stackables/stackables.css";
 
 /* Hide AngularJS templates prior to bootstrapping AngularJS */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -386,6 +390,24 @@ input.slug.error {
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;
+}
+
+/* Spinners */
+.br-spinner-inside-input {
+  position: absolute;
+  z-index: 3;
+  margin-top: floor((@font-size-base * 0.5));
+  margin-left: floor((-@font-size-base - 2));
+}
+
+.input-sm + .br-spinner-inside-input {
+  margin-top: floor((@font-size-small * 0.5));
+  margin-left: floor((-@font-size-small - 2));
+}
+
+.input-lg + .br-spinner-inside-input {
+  margin-top: floor((@font-size-large * 0.5));
+  margin-left: floor((-@font-size-large - 2));
 }
 
 /* Tables */

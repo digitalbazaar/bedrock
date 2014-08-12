@@ -1,28 +1,10 @@
 // core bootstrap files
-@import "../bower_components/bootstrap/less/bootstrap.less";
-@import "../bower_components/bootstrap/less/theme.less";
+@import '../bower_components/bootstrap/less/bootstrap.less';
+@import '../bower_components/bootstrap/less/theme.less';
+@import '../bower_components/font-awesome/less/font-awesome.less';
 
-// custom bootstrap theme
-
-/* Spinners */
-.br-spinner-inside-input {
-  position: absolute;
-  z-index: 3;
-  margin-top: floor((@font-size-base * 0.5));
-  margin-left: floor((-@font-size-base - 2));
-}
-
-.input-sm + .br-spinner-inside-input {
-  margin-top: floor((@font-size-small * 0.5));
-  margin-left: floor((-@font-size-small - 2));
-}
-
-.input-lg + .br-spinner-inside-input {
-  margin-top: floor((@font-size-large * 0.5));
-  margin-left: floor((-@font-size-large - 2));
-}
-
-/* Variables */
+// Font Awesome
+@fa-font-path: '/bower-components/font-awesome/fonts/';
 
 // Grays
 @black: #000000;

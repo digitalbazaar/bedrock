@@ -17,7 +17,7 @@
     "ci-test": "node test.js --backend --frontend",
     "ci-lint": "grunt jshint --mode=ci || exit 0",
     "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js --backend > reports/coverage.html && rm -rf lib-cov",
-    "bootstrap": "grunt compile-bootstrap",
+    "compile-css": "grunt compile-css",
     "minify": "grunt",
     "install-protractor": "webdriver-manager update",
     "postinstall": "bower install",
