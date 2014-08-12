@@ -22,7 +22,7 @@ require.config({
     'angular-sanitize': 'bower-components/angular-sanitize/angular-sanitize',
     'angular-ui-select2': 'bower-components/angular-ui-select2/src/select2',
     bedrock: '.',
-    bootstrap: 'bootstrap/js/bootstrap',
+    bootstrap: 'bower-components/bootstrap/dist/js/bootstrap',
     'dialog-polyfill': 'bower-components/dialog-polyfill/dialog-polyfill',
     iso8601: 'iso8601/iso8601',
     jquery: 'bower-components/jquery/dist/jquery',

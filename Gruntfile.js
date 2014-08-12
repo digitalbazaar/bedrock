@@ -90,6 +90,7 @@ module.exports = function(grunt) {
           'angular-route': '../../bower_components/angular-route/angular-route',
           'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
           'angular-ui-select2': '../../bower_components/angular-ui-select2/src/select2',
+          'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
           'dialog-polyfill': '../../bower_components/dialog-polyfill/dialog-polyfill',
           'forge': '../../node_modules/node-forge/js',
           'iso8601': '../../lib/iso8601/is8601',
