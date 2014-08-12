@@ -21,14 +21,14 @@
       <div class="collapse navbar-collapse" id="#navbar-collapse">
         <!-- nav menu -->
         <ul class="nav navbar-nav">
-          <li ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" ng-class="{active: pageTitle == item.pageTitle, dropdown: item.items}">
+          <li ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" ng-class="{active: route.vars.title == item.pageTitle, dropdown: item.items}">
             <a ng-if="!item.items" href="{{item.url || (model.identity.id + '/' + item.slug)}}"><i class="{{item.icon}}"></i> {{item.label}}</a>
             <a ng-if="item.items" href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="{{item.icon}}"></i> {{item.label}}
               <b class="caret"></b>
             </a>
             <ul ng-if="item.items" class="dropdown-menu">
-              <li ng-repeat="subitem in item.items" ng-class="{active: pageTitle == subitem.pageTitle, divider: subitem.divider}">
+              <li ng-repeat="subitem in item.items" ng-class="{active: route.vars.title == subitem.pageTitle, divider: subitem.divider}">
                 <a ng-if="!subitem.divider" href="{{subitem.url || (model.identity.id + '/' + subitem.slug)}}"><i class="{{subitem.icon}}"></i> {{subitem.label}}</a>
               </li>
             </ul>
