@@ -18,6 +18,14 @@ function factory($filter, $parse) {
       var slug = $filter('slug');
       var set = $parse(attrs.ngModel).assign || angular.noop;
 
+      // if slug-in attribute is set, use it to update ng-model
+      scope.$watch(attrs.slugIn, function(value) {
+        if(value === undefined) {
+          return;
+        }
+        set(scope, slug(value));
+      });
+
       var namespace = '.slugInDirective';
       scope.$on('$destroy', function() {
         element.off(namespace);
