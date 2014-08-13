@@ -169,7 +169,7 @@ h1.headline {
   margin-top: 10px;
 }
 
-/* Help Toggle Overlay */
+/* Help Toggle */
 .input-group textarea + .input-group-btn.help-toggle > .btn,
 .help-toggle-overlay {
   -webkit-border-radius: 3px;
@@ -179,6 +179,28 @@ h1.headline {
   left: -27px;
   top: -40px;
   z-index: 3;
+}
+/* Correct border-radius for form-controls with help toggles */
+.input-group .form-control {
+  // replace original setting that removed radius for non-first/last child
+  // with only removing it if the form control is not a 'br-help' control
+  &:not(:first-child):not(:last-child) {
+    border-radius: @input-border-radius;
+  }
+  &:not(.br-help):not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  &.br-help {
+    &:not(:first-child) {
+      .border-left-radius(0);
+    }
+    .border-right-radius(@input-border-radius);
+
+    // no border radius when help-toggle is shown/animating
+    &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
+      .border-right-radius(0);
+    }
+  }
 }
 
 /* Menus */

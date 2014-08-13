@@ -39,6 +39,27 @@ function factory($parse) {
       set(scope, state);
     });
 
+    scope.$watch(function() {
+      return state;
+    }, function() {
+      if(!state) {
+        return;
+      }
+      var states = ['focus', 'help', 'mouseover', 'pressed', 'show'];
+      for(var key in state) {
+        if(states.indexOf(key) === -1) {
+          continue;
+        }
+        console.log('toggle', key, state[key]);
+        element.toggleClass('br-' + key, !!state[key]);
+        if(key === 'help') {
+          for(var helpKey in state.help) {
+            element.toggleClass('br-help-' + helpKey, !!state.help[helpKey]);
+          }
+        }
+      }
+    }, true);
+
     // track events
     element.focus(function() {
       state.focus = true;

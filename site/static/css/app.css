@@ -8638,7 +8638,7 @@ h1.headline {
 .form-horizontal .help-block {
   margin-top: 10px;
 }
-/* Help Toggle Overlay */
+/* Help Toggle */
 .input-group textarea + .input-group-btn.help-toggle > .btn,
 .help-toggle-overlay {
   -webkit-border-radius: 3px;
@@ -8648,6 +8648,29 @@ h1.headline {
   left: -27px;
   top: -40px;
   z-index: 3;
+}
+/* Correct border-radius for form-controls with help toggles */
+.input-group .form-control:not(:first-child):not(:last-child) {
+  border-radius: 4px;
+}
+.input-group .form-control:not(.br-help):not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.input-group .form-control.br-help {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.input-group .form-control.br-help:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.input-group .form-control.br-help:hover,
+.input-group .form-control.br-help:focus,
+.input-group .form-control.br-help.br-show,
+.input-group .form-control.br-help.br-help-focus,
+.input-group .form-control.br-help.br-help-mouseover {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 /* Menus */
 .stackable-menu.dropdown-menu {
@@ -8932,20 +8955,6 @@ input.slug.error {
   background-color: #e5e5e5;
 }
 /* Old CSS */
-/* Fix for labeled horizontal fields */
-/*input.form-field-vspaced,
-textarea.form-field-vspaced,
-select.form-field-vspaced {
-  margin-bottom: 10px;
-}*/
-/* Fix for input-prepend w/following help blocks */
-/*.input-prepend ~ .help-block {
-  margin-top: 10px;
-}*/
-/* Fix for input-append w/following help blocks */
-/*.input-append ~ .help-block {
-  margin-top: 10px;
-}*/
 /* Fix for popovers triggered by buttons in button groups */
 /*.btn-group > .btn:last-of-type {
   -webkit-border-top-right-radius: 4px;
@@ -8955,131 +8964,11 @@ select.form-field-vspaced {
   -moz-border-radius-topright: 4px;
   -moz-border-radius-bottomright: 4px;
 }*/
-/* Fix for button active state */
-/*.input-append .active,
-.input-prepend .active {
-  border-color: #BBB;
-}*/
-/* Fix for one-off left margin */
-/*.input-append .add-on {
-  margin-left: 0px;
-}*/
 /* Fix to prevent unnecessary wrapping of inline radio text */
 /*.radio input[type="radio"], .checkbox input[type="checkbox"] {
   float: none;
   margin-top: -1px;
 }*/
-/* Help toggle */
-/*.input-append.help-toggle input,
-.input-append.help-toggle textarea {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.input-prepend.input-append.help-toggle input {
-  -webkit-border-radius: 0 4px 4px 0;
-  -moz-border-radius: 0 4px 4px 0;
-  border-radius: 0 4px 4px 0;
-}
-.input-prepend.input-append.help-toggle textarea {
-  -webkit-border-radius: 0 4px 4px 4px;
-  -moz-border-radius: 0 4px 4px 4px;
-  border-radius: 0 4px 4px 4px;
-}
-.input-append.help-toggle.help-toggle-on input {
-  -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
-  border-radius: 4px 0 0 4px;
-}
-.input-prepend.input-append.help-toggle.help-toggle-on input {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-}
-.input-prepend.input-append .add-on:last-child,
-.input-prepend.input-append .btn:last-child {
-  padding: 4px 7px;
-}
-
-.input-prepend.input-append .add-on:last-child, .input-prepend.input-append .btn:last-child
-*/
-/* Overlay help toggle */
-/*.input-prepend.input-append.help-toggle .add-on:last-child.help-toggle-overlay,
-.input-prepend.input-append.help-toggle .btn:last-child.help-toggle-overlay,
-.input-prepend.input-append.help-toggle > textarea + :last-child,
-.input-prepend.input-append.help-toggle > textarea + .btn,
-.input-append.help-toggle .add-on:last-child.help-toggle-overlay,
-.input-append.help-toggle .btn:last-child.help-toggle-overlay,
-.input-append.help-toggle > textarea + :last-child,
-.input-append.help-toggle > textarea + .btn,
-.help-toggle-overlay {
-  position: relative;
-  top: 4px;
-  left: -29px;
-  padding: 2px 6px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-*/
-/* Short alert displays */
-/*.alert-short {
-  width: 230px;
-}
-*/
-/* Text size modifiers */
-/*.small-text {
-  font-size: 0.75em;
-}*/
-/* Variable field displays with fixed boundaries */
-/*.form-field-constrained {
-  width: 90%;
-  min-width: 30%;
-  max-width: 90%;
-}
-*/
-/* Always pad body */
-/*body {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-*/
-/*.navbar {
-  margin-right: -20px;
-  margin-left: -20px;
-}
-.navbar .brand {
-  padding: 10px 20px 9px;
-}
-.navbar .brand-minimal {
-  padding: 10px 20px 9px;
-}
-.navbar-inner-banner {
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-}
-.navbar .nav > li > a {
-  padding: 13px 10px 13px;
-}
-.btn .btn-navbar {
-  margin-top: 6px;
-}
-.navbar .popover {
-  color: #333;
-}*/
-/* Banner input boxes */
-/*.navbar .btn-group-banner, .navbar .btn-group-banner .btn {
-  display: inline-block;
-  margin-top: 0px;
-  margin-bottom: 0;
-}
-.btn-group-banner .btn {
-  float: none;
-  margin-left: -5px;
-  font-weight: bold;
-}
-*/
 /* Align at the top of their rows. */
 /*.table .name td, .table .action td {
   vertical-align: top
@@ -9096,19 +8985,6 @@ select.form-field-vspaced {
   vertical-align: inherit;
 }
 */
-/* First headline in a tab pane section has no top margin to align with top
-  of tab, others do. */
-/*.tab-pane .section h3 {
-  margin-top: 0;
-}
-.tab-pane .section~.section h3 {
-  margin-top: 10px;
-}
-*/
-/* Remove bottom white border on breadcrumb divider */
-/*.breadcrumb > li > .divider {
-  border-bottom: 0;
-}*/
 /* Documentation */
 /*
 .indent0 {
@@ -9130,51 +9006,6 @@ select.form-field-vspaced {
   margin-left: 50px;
 }
 */
-/* Activity Spinner */
-/*.center-spinner {
-  text-align: center;
-  display: inline-block;
-}
-.selector-spinner {
-  text-align: center;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-.table-spinner {
-  text-align: center;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-.alert-spinner {
-  float: right;
-  display: inline;
-  text-align: right;
-  margin-top: -10px;
-  margin-right: -15px;
-}
-.prepend-btn-spinner {
-  display: inline-block;
-  padding-right: 20px;
-  margin-bottom: 5px;
-}
-.append-btn-spinner {
-  display: inline-block;
-  padding-left: 20px;
-  margin-bottom: 5px;
-}
-.inside-input-spinner-wrapper {
-  position: absolute;
-}
-.inside-input-spinner {
-  display: inline-block;
-  margin: 15px 0 0 -15px;
-}
-.h3-spinner {
-  display: inline-block;
-  padding-right: 13px;
-  margin-bottom: 9px;
-}
-*/
 /* Misc */
 /*.table th.compact, .table td.compact {*/
 /* shrink column to fit **single word** text */
@@ -9183,12 +9014,6 @@ select.form-field-vspaced {
 .table th.nowrap, .table td.nowrap {*/
 /* shrink column to fit with out word wrapping text */
 /*  white-space: nowrap;
-}
-.table .center {
-  text-align: center;
-}
-.table .alert {
-  text-align: center;
 }
 .table .action {
   text-align: center;
@@ -9202,18 +9027,6 @@ select.form-field-vspaced {
 }
 .no-margin {
   margin: 0;
-}
-.divider {
-  height: 1px;
-  margin: 5px 1px;
-  overflow: hidden;
-  background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
-  *width: 100%;
-  *margin: -5px 0 5px;
-}
-.breadcrumb .divider {
-  background-color: transparent;
 }
 .inline-block {
   display: inline-block;
@@ -9229,11 +9042,6 @@ select.form-field-vspaced {
 }
 .address .meta {
   color: gray;
-}
-.open > .dropdown-menu.center {
-  display: inline-block;
-  position: relative;
-  float: none;
 }
 .well.well-transparent {
   background-color: transparent;
@@ -9262,21 +9070,6 @@ select.form-field-vspaced {
 .active-false {
   text-decoration: line-through;
   color: grey;
-}
-*/
-/* Icon positioning */
-/*ul.nav a [class^="icon-"] {
-  margin-top: 2px;
-}
-.btn [class^="icon-"],
-.nav [class^="icon-"],
-.btn [class*=" icon-"],
-.nav [class*=" icon-"] {
-  display: inline-block;
-  line-height: 14px;
-}
-[class^="icon-"], [class*=" icon-"] {
-  vertical-align: baseline;
 }
 */
 /* Documentation classes */
@@ -9378,109 +9171,6 @@ h1 > .rest-summary > .rest-path {
   font-style: italic;
 }
 */
-/* Selectors */
-/*
-.item-hover:hover {
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  outline: 0;
-  outline: thin dotted \9;*/
-/* IE6-8 */
-/*}
-
-.item-selected {
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  outline: 0;
-  outline: thin dotted \9;*/
-/* IE6-8 */
-/*}
-*/
-/* Progress Bars */
-/*.progress {
-  position: relative;
-}
-.progress .bar {
-  position: absolute;
-  overflow: hidden;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.progress .stacked-bar,
-.progress .stacked-bar-first,
-.progress .stacked-bar-last {
-  position: relative;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  border: 0;
-}
-.progress .stacked-bar-first {
-  -webkit-border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.progress .stacked-bar-last {
-  -webkit-border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-.progress .stacked-bar-text {
-  background: transparent;
-}
-.progress .progressbar-text-front {
-  display: block;
-  font-size: 14px;
-  text-align: center;
-}
-.progress .progressbar-text-back {
-  position: absolute;
-  width: 100%;
-  font-size: 14px;
-  text-align: center;
-}
-.progress-disabled .bar,
-.progress .bar-disabled {
-  background-color: #999999;
-  background-image: -moz-linear-gradient(top, #a9a9a9, #898989);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a9a9a9), to(#898989));
-  background-image: -webkit-linear-gradient(top, #a9a9a9, #898989);
-  background-image: -o-linear-gradient(top, #a9a9a9, #898989);
-  background-image: linear-gradient(to bottom, #a9a9a9, #898989);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffa9a9a9', endColorstr='#ff898989', GradientType=0);
-}
-.progress-disabled.progress-striped .bar,
-.progress-striped .bar-disabled {
-  background-color: #a9a9a9;
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-}
-*/
 /* Placeholder fixes */
 /*input.placeholder,
 textarea.placeholder {
@@ -9494,41 +9184,5 @@ textarea.placeholder {
 }
 input:-moz-placeholder {
   color: #aaa;
-}
-*/
-/* Responsive changes */
-/* Fix for responsive fixed-size input fields */
-/*@media (max-width: 767px) {
-  input.input-small {
-    width: 90px;
-  }
-}
-
-@media (max-width: 979px) {
-  .navbar .brand {
-    margin-left: -20px;
-  }
-}
-
-@media (max-width: 767px) {
-  .navbar {
-    margin-right: -20px;
-    margin-left: -20px;
-  }
-}
-
-@media (max-width: 767px) {
-  .navbar-login .container {
-    padding-bottom: 8px;
-  }
-  .navbar .brand {
-    margin-left: -20px;
-  }
-}
-
-@media (max-width: 604px) {
-  .navbar .btn-group-banner, .navbar .btn-group-banner .btn {
-    margin-top: 3px;
-  }
 }
 */
