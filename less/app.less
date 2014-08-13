@@ -336,24 +336,38 @@ h1.headline {
 }
 
 /* Sections */
-.section .headline {
-  background: #f9f9f9;
-  border-top: thin solid #ccc;
+.section h3.headline {
+  background: lighten(@gray-lighter, 3%);
+  border-top: thin solid lighten(@gray-light, 30%);
   font-weight: bold;
-  line-height: 36px;
-  padding: 5px 7px 0px;
+  line-height: @line-height-small;
+  padding: @padding-xs-vertical @padding-xs-horizontal;
   text-align: left;
+
+  & .btn {
+    margin-top: floor(((floor(@font-size-h3 * @line-height-small) - @input-height-base) / 2));
+
+    &.btn-lg {
+      margin-top: floor(((floor(@font-size-h3 * @line-height-small) - @input-height-large) / 2));
+    }
+    &.btn-sm {
+      margin-top: floor(((floor(@font-size-h3 * @line-height-small) - @input-height-small) / 2));
+    }
+    &.btn-xs {
+      margin-top: floor(((floor(@font-size-h3 * @line-height-small) - (floor(@font-size-small * @line-height-small) + (@padding-xs-vertical * 2) + 2)) / 2));
+    }
+  }
 }
 .section h4.headline {
   text-align: left;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: @padding-small-vertical;
+  padding-bottom: @padding-small-vertical;
 }
 
 /* Select2 widgets */
 .select2-container .select2-choice > .select2-chosen,
 .select2-drop {
-  font-size: 14px;
+  font-size: @font-size-base;
 }
 .select2-container {
   width: 220px;
