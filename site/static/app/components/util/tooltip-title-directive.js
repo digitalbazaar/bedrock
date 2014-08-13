@@ -51,7 +51,7 @@ function factory() {
         }
       }
     });
-  };
+  }
 }
 
 return {tooltipTitle: factory};

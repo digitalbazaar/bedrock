@@ -273,7 +273,7 @@ function factory($rootScope, $http, $location, ModelService) {
       return self.config.urls[method];
     }
     return self.config.url;
-  }
+  };
 
   /**
    * Check if storage should be updated. If the options object has
@@ -288,7 +288,7 @@ function factory($rootScope, $http, $location, ModelService) {
       return options.update;
     }
     return true;
-  }
+  };
 
   // expose service to scope
   $rootScope.app.services.resource = service;
