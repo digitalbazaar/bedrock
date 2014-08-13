@@ -115,6 +115,8 @@ module.run(function($rootScope, $location, $route, $http, util) {
   // set site and page titles
   $rootScope.siteTitle = window.data.siteTitle;
   $rootScope.pageTitle = window.data.pageTitle;
+  $rootScope.productionMode = window.data.productionMode;
+  $rootScope.demoWarningUrl = window.data.demoWarningUrl;
 
   // build route regexes
   var routeRegexes = [];

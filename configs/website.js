@@ -41,6 +41,7 @@ config.website.views.vars = {
     baseUri: config.server.baseUri,
     siteTitle: config.brand.name,
     productionMode: false,
+    demoWarningUrl: 'https://bedrock.dev/wiki/Demo_Warning',
     // key generation config
     keygen: {
       bits: 2048
