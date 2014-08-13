@@ -87,6 +87,7 @@ module.exports = function(grunt) {
           'almond': '../../node_modules/almond/almond',
           'angular': '../../bower_components/angular/angular',
           'angular-animate': '../../bower_components/angular-animate/angular-animate',
+          'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
           'angular-route': '../../bower_components/angular-route/angular-route',
           'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
           'angular-ui-select2': '../../bower_components/angular-ui-select2/src/select2',

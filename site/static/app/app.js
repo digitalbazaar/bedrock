@@ -8,12 +8,11 @@
 define([
   'angular',
   'angular-animate',
+  'angular-bootstrap',
   'angular-route',
   'angular-sanitize',
   'angular-ui-select2',
   'bootstrap',
-  'ui-bootstrap',
-  'ui-utils',
   'promise',
   'stackables',
   'app/configs',
@@ -25,46 +24,45 @@ define([
 
 var module = angular.module('app', [
   'ngAnimate', 'ngRoute', 'ngSanitize',
-  'ui.bootstrap', 'ui.select2', 'ui.utils',
-  'stackables',
+  'ui.bootstrap', 'ui.select2', 'stackables',
   'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */
 module.config(function($locationProvider, $routeProvider, $httpProvider) {
-    $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
+  $locationProvider.html5Mode(true);
+  $locationProvider.hashPrefix('!');
 
-    // add non-route
-    $routeProvider.otherwise({none: true});
+  // add non-route
+  $routeProvider.otherwise({none: true});
 
-    // normalize errors, deal w/auth redirection
-    /* @ngInject */
-    $httpProvider.interceptors.push(function($rootScope, $q, $timeout) {
-      return {
-        response: function(response) {
-          if('delay' in response.config) {
-            var defer = $q.defer();
-            $timeout(function() {
-              defer.resolve(response);
-            }, response.config.delay);
-            return defer.promise;
-          }
-          return response;
-        },
-        responseError: function(response) {
-          var error = response.data || {};
-          if(error.type === undefined) {
-            error.type = 'website.Exception';
-            error.message =
-              'An error occurred while communicating with the server: ' +
-              (response.statusText || ('HTTP ' + response.status));
-          } else if(error.type === 'bedrock.website.PermissionDenied') {
-            // invalid session or missing session, show login modal
-            $rootScope.$emit('showLoginModal');
-          }
-          return $q.reject(error);
+  // normalize errors, deal w/auth redirection
+  /* @ngInject */
+  $httpProvider.interceptors.push(function($rootScope, $q, $timeout) {
+    return {
+      response: function(response) {
+        if('delay' in response.config) {
+          var defer = $q.defer();
+          $timeout(function() {
+            defer.resolve(response);
+          }, response.config.delay);
+          return defer.promise;
         }
-      };
-    });
+        return response;
+      },
+      responseError: function(response) {
+        var error = response.data || {};
+        if(error.type === undefined) {
+          error.type = 'website.Exception';
+          error.message =
+            'An error occurred while communicating with the server: ' +
+            (response.statusText || ('HTTP ' + response.status));
+        } else if(error.type === 'bedrock.website.PermissionDenied') {
+          // invalid session or missing session, show login modal
+          $rootScope.$emit('showLoginModal');
+        }
+        return $q.reject(error);
+      }
+    };
+  });
 });
 
 // utility functions

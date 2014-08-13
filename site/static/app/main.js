@@ -18,6 +18,7 @@ require.config({
   paths: {
     angular: 'bower-components/angular/angular',
     'angular-animate': 'bower-components/angular-animate/angular-animate',
+    'angular-bootstrap': 'bower-components/angular-bootstrap/ui-bootstrap-tpls',
     'angular-route': 'bower-components/angular-route/angular-route',
     'angular-sanitize': 'bower-components/angular-sanitize/angular-sanitize',
     'angular-ui-select2': 'bower-components/angular-ui-select2/src/select2',
@@ -35,15 +36,13 @@ require.config({
     select2: 'bower-components/select2/select2',
     spin: 'spin/spin',
     stackables: 'bower-components/angular-stackables/stackables',
-    'ui-bootstrap': 'angular-ui/ui-bootstrap-tpls',
-    'ui-utils': 'angular-ui/ui-utils',
-    'ui-utils-ieshiv': 'angular-ui/ui-utils-ieshiv',
     underscore: 'underscore/underscore'
   },
   shim: {
     // export globals for non-requireJS libs
     angular: {exports: 'angular', deps: ['jquery']},
     'angular-animate': {deps: ['angular']},
+    'angular-bootstrap': {deps: ['angular']},
     'angular-route': {deps: ['angular']},
     'angular-sanitize': {deps: ['angular']},
     'angular-ui-select2': {deps: ['angular', 'select2']},
@@ -57,8 +56,6 @@ require.config({
     select2: {deps: ['angular'], exports: 'Select2'},
     spin: {exports: 'Spinner'},
     stackables: {deps: ['angular', 'dialog-polyfill']},
-    'ui-bootstrap': {deps: ['angular']},
-    'ui-utils': {deps: ['angular', 'ui-utils-ieshiv']},
     underscore: {exports: '_'}
   },
   // preload customizable app bootstrap module
