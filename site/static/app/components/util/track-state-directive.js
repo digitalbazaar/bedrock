@@ -50,7 +50,6 @@ function factory($parse) {
         if(states.indexOf(key) === -1) {
           continue;
         }
-        console.log('toggle', key, state[key]);
         element.toggleClass('br-' + key, !!state[key]);
         if(key === 'help') {
           for(var helpKey in state.help) {
