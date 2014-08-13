@@ -25,6 +25,9 @@ function factory() {
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
+          <span ng-if="options.image" \
+            class="input-group-addon"><img \
+            src="{{options.image}}"></img></span> \
           <input class="form-control" \
             type="{{options.type}}" \
             name="{{options.name}}" \
@@ -58,6 +61,18 @@ function factory() {
           element.find('input').attr('disabled', '');
         } else {
           element.find('input').removeAttr('disabled');
+        }
+
+        if('maxLength' in scope.options) {
+          element.find('input').attr('maxlength', scope.options.maxLength);
+        } else {
+          element.find('input').removeAttr('maxlength');
+        }
+
+        if('autocomplete' in scope.options) {
+          element.find('input').attr('autocomplete', scope.options.autocomplete);
+        } else {
+          element.find('input').removeAttr('autocomplete');
         }
       }, true);
     }

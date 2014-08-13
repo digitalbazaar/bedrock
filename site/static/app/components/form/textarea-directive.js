@@ -25,6 +25,9 @@ function factory() {
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
+          <span ng-if="options.image" \
+            class="input-group-addon"><img \
+            src="{{options.image}}"></img></span> \
           <textarea class="form-control" \
             rows="{{options.rows}}" \
             name="{{options.name}}" \
