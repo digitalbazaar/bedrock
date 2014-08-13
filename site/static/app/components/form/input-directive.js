@@ -27,7 +27,7 @@ function factory() {
             class="fa {{options.icon}}"></i></span> \
           <span ng-if="options.image" \
             class="input-group-addon"><img \
-            src="{{options.image}}"></img></span> \
+            ng-src="{{options.image}}"></img></span> \
           <input class="form-control" \
             type="{{options.type}}" \
             name="{{options.name}}" \
