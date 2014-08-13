@@ -197,8 +197,10 @@ h1.headline {
     .border-right-radius(@input-border-radius);
 
     // no border radius when help-toggle is shown/animating
-    &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
-      .border-right-radius(0);
+    &:not(textarea) {
+      &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
+        .border-right-radius(0);
+      }
     }
   }
 }

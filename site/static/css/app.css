@@ -8664,11 +8664,11 @@ h1.headline {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
-.input-group .form-control.br-help:hover,
-.input-group .form-control.br-help:focus,
-.input-group .form-control.br-help.br-show,
-.input-group .form-control.br-help.br-help-focus,
-.input-group .form-control.br-help.br-help-mouseover {
+.input-group .form-control.br-help:not(textarea):hover,
+.input-group .form-control.br-help:not(textarea):focus,
+.input-group .form-control.br-help:not(textarea).br-show,
+.input-group .form-control.br-help:not(textarea).br-help-focus,
+.input-group .form-control.br-help:not(textarea).br-help-mouseover {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
