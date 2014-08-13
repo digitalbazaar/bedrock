@@ -344,21 +344,24 @@ h1.headline {
   padding: @padding-xs-vertical @padding-xs-horizontal;
   text-align: left;
 
+  @header-height: floor((@font-size-h3 * @line-height-small));
+  @input-height-xs: (floor(@font-size-small * @line-height-small) + (@padding-xs-vertical * 2) + 2);
   & .btn {
-    margin-top: floor(((floor(@font-size-h3 * @line-height-small) - @input-height-base) / 2));
+    margin-top: floor(((@header-height - @input-height-base) / 2));
 
     &.btn-lg {
-      margin-top: floor(((floor(@font-size-h3 * @line-height-small) - @input-height-large) / 2));
+      margin-top: floor(((@header-height - @input-height-large) / 2));
     }
     &.btn-sm {
-      margin-top: floor(((floor(@font-size-h3 * @line-height-small) - @input-height-small) / 2));
+      margin-top: floor(((@header-height - @input-height-small) / 2));
     }
     &.btn-xs {
-      margin-top: floor(((floor(@font-size-h3 * @line-height-small) - (floor(@font-size-small * @line-height-small) + (@padding-xs-vertical * 2) + 2)) / 2));
+      margin-top: floor(((@header-height - @input-height-xs) / 2));
     }
   }
 }
 .section h4.headline {
+  font-weight: bold;
   text-align: left;
   padding-top: @padding-small-vertical;
   padding-bottom: @padding-small-vertical;
@@ -385,37 +388,14 @@ h1.headline {
 }
 
 /* Selectors */
-/*
+.item-selected,
 .item-hover:hover {
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
+  @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
+  border: 1px solid @input-border-focus;
   outline: 0;
-  outline: thin dotted \9;*/
-  /* IE6-8 */
-/*}
-
-.item-selected {
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px 2px rgba(82, 168, 236, 0.6);
-  outline: 0;
-  outline: thin dotted \9;*/
-  /* IE6-8 */
-/*}
-*/
+  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+}
 
 /* Slug input */
 input.slug {
