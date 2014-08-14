@@ -180,25 +180,34 @@ h1.headline {
   z-index: 3;
 }
 /* Correct border-radius for form-controls with help toggles */
-.input-group .form-control {
+.input-group .form-control,
+.input-group .ui-select-bootstrap {
   // replace original setting that removed radius for non-first/last child
   // with only removing it if the form control is not a 'br-help' control
-  &:not(:first-child):not(:last-child) {
+  &:not(:first-child):not(:last-child),
+  &:not(:first-child):not(:last-child) .ui-select-match {
     border-radius: @input-border-radius;
   }
-  &:not(.br-help):not(:first-child):not(:last-child) {
+  &:not(.br-help):not(:first-child):not(:last-child),
+  &:not(.br-help):not(:first-child):not(:last-child) .ui-select-match {
     border-radius: 0;
   }
-  &.br-help {
+  &.br-help, {
     &:not(:first-child) {
-      .border-left-radius(0);
+      &, & .ui-select-match {
+        .border-left-radius(0);
+      }
     }
-    .border-right-radius(@input-border-radius);
+    &, & .ui-select-match {
+      .border-right-radius(@input-border-radius);
+    }
 
     // no border radius when help-toggle is shown/animating
     &:not(textarea) {
       &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
-        .border-right-radius(0);
+        &, & .ui-select-match {
+          .border-right-radius(0);
+        }
       }
     }
   }
