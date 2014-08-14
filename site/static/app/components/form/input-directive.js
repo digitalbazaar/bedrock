@@ -33,6 +33,7 @@ function factory() {
             name="{{options.name}}" \
             placeholder="{{options.placeholder}}" \
             ng-model="model" \
+            ng-disabled="options.disabled" \
             data-track-state="help" /> \
           <span class="input-group-btn"> \
             <button type="button" class="btn btn-default" \
@@ -56,12 +57,6 @@ function factory() {
         columns.label = columns.label || 'col-sm-3';
         columns.input = columns.input || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
-
-        if(scope.options.disabled) {
-          element.find('input').attr('disabled', '');
-        } else {
-          element.find('input').removeAttr('disabled');
-        }
 
         if('maxLength' in scope.options) {
           element.find('input').attr('maxlength', scope.options.maxLength);

@@ -32,7 +32,7 @@ function factory() {
             rows="{{options.rows}}" \
             name="{{options.name}}" \
             placeholder="{{options.placeholder}}" \
-            ng-model="model" \
+            ng-model="model" ng-disabled=options.disabled \
             data-track-state="help" /> \
           <span class="input-group-btn"> \
             <button type="button" class="btn btn-default btn-xs" \
@@ -57,12 +57,6 @@ function factory() {
         columns.label = columns.label || 'col-sm-3';
         columns.textarea = columns.textarea || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
-
-        if(scope.options.disabled) {
-          element.find('textarea').attr('disabled', '');
-        } else {
-          element.find('textarea').removeAttr('disabled');
-        }
       }, true);
     }
   };
