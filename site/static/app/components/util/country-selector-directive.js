@@ -19,35 +19,69 @@ function factory(config) {
     link: Link,
     template: '\
       <div> \
-      <select ui-select2 ng-model="model.selected" \
-        data-placeholder="Pick a country..."> \
-        <option value=""></option> \
-        <option ng-repeat="country in model.countries" \
-          value="{{country.code}}" \
-          ng-selected="model.selected == country.code"> \
-          {{country.name}}</option> \
-      </select> \
+      <ui-select ng-model="model.country" theme="bootstrap"> \
+        <ui-select-match placeholder="Pick a country...">{{$select.selected.name}}</ui-select-match> \
+        <ui-select-choices repeat="country in model.countries | filter: $select.search"> \
+          <div ng-bind-html="country.name | highlight: $select.search"></div> \
+        </ui-select-choices> \
+      </ui-select> \
       </div>'
   };
 
   function Link(scope, element, attrs, ngModel) {
     var model = scope.model = {};
-    model.selected = null;
     model.countries = config.constants.countries;
-    // no difference between ngModel model value and view value, set
-    // to model.selected when rendering the value
+
+    var options = {};
+    scope.$watch(attrs.brOptions, function(value) {
+      if(value) {
+        options = value;
+      }
+    }, true);
+
+    // when rendering view value (country code), find the associated country
     ngModel.$render = function() {
-      model.selected = ngModel.$viewValue;
+      if(!ngModel.$viewValue) {
+        model.country = undefined;
+        return;
+      }
+
+      if(options.mode === 'code' || typeof ngModel.$viewValue === 'string') {
+        // find country with matching country code
+        for(var i = 0; i < model.countries.length; ++i) {
+          if(model.countries[i].code === ngModel.$viewValue) {
+            model.country = model.countries[i];
+            return;
+          }
+        }
+        return;
+      }
+
+      // by default no difference between ngModel model value and view value,
+      // update model.country to render it
+      model.country = ngModel.$viewValue;
     };
-    // when model.selected changes, update ngModel view (same as model value)
+
+    // when country selection changes, update ngModel view
     scope.$watch(function() {
-      return model.selected;
-    }, function(value) {
-      ngModel.$setViewValue(value);
-    });
+      return model.country;
+    }, function(country) {
+      if(!country) {
+        ngModel.$setViewValue(undefined);
+        return;
+      }
+
+      if(options.mode === 'code' || typeof ngModel.$viewValue === 'string') {
+        ngModel.$setViewValue(country.code);
+        return;
+      }
+
+      // default mode uses full country object
+      ngModel.$setViewValue(country);
+    }, true);
   }
 }
 
-return {countrySelector: factory};
+return {brCountrySelector: factory};
 
 });

@@ -90,7 +90,7 @@ module.exports = function(grunt) {
           'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
           'angular-route': '../../bower_components/angular-route/angular-route',
           'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
-          'angular-ui-select2': '../../bower_components/angular-ui-select2/src/select2',
+          'angular-ui-select': '../../bower_components/angular-ui-select/dist/select',
           'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
           'dialog-polyfill': '../../bower_components/dialog-polyfill/dialog-polyfill',
           'forge': '../../node_modules/node-forge/js',
@@ -100,7 +100,6 @@ module.exports = function(grunt) {
           'jquery-migrate': '../../bower_components/jquery-migrate/jquery-migrate',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
           'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
-          'select2': '../../bower_components/select2/select2',
           'stackables': '../../bower_components/angular-stackables/stackables',
           'underscore': '../../node_modules/underscore/underscore',
           // override templates

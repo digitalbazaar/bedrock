@@ -1,5 +1,4 @@
-@import "../bower-components/select2/select2.css";
-@import "../bower-components/select2/select2-bootstrap.css";
+@import "../bower-components/angular-ui-select/dist/select.css";
 @import "../bower-components/angular-stackables/stackables.css";
 /*
  * Bedrock common style
@@ -8598,25 +8597,6 @@ h1.headline {
   text-align: left;
   padding-top: 5px;
   padding-bottom: 5px;
-}
-/* Select2 widgets */
-.select2-container .select2-choice > .select2-chosen,
-.select2-drop {
-  font-size: 14px;
-}
-.select2-container {
-  width: 220px;
-}
-.select2-drop,
-.select2-container-active .select2-choice,
-.select2-container-active .select2-choices {
-  border-color: rgba(82, 168, 236, 0.8);
-  outline: 0;
-  outline: thin dotted \9;
-  /* IE6-9 */
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 /* Selectors */
 .item-selected,

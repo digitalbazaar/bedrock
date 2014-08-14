@@ -21,7 +21,7 @@ require.config({
     'angular-bootstrap': 'bower-components/angular-bootstrap/ui-bootstrap-tpls',
     'angular-route': 'bower-components/angular-route/angular-route',
     'angular-sanitize': 'bower-components/angular-sanitize/angular-sanitize',
-    'angular-ui-select2': 'bower-components/angular-ui-select2/src/select2',
+    'angular-ui-select': 'bower-components/angular-ui-select/dist/select',
     bedrock: '.',
     bootstrap: 'bower-components/bootstrap/dist/js/bootstrap',
     'dialog-polyfill': 'bower-components/dialog-polyfill/dialog-polyfill',
@@ -33,7 +33,6 @@ require.config({
     jsonld: 'jsonld/jsonld',
     'opencred-verifier': 'opencred-verifier/credentialVerifier',
     promise: 'promise/promise',
-    select2: 'bower-components/select2/select2',
     spin: 'spin/spin',
     stackables: 'bower-components/angular-stackables/stackables',
     underscore: 'underscore/underscore'
@@ -45,7 +44,7 @@ require.config({
     'angular-bootstrap': {deps: ['angular']},
     'angular-route': {deps: ['angular']},
     'angular-sanitize': {deps: ['angular']},
-    'angular-ui-select2': {deps: ['angular', 'select2']},
+    'angular-ui-select': {deps: ['angular']},
     bootstrap: {deps: ['jquery', 'jquery-migrate']},
     'dialog-polyfill': {exports: 'dialogPolyfill'},
     iso8601: {exports: 'iso8601'},
@@ -53,7 +52,6 @@ require.config({
     'jquery.bedrock': {deps: ['jquery']},
     'jquery-migrate': {deps: ['jquery.bedrock']},
     'jquery.placeholder': {deps: ['jquery']},
-    select2: {deps: ['angular'], exports: 'Select2'},
     spin: {exports: 'Spinner'},
     stackables: {deps: ['angular', 'dialog-polyfill']},
     underscore: {exports: '_'}

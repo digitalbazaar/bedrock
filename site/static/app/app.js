@@ -11,7 +11,7 @@ define([
   'angular-bootstrap',
   'angular-route',
   'angular-sanitize',
-  'angular-ui-select2',
+  'angular-ui-select',
   'bootstrap',
   'promise',
   'stackables',
@@ -24,7 +24,7 @@ define([
 
 var module = angular.module('app', [
   'ngAnimate', 'ngRoute', 'ngSanitize',
-  'ui.bootstrap', 'ui.select2', 'stackables',
+  'ui.bootstrap', 'ui.select', 'stackables',
   'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */
 module.config(function($locationProvider, $routeProvider, $httpProvider) {
