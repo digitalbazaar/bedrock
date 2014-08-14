@@ -17,14 +17,8 @@
     <div data-selector-modal="showSelectorModal"
       data-modal-title="modalTitle"
       data-items="items" data-item-type="itemType">
-      <ul class="list-unstyled item">
-        <li class="item-hover well"
-          ng-repeat="selected in ((!custom && items) || []) | orderBy:'label'"
-          ng-click="select(selected)">
-          <div ng-show="!custom" ng-transclude></div>
-        </li>
-      </ul>
-      <div ng-show="custom" ng-transclude></div>
+      <ul ng-show="!custom" class="list-unstyled item br-selector-list"></ul>
+      <div ng-show="custom" class="br-selector-transclude-custom"></div>
       <div class="pull-right">
         <button class="btn btn-success"
           ng-click="addItem()"><i class="fa fa-plus"></i> Add {{itemType}}</button>
