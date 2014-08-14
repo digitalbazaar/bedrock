@@ -13,7 +13,6 @@ define([], function() {
 function factory() {
   return {
     restrict: 'A',
-    require: 'ngModel',
     link: function(scope, element) {
       if(element.placeholder) {
         element.placeholder();
