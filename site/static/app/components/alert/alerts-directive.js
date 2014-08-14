@@ -90,12 +90,12 @@ function factory(AlertService, $compile, $rootScope) {
         }
 
         // clear previous feedback, add new
-        target.find('[data-binding]').removeClass('error');
+        target.find('[data-binding]').removeClass('has-error');
         angular.forEach(value.details.errors, function(detailError) {
           var binding = detailError.details.path;
           if(binding) {
             // highlight element using data-binding
-            target.find('[data-binding="' + binding + '"]').addClass('error');
+            target.find('[data-binding="' + binding + '"]').addClass('has-error');
           }
         });
       }
