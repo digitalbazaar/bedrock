@@ -15,16 +15,13 @@ define([
   './error-directive',
   './floor-filter',
   './headline-menu',
-  './help-toggle-directive',
-  './input-watcher-directive',
   './mask-filter',
   './model-service',
   './now-filter',
   './prefill-filter',
   './refresh-service',
   './resource-service',
-  './tooltip-title-directive',
-  './track-state-directive'
+  './tooltip-title-directive'
 ], function(
   angular,
   actionMenu,
@@ -35,16 +32,13 @@ define([
   error,
   floor,
   headlineMenu,
-  helpToggle,
-  inputWatcher,
   mask,
   modelService,
   now,
   prefill,
   refreshService,
   resourceService,
-  tooltipTitle,
-  trackState) {
+  tooltipTitle) {
 
 'use strict';
 
@@ -58,8 +52,6 @@ module.filter(encodeURIComponent_);
 module.directive(error);
 module.filter(floor);
 module.directive(headlineMenu);
-module.directive(helpToggle);
-module.directive(inputWatcher);
 module.filter(mask);
 module.service(modelService);
 module.filter(now);
@@ -67,7 +59,6 @@ module.filter(prefill);
 module.service(refreshService);
 module.service(resourceService);
 module.directive(tooltipTitle);
-module.directive(trackState);
 
 return module.name;
 

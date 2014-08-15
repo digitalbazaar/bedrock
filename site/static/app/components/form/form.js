@@ -7,22 +7,31 @@
  */
 define([
   'angular',
+  './help-toggle-directive',
   './input-directive',
+  './input-watcher-directive',
   './select-directive',
   './textarea-directive',
+  './track-state-directive'
 ], function(
   angular,
+  helpToggleDirective,
   inputDirective,
+  inputWatcherDirective,
   selectDirective,
-  textareaDirective) {
+  textareaDirective,
+  trackStateDirective) {
 
 'use strict';
 
 var module = angular.module('app.form', []);
 
+module.directive(helpToggleDirective);
 module.directive(inputDirective);
+module.directive(inputWatcherDirective);
 module.directive(selectDirective);
 module.directive(textareaDirective);
+module.directive(trackStateDirective);
 
 return module.name;
 
