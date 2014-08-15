@@ -86,7 +86,6 @@ a {
   -o-transition: opacity 250ms ease-in-out;
   transition: opacity 250ms ease-in-out;
 }
-
 .br-fadein.ng-hide-remove,
 .br-fadeout.ng-hide-add.ng-hide-add-active,
 .br-fadein.ng-enter,
@@ -94,7 +93,6 @@ a {
   opacity: 0;
   display: block !important;
 }
-
 .br-fadeout.ng-hide-add,
 .br-fadein.ng-hide-remove.ng-hide-remove-active,
 .br-fadeout.ng-leave,
@@ -118,7 +116,6 @@ a {
     .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 }
-
 .br-btn-navbar-inverse {
   .button-variant(@navbar-inverse-color; @navbar-inverse-bg; @navbar-inverse-border);
   .btn-styles(@navbar-inverse-bg);
@@ -179,9 +176,10 @@ h1.headline {
   top: -40px;
   z-index: 3;
 }
-/* Correct border-radius for form-controls with help toggles */
+/* Correct border-radius for form-controls with help toggles, etc. */
 .input-group .form-control,
-.input-group .ui-select-bootstrap {
+.input-group .ui-select-bootstrap,
+.input-group .br-select {
   // replace original setting that removed radius for non-first/last child
   // with only removing it if the form control is not a 'br-help' control
   &:not(:first-child):not(:last-child),
@@ -192,16 +190,29 @@ h1.headline {
   &:not(.br-help):not(:first-child):not(:last-child) .ui-select-match {
     border-radius: 0;
   }
-  &.br-help, {
+
+  // turn on border-left-radius for first child
+  &:first-child, &:first-child .ui-select-match {
+    .border-left-radius(@input-border-radius);
+  }
+
+  // turn on border-right-radius for last child
+  &:last-child, &:last-child .ui-select-match {
+    .border-right-radius(@input-border-radius);
+  }
+
+  // if form control/ui-select has an appended help toggle
+  &:not(.br-help-off).br-help, {
+    // if its not the first child, remove left border radius
     &:not(:first-child) {
       &, & .ui-select-match {
         .border-left-radius(0);
       }
     }
+    // always keep the right border radius
     &, & .ui-select-match {
       .border-right-radius(@input-border-radius);
     }
-
     // no border radius when help-toggle is shown/animating
     &:not(textarea) {
       &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
@@ -210,6 +221,27 @@ h1.headline {
         }
       }
     }
+  }
+}
+
+/* Input Groups */
+.input-group .form-control,
+.input-group .ui-select-bootstrap,
+.input-group .br-select {
+  // fix inline padding
+  &:not(:first-child):not(:last-child) .input-group-inline {
+    padding-left: floor((@grid-gutter-width / 4));
+    padding-right: floor((@grid-gutter-width / 4));
+  }
+
+  &:first-child:not(:last-child) .input-group-inline {
+    padding-left: floor((@grid-gutter-width));
+    padding-right: floor((@grid-gutter-width / 4));
+  }
+
+  &:last-child:not(:first-child) .input-group-inline {
+    padding-left: floor((@grid-gutter-width / 4));
+    padding-right: floor((@grid-gutter-width));
   }
 }
 

@@ -16,35 +16,43 @@ function factory() {
     scope: {
       model: '=brModel',
       items: '=brItems',
-      display: '&brDisplayItem'
+      display: '&?brDisplayItem'
     },
     transclude: true,
     template: '\
-      <div class="form-group" data-binding="{{options.name}}"> \
-        <label class="{{options.columns.label}} control-label" \
+      <div ng-class="{\'form-group\': !options.inline}" \
+        data-binding="{{options.name}}"> \
+        <label ng-if="!options.inline" \
+          class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
-        <div class="{{options.columns.select}} input-group"> \
+        <div class="{{options.columns.select}}" \
+          ng-class="{ \
+            \'input-group\': !options.inline, \
+            \'input-group-inline\': options.inline}"> \
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
           <span ng-if="options.image" \
             class="input-group-addon"><img \
             ng-src="{{options.image}}"></img></span> \
-          <ui-select ng-model="selection.selected" data-track-state="help" \
-            theme="bootstrap" ng-disabled="options.disabled"> \
-            <ui-select-match placeholder="{{options.placeholder}}">{{$select.selected.display}}</ui-select-match> \
-            <ui-select-choices repeat="item in viewItems | filter: $select.search"> \
-              <div ng-bind-html="item.display | highlight: $select.search"></div> \
-            </ui-select-choices> \
-          </ui-select> \
-          <span class="input-group-btn"> \
+          <div class="br-select" data-track-state="help" \
+            ng-class="{\'br-help-off\': options.inline}"> \
+            <ui-select ng-model="selection.selected" \
+              theme="bootstrap" ng-disabled="options.disabled"> \
+              <ui-select-match placeholder="{{options.placeholder}}">{{$select.selected.display}}</ui-select-match> \
+              <ui-select-choices repeat="item in viewItems | filter: $select.search"> \
+                <div ng-bind-html="item.display | highlight: $select.search"></div> \
+              </ui-select-choices> \
+            </ui-select> \
+          </div> \
+          <span ng-if="!options.inline" class="input-group-btn"> \
             <button type="button" class="btn btn-default" \
               data-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \
           </span> \
         </div> \
-        <div ng-show="help.show" \
+        <div ng-if="!options.inline" ng-show="help.show" \
           class="{{options.columns.help}} help-block br-fadein br-fadeout"> \
           <div ng-transclude></div> \
         </div> \
@@ -59,6 +67,7 @@ function factory() {
     // get options
     scope.$watch(attrs.brOptions, function(value) {
       options = scope.options = value || {};
+      options.inline = ('inline' in options) ? options.inline : false;
       options.label = options.label || 'Choose...';
       options.placeholder = options.placeholder || 'Choose...';
 
@@ -115,17 +124,20 @@ function factory() {
         return;
       }
 
-      var display = scope.display || defaultDisplayItem;
       items.forEach(function(item) {
         scope.viewItems.push({
           item: item,
-          display: display.call(scope.$parent, {item: item})
+          display: display(item)
         });
       });
     }
 
-    function defaultDisplayItem(params) {
-      return '' + params.item;
+    function display(item) {
+      var rval = scope.display.call(scope.$parent, {item: item});
+      if(rval === undefined) {
+        return '' + item;
+      }
+      return rval;
     }
   }
 }
