@@ -23,7 +23,6 @@ define([
   './settings/settings',
   './slug/slug',
   './spinner/spinner',
-  './submit-form/submit-form',
   './tabs/tabs',
   './util/util'
 ], function(angular) {
