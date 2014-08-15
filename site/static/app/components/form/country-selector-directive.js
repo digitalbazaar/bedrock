@@ -21,7 +21,7 @@ function factory(config) {
       <div class="form-group" data-binding="{{options.name}}"> \
         <label class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
-        <div class="{{options.columns.input}} input-group"> \
+        <div class="{{options.columns.select}} input-group"> \
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
@@ -62,7 +62,7 @@ function factory(config) {
 
       var columns = options.columns = options.columns || {};
       columns.label = columns.label || 'col-sm-3';
-      columns.input = columns.input || 'col-sm-8';
+      columns.select = columns.select || 'col-sm-8';
       columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
     }, true);
 

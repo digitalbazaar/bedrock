@@ -8,10 +8,12 @@
 define([
   'angular',
   './input-directive',
+  './select-directive',
   './textarea-directive',
 ], function(
   angular,
   inputDirective,
+  selectDirective,
   textareaDirective) {
 
 'use strict';
@@ -19,6 +21,7 @@ define([
 var module = angular.module('app.form', []);
 
 module.directive(inputDirective);
+module.directive(selectDirective);
 module.directive(textareaDirective);
 
 return module.name;

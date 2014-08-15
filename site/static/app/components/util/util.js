@@ -9,7 +9,6 @@ define([
   'angular',
   './action-menu-directive',
   './ceil-filter',
-  './country-selector-directive',
   './ellipsis-filter',
   './embedded-string-filter',
   './encodeuricomponent-filter',
@@ -30,7 +29,6 @@ define([
   angular,
   actionMenu,
   ceil,
-  countrySelector,
   ellipsis,
   embeddedString,
   encodeURIComponent_,
@@ -54,7 +52,6 @@ var module = angular.module('app.util', []);
 
 module.directive(actionMenu);
 module.filter(ceil);
-module.directive(countrySelector);
 module.filter(ellipsis);
 module.filter(embeddedString);
 module.filter(encodeURIComponent_);
