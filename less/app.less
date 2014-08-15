@@ -227,21 +227,21 @@ h1.headline {
 /* Input Groups */
 .input-group .form-control,
 .input-group .ui-select-bootstrap,
-.input-group .br-select {
+.input-group br-select {
   // fix inline padding
   &:not(:first-child):not(:last-child) .input-group-inline {
-    padding-left: floor((@grid-gutter-width / 4));
-    padding-right: floor((@grid-gutter-width / 4));
+    padding-left: floor((@grid-gutter-width / 8));
+    padding-right: floor((@grid-gutter-width / 8));
   }
 
   &:first-child:not(:last-child) .input-group-inline {
-    padding-left: floor((@grid-gutter-width));
-    padding-right: floor((@grid-gutter-width / 4));
+    padding-left: floor((@grid-gutter-width / 2));
+    padding-right: floor((@grid-gutter-width / 8));
   }
 
   &:last-child:not(:first-child) .input-group-inline {
-    padding-left: floor((@grid-gutter-width / 4));
-    padding-right: floor((@grid-gutter-width));
+    padding-left: floor((@grid-gutter-width / 8));
+    padding-right: floor((@grid-gutter-width / 2));
   }
 }
 

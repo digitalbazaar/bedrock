@@ -8511,21 +8511,21 @@ h1.headline {
 /* Input Groups */
 .input-group .form-control:not(:first-child):not(:last-child) .input-group-inline,
 .input-group .ui-select-bootstrap:not(:first-child):not(:last-child) .input-group-inline,
-.input-group .br-select:not(:first-child):not(:last-child) .input-group-inline {
-  padding-left: 7px;
-  padding-right: 7px;
+.input-group br-select:not(:first-child):not(:last-child) .input-group-inline {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 .input-group .form-control:first-child:not(:last-child) .input-group-inline,
 .input-group .ui-select-bootstrap:first-child:not(:last-child) .input-group-inline,
-.input-group .br-select:first-child:not(:last-child) .input-group-inline {
-  padding-left: 30px;
-  padding-right: 7px;
+.input-group br-select:first-child:not(:last-child) .input-group-inline {
+  padding-left: 15px;
+  padding-right: 3px;
 }
 .input-group .form-control:last-child:not(:first-child) .input-group-inline,
 .input-group .ui-select-bootstrap:last-child:not(:first-child) .input-group-inline,
-.input-group .br-select:last-child:not(:first-child) .input-group-inline {
-  padding-left: 7px;
-  padding-right: 30px;
+.input-group br-select:last-child:not(:first-child) .input-group-inline {
+  padding-left: 3px;
+  padding-right: 15px;
 }
 /* Menus */
 .stackable-menu.dropdown-menu {
