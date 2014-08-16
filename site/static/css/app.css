@@ -8412,6 +8412,9 @@ h1.headline {
   margin-top: 10px;
 }
 /* Help Toggle */
+.help-toggle > .btn:focus {
+  outline: 0;
+}
 .input-group textarea + .input-group-btn.help-toggle > .btn,
 .help-toggle-overlay {
   -webkit-border-radius: 3px;
