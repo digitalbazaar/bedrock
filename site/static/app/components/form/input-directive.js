@@ -69,6 +69,12 @@ function factory() {
         } else {
           element.find('input').removeAttr('autocomplete');
         }
+
+        if(scope.options.autofocus) {
+          element.find('input').attr('autofocus', 'autofocus');
+        } else {
+          element.find('input').removeAttr('autofocus');
+        }
       }, true);
     }
   };

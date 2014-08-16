@@ -57,6 +57,12 @@ function factory() {
         columns.label = columns.label || 'col-sm-3';
         columns.textarea = columns.textarea || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
+
+        if(scope.options.autofocus) {
+          element.find('textarea').attr('autofocus', 'autofocus');
+        } else {
+          element.find('textarea').removeAttr('autofocus');
+        }
       }, true);
     }
   };

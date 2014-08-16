@@ -75,6 +75,12 @@ function factory() {
       columns.label = columns.label || 'col-sm-3';
       columns.select = columns.select || 'col-sm-8';
       columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
+
+      if(options.autofocus) {
+        element.find('.ui-select-match').attr('autofocus', 'autofocus');
+      } else {
+        element.find('.ui-select-match').removeAttr('autofocus');
+      }
     }, true);
 
     // update view items when items or display function changes
