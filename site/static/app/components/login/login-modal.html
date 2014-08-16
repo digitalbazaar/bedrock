@@ -9,20 +9,23 @@
         <p class="alert alert-warning">
           Your session has expired, please sign back in to continue.
         </p>
-        <form class="well form-vertical">
+        <form class="well form-horizontal">
           <fieldset>
-            <div class="form-group">
-              <label>Identity</label>
-              <p><strong>{{model.sysIdentifier}}</strong></p>
-            </div>
-            <div class="form-group" data-binding="password">
-              <label class="control-label" for="password">Password</label>
-              <input class="form-control"
-                name="password" type="password" placeholder="Password"
-                autofocus="autofocus" ng-model="model.password"
-                ng-keypress="$event.which == 13 && model.login()"
-                ng-disabled="model.loading" />
-            </div>
+            <br-input br-model="model.sysIdentifier"
+              ng-keypress="$event.which == 13 && model.login()"
+              br-options="{
+                name: 'sysIdentifier', label: 'Identity', disabled: true}">
+              You cannot change the identity here. If you need to log in
+              using another identity, please refresh the page.
+            </br-input>
+
+            <br-input br-model="model.password"
+              ng-keypress="$event.which == 13 && model.login()"
+              br-options="{
+                name: 'password', type: 'password',
+                label: 'Password', disabled: model.loading}">
+              Please enter your password.
+            </br-input>
           </fieldset>
         </form>
       </div>
