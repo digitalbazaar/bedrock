@@ -19,37 +19,30 @@
 
     <form class="form-horizontal" ng-submit="model.sendReset()">
       <fieldset>
-      <legend>Get Passcode</legend>
-      <div class="form-group" data-binding="sysIdentifier">
-        <label class="control-label col-md-2" for="email">Email</label>
-        <div class="input-group col-md-9">
-          <input class="form-control"
-            name="sysIdentifier" type="text" maxlength="320"
-            ng-model="model.email"
-            data-track-state="model.help.email"
-            ng-disabled="loading" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default"
-              data-help-toggle="model.help.email">
-              <i class="fa fa-question-circle"></i>
-            </button>
-          </span>
-        </div>
-        <p ng-show="model.help.email.show"
-          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
+        <legend>Get Passcode</legend>
+
+        <br-input br-model="model.email"
+          br-options="{
+            name: 'sysIdentifier', label: 'Email', disabled: loading,
+            columns: {
+              label: 'col-md-2',
+              input: 'col-md-9',
+              help: 'col-md-offset-2 col-md-9'
+            }
+          }">
           Please enter the email address that you used when you registered
           with this website.
-        </p>
-      </div>
-      <div class="form-group">
-        <div class="col-md-offset-2">
-          <button type="button" ng-disabled="loading"
-            class="btn btn-primary" data-submit-form>Send Reset Instructions</button>
-          <span ng-show="loading">
-            <i class="fa fa-refresh fa-spin text-muted"></i>
-          </span>
+        </br-input>
+
+        <div class="form-group">
+          <div class="col-md-offset-2">
+            <button type="button" ng-disabled="loading"
+              class="btn btn-primary" data-submit-form>Send Reset Instructions</button>
+            <span ng-show="loading">
+              <i class="fa fa-refresh fa-spin text-muted"></i>
+            </span>
+          </div>
         </div>
-      </div>
       </fieldset>
     </form>
 
@@ -63,70 +56,45 @@
       <fieldset>
       <legend>Update Your Password</legend>
 
-      <div class="form-group" data-binding="sysIdentifier">
-        <label class="control-label col-md-2" for="reset-email">Email</label>
-        <div class="input-group col-md-9">
-          <input class="form-control" name="input" type="text" maxlength="320"
-            ng-model="model.email"
-            data-track-state="model.help.resetEmail"
-            ng-disabled="loading" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default"
-              data-help-toggle="model.help.resetEmail">
-              <i class="fa fa-question-circle"></i>
-            </button>
-          </span>
-        </div>
-        <p ng-show="model.help.resetEmail.show"
-          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-          Please enter the email address that you used above to retrieve
-          reset instructions and a reset passcode.
-        </p>
-      </div>
+      <br-input br-model="model.email"
+        br-options="{
+          name: 'sysIdentifier', label: 'Email', disabled: loading,
+          columns: {
+            label: 'col-md-2',
+            input: 'col-md-9',
+            help: 'col-md-offset-2 col-md-9'
+          }
+        }">
+        Please enter the email address that you used above to retrieve
+        reset instructions and a reset passcode.
+      </br-input>
 
-      <div class="form-group" data-binding="sysPasscode">
-        <label class="control-label col-md-2" for="passcode">Passcode</label>
-        <div class="input-group col-md-9">
-          <input class="form-control"
-            name="sysPasscode" type="text" maxlength="8"
-            ng-model="model.sysPasscode"
-            data-track-state="model.help.passcode"
-            ng-disabled="loading" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default"
-              data-help-toggle="model.help.passcode">
-              <i class="fa fa-question-circle"></i>
-            </button>
-          </span>
-        </div>
-        <p ng-show="model.help.passcode.show"
-          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-          Please enter the passcode that was sent to you in the password
-          reset email from this website.
-        </p>
-      </div>
+      <br-input br-model="model.sysPasscode"
+        br-options="{
+          name: 'sysPasscode', label: 'Passcode', disabled: loading,
+          columns: {
+            label: 'col-md-2',
+            input: 'col-md-9',
+            help: 'col-md-offset-2 col-md-9'
+          }
+        }">
+        Please enter the passcode that was sent to you in the password
+        reset email from this website.
+      </br-input>
 
-      <div class="form-group" data-binding="sysPasswordNew">
-        <label class="control-label col-md-2" for="new-password">New Password</label>
-        <div class="input-group col-md-9">
-          <input class="form-control"
-            name="sysPasswordNew" type="password" maxlength="32"
-            ng-model="model.sysPasswordNew"
-            data-track-state="model.help.password"
-            ng-disabled="loading" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default"
-              data-help-toggle="model.help.password">
-              <i class="fa fa-question-circle"></i>
-            </button>
-          </span>
-        </div>
-        <p ng-show="model.help.password.show"
-          class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-          Please enter the new password that you would like to use when
-          accessing this website.
-        </p>
-      </div>
+      <br-input br-model="model.sysPasswordNew"
+        br-options="{
+          name: 'sysPasswordNew', type: 'password',
+          label: 'New Password', disabled: loading,
+          columns: {
+            label: 'col-md-2',
+            input: 'col-md-9',
+            help: 'col-md-offset-2 col-md-9'
+          }
+        }">
+        Please enter the new password that you would like to use when
+        accessing this website.
+      </br-input>
 
       <div class="form-group">
         <div class="col-md-offset-2">
