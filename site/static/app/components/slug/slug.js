@@ -8,9 +8,8 @@
 define([
   'angular',
   './slug-filter',
-  './slug-in-directive',
-  './slug-out-directive'
-], function(angular, filter, slugIn, slugOut) {
+  './slug-in-directive'
+], function(angular, filter, slugIn) {
 
 'use strict';
 
@@ -18,7 +17,6 @@ var module = angular.module('app.slug', []);
 
 module.filter(filter);
 module.directive(slugIn);
-module.directive(slugOut);
 
 return module.name;
 
