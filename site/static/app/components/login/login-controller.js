@@ -22,6 +22,7 @@ function factory($scope, $http, $compile, $window, AlertService, config) {
 
   self.submit = function() {
     // do login
+    AlertService.clearFeedback();
     self.loading = true;
     Promise.resolve($http.post('/session/login', {
       sysIdentifier: self.sysIdentifier,
