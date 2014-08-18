@@ -69,7 +69,7 @@ function factory() {
       options = scope.options = value || {};
       options.inline = ('inline' in options) ? options.inline : false;
       options.label = options.label || 'Choose...';
-      options.placeholder = options.placeholder || 'Choose...';
+      options.placeholder = options.placeholder || (options.label + '...');
 
       var columns = options.columns = options.columns || {};
       columns.label = columns.label || 'col-sm-3';
