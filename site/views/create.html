@@ -23,22 +23,20 @@
       <fieldset>
         <legend>Your Email and Password</legend>
 
-        <div class="form-group" data-binding="email">
-          <label class="control-label col-md-2" for="email">Email</label>
-          <div class="input-group col-md-9">
-            <input class="form-control"
-              name="email" data-binding="email" type="text"
-              ng-model="model.identity.email"
-              data-track-state="model.help.email"
-              ng-disabled="model.loading"
-              autocomplete="off" />
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default"
-                data-help-toggle="model.help.email">
-                <i class="fa fa-question-circle"></i>
-              </button>
-            </span>
-          </div>
+        <br-input br-model="model.identity.email"
+          br-options="{
+            name: 'email', label: 'Email', disabled: model.loading,
+            autocomplete: 'off',
+            columns: {
+              label: 'col-md-2',
+              input: 'col-md-9',
+              help: 'col-md-offset-2 col-md-9'
+            }
+          }">
+          A valid email address is required so that we can reset
+          your password if you get locked out.
+        </br-input>
+        <div ng-show="model.identity.email" class="form-group">
           <div class="col-md-offset-2 col-md-9"
             data-duplicate-checker="model.identity.email"
             data-duplicate-checker-type="email"
@@ -48,35 +46,21 @@
             data-duplicate-checker-checking="Checking Availability..."
             data-duplicate-checker-result="model.emailAvailable">
           </div>
-          <p ng-show="model.help.email.show"
-            class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-            A valid email address is required so that we can reset
-            your password if you get locked out.
-          </p>
         </div>
 
-        <div class="form-group" data-binding="sysPassword">
-          <label class="control-label col-md-2" for="password">Password</label>
-          <div class="input-group col-md-9">
-            <input class="form-control"
-              name="password" data-binding="sysPassword"
-              maxlength="32" type="password"
-              ng-model="model.identity.sysPassword"
-              data-track-state="model.help.password"
-              ng-disabled="model.loading" />
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default"
-                data-help-toggle="model.help.password">
-                <i class="fa fa-question-circle"></i>
-              </button>
-            </span>
-          </div>
-          <p ng-show="model.help.password.show"
-            class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-            Please enter a secure password that is between 6 and 32 characters long. The best passwords are
-            lengthy, memorable phrases like: the<strong>lemurs</strong>ride<strong>on</strong>the<strong>fortnight</strong>
-          </p>
-        </div>
+        <br-input br-model="model.identity.sysPassword"
+          br-options="{
+            name: 'sysPassword', type: 'password',
+            label: 'Password', maxlength: '32', disabled: model.loading,
+            columns: {
+              label: 'col-md-2',
+              input: 'col-md-9',
+              help: 'col-md-offset-2 col-md-9'
+            }
+          }">
+          Please enter a secure password that is between 6 and 32 characters long. The best passwords are
+          lengthy, memorable phrases like: the<strong>lemurs</strong>ride<strong>on</strong>the<strong>fortnight</strong>
+        </br-input>
       </fieldset>
 
       <fieldset>
@@ -93,60 +77,45 @@
           </p>
         </div>
 
-        <div class="form-group" data-binding="identity.label">
-          <label class="control-label col-md-2" for="identity-label">Full Name</label>
-          <div class="input-group col-md-9">
-            <input class="form-control"
-              name="identity-label" type="text"
-              data-slug-out="model.identity.sysSlug"
-              ng-model="model.identity.label"
-              data-track-state="model.help.identityLabel"
-              ng-disabled="model.loading"
-              placeholder="My Full Name"
-              autocomplete="off" />
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default"
-                data-help-toggle="model.help.identityLabel">
-                <i class="fa fa-question-circle"></i>
-              </button>
-            </span>
-            <p ng-show="model.help.identityLabel.show"
-              class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-              Enter the full name that is associated with this new identity.
-              For instance "My Full Name" or "Mega Corp".
-            </p>
+        <br-input br-model="model.identity.label"
+          br-options="{
+            name: 'label', label: 'Full Name',
+            placeholder: 'My Full Name', disabled: model.loading,
+            autocomplete: 'off',
+            columns: {
+              label: 'col-md-2',
+              input: 'col-md-9',
+              help: 'col-md-offset-2 col-md-9'
+            }
+          }">
+          Enter the full name that is associated with this new identity.
+          For instance "My Full Name" or "Mega Corp".
+        </br-input>
+
+        <br-input br-model="model.identity.sysSlug"
+          ng-model="model.identity.sysSlug"
+          data-slug-in="model.identity.label"
+          br-options="{
+            name: 'sysSlug', label: 'Short Name',
+            placeholder: 'my-short-name', disabled: model.loading,
+            autocomplete: 'off', maxlength: '32',
+            columns: {
+              label: 'col-md-2',
+              input: 'col-md-9',
+              help: 'col-md-offset-2 col-md-9'
+            }
+          }">
+          Enter a short name for this identity. A name similar to your full
+          name will help people to identify you. This short name will be
+          used in your identity address as shown below. An example would be
+          "my-short-name", "myshortname", or "megacorp".
+        </br-input>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-9">
+            <small>{{model.data.identityBaseUri}}/</small><strong>{{model.identity.sysSlug}}</strong>
           </div>
         </div>
-
-        <div class="form-group" data-binding="identity.sysSlug">
-          <label class="control-label col-md-2" for="identity-slug">Short Name</label>
-          <div class="input-group col-md-9">
-            <input class="form-control"
-              name="identity-slug" type="text"
-              ng-model="model.identity.sysSlug"
-              data-track-state="model.help.identity"
-              ng-disabled="model.loading"
-              data-slug-in maxlength="32"
-              data-binding="identity.sysSlug"
-              placeholder="my-short-name"
-              autocomplete="off" />
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default"
-                data-help-toggle="model.help.identity">
-                <i class="fa fa-question-circle"></i>
-              </button>
-            </span>
-          </div>
-          <p ng-show="model.help.identity.show"
-            class="help-block col-md-offset-2 col-md-9 br-fadein br-fadeout">
-            Enter a short name for this identity. A name similar to your full
-            name will help people to identify you. This short name will be
-            used in your identity address as shown below. An example would be
-            "my-short-name", "myshortname", or "megacorp".
-          </p>
-          <p class="col-md-offset-2 col-md-9">
-            <small>{{model.data.identityBaseUri}}/</small><strong>{{model.identity.sysSlug}}</strong>
-          </p>
+        <div ng-show="model.identity.sysSlug" class="form-group">
           <div class="col-md-offset-2 col-md-9"
             data-duplicate-checker="model.identity.sysSlug"
             data-duplicate-checker-type="identity"
