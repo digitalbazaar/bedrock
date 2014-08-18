@@ -5,17 +5,25 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col-md-12">
-    <h2 class="headline">{{pageTitle}}</h2>
-  </div>
-</div>
-
 {% raw %}
 <div class="ng-cloak" ng-controller="PasscodeController as model">
 
 <div class="row">
+  <div class="col-md-12">
+    <div ng-include="'/app/components/util/demo-warning.html'"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="headline">Reset Password</h2>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-offset-2 col-md-8">
+
+    <hr />
 
     <form class="form-horizontal" ng-submit="model.sendReset()">
       <fieldset>
@@ -48,6 +56,8 @@
 
   </div>
 </div>
+
+<br />
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
