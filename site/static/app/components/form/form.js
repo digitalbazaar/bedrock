@@ -11,7 +11,6 @@ define([
   './input-directive',
   './input-watcher-directive',
   './select-directive',
-  './submit-form-directive',
   './textarea-directive',
   './track-state-directive'
 ], function(
@@ -20,7 +19,6 @@ define([
   inputDirective,
   inputWatcherDirective,
   selectDirective,
-  submitFormDirective,
   textareaDirective,
   trackStateDirective) {
 
@@ -32,7 +30,6 @@ module.directive(helpToggleDirective);
 module.directive(inputDirective);
 module.directive(inputWatcherDirective);
 module.directive(selectDirective);
-module.directive(submitFormDirective);
 module.directive(textareaDirective);
 module.directive(trackStateDirective);
 
