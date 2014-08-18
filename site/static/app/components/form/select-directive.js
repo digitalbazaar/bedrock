@@ -110,7 +110,7 @@ function factory() {
 
     // when selection changes, update external model
     scope.$watch('selection.selected', function(selected) {
-      if(!selected) {
+      if(selected === undefined) {
         scope.model = undefined;
         return;
       }
