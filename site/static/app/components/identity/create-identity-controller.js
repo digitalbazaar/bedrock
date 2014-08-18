@@ -30,6 +30,7 @@ function factory($scope, $http, $window, AlertService, config) {
     if(!self.agreementChecked) {
       return false;
     }
+    AlertService.clearFeedback();
     self.loading = true;
     Promise.resolve($http.post('/join', self.identity))
       .then(function(response) {
