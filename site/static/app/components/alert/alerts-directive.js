@@ -77,13 +77,17 @@ function factory(AlertService, $compile, $rootScope) {
 
       // form error
       if(value.type === 'bedrock.validation.ValidationError') {
-        // select forms in an open dialog first, then any parent form, then self
-        var target = angular.element('dialog[open]');
-        if(target.length) {
-          target = target.find('form');
-        }
-        if(!target.length) {
-          target = element.closest('form');
+        // select forms in open dialogs first, then any non-dialog visible
+        // forms, then self
+        var target;
+        var dialog = angular.element('dialog[open]');
+        if(dialog.length) {
+          target = dialog.find('form');
+          if(!target.length) {
+            target = dialog;
+          }
+        } else {
+          target = angular.element(':not(dialog) form:visible');
         }
         if(!target.length) {
           target = element;
@@ -95,7 +99,8 @@ function factory(AlertService, $compile, $rootScope) {
           var binding = detailError.details.path;
           if(binding) {
             // highlight element using data-binding
-            target.find('[data-binding="' + binding + '"]').addClass('has-error');
+            target.find('[data-binding="' + binding + '"]').addClass(
+              'has-error');
           }
         });
       }
