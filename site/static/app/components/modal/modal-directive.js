@@ -15,11 +15,12 @@ function factory() {
     restrict: 'C',
     transclude: true,
     template: '\
-        <div data-alerts data-fixed="true"></div> \
+        <div br-alerts br-fixed="true"></div> \
         <div ng-transclude></div>'
   };
 }
 
+// replaces bootstrap "modal" class -- intentionally no "br-" prefix
 return {modal: factory};
 
 });

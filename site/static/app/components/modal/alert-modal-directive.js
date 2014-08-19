@@ -15,9 +15,9 @@ function factory() {
     restrict: 'A',
     require: '^stackable',
     scope: {
-      header: '@modalHeader',
-      ok: '@modalOk',
-      cancel: '@modalCancel'
+      header: '@brModalHeader',
+      ok: '@brModalOk',
+      cancel: '@brModalCancel'
     },
     transclude: true,
     templateUrl: '/app/components/modal/alert-modal.html',
@@ -27,6 +27,6 @@ function factory() {
   };
 }
 
-return {alertModal: factory};
+return {brAlertModal: factory};
 
 });

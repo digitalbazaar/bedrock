@@ -18,7 +18,7 @@ function factory(AlertService) {
       var template = tElement.html();
       return function(scope, element, attrs) {
         element.remove();
-        attrs.$observe('alertType', function(alertType) {
+        attrs.$observe('brAlertType', function(alertType) {
           if(alertType) {
             AlertService.add(alertType, {html: template}, {scope: scope});
           }
@@ -28,6 +28,6 @@ function factory(AlertService) {
   };
 }
 
-return {addAlert: factory};
+return {brAddAlert: factory};
 
 });
