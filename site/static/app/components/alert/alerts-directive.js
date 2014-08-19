@@ -71,7 +71,7 @@ function factory(AlertService, $compile, $rootScope) {
         });
         var transclusionScope = value.getScope ? value.getScope() : scope;
         $compile(el)(transclusionScope);
-        element.find('.alert-area-' + info.category).append(el);
+        element.find('.br-alert-area-' + info.category).append(el);
         return;
       }
 
@@ -107,7 +107,7 @@ function factory(AlertService, $compile, $rootScope) {
     }
 
     function clearAlerts(category, type) {
-      element.find('.alert-area-' + category).empty();
+      element.find('.br-alert-area-' + category).empty();
       elements[category] = [];
       if(type) {
         // not all alerts were removed, so rebuild alert area

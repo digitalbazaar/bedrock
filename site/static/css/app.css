@@ -8157,7 +8157,7 @@ a {
   cursor: pointer;
 }
 /* Alert area */
-.alert-area-fixed {
+.br-alert-area-fixed {
   position: fixed;
   top: -1000px;
   margin: 0 10px;
@@ -8183,24 +8183,24 @@ a {
   overflow: visible;
   transition: top 350ms cubic-bezier(0.17, 0.04, 0.03, 0.94), top 500ms cubic-bezier(0.94, 0.03, 0.04, 0.17);
 }
-.alert-area-fixed-show {
+.br-alert-area-fixed-show {
   top: 0px;
 }
-.alert-area-fixed-show .alert {
+.br-alert-area-fixed-show .alert {
   margin-bottom: 10px;
 }
-.alert-area-body-fixed {
+.br-alert-area-body-fixed {
   padding: 15px 15px 5px 15px;
 }
 /* Alert area responsiveness */
 @media (min-width: 768px) {
-  .alert-area-fixed {
+  .br-alert-area-fixed {
     left: 50%;
     width: 600px;
     margin-left: -307px;
     margin-right: 0;
   }
-  .modal-sm .alert-area-fixed {
+  .modal-sm .br-alert-area-fixed {
     left: 50%;
     width: 300px;
     margin-left: -157px;
@@ -8208,7 +8208,7 @@ a {
   }
 }
 @media (min-width: 992px) {
-  .modal-lg .alert-area-fixed {
+  .modal-lg .br-alert-area-fixed {
     left: 50%;
     width: 900px;
     margin-left: -457px;
