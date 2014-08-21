@@ -1,5 +1,5 @@
 <div class="section section-keys" ng-controller="KeysController as model">
-  <br-headline-menu br-headline="Keys" br-loading="model.state.loading">
+  <br-headline br-title="Keys" br-loading="model.state.loading">
     <ul class="stackable-menu dropdown-menu">
       <li>
         <a class="stackable-cancel"
@@ -15,7 +15,7 @@
           ng-show="model.showRevokedKeys" class="fa fa-check"></i> Show Revoked Keys</a>
       </li>
     </ul>
-  </br-headline-menu>
+  </br-headline>
   <table class="table table-condensed" ng-show="model.state.loading || model.keys.length > 0">
     <thead>
       <tr>

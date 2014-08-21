@@ -1,5 +1,5 @@
 /*!
- * Headline Menu directive.
+ * Headline directive.
  *
  * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -14,14 +14,14 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
-      headline: '@brHeadline',
+      title: '@brTitle',
       loading: '=?brLoading'
     },
     transclude: true,
     template: '\
       <h3 class="headline"> \
-        {{headline}} \
-        <span ng-if="options.menu" ng-hide="loading" \
+        {{title}} \
+        <span ng-hide="!options.menu || loading" \
           class="btn-group pull-right"> \
           <button type="button" \
             class="btn btn-default btn-sm" \
@@ -52,6 +52,6 @@ function factory() {
   };
 }
 
-return {brHeadlineMenu: factory};
+return {brHeadline: factory};
 
 });

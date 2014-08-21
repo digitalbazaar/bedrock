@@ -14,7 +14,7 @@ define([
   './encodeuricomponent-filter',
   './error-directive',
   './floor-filter',
-  './headline-menu-directive',
+  './headline-directive',
   './mask-filter',
   './model-service',
   './now-filter',
@@ -31,7 +31,7 @@ define([
   encodeURIComponent_,
   error,
   floor,
-  headlineMenuDirective,
+  headlineDirective,
   mask,
   modelService,
   now,
@@ -51,7 +51,7 @@ module.filter(embeddedString);
 module.filter(encodeURIComponent_);
 module.directive(error);
 module.filter(floor);
-module.directive(headlineMenuDirective);
+module.directive(headlineDirective);
 module.filter(mask);
 module.service(modelService);
 module.filter(now);
