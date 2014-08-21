@@ -101,7 +101,7 @@ util.zeroFill = function(num) {
 };
 
 /* @ngInject */
-module.run(function($rootScope, $location, $route, $http, util) {
+module.run(function($rootScope, $window, $location, $route, $http, util) {
   /* Note: $route is injected above to trigger watching routes to ensure
     pages are loaded properly. */
 
@@ -111,10 +111,10 @@ module.run(function($rootScope, $location, $route, $http, util) {
   $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
   // set site and page titles
-  $rootScope.siteTitle = window.data.siteTitle;
-  $rootScope.pageTitle = window.data.pageTitle;
-  $rootScope.productionMode = window.data.productionMode;
-  $rootScope.demoWarningUrl = window.data.demoWarningUrl;
+  $rootScope.siteTitle = $window.data.siteTitle;
+  $rootScope.pageTitle = $window.data.pageTitle;
+  $rootScope.productionMode = $window.data.productionMode;
+  $rootScope.demoWarningUrl = $window.data.demoWarningUrl;
 
   // build route regexes
   var routeRegexes = [];
@@ -131,7 +131,7 @@ module.run(function($rootScope, $location, $route, $http, util) {
   // 3. switching from view to non-view
   $rootScope.$on('$locationChangeStart', function(event, next, last) {
     // don't reload same page
-    if(window.location.href === $location.absUrl()) {
+    if($window.location.href === $location.absUrl()) {
       return;
     }
     // if currently using view, test location to see if its a route
