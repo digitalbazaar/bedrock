@@ -1,11 +1,7 @@
 <div br-tabs-pane br-title="Identity" br-tab-id="identity">
   <div class="section" ng-controller="IdentitySettingsController as model">
-    <h3 class="headline">
-      Identity
-      <span ng-show="model.state.loading" class="pull-right">
-        <i class="fa fa-refresh fa-spin text-muted"></i>
-      </span>
-    </h3>
+    <br-headline br-title="Identity" br-loading="model.state.loading"
+      br-options="{menu: false}"></br-headline>
     <div ng-include="'/app/components/identity/identity-form.html'"></div>
   </div>
 </div>
