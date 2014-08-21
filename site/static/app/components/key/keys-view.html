@@ -31,9 +31,11 @@
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
-          <span ng-show="model.identity.sysSigningKey == key.id"
-            data-tooltip-title="This is the default signing key."
-            data-placement="bottom" data-trigger="hover"><i class="icon fa fa-star"></i></span>
+          <span ng-show="model.identity.sysSigningKey == key.id">
+            <i class="icon fa fa-star"
+              br-tooltip="This is the default signing key."
+              br-options="{placement: 'bottom'}"></i>
+          </span>
         </td>
         <!-- Status -->
         <td class="compact">

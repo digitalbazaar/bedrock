@@ -21,6 +21,7 @@ define([
   './prefill-filter',
   './refresh-service',
   './resource-service',
+  './tooltip-directive',
   './tooltip-title-directive'
 ], function(
   angular,
@@ -38,6 +39,7 @@ define([
   prefill,
   refreshService,
   resourceService,
+  tooltipDirective,
   tooltipTitle) {
 
 'use strict';
@@ -58,6 +60,7 @@ module.filter(now);
 module.filter(prefill);
 module.service(refreshService);
 module.service(resourceService);
+module.directive(tooltipDirective);
 module.directive(tooltipTitle);
 
 return module.name;
