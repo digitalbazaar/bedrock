@@ -26,7 +26,8 @@
     </thead>
     <tbody>
       <tr ng-repeat="key in model.keys | orderBy:'label' | orderBy:'sysStatus':reverse"
-        ng-show="key.sysStatus == 'active' || model.showRevokedKeys">
+        ng-show="key.sysStatus == 'active' || model.showRevokedKeys"
+        ng-class="{'danger': key.sysStatus == 'disabled'}">
         <!-- Name -->
         <td>
           <a href="{{key.id}}">{{key.label}}</a>
