@@ -102,6 +102,6 @@ function factory($http, AlertService) {
   }
 }
 
-return {remoteFileSelectorModal: factory};
+return {brRemoteFileSelectorModal: factory};
 
 });

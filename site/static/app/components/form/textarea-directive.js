@@ -33,10 +33,10 @@ function factory() {
             name="{{options.name}}" \
             placeholder="{{options.placeholder}}" \
             ng-model="model" ng-disabled=options.disabled \
-            data-track-state="help" /> \
+            br-track-state="help" /> \
           <span class="input-group-btn"> \
             <button type="button" class="btn btn-default btn-xs" \
-              data-help-toggle="help"> \
+              br-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \
           </span> \

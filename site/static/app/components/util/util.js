@@ -14,7 +14,7 @@ define([
   './encodeuricomponent-filter',
   './error-directive',
   './floor-filter',
-  './headline-menu',
+  './headline-menu-directive',
   './mask-filter',
   './model-service',
   './now-filter',
@@ -24,14 +24,14 @@ define([
   './tooltip-title-directive'
 ], function(
   angular,
-  actionMenu,
+  actionMenuDirective,
   ceil,
   ellipsis,
   embeddedString,
   encodeURIComponent_,
   error,
   floor,
-  headlineMenu,
+  headlineMenuDirective,
   mask,
   modelService,
   now,
@@ -44,14 +44,14 @@ define([
 
 var module = angular.module('app.util', []);
 
-module.directive(actionMenu);
+module.directive(actionMenuDirective);
 module.filter(ceil);
 module.filter(ellipsis);
 module.filter(embeddedString);
 module.filter(encodeURIComponent_);
 module.directive(error);
 module.filter(floor);
-module.directive(headlineMenu);
+module.directive(headlineMenuDirective);
 module.filter(mask);
 module.service(modelService);
 module.filter(now);

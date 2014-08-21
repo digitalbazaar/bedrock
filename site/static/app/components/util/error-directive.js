@@ -14,7 +14,7 @@ define([], function() {
 function factory() {
   return {
     restrict: 'A',
-    scope: {error: '=errorView'},
+    scope: {error: '=brErrorView'},
     templateUrl: '/app/components/util/error-view.html',
     link: Link
   };
@@ -45,6 +45,6 @@ function Link(scope) {
   });
 }
 
-return {errorView: factory};
+return {brErrorView: factory};
 
 });

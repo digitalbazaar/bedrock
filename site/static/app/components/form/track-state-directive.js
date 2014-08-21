@@ -18,7 +18,7 @@ function factory($parse) {
 
   function Link(scope, element, attrs) {
     var state = {};
-    attrs.$observe('trackState', function(value) {
+    attrs.$observe('brTrackState', function(value) {
       // init scope state object
       var get = $parse(value);
       var set = get.assign || angular.noop;
@@ -81,6 +81,6 @@ function factory($parse) {
   }
 }
 
-return {trackState: factory};
+return {brTrackState: factory};
 
 });

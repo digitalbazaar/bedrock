@@ -13,7 +13,7 @@ define(['angular'], function(angular) {
 function factory(AlertService, IdentityService, KeyService, config) {
   return {
     restrict: 'A',
-    scope: {sourceKey: '=key'},
+    scope: {sourceKey: '=brKey'},
     require: '^stackable',
     templateUrl: '/app/components/key/edit-key-modal.html',
     link: Link
@@ -52,6 +52,6 @@ function factory(AlertService, IdentityService, KeyService, config) {
   }
 }
 
-return {editKeyModal: factory};
+return {brEditKeyModal: factory};
 
 });

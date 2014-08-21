@@ -20,11 +20,11 @@ function factory($parse, $timeout) {
     // hide (use opacity to preserve layout), make element untabbable
     element.css('opacity', '0');
     element.attr('tabindex', '-1');
-    element.parent().addClass('help-toggle');
+    element.parent().addClass('br-help-toggle');
 
     var state;
     var helpState;
-    attrs.$observe('helpToggle', function(value) {
+    attrs.$observe('brHelpToggle', function(value) {
       // init scope state object
       var get = $parse(value);
       var set = get.assign || angular.noop;
@@ -46,7 +46,7 @@ function factory($parse, $timeout) {
     });
 
     // track events
-    var namespace = '.helpToggleDirective';
+    var namespace = '.brHelpToggleDirective';
     scope.$on('$destroy', function() {
       element.off(namespace);
     });
@@ -91,7 +91,7 @@ function factory($parse, $timeout) {
     });
 
     // toggle help button display based on focus/mouse over changes
-    var attr = attrs.helpToggle;
+    var attr = attrs.brHelpToggle;
     scope.$watch(attr + '.focus', toggleElement);
     scope.$watch(attr + '.mouseover', toggleElement);
     scope.$watch(attr + '.help.mouseover', toggleElement);
@@ -113,12 +113,12 @@ function factory($parse, $timeout) {
         if(state.mouseover || state.help.mouseover ||
           (state.focus && !state.help.ignoreFocus)) {
           // already shown/showing
-          if(element.parent().hasClass('help-toggle-on')) {
+          if(element.parent().hasClass('br-help-toggle-on')) {
             return;
           }
           // mouse over element or help element or element is in focus and
           // focus is not ignored, so show help element
-          element.parent().addClass('help-toggle-on');
+          element.parent().addClass('br-help-toggle-on');
           // cancel current animation
           if(element.is(':animated')) {
             element.stop(true, true);
@@ -127,11 +127,11 @@ function factory($parse, $timeout) {
           $(element).animate({opacity: '1'}, 400);
         } else {
           // already hidden/hiding
-          if(!element.parent().hasClass('help-toggle-on')) {
+          if(!element.parent().hasClass('br-help-toggle-on')) {
             return;
           }
           // mouse not over element or help element, hide help element
-          element.parent().removeClass('help-toggle-on');
+          element.parent().removeClass('br-help-toggle-on');
           // cancel current animation
           if(element.is(':animated')) {
             element.stop(true, true);
@@ -144,6 +144,6 @@ function factory($parse, $timeout) {
   }
 }
 
-return {helpToggle: factory};
+return {brHelpToggle: factory};
 
 });

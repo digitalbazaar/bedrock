@@ -100,6 +100,6 @@ function factory(
   }
 }
 
-return {addKeyModal: factory};
+return {brAddKeyModal: factory};
 
 });

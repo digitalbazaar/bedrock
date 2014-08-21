@@ -14,8 +14,8 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
-      headline: '@',
-      loading: '=?'
+      headline: '@brHeadline',
+      loading: '=?brLoading'
     },
     transclude: true,
     template: '\
@@ -42,6 +42,6 @@ function factory() {
   };
 }
 
-return {headlineMenu: factory};
+return {brHeadlineMenu: factory};
 
 });

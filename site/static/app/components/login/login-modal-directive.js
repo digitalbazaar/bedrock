@@ -57,6 +57,6 @@ function factory($http, $timeout, AlertService, RefreshService, config) {
   }
 }
 
-return {loginModal: factory};
+return {brLoginModal: factory};
 
 });

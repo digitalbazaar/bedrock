@@ -14,9 +14,9 @@ function factory(KeyService) {
   return {
     restrict: 'A',
     scope: {
-      selected: '=',
-      invalid: '=',
-      fixed: '@'
+      selected: '=brSelected',
+      invalid: '=brInvalid',
+      fixed: '@brFixed'
     },
     templateUrl: '/app/components/key/key-selector.html',
     link: Link
@@ -33,13 +33,13 @@ function factory(KeyService) {
         scope.selected = keys[0] || null;
       }
     }, true);
-    attrs.$observe('fixed', function(value) {
+    attrs.$observe('brFixed', function(value) {
       scope.fixed = value;
     });
     KeyService.collection.getAll();
   }
 }
 
-return {keySelector: factory};
+return {brKeySelector: factory};
 
 });

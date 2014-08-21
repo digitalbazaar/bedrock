@@ -14,8 +14,8 @@ function factory() {
   return {
     restrict: 'A',
     scope: {
-      spin: '=spinner',
-      className: '@spinnerClass'
+      spin: '=brSpinner',
+      className: '@brSpinnerClass'
     },
     link: function(scope, element, attrs) {
       // default spinner options
@@ -47,7 +47,7 @@ function factory() {
         }
       });
 
-      attrs.$observe('spinnerClass', function(value) {
+      attrs.$observe('brSpinnerClass', function(value) {
         options.className = value;
         spinner.stop();
         spinner = new Spinner(options);
@@ -65,6 +65,6 @@ function factory() {
   };
 }
 
-return {spinner: factory};
+return {brSpinner: factory};
 
 });

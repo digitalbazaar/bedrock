@@ -166,11 +166,11 @@ h1.headline {
 }
 
 /* Help Toggle */
-.help-toggle > .btn:focus {
+.br-help-toggle > .btn:focus {
   outline: 0;
 }
-.input-group textarea + .input-group-btn.help-toggle > .btn,
-.help-toggle-overlay {
+.input-group textarea + .input-group-btn.br-help-toggle > .btn,
+.br-help-toggle-overlay {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -216,7 +216,7 @@ h1.headline {
     &, & .ui-select-match {
       .border-right-radius(@input-border-radius);
     }
-    // no border radius when help-toggle is shown/animating
+    // no border radius when br-help-toggle is shown/animating
     &:not(textarea) {
       &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
         &, & .ui-select-match {
@@ -425,8 +425,8 @@ h1.headline {
 }
 
 /* Selectors */
-.item-selected,
-.item-hover:hover {
+.br-item-selected,
+.br-item-hover:hover {
   @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
   border: 1px solid @input-border-focus;
   outline: 0;
@@ -435,7 +435,7 @@ h1.headline {
 }
 
 /* Slug input */
-input.slug {
+input.br-slug {
   display: inline-block;
   height: auto;
   width: auto;
@@ -452,10 +452,10 @@ input.slug {
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
-input.slug.placeholder {
+input.br-slug.placeholder {
   color: #999;
 }
-input.slug:hover, input.slug:focus {
+input.br-slug:hover, input.br-slug:focus {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -469,10 +469,10 @@ input.slug:hover, input.slug:focus {
   outline: thin dotted \9;
   /* IE6-8 */
 }
-input.slug:focus {
+input.br-slug:focus {
   background-color: #ffffff;
 }
-input.slug.error {
+input.br-slug.error {
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;

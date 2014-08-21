@@ -21,6 +21,7 @@ function factory() {
   };
 }
 
+// polyfills "placeholder" attribute -- intentionally no "br-" prefix
 return {placeholder: factory};
 
 });

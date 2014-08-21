@@ -18,15 +18,15 @@
                 <label for="name">Name</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-                  <!-- FIXME: remove data-slug-out, use data-slug-in="identityLabel" below -->
+                  <!-- FIXME: remove br-slug-out, use br-slug-in="identityLabel" below -->
                   <input class="form-control" type="text" name="label"
                     ng-model="identityLabel"
-                    data-slug-out="identitySlug"
-                    data-track-state="model.help.identityLabel"
+                    br-slug-out="identitySlug"
+                    br-track-state="model.help.identityLabel"
                     autocomplete="off" />
                   <span class="input-group-btn">
                     <button class="btn btn-default"
-                      data-help-toggle="model.help.identityLabel">
+                      br-help-toggle="model.help.identityLabel">
                       <i class="fa fa-question-circle"></i>
                     </button>
                   </span>
@@ -39,16 +39,16 @@
                   URL:
                 </p>
                 <p><small>{{data.identityBaseUri}}/</small><input
-                  data-binding="sysSlug" class="slug" name="slug"
+                  data-binding="sysSlug" class="br-slug" name="slug"
                   placeholder="IDENTITY-NAME"
-                  data-slug-in ng-model="identitySlug" /></p>
-                <div data-duplicate-checker="identitySlug"
-                  data-duplicate-checker-type="identity"
-                  data-duplicate-checker-available="This identity name is available!"
-                  data-duplicate-checker-invalid="Identity name is invalid."
-                  data-duplicate-checker-taken="Identity name has already been taken."
-                  data-duplicate-checker-checking="Checking Availability..."
-                  data-duplicate-checker-result="model.identitySlugAvailable">
+                  br-slug-in ng-model="identitySlug" /></p>
+                <div br-duplicate-checker="identitySlug"
+                  br-duplicate-checker-type="identity"
+                  br-duplicate-checker-available="This identity name is available!"
+                  br-duplicate-checker-invalid="Identity name is invalid."
+                  br-duplicate-checker-taken="Identity name has already been taken."
+                  br-duplicate-checker-checking="Checking Availability..."
+                  br-duplicate-checker-result="model.identitySlugAvailable">
                 </div>
               </div>
               <div class="form-group">

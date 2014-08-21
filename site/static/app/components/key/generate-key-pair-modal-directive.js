@@ -88,6 +88,6 @@ function factory(AlertService, KeyService, config) {
   }
 }
 
-return {generateKeyPairModal: factory};
+return {brGenerateKeyPairModal: factory};
 
 });

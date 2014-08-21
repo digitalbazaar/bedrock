@@ -14,14 +14,14 @@ function factory($http, $filter, AlertService, config) {
   return {
     restrict: 'A',
     scope: {
-      input: '=duplicateChecker',
-      type: '@duplicateCheckerType',
-      available: '@duplicateCheckerAvailable',
-      invalid: '@duplicateCheckerInvalid',
-      taken: '@duplicateCheckerTaken',
-      checking: '@duplicateCheckerChecking',
-      owner: '@duplicateCheckerOwner',
-      result: '=duplicateCheckerResult'
+      input: '=brDuplicateChecker',
+      type: '@brDuplicateCheckerType',
+      available: '@brDuplicateCheckerAvailable',
+      invalid: '@brDuplicateCheckerInvalid',
+      taken: '@brDuplicateCheckerTaken',
+      checking: '@brDuplicateCheckerChecking',
+      owner: '@brDuplicateCheckerOwner',
+      result: '=brDuplicateCheckerResult'
     },
     link: Link
   };
@@ -133,6 +133,6 @@ function factory($http, $filter, AlertService, config) {
   }
 }
 
-return {duplicateChecker: factory};
+return {brDuplicateChecker: factory};
 
 });

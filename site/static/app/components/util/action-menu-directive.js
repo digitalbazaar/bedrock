@@ -32,6 +32,6 @@ function factory() {
   };
 }
 
-return {actionMenu: factory};
+return {brActionMenu: factory};
 
 });

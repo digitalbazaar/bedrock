@@ -14,9 +14,9 @@ function factory() {
   return {
     restrict: 'A',
     scope: {
-      modalTitle: '=',
-      items: '=',
-      itemType: '='
+      modalTitle: '=brModalTitle',
+      items: '=brItems',
+      itemType: '=brItemType'
     },
     require: '^stackable',
     transclude: true,
@@ -24,6 +24,6 @@ function factory() {
   };
 }
 
-return {selectorModal: factory};
+return {brSelectorModal: factory};
 
 });

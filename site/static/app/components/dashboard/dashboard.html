@@ -8,13 +8,13 @@
 
   <div class="row">
     <div class="section section-itemsX col-md-6">
-      <headline-menu headline="Items X" loading="model.state.items.loading">
+      <br-headline-menu br-headline="Items X" br-loading="model.state.items.loading">
         <ul class="stackable-menu dropdown-menu">
           <li>
             <a class="stackable-cancel" ng-click="modals.showAddItem=true"><i class="fa fa-plus"></i> Add Item</a>
           </li>
         </ul>
-      </headline-menu>
+      </br-headline-menu>
       <div ng-show="!model.state.items.loading && items.length == 0">
         <p class="center">You have no items for this identity.</p>
         <button type="button"
@@ -24,13 +24,13 @@
     </div>
 
     <div class="section section-itemsY col-md-6">
-      <headline-menu headline="Items Y" loading="model.state.items.loading">
+      <br-headline-menu br-headline="Items Y" br-loading="model.state.items.loading">
         <ul class="stackable-menu dropdown-menu">
           <li>
             <a class="stackable-cancel" ng-click="modals.showAddItem=true"><i class="fa fa-plus"></i> Add Item</a>
           </li>
         </ul>
-      </headline-menu>
+      </br-headline-menu>
       <div ng-show="!model.state.items.loading && items.length == 0">
         <p class="center">You have no items for this identity.</p>
         <button type="button"

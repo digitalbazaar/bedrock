@@ -14,21 +14,21 @@ function factory() {
   return {
     restrict: 'A',
     scope: {
-      identityTypes: '=',
-      identities: '=',
-      selected: '=',
-      invalid: '=',
-      fixed: '@'
+      identityTypes: '=brIdentityTypes',
+      identities: '=brIdentities',
+      selected: '=brSelected',
+      invalid: '=brInvalid',
+      fixed: '@brFixed'
     },
     templateUrl: '/app/components/identity/identity-selector.html',
     link: function(scope, element, attrs) {
-      attrs.$observe('fixed', function(value) {
+      attrs.$observe('brFixed', function(value) {
         scope.fixed = value;
       });
     }
   };
 }
 
-return {identitySelector: factory};
+return {brIdentitySelector: factory};
 
 });

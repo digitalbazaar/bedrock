@@ -13,8 +13,8 @@ define(['angular'], function(angular) {
 
 var deps = [];
 return {
-  tabs: deps.concat(tabsFactory),
-  tabsPane: deps.concat(tabsPaneFactory)
+  brTabs: deps.concat(tabsFactory),
+  brTabsPane: deps.concat(tabsPaneFactory)
 };
 
 function tabsFactory() {
@@ -66,17 +66,18 @@ function tabsFactory() {
 
 function tabsPaneFactory() {
   function Link(scope, element, attrs, tabsCtrl) {
-    scope.title = scope.title || attrs.title || element.attr('title');
-    scope.tabId = scope.tabId || attrs.tabId || element.attr('tab-id');
+    // FIXME: why is this doing element.attr() should it be using $observe?
+    scope.title = scope.title || attrs.brTitle || element.attr('br-title');
+    scope.tabId = scope.tabId || attrs.brTabId || element.attr('br-tab-id');
     tabsCtrl.addPane(scope, element.parent().index());
   }
 
   return {
-    require: '^tabs',
+    require: '^brTabs',
     restrict: 'A',
     transclude: true,
     scope: {
-      title: '@'
+      title: '@brTitle'
     },
     link: Link,
     templateUrl: '/app/components/tabs/tabs-pane.html'

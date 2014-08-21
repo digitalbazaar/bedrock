@@ -1,7 +1,7 @@
 <div>
-  <div data-selector data-item-type="Identity"
-    data-items="identities" data-selected="selected" data-invalid="invalid"
-    data-add-item="showAddIdentityModal=true" data-fixed="{{fixed}}">
+  <div br-selector br-item-type="Identity"
+    br-items="identities" br-selected="selected" br-invalid="invalid"
+    br-add-item="showAddIdentityModal=true" br-fixed="{{fixed}}">
     <div class="identity">
       <strong>{{selected.label}}</strong><br/>
       <small>{{selected.id}}</small><br/>
@@ -12,6 +12,6 @@
   </div>
   <stackable-modal stackable="showAddIdentityModal"
     stackable-closed="!err && (selected=result.identity)">
-    <div data-add-identity-modal data-identity-types="identityTypes"></div>
+    <div br-add-identity-modal br-identity-types="identityTypes"></div>
   </stackable-modal>
 </div>

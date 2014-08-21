@@ -13,7 +13,7 @@ define(['angular'], function(angular) {
 function factory(AlertService, IdentityService, config) {
   return {
     restrict: 'A',
-    scope: {identityTypes: '='},
+    scope: {identityTypes: '=brIdentityTypes'},
     require: '^stackable',
     templateUrl: '/app/components/identity/add-identity-modal.html',
     link: Link
@@ -58,6 +58,6 @@ function factory(AlertService, IdentityService, config) {
   }
 }
 
-return {addIdentityModal: factory};
+return {brAddIdentityModal: factory};
 
 });

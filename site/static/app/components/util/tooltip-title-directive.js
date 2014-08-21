@@ -54,6 +54,7 @@ function factory() {
   }
 }
 
+// replaces bootstrap "tooltip-title" attribute -- intentionally no "br-" prefix
 return {tooltipTitle: factory};
 
 });

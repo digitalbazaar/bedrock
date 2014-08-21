@@ -11,7 +11,7 @@ define([], function() {
 'use strict';
 
 var deps = [];
-return {appKeys: deps.concat(factory)};
+return {brKeys: deps.concat(factory)};
 
 function factory() {
   return {

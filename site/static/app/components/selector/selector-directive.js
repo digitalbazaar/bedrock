@@ -14,16 +14,16 @@ function factory($compile, $filter, $timeout) {
   return {
     transclude: true,
     scope: {
-      fixed: '@',
-      items: '=',
-      itemType: '@',
-      modalTitle: '@',
-      selected: '=',
-      invalid: '=',
-      addItem: '&',
-      custom: '=customDisplay',
-      selecting: '=',
-      columns: '@'
+      fixed: '@brFixed',
+      items: '=brItems',
+      itemType: '@brItemType',
+      modalTitle: '@brModalTitle',
+      selected: '=brSelected',
+      invalid: '=brInvalid',
+      addItem: '&brAddItem',
+      custom: '=brCustomDisplay',
+      selecting: '=brSelecting',
+      columns: '@brColumns'
     },
     templateUrl: '/app/components/selector/selector.html',
     link: Link
@@ -57,12 +57,12 @@ function factory($compile, $filter, $timeout) {
       }
     });
 
-    attrs.$observe('fixed', function(value) {
+    attrs.$observe('brFixed', function(value) {
       scope.fixed = value;
     });
 
     scope.$watch('showSelectorModal', function(value) {
-      if(attrs.selecting) {
+      if(attrs.brSelecting) {
         scope.selecting = value;
       }
       if(!value) {
@@ -90,7 +90,7 @@ function factory($compile, $filter, $timeout) {
         // build default list display
         angular.forEach(sortedItems, function(item, idx) {
           var li = angular.element(
-            '<li class="item-hover well" ng-click="select(' + idx + ')">');
+            '<li class="br-item-hover well" ng-click="select(' + idx + ')">');
           $compile(li)(scope);
           list.append(li);
           var child = scope.$new();
@@ -143,6 +143,6 @@ function factory($compile, $filter, $timeout) {
   };
 }
 
-return {selector: factory};
+return {brSelector: factory};
 
 });

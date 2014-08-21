@@ -1,9 +1,9 @@
 <div>
-  <div data-selector data-item-type="Key"
-    data-items="model.keys"
-    data-selected="selected"
-    data-invalid="invalid"
-    data-add-item="model.showAddKeyModal=true" data-fixed="{{fixed}}">
+  <div br-selector br-item-type="Key"
+    br-items="model.keys"
+    br-selected="selected"
+    br-invalid="invalid"
+    br-add-item="model.showAddKeyModal=true" br-fixed="{{fixed}}">
     <span ng-show="model.services.key.loading">
       <i class="fa fa-refresh fa-spin text-muted"></i>
     </span>
@@ -15,6 +15,6 @@
   </div>
   <stackable-modal stackable="model.showAddKeyModal"
     stackable-closed="!err && (selected=result)">
-    <div data-generate-key-pair-modal></div>
+    <div br-generate-key-pair-modal></div>
   </stackable-modal>
 </div>

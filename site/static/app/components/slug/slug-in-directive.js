@@ -19,7 +19,7 @@ function factory($filter, $parse) {
       var set = $parse(attrs.ngModel).assign || angular.noop;
 
       // if slug-in attribute is set, use it to update ng-model
-      scope.$watch(attrs.slugIn, function(value) {
+      scope.$watch(attrs.brSlugIn, function(value) {
         if(value === undefined) {
           return;
         }
@@ -78,6 +78,6 @@ function factory($filter, $parse) {
   };
 }
 
-return {slugIn: factory};
+return {brSlugIn: factory};
 
 });

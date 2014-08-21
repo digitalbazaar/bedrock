@@ -1,5 +1,5 @@
 <div class="section section-keys" ng-controller="KeysController as model">
-  <headline-menu headline="Keys" loading="model.state.loading">
+  <br-headline-menu br-headline="Keys" br-loading="model.state.loading">
     <ul class="stackable-menu dropdown-menu">
       <li>
         <a class="stackable-cancel"
@@ -15,7 +15,7 @@
           ng-show="model.showRevokedKeys" class="fa fa-check"></i> Show Revoked Keys</a>
       </li>
     </ul>
-  </headline-menu>
+  </br-headline-menu>
   <table class="table table-condensed" ng-show="model.state.loading || model.keys.length > 0">
     <thead>
       <tr>
@@ -41,7 +41,7 @@
         </td>
         <!-- Action -->
         <td class="action">
-          <action-menu>
+          <br-action-menu>
             <ul class="dropdown-menu stackable-menu">
               <!-- Edit -->
               <li>
@@ -63,7 +63,7 @@
                 </a>
               </li>
             </ul>
-          </action-menu>
+          </br-action-menu>
         </td>
       </tr>
     </tbody>
@@ -74,13 +74,13 @@
     or one can be generated that this site controls.</p>
   </div>
   <stackable-modal stackable="model.modals.showGenerateKeyPair">
-    <div data-generate-key-pair-modal></div>
+    <div br-generate-key-pair-modal></div>
   </stackable-modal>
   <stackable-modal stackable="model.modals.showAddKey">
-    <div data-add-key-modal></div>
+    <div br-add-key-modal></div>
   </stackable-modal>
   <stackable-modal stackable="model.modals.showEditKey">
-    <div data-edit-key-modal data-key="model.modals.key"></div>
+    <div br-edit-key-modal br-key="model.modals.key"></div>
   </stackable-modal>
 
   <!-- Revoking key alert -->

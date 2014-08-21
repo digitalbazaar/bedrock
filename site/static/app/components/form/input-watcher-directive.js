@@ -14,9 +14,9 @@ function factory() {
   return {
     restrict: 'A',
     scope: {
-      input: '=inputWatcher',
-      state: '=inputWatcherState',
-      change: '&inputChange'
+      input: '=brInputWatcher',
+      state: '=brInputWatcherState',
+      change: '&brInputChange'
     },
     link: Link
   };
@@ -75,6 +75,6 @@ function factory() {
   }
 }
 
-return {inputWatcher: factory};
+return {brInputWatcher: factory};
 
 });

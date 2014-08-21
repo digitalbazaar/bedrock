@@ -35,7 +35,7 @@ function factory() {
           <span ng-if="options.image" \
             class="input-group-addon"><img \
             ng-src="{{options.image}}"></img></span> \
-          <div class="br-select" data-track-state="help" \
+          <div class="br-select" br-track-state="help" \
             ng-class="{\'br-help-off\': options.inline}"> \
             <ui-select ng-model="selection.selected" \
               theme="bootstrap" ng-disabled="options.disabled"> \
@@ -47,7 +47,7 @@ function factory() {
           </div> \
           <span ng-if="!options.inline" class="input-group-btn"> \
             <button type="button" class="btn btn-default" \
-              data-help-toggle="help"> \
+              br-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \
           </span> \
