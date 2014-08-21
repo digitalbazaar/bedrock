@@ -18,7 +18,7 @@ function factory() {
     },
     transclude: true,
     template: '\
-      <div class="form-group" data-binding="{{options.name}}"> \
+      <div class="form-group" br-property-path="{{options.name}}"> \
         <label class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
         <div class="{{options.columns.input}} input-group"> \

@@ -94,12 +94,12 @@ function factory(AlertService, $compile, $rootScope) {
         }
 
         // clear previous feedback, add new
-        target.find('[data-binding]').removeClass('has-error');
+        target.find('[br-property-path]').removeClass('has-error');
         angular.forEach(value.details.errors, function(detailError) {
-          var binding = detailError.details.path;
-          if(binding) {
-            // highlight element using data-binding
-            target.find('[data-binding="' + binding + '"]').addClass(
+          var path = detailError.details.path;
+          if(path) {
+            // highlight element using br-property-path
+            target.find('[br-property-path="' + path + '"]').addClass(
               'has-error');
           }
         });

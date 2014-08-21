@@ -14,7 +14,7 @@
           <h4 class="headline">New Identity</h4>
           <form class="well form-vertical">
             <fieldset>
-              <div class="form-group" data-binding="label">
+              <div class="form-group" br-property-path="label">
                 <label for="name">Name</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-tag"></i></span>
@@ -39,7 +39,7 @@
                   URL:
                 </p>
                 <p><small>{{data.identityBaseUri}}/</small><input
-                  data-binding="sysSlug" class="br-slug" name="slug"
+                  br-property-path="sysSlug" class="br-slug" name="slug"
                   placeholder="IDENTITY-NAME"
                   br-slug-in ng-model="identitySlug" /></p>
                 <div br-duplicate-checker="identitySlug"
