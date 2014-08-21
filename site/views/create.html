@@ -38,7 +38,7 @@
 
         <br-input br-model="model.identity.email"
           br-options="{
-            name: 'email', label: 'Email', disabled: model.loading,
+            name: 'email', label: 'Email', disabled: {{model.loading}},
             autocomplete: 'off',
             columns: {
               label: 'col-md-2',
@@ -64,7 +64,7 @@
         <br-input br-model="model.identity.sysPassword"
           br-options="{
             name: 'sysPassword', type: 'password',
-            label: 'Password', maxlength: '32', disabled: model.loading,
+            label: 'Password', maxlength: '32', disabled: {{model.loading}},
             columns: {
               label: 'col-md-2',
               input: 'col-md-8',
@@ -95,7 +95,7 @@
         <br-input br-model="model.identity.label"
           br-options="{
             name: 'label', label: 'Full Name',
-            placeholder: 'My Full Name', disabled: model.loading,
+            placeholder: 'My Full Name', disabled: {{model.loading}},
             autocomplete: 'off',
             columns: {
               label: 'col-md-2',
@@ -112,7 +112,7 @@
           br-slug-in="model.identity.label"
           br-options="{
             name: 'sysSlug', label: 'Short Name',
-            placeholder: 'my-short-name', disabled: model.loading,
+            placeholder: 'my-short-name', disabled: {{model.loading}},
             autocomplete: 'off', maxlength: '32',
             columns: {
               label: 'col-md-2',

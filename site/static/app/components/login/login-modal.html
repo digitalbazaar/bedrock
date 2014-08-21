@@ -23,7 +23,7 @@
               ng-keypress="$event.which == 13 && model.login()"
               br-options="{
                 name: 'password', type: 'password',
-                label: 'Password', disabled: model.loading}">
+                label: 'Password', disabled: {{model.loading}}}">
               Please enter your password.
             </br-input>
           </fieldset>

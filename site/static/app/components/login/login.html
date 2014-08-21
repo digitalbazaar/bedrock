@@ -16,7 +16,7 @@
 
         <br-input ng-if="!model.multiple" br-model="model.sysIdentifier"
           br-options="{
-            name: 'sysIdentifier', label: 'Email', disabled: model.loading,
+            name: 'sysIdentifier', label: 'Email', disabled: {{model.loading}},
             autofocus: true,
             columns: {
               label: 'col-md-2',
@@ -44,7 +44,7 @@
           br-options="{
             name: 'sysIdentifier', label: 'Identity',
             placeholder: 'Choose...', key: 'id',
-            disabled: model.loading,
+            disabled: {{model.loading}},
             columns: {
               label: 'col-md-2',
               select: 'col-md-8',
@@ -55,7 +55,7 @@
         <br-input br-model="model.password"
           br-options="{
             name: 'password', type: 'password',
-            label: 'Password', disabled: model.loading,
+            label: 'Password', disabled: {{model.loading}},
             columns: {
               label: 'col-md-2',
               input: 'col-md-8',

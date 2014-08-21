@@ -31,7 +31,7 @@
 
         <br-input br-model="model.email"
           br-options="{
-            name: 'sysIdentifier', label: 'Email', disabled: loading,
+            name: 'sysIdentifier', label: 'Email', disabled: {{loading}},
             columns: {
               label: 'col-md-2',
               input: 'col-md-9',
@@ -68,7 +68,7 @@
 
       <br-input br-model="model.email"
         br-options="{
-          name: 'sysIdentifier', label: 'Email', disabled: loading,
+          name: 'sysIdentifier', label: 'Email', disabled: {{loading}},
           columns: {
             label: 'col-md-2',
             input: 'col-md-9',
@@ -81,7 +81,7 @@
 
       <br-input br-model="model.sysPasscode"
         br-options="{
-          name: 'sysPasscode', label: 'Passcode', disabled: loading,
+          name: 'sysPasscode', label: 'Passcode', disabled: {{loading}},
           columns: {
             label: 'col-md-2',
             input: 'col-md-9',
@@ -95,7 +95,7 @@
       <br-input br-model="model.sysPasswordNew"
         br-options="{
           name: 'sysPasswordNew', type: 'password',
-          label: 'New Password', disabled: loading,
+          label: 'New Password', disabled: {{loading}},
           columns: {
             label: 'col-md-2',
             input: 'col-md-9',
