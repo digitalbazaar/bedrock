@@ -21,7 +21,8 @@ function factory() {
     template: '\
       <h3 class="headline"> \
         {{headline}} \
-        <span ng-hide="loading" class="btn-group pull-right"> \
+        <span ng-if="options.menu" ng-hide="loading" \
+          class="btn-group pull-right"> \
           <button type="button" \
             class="btn btn-default btn-sm" \
             stackable-trigger="menu" \
@@ -38,7 +39,16 @@ function factory() {
         stackable-placement="bottom" \
         stackable-alignment="right"> \
         <div ng-transclude></div> \
-      </stackable-popover>'
+      </stackable-popover>',
+    link: function(scope, element, attrs) {
+      attrs.$observe('brOptions', function(value) {
+        var options = value ? scope.$eval(value) : {};
+        scope.options = options || {};
+        if(!('menu' in scope.options)) {
+          scope.options.menu = true;
+        }
+      });
+    }
   };
 }
 
