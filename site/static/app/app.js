@@ -144,7 +144,7 @@ module.run(function($rootScope, $window, $location, $route, $http, util) {
       }
     }
     if(mustReload) {
-      window.location.href = $location.absUrl();
+      $window.location.href = $location.absUrl();
       event.preventDefault();
     }
   });
