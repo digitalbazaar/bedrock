@@ -21,6 +21,8 @@ function tabsFactory() {
   /* @ngInject */
   function Ctrl($scope) {
     var panes = $scope.panes = [];
+    var panesMap = {};
+    panesMap[null] = [];
 
     $scope.select = function(pane) {
       angular.forEach(panes, function(pane) {
@@ -30,13 +32,25 @@ function tabsFactory() {
     };
 
     this.addPane = function(pane, index) {
-      if(panes.length === 0 || index === 0) {
-        $scope.select(pane);
-      }
-      if(typeof index === undefined || index >= panes.length) {
-        panes.push(pane);
+      // store pane order
+      if(typeof index === undefined) {
+        panesMap[null].push(pane);
       } else {
-        panes.splice(index, 0, pane);
+        panesMap[index] = pane;
+      }
+
+      // rebuild panes
+      panes.length = 0;
+      for(var key in panesMap) {
+        if(key !== null) {
+          panes[key] = panesMap[key];
+        }
+      }
+      panes.push.apply(panes, panesMap[null]);
+
+      // select pane
+      if(panes.length === 1 || index === 0) {
+        $scope.select(pane);
       }
     };
   }
