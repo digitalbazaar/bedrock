@@ -47,7 +47,8 @@ function factory() {
         </div> \
       </div>',
     link: function(scope, element, attrs) {
-      scope.$watch(attrs.brOptions, function(options) {
+      attrs.$observe('brOptions', function(value) {
+        var options = value ? scope.$eval(value) : {};
         scope.options = options || {};
         scope.options.placeholder = (scope.options.placeholder ||
           scope.options.label);

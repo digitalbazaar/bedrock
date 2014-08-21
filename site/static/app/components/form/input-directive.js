@@ -35,6 +35,10 @@ function factory() {
             ng-model="model" \
             ng-disabled="options.disabled" \
             br-track-state="help" /> \
+          <span ng-if="options.loading" \
+            class="br-spinner-inside-input"> \
+            <i class="fa fa-refresh fa-spin text-muted"></i> \
+          </span> \
           <span class="input-group-btn"> \
             <button type="button" class="btn btn-default" \
               br-help-toggle="help"> \
@@ -48,7 +52,8 @@ function factory() {
         </div> \
       </div>',
     link: function(scope, element, attrs) {
-      scope.$watch(attrs.brOptions, function(options) {
+      attrs.$observe('brOptions', function(value) {
+        var options = value ? scope.$eval(value) : {};
         scope.options = options || {};
         scope.options.type = scope.options.type || 'text';
         scope.options.placeholder = scope.options.placeholder || '';

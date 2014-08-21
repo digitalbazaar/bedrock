@@ -65,8 +65,8 @@ function factory() {
     var options = scope.options = {};
 
     // get options
-    scope.$watch(attrs.brOptions, function(value) {
-      options = scope.options = value || {};
+    attrs.$observe('brOptions', function(value) {
+      scope.options = options = value ? scope.$eval(value) : {};
       options.inline = ('inline' in options) ? options.inline : false;
       options.label = options.label || 'Choose...';
       options.placeholder = options.placeholder || (options.label + '...');
