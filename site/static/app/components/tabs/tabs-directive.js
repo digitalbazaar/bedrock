@@ -41,20 +41,13 @@ function tabsFactory() {
 
       // rebuild panes
       panes.length = 0;
-      for(var key in panesMap) {
-        if(key !== null) {
-          panes[key] = panesMap[key];
-        }
-      }
-      var i = 0;
-      while(i < panes.length) {
-        if(!panes[i]) {
-          panes.splice(i, 1);
+      Object.keys(panesMap).sort().forEach(function(key) {
+        if(key === null) {
+          panes.push.apply(panes, panesMap[key]);
         } else {
-          ++i;
+          panes.push(panesMap[key]);
         }
-      }
-      panes.push.apply(panes, panesMap[null]);
+      });
 
       // select pane
       if(panes.length === 1 || index === 0) {
