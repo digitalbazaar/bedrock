@@ -80,7 +80,7 @@ function factory() {
         } else {
           element.find('input').removeAttr('autofocus');
         }
-      }, true);
+      });
     }
   };
 }

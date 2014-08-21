@@ -64,7 +64,7 @@ function factory() {
         } else {
           element.find('textarea').removeAttr('autofocus');
         }
-      }, true);
+      });
     }
   };
 }

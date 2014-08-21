@@ -81,7 +81,7 @@ function factory() {
       } else {
         element.find('.ui-select-match').removeAttr('autofocus');
       }
-    }, true);
+    });
 
     // update view items when items or display function changes
     scope.$watch('items', updateViewItems, true);
