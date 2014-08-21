@@ -44,9 +44,9 @@
                 ng-model="model.sysIdentifier" autofocus="autofocus"
                 placeholder="Email" ng-disabled="model.loading" />
               <select ng-show="model.multiple" name="sysIdentifier" autofocus="autofocus"
-                data-tooltip-title="Your email address ({{email}}) is associated with multiple
+                br-tooltip="Your email address ({{email}}) is associated with multiple
                 identities. Please select the identity you'd like to sign in with."
-                data-placement="bottom" data-trigger="hover"
+                br-options="{placement: 'bottom', trigger: 'hover'}"
                 ng-model="model.sysIdentifier"
                 ng-options="value.id as value.label for value in model.choices"
                 ng-disabled="model.loading">
