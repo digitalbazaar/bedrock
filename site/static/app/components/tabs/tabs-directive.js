@@ -46,6 +46,14 @@ function tabsFactory() {
           panes[key] = panesMap[key];
         }
       }
+      var i = 0;
+      while(i < panes.length) {
+        if(!panes[i]) {
+          panes.splice(i, 1);
+        } else {
+          ++i;
+        }
+      }
       panes.push.apply(panes, panesMap[null]);
 
       // select pane
