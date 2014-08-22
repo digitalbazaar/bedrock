@@ -65,9 +65,15 @@ function factory() {
         options.placeholder = options.placeholder || '';
 
         var columns = options.columns = options.columns || {};
-        columns.label = columns.label || 'col-sm-3';
-        columns.input = columns.input || 'col-sm-8';
-        columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
+        if(!('label' in columns)) {
+          columns.label =  'col-sm-3';
+        }
+        if(!('input' in columns)) {
+          columns.input = 'col-sm-8';
+        }
+        if(!('help' in columns)) {
+          columns.help = 'col-sm-offset-3 col-sm-8';
+        }
 
         if('maxLength' in options) {
           element.find('input').attr('maxlength', options.maxLength);

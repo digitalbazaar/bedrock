@@ -59,9 +59,15 @@ function factory() {
         options.rows = options.rows || '5';
 
         var columns = options.columns = options.columns || {};
-        columns.label = columns.label || 'col-sm-3';
-        columns.textarea = columns.textarea || 'col-sm-8';
-        columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
+        if(!('label' in columns)) {
+          columns.label =  'col-sm-3';
+        }
+        if(!('textarea' in columns)) {
+          columns.textarea = 'col-sm-8';
+        }
+        if(!('help' in columns)) {
+          columns.help = 'col-sm-offset-3 col-sm-8';
+        }
 
         if(options.autofocus) {
           element.find('textarea').attr('autofocus', 'autofocus');

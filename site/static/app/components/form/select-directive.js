@@ -72,9 +72,15 @@ function factory() {
       options.placeholder = options.placeholder || (options.label + '...');
 
       var columns = options.columns = options.columns || {};
-      columns.label = columns.label || 'col-sm-3';
-      columns.select = columns.select || 'col-sm-8';
-      columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
+      if(!('label' in columns)) {
+        columns.label =  'col-sm-3';
+      }
+      if(!('select' in columns)) {
+        columns.select = 'col-sm-8';
+      }
+      if(!('help' in columns)) {
+        columns.help = 'col-sm-offset-3 col-sm-8';
+      }
 
       if(options.autofocus) {
         element.find('.ui-select-match').attr('autofocus', 'autofocus');
