@@ -37,16 +37,7 @@ function factory(AlertService, $compile, $rootScope) {
 
     AlertService
       .on('add', addAlert)
-      .on('remove', function(info) {
-        // find info+element pairs and remove elements
-        var list = elements[info.category];
-        for(var i = 0; i < list.length; ++i) {
-          if(list[i].info === info) {
-            list[i].element.remove();
-            list.splice(i, 1);
-          }
-        }
-      })
+      .on('remove', removeAlert)
       .on('clear', function(category, type) {
         if(category) {
           return clearAlerts(category, type);
@@ -72,6 +63,10 @@ function factory(AlertService, $compile, $rootScope) {
         var transclusionScope = value.getScope ? value.getScope() : scope;
         $compile(el)(transclusionScope);
         element.find('.br-alert-area-' + info.category).append(el);
+        elements[info.category].push({
+          info: info,
+          element: el
+        });
         return;
       }
 
@@ -99,16 +94,42 @@ function factory(AlertService, $compile, $rootScope) {
           var path = detailError.details.path;
           if(path) {
             // highlight element using br-property-path
-            target.find('[br-property-path="' + path + '"]').addClass(
-              'has-error');
+            var el = target.find('[br-property-path="' + path + '"]');
+            el.addClass('has-error');
+            elements[info.category].push({
+              info: info,
+              target: el
+            });
           }
         });
       }
     }
 
+    function removeAlert(info) {
+      // find info+element pairs and remove elements
+      var list = elements[info.category];
+      for(var i = 0; i < list.length;) {
+        if(list[i].info === info) {
+          if(list[i].element) {
+            list[i].element.remove();
+          } else {
+            list[i].target.removeClass('has-error');
+          }
+          list.splice(i, 1);
+        } else {
+          ++i;
+        }
+      }
+    }
+
     function clearAlerts(category, type) {
+      var list = elements[category].slice();
+      for(var i = 0; i < list.length; ++i) {
+        if(!type || list[i].info.type === type) {
+          removeAlert(list[i].info);
+        }
+      }
       element.find('.br-alert-area-' + category).empty();
-      elements[category] = [];
       if(type) {
         // not all alerts were removed, so rebuild alert area
         var log = AlertService.log[category];
