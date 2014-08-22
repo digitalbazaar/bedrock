@@ -31,7 +31,7 @@
 
         <br-input br-model="model.email"
           br-options="{
-            name: 'sysIdentifier', label: 'Email', disabled: {{loading}},
+            name: 'sysIdentifier', label: 'Email', disabled: {{model.loading}},
             columns: {
               label: 'col-md-2',
               input: 'col-md-9',
@@ -44,9 +44,9 @@
 
         <div class="form-group">
           <div class="col-md-offset-2">
-            <button type="submit" ng-disabled="loading"
+            <button type="submit" ng-disabled="model.loading"
               class="btn btn-primary">Send Reset Instructions</button>
-            <span ng-show="loading">
+            <span ng-show="model.loading">
               <i class="fa fa-refresh fa-spin text-muted"></i>
             </span>
           </div>
@@ -68,7 +68,7 @@
 
       <br-input br-model="model.email"
         br-options="{
-          name: 'sysIdentifier', label: 'Email', disabled: {{loading}},
+          name: 'sysIdentifier', label: 'Email', disabled: {{model.loading}},
           columns: {
             label: 'col-md-2',
             input: 'col-md-9',
@@ -81,7 +81,7 @@
 
       <br-input br-model="model.sysPasscode"
         br-options="{
-          name: 'sysPasscode', label: 'Passcode', disabled: {{loading}},
+          name: 'sysPasscode', label: 'Passcode', disabled: {{model.loading}},
           columns: {
             label: 'col-md-2',
             input: 'col-md-9',
@@ -95,7 +95,7 @@
       <br-input br-model="model.sysPasswordNew"
         br-options="{
           name: 'sysPasswordNew', type: 'password',
-          label: 'New Password', disabled: {{loading}},
+          label: 'New Password', disabled: {{model.loading}},
           columns: {
             label: 'col-md-2',
             input: 'col-md-9',
@@ -108,9 +108,9 @@
 
       <div class="form-group">
         <div class="col-md-offset-2">
-          <button type="submit" ng-disabled="loading"
+          <button type="submit" ng-disabled="model.loading"
             class="btn btn-primary">Set Password</button>
-          <span ng-show="loading">
+          <span ng-show="model.loading">
             <i class="fa fa-refresh fa-spin text-muted"></i>
           </span>
         </div>

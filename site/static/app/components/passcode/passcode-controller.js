@@ -16,10 +16,12 @@ function factory($scope, AlertService, IdentityService, config) {
   self.email = config.data.session ? config.data.session.identity.email : '';
   self.sysPasscode = config.data.sysPasscode || '';
   self.sysPasswordNew = '';
+  self.loading = false;
 
   self.sendReset = function() {
     // request a passcode
     AlertService.clearFeedback();
+    self.loading = true;
     IdentityService.sendPasscode({
       sysIdentifier: self.email,
       usage: 'reset'
@@ -28,9 +30,10 @@ function factory($scope, AlertService, IdentityService, config) {
         message:
           'An email has been sent to you with password reset instructions.'
       });
-      $scope.$apply();
     }).catch(function(err) {
       AlertService.add('error', err);
+    }).then(function() {
+      self.loading = false;
       $scope.$apply();
     });
   };
@@ -38,6 +41,7 @@ function factory($scope, AlertService, IdentityService, config) {
   self.updatePassword = function() {
     // request a password reset using the given passcode
     AlertService.clearFeedback();
+    self.loading = true;
     IdentityService.updatePassword({
       sysIdentifier: self.email,
       sysPasscode: self.sysPasscode,
@@ -46,9 +50,10 @@ function factory($scope, AlertService, IdentityService, config) {
       AlertService.add('success', {
         message: 'Your password has been updated successfully.'
       });
-      $scope.$apply();
     }).catch(function(err) {
       AlertService.add('error', err);
+    }).then(function() {
+      self.loading = false;
       $scope.$apply();
     });
   };
