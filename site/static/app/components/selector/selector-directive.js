@@ -22,8 +22,7 @@ function factory($compile, $filter, $timeout) {
       invalid: '=brInvalid',
       addItem: '&brAddItem',
       custom: '=brCustomDisplay',
-      selecting: '=brSelecting',
-      columns: '@brColumns'
+      selecting: '=brSelecting'
     },
     templateUrl: '/app/components/selector/selector.html',
     link: Link
@@ -32,28 +31,19 @@ function factory($compile, $filter, $timeout) {
   function Link(scope, element, attrs, ctrl, transcludeFn) {
     scope.model = {};
 
-    scope.grid = [];
-    scope.$watch('columns', function(value) {
-      if(value === undefined) {
-        return;
-      }
-      buildGrid(Math.max(1, parseInt(value, 10)));
-    });
-
     var orderBy = $filter('orderBy');
     var sortedItems;
     scope.$watch('items', function(items) {
       sortedItems = orderBy(items, 'label');
-
-      // keep grid up-to-date
-      if(scope.columns !== undefined) {
-        buildGrid(Math.max(1, parseInt(scope.columns, 10)));
-      }
     }, true);
 
     scope.$watch('selected', function(value) {
       if(value === undefined) {
         scope.selected = scope.items[0] || null;
+      }
+      if(scope.selected !== null) {
+        // selection made, close modal
+        scope.showSelectorModal = false;
       }
     });
 
@@ -61,14 +51,23 @@ function factory($compile, $filter, $timeout) {
       scope.fixed = value;
     });
 
+    var previousSelection = null;
     scope.$watch('showSelectorModal', function(value) {
       if(attrs.brSelecting) {
         scope.selecting = value;
       }
       if(!value) {
+        // no selection made; restore previous one
+        if(scope.selected === null) {
+          scope.selected = previousSelection;
+        }
         return;
       }
       $timeout(function() {
+        // clear selection
+        previousSelection = scope.selected;
+        scope.selected = null;
+
         // clear custom display
         var custom = findByScope(
           angular.element('.br-selector-transclude-custom'), scope);
@@ -111,30 +110,11 @@ function factory($compile, $filter, $timeout) {
       scope.showSelectorModal = false;
     };
 
-    // builds an item grid for selectors w/grid layouts
-    function buildGrid(columns) {
-      var row = null;
-      scope.grid = [];
-      angular.forEach(sortedItems, function(item) {
-        if(!row) {
-          row = [];
-        }
-        row.push(item);
-        if(row.length === columns) {
-          scope.grid.push(row);
-          row = null;
-        }
-      });
-      if(row) {
-        scope.grid.push(row);
-      }
-    }
-
     function findByScope(element, scope) {
       return element.filter(function(i, e) {
         // FIXME: brittle -- find a better way to do this
         var child = angular.element(e).scope();
-        if(!(child && child.$parent&& child.$parent.$parent)) {
+        if(!(child && child.$parent && child.$parent.$parent)) {
           return false;
         }
         return child.$parent.$parent === scope;
