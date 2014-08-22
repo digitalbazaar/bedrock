@@ -39,21 +39,33 @@
         <div ng-if="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" ng-controller="LoginController as model">
           <form class="navbar-form navbar-right form-inline" ng-submit="model.submit()">
             <div class="form-group">
-              <input ng-hide="model.multiple"
-                class="form-control" name="sysIdentifier" type="text"
-                ng-model="model.sysIdentifier" autofocus="autofocus"
-                placeholder="Email" ng-disabled="model.loading" />
-              <select ng-show="model.multiple" name="sysIdentifier" autofocus="autofocus"
-                br-tooltip="Your email address ({{email}}) is associated with multiple
-                identities. Please select the identity you'd like to sign in with."
-                br-options="{placement: 'bottom', trigger: 'hover'}"
-                ng-model="model.sysIdentifier"
-                ng-options="value.id as value.label for value in model.choices"
-                ng-disabled="model.loading">
-              </select>
-              <input class="form-control" name="password" type="password"
-                ng-model="model.password" placeholder="Password"
-                ng-disabled="model.loading" />
+              <br-input ng-if="!model.multiple" br-model="model.sysIdentifier"
+                br-options="{
+                  name: 'sysIdentifier', placeholder: 'Email', inline: true,
+                  disabled: {{model.loading}}, autofocus: true,
+                  columns: {input: ''}
+                }">
+              </br-input>
+              <br-select ng-if="model.multiple" br-model="model.sysIdentifier"
+                br-items="model.choices" br-display-item="item.label"
+                br-options="{
+                  name: 'sysIdentifier', placeholder: 'Identity...',
+                  inline: true, key: 'id', disabled: {{model.loading}},
+                  columns: {select: ''},
+                  tooltip: {
+                    text: 'Your email address ({{model.email}}) is associated with multiple identities. Please select the identity you\'d like to sign in with.',
+                    placement: 'left auto',
+                    trigger: 'hover'
+                  }
+                }">
+              </br-select>
+              <br-input br-model="model.password"
+                br-options="{
+                  name: 'password', placeholder: 'Password', type: 'password',
+                  inline: true, disabled: {{model.loading}},
+                  columns: {input: ''}
+                }">
+              </br-input>
               <div class="btn-toolbar">
                 <div class="btn-group">
                   <button class="btn btn-primary"
