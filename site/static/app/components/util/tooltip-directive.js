@@ -41,7 +41,9 @@ function factory() {
         element.tooltip('hide');
         element.removeData('bs.tooltip');
       }
-
+      if(text === '') {
+        return;
+      }
       // add new tooltip to appropriate container
       var container;
       if(element.closest('.btn-group').length ||

@@ -36,7 +36,9 @@ function factory() {
             class="input-group-addon"><img \
             ng-src="{{options.image}}"></img></span> \
           <div class="br-select" br-track-state="help" \
-            ng-class="{\'br-help-off\': options.inline}"> \
+            ng-class="{\'br-help-off\': options.inline}" \
+            br-tooltip="{{options.tooltip.text}}" \
+            br-options="options.tooltip"> \
             <ui-select ng-model="selection.selected" \
               theme="bootstrap" ng-disabled="options.disabled"> \
               <ui-select-match placeholder="{{options.placeholder}}">{{$select.selected.display}}</ui-select-match> \
@@ -63,6 +65,7 @@ function factory() {
   function Link(scope, element, attrs) {
     var selection = scope.selection = {selected: undefined};
     var options = scope.options = {};
+    options.tooltip = {};
 
     // get options
     attrs.$observe('brOptions', function(value) {
@@ -70,6 +73,7 @@ function factory() {
       options.inline = ('inline' in options) ? options.inline : false;
       options.label = options.label || 'Choose...';
       options.placeholder = options.placeholder || (options.label + '...');
+      options.tooltip = options.tooltip || {};
 
       var columns = options.columns = options.columns || {};
       if(!('label' in columns)) {
