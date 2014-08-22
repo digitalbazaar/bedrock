@@ -19,9 +19,13 @@ function factory() {
     transclude: true,
     template: '\
       <div class="form-group" br-property-path="{{options.name}}"> \
-        <label class="{{options.columns.label}} control-label" \
+        <label ng-if="!options.inline && options.label !== undefined" \
+          class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
-        <div class="{{options.columns.input}} input-group"> \
+        <div class="{{options.columns.textarea}}" \
+          ng-class="{ \
+            \'input-group\': !options.inline, \
+            \'input-group-inline\': options.inline}"> \
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
@@ -33,33 +37,32 @@ function factory() {
             name="{{options.name}}" \
             placeholder="{{options.placeholder}}" \
             ng-model="model" ng-disabled=options.disabled \
-            br-track-state="help" /> \
-          <span class="input-group-btn"> \
+            br-track-state="help" \
+            ng-class="{\'br-help-off\': options.inline}"/> \
+          <span ng-if="!options.inline" class="input-group-btn"> \
             <button type="button" class="btn btn-default btn-xs" \
               br-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \
           </span> \
         </div> \
-        <div ng-show="help.show" \
+        <div ng-if="!options.inline" ng-show="help.show" \
           class="{{options.columns.help}} help-block br-fadein br-fadeout"> \
           <div ng-transclude></div> \
         </div> \
       </div>',
     link: function(scope, element, attrs) {
       attrs.$observe('brOptions', function(value) {
-        var options = value ? scope.$eval(value) : {};
-        scope.options = options || {};
-        scope.options.placeholder = (scope.options.placeholder ||
-          scope.options.label);
-        scope.options.rows = scope.options.rows || '5';
+        var options = scope.options = value ? scope.$eval(value) || {} : {};
+        options.placeholder = options.placeholder || options.label;
+        options.rows = options.rows || '5';
 
-        var columns = scope.options.columns = scope.options.columns || {};
+        var columns = options.columns = options.columns || {};
         columns.label = columns.label || 'col-sm-3';
         columns.textarea = columns.textarea || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
 
-        if(scope.options.autofocus) {
+        if(options.autofocus) {
           element.find('textarea').attr('autofocus', 'autofocus');
         } else {
           element.find('textarea').removeAttr('autofocus');

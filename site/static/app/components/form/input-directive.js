@@ -19,9 +19,13 @@ function factory() {
     transclude: true,
     template: '\
       <div class="form-group" br-property-path="{{options.name}}"> \
-        <label class="{{options.columns.label}} control-label" \
+        <label ng-if="options.label !== undefined" \
+          class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
-        <div class="{{options.columns.input}} input-group"> \
+        <div class="{{options.columns.input}}" \
+          ng-class="{ \
+            \'input-group\': !options.inline, \
+            \'input-group-inline\': options.inline}"> \
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
@@ -34,48 +38,49 @@ function factory() {
             placeholder="{{options.placeholder}}" \
             ng-model="model" \
             ng-disabled="options.disabled" \
-            br-track-state="help" /> \
+            br-track-state="help" \
+            ng-class="{\'br-help-off\': options.inline}"/> \
           <span ng-if="options.loading" \
             class="br-spinner-inside-input"> \
             <i class="fa fa-refresh fa-spin text-muted"></i> \
           </span> \
-          <span class="input-group-btn"> \
+          <span ng-if="!options.inline" class="input-group-btn"> \
             <button type="button" class="btn btn-default" \
               br-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \
           </span> \
         </div> \
-        <div ng-show="help.show" \
+        <div ng-if="!options.inline" ng-show="help.show" \
           class="{{options.columns.help}} help-block br-fadein br-fadeout"> \
           <div ng-transclude></div> \
         </div> \
       </div>',
     link: function(scope, element, attrs) {
       attrs.$observe('brOptions', function(value) {
-        var options = value ? scope.$eval(value) : {};
-        scope.options = options || {};
-        scope.options.type = scope.options.type || 'text';
-        scope.options.placeholder = scope.options.placeholder || '';
+        var options = scope.options = value ? scope.$eval(value) || {} : {};
+        options.inline = ('inline' in options) ? options.inline : false;
+        options.type = options.type || 'text';
+        options.placeholder = options.placeholder || '';
 
-        var columns = scope.options.columns = scope.options.columns || {};
+        var columns = options.columns = options.columns || {};
         columns.label = columns.label || 'col-sm-3';
         columns.input = columns.input || 'col-sm-8';
         columns.help = columns.help || 'col-sm-offset-3 col-sm-8';
 
-        if('maxLength' in scope.options) {
-          element.find('input').attr('maxlength', scope.options.maxLength);
+        if('maxLength' in options) {
+          element.find('input').attr('maxlength', options.maxLength);
         } else {
           element.find('input').removeAttr('maxlength');
         }
 
-        if('autocomplete' in scope.options) {
-          element.find('input').attr('autocomplete', scope.options.autocomplete);
+        if('autocomplete' in options) {
+          element.find('input').attr('autocomplete', options.autocomplete);
         } else {
           element.find('input').removeAttr('autocomplete');
         }
 
-        if(scope.options.autofocus) {
+        if(options.autofocus) {
           element.find('input').attr('autofocus', 'autofocus');
         } else {
           element.find('input').removeAttr('autofocus');
