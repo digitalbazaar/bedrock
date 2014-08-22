@@ -19,7 +19,9 @@ function factory() {
     transclude: true,
     template: '\
       <div ng-class="{\'form-group\': !options.inline}" \
-        br-property-path="{{options.name}}"> \
+        br-property-path="{{options.name}}" \
+        ng-style="{display: \
+          (options.inline ? \'inline-\' : \'\') + \'block\'}"> \
         <label ng-if="options.label !== undefined" \
           class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
