@@ -38,14 +38,14 @@ function factory(AlertService, $compile, $rootScope) {
     AlertService
       .on('add', addAlert)
       .on('remove', removeAlert)
-      .on('clear', function(category, type) {
-        if(category) {
-          return clearAlerts(category, type);
-        }
-        for(var key in elements) {
-          clearAlerts(key, type);
-        }
-      });
+      .on('clear', clearAlerts);
+
+    scope.$on('$destroy', function() {
+      AlertService
+        .removeListener('add', addAlert)
+        .removeListener('remove', removeAlert)
+        .removeListener('clear', clearAlerts);
+    });
 
     function addAlert(info) {
       var value = info.value;
