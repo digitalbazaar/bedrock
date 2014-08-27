@@ -22,7 +22,7 @@ function tabsFactory() {
   function Ctrl($scope) {
     var panes = $scope.panes = [];
     var panesMap = {};
-    panesMap[null] = [];
+    panesMap['none'] = [];
 
     $scope.select = function(pane) {
       angular.forEach(panes, function(pane) {
@@ -33,8 +33,8 @@ function tabsFactory() {
 
     this.addPane = function(pane, index) {
       // store pane order
-      if(typeof index === undefined) {
-        panesMap[null].push(pane);
+      if(isNaN(parseInt(index, 10))) {
+        panesMap['none'].push(pane);
       } else {
         panesMap[index] = pane;
       }
@@ -42,7 +42,7 @@ function tabsFactory() {
       // rebuild panes
       panes.length = 0;
       Object.keys(panesMap).sort().forEach(function(key) {
-        if(key === null) {
+        if(key === 'none') {
           panes.push.apply(panes, panesMap[key]);
         } else {
           panes.push(panesMap[key]);
@@ -70,7 +70,7 @@ function tabsPaneFactory() {
     // FIXME: why is this doing element.attr() should it be using $observe?
     scope.title = scope.title || attrs.brTitle || element.attr('br-title');
     scope.tabId = scope.tabId || attrs.brTabId || element.attr('br-tab-id');
-    tabsCtrl.addPane(scope, element.parent().index());
+    tabsCtrl.addPane(scope, scope.index);
   }
 
   return {
@@ -78,7 +78,8 @@ function tabsPaneFactory() {
     restrict: 'A',
     transclude: true,
     scope: {
-      title: '@brTitle'
+      title: '@brTitle',
+      index: '=?brTabPaneIndex'
     },
     link: Link,
     templateUrl: '/app/components/tabs/tabs-pane.html'
