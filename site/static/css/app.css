@@ -8883,9 +8883,6 @@ input.br-slug.error {
   display: inline-block;
   width: 100%;
 }
-.center {
-  text-align: center;
-}
 .center-block {
   display: block;
   margin-left: auto;

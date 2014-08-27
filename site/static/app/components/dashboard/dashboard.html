@@ -16,7 +16,7 @@
         </ul>
       </br-headline>
       <div ng-show="!model.state.items.loading && items.length == 0">
-        <p class="center">You have no items for this identity.</p>
+        <p class="text-center">You have no items for this identity.</p>
         <button type="button"
           class="btn btn-success pull-right"
           ng-click="modals.showAddItem=true"><i class="fa fa-plus"></i> Add Item</button>
@@ -32,7 +32,7 @@
         </ul>
       </br-headline>
       <div ng-show="!model.state.items.loading && items.length == 0">
-        <p class="center">You have no items for this identity.</p>
+        <p class="text-center">You have no items for this identity.</p>
         <button type="button"
           class="btn btn-success pull-right"
           ng-click="modals.showAddItem=true"><i class="fa fa-plus"></i> Add Item</button>
@@ -45,13 +45,13 @@
       <br-headline br-title="Recent Items" br-loading="model.state.items.loading"
         br-options="{menu: false}"></br-headline>
       <div ng-show="!model.state.items.loading && items.length == 0">
-        <p class="center">You have no recent items for this identity.</p>
+        <p class="text-center">You have no recent items for this identity.</p>
       </div>
     </div>
 
     <div class="section section-messages col-md-6">
       <br-headline br-title="Messages" br-options="{menu: false}"></br-headline>
-      <p class="center">You have no new messages.</p>
+      <p class="text-center">You have no new messages.</p>
     </div>
   </div>
 
