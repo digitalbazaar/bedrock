@@ -379,7 +379,7 @@ h1.headline {
 }
 
 /* Sections */
-.section h3.headline {
+.section h3.headline, .section h4.headline {
   background: lighten(@gray-lighter, 3%);
   border-top: thin solid lighten(@gray-light, 30%);
   font-weight: bold;
@@ -402,12 +402,6 @@ h1.headline {
       margin-top: floor(((@header-height - @input-height-xs) / 2));
     }
   }
-}
-.section h4.headline {
-  font-weight: bold;
-  text-align: left;
-  padding-top: @padding-small-vertical;
-  padding-bottom: @padding-small-vertical;
 }
 
 /* Select */
