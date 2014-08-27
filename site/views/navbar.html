@@ -18,7 +18,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       {% raw %}
-      <div class="collapse navbar-collapse" id="#navbar-collapse">
+      <div class="collapse navbar-collapse" id="navbar-collapse">
         <!-- nav menu -->
         <ul class="nav navbar-nav">
           <li ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" ng-class="{active: route.vars.title == item.pageTitle, dropdown: item.items}">
