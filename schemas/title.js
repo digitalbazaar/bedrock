@@ -8,12 +8,12 @@ var schema = {
   title: 'Title',
   description: 'A descriptive title.',
   type: 'string',
-  pattern: '^[-a-zA-Z0-9~!$%^&*\\(\\)_=+\\. ]*$',
+  pattern: '^[-a-zA-Z0-9~`!@#$%^&*\\(\\)\\[\\]{}<>_=+\\\\|:;\'\\.,/? ]*$',
   minLength: 1,
-  maxLength: 32,
+  maxLength: 200,
   errors: {
     invalid: 'The title contains invalid characters or is not between ' +
-      '1 and 32 characters in length.',
+      '1 and 200 characters in length.',
     missing: 'Please enter a title.'
   }
 };
