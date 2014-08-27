@@ -20,8 +20,8 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th class="compact">Status</th>
-        <th class="action">Action</th>
+        <th class="br-compact">Status</th>
+        <th class="br-action">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -38,12 +38,12 @@
           </span>
         </td>
         <!-- Status -->
-        <td class="compact">
+        <td class="br-compact">
           <span ng-show="key.sysStatus == 'disabled'">Revoked</span>
           <span ng-show="key.sysStatus == 'active'">Active</span>
         </td>
         <!-- Action -->
-        <td class="action">
+        <td class="br-action">
           <br-action-menu>
             <ul class="dropdown-menu stackable-menu">
               <!-- Edit -->
