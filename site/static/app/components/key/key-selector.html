@@ -1,9 +1,5 @@
-<div>
-  <div br-selector br-item-type="Key"
-    br-items="model.keys"
-    br-selected="selected"
-    br-invalid="invalid"
-    br-add-item="model.showAddKeyModal=true" br-fixed="{{fixed}}">
+<br-selector2 br-selected="selected=brSelector.selected" br-key-selector-inner>
+  <div name="br-selector-selected">
     <span ng-show="model.services.key.loading">
       <i class="fa fa-refresh fa-spin text-muted"></i>
     </span>
@@ -13,8 +9,21 @@
       <small>{{selected.id}}</small>
     </div>
   </div>
-  <stackable-modal stackable="model.showAddKeyModal"
-    stackable-closed="!err && (selected=result)">
-    <div br-generate-key-pair-modal></div>
-  </stackable-modal>
-</div>
+  <div name="br-selector-choices">
+    <div ng-show="model.services.key.loading">
+      <i class="fa fa-refresh fa-spin text-muted"></i>
+    </div>
+    <ul ng-hide="model.services.key.loading" class="list-unstyled">
+      <li class="br-item-hover well" ng-repeat="key in model.keys"
+        ng-click="brSelector.select(key)">
+        <strong>{{key.label}}</strong>
+        <br/>
+        <small>{{key.id}}</small>
+      </li>
+    </ul>
+  </div>
+</br-selector2>
+<stackable-modal stackable="model.showAddKeyModal"
+  stackable-closed="!err && brSelector.select(result)">
+  <div br-generate-key-pair-modal></div>
+</stackable-modal>

@@ -10,19 +10,14 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory(KeyService) {
+function keySelectorInner(KeyService) {
   return {
     restrict: 'A',
-    scope: {
-      selected: '=brSelected',
-      invalid: '=brInvalid',
-      fixed: '@brFixed'
-    },
-    templateUrl: '/app/components/key/key-selector.html',
+    require: 'brSelector2',
     link: Link
   };
 
-  function Link(scope, element, attrs) {
+  function Link(scope, element, attrs, brSelector) {
     var model = scope.model = {};
     model.services = {
       key: KeyService.state
@@ -33,13 +28,35 @@ function factory(KeyService) {
         scope.selected = keys[0] || null;
       }
     }, true);
-    attrs.$observe('brFixed', function(value) {
-      scope.fixed = value;
+
+    // configure brSelector
+    scope.brSelector = brSelector;
+    brSelector.itemType = 'Key';
+    brSelector.items = model.keys;
+    brSelector.addItem = function() {
+      model.showAddKeyModal = true;
+    };
+    scope.$watch('fixed', function(value) {
+      brSelector.fixed = value;
     });
+
     KeyService.collection.getAll();
   }
 }
 
-return {brKeySelector: factory};
+/* @ngInject */
+function keySelector() {
+  return {
+    restrict: 'EA',
+    scope: {
+      selected: '=brSelected',
+      invalid: '=brInvalid',
+      fixed: '=?brFixed'
+    },
+    templateUrl: '/app/components/key/key-selector.html'
+  };
+}
+
+return {brKeySelector: keySelector, brKeySelectorInner: keySelectorInner};
 
 });

@@ -8,8 +8,9 @@
 define([
   'angular',
   './selector-modal-directive',
-  './selector-directive'
-], function(angular, modalSelector, selector) {
+  './selector-directive',
+  './selector2-directive'
+], function(angular, modalSelector, selector, selectorDirective) {
 
 'use strict';
 
@@ -17,6 +18,7 @@ var module = angular.module('app.selector', []);
 
 module.directive(modalSelector);
 module.directive(selector);
+module.directive(selectorDirective);
 
 return module.name;
 

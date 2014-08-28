@@ -73,8 +73,7 @@ function factory(AlertService, KeyService, config) {
     model.addKey = function() {
       model.loading = true;
       AlertService.clearFeedback();
-      var promise = KeyService.collection.add(model.key);
-      promise.then(function(key) {
+      KeyService.collection.add(model.key).then(function(key) {
         model.loading = false;
         stackable.close(null, key);
         scope.$apply();

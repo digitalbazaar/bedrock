@@ -12,7 +12,7 @@ define([], function() {
 /* @ngInject */
 function factory() {
   return {
-    restrict: 'A',
+    restrict: 'E',
     scope: {
       modalTitle: '=brModalTitle',
       items: '=brItems',
