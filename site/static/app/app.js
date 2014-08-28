@@ -13,6 +13,7 @@ define([
   'angular-sanitize',
   'angular-ui-select',
   'bootstrap',
+  'ng-multi-transclude',
   'promise',
   'stackables',
   'app/configs',
@@ -23,7 +24,7 @@ define([
 'use strict';
 
 var module = angular.module('app', [
-  'ngAnimate', 'ngRoute', 'ngSanitize',
+  'multi-transclude', 'ngAnimate', 'ngRoute', 'ngSanitize',
   'ui.bootstrap', 'ui.select', 'stackables',
   'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */

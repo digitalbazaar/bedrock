@@ -31,6 +31,7 @@ require.config({
     'jquery-migrate': 'bower-components/jquery-migrate/jquery-migrate',
     'jquery.placeholder': 'jquery/jquery.placeholder',
     jsonld: 'jsonld/jsonld',
+    'ng-multi-transclude': 'bower-components/ng-multi-transclude/src/multi-transclude',
     'opencred-verifier': 'opencred-verifier/credentialVerifier',
     promise: 'promise/promise',
     spin: 'spin/spin',
@@ -52,6 +53,7 @@ require.config({
     'jquery.bedrock': {deps: ['jquery']},
     'jquery-migrate': {deps: ['jquery.bedrock']},
     'jquery.placeholder': {deps: ['jquery']},
+    'ng-multi-transclude': {deps: ['angular']},
     spin: {exports: 'Spinner'},
     stackables: {deps: ['angular', 'dialog-polyfill']},
     underscore: {exports: '_'}
