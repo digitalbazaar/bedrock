@@ -1,4 +1,4 @@
-<br-selector2 br-selected="selected=brSelector.selected" br-key-selector-inner>
+<br-selector br-selected="selected=brSelector.selected" br-key-selector-inner>
   <div name="br-selector-selected">
     <span ng-show="model.services.key.loading">
       <i class="fa fa-refresh fa-spin text-muted"></i>
@@ -22,7 +22,7 @@
       </li>
     </ul>
   </div>
-</br-selector2>
+</br-selector>
 <stackable-modal stackable="model.showAddKeyModal"
   stackable-closed="!err && brSelector.select(result)">
   <div br-generate-key-pair-modal></div>

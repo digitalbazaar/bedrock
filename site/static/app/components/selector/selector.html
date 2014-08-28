@@ -1,35 +1,43 @@
-<div>
-  <div class="well">
-    <div ng-show="selecting">
-      <span>Selecting... <i class="fa fa-refresh fa-spin fa-lg text-muted"></i></span>
-    </div>
-    <div ng-hide="selecting">
-      <button ng-show="items.length <= 1"
-        class="btn btn-success pull-right" ng-click="addItem()">
-        <span><i class="fa fa-plus"></i> Add {{itemType}}</span>
-      </button>
-      <button ng-show="!fixed && items.length > 1"
-        class="btn btn-success pull-right"
-        ng-click="showSelectorModal=true">
-        <span><i class="fa fa-list"></i> Change</span>
-      </button>
-      <p ng-show="items.length == 0">None found.</p>
-      <div ng-show="items.length >= 1" ng-transclude></div>
-    </div>
+<div class="well">
+  <button ng-show="model.items.length <= 1"
+    class="btn btn-success pull-right" ng-click="model.addItem()">
+    <span><i class="fa fa-plus"></i> Add {{model.itemType}}</span>
+  </button>
+  <button ng-show="!model.fixed && model.items.length > 1"
+    class="btn btn-success pull-right" ng-click="model.showChoices=true">
+    <span><i class="fa fa-list"></i> Change</span>
+  </button>
+  <p ng-show="model.items.length == 0">None found.</p>
+  <div ng-show="model.items.length >= 1" ng-multi-transclude-controller>
+    <div ng-multi-transclude="br-selector-selected"></div>
   </div>
-
-  <stackable-modal stackable="showSelectorModal">
-    <div br-selector-modal="showSelectorModal"
-      br-modal-title="modalTitle"
-      br-items="items" br-item-type="itemType">
-      <ul ng-show="!custom" class="list-unstyled item br-selector-list"></ul>
-      <div ng-show="custom" class="br-selector-transclude-custom"></div>
-      <hr ng-show="items.length <= 1 || (!fixed && items.length > 1)"/>
-      <div class="pull-right">
-        <button class="btn btn-success"
-          ng-click="addItem()"><i class="fa fa-plus"></i> Add {{itemType}}</button>
-      </div>
-      <div style="clear:both"></div>
-    </div>
-  </stackable-modal>
 </div>
+<stackable-modal stackable="model.showChoices">
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="close stackable-cancel">&times;<span
+            class="sr-only">Close</span></a>
+          <h3 class="modal-title">{{model.modalTitle || ('Select ' + model.itemType)}}</h3>
+        </div>
+        <div class="modal-body">
+          <div ng-multi-transclude-controller>
+            <div ng-multi-transclude="br-selector-choices"></div>
+          </div>
+          <hr ng-show="model.items.length <= 1 || (!model.fixed && model.items.length > 1)"/>
+          <div class="pull-right">
+            <button class="btn btn-success" ng-click="model.addItem()">
+              <i class="fa fa-plus"></i> Add {{model.itemType}}
+            </button>
+          </div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+            class="btn btn-default stackable-cancel">Cancel</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</stackable-modal>

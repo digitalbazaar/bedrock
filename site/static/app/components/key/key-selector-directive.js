@@ -13,7 +13,7 @@ define([], function() {
 function keySelectorInner(KeyService) {
   return {
     restrict: 'A',
-    require: 'brSelector2',
+    require: 'brSelector',
     link: Link
   };
 
