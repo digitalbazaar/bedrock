@@ -15,6 +15,7 @@ define([
   './error-directive',
   './floor-filter',
   './headline-directive',
+  './lazy-compile-directive',
   './mask-filter',
   './model-service',
   './now-filter',
@@ -32,6 +33,7 @@ define([
   error,
   floor,
   headlineDirective,
+  lazyCompileDirective,
   mask,
   modelService,
   now,
@@ -52,6 +54,7 @@ module.filter(encodeURIComponent_);
 module.directive(error);
 module.filter(floor);
 module.directive(headlineDirective);
+module.directive(lazyCompileDirective);
 module.filter(mask);
 module.service(modelService);
 module.filter(now);
