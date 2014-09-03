@@ -30,16 +30,11 @@ function factory($compile, $templateCache) {
     tElement.empty();
 
     return function(scope, element, attrs, ctrls, transcludeFn) {
-      var compiled = false;
-
-      // TODO: change to bind-once
-      scope.$watch(trigger, function(value) {
-        if(compiled) {
-          // already compiled
-          return;
-        }
+      // bind-once
+      var removeWatch = scope.$watch(trigger, function(value) {
         if(value) {
           compile();
+          removeWatch();
         }
       });
 
@@ -48,7 +43,6 @@ function factory($compile, $templateCache) {
           var el = angular.element($templateCache.get(cacheId));
           element.append(el);
           $compile(el)(scope);
-          compiled = true;
           return;
         }
 
@@ -56,6 +50,7 @@ function factory($compile, $templateCache) {
         // transcluded elements (it seems angular doesn't know what this is
         // or uses the wrong scope when you pass transcludeFn to $compile so
         // we have to hack it in)
+        var compiled = false;
         try {
           transcludeFn(function(clone) {
             var parentScope = clone.filter('.ng-scope').scope().$parent;
