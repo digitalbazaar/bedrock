@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, $rootScope, brRefreshService, brIdentityService, config) {
+function factory($rootScope, brRefreshService, brIdentityService, config) {
   var self = this;
   self.session = config.data.session;
   self.navbar = config.site.navbar;

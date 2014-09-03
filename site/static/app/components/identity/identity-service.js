@@ -10,7 +10,8 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($http, $rootScope, brRefreshService, brResourceService, config) {
+function factory(
+  $http, $rootScope, brRefreshService, brResourceService, config) {
   var service = {};
 
   service.collection = new brResourceService.Collection({

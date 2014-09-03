@@ -11,7 +11,8 @@ define([], function() {
 
 /* @ngInject */
 function factory(
-  $http, $location, $sanitize, $scope, brAlertService, brIdentityService, config) {
+  $http, $location, $sanitize, $scope,
+  brAlertService, brIdentityService, config) {
   var self = this;
   self.loading = false;
   self.identity = brIdentityService.identity;
