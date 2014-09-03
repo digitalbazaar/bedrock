@@ -1,26 +1,32 @@
 <br-selector br-selected="selected=brSelector.selected" br-key-selector-inner>
   <div name="br-selector-selected">
-    <span ng-show="model.services.key.loading">
-      <i class="fa fa-refresh fa-spin text-muted"></i>
-    </span>
-    <div ng-hide="model.services.key.loading">
-      <strong>{{selected.label}}</strong>
-      <br/>
-      <small>{{selected.id}}</small>
+    <div br-lazy-compile="br-key-selector-selected"
+      br-compile-trigger="selected">
+      <span ng-show="model.services.key.loading">
+        <i class="fa fa-refresh fa-spin text-muted"></i>
+      </span>
+      <div ng-hide="model.services.key.loading">
+        <strong>{{selected.label}}</strong>
+        <br/>
+        <small>{{selected.id}}</small>
+      </div>
     </div>
   </div>
   <div name="br-selector-choices">
-    <div ng-show="model.services.key.loading">
-      <i class="fa fa-refresh fa-spin text-muted"></i>
+    <div br-lazy-compile="br-key-selector-selected"
+      br-compile-trigger="brSelector.showChoices">
+      <div ng-show="model.services.key.loading">
+        <i class="fa fa-refresh fa-spin text-muted"></i>
+      </div>
+      <ul ng-hide="model.services.key.loading" class="list-unstyled">
+        <li class="br-item-hover well" ng-repeat="key in model.keys"
+          ng-click="brSelector.select(key)">
+          <strong>{{key.label}}</strong>
+          <br/>
+          <small>{{key.id}}</small>
+        </li>
+      </ul>
     </div>
-    <ul ng-hide="model.services.key.loading" class="list-unstyled">
-      <li class="br-item-hover well" ng-repeat="key in model.keys"
-        ng-click="brSelector.select(key)">
-        <strong>{{key.label}}</strong>
-        <br/>
-        <small>{{key.id}}</small>
-      </li>
-    </ul>
   </div>
 </br-selector>
 <stackable-modal stackable="model.showAddKeyModal"

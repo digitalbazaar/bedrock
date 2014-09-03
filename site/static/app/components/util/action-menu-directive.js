@@ -23,12 +23,14 @@ function factory() {
           <i class="fa fa-chevron-down"></i> \
         </button> \
       </div> \
-      <stackable-popover stackable="actionMenu" \
-        stackable-hide-arrow="true" \
-        stackable-placement="bottom" \
-        stackable-alignment="right"> \
-        <div ng-transclude></div> \
-      </stackable-popover>'
+      <div br-lazy-compile="br-action-menu" br-compile-trigger="actionMenu.show"> \
+        <stackable-popover stackable="actionMenu" \
+          stackable-hide-arrow="true" \
+          stackable-placement="bottom" \
+          stackable-alignment="right"> \
+          <div ng-transclude></div> \
+        </stackable-popover> \
+      </div>'
   };
 }
 

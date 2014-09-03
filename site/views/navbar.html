@@ -37,65 +37,67 @@
         </ul><!-- /nav menu -->
 
         <!-- signed out -->
-        <div ng-if="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" ng-controller="LoginController as model">
-          <form class="navbar-form navbar-right form-inline" ng-submit="model.submit()">
-            <div class="form-group">
-              <br-input ng-if="!model.multiple" br-model="model.sysIdentifier"
-                br-options="{
-                  name: 'sysIdentifier', placeholder: 'Email', inline: true,
-                  disabled: {{model.loading}}, autofocus: true,
-                  columns: {input: ''}
-                }">
-              </br-input>
-              <br-select ng-if="model.multiple" br-model="model.sysIdentifier"
-                br-items="model.choices" br-display-item="item.label"
-                br-options="{
-                  name: 'sysIdentifier', placeholder: 'Identity...',
-                  inline: true, key: 'id', disabled: {{model.loading}},
-                  columns: {select: ''},
-                  tooltip: {
-                    text: 'Your email address ({{model.email}}) is associated with multiple identities. Please select the identity you\'d like to sign in with.',
-                    placement: 'left auto',
-                    trigger: 'hover'
-                  }
-                }">
-              </br-select>
-              <br-input br-model="model.password"
-                br-options="{
-                  name: 'password', placeholder: 'Password', type: 'password',
-                  inline: true, disabled: {{model.loading}},
-                  columns: {input: ''}
-                }">
-              </br-input>
-              <div class="btn-toolbar">
-                <div class="btn-group">
-                  <button class="btn btn-primary"
-                    type="submit"><i class="fa fa-sign-in"></i> Sign In</button>
-                  <button class="btn btn-primary" type="button"
-                    stackable-trigger="model.navbarActionMenu"
-                    stackable-toggle="'active'">
-                    <i class="caret"></i>
-                  </button>
-                </div>
-                <div class="btn-group">
-                  <a class="btn br-btn-navbar-inverse" href="/join">Join</a>
+        <div br-lazy-compile="br-navbar-login" br-compile-trigger="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing">
+          <div ng-if="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" ng-controller="LoginController as model">
+            <form class="navbar-form navbar-right form-inline" ng-submit="model.submit()">
+              <div class="form-group">
+                <br-input ng-if="!model.multiple" br-model="model.sysIdentifier"
+                  br-options="{
+                    name: 'sysIdentifier', placeholder: 'Email', inline: true,
+                    disabled: {{model.loading}}, autofocus: true,
+                    columns: {input: ''}
+                  }">
+                </br-input>
+                <br-select ng-if="model.multiple" br-model="model.sysIdentifier"
+                  br-items="model.choices" br-display-item="item.label"
+                  br-options="{
+                    name: 'sysIdentifier', placeholder: 'Identity...',
+                    inline: true, key: 'id', disabled: {{model.loading}},
+                    columns: {select: ''},
+                    tooltip: {
+                      text: 'Your email address ({{model.email}}) is associated with multiple identities. Please select the identity you\'d like to sign in with.',
+                      placement: 'left auto',
+                      trigger: 'hover'
+                    }
+                  }">
+                </br-select>
+                <br-input br-model="model.password"
+                  br-options="{
+                    name: 'password', placeholder: 'Password', type: 'password',
+                    inline: true, disabled: {{model.loading}},
+                    columns: {input: ''}
+                  }">
+                </br-input>
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-primary"
+                      type="submit"><i class="fa fa-sign-in"></i> Sign In</button>
+                    <button class="btn btn-primary" type="button"
+                      stackable-trigger="model.navbarActionMenu"
+                      stackable-toggle="'active'">
+                      <i class="caret"></i>
+                    </button>
+                  </div>
+                  <div class="btn-group">
+                    <a class="btn br-btn-navbar-inverse" href="/join">Join</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-          <stackable-popover stackable="model.navbarActionMenu"
-            stackable-hide-arrow="true"
-            stackable-placement="bottom"
-            stackable-alignment="right">
-            <ul class="dropdown-menu stackable-menu">
-              <li>
-                <a href="/session/passcode">
-                  <i class="fa fa-refresh"></i>
-                  Password Reset
-                </a>
-              </li>
-            </ul>
-          </stackable-popover>
+            </form>
+            <stackable-popover stackable="model.navbarActionMenu"
+              stackable-hide-arrow="true"
+              stackable-placement="bottom"
+              stackable-alignment="right">
+              <ul class="dropdown-menu stackable-menu">
+                <li>
+                  <a href="/session/passcode">
+                    <i class="fa fa-refresh"></i>
+                    Password Reset
+                  </a>
+                </li>
+              </ul>
+            </stackable-popover>
+          </div>
         </div><!-- /signed out -->
 
         <!-- signed in -->
@@ -103,38 +105,42 @@
           <a class="btn navbar-btn navbar-link pull-right"
             stackable-trigger="model.hovercard"
             stackable-toggle="'active'"><i class="fa fa-user"></i></a>
-          <stackable-popover stackable="model.hovercard"
-            stackable-placement="bottom"
-            stackable-alignment="right">
-            <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
-            <div class="stackable-popover-body">
-              <table class="table table-condensed hovercard" ng-show="model.identity">
-                <tbody>
-                  <tr ng-show="model.identity">
-                    <td><strong>Identity:</strong></td>
-                    <td>{{model.identity.label}}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Email:</strong></td>
-                    <td>{{model.identity.email}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div ng-show="model.identity" class="divider"></div>
-              <ul class="dropdown-menu stackable-menu">
-                <li>
-                  <a class="stackable-cancel" style="padding-left: 3px"
-                    ng-click="model.refreshData()"><i class="fa fa-refresh"></i> Refresh</a>
-                </li>
-                <li>
-                  <a href="/session/logout" style="padding-left: 3px"><i class="fa fa-sign-out"></i> Sign Out</a>
-                </li>
-              </ul>
-            </div>
-          </stackable-popover>
-          <stackable-modal stackable="model.showLogin" stackable-disable-escape="true">
-            <div br-login-modal></div>
-          </stackable-modal>
+          <span br-lazy-compile="br-navbar-hovercard" br-compile-trigger="model.hovercard.show">
+            <stackable-popover stackable="model.hovercard"
+              stackable-placement="bottom"
+              stackable-alignment="right">
+              <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
+              <div class="stackable-popover-body">
+                <table class="table table-condensed hovercard" ng-show="model.identity">
+                  <tbody>
+                    <tr ng-show="model.identity">
+                      <td><strong>Identity:</strong></td>
+                      <td>{{model.identity.label}}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Email:</strong></td>
+                      <td>{{model.identity.email}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div ng-show="model.identity" class="divider"></div>
+                <ul class="dropdown-menu stackable-menu">
+                  <li>
+                    <a class="stackable-cancel" style="padding-left: 3px"
+                      ng-click="model.refreshData()"><i class="fa fa-refresh"></i> Refresh</a>
+                  </li>
+                  <li>
+                    <a href="/session/logout" style="padding-left: 3px"><i class="fa fa-sign-out"></i> Sign Out</a>
+                  </li>
+                </ul>
+              </div>
+            </stackable-popover>
+          </span>
+          <span br-lazy-compile="br-navbar-login-modal" br-compile-trigger="model.showLogin">
+            <stackable-modal stackable="model.showLogin" stackable-disable-escape="true">
+              <div br-login-modal></div>
+            </stackable-modal>
+          </span>
           <ul class="nav navbar-nav navbar-hovercard-link">
             <li>
               <a ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">{{model.identity.label || '-'}}</a>
