@@ -25,7 +25,7 @@ function factory($compile, $templateCache) {
     var cacheId = 'br-lazy-compile-id:' + tAttrs.brLazyCompile;
     var trigger = tAttrs.brCompileTrigger;
     if($templateCache.get(cacheId) === undefined) {
-      $templateCache.put(cacheId, tElement.html().trim());
+      $templateCache.put(cacheId, tElement.contents());
     }
     tElement.empty();
 
@@ -39,9 +39,10 @@ function factory($compile, $templateCache) {
       });
 
       function compile() {
+        var el = angular.element($templateCache.get(cacheId)).clone();
+        element.append(el);
+
         if(!transcludeFn) {
-          var el = angular.element($templateCache.get(cacheId));
-          element.append(el);
           $compile(el)(scope);
           return;
         }
@@ -72,8 +73,6 @@ function factory($compile, $templateCache) {
             };
 
             // compile cached template and link
-            var el = angular.element($templateCache.get(cacheId));
-            element.append(el);
             $compile(el, transcludeFn)(scope);
             compiled = true;
           });
