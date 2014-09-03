@@ -27,7 +27,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <form id="registration-form" method="post" action="{{model.registrationCallback}}">
+        <form method="post" action="{{model.registrationCallback}}"
+          ng-submit="model.submit()">
           <span ng-show="model.loading">
             <i class="fa fa-refresh fa-spin text-muted"></i>
           </span>
@@ -43,7 +44,6 @@
             type="hidden" />
 
           <button class="btn btn-primary"
-            ng-click="model.submit()"
             ng-show="model.success && model.registrationCallback"
             ng-disabled="model.loading"
             type="submit"><i class="fa fa-check"></i> Complete Registration</button>

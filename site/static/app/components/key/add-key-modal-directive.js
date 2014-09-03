@@ -67,7 +67,7 @@ function factory(
           scope.$apply();
 
           // attempt to auto-submit the form back to the registering site
-          model.submit();
+          element.find('.modal-footer > form').submit();
 
           // show the manual completion button after a timeout period
           $timeout(function() {
@@ -88,9 +88,7 @@ function factory(
     };
 
     model.submit = function() {
-      // FIXME: use ng-submit ... or rework this entirely
       $location.search({});
-      angular.element('#registration-form').submit();
     };
 
     model.done = function() {
