@@ -11,7 +11,7 @@ define(['underscore'], function(_) {
 'use strict';
 
 /* @ngInject */
-function factory($rootScope, $http, $location, ModelService) {
+function factory($rootScope, $http, $location, brModelService) {
   var service = {};
 
   // create a new collection
@@ -65,7 +65,7 @@ function factory($rootScope, $http, $location, ModelService) {
         var doUpdate = self._doUpdate(options);
         if(doUpdate) {
           self.expires = Date.now() + self.maxAge;
-          ModelService.replaceArray(self.storage, response.data);
+          brModelService.replaceArray(self.storage, response.data);
         }
         return self.finishLoading().then(function() {
           $rootScope.$apply();
@@ -99,7 +99,7 @@ function factory($rootScope, $http, $location, ModelService) {
         var doUpdate = self._doUpdate(options);
         var storedObject;
         if(doUpdate) {
-          storedObject = ModelService.replaceInArray(
+          storedObject = brModelService.replaceInArray(
             self.storage, response.data);
         }
         return self.finishLoading().then(function() {
@@ -207,7 +207,7 @@ function factory($rootScope, $http, $location, ModelService) {
         // update collection if resource present
         if(self._doUpdate(options)) {
           if(_.findWhere(self.storage, {id: resourceId})) {
-            ModelService.removeFromArray(resourceId, self.storage);
+            brModelService.removeFromArray(resourceId, self.storage);
           }
         }
         return self.finishLoading().then(function() {
@@ -226,7 +226,7 @@ function factory($rootScope, $http, $location, ModelService) {
    */
   service.Collection.prototype.clear = function() {
     var self = this;
-    ModelService.replaceArray(self.storage, []);
+    brModelService.replaceArray(self.storage, []);
   };
 
   /**
@@ -296,6 +296,6 @@ function factory($rootScope, $http, $location, ModelService) {
   return service;
 }
 
-return {ResourceService: factory};
+return {brResourceService: factory};
 
 });

@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($scope, $http, $compile, $window, AlertService, config) {
+function factory($scope, $http, $compile, $window, brAlertService, config) {
   var self = this;
   self.multiple = false;
   self.loading = false;
@@ -22,7 +22,7 @@ function factory($scope, $http, $compile, $window, AlertService, config) {
 
   self.submit = function() {
     // do login
-    AlertService.clearFeedback();
+    brAlertService.clearFeedback();
     self.loading = true;
     Promise.resolve($http.post('/session/login', {
       sysIdentifier: self.sysIdentifier,
@@ -71,7 +71,7 @@ function factory($scope, $http, $compile, $window, AlertService, config) {
       if(err.type === 'bedrock.validation.ValidationError') {
         err = new Error('Please enter your email address and password.');
       }
-      AlertService.add('error', err);
+      brAlertService.add('error', err);
       self.loading = false;
       $scope.$apply();
     });

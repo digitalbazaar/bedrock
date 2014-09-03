@@ -10,10 +10,10 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($http, $rootScope, RefreshService, ResourceService, config) {
+function factory($http, $rootScope, brRefreshService, brResourceService, config) {
   var service = {};
 
-  service.collection = new ResourceService.Collection({
+  service.collection = new brResourceService.Collection({
     url: config.data.identityBaseUri
   });
 
@@ -86,7 +86,7 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
   };
 
   // register for system-wide refreshes
-  RefreshService.register(function() {
+  brRefreshService.register(function() {
     if(service.identity) {
       service.collection.get(service.identity.id);
     }
@@ -98,6 +98,6 @@ function factory($http, $rootScope, RefreshService, ResourceService, config) {
   return service;
 }
 
-return {IdentityService: factory};
+return {brIdentityService: factory};
 
 });

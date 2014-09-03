@@ -11,7 +11,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, AlertService, IdentityService, config) {
+function factory($scope, brAlertService, brIdentityService, config) {
   var self = this;
   self.email = config.data.session ? config.data.session.identity.email : '';
   self.sysPasscode = config.data.sysPasscode || '';
@@ -20,18 +20,18 @@ function factory($scope, AlertService, IdentityService, config) {
 
   self.sendReset = function() {
     // request a passcode
-    AlertService.clearFeedback();
+    brAlertService.clearFeedback();
     self.loading = true;
-    IdentityService.sendPasscode({
+    brIdentityService.sendPasscode({
       sysIdentifier: self.email,
       usage: 'reset'
     }).then(function() {
-      AlertService.add('success', {
+      brAlertService.add('success', {
         message:
           'An email has been sent to you with password reset instructions.'
       });
     }).catch(function(err) {
-      AlertService.add('error', err);
+      brAlertService.add('error', err);
     }).then(function() {
       self.loading = false;
       $scope.$apply();
@@ -40,18 +40,18 @@ function factory($scope, AlertService, IdentityService, config) {
 
   self.updatePassword = function() {
     // request a password reset using the given passcode
-    AlertService.clearFeedback();
+    brAlertService.clearFeedback();
     self.loading = true;
-    IdentityService.updatePassword({
+    brIdentityService.updatePassword({
       sysIdentifier: self.email,
       sysPasscode: self.sysPasscode,
       sysPasswordNew: self.sysPasswordNew
     }).then(function() {
-      AlertService.add('success', {
+      brAlertService.add('success', {
         message: 'Your password has been updated successfully.'
       });
     }).catch(function(err) {
-      AlertService.add('error', err);
+      brAlertService.add('error', err);
     }).then(function() {
       self.loading = false;
       $scope.$apply();

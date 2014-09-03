@@ -10,14 +10,14 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, $rootScope, RefreshService, IdentityService, config) {
+function factory($scope, $rootScope, brRefreshService, brIdentityService, config) {
   var self = this;
   self.session = config.data.session;
   self.navbar = config.site.navbar;
-  self.identity = IdentityService.identity;
+  self.identity = brIdentityService.identity;
 
   self.refreshData = function() {
-    RefreshService.refresh();
+    brRefreshService.refresh();
   };
 
   $rootScope.$on('showLoginModal', function() {

@@ -11,9 +11,9 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory(IdentityService) {
+function factory(brIdentityService) {
   var self = this;
-  self.identity = IdentityService.identity;
+  self.identity = brIdentityService.identity;
   self.state = {};
   self.modals = {};
 }

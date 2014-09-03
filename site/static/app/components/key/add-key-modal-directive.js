@@ -13,7 +13,7 @@ define(['angular'], function(angular) {
 /* @ngInject */
 function factory(
   $location, $routeParams, $sce, $timeout,
-  AlertService, KeyService, config) {
+  brAlertService, brKeyService, config) {
   return {
     restrict: 'A',
     scope: {},
@@ -31,7 +31,7 @@ function factory(
     model.registrationCallback = null;
     model.callbackKey = null;
     model.state = {
-      keys: KeyService.state
+      keys: brKeyService.state
     };
     model.key = {
       '@context': config.data.contextUrl,
@@ -49,9 +49,9 @@ function factory(
     model.needPem = !model.key.publicKeyPem;
 
     model.addKey = function() {
-      AlertService.clearFeedback();
+      brAlertService.clearFeedback();
       model.loading = true;
-      KeyService.collection.add(model.key).then(function(key) {
+      brKeyService.collection.add(model.key).then(function(key) {
         // replace key with newly created key data
         model.key = key;
         model.success = true;
@@ -82,7 +82,7 @@ function factory(
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

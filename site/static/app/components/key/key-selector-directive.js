@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function keySelectorInner(KeyService) {
+function keySelectorInner(brKeyService) {
   return {
     restrict: 'A',
     require: 'brSelector',
@@ -20,9 +20,9 @@ function keySelectorInner(KeyService) {
   function Link(scope, element, attrs, brSelector) {
     var model = scope.model = {};
     model.services = {
-      key: KeyService.state
+      key: brKeyService.state
     };
-    model.keys = KeyService.unrevokedKeys;
+    model.keys = brKeyService.unrevokedKeys;
     scope.$watch('model.keys', function(keys) {
       if(!scope.selected || $.inArray(scope.selected, keys) === -1) {
         scope.selected = keys[0] || null;
@@ -40,7 +40,7 @@ function keySelectorInner(KeyService) {
       brSelector.fixed = value;
     });
 
-    KeyService.collection.getAll();
+    brKeyService.collection.getAll();
   }
 }
 

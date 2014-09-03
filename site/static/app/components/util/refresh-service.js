@@ -10,26 +10,26 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($rootScope, ResourceService) {
+function factory($rootScope, brResourceService) {
   var service = {};
 
   /**
-   * Registers a ResourceService.Collection or a new listener for refresh
+   * Registers a brResourceService.Collection or a new listener for refresh
    * events.
    *
    * @param [scope] the scope to register with (default: $rootScope).
-   * @param fn the ResourceService.Collection to refresh or the function to
+   * @param fn the brResourceService.Collection to refresh or the function to
    *          call when a refresh event occurs.
    *
    * @return the registered function that can be called independently.
    */
   service.register = function(scope, fn) {
     if(typeof scope === 'function' ||
-      scope instanceof ResourceService.Collection) {
+      scope instanceof brResourceService.Collection) {
       fn = scope;
       scope = $rootScope;
     }
-    if(fn instanceof ResourceService.Collection) {
+    if(fn instanceof brResourceService.Collection) {
       // TODO: add a 'refreshIfAfter' datetime option to collection API
       var collection = fn;
       fn = function() {
@@ -40,7 +40,7 @@ function factory($rootScope, ResourceService) {
     if(typeof fn !== 'function') {
       throw new TypeError(
         'Registration parameter must be a ' +
-        'ResourceService.Collection or a function.');
+        'brResourceService.Collection or a function.');
     }
 
     scope.$on('refreshData', fn);
@@ -65,6 +65,6 @@ function factory($rootScope, ResourceService) {
   return service;
 }
 
-return {RefreshService: factory};
+return {brRefreshService: factory};
 
 });

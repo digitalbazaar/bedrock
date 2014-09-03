@@ -12,23 +12,23 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, AlertService, KeyService, RefreshService) {
+function factory($scope, brAlertService, brKeyService, brRefreshService) {
   var self = this;
 
   self.modals = {};
   self.state = {
-    keys: KeyService.state
+    keys: brKeyService.state
   };
   self.key = undefined;
 
-  RefreshService.register($scope, function(force) {
+  brRefreshService.register($scope, function(force) {
     var opts = {force: !!force};
-    AlertService.clear();
-    KeyService.collection.getCurrent(opts).then(function(key) {
+    brAlertService.clear();
+    brKeyService.collection.getCurrent(opts).then(function(key) {
       self.key = key;
       $scope.$apply();
     }).catch(function(err) {
-      AlertService.add('error', err);
+      brAlertService.add('error', err);
       self.key = null;
       $scope.$apply();
     });

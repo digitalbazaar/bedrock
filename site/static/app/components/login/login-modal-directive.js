@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($http, $timeout, AlertService, RefreshService, config) {
+function factory($http, $timeout, brAlertService, brRefreshService, config) {
   return {
     restrict: 'A',
     scope: {},
@@ -22,7 +22,7 @@ function factory($http, $timeout, AlertService, RefreshService, config) {
   function Link(scope, element, attrs, stackable) {
     // clear existing feedback when showing this modal
     $timeout(function() {
-      AlertService.clearFeedback();
+      brAlertService.clearFeedback();
     });
 
     var model = scope.model = {};
@@ -32,24 +32,24 @@ function factory($http, $timeout, AlertService, RefreshService, config) {
 
     model.login = function() {
       scope.loading = true;
-      AlertService.clearFeedback();
+      brAlertService.clearFeedback();
       Promise.resolve($http.post('/session/login', {
         sysIdentifier: model.sysIdentifier,
         password: model.password
       })).then(function(response) {
         // success, close modal
         stackable.close(null);
-        RefreshService.refresh();
+        brRefreshService.refresh();
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
         if(err.type === 'bedrock.validation.ValidationError') {
-          AlertService.add(
+          brAlertService.add(
             'error',
             'The password you entered was incorrect. Please try again.',
             {scope: scope});
         } else {
-          AlertService.add('error', err, {scope: scope});
+          brAlertService.add('error', err, {scope: scope});
         }
         scope.$apply();
       });

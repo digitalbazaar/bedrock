@@ -11,11 +11,11 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($routeParams, IdentityService, KeyService, config) {
+function factory($routeParams, brIdentityService, brKeyService, config) {
   var self = this;
-  self.identity = IdentityService.identity;
-  self.state = KeyService.state;
-  self.keys = KeyService.keys;
+  self.identity = brIdentityService.identity;
+  self.state = brKeyService.state;
+  self.keys = brKeyService.keys;
   self.modals = {
     showGenerateKeyPair: false,
     showAddKey: false,
@@ -39,7 +39,7 @@ function factory($routeParams, IdentityService, KeyService, config) {
       sysSigningKey: keyId
     };
 
-    IdentityService.collection.update(update)
+    brIdentityService.collection.update(update)
       .catch(function(err) {
         // FIXME: show error feedback
         if(err) {
@@ -53,12 +53,12 @@ function factory($routeParams, IdentityService, KeyService, config) {
   };
   self.confirmRevokeKey = function(err, result) {
     if(!err && result === 'ok') {
-      KeyService.collection.revoke(self.modals.key.id);
+      brKeyService.collection.revoke(self.modals.key.id);
     }
     self.modals.key = null;
   };
 
-  KeyService.collection.getAll();
+  brKeyService.collection.getAll();
 }
 
 return {KeysController: factory};

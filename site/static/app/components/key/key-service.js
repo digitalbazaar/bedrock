@@ -11,26 +11,26 @@ define([], function() {
 
 /* @ngInject */
 function factory(
-  $rootScope, IdentityService, ModelService, RefreshService,
-  ResourceService, config) {
+  $rootScope, brIdentityService, brModelService, brRefreshService,
+  brResourceService, config) {
   var service = {};
 
-  service.collection = new ResourceService.Collection({
-    url: IdentityService.identity.id + '/keys'
+  service.collection = new brResourceService.Collection({
+    url: brIdentityService.identity.id + '/keys'
   });
   service.keys = service.collection.storage;
   service.unrevokedKeys = [];
   service.state = service.collection.state;
 
   // TODO: could be more efficiently implemented as an observer pattern
-  // that can be accessed via ResourceService.collection creation API
+  // that can be accessed via brResourceService.collection creation API
   // maybe angular 2.0 will fix
   $rootScope.$watch(function() {return service.keys;}, function(value) {
     if(!value) {
       return;
     }
     var unrevoked = value.filter(function(key) {return !key.revoked;});
-    ModelService.replaceArray(service.unrevokedKeys, unrevoked);
+    brModelService.replaceArray(service.unrevokedKeys, unrevoked);
   }, true);
 
   service.collection.revoke = function(keyId, options) {
@@ -42,7 +42,7 @@ function factory(
   };
 
   // register for system-wide refreshes
-  RefreshService.register(service.collection);
+  brRefreshService.register(service.collection);
 
   // expose service to scope
   $rootScope.app.services.key = service;
@@ -50,6 +50,6 @@ function factory(
   return service;
 }
 
-return {KeyService: factory};
+return {brKeyService: factory};
 
 });

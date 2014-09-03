@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($http, $filter, AlertService, config) {
+function factory($http, $filter, brAlertService, config) {
   return {
     restrict: 'A',
     scope: {
@@ -116,7 +116,7 @@ function factory($http, $filter, AlertService, config) {
                       .addClass('alert-danger')
                       .fadeIn('slow');
                   } else {
-                    AlertService.add('error', err);
+                    brAlertService.add('error', err);
                   }
                   scope.$apply();
                 });

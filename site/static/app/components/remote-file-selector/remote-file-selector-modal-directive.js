@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($http, AlertService) {
+function factory($http, brAlertService) {
   return {
     restrict: 'A',
     require: '^stackable',
@@ -63,14 +63,14 @@ function factory($http, AlertService) {
         encodeURIComponent(model.selectedFilename);
 
       model.loading = true;
-      AlertService.clearFeedback();
+      brAlertService.clearFeedback();
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         stackable.close(null, response.data);
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };
@@ -83,7 +83,7 @@ function factory($http, AlertService) {
       }
 
       model.loading = true;
-      AlertService.clearFeedback();
+      brAlertService.clearFeedback();
       Promise.resolve($http.get(url)).then(function(response) {
         model.loading = false;
         model.pathContents = response.data;
@@ -92,7 +92,7 @@ function factory($http, AlertService) {
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

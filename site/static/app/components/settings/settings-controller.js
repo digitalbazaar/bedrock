@@ -11,12 +11,12 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, IdentityService, config) {
+function factory($scope, brIdentityService, config) {
   var self = this;
-  self.identity = IdentityService.identity;
+  self.identity = brIdentityService.identity;
   self.panes = config.settings.panes;
 
-  // FIXME: use RefreshService
+  // FIXME: use brRefreshService
   function refresh(force) {
     var opts = {force: !!force};
   }

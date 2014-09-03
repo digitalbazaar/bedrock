@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService, $compile, $rootScope) {
+function factory(brAlertService, $compile, $rootScope) {
   return {
     restrict: 'A',
     scope: {filterOrigin: '@?brFilterOrigin', fixed: '@?brFixed'},
@@ -27,21 +27,21 @@ function factory(AlertService, $compile, $rootScope) {
     });
 
     var elements = {};
-    for(var key in AlertService.category) {
-      elements[AlertService.category[key]] = [];
+    for(var key in brAlertService.category) {
+      elements[brAlertService.category[key]] = [];
     }
 
     scope.closeAlert = function(info) {
-      AlertService.remove(info.type, info.value);
+      brAlertService.remove(info.type, info.value);
     };
 
-    AlertService
+    brAlertService
       .on('add', addAlert)
       .on('remove', removeAlert)
       .on('clear', clearAlerts);
 
     scope.$on('$destroy', function() {
-      AlertService
+      brAlertService
         .removeListener('add', addAlert)
         .removeListener('remove', removeAlert)
         .removeListener('clear', clearAlerts);
@@ -132,7 +132,7 @@ function factory(AlertService, $compile, $rootScope) {
       element.find('.br-alert-area-' + category).empty();
       if(type) {
         // not all alerts were removed, so rebuild alert area
-        var log = AlertService.log[category];
+        var log = brAlertService.log[category];
         log.forEach(addAlert);
       }
     }

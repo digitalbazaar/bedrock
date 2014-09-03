@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($rootScope, ModelService) {
+function factory($rootScope, brModelService) {
   var service = {};
 
   // defined categories
@@ -182,7 +182,7 @@ function factory($rootScope, ModelService) {
         emit('clear', category);
         return;
       }
-      ModelService.removeAllFromArray(list, function(e) {
+      brModelService.removeAllFromArray(list, function(e) {
         if(e.type === type) {
           service.total -= 1;
           return true;
@@ -217,6 +217,6 @@ function factory($rootScope, ModelService) {
   return service;
 }
 
-return {AlertService: factory};
+return {brAlertService: factory};
 
 });

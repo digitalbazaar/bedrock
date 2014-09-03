@@ -8,7 +8,7 @@
 define(['forge/pki'], function(pki) {
 
 /* @ngInject */
-function factory(AlertService, KeyService, config) {
+function factory(brAlertService, brKeyService, config) {
   return {
     restrict: 'A',
     scope: {},
@@ -24,7 +24,7 @@ function factory(AlertService, KeyService, config) {
     model.loading = false;
     model.success = false;
     model.state = {
-      keys: KeyService.state
+      keys: brKeyService.state
     };
     model.key = {
       '@context': config.data.contextUrl,
@@ -36,7 +36,7 @@ function factory(AlertService, KeyService, config) {
 
     model.generateKeyPair = function() {
       model.loading = true;
-      AlertService.clearFeedback();
+      brAlertService.clearFeedback();
       new Promise(function(resolve, reject) {
         var bits = config.data.keygen.bits;
         forge.pki.rsa.generateKeyPair({
@@ -65,20 +65,20 @@ function factory(AlertService, KeyService, config) {
       }).catch(function(err) {
         model.loading = false;
         model.success = false;
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };
 
     model.addKey = function() {
       model.loading = true;
-      AlertService.clearFeedback();
-      KeyService.collection.add(model.key).then(function(key) {
+      brAlertService.clearFeedback();
+      brKeyService.collection.add(model.key).then(function(key) {
         model.loading = false;
         stackable.close(null, key);
         scope.$apply();
       }).catch(function(err) {
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         model.success = false;
         scope.model.loading = false;
         scope.$apply();

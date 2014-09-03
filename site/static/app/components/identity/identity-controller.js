@@ -12,24 +12,24 @@ define(['jsonld'], function(jsonld) {
 'use strict';
 
 /* @ngInject */
-function factory($scope, AlertService, IdentityService, RefreshService) {
+function factory($scope, brAlertService, brIdentityService, brRefreshService) {
   var self = this;
 
   self.modals = {};
   self.state = {
-    identities: IdentityService.state
+    identities: brIdentityService.state
   };
   self.identity = undefined;
 
-  RefreshService.register($scope, function(force) {
+  brRefreshService.register($scope, function(force) {
     var opts = {force: !!force};
-    IdentityService.collection.getCurrent(opts).then(function(identity) {
+    brIdentityService.collection.getCurrent(opts).then(function(identity) {
       // ensure an array of zero or more publicKeys
       identity.publicKey = jsonld.getValues(identity, 'publicKey');
       self.identity = identity;
       $scope.$apply();
     }).catch(function(err) {
-      AlertService.add('error', err);
+      brAlertService.add('error', err);
       self.identity = null;
       $scope.$apply();
     });

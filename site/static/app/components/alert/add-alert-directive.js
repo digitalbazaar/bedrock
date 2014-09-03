@@ -1,6 +1,6 @@
 /*!
  * Add Alert directive. Allows for adding an html-based alert to the
- * AlertService via transclusion.
+ * brAlertService via transclusion.
  *
  * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -11,7 +11,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService) {
+function factory(brAlertService) {
   return {
     restrict: 'EA',
     compile: function(tElement) {
@@ -20,7 +20,7 @@ function factory(AlertService) {
         element.remove();
         attrs.$observe('brAlertType', function(alertType) {
           if(alertType) {
-            AlertService.add(alertType, {html: template}, {scope: scope});
+            brAlertService.add(alertType, {html: template}, {scope: scope});
           }
         });
       };

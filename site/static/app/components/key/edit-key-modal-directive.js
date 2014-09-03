@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService, IdentityService, KeyService, config) {
+function factory(brAlertService, brIdentityService, brKeyService, config) {
   return {
     restrict: 'A',
     scope: {sourceKey: '=brKey'},
@@ -21,7 +21,7 @@ function factory(AlertService, IdentityService, KeyService, config) {
 
   function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
-    model.identity = IdentityService.identity || {};
+    model.identity = brIdentityService.identity || {};
     model.mode = 'edit';
     model.loading = false;
     // copy source budget for editing
@@ -37,15 +37,15 @@ function factory(AlertService, IdentityService, KeyService, config) {
       };
 
       model.loading = true;
-      AlertService.clearFeedback();
-      var promise = KeyService.collection.update(key);
+      brAlertService.clearFeedback();
+      var promise = brKeyService.collection.update(key);
       promise.then(function(key) {
         model.loading = false;
         stackable.close(null, key);
         scope.$apply();
       }).catch(function(err) {
         model.loading = false;
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

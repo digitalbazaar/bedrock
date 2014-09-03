@@ -11,9 +11,9 @@ define(['angular', 'forge/forge', 'underscore'], function(angular, forge, _) {
 'use strict';
 
 /* @ngInject */
-function factory($scope, config, AlertService, IdentityService) {
+function factory($scope, config, brAlertService, brIdentityService) {
   var self = this;
-  self.state = IdentityService.state;
+  self.state = brIdentityService.state;
   self.help = {};
   self.identity = null;
   self.emailHash = null;
@@ -68,7 +68,7 @@ function factory($scope, config, AlertService, IdentityService) {
 
   self.cancel = function() {
     self.identity = {};
-    angular.extend(self.identity, IdentityService.identity);
+    angular.extend(self.identity, brIdentityService.identity);
     self.identity.sysImageType = self.identity.sysImageType || 'gravatar';
     self.identity.sysGravatarType = self.identity.sysGravatarType || 'gravatar';
 
@@ -99,7 +99,7 @@ function factory($scope, config, AlertService, IdentityService) {
 
     // cache email hash for gravatar
     var md = forge.md.md5.create();
-    md.update(IdentityService.identity.email, 'utf8');
+    md.update(brIdentityService.identity.email, 'utf8');
     self.emailHash = md.digest().toHex();
 
     self.loading = false;
@@ -154,10 +154,10 @@ function factory($scope, config, AlertService, IdentityService) {
     }
 
     self.loading = true;
-    AlertService.clear();
-    IdentityService.collection.update(update)
+    brAlertService.clear();
+    brIdentityService.collection.update(update)
       .catch(function(err) {
-        AlertService.add('error', err);
+        brAlertService.add('error', err);
       })
       .then(function() {
         self.loading = false;

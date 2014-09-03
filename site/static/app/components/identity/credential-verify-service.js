@@ -60,6 +60,6 @@ function createVerifier(config, options) {
   });
 }
 
-return {CredentialVerifyService: factory};
+return {brCredentialVerifyService: factory};
 
 });

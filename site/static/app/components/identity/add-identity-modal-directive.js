@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory(AlertService, IdentityService, config) {
+function factory(brAlertService, brIdentityService, config) {
   return {
     restrict: 'A',
     scope: {identityTypes: '=brIdentityTypes'},
@@ -44,14 +44,14 @@ function factory(AlertService, IdentityService, config) {
       identity.label = scope.identityLabel;
       identity.sysSlug = scope.identitySlug;
       scope.loading = true;
-      AlertService.clearFeedback();
-      IdentityService.collection.add(identity).then(function(identity) {
+      brAlertService.clearFeedback();
+      brIdentityService.collection.add(identity).then(function(identity) {
         scope.loading = false;
         stackable.close(null, {identity: identity});
         scope.$apply();
       }).catch(function(err) {
         scope.loading = false;
-        AlertService.add('error', err, {scope: scope});
+        brAlertService.add('error', err, {scope: scope});
         scope.$apply();
       });
     };

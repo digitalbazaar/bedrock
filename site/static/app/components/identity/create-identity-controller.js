@@ -11,7 +11,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function factory($scope, $http, $window, AlertService, config) {
+function factory($scope, $http, $window, brAlertService, config) {
   var self = this;
   self.data = config.data;
   self.loading = false;
@@ -30,14 +30,14 @@ function factory($scope, $http, $window, AlertService, config) {
     if(!self.agreementChecked) {
       return false;
     }
-    AlertService.clearFeedback();
+    brAlertService.clearFeedback();
     self.loading = true;
     Promise.resolve($http.post('/join', self.identity))
       .then(function(response) {
         // redirect to new dashboard
         $window.location = response.data.id + '/dashboard';
       }).catch(function(err) {
-        AlertService.add('error', err);
+        brAlertService.add('error', err);
         self.loading = false;
         $scope.$apply();
       });

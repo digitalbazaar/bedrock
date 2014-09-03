@@ -11,10 +11,10 @@ define([], function() {
 
 /* @ngInject */
 function factory(
-  $http, $location, $sanitize, $scope, AlertService, IdentityService, config) {
+  $http, $location, $sanitize, $scope, brAlertService, brIdentityService, config) {
   var self = this;
   self.loading = false;
-  self.identity = IdentityService.identity;
+  self.identity = brIdentityService.identity;
   self.identityCredentials = config.data.identityCredentials;
 
   self.authorize = function(accept) {
@@ -26,7 +26,7 @@ function factory(
       query = {'@context': 'https://w3id.org/identity/v1'};
     }
     self.loading = true;
-    AlertService.clearFeedback();
+    brAlertService.clearFeedback();
     Promise.resolve($http.post($location.absUrl() + '&authorize=true', {
       query: JSON.stringify(query)
     })).then(function(response) {
@@ -41,7 +41,7 @@ function factory(
       form.submit();
     }).catch(function(err) {
       self.loading = false;
-      AlertService.add('error', err);
+      brAlertService.add('error', err);
       $scope.$apply();
     });
   };

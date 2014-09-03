@@ -134,6 +134,6 @@ function factory($rootScope) {
   return service;
 }
 
-return {ModelService: factory};
+return {brModelService: factory};
 
 });
