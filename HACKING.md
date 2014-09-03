@@ -84,27 +84,28 @@ that are used by the app and register them as dependencies for an
 
 Naming conventions:
 
-All files use lowercase and hyphens as a word delimiter. Variables use
-camelCase and controllers and services use PascalCase.
+All files use lowercase and hyphens as a word delimiter. Controllers,
+services, directives, and filters should be prefixed and use
+camelCase.
 
 Controllers:
 
-* Name: FooBarController (PascalCase)
+* Name: prefixFooBarController (camelCase)
 * File: foo-bar-controller.js
 
 Services:
 
-* Name: FooBarService (PascalCase)
+* Name: prefixFooBarService (CamelCase)
 * File: foo-bar-service.js
 
 Directives:
 
-* Name: fooBar (camelCase)
+* Name: prefixFooBar (camelCase)
 * File: foo-bar-directive.js
 
 Filters:
 
-* Name: fooBar (camelCase)
+* Name: prefixFooBar (camelCase)
 * File: foo-bar-filter.js
 
 Templates:
@@ -113,13 +114,13 @@ Templates:
 
 Modals:
 
-* Name: fooBarModal (camelCase)
+* Name: prefixFooBarModal (camelCase)
 * File: foo-bar-modal-directive.js
 * Template: foo-bar-modal.html
 
 Selectors:
 
-* Name: fooBarSelector (camelCase)
+* Name: prefixFooBarSelector (camelCase)
 * File: foo-bar-selector-directive.js
 * Template: foo-bar-selector.html
 
@@ -127,7 +128,8 @@ Best practices:
 
 * Use "controller as" syntax wherever possible. Refer to controller as
   'self' in controller code. Use "controller as model" in the common
-  case where the view is simple and only one controller is used.
+  case where the view is simple and only one controller is used. Use
+  'controllerAs' property in directive.
 * Use 'link' not 'controller' for controller code in directives that
   do not expose a controller API for reuse.
 * Use the annotation /* @ngInject */ before dependency-injected functions
