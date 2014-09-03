@@ -85,8 +85,8 @@ that are used by the app and register them as dependencies for an
 Naming conventions:
 
 All files use lowercase and hyphens as a word delimiter. Controllers,
-services, directives, and filters should be prefixed and use
-camelCase.
+services, and directives should be prefixed and use camelCase. Filters
+are not prefixed and use camelCase.
 
 Controllers:
 
@@ -105,7 +105,7 @@ Directives:
 
 Filters:
 
-* Name: prefixFooBar (camelCase)
+* Name: fooBar (camelCase)
 * File: foo-bar-filter.js
 
 Templates:
