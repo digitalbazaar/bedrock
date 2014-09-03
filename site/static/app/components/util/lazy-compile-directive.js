@@ -66,14 +66,6 @@ function factory($compile, $templateCache) {
                 futureParentElement = cloneAttachFn;
                 cloneAttachFn = scope;
               }
-              // FIXME: does passed scope need to be destroyed?
-              if(scope) {
-                //scope.$destroy();
-                console.log('created extra scope?');
-                scope.$on('$destroy', function() {
-                  console.log('extra scope destroyed');
-                });
-              }
               // create new child scope for clone and ensure it gets destroyed
               scope = parentScope.$new();
               var _cloneAttachFn = cloneAttachFn;
