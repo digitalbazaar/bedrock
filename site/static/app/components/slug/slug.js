@@ -9,14 +9,14 @@ define([
   'angular',
   './slug-filter',
   './slug-in-directive'
-], function(angular, filter, slugIn) {
+], function(angular, slugFilter, slugInDirective) {
 
 'use strict';
 
 var module = angular.module('app.slug', []);
 
-module.filter(filter);
-module.directive(slugIn);
+module.filter(slugFilter);
+module.directive(slugInDirective);
 
 return module.name;
 
