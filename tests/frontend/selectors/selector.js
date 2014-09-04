@@ -17,7 +17,7 @@ api.create = function(options) {
   var add = options.add;
 
   selector.create = function(options) {
-    var el = options.element.element(by.attribute('selector'));
+    var el = options.element.element(by.css('brSelector'));
     var change = el.element(by.partialButtonText('Change'));
     var modal;
     change.isDisplayed().then(function(shown) {
@@ -43,18 +43,18 @@ api.create = function(options) {
   };
 
   selector.select = function(options) {
-    var el = options.element.element(by.attribute('selector'));
-    el.evaluate('selected').then(function(selected) {
+    var el = options.element.element(by.css('brSelector'));
+    el.evaluate('brSelector.selected').then(function(selected) {
       if(selected && selected.id === options.id) {
         return;
       }
 
       el.element(by.partialButtonText('Change')).click();
-      var modal = element(by.modal());
+      var choices = element(by.modal()).element(by.css('.br-selector-choices'));
       var toSelect = null;
-      modal.all(by.repeater('selected in')).then(function(rows) {
+      choices.all(by.repeater(options.repeater)).then(function(rows) {
         rows.forEach(function(row) {
-          row.evaluate('selected').then(function(selected) {
+          row.evaluate(options.itemName).then(function(selected) {
             if(selected.id === options.id) {
               toSelect = row;
             }

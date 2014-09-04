@@ -18,8 +18,7 @@ api.get = function(slug) {
 api.generateKey = function(options) {
   options = options || {};
   element(by.linkText('Keys')).click();
-  var headline = element(by.attribute('headline', 'Keys'));
-  headline.element(by.trigger('menu')).click();
+  element(by.brHeadlineMenu('Keys')).click();
   element(by.linkText('Generate Key Pair')).click();
   helper.waitForModalTransition();
   var modal = element(by.modal());
@@ -27,8 +26,8 @@ api.generateKey = function(options) {
   var save = modal.element(by.partialButtonText('Save'));
   helper.waitForElementToShow(save);
   if(options.label) {
-    modal.element(by.model('model.key.label')).clear();
-    modal.element(by.model('model.key.label')).sendKeys(options.label);
+    modal.element(by.brModel('model.key.label')).clear();
+    modal.element(by.brModel('model.key.label')).sendKeys(options.label);
   }
   save.click();
   helper.waitForModalTransition();

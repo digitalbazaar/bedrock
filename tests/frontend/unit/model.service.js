@@ -11,7 +11,7 @@ describe('model.service', function() {
         {id: '1', data: 'foo'},
         {id: '2', data: 'bar'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.replaceInArray(array, {id: '1', data: 'new foo'});
       return array;
     })).to.eventually.deep.equal([
@@ -26,7 +26,7 @@ describe('model.service', function() {
         {id: '1', key: '2', data: 'foo'},
         {id: '2', key: '1', data: 'bar'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.replaceInArray(
         array, {id: '1', key: '2', data: 'new foo'}, 'key');
       return array;
@@ -42,7 +42,7 @@ describe('model.service', function() {
         {id: '1', data: 'old foo'},
         {id: '2', data: 'old bar'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.replaceInArray(
         array, {id: '1', data: 'new foo'}, function(dst, src) {
           return dst.id === '1';
@@ -61,7 +61,7 @@ describe('model.service', function() {
         {id: '2', data: 'old bar'},
         {id: '4', data: 'remove'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.replaceArray(
         array, [
           {id: '2', data: 'new bar'},
@@ -83,7 +83,7 @@ describe('model.service', function() {
         {id: '2', key: '2', data: 'old bar'},
         {id: '4', key: '4', data: 'remove'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.replaceArray(
         array, [
           {id: '2', key: '1', data: 'new bar'},
@@ -105,7 +105,7 @@ describe('model.service', function() {
         {id: '2', key: '2', data: 'old bar'},
         {id: '4', key: '4', data: 'remove'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.replaceArray(
         array, [
           {id: '2', key: '1', data: 'new bar'},
@@ -132,7 +132,7 @@ describe('model.service', function() {
         {id: '1', data: 'remove'},
         {id: '3', data: 'keep'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.removeFromArray({id: '1'}, array);
       return array;
     })).to.eventually.deep.equal([
@@ -154,7 +154,7 @@ describe('model.service', function() {
         {id: '1', data: 'remove'},
         {id: '3', data: 'keep'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.removeAllFromArray({id: '1'}, array);
       return array;
     })).to.eventually.deep.equal([
@@ -174,7 +174,7 @@ describe('model.service', function() {
         {id: '1', data: 'remove'},
         {id: '3', data: 'keep'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.removeFromArray({data: 'remove'}, array, 'data');
       return array;
     })).to.eventually.deep.equal([
@@ -196,7 +196,7 @@ describe('model.service', function() {
         {id: '1', data: 'remove'},
         {id: '3', data: 'keep'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.removeAllFromArray({data: 'remove'}, array, 'data');
       return array;
     })).to.eventually.deep.equal([
@@ -216,7 +216,7 @@ describe('model.service', function() {
         {id: '1', data: 'remove'},
         {id: '3', data: 'keep'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.removeFromArray(array, function(e) {
         return e.id === '1';
       });
@@ -240,7 +240,7 @@ describe('model.service', function() {
         {id: '1', data: 'remove'},
         {id: '3', data: 'keep'}
       ];
-      var service = $injector.get('ModelService');
+      var service = $injector.get('brModelService');
       service.removeAllFromArray(array, function(e) {
         return e.id === '1';
       });

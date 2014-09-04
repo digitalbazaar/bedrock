@@ -9,14 +9,14 @@ var expect = GLOBAL.expect;
 
 api.login = function(identifier, password) {
   helper.get('/');
-  element.all(by.model('model.sysIdentifier')).each(function(e) {
+  element.all(by.brModel('model.sysIdentifier')).each(function(e) {
     e.getTagName().then(function(tagName) {
       if(tagName === 'input') {
         e.sendKeys(identifier);
       }
     });
   });
-  element(by.model('model.password')).sendKeys(password);
+  element(by.brModel('model.password')).sendKeys(password);
   element(by.linkText('Sign In')).click();
   helper.waitForUrl(function(url) {
     return url.indexOf('dashboard') !== -1;
@@ -27,10 +27,10 @@ api.login = function(identifier, password) {
 
 api.logout = function() {
   helper.get('/');
-  element(by.binding('model.identity.label')).click();
+  element(by.trigger('model.hovercard')).click();
   element(by.linkText('Sign Out')).click();
   helper.get('/');
-  expect(element(by.model('model.sysIdentifier')).isPresent())
+  expect(element(by.brModel('model.sysIdentifier')).isPresent())
     .to.eventually.be.true;
   return api;
 };

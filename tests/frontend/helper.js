@@ -239,6 +239,13 @@ Helper.prototype.clone = function(x) {
 };
 
 api.on('init', function() {
+  // locate elements by br-model
+  by.addLocator('brModel', function(value, parent) {
+    var using = parent || document;
+    var query = "[br-model='" + value + "'] [ng-model='model']";
+    return using.querySelectorAll(query);
+  });
+
   // locate elements by controller
   by.addLocator('controller', function(value, parent) {
     var using = parent || document;
@@ -267,6 +274,13 @@ api.on('init', function() {
   by.addLocator('trigger', function(model, parent) {
     var using = parent || document;
     return using.querySelectorAll("[stackable-trigger^='" + model + "']");
+  });
+
+  // locate br-headline menu trigger elements
+  by.addLocator('brHeadlineMenu', function(title, parent) {
+    var using = parent || document;
+    return using.querySelectorAll(
+      "br-headline[br-title^='" + title + "'] [stackable-trigger='menu']");
   });
 
   // locate the top-level modal
