@@ -35,6 +35,8 @@ module.config(function($locationProvider, $routeProvider, $httpProvider) {
   // add non-route
   $routeProvider.otherwise({none: true});
 
+  $httpProvider.useApplyAsync(true);
+
   // normalize errors, deal w/auth redirection
   /* @ngInject */
   $httpProvider.interceptors.push(function($rootScope, $q, $timeout) {

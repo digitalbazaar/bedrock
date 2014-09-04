@@ -68,12 +68,12 @@ function factory($rootScope, $http, $location, brModelService) {
           brModelService.replaceArray(self.storage, response.data);
         }
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           return doUpdate ? self.storage : response.data;
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           throw err;
         });
       });
@@ -103,12 +103,12 @@ function factory($rootScope, $http, $location, brModelService) {
             self.storage, response.data);
         }
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           return doUpdate ? storedObject : response.data;
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           throw err;
         });
       });
@@ -156,12 +156,12 @@ function factory($rootScope, $http, $location, brModelService) {
             return self.finishLoading();
           })
           .then(function() {
-            $rootScope.$apply();
+            $rootScope.$applyAsync();
             return storedData;
           });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           throw err;
         });
       });
@@ -184,12 +184,12 @@ function factory($rootScope, $http, $location, brModelService) {
         return self.get(options.get || resource.id, getOpts);
       }).then(function(updatedResource) {
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           return updatedResource;
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           throw err;
         });
       });
@@ -211,11 +211,11 @@ function factory($rootScope, $http, $location, brModelService) {
           }
         }
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
         });
       }).catch(function(err) {
         return self.finishLoading().then(function() {
-          $rootScope.$apply();
+          $rootScope.$applyAsync();
           throw err;
         });
       });
