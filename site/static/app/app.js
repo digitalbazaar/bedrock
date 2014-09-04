@@ -41,15 +41,13 @@ module.config(function($locationProvider, $routeProvider, $httpProvider) {
   /* @ngInject */
   $httpProvider.interceptors.push(function($rootScope, $q, $timeout) {
     return {
-      response: function(response) {
-        if('delay' in response.config) {
-          var defer = $q.defer();
-          $timeout(function() {
-            defer.resolve(response);
-          }, response.config.delay);
-          return defer.promise;
+      request: function(config) {
+        if('delay' in config) {
+          return $timeout(function() {
+            return config;
+          }, config.delay);
         }
-        return response;
+        return config;
       },
       responseError: function(response) {
         var error = response.data || {};
