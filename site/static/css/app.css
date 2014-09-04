@@ -8218,10 +8218,10 @@ a {
 /* Animation for fadein/fadeout; requires ng-animate */
 .br-fadein,
 .br-fadeout {
-  -webkit-transition: opacity 250ms ease-in-out;
-  -moz-transition: opacity 250ms ease-in-out;
-  -o-transition: opacity 250ms ease-in-out;
-  transition: opacity 250ms ease-in-out;
+  -webkit-transition: opacity 200ms ease-in-out;
+  -moz-transition: opacity 200ms ease-in-out;
+  -o-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 }
 .br-fadein.ng-hide-remove,
 .br-fadeout.ng-hide-add.ng-hide-add-active,
