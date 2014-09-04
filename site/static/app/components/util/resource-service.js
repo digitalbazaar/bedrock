@@ -43,7 +43,10 @@ function factory($rootScope, $http, $location, brModelService) {
   service.Collection.prototype.finishLoading = function(count) {
     this.loadingCount = this.loadingCount - (count || 1);
     this.state.loading = (this.loadingCount !== 0);
-    if(!this.state.loading && this.config.finishLoading) {
+    // ensure this.config.finishLoading is always called -- otherwise it
+    // may never be called because there's no wait-queue/notification system
+    // to call it when loading is finally false
+    if(this.config.finishLoading) {
       return Promise.resolve(this.config.finishLoading());
     }
     return Promise.resolve();
