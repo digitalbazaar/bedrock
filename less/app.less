@@ -293,16 +293,18 @@ h1.headline {
 .navbar-nav.navbar-hovercard-link {
   margin-right: -8px;
 }
-.navbar .btn-toolbar {
-  display: inline-block;
-  margin-top: 0px;
-  margin-bottom: -13px;
-}
-.navbar .btn-group .btn {
-  font-weight: bold;
-}
-@media (min-width: 768px) {
-  .navbar {
+.navbar {
+  border-radius: 0;
+
+  & .btn-toolbar {
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: -13px;
+  }
+  & .btn-group .btn {
+    font-weight: bold;
+  }
+  @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;
   }
 }

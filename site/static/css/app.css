@@ -8573,6 +8573,9 @@ h1.headline {
 .navbar-nav.navbar-hovercard-link {
   margin-right: -8px;
 }
+.navbar {
+  border-radius: 0;
+}
 .navbar .btn-toolbar {
   display: inline-block;
   margin-top: 0px;
