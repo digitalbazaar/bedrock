@@ -105,6 +105,11 @@
           <a class="btn navbar-btn navbar-link pull-right"
             stackable-trigger="model.hovercard"
             stackable-toggle="'active'"><i class="fa fa-user"></i></a>
+          <ul class="nav navbar-nav navbar-hovercard-link">
+            <li>
+              <a ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">{{model.identity.label || '-'}}</a>
+            </li>
+          </ul>
           <span br-lazy-compile="br-navbar-hovercard" br-compile-trigger="model.hovercard.show">
             <stackable-popover stackable="model.hovercard"
               stackable-placement="bottom"
@@ -141,11 +146,6 @@
               <div br-login-modal></div>
             </stackable-modal>
           </span>
-          <ul class="nav navbar-nav navbar-hovercard-link">
-            <li>
-              <a ng-click="model.hovercard.show=!model.hovercard.show;model.hovercard.triggerClicked=true">{{model.identity.label || '-'}}</a>
-            </li>
-          </ul>
         </div><!-- /signed in -->
       </div><!-- /.navbar-collapse -->
       {% endraw %}
