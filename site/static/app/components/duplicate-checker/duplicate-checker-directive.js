@@ -90,7 +90,7 @@ function factory($http, $filter, brAlertService, config) {
                 data, scope.owner ? {owner: scope.owner} : {})))
                 .then(function() {
                   // available
-                  scope.result = true;
+                  scope.result = 'available';
                   element
                     .hide()
                     .removeClass('alert-danger alert-success alert-warning')
@@ -99,23 +99,25 @@ function factory($http, $filter, brAlertService, config) {
                     .fadeIn('slow');
                   scope.$apply();
                 }).catch(function(err) {
-                  scope.result = false;
                   element.hide().removeClass(
                     'alert-danger alert-success alert-warning');
                   var status = (err.details && err.details.httpStatusCode ?
                     err.details.httpStatusCode : 500);
                   if(status === 400) {
                     // invalid
+                    scope.result = 'invalid';
                     element
                       .text(scope.invalid)
                       .addClass('alert-danger')
                       .fadeIn('slow');
                   } else if(status === 409) {
+                    scope.result = 'unavailable';
                     element
                       .text(scope.taken)
                       .addClass('alert-danger')
                       .fadeIn('slow');
                   } else {
+                    scope.result = 'error';
                     brAlertService.add('error', err);
                   }
                   scope.$apply();

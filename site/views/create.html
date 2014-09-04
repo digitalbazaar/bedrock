@@ -162,7 +162,7 @@
       <div class="form-group">
         <div class="col-md-offset-2">
           <button type="submit"
-            ng-disabled="model.loading || !model.identitySlugAvailable || !model.emailAvailable || !model.agreementChecked"
+            ng-disabled="model.loading || model.identitySlugAvailable != 'available' || model.emailAvailable != 'available' || !model.agreementChecked"
             class="btn btn-primary btn-lg">Create Identity</button>
           <span ng-show="model.loading">
             <i class="fa fa-refresh fa-spin fa-lg"></i>

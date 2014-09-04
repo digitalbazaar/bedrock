@@ -73,7 +73,7 @@
           <i class="fa fa-refresh fa-spin text-muted"></i>
         </span>
         <button type="button" class="btn btn-primary"
-          ng-disabled="loading || !model.identitySlugAvailable"
+          ng-disabled="loading || model.identitySlugAvailable != 'available'"
           ng-click="addIdentity()"><i class="fa fa-check"></i> Add</button>
         <button type="button" class="btn btn-default stackable-cancel" ng-disabled="loading">Cancel</button>
       </div>
