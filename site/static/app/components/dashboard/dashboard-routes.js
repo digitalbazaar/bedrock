@@ -14,6 +14,7 @@ return [{
   path: window.data.identityBasePath + '/:identity/dashboard',
   options: {
     title: 'Dashboard',
+    session: 'required',
     templateUrl: '/app/components/dashboard/dashboard.html'
   }
 }];

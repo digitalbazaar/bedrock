@@ -16,14 +16,12 @@ return [{
   path: base,
   options: {
     title: 'Identity Credentials',
-    session: 'required',
     templateUrl: '/app/components/identity/identity-credentials.html'
   }
 }, {
   path: base + '/:identity',
   options: {
     title: 'Identity',
-    session: 'required',
     templateUrl: '/app/components/identity/identity.html'
   }
 }];
