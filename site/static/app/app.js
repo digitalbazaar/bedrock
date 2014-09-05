@@ -102,7 +102,8 @@ util.zeroFill = function(num) {
 };
 
 /* @ngInject */
-module.run(function($rootScope, $window, $location, $route, $http, util) {
+module.run(function(
+  $http, $location, $rootScope, $route, $window, config, util) {
   /* Note: $route is injected above to trigger watching routes to ensure
     pages are loaded properly. */
 
@@ -120,35 +121,20 @@ module.run(function($rootScope, $window, $location, $route, $http, util) {
   // build route regexes
   var routeRegexes = [];
   angular.forEach($route.routes, function(route, path) {
-    routeRegexes.push(getRouteRegex(path));
+    routeRegexes.push({
+      route: route,
+      regex: getRouteRegex(path)
+    });
   });
 
   // tracks whether current page is using an angular view
   var usingView = false;
 
-  // determine if full page reload is needed, yes if:
-  // 1. not changing location to the same page
-  // 2. switching from non-view to view (non-route to route)
-  // 3. switching from view to non-view
-  $rootScope.$on('$locationChangeStart', function(event, next, last) {
-    // don't reload same page
-    if($window.location.href === $location.absUrl()) {
-      return;
-    }
-    // if currently using view, test location to see if its a route
-    var mustReload = true;
-    for(var i = 0; usingView && i < routeRegexes.length; ++i) {
-      // location is a route and already using angular view
-      if(routeRegexes[i].test($location.path())) {
-        mustReload = false;
-        break;
-      }
-    }
-    if(mustReload) {
-      $window.location.href = $location.absUrl();
-      event.preventDefault();
-    }
-  });
+  // do immediate initial location change prior to loading any page content
+  // in case a redirect is necessary
+  locationChangeStart();
+
+  $rootScope.$on('$locationChangeStart', locationChangeStart);
 
   // monitor whether or not an angular view is in use
   $rootScope.$on('$viewContentLoaded', function() {
@@ -160,7 +146,7 @@ module.run(function($rootScope, $window, $location, $route, $http, util) {
     changing: false
   };
 
-  $rootScope.$on('$routeChangeStart', function(event) {
+  $rootScope.$on('$routeChangeStart', function(event, next, current) {
     $rootScope.route.changing = true;
   });
 
@@ -192,6 +178,60 @@ module.run(function($rootScope, $window, $location, $route, $http, util) {
     services: {},
     util: util
   };
+
+  function locationChangeStart(event) {
+    // session auth check
+    var authenticated = !!(config.data.session || {}).identity;
+
+    // don't reload the same authenticated page
+    if(authenticated && $window.location.href === $location.absUrl()) {
+      return;
+    }
+
+    // determine if full page reload is needed, yes if:
+    // 1. not changing location to the same page
+    // 2. switching from non-view to view (non-route to route)
+    // 3. switching from view to non-view
+    var mustReload = ($window.location.href !== $location.absUrl());
+
+    // if not authenticated or currently using view, see if there's
+    // a route for the location (still using view) and if it requires a session
+    if(!authenticated || usingView) {
+      for(var i = 0; i < routeRegexes.length; ++i) {
+        var entry = routeRegexes[i];
+        if(entry.regex.test($location.path())) {
+          // already using view and location is another route, so reload
+          // is not necessary
+          if(usingView) {
+            mustReload = false;
+            if(authenticated) {
+              break;
+            }
+          }
+          // no auth and session required, redirect to login
+          if(!authenticated && entry.route.session === 'required') {
+            $window.location.href = '/session/login';
+            if(event) {
+              event.preventDefault();
+            } else {
+              throw new Error('Session not found.');
+            }
+            return;
+          }
+        }
+      }
+    }
+
+    if(mustReload) {
+      $window.location.href = $location.absUrl();
+      if(event) {
+        event.preventDefault();
+      } else {
+        throw new Error('Switching route mode, reload required.');
+      }
+      return;
+    }
+  }
 });
 
 // bootstrap and set ng-app to indicate to test runner/other external apps

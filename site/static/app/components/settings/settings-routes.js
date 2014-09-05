@@ -14,6 +14,7 @@ return [{
   path: window.data.identityBasePath + '/:identity/settings',
   options: {
     title: 'Settings',
+    session: 'required',
     templateUrl: '/app/components/settings/settings.html'
   }
 }];
