@@ -56,16 +56,16 @@
     "pkginfo": "~0.3.0",
     "prompt": "~0.2.11",
     "redback": "~0.3.6",
-    "requirejs": "~2.1.8",
+    "requirejs": "~2.1.15",
     "sprintf": "~0.1.1",
     "swig": "~1.3.2",
     "topcube": "git://github.com/digitalbazaar/topcube.git",
     "ua-parser": "~0.3.0",
-    "underscore": "~1.6.0",
+    "underscore": "~1.7.0",
     "ursa": "v0.8.0",
     "walk": "~2.2.1",
     "winston": "~0.7.0",
-    "winston-mail": "~0.2.1"
+    "winston-mail": "~0.2.8"
   },
   "optionalDependencies": {
     "posix": "~1.0.0"
@@ -77,10 +77,10 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-less": "~0.11.4",
     "mocha": "^1.20.0",
-    "protractor": "^1.0.0",
+    "protractor": "^1.2.0",
     "temp": "^0.7.0",
     "visionmedia-jscoverage": "~1.0.0",
-    "wd": "~0.2.10"
+    "wd": "~0.3.7"
   },
   "engines": {
     "node": ">=0.10.0"
