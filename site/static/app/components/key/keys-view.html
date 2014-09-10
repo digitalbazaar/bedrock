@@ -1,11 +1,11 @@
 <div class="section section-keys" ng-controller="KeysController as model">
   <br-headline br-title="Keys" br-loading="model.state.loading">
     <ul class="stackable-menu dropdown-menu">
-      <li>
+      <li ng-show="model.isOwner">
         <a class="stackable-cancel"
           ng-click="model.modals.showGenerateKeyPair=true"><i class="fa fa-plus"></i> Generate Key Pair</a>
       </li>
-      <li>
+      <li ng-show="model.isOwner">
         <a class="stackable-cancel"
           ng-click="model.modals.showAddKey=true"><i class="fa fa-plus"></i> Add Key</a>
       </li>
@@ -21,7 +21,7 @@
       <tr>
         <th>Name</th>
         <th class="br-compact">Status</th>
-        <th class="br-action">Action</th>
+        <th class="br-action" ng-show="model.isOwner">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -43,7 +43,7 @@
           <span ng-show="key.sysStatus == 'active'">Active</span>
         </td>
         <!-- Action -->
-        <td class="br-action">
+        <td class="br-action" ng-show="model.isOwner">
           <br-action-menu>
             <ul class="dropdown-menu stackable-menu">
               <!-- Edit -->

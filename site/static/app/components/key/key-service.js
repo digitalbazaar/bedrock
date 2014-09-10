@@ -15,34 +15,55 @@ function factory(
   brResourceService, config) {
   var service = {};
 
-  service.collection = new brResourceService.Collection({
-    url: brIdentityService.identity.id + '/keys'
-  });
-  service.keys = service.collection.storage;
-  service.unrevokedKeys = [];
-  service.state = service.collection.state;
+  var cache = {};
 
-  // TODO: could be more efficiently implemented as an observer pattern
-  // that can be accessed via brResourceService.collection creation API
-  // maybe angular 2.0 will fix
-  $rootScope.$watch(function() {return service.keys;}, function(value) {
-    if(!value) {
-      return;
+  /**
+   * Create a keys service for an identity.
+   *
+   * @param options
+   *          identityId: the identity id
+   *          url: the keys URL
+   */
+  function Service(options) {
+    this.identityId = options.identityId;
+    this.url = options.url;
+    this.collection = new brResourceService.Collection({
+      url: this.url,
+      finishLoading: this._update
+    });
+    this.keys = this.collection.storage;
+    this.unrevokedKeys = [];
+    this.state = this.collection.state;
+  };
+
+  service.get = function(options) {
+    var identityId = brIdentityService.generateUrl(options);
+    var url = identityId + '/keys';
+    if(!(url in cache)) {
+      var newService = new Service({
+        identityId: identityId,
+        url: url
+      });
+      cache[url] = newService;
+
+      // register for system-wide refreshes
+      brRefreshService.register(newService.collection);
     }
-    var unrevoked = value.filter(function(key) {return !key.revoked;});
-    brModelService.replaceArray(service.unrevokedKeys, unrevoked);
-  }, true);
+    return cache[url];
+  };
 
-  service.collection.revoke = function(keyId, options) {
-    return service.collection.update({
+  Service.prototype.update = function() {
+    var unrevoked = value.filter(function(key) {return !key.revoked;});
+    brModelService.replaceArray(this.unrevokedKeys, unrevoked);
+  }
+
+  Service.prototype.revoke = function(keyId, options) {
+    return this.collection.update({
       '@context': config.data.contextUrl,
       id: keyId,
       revoked: ''
     }, options);
   };
-
-  // register for system-wide refreshes
-  brRefreshService.register(service.collection);
 
   // expose service to scope
   $rootScope.app.services.key = service;
