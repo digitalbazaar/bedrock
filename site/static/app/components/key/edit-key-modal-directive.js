@@ -21,7 +21,9 @@ function factory(brAlertService, brIdentityService, brKeyService, config) {
 
   function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
-    model.identity = brIdentityService.identity || {};
+    var keys = brKeyService.get({
+      identityMethod: 'route'
+    });
     model.mode = 'edit';
     model.loading = false;
     // copy source budget for editing
@@ -38,7 +40,7 @@ function factory(brAlertService, brIdentityService, brKeyService, config) {
 
       model.loading = true;
       brAlertService.clearFeedback();
-      var promise = brKeyService.collection.update(key);
+      var promise = keys.collection.update(key);
       promise.then(function(key) {
         model.loading = false;
         stackable.close(null, key);

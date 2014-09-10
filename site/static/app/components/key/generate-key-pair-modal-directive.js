@@ -19,12 +19,14 @@ function factory(brAlertService, brKeyService, config) {
 
   function Link(scope, element, attrs, stackable) {
     var model = scope.model = {};
-    model.identity = config.data.identity;
+    var keys = brKeyService.get({
+      identityMethod: 'route'
+    });
     model.mode = 'generate';
     model.loading = false;
     model.success = false;
     model.state = {
-      keys: brKeyService.state
+      keys: keys.state
     };
     model.key = {
       '@context': config.data.contextUrl,
@@ -73,7 +75,7 @@ function factory(brAlertService, brKeyService, config) {
     model.addKey = function() {
       model.loading = true;
       brAlertService.clearFeedback();
-      brKeyService.collection.add(model.key).then(function(key) {
+      keys.collection.add(model.key).then(function(key) {
         model.loading = false;
         stackable.close(null, key);
         scope.$apply();
