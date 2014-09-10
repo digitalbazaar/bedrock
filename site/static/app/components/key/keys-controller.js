@@ -16,7 +16,6 @@ function factory($routeParams, brIdentityService, brKeyService, config) {
   self._keys = brKeyService.get({
     identityMethod: 'route'
   });
-  console.log(self._keys);
   self.identity = brIdentityService.identity;
   self.isOwner = self.identity && (self.identity.id === self._keys.identityId);
   self.state = self._keys.state;
