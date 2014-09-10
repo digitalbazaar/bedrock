@@ -17,7 +17,7 @@ api.login = function(identifier, password) {
     });
   });
   element(by.brModel('model.password')).sendKeys(password);
-  element(by.linkText('Sign In')).click();
+  element(by.buttonText('Sign In')).click();
   helper.waitForUrl(function(url) {
     return url.indexOf('dashboard') !== -1;
   });
