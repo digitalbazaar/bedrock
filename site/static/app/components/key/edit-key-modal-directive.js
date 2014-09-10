@@ -42,10 +42,11 @@ function factory(brAlertService, brIdentityService, brKeyService, config) {
       promise.then(function(key) {
         model.loading = false;
         stackable.close(null, key);
-        scope.$apply();
       }).catch(function(err) {
         model.loading = false;
         brAlertService.add('error', err, {scope: scope});
+      })
+      .then(function() {
         scope.$apply();
       });
     };
