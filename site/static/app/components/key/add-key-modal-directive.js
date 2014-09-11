@@ -95,7 +95,6 @@ function factory(
 
     model.done = function() {
       stackable.close(null, model.key);
-      scope.$apply();
     };
   }
 }
