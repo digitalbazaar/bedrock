@@ -15,19 +15,19 @@ define([], function() {
 function factory($scope, brAlertService, brKeyService, brRefreshService) {
   var self = this;
 
-  self._keys = brKeyService.get({
+  var _keys = brKeyService.get({
     identityMethod: 'route'
   });
   self.modals = {};
   self.state = {
-    keys: self._keys.state
+    keys: _keys.state
   };
   self.key = undefined;
 
   brRefreshService.register($scope, function(force) {
     var opts = {force: !!force};
     brAlertService.clear();
-    self._keys.collection.getCurrent(opts).then(function(key) {
+    _keys.collection.getCurrent(opts).then(function(key) {
       self.key = key;
     }).catch(function(err) {
       brAlertService.add('error', err);

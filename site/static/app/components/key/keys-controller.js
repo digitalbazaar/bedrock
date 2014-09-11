@@ -13,13 +13,13 @@ define([], function() {
 /* @ngInject */
 function factory($routeParams, brIdentityService, brKeyService, config) {
   var self = this;
-  self._keys = brKeyService.get({
+  var _keys = brKeyService.get({
     identityMethod: 'route'
   });
   self.identity = brIdentityService.identity;
-  self.isOwner = self.identity && (self.identity.id === self._keys.identityId);
-  self.state = self._keys.state;
-  self.keys = self._keys.keys;
+  self.isOwner = self.identity && (self.identity.id === _keys.identityId);
+  self.state = _keys.state;
+  self.keys = _keys.keys;
   self.modals = {
     showGenerateKeyPair: false,
     showAddKey: false,
@@ -57,12 +57,12 @@ function factory($routeParams, brIdentityService, brKeyService, config) {
   };
   self.confirmRevokeKey = function(err, result) {
     if(!err && result === 'ok') {
-      self._keys.revoke(self.modals.key.id);
+      _keys.revoke(self.modals.key.id);
     }
     self.modals.key = null;
   };
 
-  self._keys.collection.getAll();
+  _keys.collection.getAll();
 }
 
 return {KeysController: factory};
