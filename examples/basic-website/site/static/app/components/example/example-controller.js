@@ -9,13 +9,13 @@ define([], function() {
 
 'use strict';
 
+/* @ngInject */
 function factory($scope, config) {
   var model = $scope.model = {};
   var data = config.data;
   console.log('ExampleCtrl initialized...');
 }
 
-/* @ngInject */
 return {ExampleController: factory};
 
 });

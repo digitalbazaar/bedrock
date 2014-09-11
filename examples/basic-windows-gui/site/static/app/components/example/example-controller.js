@@ -9,13 +9,13 @@ define([], function() {
 
 'use strict';
 
+/* @ngInject */
 function factory(config, $http) {
   this.name = config.data.siteTitle;
   this.bedrock = 'Bedrock';
   console.log('ExampleCtrl initialized...');
 }
 
-/* @ngInject */
 return {ExampleController: factory};
 
 });
