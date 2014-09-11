@@ -4,6 +4,7 @@
   "private": "true",
   "description": "Bedrock bower dependencies.",
   "dependencies": {
+    "almond": "~0.3.0",
     "angular": "1.3.0-rc.1",
     "angular-animate": "1.3.0-rc.1",
     "angular-bootstrap": "~0.11.0",

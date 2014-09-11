@@ -84,7 +84,7 @@ module.exports = function(grunt) {
       options: {
         baseUrl: 'site/static',
         paths: {
-          'almond': '../../node_modules/almond/almond',
+          'almond': '../../bower_components/almond/almond',
           'angular': '../../bower_components/angular/angular',
           'angular-animate': '../../bower_components/angular-animate/angular-animate',
           'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
