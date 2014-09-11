@@ -11,16 +11,15 @@ define([], function() {
 
 /* @ngInject */
 function factory() {
-  /* ngInject */
-  function Controller($scope) {
+  function Controller() {
     var self = this;
     self.selected = null;
 
     self.select = function(item) {
       self.selected = item;
       self.showChoices = false;
-      if($scope.selected) {
-        $scope.selected({selected: item});
+      if(self.selectedCallback) {
+        self.selectedCallback({selected: item});
       }
     };
   }
@@ -28,12 +27,13 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
-      selected: '&?brSelected'
+      selectedCallback: '&?brSelected'
     },
     transclude: true,
     templateUrl: '/app/components/selector/selector.html',
     controller: Controller,
-    controllerAs: 'model'
+    controllerAs: 'model',
+    bindToController: true
   };
 }
 
