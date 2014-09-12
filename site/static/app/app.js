@@ -180,6 +180,14 @@ module.run(function(
   };
 
   function locationChangeStart(event) {
+    if(config.data.queuedRequest) {
+      // re-route to login if not already there
+      if($location.path() !== '/session/login') {
+        $location.url('/session/login');
+      }
+      return;
+    }
+
     // session auth check
     var authenticated = !!(config.data.session || {}).identity;
 
