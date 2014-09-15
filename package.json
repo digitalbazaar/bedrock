@@ -43,7 +43,7 @@
     "http-signature": "git://github.com/digitalbazaar/node-http-signature",
     "i18n": "~0.4.0",
     "json-schema": "git://github.com/digitalbazaar/json-schema.git",
-    "jsonld": "~0.3.1",
+    "jsonld": "~0.3.2",
     "mailparser": "~0.3.0",
     "mkdirp": "~0.3.5",
     "mongodb": "~1.3.18",
