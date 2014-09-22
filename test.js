@@ -11,14 +11,18 @@ program
   .option('-c, --config [config]',
     'Set config file to use. [./configs/test.js]',
     './configs/test.js')
-  .option('-b, --backend', 'Perform all backend tests')
-  .option('-f, --frontend', 'Perform all frontend tests')
+  .option('-b, --backend', 'Perform backend tests')
+  .option('-f, --frontend', 'Perform frontend tests')
   .option('-s, --suite [suite]', 'Run a specific frontend test suite')
   .option('-u, --browser [browser]',
     'Run frontend tests on a specific browser (chrome, firefox)')
   .option('-h, --hide', 'Hide the browser window during tests')
   .option('-t, --tests [tests]',
     'Run specific tests from a comma-separated list')
+  .option('-bt, --backend-tests [tests]',
+    'Run specific backend tests from a comma-separated list')
+  .option('-ft, --frontend-tests [tests]',
+    'Run specific frontend tests from a comma-separated list')
   //.option('-d, --display', 'The X display to use for frontend tests')
   .parse(process.argv);
 
@@ -31,10 +35,10 @@ program
 
 // check to see which tests to run
 var tests = [];
-if(program.backend) {
+if(program.backend || program.backendTests) {
   tests.push('backend');
 }
-if(program.frontend) {
+if(program.frontend || program.frontendTests) {
   tests.push('frontend');
 }
 
@@ -51,12 +55,28 @@ process.env.TEST_ENV = tests.join(',');
 var configFile = path.resolve(__dirname, program.config);
 require(configFile);
 
+if(typeof program.tests === 'string') {
+  if(program.backend && !program.frontend) {
+    br.config.test.backend.tests = program.tests.split(/[ ,]+/);
+  } else if(!program.backend && program.frontend) {
+    br.config.test.frontend.tests = program.tests;
+  } else {
+    console.log('Error: Specified tests have ambiguous type ' +
+      '(use --backend-tests or --frontend-tests instead of --tests)');
+    program.help();
+    process.exit(1);
+  }
+}
+if(typeof program.backendTests === 'string') {
+  br.config.test.backend.tests = program.backendTests.split(/[ ,]+/);
+}
+if(typeof program.frontendTests === 'string') {
+  br.config.test.frontend.tests = program.frontendTests;
+}
+
 // set frontend test suite
 if(program.suite) {
   br.config.test.frontend.suite = program.suite;
-}
-if(program.tests) {
-  br.config.test.frontend.tests = program.tests;
 }
 // set frontend browser
 if(program.browser) {
