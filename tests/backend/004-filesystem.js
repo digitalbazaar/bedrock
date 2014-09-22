@@ -6,13 +6,10 @@
 
 var async = require('async');
 var fs = require('fs');
-var jsonld = require(GLOBAL.__libdir + '/bedrock/jsonld');
 var mkdirp = require('mkdirp');
 var path = require('path');
 var request = require('request');
 var superagent = require('superagent');
-var should = GLOBAL.should;
-var stream = require('stream');
 
 var bedrock = {
   config: require(GLOBAL.__libdir + '/config', true),
