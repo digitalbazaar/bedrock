@@ -2,10 +2,7 @@
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
 var path = require('path');
-GLOBAL.__libdir = process.env.BEDROCK_COV ?
-  path.resolve(__dirname, 'lib-cov') :
-  path.resolve(__dirname, 'lib');
-var br = require(GLOBAL.__libdir + '/bedrock');
+var br = require('./lib/bedrock');
 var program = require('commander');
 
 program

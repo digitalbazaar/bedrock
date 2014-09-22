@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
-var tools = require(GLOBAL.__libdir + '/bedrock/tools');
-var config = require(GLOBAL.__libdir + '/bedrock').config;
+var tools = require('../lib/bedrock/tools');
+var config = require('../lib/bedrock').config;
 
 var schema = {
   required: true,

@@ -12,8 +12,8 @@ var request = require('request');
 var superagent = require('superagent');
 
 var bedrock = {
-  config: require(GLOBAL.__libdir + '/config', true),
-  security: require(GLOBAL.__libdir + '/bedrock/security', true)
+  config: require('../../lib/config'),
+  security: require('../../lib/bedrock/security')
 };
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -23,7 +23,7 @@ describe('bedrock.services.filesystem', function() {
 
   describe('filesystem reading', function() {
     var agent = superagent.agent();
-    var testDir = path.join(GLOBAL.__libdir, '../tests/backend/filesystem');
+    var testDir = path.join(__dirname, 'filesystem');
     var testFile = path.join(testDir, 'test.txt');
 
     // create a test directory and file
@@ -70,7 +70,7 @@ describe('bedrock.services.filesystem', function() {
 
     // remove test directory and file
     after(function(done) {
-      var testDir = path.join(GLOBAL.__libdir, '../tests/backend/filesystem');
+      var testDir = path.join(__dirname, 'filesystem');
       var testFile = path.join(testDir, 'test.txt');
 
       async.auto({
@@ -87,7 +87,7 @@ describe('bedrock.services.filesystem', function() {
 
   describe('filesystem writing', function() {
     var agent = superagent.agent();
-    var testDir = path.join(GLOBAL.__libdir, '../tests/backend/filesystem2');
+    var testDir = path.join(__dirname, 'filesystem2');
     var testFile = path.join(testDir, 'test2.txt');
     var cookie = '';
 
@@ -136,7 +136,7 @@ describe('bedrock.services.filesystem', function() {
 
     // remove test directory and file
     after(function(done) {
-      var testDir = path.join(GLOBAL.__libdir, '../tests/backend/filesystem2');
+      var testDir = path.join(__dirname, 'filesystem2');
       var testFile = path.join(testDir, 'test2.txt');
 
       async.auto({

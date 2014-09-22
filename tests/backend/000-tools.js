@@ -5,7 +5,7 @@
 'use strict';
 
 var bedrock = {
-  tools: require(GLOBAL.__libdir + '/bedrock/tools', true)
+  tools: require('../../lib/bedrock/tools')
 };
 var BedrockError = bedrock.tools.BedrockError;
 

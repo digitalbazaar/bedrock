@@ -1,9 +1,7 @@
 /*
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
-// FIXME: Should this be a global variable?
-GLOBAL.__libdir = require('path').resolve(__dirname, 'lib');
-var bedrock = require(GLOBAL.__libdir + '/bedrock');
+var bedrock = require('./lib/bedrock');
 
 if(module.parent) {
   module.exports = bedrock;

@@ -1,4 +1,4 @@
-var config = require(GLOBAL.__libdir + '/bedrock').config;
+var config = require('../lib/bedrock').config;
 
 // identity config
 config.identity.defaults.identity = {

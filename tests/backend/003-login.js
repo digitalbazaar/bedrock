@@ -9,7 +9,7 @@ var superagent = require('superagent');
 var should = GLOBAL.should;
 
 var bedrock = {
-  config: require(GLOBAL.__libdir + '/config', true),
+  config: require('../../lib/config'),
 };
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

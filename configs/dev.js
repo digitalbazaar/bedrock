@@ -1,6 +1,5 @@
 var path = require('path');
-GLOBAL.__libdir = path.resolve(__dirname, '../lib');
-var config = require(GLOBAL.__libdir + '/config');
+var config = require('../lib/config');
 
 // app info
 config.app.masterTitle = 'bedrock1d';

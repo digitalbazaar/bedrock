@@ -1,4 +1,4 @@
-var config = require(GLOBAL.__libdir + '/config');
+var config = require('../lib/config');
 
 config.website.browserVersions = {
   IE: {major: 8, minor: 0},

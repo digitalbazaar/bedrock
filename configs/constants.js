@@ -1,4 +1,4 @@
-var config = require(GLOBAL.__libdir + '/config');
+var config = require('../lib/config');
 var fs = require('fs');
 
 var constants = config.constants = {};
