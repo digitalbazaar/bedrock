@@ -75,7 +75,7 @@ config.website.i18nPaths = [
 config.server.static.push(_datadir + '/site/static');
 
 config.website.views.paths.push(_datadir + '/site/views');
-config.website.views.enableCache = false;
+config.website.views.cache = false;
 
 // turn off locale file updates
 config.website.writeLocales = false;
