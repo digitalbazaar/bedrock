@@ -10,8 +10,9 @@
   {% endblock %}" {% block headAttrs %}{% endblock %}>
 
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="/" />
     <title ng-bind="(route.vars.title && (siteTitle + ': ' + route.vars.title)) || siteTitle"></title>
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
@@ -85,7 +86,7 @@
       {% if pageLayout == "normal" %}
       <hr/>
       {% endif %}
-      <footer class="footer">
+      <footer class="container footer">
         {% if pageLayout != "error" %}
         {% block footerBrandRow %}{% endblock %}
         <div class="row">
