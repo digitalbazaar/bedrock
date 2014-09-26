@@ -20,10 +20,10 @@
     "compile-css": "grunt compile-css",
     "minify": "grunt",
     "install-protractor": "webdriver-manager update",
-    "postinstall": "bower install",
-    "postupdate": "bower update",
-    "bower-install": "bower install",
-    "bower-update": "bower update"
+    "postinstall": "node ./node_modules/.bin/bower install",
+    "postupdate": "node ./node_modules/.bin/bower update",
+    "bower-install": "node ./node_modules/.bin/bower install",
+    "bower-update": "node ./node_modules/.bin/bower update"
   },
   "dependencies": {
     "async": "~0.9.0",
