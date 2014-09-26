@@ -21,6 +21,7 @@
     "minify": "grunt",
     "install-protractor": "webdriver-manager update",
     "postinstall": "bower install",
+    "postupdate": "bower update",
     "bower-install": "bower install",
     "bower-update": "bower update"
   },
