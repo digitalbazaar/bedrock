@@ -20,14 +20,15 @@
     "compile-css": "grunt compile-css",
     "minify": "grunt",
     "install-protractor": "webdriver-manager update",
-    "postinstall": "node ./node_modules/.bin/bower install",
-    "postupdate": "node ./node_modules/.bin/bower update",
-    "bower-install": "node ./node_modules/.bin/bower install",
-    "bower-update": "node ./node_modules/.bin/bower update"
+    "postinstall": "bower install",
+    "postupdate": "bower update",
+    "bower-install": "bower install",
+    "bower-update": "bower update"
   },
   "dependencies": {
     "async": "~0.9.0",
     "bcrypt": "~0.7.8",
+    "bower": "~1.3.8",
     "commander": "~2.3.0",
     "connect": "~2.7.10",
     "connect-mongo": "~0.4.1",
