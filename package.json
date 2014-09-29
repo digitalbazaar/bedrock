@@ -16,7 +16,9 @@
     "lint": "grunt jshint",
     "ci-test": "node test.js --backend --frontend",
     "ci-lint": "grunt jshint --mode=ci || exit 0",
-    "coverage": "mkdir -p reports && rm -rf lib-cov; ./node_modules/visionmedia-jscoverage/jscoverage lib lib-cov && BEDROCK_COV=1 node test.js --backend > reports/coverage.html && rm -rf lib-cov",
+    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js && ./node_modules/.bin/istanbul report --root coverage lcov",
+    "coverage-backend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend && ./node_modules/.bin/istanbul report --root coverage lcov",
+    "coverage-frontend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --frontend && ./node_modules/.bin/istanbul report --root coverage lcov",
     "compile-css": "grunt compile-css",
     "minify": "grunt",
     "install-protractor": "webdriver-manager update",
@@ -79,11 +81,11 @@
     "colors": "~0.6.2",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-less": "~0.11.4",
+    "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
     "mocha": "~1.21.4",
     "protractor": "~1.2.0",
     "superagent": "~0.18.2",
     "temp": "~0.8.1",
-    "visionmedia-jscoverage": "~1.0.0",
     "wd": "~0.3.7"
   },
   "engines": {
