@@ -158,6 +158,5 @@ The following projects are used for creating tests:
 
 * https://github.com/admc/wd
 * http://visionmedia.github.io/mocha/
-* https://github.com/domenic/mocha-as-promised
 * http://chaijs.com/
 * https://github.com/domenic/chai-as-promised
