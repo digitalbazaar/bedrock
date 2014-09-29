@@ -1,0 +1,41 @@
+#%RAML 0.8
+---
+title: {{brand}} REST
+version: 1.0
+protocols: [HTTPS]
+baseUri: {{baseUri}}/
+securitySchemes:
+  - cookie:
+      description: |
+        Session ID cookies may be used to authenticate all API
+        requests.
+      type: x-cookie
+      describedBy:
+        headers:
+          Cookie:
+            description: |
+              The bedrock.sid cookie may be used to include a
+              session ID cookie set via the login process.\n'+
+            type: string
+        responses:
+          401:
+            description: |
+              Invalid session ID detected.
+  - hs1:
+      description: |
+        HTTP Signatures may be used to authenticate API requests.
+      type: x-http-signatures-1
+      describedBy:
+        headers:
+          Signature:
+            description: |
+              Used to include a digital signature on specific
+              HTTP Headers. A client MUST sign the
+              (request-target), and Date headers.
+            type: string
+        responses:
+          401:
+            description: |
+              Invalid signature detected. The signature provided
+              does not match the public key associated with the
+              signature.\n';
