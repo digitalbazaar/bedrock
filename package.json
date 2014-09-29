@@ -34,7 +34,7 @@
     "commander": "~2.3.0",
     "connect": "~2.7.10",
     "connect-mongo": "~0.4.1",
-    "cors": "~2.3.1",
+    "cors": "~2.4.2",
     "emailjs": "git://github.com/digitalbazaar/emailjs.git",
     "es6-promise": "=1.0.0",
     "express": "~3.3.5",
