@@ -1,0 +1,17 @@
+{
+  "@context": "https://w3id.org/bedrock/v1",
+  "id": "{{baseUri}}/i/dev",
+  "type": "Identity",
+  "publicKey": [{
+    "id": "{{baseUri}}/i/dev/keys/1"
+    "type": "CryptographicKey",
+    "label": "Application Key 1",
+    "owner": "{{baseUri}}/i/dev",
+  }, 
+  {
+    "id": "{{baseUri}}/i/dev/keys/1"
+    "type": "CryptographicKey",
+    "label": "Application Key 1",
+    "owner": "{{baseUri}}/i/dev",
+  }]
+}
