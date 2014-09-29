@@ -11,6 +11,7 @@ program
   .option('-c, --config [config]',
     'Set config file to use. [./configs/test.js]',
     './configs/test.js')
+  .option('-R, --reporter [reporter]', 'Mocha test reporter', 'spec')
   .option('-b, --backend', 'Perform backend tests')
   .option('-f, --frontend', 'Perform frontend tests')
   .option('-s, --suite [suite]', 'Run a specific frontend test suite')
@@ -74,6 +75,10 @@ if(typeof program.frontendTests === 'string') {
   br.config.test.frontend.tests = program.frontendTests;
 }
 
+// set reporter
+if(program.reporter) {
+  br.config.test.reporter = program.reporter;
+}
 // set frontend test suite
 if(program.suite) {
   br.config.test.frontend.suite = program.suite;

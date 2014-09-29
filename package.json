@@ -14,7 +14,7 @@
     "test-firefox": "node test.js --frontend --browser firefox",
     "test-firefox-hide": "node test.js --frontend --browser firefox --hide",
     "lint": "grunt jshint",
-    "ci-test": "node test.js --backend --frontend",
+    "ci-test": "node test.js --backend --frontend --reporter tap",
     "ci-lint": "grunt jshint --mode=ci || exit 0",
     "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js && ./node_modules/.bin/istanbul report --root coverage lcov",
     "coverage-backend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend && ./node_modules/.bin/istanbul report --root coverage lcov",

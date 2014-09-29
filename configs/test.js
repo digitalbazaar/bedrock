@@ -84,6 +84,7 @@ config.website.views.vars.baseUri = config.server.baseUri;
 config.website.views.vars.clientData.baseUri = config.server.baseUri;
 
 config.test = {};
+config.test.reporter = 'spec';
 config.test.backend = {};
 config.test.backend.tests = [
   path.resolve(__dirname, '..', 'tests', 'backend')
