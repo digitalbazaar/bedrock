@@ -84,6 +84,7 @@
     "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
     "mocha": "~1.21.4",
     "protractor": "~1.2.0",
+    "request": "~2.44.0",
     "superagent": "~0.18.2",
     "temp": "~0.8.1",
     "wd": "~0.3.7"
