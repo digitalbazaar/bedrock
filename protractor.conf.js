@@ -75,10 +75,19 @@ exports.config = {
   // and
   // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
   capabilities: {
-    'browserName': config.test.frontend.browser//,
+    'browserName': config.test.frontend.browser,
+
     //'chromeOptions': {
     //  'args': ['no-startup-window']
-    //}
+    //},
+
+    // Local PhantomJS binary path.
+    'phantomjs.binary.path': './node_modules/.bin/phantomjs'
+
+    // Command line arugments to pass to phantomjs. 
+    // Can be ommitted if no arguments need to be passed. 
+    // Acceptable cli arugments: https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-command-line-options
+    //'phantomjs.cli.args':['--webdriver-logfile=/tmp/bedrock-phantomjs.log', '--webdriver-loglevel=DEBUG']
   },
 
   // If you would like to run more than one instance of webdriver on the same
