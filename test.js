@@ -61,7 +61,7 @@ process.env.TEST_ENV = tests.join(',');
 
 // load configs
 program.config.forEach(function(cfg) {
-  require(path.resolve(__dirname, cfg));
+  require(path.resolve(process.cwd(), cfg));
 });
 
 if(typeof program.tests === 'string') {
