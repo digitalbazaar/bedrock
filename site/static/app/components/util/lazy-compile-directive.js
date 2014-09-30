@@ -86,7 +86,7 @@ function factory($compile, $templateCache) {
           }
         }
       }
-    }
+    };
   }
 
   function isScope(obj) {

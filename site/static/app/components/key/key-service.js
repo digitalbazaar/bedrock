@@ -34,7 +34,7 @@ function factory(
     this.keys = this.collection.storage;
     this.unrevokedKeys = [];
     this.state = this.collection.state;
-  };
+  }
 
   service.get = function(options) {
     var identityId = brIdentityService.generateUrl(options);
@@ -55,7 +55,7 @@ function factory(
   Service.prototype.update = function() {
     var unrevoked = value.filter(function(key) {return !key.revoked;});
     brModelService.replaceArray(this.unrevokedKeys, unrevoked);
-  }
+  };
 
   Service.prototype.revoke = function(keyId, options) {
     return this.collection.update({
