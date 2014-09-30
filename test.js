@@ -2,15 +2,22 @@
  * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
  */
 var path = require('path');
-var br = require('./lib/bedrock');
-var program = require('commander');
+var bedrock = require('./lib/bedrock');
 
-program
-  .version('0.0.2')
+// skip normal argv parsing
+bedrock.config.cli = bedrock.config.cli || {};
+bedrock.config.cli.noArgParse = true;
+
+function collect(val, memo) {
+  memo.push(val);
+  return memo;
+}
+
+var program = bedrock.program
   .usage('[options]')
   .option('-c, --config [config]',
-    'Set config file to use. [./configs/test.js]',
-    './configs/test.js')
+    'Set config file to use. [./configs/test.js]', collect,
+    ['./configs/test.js'])
   .option('-R, --reporter [reporter]', 'Mocha test reporter', 'spec')
   .option('-b, --backend', 'Perform backend tests')
   .option('-f, --frontend', 'Perform frontend tests')
@@ -52,15 +59,16 @@ if(tests.length < 1) {
 process.env.NODE_ENV = 'test';
 process.env.TEST_ENV = tests.join(',');
 
-// load test config
-var configFile = path.resolve(__dirname, program.config);
-require(configFile);
+// load configs
+program.config.forEach(function(cfg) {
+  require(path.resolve(__dirname, cfg));
+});
 
 if(typeof program.tests === 'string') {
   if(program.backend && !program.frontend) {
-    br.config.test.backend.tests = program.tests.split(/[ ,]+/);
+    bedrock.config.test.backend.tests = program.tests.split(/[ ,]+/);
   } else if(!program.backend && program.frontend) {
-    br.config.test.frontend.tests = program.tests;
+    bedrock.config.test.frontend.tests = program.tests;
   } else {
     console.log('Error: Specified tests have ambiguous type ' +
       '(use --backend-tests or --frontend-tests instead of --tests)');
@@ -69,28 +77,27 @@ if(typeof program.tests === 'string') {
   }
 }
 if(typeof program.backendTests === 'string') {
-  br.config.test.backend.tests = program.backendTests.split(/[ ,]+/);
+  bedrock.config.test.backend.tests = program.backendTests.split(/[ ,]+/);
 }
 if(typeof program.frontendTests === 'string') {
-  br.config.test.frontend.tests = program.frontendTests;
+  bedrock.config.test.frontend.tests = program.frontendTests;
 }
 
 // set reporter
 if(program.reporter) {
-  br.config.test.reporter = program.reporter;
+  bedrock.config.test.reporter = program.reporter;
 }
 // set frontend test suite
 if(program.suite) {
-  br.config.test.frontend.suite = program.suite;
+  bedrock.config.test.frontend.suite = program.suite;
 }
 // set frontend browser
 if(program.browser) {
-  br.config.test.frontend.browser = program.browser;
+  bedrock.config.test.frontend.browser = program.browser;
 }
 // set hide window
 if(program.hide) {
-  br.config.test.frontend.hideBrowser = true;
+  bedrock.config.test.frontend.hideBrowser = true;
 }
 
-// start
-br.start();
+bedrock.start();
