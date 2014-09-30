@@ -6,7 +6,7 @@ var bedrock = require('./lib/bedrock');
 
 // skip normal argv parsing
 bedrock.config.cli = bedrock.config.cli || {};
-bedrock.config.cli.noArgParse = true;
+bedrock.config.cli.parseArgs = false;
 
 function collect(val, memo) {
   memo.push(val);
