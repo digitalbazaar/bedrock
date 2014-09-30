@@ -1,0 +1,6 @@
+{
+  "@context": {
+    "publicKeyService": "https://w3id.org/security#publicKeyService"
+  },
+  "publicKeyService": "{{baseUri}}/i?service=add-key"
+}

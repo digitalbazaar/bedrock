@@ -1,0 +1,11 @@
+{
+  "@context": {
+    "id": "@id",
+    "identityService": "https://w3id.org/identity#identityService",
+    "owner": "https://w3id.org/security#owner"
+  },
+  "identityService": {
+    "id": "{{baseUri}}/i",
+    "owner": "{{baseUri}}/i/bedrock"
+  }
+}
