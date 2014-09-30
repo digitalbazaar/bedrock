@@ -13,6 +13,7 @@
     "test-chrome-hide": "node test.js --frontend --browser chrome --hide",
     "test-firefox": "node test.js --frontend --browser firefox",
     "test-firefox-hide": "node test.js --frontend --browser firefox --hide",
+    "test-phantomjs": "node test.js --frontend --browser phantomjs",
     "lint": "grunt jshint",
     "ci-test": "node test.js --backend --reporter tap",
     "ci-lint": "grunt jshint --mode=ci || exit 0",

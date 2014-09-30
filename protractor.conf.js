@@ -82,12 +82,18 @@ exports.config = {
     //},
 
     // Local PhantomJS binary path.
-    'phantomjs.binary.path': './node_modules/.bin/phantomjs'
+    'phantomjs.binary.path': './node_modules/.bin/phantomjs',
 
-    // Command line arugments to pass to phantomjs. 
-    // Can be ommitted if no arguments need to be passed. 
-    // Acceptable cli arugments: https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-command-line-options
-    //'phantomjs.cli.args':['--webdriver-logfile=/tmp/bedrock-phantomjs.log', '--webdriver-loglevel=DEBUG']
+    // Command line arugments to pass to phantomjs.
+    // Can be ommitted if no arguments need to be passed.
+    // Acceptable cli arguments: https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-command-line-options
+    'phantomjs.cli.args': [
+      '--debug=true',
+      '--ignore-ssl-errors=true',
+      // log options not currently passed on; default is "phantomjsdriver.log"
+      '--webdriver-logfile=/tmp/bedrock-phantomjs.log',
+      '--webdriver-loglevel=DEBUG'
+    ]
   },
 
   // If you would like to run more than one instance of webdriver on the same
