@@ -51,24 +51,32 @@ function factory($compile, $templateCache) {
         // transcluded elements (it seems angular doesn't know what this is
         // or uses the wrong scope when you pass transcludeFn to $compile so
         // we have to hack it in)
+        // FIXME: if this gets fixed in angular, instead the call would
+        // just be $compile(el, transcludeFn)(scope);
         var compiled = false;
         try {
           transcludeFn(function(clone) {
-            var parentScope = clone.filter('.ng-scope').scope().$parent;
+            // since angular 1.3-rc4+ $parent isn't necessarily the scope that
+            // inherited from for non-isolate scopes (rather it is the
+            // scope of the "containing element") so use __proto__ here instead
+            var parentScope = clone.filter('.ng-scope').scope().__proto__;
             var _transcludeFn = transcludeFn;
-            transcludeFn = function(scope, cloneAttachFn, futureParentElement) {
+            transcludeFn = function(
+              scope, cloneAttachFn, futureParentElement, containingScope) {
               // argument adjustment
               if(!isScope(scope)) {
                 futureParentElement = cloneAttachFn;
                 cloneAttachFn = scope;
               }
               // create new child scope for clone and ensure it gets destroyed
-              scope = parentScope.$new();
-              var _cloneAttachFn = cloneAttachFn;
+              scope = parentScope.$new(false, containingScope);
+              // FIXME: this auto-destroy no longer happens in angular 1.3-rc4+
+              // destruction must be done externally
+              /*var _cloneAttachFn = cloneAttachFn;
               cloneAttachFn = function(clone, newScope) {
                 clone.on('$destroy', function() { newScope.$destroy(); });
                 return _cloneAttachFn(clone, newScope);
-              };
+              };*/
               return _transcludeFn(scope, cloneAttachFn, futureParentElement);
             };
 
