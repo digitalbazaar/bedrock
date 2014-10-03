@@ -59,7 +59,8 @@ function factory($compile, $templateCache) {
             // since angular 1.3-rc4+ $parent isn't necessarily the scope that
             // inherited from for non-isolate scopes (rather it is the
             // scope of the "containing element") so use __proto__ here instead
-            var parentScope = clone.filter('.ng-scope').scope().__proto__;
+            var parentScope = Object.getPrototypeOf(
+              clone.filter('.ng-scope').scope());
             var _transcludeFn = transcludeFn;
             transcludeFn = function(
               scope, cloneAttachFn, futureParentElement, containingScope) {
