@@ -78,7 +78,8 @@ function factory($compile, $templateCache) {
                 clone.on('$destroy', function() { newScope.$destroy(); });
                 return _cloneAttachFn(clone, newScope);
               };*/
-              return _transcludeFn(scope, cloneAttachFn, futureParentElement);
+              return _transcludeFn(
+                scope, cloneAttachFn, futureParentElement, containingScope);
             };
 
             // compile cached template and link
