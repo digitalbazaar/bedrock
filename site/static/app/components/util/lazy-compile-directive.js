@@ -87,26 +87,21 @@ function factory($compile, $templateCache) {
     clone.remove();
     clone = newScope = null;
 
-    return function(
-      scope, cloneAttachFn, futureParentElement, containingScope) {
+    return function(scope, cloneAttachFn, futureParentElement) {
       // argument adjustment
       if(!isScope(scope)) {
         futureParentElement = cloneAttachFn;
         cloneAttachFn = scope;
       }
-      // destroy unused scope
+
+      // save containing scope and then destroy unused scope
+      var containingScope = scope.$parent;
       scope.$destroy();
+
       // create new child scope for clone
       scope = parentScope.$new(false, containingScope);
-      // FIXME: this auto-destroy no longer happens in angular 1.3-rc4+
-      // destruction must be done externally
-      /*var _cloneAttachFn = cloneAttachFn;
-      cloneAttachFn = function(clone, newScope) {
-        clone.on('$destroy', function() { newScope.$destroy(); });
-        return _cloneAttachFn(clone, newScope);
-      };*/
-      return transcludeFn(
-        scope, cloneAttachFn, futureParentElement, containingScope);
+      scope.$$transcluded = true;
+      return transcludeFn(scope, cloneAttachFn, futureParentElement);
     };
   }
 
