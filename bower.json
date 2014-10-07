@@ -15,7 +15,7 @@
     "font-awesome": "~4.2.0",
     "jquery": "~1.11.1",
     "jquery-migrate": "~1.2.1",
-    "ng-multi-transclude": "~0.1.0"
+    "ng-multi-transclude": "~0.1.2"
   },
   "devDependencies": {
     "bootstrap": "~3.2.0"
