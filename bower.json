@@ -5,11 +5,11 @@
   "description": "Bedrock bower dependencies.",
   "dependencies": {
     "almond": "~0.3.0",
-    "angular": "1.3.0-rc.4",
-    "angular-animate": "1.3.0-rc.4",
+    "angular": "1.3.0-rc.5",
+    "angular-animate": "1.3.0-rc.5",
     "angular-bootstrap": "~0.11.0",
-    "angular-route": "1.3.0-rc.4",
-    "angular-sanitize": "1.3.0-rc.4",
+    "angular-route": "1.3.0-rc.5",
+    "angular-sanitize": "1.3.0-rc.5",
     "angular-stackables": "~0.0.28",
     "angular-ui-select": "https://github.com/digitalbazaar/ui-select.git#fix-double-compilation-dist",
     "font-awesome": "~4.2.0",
@@ -21,6 +21,6 @@
     "bootstrap": "~3.2.0"
   },
   "resolutions": {
-    "angular": "1.3.0-rc.4"
+    "angular": "1.3.0-rc.5"
   }
 }
