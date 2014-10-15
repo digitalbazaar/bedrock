@@ -122,7 +122,6 @@ function factory($rootScope, brModelService) {
       };
       scope.$on('$destroy', function() {
         service.remove(type, value);
-        $rootScope.$apply();
       });
     }
     service.log[category].push(info);
