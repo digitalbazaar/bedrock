@@ -5,9 +5,7 @@
 .settings
 TAGS
 bower_components
-chromedriver
-coverage.html
-lib-cov
+coverage
 node_modules
 npm-debug.log
 phantomjsdriver.log
