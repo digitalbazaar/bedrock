@@ -243,9 +243,9 @@ module.run(function(
 });
 
 // bootstrap and set ng-app to indicate to test runner/other external apps
-// that application has bootstrapped
+// that application has bootstrapped (use strictDi when minified)
 var root = angular.element('html');
-angular.bootstrap(root, ['app']);
+angular.bootstrap(root, ['app'], {strictDi: window.data.minify});
 root.attr('ng-app', 'app');
 
 // from angular.js for route matching
