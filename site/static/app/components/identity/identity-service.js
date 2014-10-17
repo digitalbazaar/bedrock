@@ -90,27 +90,29 @@ function factory(
   /**
    * Helper to generate identity URLs.
    *
-   * @param method method to use to generate identity id
-   *          'current': use current logged in id
-   *          'route': base id on current route
-   *          'shortId': base id on shortId param
-   *          'id': use passed identity
+   * @param options the options to use:
+   *          identityMethod method to use to generate identity id
+   *            'current': use current logged in id
+   *            'route': base id on current route
+   *            'shortId': base id on shortId param
+   *            'id': use passed identity
    *        identityShortId short id to use for 'shortId' method (optional)
    *        id full identity id to use for 'id' method (optional)
    */
   service.generateUrl = function(options) {
-    var url = '';
-    if(options.identityMethod == 'current' && service.identity) {
+    if(options.identityMethod === 'current' && service.identity) {
       return service.identity.id;
-    } else if(options.identityMethod == 'route') {
-      return config.data.identityBaseUri + '/' + $routeParams.identity;
-    } else if(options.identityMethod == 'shortId' && options.identityShortid) {
-      return config.data.identityBaseUri + '/' + options.identityShortid;
-    } else if(options.identityMethod == 'id' && options.identityId) {
-      return identityId;
-    } else {
-      throw Error('Identity URL generation error.');
     }
+    if(options.identityMethod === 'route') {
+      return config.data.identityBaseUri + '/' + $routeParams.identity;
+    }
+    if(options.identityMethod === 'shortId' && options.identityShortId) {
+      return config.data.identityBaseUri + '/' + options.identityShortId;
+    }
+    if(options.identityMethod === 'id' && options.id) {
+      return options.id;
+    }
+    throw Error('Identity URL generation error.');
   };
 
   // register for system-wide refreshes
