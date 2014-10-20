@@ -28,11 +28,39 @@ function factory(brAlertService, $compile, $rootScope) {
 
     var elements = {};
     for(var key in brAlertService.category) {
-      elements[brAlertService.category[key]] = [];
+      var category = brAlertService.category[key];
+      elements[category] = [];
+      var log = brAlertService.log[category];
+      log.forEach(addAlert);
     }
 
     scope.closeAlert = function(info) {
       brAlertService.remove(info.type, info.value);
+    };
+
+    scope.showCustomAlerts = function(category) {
+      var area = element.find('.br-alert-area-' + category);
+      angular.forEach(elements[category] || [], function(entry) {
+        if(entry.element !== null) {
+          return;
+        }
+        // transclude
+        var info = entry.info;
+        var value = info.value;
+        var el = angular.element('<div class="alert"></div>');
+        el.addClass('alert-' + info.type);
+        el.append('<button type="button" class="close">&times;</button>');
+        el.append(value.html);
+        el.first().one('click', function() {
+          scope.closeAlert(info);
+          scope.$apply();
+        });
+        var transclusionScope = value.getScope ? value.getScope() : scope;
+        $compile(el)(transclusionScope);
+        entry.element = el;
+        area.append(entry.element);
+      });
+      return true;
     };
 
     brAlertService
@@ -50,22 +78,11 @@ function factory(brAlertService, $compile, $rootScope) {
     function addAlert(info) {
       var value = info.value;
 
-      // transclude
       if(value.html) {
-        var el = angular.element('<div class="alert"></div>');
-        el.addClass('alert-' + info.type);
-        el.append('<button type="button" class="close">&times;</button>');
-        el.append(value.html);
-        el.first().one('click', function() {
-          scope.closeAlert(info);
-          scope.$apply();
-        });
-        var transclusionScope = value.getScope ? value.getScope() : scope;
-        $compile(el)(transclusionScope);
-        element.find('.br-alert-area-' + info.category).append(el);
+        // add entry for later population
         elements[info.category].push({
           info: info,
-          element: el
+          element: null
         });
         return;
       }
@@ -112,7 +129,7 @@ function factory(brAlertService, $compile, $rootScope) {
         if(list[i].info === info) {
           if(list[i].element) {
             list[i].element.remove();
-          } else {
+          } else if(list[i].target) {
             list[i].target.removeClass('has-error');
           }
           list.splice(i, 1);
