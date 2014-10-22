@@ -6576,24 +6576,23 @@ button.close {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 /*!
- *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/bower-components/font-awesome/fonts//fontawesome-webfont.eot?v=4.1.0');
-  src: url('/bower-components/font-awesome/fonts//fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('/bower-components/font-awesome/fonts//fontawesome-webfont.woff?v=4.1.0') format('woff'), url('/bower-components/font-awesome/fonts//fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('/bower-components/font-awesome/fonts//fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  src: url('/bower-components/font-awesome/fonts//fontawesome-webfont.eot?v=4.2.0');
+  src: url('/bower-components/font-awesome/fonts//fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('/bower-components/font-awesome/fonts//fontawesome-webfont.woff?v=4.2.0') format('woff'), url('/bower-components/font-awesome/fonts//fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('/bower-components/font-awesome/fonts//fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 .fa {
   display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -6635,7 +6634,7 @@ button.close {
   text-align: center;
 }
 .fa-li.fa-lg {
-  left: -2.14285714em + (4em / 14);
+  left: -1.85714286em;
 }
 .fa-border {
   padding: .2em .25em .15em;
@@ -6655,36 +6654,20 @@ button.close {
   margin-left: .3em;
 }
 .fa-spin {
-  -webkit-animation: spin 2s infinite linear;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear;
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
 }
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    -moz-transform: rotate(359deg);
-  }
-}
-@-webkit-keyframes spin {
+@-webkit-keyframes fa-spin {
   0% {
     -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
-@-o-keyframes spin {
-  0% {
-    -o-transform: rotate(0deg);
-  }
-  100% {
-    -o-transform: rotate(359deg);
-  }
-}
-@keyframes spin {
+@keyframes fa-spin {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -6697,42 +6680,39 @@ button.close {
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .fa-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .fa-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 .fa-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
   -webkit-transform: scale(-1, 1);
-  -moz-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 .fa-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
   -webkit-transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
   transform: scale(1, -1);
+}
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical {
+  filter: none;
 }
 .fa-stack {
   position: relative;
@@ -6799,6 +6779,8 @@ button.close {
 .fa-check:before {
   content: "\f00c";
 }
+.fa-remove:before,
+.fa-close:before,
 .fa-times:before {
   content: "\f00d";
 }
@@ -7128,7 +7110,8 @@ button.close {
 .fa-arrows-h:before {
   content: "\f07e";
 }
-.fa-bar-chart-o:before {
+.fa-bar-chart-o:before,
+.fa-bar-chart:before {
   content: "\f080";
 }
 .fa-twitter-square:before {
@@ -7957,7 +7940,6 @@ button.close {
 .fa-digg:before {
   content: "\f1a6";
 }
-.fa-pied-piper-square:before,
 .fa-pied-piper:before {
   content: "\f1a7";
 }
@@ -8074,6 +8056,7 @@ button.close {
   content: "\f1cc";
 }
 .fa-life-bouy:before,
+.fa-life-buoy:before,
 .fa-life-saver:before,
 .fa-support:before,
 .fa-life-ring:before {
@@ -8140,6 +8123,129 @@ button.close {
 }
 .fa-bomb:before {
   content: "\f1e2";
+}
+.fa-soccer-ball-o:before,
+.fa-futbol-o:before {
+  content: "\f1e3";
+}
+.fa-tty:before {
+  content: "\f1e4";
+}
+.fa-binoculars:before {
+  content: "\f1e5";
+}
+.fa-plug:before {
+  content: "\f1e6";
+}
+.fa-slideshare:before {
+  content: "\f1e7";
+}
+.fa-twitch:before {
+  content: "\f1e8";
+}
+.fa-yelp:before {
+  content: "\f1e9";
+}
+.fa-newspaper-o:before {
+  content: "\f1ea";
+}
+.fa-wifi:before {
+  content: "\f1eb";
+}
+.fa-calculator:before {
+  content: "\f1ec";
+}
+.fa-paypal:before {
+  content: "\f1ed";
+}
+.fa-google-wallet:before {
+  content: "\f1ee";
+}
+.fa-cc-visa:before {
+  content: "\f1f0";
+}
+.fa-cc-mastercard:before {
+  content: "\f1f1";
+}
+.fa-cc-discover:before {
+  content: "\f1f2";
+}
+.fa-cc-amex:before {
+  content: "\f1f3";
+}
+.fa-cc-paypal:before {
+  content: "\f1f4";
+}
+.fa-cc-stripe:before {
+  content: "\f1f5";
+}
+.fa-bell-slash:before {
+  content: "\f1f6";
+}
+.fa-bell-slash-o:before {
+  content: "\f1f7";
+}
+.fa-trash:before {
+  content: "\f1f8";
+}
+.fa-copyright:before {
+  content: "\f1f9";
+}
+.fa-at:before {
+  content: "\f1fa";
+}
+.fa-eyedropper:before {
+  content: "\f1fb";
+}
+.fa-paint-brush:before {
+  content: "\f1fc";
+}
+.fa-birthday-cake:before {
+  content: "\f1fd";
+}
+.fa-area-chart:before {
+  content: "\f1fe";
+}
+.fa-pie-chart:before {
+  content: "\f200";
+}
+.fa-line-chart:before {
+  content: "\f201";
+}
+.fa-lastfm:before {
+  content: "\f202";
+}
+.fa-lastfm-square:before {
+  content: "\f203";
+}
+.fa-toggle-off:before {
+  content: "\f204";
+}
+.fa-toggle-on:before {
+  content: "\f205";
+}
+.fa-bicycle:before {
+  content: "\f206";
+}
+.fa-bus:before {
+  content: "\f207";
+}
+.fa-ioxhost:before {
+  content: "\f208";
+}
+.fa-angellist:before {
+  content: "\f209";
+}
+.fa-cc:before {
+  content: "\f20a";
+}
+.fa-shekel:before,
+.fa-sheqel:before,
+.fa-ils:before {
+  content: "\f20b";
+}
+.fa-meanpath:before {
+  content: "\f20c";
 }
 /*!
  * ui-select
@@ -9228,218 +9334,3 @@ input.br-slug.error {
   overflow: hidden;
   background-color: #e5e5e5;
 }
-/* Old CSS */
-/* Fix for popovers triggered by buttons in button groups */
-/*.btn-group > .btn:last-of-type {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -moz-border-radius-bottomright: 4px;
-}*/
-/* Fix to prevent unnecessary wrapping of inline radio text */
-/*.radio input[type="radio"], .checkbox input[type="checkbox"] {
-  float: none;
-  margin-top: -1px;
-}*/
-/* Align at the top of their rows. */
-/*.table .name td, .table .action td {
-  vertical-align: top
-}
-.table .name td {
-  padding-top: 9px;
-}
-*/
-/* Override bootstrap to inherit vertical alignment for condensed tables. */
-/*.table-condensed {
-  margin-bottom: 0px;
-}
-.table-condensed td {
-  vertical-align: inherit;
-}
-*/
-/* Documentation */
-/*
-.indent0 {
-  margin-left: 0px;
-}
-.indent1 {
-  margin-left: 10px;
-}
-.indent2 {
-  margin-left: 20px;
-}
-.indent3 {
-  margin-left: 30px;
-}
-.indent4 {
-  margin-left: 40px;
-}
-.indent5 {
-  margin-left: 50px;
-}
-*/
-/* Misc */
-/*
-.table .action li {
-  text-align: left;
-}
-.no-padding {
-  padding: 0;
-}
-.no-margin {
-  margin: 0;
-}
-.inline-block {
-  display: inline-block;
-  width: 100%;
-}
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.well.well-transparent {
-  background-color: transparent;
-}
-.boxsizing-border {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}*/
-/* Resize rules */
-/*.resize-both {
-  resize: both;
-}
-.resize-horizontal {
-  resize: horizontal;
-}
-.resize-vertical {
-  resize: vertical;
-}
-.resize-none {
-  resize: none;
-}
-.active-true {
-  text-decoration: none;
-}
-.active-false {
-  text-decoration: line-through;
-  color: grey;
-}
-*/
-/* Documentation classes */
-/*.rest-summary {
-  float: none;
-  clear: both;
-  display: block;
-  border: 1px solid black;
-  margin-bottom: 8px;
-}
-
-h1 > .rest-summary {
-  float: none;
-  clear: both;
-  display: block;
-  border: 0px;
-  margin-bottom: 8px;
-}
-
-.post-background {
-  background-color: #E7F6EC;
-  border-color: #C3E8D1;
-}
-
-.get-background {
-  background-color: #E7F0F7;
-  border-color: #C3D9EC;
-}
-
-.delete-background {
-  background-color: #F5E8E8;
-  border: 1px solid black;
-  border-color: #E8C6C7;
-}
-
-.rest-summary > .rest-verb {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  text-transform: uppercase;
-  color: white;
-  display: inline-block;
-  width: 50px;
-  font-size: 0.8em;
-  text-align: center;
-  padding: 7px 0 4px 0;
-}
-
-h1 > .rest-summary > .rest-verb {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  color: white;
-  width: 100px;
-  text-align: center;
-  padding: 5px 3px 0px 3px;
-}
-
-.rest-summary > .post {
- background-color: #10A54A;
-}
-
-.rest-summary > .get {
-  background-color: #0F6AB4;
-}
-
-.rest-summary > .delete {
-  background-color: #A41E22;
-}
-
-.rest-summary > .rest-path {
-  color: #444;
-  font-size: 1.2em;
-  padding: 7px 0 4px 0;
-}
-
-h1 > .rest-summary > .rest-path {
-  color: #444;
-  position: relative;
-  top: 6px;
-  padding-left: 11px;
-}
-
-.rest-summary > .rest-description {
-  float: right;
-  padding: 7px 0 4px 0;
-}
-
-.rest-details th {
-  text-align: left;
-}
-
-.rest-details td {
-  padding-right: 16px;
-}
-
-.rest-parameter {
-  font-style: italic;
-}
-*/
-/* Placeholder fixes */
-/*input.placeholder,
-textarea.placeholder {
-  color: #aaa;
-}
-::-webkit-input-placeholder {
-  color: #aaa;
-}
-::-moz-placeholder {
-  color: #aaa;
-}
-input:-moz-placeholder {
-  color: #aaa;
-}
-*/
