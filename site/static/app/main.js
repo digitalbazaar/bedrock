@@ -5,13 +5,20 @@
  *
  * @author Dave Longley
  */
-(function() {
+(function(require) {
 
 'use strict';
 
 // define console.log for IE
-window.console = window.console || {};
-window.console.log = window.console.log || function() {};
+if(typeof window !== 'undefined') {
+  window.console = window.console || {};
+  window.console.log = window.console.log || function() {};
+}
+
+// export main config if module API available
+if(typeof module === 'object' && module.exports) {
+  require = {config: function(cfg) { module.exports = cfg; }};
+}
 
 require.config({
   baseUrl: '/',
@@ -35,7 +42,6 @@ require.config({
     'ng-multi-transclude': 'bower-components/ng-multi-transclude/src/multi-transclude',
     'opencred-verifier': 'bower-components/opencred-verifier/lib/credentialVerifier',
     promise: 'bower-components/es6-promise/promise',
-    spin: 'spin/spin',
     stackables: 'bower-components/angular-stackables/stackables',
     underscore: 'bower-components/underscore/underscore'
   },
@@ -66,4 +72,4 @@ require.config({
   }
 });
 
-})();
+})(require);

@@ -84,34 +84,26 @@ module.exports = function(grunt) {
 
   // requirejs
   grunt.loadNpmTasks('grunt-contrib-requirejs');
+
+  // auto-generate local requirejs paths from main config
+  var requirejsMain = require('./site/static/app/main.js');
+  var requirejsPaths = {};
+  for(var key in requirejsMain.paths) {
+    var path = requirejsMain.paths[key];
+    requirejsPaths[key] = path.replace(
+      /^bower-components/g, '<%= dirs.bedrock %>/bower_components');
+  }
+
+  // overrides
+  requirejsPaths.almond = '<%= dirs.bedrock %>/bower_components/almond/almond';
+  requirejsPaths.iso8601 = '<%= dirs.bedrock %>/lib/iso8601/iso8601';
+  requirejsPaths['app/templates'] = 'app/templates.min';
+
   grunt.config('requirejs', {
     compile: {
       options: {
         baseUrl: '<%= dirs.bedrock %>/site/static',
-        paths: {
-          'almond': '<%= dirs.bedrock %>/bower_components/almond/almond',
-          'angular': '<%= dirs.bedrock %>/bower_components/angular/angular',
-          'angular-animate': '<%= dirs.bedrock %>/bower_components/angular-animate/angular-animate',
-          'angular-bootstrap': '<%= dirs.bedrock %>/bower_components/angular-bootstrap/ui-bootstrap-tpls',
-          'angular-route': '<%= dirs.bedrock %>/bower_components/angular-route/angular-route',
-          'angular-sanitize': '<%= dirs.bedrock %>/bower_components/angular-sanitize/angular-sanitize',
-          'angular-ui-select': '<%= dirs.bedrock %>/bower_components/angular-ui-select/dist/select',
-          'bedrock': '.',
-          'bootstrap': '<%= dirs.bedrock %>/bower_components/bootstrap/dist/js/bootstrap',
-          'dialog-polyfill': '<%= dirs.bedrock %>/bower_components/dialog-polyfill/dialog-polyfill',
-          'forge': '<%= dirs.bedrock %>/bower_components/forge/js',
-          'iso8601': '<%= dirs.bedrock %>/lib/iso8601/iso8601',
-          'jquery': '<%= dirs.bedrock %>/bower_components/jquery/dist/jquery',
-          'jquery-migrate': '<%= dirs.bedrock %>/bower_components/jquery-migrate/jquery-migrate',
-          'jsonld': '<%= dirs.bedrock %>/bower_components/jsonld/js/jsonld',
-          'ng-multi-transclude': '<%= dirs.bedrock %>/bower_components/ng-multi-transclude/src/multi-transclude',
-          'opencred-verifier': '<%= dirs.bedrock %>/bower_components/opencred-verifier/lib/credentialVerifier',
-          'promise': '<%= dirs.bedrock %>/bower_components/es6-promise/promise',
-          'stackables': '<%= dirs.bedrock %>/bower_components/angular-stackables/stackables',
-          'underscore': '<%= dirs.bedrock %>/bower_components/underscore/underscore',
-          // override templates
-          'app/templates': 'app/templates.min'
-        },
+        paths: requirejsPaths,
         mainConfigFile: '<%= dirs.bedrock %>/site/static/app/main.js',
         name: 'almond',
         include: ['app/main'],
