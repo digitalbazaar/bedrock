@@ -97,7 +97,7 @@ module.exports = function(grunt) {
           'iso8601': '../../lib/iso8601/is8601',
           'jquery': '../../bower_components/jquery/dist/jquery',
           'jquery-migrate': '../../bower_components/jquery-migrate/jquery-migrate',
-          'jsonld': '../../node_modules/jsonld/js/jsonld',
+          'jsonld': '../../bower_components/jsonld/js/jsonld',
           'ng-multi-transclude': '../../bower_components/ng-multi-transclude/src/multi-transclude',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
           'promise': '../../bower_components/es6-promise/promise',

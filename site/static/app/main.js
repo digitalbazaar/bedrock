@@ -31,7 +31,7 @@ require.config({
     'jquery.bedrock': 'jquery/jquery.bedrock',
     'jquery-migrate': 'bower-components/jquery-migrate/jquery-migrate',
     'jquery.placeholder': 'jquery/jquery.placeholder',
-    jsonld: 'jsonld/jsonld',
+    jsonld: 'bower-components/jsonld/js/jsonld',
     'ng-multi-transclude': 'bower-components/ng-multi-transclude/src/multi-transclude',
     'opencred-verifier': 'opencred-verifier/credentialVerifier',
     promise: 'bower-components/es6-promise/promise',
