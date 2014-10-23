@@ -19,6 +19,11 @@ module.exports = function(grunt) {
   grunt.config('optimize',
     grunt.option('optimize') || process.env.GRUNT_OPTIMIZE || 'uglify');
 
+  // setup config vars for templating
+  grunt.config('dirs', {
+    'bedrock': __dirname
+  });
+
   // read package configuration
   grunt.config('pkg', grunt.file.readJSON('package.json'));
 
@@ -72,7 +77,7 @@ module.exports = function(grunt) {
           return file;
         }
       },
-      src: 'site/static/app/**/*.html',
+      src: ['<%= dirs.bedrock %>/site/static/app/components/**/*.html'],
       dest: 'site/static/app/templates.min.js'
     }
   });
@@ -82,31 +87,32 @@ module.exports = function(grunt) {
   grunt.config('requirejs', {
     compile: {
       options: {
-        baseUrl: 'site/static',
+        baseUrl: '<%= dirs.bedrock %>/site/static',
         paths: {
-          'almond': '../../bower_components/almond/almond',
-          'angular': '../../bower_components/angular/angular',
-          'angular-animate': '../../bower_components/angular-animate/angular-animate',
-          'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
-          'angular-route': '../../bower_components/angular-route/angular-route',
-          'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
-          'angular-ui-select': '../../bower_components/angular-ui-select/dist/select',
-          'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
-          'dialog-polyfill': '../../bower_components/dialog-polyfill/dialog-polyfill',
-          'forge': '../../bower_components/forge/js',
-          'iso8601': '../../lib/iso8601/is8601',
-          'jquery': '../../bower_components/jquery/dist/jquery',
-          'jquery-migrate': '../../bower_components/jquery-migrate/jquery-migrate',
-          'jsonld': '../../bower_components/jsonld/js/jsonld',
-          'ng-multi-transclude': '../../bower_components/ng-multi-transclude/src/multi-transclude',
-          'opencred-verifier': '../../bower_components/opencred-verifier/lib/credentialVerifier',
-          'promise': '../../bower_components/es6-promise/promise',
-          'stackables': '../../bower_components/angular-stackables/stackables',
-          'underscore': '../../bower_components/underscore/underscore',
+          'almond': '<%= dirs.bedrock %>/bower_components/almond/almond',
+          'angular': '<%= dirs.bedrock %>/bower_components/angular/angular',
+          'angular-animate': '<%= dirs.bedrock %>/bower_components/angular-animate/angular-animate',
+          'angular-bootstrap': '<%= dirs.bedrock %>/bower_components/angular-bootstrap/ui-bootstrap-tpls',
+          'angular-route': '<%= dirs.bedrock %>/bower_components/angular-route/angular-route',
+          'angular-sanitize': '<%= dirs.bedrock %>/bower_components/angular-sanitize/angular-sanitize',
+          'angular-ui-select': '<%= dirs.bedrock %>/bower_components/angular-ui-select/dist/select',
+          'bedrock': '.',
+          'bootstrap': '<%= dirs.bedrock %>/bower_components/bootstrap/dist/js/bootstrap',
+          'dialog-polyfill': '<%= dirs.bedrock %>/bower_components/dialog-polyfill/dialog-polyfill',
+          'forge': '<%= dirs.bedrock %>/bower_components/forge/js',
+          'iso8601': '<%= dirs.bedrock %>/lib/iso8601/iso8601',
+          'jquery': '<%= dirs.bedrock %>/bower_components/jquery/dist/jquery',
+          'jquery-migrate': '<%= dirs.bedrock %>/bower_components/jquery-migrate/jquery-migrate',
+          'jsonld': '<%= dirs.bedrock %>/bower_components/jsonld/js/jsonld',
+          'ng-multi-transclude': '<%= dirs.bedrock %>/bower_components/ng-multi-transclude/src/multi-transclude',
+          'opencred-verifier': '<%= dirs.bedrock %>/bower_components/opencred-verifier/lib/credentialVerifier',
+          'promise': '<%= dirs.bedrock %>/bower_components/es6-promise/promise',
+          'stackables': '<%= dirs.bedrock %>/bower_components/angular-stackables/stackables',
+          'underscore': '<%= dirs.bedrock %>/bower_components/underscore/underscore',
           // override templates
           'app/templates': 'app/templates.min'
         },
-        mainConfigFile: 'site/static/app/main.js',
+        mainConfigFile: '<%= dirs.bedrock %>/site/static/app/main.js',
         name: 'almond',
         include: ['app/main'],
         insertRequire: ['app/main'],
@@ -146,6 +152,7 @@ module.exports = function(grunt) {
       src: [
         '*.js',
         'bin/*.js',
+        'bin/**/*.js',
         'configs/*.js',
         'email-templates/*.js',
         'lib/*.js',
@@ -153,8 +160,9 @@ module.exports = function(grunt) {
         'locales/*.js',
         'schemas/*.js',
         'site/static/app/*.js',
-        'site/static/app/**/*.js',
-        'test/*.js'
+        'site/static/app/**/*.js'//,
+        //'tests/*.js',
+        //'tests/**/*.js'
       ]
     }
   });
