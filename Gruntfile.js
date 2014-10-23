@@ -102,7 +102,7 @@ module.exports = function(grunt) {
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
           'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
           'stackables': '../../bower_components/angular-stackables/stackables',
-          'underscore': '../../node_modules/underscore/underscore',
+          'underscore': '../../bower_components/underscore/underscore',
           // override templates
           'app/templates': 'app/templates.min'
         },

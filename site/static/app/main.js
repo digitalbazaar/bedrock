@@ -36,7 +36,7 @@ require.config({
     promise: 'promise/promise',
     spin: 'spin/spin',
     stackables: 'bower-components/angular-stackables/stackables',
-    underscore: 'underscore/underscore'
+    underscore: 'bower-components/underscore/underscore'
   },
   shim: {
     // export globals for non-requireJS libs
