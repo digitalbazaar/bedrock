@@ -33,7 +33,7 @@ require.config({
     'jquery.placeholder': 'jquery/jquery.placeholder',
     jsonld: 'bower-components/jsonld/js/jsonld',
     'ng-multi-transclude': 'bower-components/ng-multi-transclude/src/multi-transclude',
-    'opencred-verifier': 'opencred-verifier/credentialVerifier',
+    'opencred-verifier': 'bower-components/opencred-verifier/lib/credentialVerifier',
     promise: 'bower-components/es6-promise/promise',
     spin: 'spin/spin',
     stackables: 'bower-components/angular-stackables/stackables',

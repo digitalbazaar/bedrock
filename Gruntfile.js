@@ -99,7 +99,7 @@ module.exports = function(grunt) {
           'jquery-migrate': '../../bower_components/jquery-migrate/jquery-migrate',
           'jsonld': '../../bower_components/jsonld/js/jsonld',
           'ng-multi-transclude': '../../bower_components/ng-multi-transclude/src/multi-transclude',
-          'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
+          'opencred-verifier': '../../bower_components/opencred-verifier/lib/credentialVerifier',
           'promise': '../../bower_components/es6-promise/promise',
           'stackables': '../../bower_components/angular-stackables/stackables',
           'underscore': '../../bower_components/underscore/underscore',
