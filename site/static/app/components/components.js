@@ -22,7 +22,6 @@ define([
   './selector/selector',
   './settings/settings',
   './slug/slug',
-  './spinner/spinner',
   './tabs/tabs',
   './util/util'
 ], function(angular) {

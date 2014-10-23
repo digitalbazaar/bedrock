@@ -12,7 +12,6 @@ define([
   'bedrock/app/components/feedback/feedback',
   'bedrock/app/components/modal/modal',
   'bedrock/app/components/placeholder/placeholder',
-  'bedrock/app/components/spinner/spinner',
   'bedrock/app/components/submit-form/submit-form',
   'bedrock/app/components/tabs/tabs',
   'bedrock/app/components/util/util'

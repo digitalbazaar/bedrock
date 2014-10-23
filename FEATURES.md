@@ -215,8 +215,9 @@ deploy production sites w/ no manual build process necessary.
 
 ### AngularJS UI Widgets
 
-Basic Angular UI widgets are available: activity spinner, navbar
-popover, duplicate ID checker, generic modal alert, and help toggle.
+Basic Angular UI widgets are available: stackable modals, popovers,
+navbar hovercard, duplicate ID checker, generic modal alert, common
+alert display, tabs, bootstrap-styled form inputs, and help toggle.
 
 ## Developer Tooling
 
