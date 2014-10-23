@@ -100,7 +100,7 @@ module.exports = function(grunt) {
           'jsonld': '../../node_modules/jsonld/js/jsonld',
           'ng-multi-transclude': '../../bower_components/ng-multi-transclude/src/multi-transclude',
           'opencred-verifier': '../../node_modules/opencred-verifier/lib/credentialVerifier',
-          'promise': '../../node_modules/es6-promise/dist/promise-1.0.0',
+          'promise': '../../bower_components/es6-promise/promise',
           'stackables': '../../bower_components/angular-stackables/stackables',
           'underscore': '../../bower_components/underscore/underscore',
           // override templates
