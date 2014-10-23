@@ -93,7 +93,7 @@ module.exports = function(grunt) {
           'angular-ui-select': '../../bower_components/angular-ui-select/dist/select',
           'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
           'dialog-polyfill': '../../bower_components/dialog-polyfill/dialog-polyfill',
-          'forge': '../../node_modules/node-forge/js',
+          'forge': '../../bower_components/forge/js',
           'iso8601': '../../lib/iso8601/is8601',
           'jquery': '../../bower_components/jquery/dist/jquery',
           'jquery-migrate': '../../bower_components/jquery-migrate/jquery-migrate',

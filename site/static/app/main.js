@@ -25,6 +25,7 @@ require.config({
     bedrock: '.',
     bootstrap: 'bower-components/bootstrap/dist/js/bootstrap',
     'dialog-polyfill': 'bower-components/dialog-polyfill/dialog-polyfill',
+    forge: 'bower-components/forge/js',
     iso8601: 'iso8601/iso8601',
     jquery: 'bower-components/jquery/dist/jquery',
     'jquery.bedrock': 'jquery/jquery.bedrock',

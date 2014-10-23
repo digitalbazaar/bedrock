@@ -45,7 +45,7 @@ function factory(brAlertService, brKeyService, config) {
           bits: bits,
           workers: -1,
           //workLoad: 100,
-          workerScript: '/forge/prime.worker.js'
+          workerScript: '/bower-components/forge/js/prime.worker.js'
         }, function(err, keypair) {
           if(err) {
             reject(err);

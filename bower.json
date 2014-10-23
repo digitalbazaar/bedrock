@@ -14,6 +14,7 @@
     "angular-ui-select": "https://github.com/digitalbazaar/ui-select.git#fix-double-compilation-dist",
     "es6-promise": "=1.0.0",
     "font-awesome": "~4.2.0",
+    "forge": "~0.6.14",
     "jquery": "~1.11.1",
     "jquery-migrate": "~1.2.1",
     "ng-multi-transclude": "~0.1.2",
