@@ -9041,6 +9041,12 @@ h1.headline {
   padding-left: 15px;
   padding-right: 15px;
 }
+@media (min-width: 992px) {
+  .input-group[class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /* Menus */
 .stackable-menu.dropdown-menu {
   border: none;

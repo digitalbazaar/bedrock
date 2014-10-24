@@ -254,10 +254,18 @@ h1.headline {
   }
 }
 .input-group {
-  // Redo padding of grid classes (revert bootstrap change)
+  // Redo padding of grid classes for small screens since columns stack
   &[class*="col-"] {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  @media (min-width: @screen-md) {
+    // Undo padding of grid classes
+    &[class*="col-"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 
