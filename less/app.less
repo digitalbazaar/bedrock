@@ -253,6 +253,13 @@ h1.headline {
     padding-right: floor((@grid-gutter-width / 2));
   }
 }
+.input-group {
+  // Redo padding of grid classes (revert bootstrap change)
+  &[class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 
 /* Menus */
 .stackable-menu.dropdown-menu {

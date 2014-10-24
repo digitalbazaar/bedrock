@@ -9037,6 +9037,10 @@ h1.headline {
   padding-left: 3px;
   padding-right: 15px;
 }
+.input-group[class*="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 /* Menus */
 .stackable-menu.dropdown-menu {
   border: none;
