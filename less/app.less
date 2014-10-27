@@ -581,3 +581,79 @@ input.br-slug.error {
   overflow: hidden;
   background-color: #e5e5e5;
 }
+
+/*!
+* Bootstrap Callouts
+* Copyright 2011-2014 Twitter, Inc.
+* Licensed under under the Creative Commons (https://creativecommons.org/licenses/by/3.0/)
+*/
+@callout-padding: 20px;
+@callout-border-radius: @border-radius-small;
+@callout-border: @gray-lighter;
+
+@callout-default: @gray-light;
+@callout-primary: @brand-primary;
+@callout-success: @brand-success;
+@callout-info: @brand-info;
+@callout-warning: @brand-warning;
+@callout-danger: @brand-danger;
+
+.callout {
+  padding: @callout-padding;
+  margin: @line-height-computed 0;
+  border: 1px solid @callout-border;
+  border-radius: @callout-border-radius;
+  code, .highlight {
+  }
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  &+.callout {
+    margin-top: -5px;
+  }
+}
+.callout-default {
+  border-left-width: 5px;
+  border-left-color: @callout-default;
+  h4 {
+    color: @callout-default;
+  }
+}
+.callout-primary {
+  border-left-width: 5px;
+  border-left-color: @callout-primary;
+  h4 {
+    color: @callout-primary;
+  }
+}
+.callout-success {
+  border-left-color: @callout-success;
+  h4 {
+    color: @callout-success;
+  }
+}
+.callout-info {
+  border-left-width: 5px;
+  border-left-color: @callout-info;
+  h4 {
+    color: @callout-info;
+  }
+}
+.callout-warning {
+  border-left-width: 5px;
+  border-left-color: @callout-warning;
+  h4 {
+    color: @callout-warning;
+  }
+}
+.callout-danger {
+  border-left-width: 5px;
+  border-left-color: @callout-danger;
+  h4 {
+    color: @callout-danger;
+  }
+}

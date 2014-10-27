@@ -9349,3 +9349,65 @@ input.br-slug.error {
   overflow: hidden;
   background-color: #e5e5e5;
 }
+/*!
+* Bootstrap Callouts
+* Copyright 2011-2014 Twitter, Inc.
+* Licensed under under the Creative Commons (https://creativecommons.org/licenses/by/3.0/)
+*/
+.callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+}
+.callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+.callout + .callout {
+  margin-top: -5px;
+}
+.callout-default {
+  border-left-width: 5px;
+  border-left-color: #777777;
+}
+.callout-default h4 {
+  color: #777777;
+}
+.callout-primary {
+  border-left-width: 5px;
+  border-left-color: #428bca;
+}
+.callout-primary h4 {
+  color: #428bca;
+}
+.callout-success {
+  border-left-color: #5cb85c;
+}
+.callout-success h4 {
+  color: #5cb85c;
+}
+.callout-info {
+  border-left-width: 5px;
+  border-left-color: #5bc0de;
+}
+.callout-info h4 {
+  color: #5bc0de;
+}
+.callout-warning {
+  border-left-width: 5px;
+  border-left-color: #f0ad4e;
+}
+.callout-warning h4 {
+  color: #f0ad4e;
+}
+.callout-danger {
+  border-left-width: 5px;
+  border-left-color: #d9534f;
+}
+.callout-danger h4 {
+  color: #d9534f;
+}
