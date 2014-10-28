@@ -14,7 +14,8 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
-      model: '=brModel'
+      model: '=brModel',
+      keypress: '&?brKeypress'
     },
     transclude: true,
     template: '\
@@ -42,7 +43,8 @@ function factory() {
             ng-model="model" ng-disabled=options.disabled \
             br-track-state="help" \
             style="{{options.style}}" \
-            ng-class="{\'br-help-off\': options.inline}"/> \
+            ng-class="{\'br-help-off\': options.inline}" \
+            ng-keypress="localKeypress($event)"/> \
           <span ng-if="!options.inline" class="input-group-btn"> \
             <button type="button" class="btn btn-default btn-xs" \
               br-help-toggle="help"> \
@@ -56,6 +58,9 @@ function factory() {
         </div> \
       </div>',
     link: function(scope, element, attrs) {
+      scope.localKeypress = function(event) {
+        return scope.keypress({$event: event});
+      };
       attrs.$observe('brOptions', function(value) {
         var options = scope.options = value ? scope.$eval(value) || {} : {};
         options.placeholder = options.placeholder || options.label;
