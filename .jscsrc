@@ -42,6 +42,7 @@
   "requireSpacesInFunction": {
     "beforeOpeningCurlyBrace": true
   },
+  "safeContextKeyword": "self",
   "validateLineBreaks": "LF",
   //"validateJSDoc": {
   //  "checkParamNames": true,
