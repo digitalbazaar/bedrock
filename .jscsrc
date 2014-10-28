@@ -6,7 +6,7 @@
   ],
 
   "disallowKeywords": ["with"],
-  "disallowKeywordsOnNewLine": ["else"],
+  "disallowKeywordsOnNewLine": ["else", "catch"],
   // FIXME enable
   //"disallowImplicitTypeConversion": ["string"],
   "disallowMixedSpacesAndTabs": true,
