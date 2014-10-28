@@ -96,6 +96,12 @@ function factory() {
       } else {
         element.find('.ui-select-match').removeAttr('autofocus');
       }
+
+      if(options.readonly) {
+        element.find('.ui-select-match').attr('readonly', 'readonly');
+      } else {
+        element.find('.ui-select-match').removeAttr('readonly');
+      }
     });
 
     // update view items when items or display function changes

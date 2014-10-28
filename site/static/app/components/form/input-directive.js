@@ -99,6 +99,12 @@ function factory() {
         } else {
           element.find('input').removeAttr('autofocus');
         }
+
+        if(options.readonly) {
+          element.find('input').attr('readonly', 'readonly');
+        } else {
+          element.find('input').removeAttr('readonly');
+        }
       });
     }
   };

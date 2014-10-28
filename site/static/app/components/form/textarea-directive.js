@@ -81,6 +81,12 @@ function factory() {
         } else {
           element.find('textarea').removeAttr('autofocus');
         }
+
+        if(options.readonly) {
+          element.find('textarea').attr('readonly', 'readonly');
+        } else {
+          element.find('textarea').removeAttr('readonly');
+        }
       });
     }
   };
