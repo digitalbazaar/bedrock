@@ -7,11 +7,12 @@
 
   "disallowKeywords": ["with"],
   "disallowKeywordsOnNewLine": ["else", "catch"],
-  // FIXME enable
+  // FIXME: enable this?
   //"disallowImplicitTypeConversion": ["string"],
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineBreaks": true,
-  // FIXME enable
+  // FIXME: enable this or do we prefer to
+  // use w/angular directive templates?
   //"disallowMultipleLineStrings": true,
   "disallowNewlineBeforeBlockStatements": true,
   "disallowSpaceAfterObjectKeys": true,
