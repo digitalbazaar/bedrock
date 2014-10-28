@@ -1,11 +1,11 @@
 <form class="well form-horizontal" role="form">
   <fieldset>
     <br-input br-model="model.key.label"
-      br-options="{icon: 'fa-tag', name: 'label', label: 'Key Label'}">
+      br-options="{icon: 'tag', name: 'label', label: 'Key Label'}">
       <div ng-include="'/app/components/key/key-help.html'"></div>
     </br-input>
     <br-textarea ng-show="model.needPem" br-model="model.key.publicKeyPem"
-      br-options="{icon: 'fa-key', name: 'publicKeyPem', label: 'Public Key PEM'}">
+      br-options="{icon: 'key', name: 'publicKeyPem', label: 'Public Key PEM'}">
       Enter the public key PEM data.
     </br-textarea>
   </fieldset>

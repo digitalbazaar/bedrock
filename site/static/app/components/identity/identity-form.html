@@ -1,7 +1,7 @@
 <form class="form-horizontal" role="form">
   <fieldset>
     <br-input br-model="model.identity.label"
-      br-options="{icon: 'fa-tag', name: 'label', label: 'Label'}">
+      br-options="{icon: 'tag', name: 'label', label: 'Label'}">
       Enter the public label for this identity.
     </br-input>
 
@@ -17,7 +17,7 @@
     </div>
 
     <br-input br-model="model.identity.url"
-      br-options="{icon: 'fa-globe', type: 'url', name: 'url', label: 'Website'}">
+      br-options="{icon: 'globe', type: 'url', name: 'url', label: 'Website'}">
       Optionally enter a website URL for this identity.
     </br-input>
 
@@ -33,7 +33,7 @@
     </div>
 
     <br-input br-model="model.identity.email"
-      br-options="{icon: 'fa-envelope', type: 'email', name: 'email', label: 'Email', disabled: true}">
+      br-options="{icon: 'envelope', type: 'email', name: 'email', label: 'Email', disabled: true}">
       <!-- Enter an email for this identity. -->
       Identity email can not be changed on this page.
     </br-input>
@@ -94,7 +94,7 @@
 
     <br-input ng-show="model.identity.sysImageType == 'url'"
       br-model="model.identity.image"
-      br-options="{icon: 'fa-picture', type: 'url', name: 'image', label: 'Image URL'}">
+      br-options="{icon: 'picture', type: 'url', name: 'image', label: 'Image URL'}">
       Enter the URL to an image for this identity.
     </br-input>
 
@@ -114,7 +114,7 @@
     </div>
 
     <br-textarea br-model="model.identity.description"
-      br-options="{icon: 'fa-comment', name: 'description', label: 'Description'}">
+      br-options="{icon: 'comment', name: 'description', label: 'Description'}">
       Optionally enter a description of this identity.
     </br-textarea>
 
