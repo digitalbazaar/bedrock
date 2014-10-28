@@ -60,6 +60,11 @@ function factory() {
         options.placeholder = options.placeholder || options.label;
         options.rows = options.rows || '5';
 
+        // prefix "fa-" to icon
+        if('icon' in options && options.icon.indexOf('fa-') !== 0) {
+          options.icon = 'fa-' + options.icon;
+        }
+
         var columns = options.columns = options.columns || {};
         if(!('label' in columns)) {
           columns.label =  'col-sm-3';

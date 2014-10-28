@@ -66,6 +66,11 @@ function factory() {
         options.type = options.type || 'text';
         options.placeholder = options.placeholder || '';
 
+        // prefix "fa-" to icon
+        if('icon' in options && options.icon.indexOf('fa-') !== 0) {
+          options.icon = 'fa-' + options.icon;
+        }
+
         var columns = options.columns = options.columns || {};
         if(!('label' in columns)) {
           columns.label =  'col-sm-3';
