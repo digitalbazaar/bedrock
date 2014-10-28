@@ -133,6 +133,22 @@ module.exports = function(grunt) {
     }
   });
 
+  var _js = [
+    '*.js',
+    'bin/*.js',
+    'bin/**/*.js',
+    'configs/*.js',
+    'email-templates/*.js',
+    'lib/*.js',
+    'lib/**/*.js',
+    'locales/*.js',
+    'schemas/*.js',
+    'site/static/app/*.js',
+    'site/static/app/**/*.js'//,
+    //'tests/*.js',
+    //'tests/**/*.js'
+  ];
+
   // _jshint
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.config('jshint', {
@@ -141,21 +157,18 @@ module.exports = function(grunt) {
         reporter: 'checkstyle',
         reporterOutput: 'reports/jshint.xml'
       } : {},
-      src: [
-        '*.js',
-        'bin/*.js',
-        'bin/**/*.js',
-        'configs/*.js',
-        'email-templates/*.js',
-        'lib/*.js',
-        'lib/**/*.js',
-        'locales/*.js',
-        'schemas/*.js',
-        'site/static/app/*.js',
-        'site/static/app/**/*.js'//,
-        //'tests/*.js',
-        //'tests/**/*.js'
-      ]
+      src: _js
+    }
+  });
+
+  grunt.loadNpmTasks("grunt-jscs");
+  grunt.config('jscs', {
+    all: {
+      options: grunt.config('ci') ? {
+        reporter: 'checkstyle',
+        reporterOutput: 'reports/jscs.xml'
+      } : {},
+      src: _js
     }
   });
 
