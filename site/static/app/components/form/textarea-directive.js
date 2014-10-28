@@ -35,12 +35,13 @@ function factory() {
           <span ng-if="options.image" \
             class="input-group-addon"><img \
             ng-src="{{options.image}}"></img></span> \
-          <textarea class="form-control" \
+          <textarea class="form-control {{options.class}}" \
             rows="{{options.rows}}" \
             name="{{options.name}}" \
             placeholder="{{options.placeholder}}" \
             ng-model="model" ng-disabled=options.disabled \
             br-track-state="help" \
+            style="{{options.style}}" \
             ng-class="{\'br-help-off\': options.inline}"/> \
           <span ng-if="!options.inline" class="input-group-btn"> \
             <button type="button" class="btn btn-default btn-xs" \
