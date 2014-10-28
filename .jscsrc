@@ -1,7 +1,8 @@
 {
   "excludeFiles": [
     "./lib/iso8601/*.js",
-    "./locales/*.js"
+    "./locales/*.js",
+    "./site/static/app/*.min.js"
   ],
 
   "disallowKeywords": ["with"],
