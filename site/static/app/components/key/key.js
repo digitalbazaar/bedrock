@@ -15,7 +15,7 @@ define([
   './key-selector-directive',
   './key-service',
   './keys-controller',
-  './keys-directive',
+  './keys-directive'
 ], function(
   angular,
   addKeyModalDirective,

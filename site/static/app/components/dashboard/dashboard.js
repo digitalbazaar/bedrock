@@ -8,7 +8,7 @@
 define([
   'angular',
   './dashboard-controller',
-  './dashboard-routes',
+  './dashboard-routes'
 ], function(angular, controller, routes) {
 
 'use strict';
