@@ -7,10 +7,12 @@
 
   "disallowKeywords": ["with"],
   "disallowKeywordsOnNewLine": ["else"],
-  "disallowImplicitTypeConversion": ["string"],
+  // FIXME enable
+  //"disallowImplicitTypeConversion": ["string"],
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineBreaks": true,
-  "disallowMultipleLineStrings": true,
+  // FIXME enable
+  //"disallowMultipleLineStrings": true,
   "disallowNewlineBeforeBlockStatements": true,
   "disallowSpaceAfterObjectKeys": true,
   "disallowSpaceAfterPrefixUnaryOperators": ["!"],
