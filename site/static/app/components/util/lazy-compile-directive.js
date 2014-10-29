@@ -22,6 +22,7 @@ function factory($compile, $templateCache) {
   function Compile(tElement, tAttrs) {
     var contents = tElement.contents();
 
+    // TODO: automate ID generation and remove need to have user specify
     // use template cache for contents if requested
     if('brLazyId' in tAttrs) {
       var cacheId = 'br-lazy-compile-id:' + tAttrs.brLazyId;
