@@ -53,7 +53,7 @@ function factory($compile, $templateCache) {
         element.removeAttr('br-lazy-compile');
         element.removeAttr('br-lazy-id');
 
-        // compile contents and link
+        // recompile element and link
 
         // FIXME: remove when AngularJS 1.3.1 API is ready
         if(!transcludeFn) {
