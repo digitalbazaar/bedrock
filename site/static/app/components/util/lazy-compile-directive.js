@@ -13,15 +13,13 @@ define([], function() {
 function factory($compile, $templateCache) {
   return {
     restrict: 'A',
-    priority: 1,
+    // run before just about anything else
+    priority: 2000,
     terminal: true,
     compile: Compile
   };
 
   function Compile(tElement, tAttrs) {
-    // TODO: change so that lazy-compile can be added as a direct attribute
-    // instead of requiring it to be a parent DOM element?
-
     var cacheId = 'br-lazy-compile-id:' + tAttrs.brLazyCompile;
     var trigger = tAttrs.brCompileTrigger;
     if($templateCache.get(cacheId) === undefined) {
@@ -42,13 +40,17 @@ function factory($compile, $templateCache) {
         var el = $templateCache.get(cacheId).clone();
         element.append(el);
 
+        // avoid recursion
+        element.removeAttr('br-lazy-compile');
+        element.removeAttr('br-compile-trigger');
+
         // FIXME: remove when AngularJS 1.3.1 API is ready
         if(!transcludeFn) {
-          $compile(el)(scope);
+          $compile(element)(scope);
           return;
         }
         transcludeFn = fixTranscludeScope(transcludeFn);
-        $compile(el, transcludeFn)(scope);
+        $compile(element, transcludeFn)(scope);
 
         // FIXME: use when AngularJS 1.3.1 API is ready
         /* // compile contents and link
