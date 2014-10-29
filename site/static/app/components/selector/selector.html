@@ -13,35 +13,35 @@
       <div ng-multi-transclude="br-selector-selected"></div>
     </div>
   </div>
-  <div br-lazy-compile="br-selector-modal" br-compile-trigger="model.showChoices">
-    <stackable-modal stackable="model.showChoices">
-      <div class="modal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <a class="close stackable-cancel">&times;<span
-                class="sr-only">Close</span></a>
-              <h3 class="modal-title">{{model.modalTitle || ('Select ' + model.itemType)}}</h3>
+  <stackable-modal stackable="model.showChoices"
+    br-lazy-compile="br-selector-modal"
+    br-compile-trigger="model.showChoices">
+    <div class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close stackable-cancel">&times;<span
+              class="sr-only">Close</span></a>
+            <h3 class="modal-title">{{model.modalTitle || ('Select ' + model.itemType)}}</h3>
+          </div>
+          <div class="modal-body">
+            <div ng-multi-transclude-controller>
+              <div ng-multi-transclude="br-selector-choices"></div>
             </div>
-            <div class="modal-body">
-              <div ng-multi-transclude-controller>
-                <div ng-multi-transclude="br-selector-choices"></div>
-              </div>
-              <hr ng-show="model.items.length <= 1 || (!model.fixed && model.items.length > 1)"/>
-              <div class="pull-right">
-                <button class="btn btn-success" ng-click="model.addItem()">
-                  <i class="fa fa-plus"></i> Add {{model.itemType}}
-                </button>
-              </div>
-              <div style="clear:both"></div>
+            <hr ng-show="model.items.length <= 1 || (!model.fixed && model.items.length > 1)"/>
+            <div class="pull-right">
+              <button class="btn btn-success" ng-click="model.addItem()">
+                <i class="fa fa-plus"></i> Add {{model.itemType}}
+              </button>
             </div>
-            <div class="modal-footer">
-              <button type="button"
-                class="btn btn-default stackable-cancel">Cancel</button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
-    </stackable-modal>
-  </div>
+            <div style="clear:both"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+              class="btn btn-default stackable-cancel">Cancel</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  </stackable-modal>
 </div>

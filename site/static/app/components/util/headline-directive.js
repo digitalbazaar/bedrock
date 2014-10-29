@@ -34,15 +34,14 @@ function factory() {
           <i class="fa fa-refresh fa-spin text-muted"></i> \
         </span> \
       </h3> \
-      <div br-lazy-compile="br-headline" \
+      <stackable-popover stackable="menu" \
+        stackable-hide-arrow="true" \
+        stackable-placement="bottom" \
+        stackable-alignment="right" \
+        br-lazy-compile="br-headline" \
         br-compile-trigger="menu.show"> \
-        <stackable-popover stackable="menu" \
-          stackable-hide-arrow="true" \
-          stackable-placement="bottom" \
-          stackable-alignment="right"> \
-          <div ng-transclude></div> \
-        </stackable-popover> \
-      </div>',
+        <div ng-transclude></div> \
+      </stackable-popover>',
     link: function(scope, element, attrs) {
       attrs.$observe('brOptions', function(value) {
         var options = value ? scope.$eval(value) : {};
