@@ -219,6 +219,10 @@ Basic Angular UI widgets are available: stackable modals, popovers,
 navbar hovercard, duplicate ID checker, generic modal alert, common
 alert display, tabs, bootstrap-styled form inputs, and help toggle.
 
+A lazy-compilation widget is also available; it can drastically
+improve initial page and widget-readiness for complex UIs by
+delaying AngularJS-compilation until it's needed.
+
 ## Developer Tooling
 
 The developer tooling allows software engineers to easily build new
