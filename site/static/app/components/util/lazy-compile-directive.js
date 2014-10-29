@@ -5,7 +5,7 @@
  *
  * @author Dave Longley
  */
-define(['angular'], function(angular) {
+define([], function() {
 
 'use strict';
 
@@ -39,19 +39,22 @@ function factory($compile, $templateCache) {
       });
 
       function compile() {
-        var el = angular.element($templateCache.get(cacheId)).clone();
+        var el = $templateCache.get(cacheId).clone();
         element.append(el);
 
+        // FIXME: remove when AngularJS 1.3.1 API is ready
         if(!transcludeFn) {
           $compile(el)(scope);
           return;
         }
-
-        // FIXME: if transclude scope gets fixed in angular, remove
         transcludeFn = fixTranscludeScope(transcludeFn);
-
-        // compile cached template and link
         $compile(el, transcludeFn)(scope);
+
+        // FIXME: use when AngularJS 1.3.1 API is ready
+        /* // compile contents and link
+        $compile(el)(scope, undefined, {
+          parentBoundTranscludeFn: transcludeFn
+        });*/
       }
     };
   }
