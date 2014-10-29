@@ -1,4 +1,4 @@
-<div br-lazy-compile="br-alert-area" br-compile-trigger="app.services.alert.total">
+<div br-lazy-compile="app.services.alert.total" br-lazy-id="br-alert-area">
   <div ng-class="{'br-alert-area-fixed': fixed == 'true', 'br-alert-area-fixed-show': fixed == 'true' && app.services.alert.total}">
     <div ng-class="{'br-alert-area-body-fixed': fixed == 'true'}">
       <div ng-repeat="(category, list) in app.services.alert.log">

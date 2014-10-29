@@ -38,8 +38,7 @@ function factory() {
         stackable-hide-arrow="true" \
         stackable-placement="bottom" \
         stackable-alignment="right" \
-        br-lazy-compile="br-headline" \
-        br-compile-trigger="menu.show"> \
+        br-lazy-compile="menu.show" br-lazy-id="br-headline"> \
         <div ng-transclude></div> \
       </stackable-popover>',
     link: function(scope, element, attrs) {

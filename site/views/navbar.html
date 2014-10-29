@@ -38,7 +38,7 @@
 
         <!-- signed out -->
         <div ng-if="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" ng-controller="LoginController as model"
-          br-lazy-compile="br-navbar-login" br-compile-trigger="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing">
+          br-lazy-compile="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" br-lazy-id="br-navbar-login">
           <form class="navbar-form navbar-right form-inline" ng-submit="model.submit()">
             <div class="form-group">
               <br-input ng-if="!model.multiple" br-model="model.sysIdentifier"
@@ -112,8 +112,7 @@
           <stackable-popover stackable="model.hovercard"
             stackable-placement="bottom"
             stackable-alignment="right"
-            br-lazy-compile="br-navbar-hovercard"
-            br-compile-trigger="model.hovercard.show">
+            br-lazy-compile="model.hovercard.show" br-lazy-id="br-navbar-hovercard">
             <h3 class="stackable-popover-title">{{model.identity.label}}</h3>
             <div class="stackable-popover-body">
               <table class="table table-condensed hovercard">
@@ -138,8 +137,7 @@
           </stackable-popover>
           <stackable-modal stackable="model.showLogin"
             stackable-disable-escape="true"
-            br-lazy-compile="br-navbar-login-modal"
-            br-compile-trigger="model.showLogin">
+            br-lazy-compile="model.showLogin" br-lazy-id="br-navbar-login-modal">
             <div br-login-modal></div>
           </stackable-modal>
         </div><!-- /signed in -->

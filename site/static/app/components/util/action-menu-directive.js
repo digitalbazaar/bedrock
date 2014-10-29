@@ -18,17 +18,16 @@ function factory() {
     template: '\
       <div class="btn-group"> \
         <button type="button" class="btn btn-default btn-sm" \
-          stackable-trigger="actionMenu" \
+          stackable-trigger="menu" \
           stackable-toggle="\'active\'"> \
           <i class="fa fa-chevron-down"></i> \
         </button> \
       </div> \
-      <stackable-popover stackable="actionMenu" \
+      <stackable-popover stackable="menu" \
         stackable-hide-arrow="true" \
         stackable-placement="bottom" \
         stackable-alignment="right" \
-        br-lazy-compile="br-action-menu" \
-        br-compile-trigger="actionMenu.show"> \
+        br-lazy-compile="menu.show" br-lazy-id="br-action-menu"> \
         <div ng-transclude></div> \
       </stackable-popover>'
   };

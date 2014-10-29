@@ -20,16 +20,24 @@ function factory($compile, $templateCache) {
   };
 
   function Compile(tElement, tAttrs) {
-    var cacheId = 'br-lazy-compile-id:' + tAttrs.brLazyCompile;
-    var trigger = tAttrs.brCompileTrigger;
-    if($templateCache.get(cacheId) === undefined) {
-      $templateCache.put(cacheId, tElement.contents());
+    var contents = tElement.contents();
+
+    // use template cache for contents if requested
+    if('brLazyId' in tAttrs) {
+      var cacheId = 'br-lazy-compile-id:' + tAttrs.brLazyId;
+      var cached = $templateCache.get(cacheId);
+      if(cached === undefined) {
+        $templateCache.put(cacheId, contents);
+      } else {
+        // use cached contents (allow local contents to be GC'd)
+        contents = cached;
+      }
     }
     tElement.empty();
 
     return function(scope, element, attrs, ctrls, transcludeFn) {
-      // bind-once
-      var removeWatch = scope.$watch(trigger, function(value) {
+      // bind-once to br-lazy-compile=<expression>
+      var removeWatch = scope.$watch(tAttrs.brLazyCompile, function(value) {
         if(value) {
           removeWatch();
           compile();
@@ -37,12 +45,15 @@ function factory($compile, $templateCache) {
       });
 
       function compile() {
-        var el = $templateCache.get(cacheId).clone();
-        element.append(el);
+        // add contents back
+        // TODO: avoid clone, if possible, when not using template cache
+        element.append(contents.clone());
 
-        // avoid recursion
+        // avoid recursion during compile
         element.removeAttr('br-lazy-compile');
-        element.removeAttr('br-compile-trigger');
+        element.removeAttr('br-lazy-id');
+
+        // compile contents and link
 
         // FIXME: remove when AngularJS 1.3.1 API is ready
         if(!transcludeFn) {
@@ -53,8 +64,7 @@ function factory($compile, $templateCache) {
         $compile(element, transcludeFn)(scope);
 
         // FIXME: use when AngularJS 1.3.1 API is ready
-        /* // compile contents and link
-        $compile(el)(scope, undefined, {
+        /* $compile(el)(scope, undefined, {
           parentBoundTranscludeFn: transcludeFn
         });*/
       }

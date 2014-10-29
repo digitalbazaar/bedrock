@@ -15,7 +15,7 @@ function factory() {
     restrict: 'C',
     transclude: true,
     template: '\
-      <div br-lazy-compile="br-modal" br-compile-trigger="!stackable || stackable.isOpen"> \
+      <div br-lazy-compile="!stackable || stackable.isOpen" br-lazy-id="br-modal"> \
         <div br-alerts br-fixed="true"></div> \
         <div ng-transclude></div> \
       </div>'

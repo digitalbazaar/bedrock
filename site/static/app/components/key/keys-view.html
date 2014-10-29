@@ -77,26 +77,22 @@
     or one can be generated that this site controls.</p>
   </div>
   <stackable-modal stackable="model.modals.showGenerateKeyPair"
-    br-lazy-compile="br-keys-view-generate-key-pair-modal"
-    br-compile-trigger="model.modals.showGenerateKeyPair">
+    br-lazy-compile="model.modals.showGenerateKeyPair" br-lazy-id="br-keys-view-generate-key-pair-modal">
     <div br-generate-key-pair-modal></div>
   </stackable-modal>
   <stackable-modal stackable="model.modals.showAddKey"
-    br-lazy-compile="br-keys-view-add-key-modal"
-    br-compile-trigger="model.modals.showAddKey">
+    br-lazy-compile="model.modals.showAddKey" br-lazy-id="br-keys-view-add-key-modal">
     <div br-add-key-modal></div>
   </stackable-modal>
   <stackable-modal stackable="model.modals.showEditKey"
-    br-lazy-compile="br-keys-view-edit-key-modal"
-    br-compile-trigger="model.modals.showEditKey">
+    br-lazy-compile="model.modals.showEditKey" br-lazy-id="br-keys-view-edit-key-modal">
     <div br-edit-key-modal br-key="model.modals.key"></div>
   </stackable-modal>
 
   <!-- Revoking key alert -->
   <stackable-modal stackable="model.modals.showRevokeKeyAlert"
     stackable-closed="model.confirmRevokeKey(err, result)"
-    br-lazy-compile="br-keys-view-revoke-key-modal"
-    br-compile-trigger="model.modals.showRevokeKeyAlert">
+    br-lazy-compile="model.modals.showRevokeKeyAlert" br-lazy-id="br-keys-view-revoke-key-modal">
     <div br-alert-modal
       br-modal-header="Warning"
       br-modal-ok="Revoke"

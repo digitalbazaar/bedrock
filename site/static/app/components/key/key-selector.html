@@ -1,7 +1,6 @@
 <br-selector br-selected="selected=brSelector.selected" br-key-selector-inner>
   <div name="br-selector-selected">
-    <div br-lazy-compile="br-key-selector-selected"
-      br-compile-trigger="selected">
+    <div br-lazy-compile="selected" br-lazy-id="br-key-selector-selected">
       <span ng-show="model.services.key.loading">
         <i class="fa fa-refresh fa-spin text-muted"></i>
       </span>
@@ -13,8 +12,7 @@
     </div>
   </div>
   <div name="br-selector-choices">
-    <div br-lazy-compile="br-key-selector-selected"
-      br-compile-trigger="brSelector.showChoices">
+    <div br-lazy-compile="brSelector.showChoices" br-lazy-id="br-key-selector-choices">
       <div ng-show="model.services.key.loading">
         <i class="fa fa-refresh fa-spin text-muted"></i>
       </div>
@@ -30,6 +28,7 @@
   </div>
 </br-selector>
 <stackable-modal stackable="model.showAddKeyModal"
-  stackable-closed="!err && brSelector.select(result)">
+  stackable-closed="!err && brSelector.select(result)"
+  br-lazy="model.showAddKeyModal" br-lazy-id="br-key-selector-add-key-modal">
   <div br-generate-key-pair-modal></div>
 </stackable-modal>
