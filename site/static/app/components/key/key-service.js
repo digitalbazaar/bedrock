@@ -14,8 +14,27 @@ function factory(
   $rootScope, brIdentityService, brModelService, brRefreshService,
   brResourceService, config) {
   var service = {};
-
   var cache = {};
+
+  service.get = function(options) {
+    if(!options) {
+      // get keys for current logged in identity by default
+      options = {identityMethod: 'current'};
+    }
+    var identityId = brIdentityService.generateUrl(options);
+    var url = identityId + '/keys';
+    if(!(url in cache)) {
+      var newService = new Service({
+        identityId: identityId,
+        url: url
+      });
+      cache[url] = newService;
+
+      // register for system-wide refreshes
+      brRefreshService.register(newService.collection);
+    }
+    return cache[url];
+  };
 
   /**
    * Create a keys service for an identity.
@@ -36,23 +55,7 @@ function factory(
     this.state = this.collection.state;
   }
 
-  service.get = function(options) {
-    var identityId = brIdentityService.generateUrl(options);
-    var url = identityId + '/keys';
-    if(!(url in cache)) {
-      var newService = new Service({
-        identityId: identityId,
-        url: url
-      });
-      cache[url] = newService;
-
-      // register for system-wide refreshes
-      brRefreshService.register(newService.collection);
-    }
-    return cache[url];
-  };
-
-  Service.prototype.update = function() {
+  Service.prototype.update = function(value) {
     var unrevoked = value.filter(function(key) {return !key.revoked;});
     brModelService.replaceArray(this.unrevokedKeys, unrevoked);
   };

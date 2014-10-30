@@ -18,11 +18,10 @@ function keySelectorInner(brKeyService) {
   };
 
   function Link(scope, element, attrs, brSelector) {
+    var service = brKeyService.get();
     var model = scope.model = {};
-    model.services = {
-      key: brKeyService.state
-    };
-    model.keys = brKeyService.unrevokedKeys;
+    model.state = service.state;
+    model.keys = service.unrevokedKeys;
     scope.$watch('model.keys', function(keys) {
       if(!scope.selected || $.inArray(scope.selected, keys) === -1) {
         scope.selected = keys[0] || null;
@@ -40,7 +39,7 @@ function keySelectorInner(brKeyService) {
       brSelector.fixed = value;
     });
 
-    brKeyService.collection.getAll();
+    service.collection.getAll();
   }
 }
 
