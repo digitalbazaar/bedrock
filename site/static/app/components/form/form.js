@@ -10,6 +10,7 @@ define([
   './help-toggle-directive',
   './input-directive',
   './input-watcher-directive',
+  './radio-group-directive',
   './select-directive',
   './textarea-directive',
   './track-state-directive'
@@ -18,6 +19,7 @@ define([
   helpToggleDirective,
   inputDirective,
   inputWatcherDirective,
+  radioGroupDirective,
   selectDirective,
   textareaDirective,
   trackStateDirective) {
@@ -29,6 +31,7 @@ var module = angular.module('app.form', []);
 module.directive(helpToggleDirective);
 module.directive(inputDirective);
 module.directive(inputWatcherDirective);
+module.directive(radioGroupDirective);
 module.directive(selectDirective);
 module.directive(textareaDirective);
 module.directive(trackStateDirective);
