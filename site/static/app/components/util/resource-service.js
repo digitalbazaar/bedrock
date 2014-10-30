@@ -25,9 +25,9 @@ function factory($rootScope, $http, $location, brModelService) {
   // }
   service.Collection = function(config) {
     this.config = config || {};
-    this.storage = config.storage || [];
-    this.expires = config.expires || 0;
-    this.maxAge = config.maxAge || (1000 * 60 * 2);
+    this.storage = this.config.storage || [];
+    this.expires = this.config.expires || 0;
+    this.maxAge = this.config.maxAge || (1000 * 60 * 2);
 
     this.loadingCount = 0;
     this.state = {
