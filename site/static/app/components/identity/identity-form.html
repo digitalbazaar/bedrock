@@ -49,48 +49,27 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-3" for="imageType">Image Type</label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarImage" value="gravatar" checked="checked" ng-model="model.identity.sysImageType" />
-        Gravatar
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="urlImage" value="url" checked="checked" ng-model="model.identity.sysImageType" />
-        URL
-      </label>
-    </div>
+    <br-radio-group br-model="model.identity.sysImageType"
+      br-group="[{label: 'Gravatar', value: 'gravatar'}, {label: 'URL', value: 'url'}]"
+      br-options="{inline: true, name: 'sysImageType', label: 'Image Type'}">
+      Please select an image type.
+    </br-radio-group>
 
-    <div ng-show="model.identity.sysImageType == 'gravatar'" class="form-group">
-      <label class="control-label col-sm-3" for="imageType">Gravatar Type</label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarType" value="gravatar" checked="checked" ng-model="model.identity.sysGravatarType" />
-        Gravatar
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarType" value="mm" checked="checked" ng-model="model.identity.sysGravatarType" />
-        Mystery Man
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarType" value="identicon" checked="checked" ng-model="model.identity.sysGravatarType" />
-        Identicon
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarType" value="monsterid" checked="checked" ng-model="model.identity.sysGravatarType" />
-        MonsterID
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarType" value="wavatar" checked="checked" ng-model="model.identity.sysGravatarType" />
-        Wavatar
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="gravatarType" value="retro" checked="checked" ng-model="model.identity.sysGravatarType" />
-        Retro
-      </label>
-      <p class="help-block col-sm-offset-3 col-sm-8">
-        Setting up a <a href="https://www.gravatar.com" target="_blank">Gravatar</a> image for your email will allow you to use the same avatar image on many supported sites. You can also use a generated image unique to your email.
-      </p>
-    </div>
+    <br-radio-group ng-show="model.identity.sysImageType == 'gravatar'"
+      br-model="model.identity.sysGravatarType"
+      br-group="[
+        {label: 'Gravatar', value: 'gravatar'},
+        {label: 'Mystery Man', value: 'mm'},
+        {label: 'Identicon', value: 'identicon'},
+        {label: 'MonsterID', value: 'monsterid'},
+        {label: 'Wavatar', value: 'wavatar'},
+        {label: 'Retro', value: 'retro'}
+      ]"
+      br-options="{inline: true, name: 'sysGravatarType', label: 'Gravatar Type'}">
+      Setting up a <a href="https://www.gravatar.com" target="_blank">Gravatar</a> image
+      for your email will allow you to use the same avatar image on many supported sites.
+      You can also use a generated image unique to your email.
+    </br-radio-group>
 
     <br-input ng-show="model.identity.sysImageType == 'url'"
       br-model="model.identity.image"
@@ -129,35 +108,16 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-3" for="imageType">Visibility</label>
-      <div class="col-sm-8">
-        <div class="radio">
-          <label>
-            <input type="radio" name="nonePublic" value="none" checked="checked" ng-model="model.publicMode" />
-              <i class="fa fa-eye-close"></i> No public access to <strong>any</strong> identity details.
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="somePublic" value="some" checked="checked" ng-model="model.publicMode" />
-              <i class="fa fa-eye"></i> Allow <strong>public</strong> access to specified properties.
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="mostPublic" value="most" checked="checked" ng-model="model.publicMode" />
-              <i class="fa fa-eye"></i> Allow <strong>public</strong> access to all properties <strong>except</strong> email.
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="allPublic" value="all" checked="checked" ng-model="model.publicMode" />
-              <i class="fa fa-eye"></i> Allow <strong>public</strong> access to all properties <strong>including</strong> email.
-          </label>
-        </div>
-      </div>
-    </div>
+    <br-radio-group br-model="model.publicMode"
+      br-group="[
+        {label: 'No public access to <strong>any</strong> identity details.', value: 'none', icon: 'eye-close'},
+        {label: 'Allow <strong>public</strong> access to specified properties.', value: 'some', icon: 'eye'},
+        {label: 'Allow <strong>public</strong> access to all properties <strong>except</strong> email.', value: 'most', icon: 'eye'},
+        {label: 'Allow <strong>public</strong> access to all properties <strong>including</strong> email.', value: 'all', icon: 'eye'}
+      ]"
+      br-options="{name: 'sysPublic', label: 'Privacy'}">
+      Please choose a privacy setting.
+    </br-radio-group>
 
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-8">
