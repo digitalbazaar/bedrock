@@ -48,15 +48,17 @@ function factory(
     this.url = options.url;
     this.collection = new brResourceService.Collection({
       url: this.url,
-      finishLoading: this._update
+      finishLoading: this.update.bind(this)
     });
     this.keys = this.collection.storage;
     this.unrevokedKeys = [];
     this.state = this.collection.state;
   }
 
-  Service.prototype.update = function(value) {
-    var unrevoked = value.filter(function(key) {return !key.revoked;});
+  Service.prototype.update = function() {
+    var unrevoked = this.collection.storage.filter(function(key) {
+      return !key.revoked;
+    });
     brModelService.replaceArray(this.unrevokedKeys, unrevoked);
   };
 
