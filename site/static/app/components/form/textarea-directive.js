@@ -67,7 +67,8 @@ function factory() {
         options.rows = options.rows || '5';
 
         // prefix "fa-" to icon
-        if('icon' in options && options.icon.indexOf('fa-') !== 0) {
+        if(typeof options.icon === 'string' &&
+          options.icon.indexOf('fa-') !== 0) {
           options.icon = 'fa-' + options.icon;
         }
 

@@ -67,7 +67,8 @@ function factory() {
         options.placeholder = options.placeholder || '';
 
         // prefix "fa-" to icon
-        if('icon' in options && options.icon.indexOf('fa-') !== 0) {
+        if(typeof options.icon === 'string' &&
+          options.icon.indexOf('fa-') !== 0) {
           options.icon = 'fa-' + options.icon;
         }
 
