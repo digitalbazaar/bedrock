@@ -55,6 +55,7 @@ function factory($parse, $timeout) {
     });
     element.on('click' + namespace, function(event) {
       event.preventDefault();
+      event.stopPropagation();
       scope.$apply(function() {
         helpState.pressed = !helpState.pressed;
         state.show = helpState.show = helpState.pressed;
