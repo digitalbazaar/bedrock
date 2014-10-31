@@ -8922,14 +8922,18 @@ h1.headline {
 .br-help-toggle > .btn:focus {
   outline: 0;
 }
-.input-group textarea + .input-group-btn.br-help-toggle > .btn,
+.input-group textarea + .input-group-btn.br-help-toggle,
 .br-help-toggle-overlay {
+  vertical-align: top;
+}
+.input-group textarea + .input-group-btn.br-help-toggle > .btn,
+.br-help-toggle-overlay-btn {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   position: relative;
-  left: -27px;
-  top: -40px;
+  left: -25px;
+  top: 4px;
   z-index: 3;
 }
 /* Correct border-radius for form-controls with help toggles, etc. */
