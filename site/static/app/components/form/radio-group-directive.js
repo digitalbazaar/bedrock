@@ -17,7 +17,7 @@ function factory() {
       model: '=brModel',
       group: '=brGroup'
     },
-    controller: function(){},
+    controller: function() {},
     controllerAs: 'ctrl',
     bindToController: true,
     transclude: true,
