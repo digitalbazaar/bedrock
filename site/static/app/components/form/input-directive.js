@@ -20,13 +20,14 @@ function factory() {
     template: '\
       <div ng-class="{\'form-group\': !options.inline}" \
         br-property-path="{{options.name}}" \
-        class="{{options.inline && options.columns.input}}" \
+        class="{{(options.inline && options.columns.input) || \'\'}}" \
         ng-style="{display: \
           (options.inline ? \'inline-\' : \'\') + \'block\'}"> \
         <label ng-if="options.label !== undefined" \
           class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
-        <div class="input-group {{!options.inline && options.columns.input}}"> \
+        <div class="input-group \
+          {{(!options.inline && options.columns.input) || \'\'}}"> \
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
