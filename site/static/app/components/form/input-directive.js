@@ -41,7 +41,7 @@ function factory() {
             ng-model="model" \
             ng-disabled="options.disabled" \
             br-track-state="help" \
-            ng-class="{\'br-help-off\': options.inline}"/> \
+            ng-class="{\'br-help-off\': !options.help}"/> \
           <span ng-if="options.loading" \
             class="br-spinner-inside-input"> \
             <i class="fa fa-refresh fa-spin text-muted"></i> \
