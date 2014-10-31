@@ -20,15 +20,13 @@ function factory() {
     template: '\
       <div ng-class="{\'form-group\': !options.inline}" \
         br-property-path="{{options.name}}" \
+        class="{{options.inline && options.columns.input}}" \
         ng-style="{display: \
           (options.inline ? \'inline-\' : \'\') + \'block\'}"> \
         <label ng-if="options.label !== undefined" \
           class="{{options.columns.label}} control-label" \
           for="{{options.name}}">{{options.label}}</label> \
-        <div class="{{options.columns.input}}" \
-          ng-class="{ \
-            \'input-group\': !options.inline, \
-            \'input-group-inline\': options.inline}"> \
+        <div class="input-group {{!options.inline && options.columns.input}}"> \
           <span ng-if="options.icon" \
             class="input-group-addon"><i \
             class="fa {{options.icon}}"></i></span> \
@@ -47,14 +45,14 @@ function factory() {
             class="br-spinner-inside-input"> \
             <i class="fa fa-refresh fa-spin text-muted"></i> \
           </span> \
-          <span ng-if="!options.inline" class="input-group-btn"> \
+          <span ng-if="options.help" class="input-group-btn"> \
             <button type="button" class="btn btn-default" \
               br-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \
           </span> \
         </div> \
-        <div ng-if="!options.inline" ng-show="help.show" \
+        <div ng-if="options.help" ng-show="help.show" \
           class="{{options.columns.help}} help-block br-fadein br-fadeout"> \
           <div ng-transclude></div> \
         </div> \
@@ -65,6 +63,8 @@ function factory() {
         options.inline = ('inline' in options) ? options.inline : false;
         options.type = options.type || 'text';
         options.placeholder = options.placeholder || '';
+        // default to no help displayed in inline mode
+        options.help = ('help' in options) ? options.help : !options.inline;
 
         // prefix "fa-" to icon
         if(typeof options.icon === 'string' &&
