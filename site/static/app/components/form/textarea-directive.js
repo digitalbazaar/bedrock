@@ -46,7 +46,7 @@ function factory() {
             ng-class="{\'br-help-off\': options.inline}" \
             ng-keypress="localKeypress($event)"/> \
           <span ng-if="!options.inline" class="input-group-btn"> \
-            <button type="button" class="btn btn-default btn-xs" \
+            <button type="button" class="btn btn-default" \
               br-help-toggle="help"> \
               <i class="fa fa-question-circle"></i> \
             </button> \

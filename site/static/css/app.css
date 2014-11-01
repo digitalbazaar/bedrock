@@ -8932,19 +8932,14 @@ h1.headline {
 .br-help-toggle > .btn:focus {
   outline: 0;
 }
-.input-group textarea + .input-group-btn.br-help-toggle,
-.br-help-toggle-overlay {
+.input-group textarea + .input-group-btn.br-help-toggle {
   vertical-align: top;
 }
-.input-group textarea + .input-group-btn.br-help-toggle > .btn,
-.br-help-toggle-overlay-btn {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  position: relative;
-  left: -25px;
-  top: 4px;
-  z-index: 3;
+.input-group textarea + .input-group-btn.br-help-toggle > .btn {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 /* Correct border-radius for form-controls with help toggles, etc. */
 .input-group .form-control:not(:first-child):not(:last-child),
@@ -8999,38 +8994,45 @@ h1.headline {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
-.input-group .form-control:not(.br-help-off).br-help:not(textarea):hover,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea):hover,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea):hover,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea):focus,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea):focus,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea):focus,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea).br-show,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea).br-show,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea).br-show,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea).br-help-focus,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea).br-help-focus,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea).br-help-focus,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea).br-help-mouseover,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea).br-help-mouseover,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea).br-help-mouseover,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea):hover .ui-select-match,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea):hover .ui-select-match,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea):hover .ui-select-match,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea):focus .ui-select-match,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea):focus .ui-select-match,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea):focus .ui-select-match,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea).br-show .ui-select-match,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea).br-show .ui-select-match,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea).br-show .ui-select-match,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea).br-help-focus .ui-select-match,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea).br-help-focus .ui-select-match,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea).br-help-focus .ui-select-match,
-.input-group .form-control:not(.br-help-off).br-help:not(textarea).br-help-mouseover .ui-select-match,
-.input-group .ui-select-bootstrap:not(.br-help-off).br-help:not(textarea).br-help-mouseover .ui-select-match,
-.input-group .br-select:not(.br-help-off).br-help:not(textarea).br-help-mouseover .ui-select-match {
+.input-group .form-control:not(.br-help-off).br-help:hover,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help:hover,
+.input-group .br-select:not(.br-help-off).br-help:hover,
+.input-group .form-control:not(.br-help-off).br-help:focus,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help:focus,
+.input-group .br-select:not(.br-help-off).br-help:focus,
+.input-group .form-control:not(.br-help-off).br-help.br-show,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help.br-show,
+.input-group .br-select:not(.br-help-off).br-help.br-show,
+.input-group .form-control:not(.br-help-off).br-help.br-help-focus,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help.br-help-focus,
+.input-group .br-select:not(.br-help-off).br-help.br-help-focus,
+.input-group .form-control:not(.br-help-off).br-help.br-help-mouseover,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help.br-help-mouseover,
+.input-group .br-select:not(.br-help-off).br-help.br-help-mouseover,
+.input-group .form-control:not(.br-help-off).br-help:hover .ui-select-match,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help:hover .ui-select-match,
+.input-group .br-select:not(.br-help-off).br-help:hover .ui-select-match,
+.input-group .form-control:not(.br-help-off).br-help:focus .ui-select-match,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help:focus .ui-select-match,
+.input-group .br-select:not(.br-help-off).br-help:focus .ui-select-match,
+.input-group .form-control:not(.br-help-off).br-help.br-show .ui-select-match,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help.br-show .ui-select-match,
+.input-group .br-select:not(.br-help-off).br-help.br-show .ui-select-match,
+.input-group .form-control:not(.br-help-off).br-help.br-help-focus .ui-select-match,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help.br-help-focus .ui-select-match,
+.input-group .br-select:not(.br-help-off).br-help.br-help-focus .ui-select-match,
+.input-group .form-control:not(.br-help-off).br-help.br-help-mouseover .ui-select-match,
+.input-group .ui-select-bootstrap:not(.br-help-off).br-help.br-help-mouseover .ui-select-match,
+.input-group .br-select:not(.br-help-off).br-help.br-help-mouseover .ui-select-match {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+}
+.input-group textarea.form-control:not(.br-help-off).br-help:hover,
+.input-group textarea.form-control:not(.br-help-off).br-help:focus,
+.input-group textarea.form-control:not(.br-help-off).br-help.br-show,
+.input-group textarea.form-control:not(.br-help-off).br-help.br-help-focus,
+.input-group textarea.form-control:not(.br-help-off).br-help.br-help-mouseover {
+  border-bottom-right-radius: 4px;
 }
 /* Input Groups */
 .input-group .form-control:not(:first-child):not(:last-child) .input-group-inline,

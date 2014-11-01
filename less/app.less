@@ -190,19 +190,12 @@ h1.headline {
 .br-help-toggle > .btn:focus {
   outline: 0;
 }
-.input-group textarea + .input-group-btn.br-help-toggle,
-.br-help-toggle-overlay {
+.input-group textarea + .input-group-btn.br-help-toggle {
   vertical-align: top;
 }
-.input-group textarea + .input-group-btn.br-help-toggle > .btn,
-.br-help-toggle-overlay-btn {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  position: relative;
-  left: -25px;
-  top: 4px;
-  z-index: 3;
+.input-group textarea + .input-group-btn.br-help-toggle > .btn {
+  .border-left-radius(0);
+  .border-right-radius(@input-border-radius);
 }
 /* Correct border-radius for form-controls with help toggles, etc. */
 .input-group .form-control,
@@ -230,7 +223,7 @@ h1.headline {
   }
 
   // if form control/ui-select has an appended help toggle
-  &:not(.br-help-off).br-help, {
+  &:not(.br-help-off).br-help {
     // if its not the first child, remove left border radius
     &:not(:first-child) {
       &, & .ui-select-match {
@@ -242,13 +235,17 @@ h1.headline {
       .border-right-radius(@input-border-radius);
     }
     // no border radius when br-help-toggle is shown/animating
-    &:not(textarea) {
-      &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
-        &, & .ui-select-match {
-          .border-right-radius(0);
-        }
+    &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
+      &, & .ui-select-match {
+        .border-right-radius(0);
       }
     }
+  }
+}
+.input-group textarea.form-control:not(.br-help-off).br-help {
+  // restore bottom right border radius
+  &:hover, &:focus, &.br-show, &.br-help-focus, &.br-help-mouseover {
+    border-bottom-right-radius: @input-border-radius;
   }
 }
 
