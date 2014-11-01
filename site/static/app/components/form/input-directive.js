@@ -18,7 +18,9 @@ function factory() {
     },
     transclude: true,
     template: '\
-      <div ng-class="{\'form-group\': !options.inline}" \
+      <div ng-class="{ \
+        \'form-group\': !options.inline, \
+        \'form-group-inline\': options.inline}" \
         br-property-path="{{options.name}}" \
         class="{{(options.inline && options.columns.input) || \'\'}}" \
         ng-style="{display: \

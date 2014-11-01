@@ -8887,6 +8887,16 @@ fieldset[disabled] .br-btn-navbar-inverse.active {
 .form-horizontal .checkbox-inline {
   vertical-align: baseline;
 }
+.form-group-inline[class*="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .form-group-inline[class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /* Footer */
 .footer {
   font-size: small;

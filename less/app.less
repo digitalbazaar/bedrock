@@ -136,6 +136,21 @@ a {
 .form-horizontal .checkbox-inline {
   vertical-align: baseline;
 }
+.form-group-inline {
+  // padding of grid classes for small screens since columns stack
+  &[class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media (min-width: @screen-md) {
+    // Undo padding of grid classes for larger screens
+    &[class*="col-"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
 
 /* Footer */
 .footer {
