@@ -30,10 +30,7 @@ function factory($parse, $timeout) {
       var set = get.assign || angular.noop;
       state = get(scope) || {};
       if(!('help' in state)) {
-        state.help = {
-          // ignore focus changes by default w/textarea
-          ignoreFocus: (state.element && state.element.tagName === 'textarea')
-        };
+        state.help = {};
       }
       helpState = state.help;
       if(!('pressed' in helpState)) {
