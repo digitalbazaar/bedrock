@@ -1,5 +1,6 @@
 var by = GLOBAL.by;
 var element = GLOBAL.element;
+var expect = GLOBAL.expect;
 
 var api = {};
 module.exports = api;
@@ -17,7 +18,7 @@ api.create = function(options) {
   var add = options.add;
 
   selector.create = function(options) {
-    var el = options.element.element(by.css('brSelector'));
+    var el = options.element.element(by.css('br-selector'));
     var change = el.element(by.partialButtonText('Change'));
     var modal;
     change.isDisplayed().then(function(shown) {
@@ -29,10 +30,6 @@ api.create = function(options) {
 
         // add modal
         add(options);
-
-        // back to change modal
-        modal = element(by.modal());
-        modal.all(by.repeater('selected in')).last().click();
       } else {
         // add modal
         el.element(by.partialButtonText('Add')).click();
@@ -43,14 +40,21 @@ api.create = function(options) {
   };
 
   selector.select = function(options) {
-    var el = options.element.element(by.css('brSelector'));
-    el.evaluate('brSelector.selected').then(function(selected) {
+    var el = options.element.element(by.css('br-selector'));
+    el.evaluate('selected').then(function(selected) {
+      // already selected
       if(selected && selected.id === options.id) {
         return;
       }
 
-      el.element(by.partialButtonText('Change')).click();
-      var choices = element(by.modal()).element(by.css('.br-selector-choices'));
+      // change option must be available to select proper item
+      var change = el.element(by.partialButtonText('Change'));
+      expect(change.isDisplayed()).to.be.true;
+
+      // change modal
+      change.click();
+      var choices = element(by.modal()).element(
+        by.attribute('name', 'br-selector-choices'));
       var toSelect = null;
       choices.all(by.repeater(options.repeater)).then(function(rows) {
         rows.forEach(function(row) {
