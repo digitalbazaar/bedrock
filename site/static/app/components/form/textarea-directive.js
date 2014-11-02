@@ -43,6 +43,7 @@ function factory() {
             ng-model="model" ng-disabled=options.disabled \
             br-track-state="help" \
             style="{{options.style}}" \
+            wrap="{{options.wrap}}" \
             ng-class="{\'br-help-off\': options.inline}" \
             ng-keypress="localKeypress($event)"/> \
           <span ng-if="!options.inline" class="input-group-btn"> \
@@ -93,6 +94,10 @@ function factory() {
           element.find('textarea').attr('readonly', 'readonly');
         } else {
           element.find('textarea').removeAttr('readonly');
+        }
+
+        if(!('wrap' in options)) {
+          options.wrap = 'on';
         }
       });
     }
