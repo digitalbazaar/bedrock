@@ -326,4 +326,11 @@ api.on('init', function() {
     var query = "[br-model='" + value + "'] .ui-select-search";
     return using.querySelectorAll(query);
   });
+
+  // locate radio button
+  by.addLocator('brRadio', function(model, value, parent) {
+    var using = parent || document;
+    var query = "[br-model='" + model + "'] [ng-model][value='" + value + "']";
+    return using.querySelectorAll(query);
+  });
 });
