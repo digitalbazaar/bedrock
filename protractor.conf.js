@@ -166,7 +166,7 @@ exports.config = {
     ui: 'bdd',
     reporter: 'spec',
     ignoreLeaks: false,
-    timeout: 30000,
+    timeout: 60000,
     bail: true
   },
 
