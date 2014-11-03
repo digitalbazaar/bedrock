@@ -289,6 +289,11 @@ api.on('init', function() {
     return document.querySelectorAll('.modal .modal-footer');
   });
 
+  // locate the top-level action menu
+  by.addLocator('brActionMenu', function() {
+    return document.querySelectorAll('dialog[stackable="menu"]');
+  });
+
   // locate menu items with the given text
   by.addLocator('menuItem', function(value, parent) {
     value = value.trim();
