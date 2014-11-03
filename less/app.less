@@ -143,9 +143,30 @@ a {
     padding-right: 15px;
   }
 
+  @media (min-width: @screen-sm) {
+    // Undo padding of grid classes for x-small screens
+    &[class*="col-xs"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media (min-width: @screen-sm) {
+    // Undo padding of grid classes for small screens
+    &[class*="col-sm"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
   @media (min-width: @screen-md) {
-    // Undo padding of grid classes for larger screens
-    &[class*="col-"] {
+    // Undo padding of grid classes for medium screens
+    &[class*="col-md"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media (min-width: @screen-lg) {
+    // Undo padding of grid classes for large screens
+    &[class*="col-lg"] {
       padding-left: 0;
       padding-right: 0;
     }
@@ -276,9 +297,30 @@ h1.headline {
     padding-right: 15px;
   }
 
+  @media (min-width: @screen-sm) {
+    // Undo padding of grid classes for x-small screens
+    &[class*="col-xs"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media (min-width: @screen-sm) {
+    // Undo padding of grid classes for small screens
+    &[class*="col-sm"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
   @media (min-width: @screen-md) {
-    // Undo padding of grid classes
-    &[class*="col-"] {
+    // Undo padding of grid classes for medium screens
+    &[class*="col-md"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media (min-width: @screen-lg) {
+    // Undo padding of grid classes for large screens
+    &[class*="col-lg"] {
       padding-left: 0;
       padding-right: 0;
     }

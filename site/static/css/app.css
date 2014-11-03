@@ -8891,8 +8891,26 @@ fieldset[disabled] .br-btn-navbar-inverse.active {
   padding-left: 15px;
   padding-right: 15px;
 }
+@media (min-width: 768px) {
+  .form-group-inline[class*="col-xs"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 768px) {
+  .form-group-inline[class*="col-sm"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media (min-width: 992px) {
-  .form-group-inline[class*="col-"] {
+  .form-group-inline[class*="col-md"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 1200px) {
+  .form-group-inline[class*="col-lg"] {
     padding-left: 0;
     padding-right: 0;
   }
@@ -9057,8 +9075,26 @@ h1.headline {
   padding-left: 15px;
   padding-right: 15px;
 }
+@media (min-width: 768px) {
+  .input-group[class*="col-xs"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 768px) {
+  .input-group[class*="col-sm"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media (min-width: 992px) {
-  .input-group[class*="col-"] {
+  .input-group[class*="col-md"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 1200px) {
+  .input-group[class*="col-lg"] {
     padding-left: 0;
     padding-right: 0;
   }
