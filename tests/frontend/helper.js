@@ -6,10 +6,6 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var util = require('util');
 var _ = require('underscore');
-var Promise = require('es6-promise').Promise;
-if(!GLOBAL.Promise) {
-  GLOBAL.Promise = Promise;
-}
 
 chai.use(chaiAsPromised);
 GLOBAL.expect = chai.expect;
