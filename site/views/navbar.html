@@ -18,8 +18,8 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      {% raw %}
       <div class="collapse navbar-collapse" id="navbar-collapse">
+        {% raw %}
         <!-- nav menu -->
         <ul class="nav navbar-nav">
           <li ng-repeat="item in ((app.services.identity.identity && model.navbar.private) || model.navbar.public)" ng-class="{active: route.vars.title == item.pageTitle, dropdown: item.items}">
@@ -35,7 +35,9 @@
             </ul>
           </li>
         </ul><!-- /nav menu -->
+        {% endraw %}
 
+        {% raw %}
         <!-- signed out -->
         <div ng-if="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" ng-controller="LoginController as model"
           br-lazy-compile="!app.services.identity.identity && !route.vars.hideNavbarLogin && !route.changing" br-lazy-id="br-navbar-login">
@@ -141,8 +143,8 @@
             <div br-login-modal></div>
           </stackable-modal>
         </div><!-- /signed in -->
+        {% endraw %}
       </div><!-- /.navbar-collapse -->
-      {% endraw %}
     </div><!-- /.container-fluid -->
   </nav>
   <div br-alerts br-fixed="true"></div>
