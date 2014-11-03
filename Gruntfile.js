@@ -141,10 +141,10 @@ module.exports = function(grunt) {
     'email-templates/*.js',
     'lib/*.js',
     'lib/**/*.js',
-    'locales/*.js',
     'schemas/*.js',
     'site/static/app/*.js',
-    'site/static/app/**/*.js'//,
+    'site/static/app/**/*.js',
+    '!site/static/app/**/*.min.js'//,
     //'tests/*.js',
     //'tests/**/*.js'
   ];
@@ -161,13 +161,21 @@ module.exports = function(grunt) {
     }
   });
 
+  var _jscsOptions = {
+    config: '<%= dirs.bedrock %>/.jscsrc',
+    excludeFiles: [
+      '<%= dirs.bedrock %>/lib/iso8601/*.js'
+    ]
+  };
+  if(grunt.config('ci')) {
+    _jscsOptions.reporter = 'checkstyle';
+    _jscsOptions.reporterOutput = 'reports/jscs.xml';
+  }
+
   grunt.loadNpmTasks("grunt-jscs");
   grunt.config('jscs', {
     all: {
-      options: grunt.config('ci') ? {
-        reporter: 'checkstyle',
-        reporterOutput: 'reports/jscs.xml'
-      } : {},
+      options: _jscsOptions,
       src: _js
     }
   });

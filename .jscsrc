@@ -1,10 +1,4 @@
 {
-  "excludeFiles": [
-    "./lib/iso8601/*.js",
-    "./locales/*.js",
-    "./site/static/app/*.min.js"
-  ],
-
   "disallowKeywords": ["with"],
   "disallowKeywordsOnNewLine": ["else", "catch"],
   // FIXME: enable this?
@@ -45,6 +39,7 @@
   },
   "safeContextKeyword": "self",
   "validateLineBreaks": "LF",
+  // FIXME: enable doc checks (update to use newer jscs jsdoc module)
   //"validateJSDoc": {
   //  "checkParamNames": true,
   //  "requireParamTypes": true
