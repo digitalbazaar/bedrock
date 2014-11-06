@@ -9232,6 +9232,7 @@ h1.headline {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 /* Sections */
+.section h2.headline,
 .section h3.headline,
 .section h4.headline {
   background: #f6f6f6;
@@ -9241,18 +9242,22 @@ h1.headline {
   padding: 1px 5px;
   text-align: left;
 }
+.section h2.headline .btn,
 .section h3.headline .btn,
 .section h4.headline .btn {
   margin-top: 1px;
 }
+.section h2.headline .btn.btn-lg,
 .section h3.headline .btn.btn-lg,
 .section h4.headline .btn.btn-lg {
   margin-top: -5px;
 }
+.section h2.headline .btn.btn-sm,
 .section h3.headline .btn.btn-sm,
 .section h4.headline .btn.btn-sm {
   margin-top: 3px;
 }
+.section h2.headline .btn.btn-xs,
 .section h3.headline .btn.btn-xs,
 .section h4.headline .btn.btn-xs {
   margin-top: 7px;
