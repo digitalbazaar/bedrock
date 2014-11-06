@@ -50,6 +50,14 @@ Reason To (TM).
   be traced during debugging, decreased ratio of effectual code lines to lines
   of code, and stacktrace horrors.
 
+A number of style and code rules can be checked with
+[jshint](http://jshint.com/jshint) and
+[jscs](https://github.com/jscs-dev/node-jscs):
+
+    $ grunt jshint
+    $ grunt jscs
+
+
 ### AngularJS
 
 Organize files according to "components". Components are collections of
@@ -145,14 +153,14 @@ current known options are:
 
 To use, run commands like the following:
 
-    BEDROCK_DEBUG=test npm run test
+    $ BEDROCK_DEBUG=test npm run test
 
 ## Testing
 
 * Backend tests are located in `tests/backend/`.
 * Frontend tests are located in `tests/frontend/`. These tests use
   protractor to test a web browser.
-* Use BEDROCK_DEBUG=test to show additional debug info.
+* Use `BEDROCK_DEBUG=test` to show additional debug info.
 
 The following projects are used for creating tests:
 
