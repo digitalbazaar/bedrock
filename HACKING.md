@@ -51,8 +51,7 @@ Reason To (TM).
   of code, and stacktrace horrors.
 
 A number of style and code rules can be checked with
-[jshint](http://jshint.com/jshint) and
-[jscs](https://github.com/jscs-dev/node-jscs):
+[jshint](http://jshint.com/) and [jscs](https://github.com/jscs-dev/node-jscs):
 
     $ grunt jshint
     $ grunt jscs
