@@ -10,10 +10,10 @@ var schema = {
   type: 'string',
   pattern: '^[-a-zA-Z0-9~!@#$%^&*\\(\\)_=+\\\\|{}\\[\\];:\\\'"<>,./? ]*$',
   minLength: 1,
-  maxLength: 256,
+  maxLength: 4000,
   errors: {
     invalid: 'The comment contains invalid characters or is more than ' +
-      '256 characters in length.',
+      '4000 characters in length.',
     missing: 'Please enter a comment.'
   }
 };
