@@ -4,9 +4,8 @@ module.exports = config;
 
 // add test module
 config.modules.push('test');
-
-// add filesystem website service module
-config.website.services.push('filesystem');
+// add filesystem service module
+config.modules.push('services.filesystem');
 
 // app info
 config.app.masterTitle = 'bedrock1d';
