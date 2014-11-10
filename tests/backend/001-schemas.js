@@ -25,15 +25,13 @@ describe('JSON-LD REST API input schema', function() {
       done();
     });
     it('should reject comments that are too long', function(done) {
-      var result = jsonschema(
-          // 257 chars
-          '12345678901234567890123456789012345678901234567890' +
-          '12345678901234567890123456789012345678901234567890' +
-          '12345678901234567890123456789012345678901234567890' +
-          '12345678901234567890123456789012345678901234567890' +
-          '12345678901234567890123456789012345678901234567890' +
-          '1234567',
-          schema);
+      var tmp = '12345678901234567890123456789012345678901234567890';
+      var max = schema.maxLength / tmp.length;
+      var str = '';
+      for(var i = 0; i < max; ++i) {
+        str += tmp;
+      }
+      var result = jsonschema(str + '0', schema);
       result.valid.should.be.false;
       done();
     });
@@ -41,15 +39,13 @@ describe('JSON-LD REST API input schema', function() {
       var small = jsonschema('1', schema);
       small.errors.should.be.empty;
       small.valid.should.be.true;
-      var large = jsonschema(
-        // 256 chars
-        '12345678901234567890123456789012345678901234567890' +
-        '12345678901234567890123456789012345678901234567890' +
-        '12345678901234567890123456789012345678901234567890' +
-        '12345678901234567890123456789012345678901234567890' +
-        '12345678901234567890123456789012345678901234567890' +
-        '123456',
-        schema);
+      var tmp = '12345678901234567890123456789012345678901234567890';
+      var max = schema.maxLength / tmp.length;
+      var str = '';
+      for(var i = 0; i < max; ++i) {
+        str += tmp;
+      }
+      var large = jsonschema(str, schema);
       large.valid.should.be.true;
       done();
     });
