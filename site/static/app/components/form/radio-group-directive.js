@@ -60,8 +60,9 @@ function factory() {
         </div> \
       </div>',
     link: function(scope, element, attrs, ctrl) {
+      attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
-        var options = ctrl.options = value ? scope.$eval(value) || {} : {};
+        var options = ctrl.options = scope.$eval(value) || {};
         options.inline = ('inline' in options) ? options.inline : false;
         options.help = ('help' in options) ? options.help : true;
 

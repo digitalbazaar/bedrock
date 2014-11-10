@@ -62,8 +62,9 @@ function factory() {
       scope.localKeypress = function(event) {
         return scope.keypress({$event: event});
       };
+      attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
-        var options = scope.options = value ? scope.$eval(value) || {} : {};
+        var options = scope.options = scope.$eval(value) || {};
         options.placeholder = options.placeholder || options.label;
         options.rows = options.rows || '5';
 

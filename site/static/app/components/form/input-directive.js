@@ -61,8 +61,9 @@ function factory() {
         </div> \
       </div>',
     link: function(scope, element, attrs) {
+      attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
-        var options = scope.options = value ? scope.$eval(value) || {} : {};
+        var options = scope.options = scope.$eval(value) || {};
         options.inline = ('inline' in options) ? options.inline : false;
         options.type = options.type || 'text';
         options.placeholder = options.placeholder || '';

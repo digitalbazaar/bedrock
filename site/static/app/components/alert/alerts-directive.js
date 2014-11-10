@@ -13,18 +13,18 @@ define(['angular'], function(angular) {
 function factory(brAlertService, $compile, $rootScope) {
   return {
     restrict: 'A',
-    scope: {filterOrigin: '@?brFilterOrigin', fixed: '@?brFixed'},
+    scope: {
+      alertCategory: '@?brAlertCategory',
+      filterOrigin: '@?brFilterOrigin',
+      fixed: '@?brFixed'
+    },
     templateUrl: '/app/components/alert/alerts.html',
     link: Link
   };
 
   function Link(scope, element, attrs) {
     scope.app = $rootScope.app;
-    attrs.$observe('brAlertCategory', function(value) {
-      if(value === undefined) {
-        scope.alertCategory = 'all';
-      }
-    });
+    attrs.brAlertCategory = attrs.brAlertCategory || 'all';
 
     var elements = {};
     for(var key in brAlertService.category) {

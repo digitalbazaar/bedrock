@@ -68,8 +68,9 @@ function factory() {
     options.tooltip = {};
 
     // get options
+    attrs.brOptions = attrs.brOptions || {};
     attrs.$observe('brOptions', function(value) {
-      scope.options = options = value ? scope.$eval(value) || {} : {};
+      scope.options = options = scope.$eval(value) || {};
       options.inline = ('inline' in options) ? options.inline : false;
       options.label = options.label || 'Choose...';
       options.placeholder = options.placeholder || (options.label + '...');

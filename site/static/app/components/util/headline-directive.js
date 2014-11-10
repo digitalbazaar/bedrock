@@ -42,9 +42,9 @@ function factory() {
         <div ng-transclude></div> \
       </stackable-popover>',
     link: function(scope, element, attrs) {
+      attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
-        var options = value ? scope.$eval(value) : {};
-        scope.options = options || {};
+        scope.options = scope.$eval(value) || {};
         if(!('menu' in scope.options)) {
           scope.options.menu = true;
         }
