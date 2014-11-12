@@ -251,14 +251,14 @@ api.on('init', function() {
   });
 
   // locate elements via an attribute value
-  by.addLocator('attribute', function(attr, value, parent) {
-    if(arguments.length === 2) {
+  by.addLocator('attribute', function(attr, value, parent, rootSelector) {
+    if(arguments.length === 3) {
       parent = value;
       value = undefined;
     }
     var using = parent || document;
     var query = attr;
-    if(typeof value !== 'undefined') {
+    if(value !== undefined) {
       query += "='" + value + "'";
     }
     query += ']';
