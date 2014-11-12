@@ -40,7 +40,7 @@ api.create = function(options) {
   };
 
   selector.select = function(options) {
-    var el = options.element.element(by.css('br-selector'));
+    var el = options.element.element(by.tagName('br-selector'));
     el.evaluate('selected').then(function(selected) {
       // already selected
       if(selected && selected.id === options.id) {
