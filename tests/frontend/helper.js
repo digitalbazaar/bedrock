@@ -251,8 +251,8 @@ api.on('init', function() {
   });
 
   // locate elements via an attribute value
-  by.addLocator('attribute', function(attr, value, parent, rootSelector) {
-    if(arguments.length === 3) {
+  by.addLocator('attribute', function(attr, value, parent) {
+    if(value && value.querySelectorAll) {
       parent = value;
       value = undefined;
     }
