@@ -1,5 +1,5 @@
 /*!
- * Form directive.
+ * Form group directive.
  *
  * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -32,6 +32,6 @@ function factory() {
   };
 }
 
-return {brForm: factory};
+return {brFormGroup: factory};
 
 });
