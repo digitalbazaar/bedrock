@@ -61,7 +61,6 @@ require.config({
     'jquery-migrate': {deps: ['jquery.bedrock']},
     'jquery.placeholder': {deps: ['jquery']},
     'ng-multi-transclude': {deps: ['angular']},
-    spin: {exports: 'Spinner'},
     stackables: {deps: ['angular', 'dialog-polyfill']},
     underscore: {exports: '_'}
   },
