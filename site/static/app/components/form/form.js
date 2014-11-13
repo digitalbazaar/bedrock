@@ -7,6 +7,8 @@
  */
 define([
   'angular',
+  './form-directive',
+  './form-field-directive',
   './form-group-directive',
   './help-toggle-directive',
   './input-directive',
@@ -17,6 +19,8 @@ define([
   './track-state-directive'
 ], function(
   angular,
+  formDirective,
+  formFieldDirective,
   formGroupDirective,
   helpToggleDirective,
   inputDirective,
@@ -30,6 +34,8 @@ define([
 
 var module = angular.module('app.form', []);
 
+module.directive(formDirective);
+module.directive(formFieldDirective);
 module.directive(formGroupDirective);
 module.directive(helpToggleDirective);
 module.directive(inputDirective);

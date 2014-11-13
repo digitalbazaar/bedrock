@@ -1,5 +1,5 @@
 /*!
- * Form group directive.
+ * Form field directive.
  *
  * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
  *
@@ -24,12 +24,11 @@ function factory() {
       attrs.$observe('brOptions', function(value) {
         var options = scope.options = scope.$eval(value) || {};
         // TODO: grab vocab via identifier from options
-        // TODO: use repeater in template to pass options to br-form-field(s)
       });
     }
   };
 }
 
-return {brFormGroup: factory};
+return {brFormField: factory};
 
 });
