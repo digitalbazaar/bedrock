@@ -99,12 +99,14 @@ function factory(
 
   // preload configured libraries
   var libs = [];
-  angular.forEach(config.data.formLibraries || [], function(id) {
-    libs.push(service.load(id));
-  });
-  Promise.all([libs]).catch(function(err) {
-    brAlertService.add('error', err);
-  });
+  if(config.data.forms) {
+    angular.forEach(config.data.forms.libraries || [], function(id) {
+      libs.push(service.load(id));
+    });
+    Promise.all([libs]).catch(function(err) {
+      brAlertService.add('error', err);
+    });
+  }
 
   // register for system-wide refreshes
   brRefreshService.register(service.collection);
