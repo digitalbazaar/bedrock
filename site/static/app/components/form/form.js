@@ -10,6 +10,7 @@ define([
   './form-directive',
   './form-field-directive',
   './form-group-directive',
+  './form-library-service',
   './help-toggle-directive',
   './input-directive',
   './input-watcher-directive',
@@ -22,6 +23,7 @@ define([
   formDirective,
   formFieldDirective,
   formGroupDirective,
+  formLibraryService,
   helpToggleDirective,
   inputDirective,
   inputWatcherDirective,
@@ -37,6 +39,7 @@ var module = angular.module('app.form', []);
 module.directive(formDirective);
 module.directive(formFieldDirective);
 module.directive(formGroupDirective);
+module.service(formLibraryService);
 module.directive(helpToggleDirective);
 module.directive(inputDirective);
 module.directive(inputWatcherDirective);
