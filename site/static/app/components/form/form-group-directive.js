@@ -17,8 +17,8 @@ function factory() {
       model: '=brModel'
     },
     template: '\
-      <form class="well form-horizontal"> \
-      </form>',
+      <div> \
+      </div>',
     link: function(scope, element, attrs) {
       attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
