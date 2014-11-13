@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  './form-directive',
   './help-toggle-directive',
   './input-directive',
   './input-watcher-directive',
@@ -16,6 +17,7 @@ define([
   './track-state-directive'
 ], function(
   angular,
+  formDirective,
   helpToggleDirective,
   inputDirective,
   inputWatcherDirective,
@@ -28,6 +30,7 @@ define([
 
 var module = angular.module('app.form', []);
 
+module.directive(formDirective);
 module.directive(helpToggleDirective);
 module.directive(inputDirective);
 module.directive(inputWatcherDirective);
