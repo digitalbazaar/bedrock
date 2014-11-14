@@ -7,6 +7,7 @@
  */
 define([
   'angular',
+  './datepicker-directive',
   './form-directive',
   './form-field-directive',
   './form-group-directive',
@@ -20,6 +21,7 @@ define([
   './track-state-directive'
 ], function(
   angular,
+  datepickerDirective,
   formDirective,
   formFieldDirective,
   formGroupDirective,
@@ -36,6 +38,7 @@ define([
 
 var module = angular.module('app.form', []);
 
+module.directive(datepickerDirective);
 module.directive(formDirective);
 module.directive(formFieldDirective);
 module.directive(formGroupDirective);
