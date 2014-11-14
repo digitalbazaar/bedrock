@@ -80,9 +80,13 @@
                     <i class="caret"></i>
                   </button>
                 </div>
+                {% endraw %}
+                {% if clientData.flags.enableCreateIdentity %}
                 <div class="btn-group">
                   <a class="btn br-btn-navbar-inverse" href="/join">Join</a>
                 </div>
+                {% endif %}
+                {% raw %}
               </div>
             </div>
           </form>

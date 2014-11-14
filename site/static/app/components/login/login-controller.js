@@ -19,6 +19,7 @@ function factory($scope, $http, $compile, $window, brAlertService, config) {
   self.request = config.data.queuedRequest;
   self.siteTitle = config.data.siteTitle;
   self.navbar = config.site.navbar;
+  self.flags = config.data.flags;
 
   self.submit = function() {
     // do login

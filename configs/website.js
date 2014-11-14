@@ -36,6 +36,7 @@ config.website.views.vars = {
       width: '182'
     }
   },
+  // TODO: rename to something more along the lines of "shared" or "public"
   // client-side data
   clientData: {
     baseUri: config.server.baseUri,
@@ -45,6 +46,9 @@ config.website.views.vars = {
     // key generation config
     keygen: {
       bits: 2048
+    },
+    flags: {
+      enableCreateIdentity: false
     }
   },
   // contact and social media details
