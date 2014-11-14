@@ -48,7 +48,7 @@ config.website.views.vars = {
       bits: 2048
     },
     flags: {
-      enableCreateIdentity: false
+      enableCreateIdentity: true
     }
   },
   // contact and social media details
