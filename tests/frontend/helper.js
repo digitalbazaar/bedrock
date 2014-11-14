@@ -242,6 +242,13 @@ api.on('init', function() {
     return using.querySelectorAll(query);
   });
 
+  // locate elements by br-datepicker
+  by.addLocator('brDatepicker', function(value, parent) {
+    var using = parent || document;
+    var query = "[br-model='" + value + "'] input[ng-model]";
+    return using.querySelectorAll(query);
+  });
+
   // locate elements by controller
   by.addLocator('controller', function(value, parent) {
     var using = parent || document;
