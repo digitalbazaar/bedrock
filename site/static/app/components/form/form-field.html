@@ -1,0 +1,94 @@
+<div class="form-group">
+  <!--
+  <pre>PROPERTY: {{property|json}}</pre>
+  <pre>VALUE: {{value|json}}</pre>
+  <pre>SCHEMA: {{schema|json}}</pre>
+  <pre>RANGE: {{range|json}}</pre>
+  -->
+  <div ng-switch="range">
+    <div ng-switch-when="rdfs:Resource">
+      <br-input br-model="value[key]"
+        br-options="{
+          icon: 'globe',
+          label: '{{schema.label}}',
+          type: 'url',
+          placeholder: 'Resource URL'
+        }">
+        {{schema.comment}}
+      </br-input>
+    </div>
+    <div ng-switch-when="rdfs:Literal">
+      <br-input br-model="value[key]"
+        br-options="{
+          icon: 'pencil',
+          label: '{{schema.label}}',
+          type: 'text'
+        }">
+        {{schema.comment}}
+      </br-input>
+    </div>
+    <!-- TODO: textarea
+    <div ng-switch-when="...">
+      <br-textarea br-model="value[key]"
+        br-options="{
+          icon: 'comment',
+          name: 'foo.bar',
+          label: 'Comment',
+          placeholder: 'Comment',
+          rows: '3'
+        }"></br-textarea>
+    </div>
+    -->
+    <div ng-switch-when="xsd:dateTime">
+      <br-datepicker br-model="value[key]"
+        br-options="{
+          label: '{{schema.label}}',
+          format: 'yyyy/MM/dd',
+          time: (24*60*60*1000 - 1)
+        }">
+        {{schema.comment}}
+      </br-datepicker>
+    </div>
+    <!-- TODO: schema:image
+    <div ng-switch-when="...">
+      ...
+    </div>
+    -->
+    <div ng-switch-default>
+      <label class="control-label col-sm-3">{{schema.label}}</label>
+      <p class="text-error">Unknown property type. Contact support.</p>
+      <pre>PROPERTY: {{property|json}}</pre>
+      <pre>SCHEMA: {{schema|json}}</pre>
+    </div>
+  </div>
+        <!--
+          <br-input br-model="custom.label"
+            br-options="{
+              icon: 'tag',
+              name: 'custom.{{$index}}.label',
+              placeholder: 'Label',
+              inline: true,
+              columns: {input: 'col-sm-7'}
+            }"></br-input>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-danger"
+              ng-click="badgeTemplate.custom.splice($index, 1)">
+              <i class="fa fa-remove"></i>
+            </button>
+          </div>
+        </div>
+        <br-select br-model="custom.type"
+          br-items="customTypes" br-display-item="item.label"
+          br-options="{
+            name: 'custom.{{$index}}.type', label: 'Type', key: 'id'
+          }"></br-select>
+        <br-input br-model="custom.value"
+          br-options="{
+            icon: (custom.type == 'url' && 'globe') || 'list',
+            name: 'custom.{{$index}}.value',
+            label: 'Value',
+            type: (custom.type == 'url' && 'url') || 'text',
+            placeholder: 'Default {{(custom.type == 'url' && 'URL') || 'Text'}}'
+          }"></br-input>
+        -->
+</div>
