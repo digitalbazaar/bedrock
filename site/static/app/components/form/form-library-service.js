@@ -36,9 +36,8 @@ function factory(
       rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
       xsd: 'http://www.w3.org/2001/XMLSchema#',
       br: 'urn:bedrock:',
-      // FIXME: don't use plural, use a better name, confused w/property term
-      properties: {'@id': 'br:properties', '@container': '@list'},
-      property: {'@id': 'br:property', '@type': '@vocab'},
+      layout: {'@id': 'br:layout', '@container': '@list'},
+      property: {'@id': 'br:property', '@type': '@id'},
       resource: {'@id': 'br:resource', '@type': '@id'},
       date: {'@id': 'br:date', '@type': 'xsd:dateTime'},
       domain: {'@id': 'rdfs:domain',  '@type': '@id'},
@@ -71,8 +70,7 @@ function factory(
             service.properties[obj.id] = {
               // FIXME: change to a prov source property?
               source: id,
-              value: obj,
-              enabled: false
+              value: obj
             };
           } else if(jsonld.hasValue(obj, 'type', 'PropertyGroup')) {
             // TODO: check for dups
@@ -80,8 +78,7 @@ function factory(
             service.groups[obj.id] = {
               // FIXME: change to a prov source property?
               source: id,
-              value: obj,
-              enabled: false
+              value: obj
             };
           }
         });

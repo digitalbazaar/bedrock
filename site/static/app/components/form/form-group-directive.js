@@ -14,10 +14,21 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
+      group: '=brGroup',
       model: '=brModel'
     },
     template: '\
-      <div> \
+      <div class="section"> \
+        <h4 class="headline">{{group.label}}</h4> \
+        <p class="text-info" ng-show="group.comment">{{group.comment}}</p> \
+        <p ng-show="group.layout.length == 0" class="text-center"> \
+          No fields. \
+        </p> \
+        <div ng-show="group.layout.length > 0" class="well"> \
+          <fieldset> \
+            <br-form-field ng-repeat="property in group.layout" br-property="property" br-model="model" /> \
+          </fieldset> \
+        </div> \
       </div>',
     link: function(scope, element, attrs) {
       attrs.brOptions = attrs.brOptions || {};

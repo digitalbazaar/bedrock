@@ -14,10 +14,20 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
+      layout: '=brLayout',
       model: '=brModel'
     },
     template: '\
       <form class="form-horizontal"> \
+        <div ng-repeat="element in layout" ng-switch="element.property.type"> \
+          <br-form-group ng-switch-when="PropertyGroup" br-model="model" br-group="element.property" /> \
+          <div ng-switch-default> \
+            <p class="text-warning">Unknown layout element.</p> \
+            <pre>{{element|json}}</pre> \
+          </div> \
+        </div> \
+        <pre>LAYOUT: {{layout|json}}</pre> \
+        <pre>MODEL: {{model|json}}</pre> \
       </form>',
     link: function(scope, element, attrs) {
       attrs.brOptions = attrs.brOptions || {};
