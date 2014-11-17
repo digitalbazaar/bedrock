@@ -49,6 +49,9 @@ config.website.views.vars = {
     },
     flags: {
       enableCreateIdentity: true
+    },
+    forms: {
+      vocabs: []
     }
   },
   // contact and social media details
