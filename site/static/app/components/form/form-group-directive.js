@@ -26,7 +26,8 @@ function factory() {
         </p> \
         <div ng-show="group.layout.length > 0" class="well"> \
           <fieldset> \
-            <br-form-field ng-repeat="property in group.layout" br-property="property" br-model="model" /> \
+            <br-form-field ng-repeat="property in group.layout" \
+              br-property="property" br-model="model" /> \
           </fieldset> \
         </div> \
       </div>',

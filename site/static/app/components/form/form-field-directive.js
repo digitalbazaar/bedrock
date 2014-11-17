@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
 'use strict';
 
 /* @ngInject */
-function factory($timeout, brFormLibraryService) {
+function factory() {
   return {
     restrict: 'E',
     scope: {
@@ -26,17 +26,8 @@ function factory($timeout, brFormLibraryService) {
         // TODO: grab vocab via identifier from options
       });
 
-      // FIXME: normalize via framing with @embed=@always
-      if(angular.isString(scope.property.property)) {
-        // lookup property from id
-        scope.propertyId = scope.property.property;
-        // FIXME: handle missing schema
-        scope.schema = brFormLibraryService.properties[scope.propertyId].value;
-      } else {
-        // use inline property object
-        scope.propertyId = scope.property.property.id;
-        scope.schema = scope.property.property;
-      }
+      scope.propertyId = scope.property.property.id;
+      scope.schema = scope.property.property;
       scope.range = scope.schema.range;
       scope.value = scope.model;
       scope.key = scope.propertyId;

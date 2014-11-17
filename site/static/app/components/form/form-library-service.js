@@ -18,14 +18,7 @@ function factory(
   $rootScope, config, brAlertService, brRefreshService, brResourceService) {
   var service = {};
 
-  // loaded resources indexed by id
-  service.libraries = {};
-  // all properties from the libraries indexed by id
-  service.properties = {};
-  // all property groups from the libraries indexed by id
-  service.groups = {};
-
-  // FIXME: this only works if resources have ids, need different storage?
+  // collection of all vocabs
   service.collection = new brResourceService.Collection();
 
   var CONTEXT = {
@@ -50,60 +43,76 @@ function factory(
     }
   };
 
-  service.load = function(id) {
-    if(id in service.libraries) {
-      return Promise.resolve(service.libraries[id]);
+  // frames properties and property groups
+  var FRAME = {
+    '@context': CONTEXT,
+    type: ['Property', 'PropertyGroup']
+  };
+
+  service.create = function() {
+    return new Library();
+  };
+
+  function Library() {
+    var self = this;
+
+    // all loaded vocabs
+    self.vocabs = {};
+    // all properties from all loaded vocabs
+    self.properties = {};
+    // all groups from all loaded vocabs
+    self.groups = {};
+    // flattened graph of all properties and groups
+    self.graph = {'@context': CONTEXT, '@graph': []};
+
+    // preload configured vocabs
+    var vocabs = [];
+    if(config.data.forms) {
+      angular.forEach(config.data.forms.vocabs || [], function(id) {
+        vocabs.push(self.load(id));
+      });
+      Promise.all([vocabs]).catch(function(err) {
+        brAlertService.add('error', err);
+      });
     }
+  }
+
+  Library.prototype.load = function(id) {
+    var self = this;
     return service.collection.get(id)
-      .then(function(data) {
-        // normalize data format
-        // TODO: add framing step
-        return jsonldPromises.compact(data, CONTEXT);
+      .then(function(vocab) {
+        // compact
+        return jsonldPromises.compact(vocab, CONTEXT);
       })
-      .then(function(data) {
-        // store data
-        // FIXME: use json-ld features vs raw json parsing
-        var objs = jsonld.getValues(data, '@graph');
-        angular.forEach(objs, function(obj) {
-          if(jsonld.hasValue(obj, 'type', 'Property')) {
-            // TODO: check for dups
-            service.properties[obj.id] = {
-              // FIXME: change to a prov source property?
-              source: id,
-              value: obj
-            };
-          } else if(jsonld.hasValue(obj, 'type', 'PropertyGroup')) {
-            // TODO: check for dups
-            // store source location and value
-            service.groups[obj.id] = {
-              // FIXME: change to a prov source property?
-              source: id,
-              value: obj
-            };
+      .then(function(vocab) {
+        // store vocab
+        self.vocabs[id] = vocab;
+        // frame properties and groups w/embedded properties
+        return jsonldPromises.frame(vocab, FRAME, {embed: '@always'});
+      })
+      .then(function(framed) {
+        // merge into existing properties and reframe
+        var nodes = jsonld.getValues(framed, '@graph');
+        self.graph['@graph'].push.apply(self.graph['@graph'], nodes);
+        return jsonldPromises.frame(self.graph, FRAME, {embed: '@always'});
+      })
+      .then(function(framed) {
+        self.graph = framed;
+        // build property and group indexes
+        self.properties = {};
+        self.groups = {};
+        var nodes = jsonld.getValues(framed, '@graph');
+        angular.forEach(nodes, function(node) {
+          // raise conflict exception, overwrite silently?
+          if(jsonld.hasValue(node, 'type', 'Property')) {
+            self.properties[node.id] = node;
+          } else if(jsonld.hasValue(node, 'type', 'PropertyGroup')) {
+            self.groups[node.id] = node;
           }
         });
-        return data;
-      })
-      .then(function(data) {
-        service.libraries[id] = data;
-        return data;
+        return self.vocabs[id];
       });
   };
-
-  service.unload = function(id) {
-    console.log('TODO: Implement unload', id);
-  };
-
-  // preload configured libraries
-  var libs = [];
-  if(config.data.forms) {
-    angular.forEach(config.data.forms.libraries || [], function(id) {
-      libs.push(service.load(id));
-    });
-    Promise.all([libs]).catch(function(err) {
-      brAlertService.add('error', err);
-    });
-  }
 
   // register for system-wide refreshes
   brRefreshService.register(service.collection);
