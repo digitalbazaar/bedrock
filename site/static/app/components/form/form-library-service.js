@@ -73,6 +73,8 @@ function factory(
       });
       Promise.all([vocabs]).catch(function(err) {
         brAlertService.add('error', err);
+      }).then(function() {
+        $rootScope.$apply();
       });
     }
   }
