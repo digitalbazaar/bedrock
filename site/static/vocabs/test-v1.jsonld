@@ -63,8 +63,8 @@
 
     "t1": "urn:bedrock-test-1:"
   },
-  "id": "t1:test-v1",
-  "label": "Test V1 Property Library",
+  "id": "t1:library-v1",
+  "label": "Test #1 Property Library V1",
   "@graph": [
     {
       "id": "t1:test",
@@ -165,9 +165,9 @@
     },
 
     {
-      "id": "t1:test-1-kitchen-sink",
+      "id": "t1:kitchen-sink",
       "type": "br:PropertyGroup",
-      "label": "Test Kitchen Sink Properties #1",
+      "label": "Test #1 Kitchen Sink Properties",
       "comment": "A test of various properties.",
       "layout": [
         {
@@ -198,7 +198,7 @@
       ]
     },
     {
-      "id": "t1:test-1-custom-group",
+      "id": "t1:custom-group",
       "type": "br:PropertyGroup",
       "label": "Test Custom Property Group #1",
       "comment": "A sample custom property group.",

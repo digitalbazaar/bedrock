@@ -63,8 +63,8 @@
 
     "t2": "urn:bedrock-test-2:"
   },
-  "id": "t2:test2-v1",
-  "label": "Test2 V1 Property Library",
+  "id": "t2:library-v1",
+  "label": "Test #2 Property Library V1",
   "@graph": [
     {
       "id": "t2:test",
@@ -165,9 +165,9 @@
     },
 
     {
-      "id": "t2:test-2-kitchen-sink",
+      "id": "t2:kitchen-sink",
       "type": "br:PropertyGroup",
-      "label": "Test Kitchen Sink Properties #2",
+      "label": "Test #2 Kitchen Sink Properties",
       "comment": "A test of various properties.",
       "layout": [
         {
