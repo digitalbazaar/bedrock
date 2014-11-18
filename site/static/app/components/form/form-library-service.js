@@ -66,12 +66,16 @@ function factory(
     self.graph = {'@context': CONTEXT, '@graph': []};
 
     // preload configured vocabs
-    var vocabs = [];
     if(config.data.forms) {
+      // TODO: fix library merging to allow for parallelizing library
+      // loading
+      var promise = Promise.resolve();
       angular.forEach(config.data.forms.vocabs || [], function(id) {
-        vocabs.push(self.load(id));
+        promise = promise.then(function() {
+          return self.load(id);
+        });
       });
-      Promise.all([vocabs]).catch(function(err) {
+      promise.catch(function(err) {
         brAlertService.add('error', err);
       }).then(function() {
         $rootScope.$apply();
@@ -93,10 +97,25 @@ function factory(
         return jsonldPromises.frame(vocab, FRAME, {embed: '@always'});
       })
       .then(function(framed) {
-        // merge into existing properties and reframe
-        var nodes = jsonld.getValues(framed, '@graph');
-        self.graph['@graph'].push.apply(self.graph['@graph'], nodes);
-        return jsonldPromises.frame(self.graph, FRAME, {embed: '@always'});
+        // FIXME: temporary hack to prevent accidental bnode collisions
+        // really needs to use a jsonld.merge API
+        return jsonldPromises.normalize(self.graph)
+          .then(function(normalized) {
+            return jsonldPromises.fromRDF(normalized);
+          })
+          .then(function(doc) {
+            return jsonldPromises.compact(doc, CONTEXT);
+          })
+          .then(function(doc) {
+            // merge into existing doc
+            var nodes = jsonld.getValues(framed, '@graph');
+            doc['@graph'] = (doc['@graph'] || []).concat(nodes);
+            return doc;
+          });
+      })
+      .then(function(merged) {
+        // reframe merged data
+        return jsonldPromises.frame(merged, FRAME, {embed: '@always'});
       })
       .then(function(framed) {
         self.graph = framed;
