@@ -59,13 +59,15 @@
     "label": "rdfs:label",
     "value": "rdf:value",
     "Property": "rdf:Property",
-    "PropertyGroup": "br:PropertyGroup"
+    "PropertyGroup": "br:PropertyGroup",
+
+    "t2": "urn:bedrock-test-2:"
   },
-  "id": "br:test2-v1",
+  "id": "t2:test2-v1",
   "label": "Test2 V1 Property Library",
   "@graph": [
     {
-      "id": "br:test",
+      "id": "t2:test",
       "type": "owl:Ontology",
       "dc:abstract": "This document describes a number of classes and properties for use in testing the Bedrock vocab features.",
       "label": "Bedrock Test Vocabulary",
@@ -79,15 +81,15 @@
       "comment": "A group of related properties."
     },
     {
-      "id": "br:properties",
+      "id": "br:layout",
       "type": "rdf:Property",
-      "label": "Property Layout",
+      "label": "PropertyGroup Layout",
       "comment": "An ordered list of Properties and PropertyGroups.",
       "domain": "br:PropertyGroup"
     },
 
     {
-      "id": "br:resource-2",
+      "id": "t2:resource",
       "type": "rdf:Property",
       "label": "Test Resource URL",
       "comment": "A resource URL.",
@@ -96,7 +98,7 @@
       "vs:term_status": "unstable"
     },
     {
-      "id": "br:resource2-2",
+      "id": "t2:resource2",
       "type": "rdf:Property",
       "label": "2nd Test Resource URL",
       "comment": "A resource URL.",
@@ -105,7 +107,7 @@
       "vs:term_status": "unstable"
     },
     {
-      "id": "br:string-2",
+      "id": "t2:string",
       "type": "rdf:Property",
       "label": "Test String",
       "comment": "A string.",
@@ -114,7 +116,7 @@
       "vs:term_status": "unstable"
     },
     {
-      "id": "br:string2-2",
+      "id": "t2:string2",
       "type": "rdf:Property",
       "label": "2nd Test String (w/ default)",
       "comment": "A string.",
@@ -124,7 +126,7 @@
       "br:default": "default string2"
     },
     {
-      "id": "br:string3-2",
+      "id": "t2:string3",
       "type": "rdf:Property",
       "label": "3nd Test String (w/o default)",
       "comment": "A string.",
@@ -133,7 +135,7 @@
       "vs:term_status": "unstable"
     },
     {
-      "id": "br:string4-2",
+      "id": "t2:string4",
       "type": "rdf:Property",
       "label": "4th Test String (w/ default)",
       "comment": "A string.",
@@ -143,7 +145,7 @@
       "br:default": "default string4"
     },
     {
-      "id": "br:date-2",
+      "id": "t2:date",
       "type": "rdf:Property",
       "label": "Test Date",
       "comment": "A date and time. The value MUST be expressed using an ISO-8601 date/time string.",
@@ -152,7 +154,7 @@
       "vs:term_status": "unstable"
     },
     {
-      "id": "br:image-2",
+      "id": "t2:image",
       "type": "rdf:Property",
       "owl:sameAs": "schema:image",
       "label": "Test Image",
@@ -163,31 +165,31 @@
     },
 
     {
-      "id": "br:test-kitchen-sink-2",
+      "id": "t2:test-2-kitchen-sink",
       "type": "br:PropertyGroup",
       "label": "Test Kitchen Sink Properties #2",
       "comment": "A test of various properties.",
       "layout": [
         {
-          "property": "br:resource-2",
+          "property": "t2:resource",
           "value": null
         },
         {
-          "property": "br:string-2",
+          "property": "t2:string",
           "value": "string default"
         },
         {
-          "property": "br:string2-2"
+          "property": "t2:string2"
         },
         {
-          "property": "br:string4-2",
+          "property": "t2:string4",
           "value": "override of string4 default"
         },
         {
-          "property": "br:image-2"
+          "property": "t2:image"
         },
         {
-          "property": "br:date-2",
+          "property": "t2:date",
           "value": {
             "type": "xsd:dateTime",
             "@value": "2014-10-29T12:00:00-04:00"
