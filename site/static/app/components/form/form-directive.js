@@ -14,21 +14,20 @@ function factory() {
   return {
     restrict: 'E',
     scope: {
-      library: '=brLibrary',
       groups: '=brGroups',
       model: '=brModel'
     },
     template: '\
       <form class="form-horizontal"> \
-        <div ng-repeat="group in groups" ng-switch="library[group].type"> \
+        <div ng-repeat="group in groups" ng-switch="group.type"> \
           <br-form-group ng-switch-when="PropertyGroup" \
-            br-model="model" br-group="library[group]" /> \
+            br-model="model" br-group="group" /> \
           <div ng-switch-default> \
             <p class="text-warning">Unknown group.</p> \
             <pre>{{group|json}}</pre> \
           </div> \
         </div> \
-        <pre>LIBRARY: {{library|json}}</pre> \
+        <pre>GROUPS: {{groups|json}}</pre> \
         <pre>MODEL: {{model|json}}</pre> \
       </form>',
     link: function(scope, element, attrs) {
