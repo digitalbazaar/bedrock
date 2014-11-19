@@ -5,7 +5,7 @@ describe('revoke key', function() {
   var email = sysIdentifier + '@bedrock.dev';
   var password = 'password';
 
-  it('should create a new user', function() {
+  it('should create a new identity', function() {
     helper.pages.join.get().createIdentity({
       email: email,
       label: sysIdentifier,
