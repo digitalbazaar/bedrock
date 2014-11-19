@@ -97,21 +97,8 @@ function factory(
         return jsonldPromises.frame(vocab, FRAME, {embed: '@always'});
       })
       .then(function(framed) {
-        // FIXME: temporary hack to prevent accidental bnode collisions
-        // really needs to use a jsonld.merge API
-        return jsonldPromises.normalize(self.graph)
-          .then(function(normalized) {
-            return jsonldPromises.fromRDF(normalized);
-          })
-          .then(function(doc) {
-            return jsonldPromises.compact(doc, CONTEXT);
-          })
-          .then(function(doc) {
-            // merge into existing doc
-            var nodes = jsonld.getValues(framed, '@graph');
-            doc['@graph'] = (doc['@graph'] || []).concat(nodes);
-            return doc;
-          });
+        // merge in new properties/groups
+        return jsonldPromises.merge([self.graph, framed]);
       })
       .then(function(merged) {
         // reframe merged data
