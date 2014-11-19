@@ -89,7 +89,7 @@ function factory(
     return service.collection.get(id)
       .then(function(vocab) {
         // compact
-        return jsonldPromises.compact(vocab, CONTEXT);
+        return jsonldPromises.compact(vocab, CONTEXT, {base: id});
       })
       .then(function(vocab) {
         // store vocab
