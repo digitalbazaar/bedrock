@@ -10,7 +10,7 @@ define([], function() {
 'use strict';
 
 /* @ngInject */
-function datepickerFactory($timeout) {
+function datepickerFactory($filter, $timeout) {
   return {
     restrict: 'E',
     scope: {
@@ -45,7 +45,7 @@ function datepickerFactory($timeout) {
             placeholder="{{ctrl.options.placeholder}}" \
             datepicker-popup="{{ctrl.options.format}}" \
             is-open="ctrl.calendarOpen" \
-            ng-model="ctrl.model" \
+            ng-model="ctrl.date" \
             ng-change="ctrl.change()" \
             ng-blur="ctrl.change()" \
             ng-keyup="($event.which == 13 || $event.which == 27) && \
@@ -89,10 +89,29 @@ function datepickerFactory($timeout) {
   }
 
   function Link(scope, element, attrs, ctrl) {
-    // when date changes, add time option if given
+    scope.$watch(function() {
+      return ctrl.model;
+    }, function(value) {
+      if(value && ctrl.options) {
+        if(ctrl.options.modelType === 'string') {
+          ctrl.date = new Date(value);
+        } else {
+          ctrl.date = value;
+        }
+      }
+    });
+
+    // when date changes, update model
+    var dateFilter = $filter('date');
     ctrl.change = function() {
-      if(ctrl.model && ctrl.options.time) {
-        ctrl.model = setTime(ctrl.model, ctrl.options.time);
+      if(ctrl.date && ctrl.options.time) {
+        // add time option
+        ctrl.date = setTime(ctrl.date, ctrl.options.time);
+      }
+      if(ctrl.options.modelType === 'string') {
+        ctrl.model = dateFilter(ctrl.date, ctrl.options.format);
+      } else {
+        ctrl.model = ctrl.date;
       }
     };
 
@@ -103,6 +122,7 @@ function datepickerFactory($timeout) {
       options.format = ('format' in options) ? options.format : 'yyyy-MM-dd';
       options.placeholder = options.placeholder || '';
       options.inline = ('inline' in options) ? options.inline : false;
+      options.modelType = ('modelType' in options) ? options.modelType : 'date';
 
       // prefix "fa-" to icon
       if(typeof options.icon === 'string' &&
