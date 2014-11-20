@@ -55,6 +55,8 @@
     "value": "rdf:value",
     "Property": "rdf:Property",
     "PropertyGroup": "br:PropertyGroup",
-    "Resource": "rdfs:Resource"
+    "URL": "rdfs:Resource",
+    "String": "rdfs:Literal",
+    "Date": "xsd:dateTime"
   }
 }
