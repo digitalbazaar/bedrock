@@ -21,25 +21,27 @@ function factory() {
       <form ng-if="options.editable" class="form-horizontal"> \
         <div ng-repeat="group in groups" ng-switch="group.type"> \
           <br-form-group ng-switch-when="PropertyGroup" \
-            br-model="model" br-group="group" br-options="options" /> \
+            br-model="model" br-group="group" br-options="{{options}}" /> \
           <div ng-switch-default> \
             <p class="text-warning">Unknown group.</p> \
             <pre>{{group|json}}</pre> \
           </div> \
         </div> \
       </form> \
-      <!-- \
-      <pre>GROUPS: {{groups|json}}</pre> \
-      <pre>MODEL: {{model|json}}</pre> \
-      --> \
-      <div ng-if="!options.editor" ng-repeat="group in groups" ng-switch="group.type"> \
+      <div ng-if="!options.editable" ng-repeat="group in groups" ng-switch="group.type"> \
         <br-form-group ng-switch-when="PropertyGroup" \
-          br-model="model" br-group="group" br-options="options" /> \
+          br-model="model" br-group="group" br-options="{{options}}" /> \
         <div ng-switch-default> \
           <p class="text-warning">Unknown group.</p> \
           <pre>{{group|json}}</pre> \
         </div> \
-      </div>',
+      </div> \
+      <!-- \
+      <pre>FORM OPTIONS: {{options|json}}</pre> \
+      <pre>FORM GROUPS: {{groups|json}}</pre> \
+      <pre>FORM MODEL: {{model|json}}</pre> \
+      --> \
+      ',
     link: function(scope, element, attrs) {
       attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {

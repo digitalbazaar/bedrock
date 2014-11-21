@@ -18,6 +18,7 @@ function factory() {
       model: '=brModel'
     },
     template: '\
+      <!-- <pre>GROUP OPTIONS: {{options|json}}</pre> --> \
       <div class="section"> \
         <h4 class="headline">{{group.label}}</h4> \
         <p class="text-info" ng-show="group.comment">{{group.comment}}</p> \
@@ -27,12 +28,12 @@ function factory() {
         <div ng-if="options.editable" ng-show="group.layout.length > 0" class="well"> \
           <fieldset> \
             <br-form-field ng-repeat="property in group.layout" \
-              br-property="property" br-model="model" br-options="options" /> \
+              br-property="property" br-model="model" br-options="{{options}}" /> \
           </fieldset> \
         </div> \
         <dl ng-if="!options.editable" ng-show="group.layout.length > 0" class="dl-horizontal"> \
           <br-form-field ng-repeat="property in group.layout" \
-            br-property="property" br-model="model" br-options="options" /> \
+            br-property="property" br-model="model" br-options="{{options}}" /> \
         </dl> \
       </div>',
     link: function(scope, element, attrs) {
