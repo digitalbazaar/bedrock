@@ -10,9 +10,6 @@ define(['angular', 'jsonld'], function(angular, jsonld) {
 
 'use strict';
 
-// cache jsonld promises api
-var jsonldPromises = jsonld.promises();
-
 /* @ngInject */
 function factory(
   $rootScope, config, brAlertService, brRefreshService, brResourceService) {
@@ -89,21 +86,21 @@ function factory(
     return service.collection.get(id)
       .then(function(vocab) {
         // compact
-        return jsonldPromises.compact(vocab, CONTEXT, {base: id});
+        return jsonld.promises.compact(vocab, CONTEXT, {base: id});
       })
       .then(function(vocab) {
         // store vocab
         self.vocabs[id] = vocab;
         // frame properties and groups w/embedded properties
-        return jsonldPromises.frame(vocab, FRAME, {embed: '@always'});
+        return jsonld.promises.frame(vocab, FRAME, {embed: '@always'});
       })
       .then(function(framed) {
         // merge in new properties/groups
-        return jsonldPromises.merge([self.graph, framed]);
+        return jsonld.promises.merge([self.graph, framed]);
       })
       .then(function(merged) {
         // reframe merged data
-        return jsonldPromises.frame(merged, FRAME, {embed: '@always'});
+        return jsonld.promises.frame(merged, FRAME, {embed: '@always'});
       })
       .then(function(framed) {
         self.graph = framed;
