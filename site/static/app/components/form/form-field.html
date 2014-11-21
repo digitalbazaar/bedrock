@@ -1,10 +1,11 @@
-<div class="form-group">
-  <!--
-  <pre>PROPERTY: {{property|json}}</pre>
-  <pre>VALUE: {{value|json}}</pre>
-  <pre>SCHEMA: {{schema|json}}</pre>
-  <pre>RANGE: {{range|json}}</pre>
-  -->
+<!--
+<pre>PROPERTY: {{property|json}}</pre>
+<pre>KEY: {{key|json}}</pre>
+<pre>VALUE: {{value|json}}</pre>
+<pre>SCHEMA: {{schema|json}}</pre>
+<pre>RANGE: {{range|json}}</pre>
+-->
+<div ng-if="options.editable" class="form-group">
   <div ng-switch="range">
     <div ng-switch-when="rdfs:Resource">
       <br-input br-model="value[key]"
@@ -91,4 +92,39 @@
             placeholder: 'Default {{(custom.type == 'url' && 'URL') || 'Text'}}'
           }"></br-input>
         -->
+</div>
+<div ng-if="!options.editable">
+  <!-- FIXME: add schema.comment as help text -->
+  <dt ng-if="value[key]">{{schema.label}}</dt>
+  <dd ng-if="value[key]">
+    <ul class="list-unstyled">
+      <!-- FIXME: repeat over array -->
+      <li ng-switch="range">
+        <div ng-switch-when="rdfs:Resource">
+          <a href="{{value[key]}}">{{value[key]}}</a>
+        </div>
+        <div ng-switch-when="rdfs:Literal">
+          {{value[key]}}
+        </div>
+        <!-- TODO: textarea
+        <div ng-switch-when="...">
+          <p>{{value[key]}}</p>
+        </div>
+        -->
+        <div ng-switch-when="xsd:dateTime">
+          {{value[key] | date:'medium'}}
+        </div>
+        <!-- TODO: schema:image
+        <div ng-switch-when="...">
+          <img ng-src="{{value[key]}}" />
+        </div>
+        -->
+        <div ng-switch-default>
+          <p class="text-error">Unknown property type. Contact support.</p>
+          <pre>PROPERTY: {{property|json}}</pre>
+          <pre>SCHEMA: {{schema|json}}</pre>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

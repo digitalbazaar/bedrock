@@ -18,18 +18,28 @@ function factory() {
       model: '=brModel'
     },
     template: '\
-      <form class="form-horizontal"> \
+      <form ng-if="options.editable" class="form-horizontal"> \
         <div ng-repeat="group in groups" ng-switch="group.type"> \
           <br-form-group ng-switch-when="PropertyGroup" \
-            br-model="model" br-group="group" /> \
+            br-model="model" br-group="group" br-options="options" /> \
           <div ng-switch-default> \
             <p class="text-warning">Unknown group.</p> \
             <pre>{{group|json}}</pre> \
           </div> \
         </div> \
-        <pre>GROUPS: {{groups|json}}</pre> \
-        <pre>MODEL: {{model|json}}</pre> \
-      </form>',
+      </form> \
+      <!-- \
+      <pre>GROUPS: {{groups|json}}</pre> \
+      <pre>MODEL: {{model|json}}</pre> \
+      --> \
+      <div ng-if="!options.editor" ng-repeat="group in groups" ng-switch="group.type"> \
+        <br-form-group ng-switch-when="PropertyGroup" \
+          br-model="model" br-group="group" br-options="options" /> \
+        <div ng-switch-default> \
+          <p class="text-warning">Unknown group.</p> \
+          <pre>{{group|json}}</pre> \
+        </div> \
+      </div>',
     link: function(scope, element, attrs) {
       attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
