@@ -55,7 +55,8 @@ function factory() {
 
       // special dateTime handling
       if(scope.range === 'xsd:dateTime') {
-        // handle object with data stored in @value
+        // FIXME: due to compaction w/bedrock form context, data should always
+        // be in expanded form and stored in @value, so remove this conditional
         if(!angular.isDate(scope.value[scope.key]) &&
           angular.isObject(scope.value[scope.key])) {
           scope.value = scope.value[scope.key];
@@ -63,7 +64,8 @@ function factory() {
         }
 
         // ensure date is a date object
-        // FIXME: add string model support to datepicker
+        // FIXME: add string model support to datepicker and remove conditional
+        // below
         if(!angular.isDate(scope.value[scope.key])) {
           scope.value[scope.key] = new Date(scope.value[scope.key]);
         }
