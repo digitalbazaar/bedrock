@@ -104,14 +104,16 @@ function datepickerFactory($filter, $timeout) {
     // when date changes, update model
     var dateFilter = $filter('date');
     ctrl.change = function() {
-      if(ctrl.date && ctrl.options.time) {
-        // add time option
-        ctrl.date = setTime(ctrl.date, ctrl.options.time);
-      }
-      if(ctrl.options.modelType === 'string') {
-        ctrl.model = dateFilter(ctrl.date, ctrl.options.format);
-      } else {
-        ctrl.model = ctrl.date;
+      if(ctrl.date) {
+        if(ctrl.options.time) {
+          // add time option
+          ctrl.date = setTime(ctrl.date, ctrl.options.time);
+        }
+        if(ctrl.options.modelType === 'string') {
+          ctrl.model = dateFilter(ctrl.date, ctrl.options.format);
+        } else {
+          ctrl.model = ctrl.date;
+        }
       }
     };
 
