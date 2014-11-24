@@ -29,6 +29,9 @@ var privateKey = {
 };
 var publicKey = {
   id: 'https://bedrock.dev/i/username/keys/1',
+  type: 'CryptographicKey',
+  owner: 'https://bedrock.dev/i/username',
+  label: 'Username Key 1',
   publicKeyPem:
   '-----BEGIN PUBLIC KEY-----\r\n' +
   'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4R1AmYYyE47FMZgo708NhFU+t\r\n' +
@@ -36,6 +39,17 @@ var publicKey = {
   'Zkdsjqs3o62En4YjlHWxgeGmkiRqGfZ3sJ3u5WZ2xwapdZY3/2T/oOV5ri8SktTv\r\n' +
   'mVGCyhwFuJC/NbJMEwIDAQAB\r\n' +
   '-----END PUBLIC KEY-----'
+};
+
+var publicKeyOwner = {
+  id: 'https://bedrock.dev/i/username',
+  type: 'Identity',
+  'publicKey': {
+    id: 'https://bedrock.dev/i/username/keys/1',
+    type: 'CryptographicKey',
+    owner: 'https://bedrock.dev/i/username',
+    label: 'Username Key 1'
+  }
 };
 
 var testObject = {
@@ -67,12 +81,14 @@ describe('bedrock.security', function() {
         creator: publicKey.id
       }, function(err, signed) {
         should.not.exist(err);
-        bedrock.security.verifyJsonLd(signed, publicKey,
-          function(err, verified) {
-            should.not.exist(err);
-            verified.should.be.true;
-            done();
-          });
+        bedrock.security.verifyJsonLd(signed, {
+          publicKey: publicKey,
+          publicKeyOwner: publicKeyOwner
+        }, function(err, verified) {
+          should.not.exist(err);
+          verified.should.be.true;
+          done();
+        });
       });
     });
   });
