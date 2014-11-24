@@ -17,7 +17,7 @@
     "forge": "~0.6.16",
     "jquery": "~1.11.1",
     "jquery-migrate": "~1.2.1",
-    "jsonld": "~0.3.7",
+    "jsonld": "~0.3.8",
     "opencred-verifier": "~0.0.6",
     "ng-multi-transclude": "~0.1.2",
     "requirejs": "~2.1.15",
