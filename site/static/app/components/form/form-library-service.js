@@ -32,12 +32,15 @@ function factory(
       resource: {'@id': 'br:resource', '@type': '@id'},
       date: {'@id': 'br:date', '@type': 'xsd:dateTime'},
       domain: {'@id': 'rdfs:domain',  '@type': '@id'},
-      range: {'@id': 'rdfs:range', '@type': '@id'},
+      range: {'@id': 'rdfs:range', '@type': '@vocab'},
       comment: 'rdfs:comment',
       label: 'rdfs:label',
       value: 'rdf:value',
       Property: 'rdf:Property',
-      PropertyGroup: 'br:PropertyGroup'
+      PropertyGroup: 'br:PropertyGroup',
+      URL: "rdfs:Resource",
+      String: "rdfs:Literal",
+      Date: "xsd:dateTime"
     }
   };
 

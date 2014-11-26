@@ -8,7 +8,7 @@
 -->
 <div ng-if="options.editable" class="form-group">
   <div ng-switch="range">
-    <div ng-switch-when="rdfs:Resource">
+    <div ng-switch-when="URL">
       <br-input br-model="value[key]"
         br-options="{
           icon: 'globe',
@@ -19,7 +19,7 @@
         {{schema.comment}}
       </br-input>
     </div>
-    <div ng-switch-when="rdfs:Literal">
+    <div ng-switch-when="String">
       <br-input br-model="value[key]"
         br-options="{
           icon: 'pencil',
@@ -41,7 +41,7 @@
         }"></br-textarea>
     </div>
     -->
-    <div ng-switch-when="xsd:dateTime">
+    <div ng-switch-when="Date">
       <br-datepicker br-model="value[key]"
         br-options="{
           label: '{{schema.label}}',

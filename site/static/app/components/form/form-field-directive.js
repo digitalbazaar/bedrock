@@ -43,7 +43,7 @@ function factory() {
         scope.value[scope.key] = angular.copy(scope.schema['br:default']);
       } else {
         // use default value
-        if(scope.range === 'xsd:dateTime') {
+        if(scope.range === 'Date') {
           scope.value[scope.key] = {
             type: 'xsd:dateTime',
             '@value': new Date()
@@ -54,7 +54,7 @@ function factory() {
       }
 
       // special dateTime handling
-      if(scope.range === 'xsd:dateTime') {
+      if(scope.range === 'Date') {
         // FIXME: due to compaction w/bedrock form context, data should always
         // be in expanded form and stored in @value, so remove this conditional
         if(!angular.isDate(scope.value[scope.key]) &&
