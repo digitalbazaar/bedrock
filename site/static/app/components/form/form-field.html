@@ -1,59 +1,57 @@
 <!--
-<pre>FIELD OPTIONS: {{options|json}}</pre>
-<pre>FIELD PROPERTY: {{property|json}}</pre>
-<pre>FIELD KEY: {{key|json}}</pre>
-<pre>FIELD VALUE: {{value|json}}</pre>
-<pre>FIELD SCHEMA: {{schema|json}}</pre>
-<pre>FIELD RANGE: {{range|json}}</pre>
+<pre>FIELD OPTIONS: {{ctrl.options|json}}</pre>
+<pre>FIELD PROPERTY: {{ctrl.property|json}}</pre>
+<pre>FIELD KEY: {{ctrl.key|json}}</pre>
+<pre>FIELD VALUE: {{ctrl.value|json}}</pre>
+<pre>FIELD SCHEMA: {{ctrl.schema|json}}</pre>
+<pre>FIELD RANGE: {{ctrl.range|json}}</pre>
 -->
-<div ng-if="options.editable" class="form-group">
-  <div ng-switch="range">
+<div ng-if="ctrl.options.editable" class="form-group">
+  <div ng-switch="ctrl.range">
     <div ng-switch-when="URL">
-      <br-select ng-if="rangeOptions" br-model="value[key]"
-        br-items="rangeOptions" br-display-item="item.label"
+      <br-select ng-if="ctrl.rangeOptions" br-model="ctrl.selected"
+        br-items="ctrl.rangeOptions" br-display-item="item.label"
         br-options="{
           icon: 'globe',
-          name: '{{key}}',
-          label: '{{schema.label}}',
-          key: 'value'
+          name: '{{ctrl.key}}',
+          label: '{{ctrl.schema.label}}'
         }">
-        {{schema.comment}}
+        {{ctrl.schema.comment}}
       </br-select>
-      <br-input ng-if="!rangeOptions" br-model="value[key]"
+      <br-input ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
         br-options="{
           icon: 'globe',
-          name: '{{key}}',
-          label: '{{schema.label}}',
+          name: '{{ctrl.key}}',
+          label: '{{ctrl.schema.label}}',
           type: 'url',
           placeholder: 'Resource URL'
         }">
-        {{schema.comment}}
+        {{ctrl.schema.comment}}
       </br-input>
     </div>
     <div ng-switch-when="String">
-      <br-select ng-if="rangeOptions" br-model="value[key]"
-        br-items="rangeOptions" br-display-item="item.label"
+      <br-select ng-if="ctrl.rangeOptions" br-model="ctrl.selected"
+        br-items="ctrl.rangeOptions" br-display-item="item.label"
         br-options="{
           icon: 'pencil',
-          name: '{{key}}',
-          label: '{{schema.label}}',
-          key: 'value'
+          name: '{{ctrl.key}}',
+          label: '{{ctrl.schema.label}}'
         }">
-        {{schema.comment}}
+        {{ctrl.schema.comment}}
       </br-select>
-      <br-input ng-if="!rangeOptions" br-model="value[key]"
+      <br-input ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
         br-options="{
           icon: 'pencil',
-          name: '{{key}}',
-          label: '{{schema.label}}',
+          name: '{{ctrl.key}}',
+          label: '{{ctrl.schema.label}}',
           type: 'text'
         }">
-        {{schema.comment}}
+        {{ctrl.schema.comment}}
       </br-input>
     </div>
     <!-- TODO: textarea
     <div ng-switch-when="...">
-      <br-textarea br-model="value[key]"
+      <br-textarea br-model="ctrl.value[ctrl.key]"
         br-options="{
           icon: 'comment',
           name: 'foo.bar',
@@ -64,23 +62,22 @@
     </div>
     -->
     <div ng-switch-when="Date">
-      <br-select ng-if="rangeOptions" br-model="value[key]"
-        br-items="rangeOptions" br-display-item="item.label"
+      <br-select ng-if="ctrl.rangeOptions" br-model="ctrl.selected"
+        br-items="ctrl.rangeOptions" br-display-item="item.label"
         br-options="{
-          name: '{{key}}',
-          label: '{{schema.label}}',
-          key: 'value'
+          name: '{{ctrl.key}}',
+          label: '{{ctrl.schema.label}}'
         }">
-        {{schema.comment}}
+        {{ctrl.schema.comment}}
       </br-select>
-      <br-datepicker ng-if="!rangeOptions" br-model="value[key]"
+      <br-datepicker ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
         br-options="{
-          name: '{{key}}',
-          label: '{{schema.label}}',
+          name: '{{ctrl.key}}',
+          label: '{{ctrl.schema.label}}',
           format: 'yyyy/MM/dd',
           time: (24*60*60*1000 - 1)
         }">
-        {{schema.comment}}
+        {{ctrl.schema.comment}}
       </br-datepicker>
     </div>
     <!-- TODO: schema:image
@@ -89,14 +86,14 @@
     </div>
     -->
     <div ng-switch-default>
-      <label class="control-label col-sm-3">{{schema.label}}</label>
+      <label class="control-label col-sm-3">{{ctrl.schema.label}}</label>
       <p class="text-error">Unknown property type. Contact support.</p>
-      <pre>PROPERTY: {{property|json}}</pre>
-      <pre>SCHEMA: {{schema|json}}</pre>
+      <pre>PROPERTY: {{ctrl.property|json}}</pre>
+      <pre>SCHEMA: {{ctrl.schema|json}}</pre>
     </div>
   </div>
         <!--
-          <br-input br-model="custom.label"
+          <br-input br-model="ctrl.custom.label"
             br-options="{
               icon: 'tag',
               name: 'custom.{{$index}}.label',
@@ -106,56 +103,56 @@
             }"></br-input>
           <div class="col-sm-1">
             <button type="button" class="btn btn-danger"
-              ng-click="badgeTemplate.custom.splice($index, 1)">
+              ng-click="ctrl.custom.splice($index, 1)">
               <i class="fa fa-remove"></i>
             </button>
           </div>
         </div>
-        <br-select br-model="custom.type"
-          br-items="customTypes" br-display-item="item.label"
+        <br-select br-model="ctrl.custom.type"
+          br-items="ctrl.customTypes" br-display-item="item.label"
           br-options="{
             name: 'custom.{{$index}}.type', label: 'Type', key: 'id'
           }"></br-select>
-        <br-input br-model="custom.value"
+        <br-input br-model="ctrl.custom.value"
           br-options="{
-            icon: (custom.type == 'url' && 'globe') || 'list',
+            icon: (ctrl.custom.type == 'url' && 'globe') || 'list',
             name: 'custom.{{$index}}.value',
             label: 'Value',
-            type: (custom.type == 'url' && 'url') || 'text',
-            placeholder: 'Default {{(custom.type == 'url' && 'URL') || 'Text'}}'
+            type: (ctrl.custom.type == 'url' && 'url') || 'text',
+            placeholder: 'Default {{(ctrl.custom.type == 'url' && 'URL') || 'Text'}}'
           }"></br-input>
         -->
 </div>
-<div ng-if="!options.editable">
+<div ng-if="!ctrl.options.editable">
   <!-- FIXME: add schema.comment as help text -->
-  <dt ng-if="value[key]">{{schema.label}}</dt>
-  <dd ng-if="value[key]">
+  <dt ng-if="ctrl.value[ctrl.key]">{{ctrl.schema.label}}</dt>
+  <dd ng-if="ctrl.value[ctrl.key]">
     <ul class="list-unstyled">
       <!-- FIXME: repeat over array -->
-      <li ng-switch="range">
+      <li ng-switch="ctrl.range">
         <div ng-switch-when="URL">
-          <a href="{{value[key]}}">{{value[key]}}</a>
+          <a href="{{ctrl.value[ctrl.key]}}">{{ctrl.value[ctrl.key]}}</a>
         </div>
         <div ng-switch-when="String">
-          {{value[key]}}
+          {{ctrl.value[ctrl.key]}}
         </div>
         <!-- TODO: textarea
         <div ng-switch-when="...">
-          <p>{{value[key]}}</p>
+          <p>{{ctrl.value[ctrl.key]}}</p>
         </div>
         -->
         <div ng-switch-when="Date">
-          {{value[key] | date:'medium'}}
+          {{ctrl.value[ctrl.key] | date:'medium'}}
         </div>
         <!-- TODO: schema:image
         <div ng-switch-when="...">
-          <img ng-src="{{value[key]}}" />
+          <img ng-src="{{ctrl.value[ctrl.key]}}" />
         </div>
         -->
         <div ng-switch-default>
           <p class="text-error">Unknown property type. Contact support.</p>
-          <pre>PROPERTY: {{property|json}}</pre>
-          <pre>SCHEMA: {{schema|json}}</pre>
+          <pre>PROPERTY: {{ctrl.property|json}}</pre>
+          <pre>SCHEMA: {{ctrl.schema|json}}</pre>
         </div>
       </li>
     </ul>

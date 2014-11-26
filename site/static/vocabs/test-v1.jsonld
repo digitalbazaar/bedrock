@@ -128,11 +128,15 @@
           "rangeOption": [
             {
               "label": "Choice 1",
-              "value": "http://example.com/choice1"
+              "value": {
+                "@id": "http://example.com/choice1"
+              }
             },
             {
               "label": "Choice 2",
-              "value": "http://example.com/choice2"
+              "value": {
+                "@id": "http://example.com/choice2"
+              }
             }
           ]
         },

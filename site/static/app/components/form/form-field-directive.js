@@ -18,29 +18,33 @@ function factory() {
       property: '=brProperty',
       model: '=brModel'
     },
+    controller: function() {},
+    controllerAs: 'ctrl',
+    bindToController: true,
     templateUrl: '/app/components/form/form-field.html',
-    link: function(scope, element, attrs) {
+    link: function(scope, element, attrs, ctrl) {
       attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
-        scope.options = scope.$eval(value) || {};
+        ctrl.options = scope.$eval(value) || {};
       });
 
-      scope.propertyId = scope.property.property.id;
-      scope.schema = scope.property.property;
-      scope.range = scope.schema.range;
-      scope.value = scope.model;
-      scope.key = scope.propertyId;
+      ctrl.propertyId = ctrl.property.property.id;
+      ctrl.schema = ctrl.property.property;
+      ctrl.range = ctrl.schema.range;
+      ctrl.value = ctrl.model;
+      ctrl.key = ctrl.propertyId;
 
       // build range options, if given
-      if(scope.property.rangeOption) {
-        scope.rangeOptions = [];
-        for(var i = 0; i < scope.property.rangeOption.length; ++i) {
-          var opt = scope.property.rangeOption[i];
+      if(ctrl.property.rangeOption) {
+        ctrl.selected = null;
+        ctrl.rangeOptions = [];
+        for(var i = 0; i < ctrl.property.rangeOption.length; ++i) {
+          var opt = ctrl.property.rangeOption[i];
           var option = {
             label: opt.label,
             value: angular.copy(opt.value)
           };
-          scope.rangeOptions.push(option);
+          ctrl.rangeOptions.push(option);
 
           // shallow copy property groups/dereference them
           if(opt.propertyGroup) {
@@ -52,51 +56,71 @@ function factory() {
               // br-form through br-form-field)
               var group = opt.propertyGroup[i];
               if(angular.isString(group)) {
-                option.propertyGroup.push(scope.library.groups[group]);
+                option.propertyGroup.push(ctrl.library.groups[group]);
               } else {
                 option.propertyGroup.push(group);
               }
             }
           }
         }
+
+        // two-bind selected.value with ctrl.value[ctrl.key]
+        scope.$watch(function() {
+          return ctrl.selected;
+        }, function(selected) {
+          if(selected) {
+            console.log('selection changed', selected.value);
+            ctrl.value[ctrl.key] = selected.value;
+          }
+        });
+        scope.$watch(function() {
+          return ctrl.value[ctrl.key];
+        }, function(value) {
+          for(var i = 0; i < ctrl.rangeOptions.length; ++i) {
+            var option = ctrl.rangeOptions[i];
+            if(option.value === value) {
+              ctrl.selected = option;
+            }
+          }
+        });
       }
 
       // setup target for value storage
-      if(scope.propertyId in scope.model) {
+      if(ctrl.propertyId in ctrl.model) {
         // use value from model
-      } else if('value' in scope.property) {
+      } else if('value' in ctrl.property) {
         // use value from property description
-        scope.value[scope.key] = angular.copy(scope.property.value);
-      } else if('br:default' in scope.schema) {
+        ctrl.value[ctrl.key] = angular.copy(ctrl.property.value);
+      } else if('br:default' in ctrl.schema) {
         // use default from schema description
-        scope.value[scope.key] = angular.copy(scope.schema['br:default']);
+        ctrl.value[ctrl.key] = angular.copy(ctrl.schema['br:default']);
       } else {
         // use default value
-        if(scope.range === 'Date') {
-          scope.value[scope.key] = {
+        if(ctrl.range === 'Date') {
+          ctrl.value[ctrl.key] = {
             type: 'xsd:dateTime',
             '@value': new Date()
           };
         } else {
-          scope.value[scope.key] = null;
+          ctrl.value[ctrl.key] = null;
         }
       }
 
       // special dateTime handling
-      if(scope.range === 'Date') {
+      if(ctrl.range === 'Date') {
         // FIXME: due to compaction w/bedrock form context, data should always
         // be in expanded form and stored in @value, so remove this conditional
-        if(!angular.isDate(scope.value[scope.key]) &&
-          angular.isObject(scope.value[scope.key])) {
-          scope.value = scope.value[scope.key];
-          scope.key = '@value';
+        if(!angular.isDate(ctrl.value[ctrl.key]) &&
+          angular.isObject(ctrl.value[ctrl.key])) {
+          ctrl.value = ctrl.value[ctrl.key];
+          ctrl.key = '@value';
         }
 
         // ensure date is a date object
         // FIXME: add string model support to datepicker and remove conditional
         // below
-        if(!angular.isDate(scope.value[scope.key])) {
-          scope.value[scope.key] = new Date(scope.value[scope.key]);
+        if(!angular.isDate(ctrl.value[ctrl.key])) {
+          ctrl.value[ctrl.key] = new Date(ctrl.value[ctrl.key]);
         }
       }
     }
