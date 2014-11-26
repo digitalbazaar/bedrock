@@ -38,8 +38,6 @@ function factory(
         '@type': '@id',
         '@container': '@set'
       },
-      rangeOptionId: {'@id': 'br:rangeOptionId', '@type': '@id'},
-      rangeOptionType: {'@id': 'br:rangeOptionType', '@type': '@id'},
       comment: 'rdfs:comment',
       label: 'rdfs:label',
       value: 'rdf:value',

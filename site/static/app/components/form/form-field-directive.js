@@ -36,21 +36,11 @@ function factory() {
         scope.rangeOptions = [];
         for(var i = 0; i < scope.property.rangeOption.length; ++i) {
           var opt = scope.property.rangeOption[i];
-          var option = {};
+          var option = {
+            label: opt.label,
+            value: angular.copy(opt.value)
+          };
           scope.rangeOptions.push(option);
-
-          // identify option by id or type
-          if(opt.rangeOptionId) {
-            option.id = opt.rangeOptionId;
-          } else if(opt.rangeOptionType) {
-            option.id = opt.rangeOptionType;
-          }
-
-          if('label' in opt) {
-            option.label = opt.label;
-          } else {
-            option.label = option.id;
-          }
 
           // shallow copy property groups/dereference them
           if(opt.propertyGroup) {

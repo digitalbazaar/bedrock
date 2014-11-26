@@ -127,12 +127,12 @@
           "property": "t1:resource2",
           "rangeOption": [
             {
-              "rangeOptionId": "http://example.com/choice1",
-              "label": "Choice 1"
+              "label": "Choice 1",
+              "value": "http://example.com/choice1"
             },
             {
-              "rangeOptionId": "http://example.com/choice2",
-              "label": "Choice 2"
+              "label": "Choice 2",
+              "value": "http://example.com/choice2"
             }
           ]
         },

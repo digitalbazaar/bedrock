@@ -15,7 +15,7 @@
           icon: 'globe',
           name: '{{key}}',
           label: '{{schema.label}}',
-          key: 'id'
+          key: 'value'
         }">
         {{schema.comment}}
       </br-select>
@@ -31,7 +31,17 @@
       </br-input>
     </div>
     <div ng-switch-when="String">
-      <br-input br-model="value[key]"
+      <br-select ng-if="rangeOptions" br-model="value[key]"
+        br-items="rangeOptions" br-display-item="item.label"
+        br-options="{
+          icon: 'pencil',
+          name: '{{key}}',
+          label: '{{schema.label}}',
+          key: 'value'
+        }">
+        {{schema.comment}}
+      </br-select>
+      <br-input ng-if="!rangeOptions" br-model="value[key]"
         br-options="{
           icon: 'pencil',
           name: '{{key}}',
@@ -54,7 +64,16 @@
     </div>
     -->
     <div ng-switch-when="Date">
-      <br-datepicker br-model="value[key]"
+      <br-select ng-if="rangeOptions" br-model="value[key]"
+        br-items="rangeOptions" br-display-item="item.label"
+        br-options="{
+          name: '{{key}}',
+          label: '{{schema.label}}',
+          key: 'value'
+        }">
+        {{schema.comment}}
+      </br-select>
+      <br-datepicker ng-if="!rangeOptions" br-model="value[key]"
         br-options="{
           name: '{{key}}',
           label: '{{schema.label}}',
