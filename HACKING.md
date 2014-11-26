@@ -137,8 +137,23 @@ Best practices:
   'self' in controller code. Use "controller as model" in the common
   case where the view is simple and only one controller is used. Use
   'controllerAs' property in directive.
+* For complex directives, do not add variables directly to the scope,
+  as this may lead to unexpected behavior that results from
+  prototypical inheritance patterns. Instead, add them to single
+  property on the scope such as "model" or use this pattern in
+  your directive definitions, which will add variables to "ctrl" so
+  you can access them via "ctrl.foo" in a template:
+```js
+  {
+    scope: {foo: '='},
+    controller: function() {},
+    controllerAs: 'ctrl',
+    bindToController: true
+  }
+```
 * Use 'link' not 'controller' for controller code in directives that
-  do not expose a controller API for reuse.
+  do not expose a controller API for reuse; only add "controller" in
+  these cases if using the above pattern for scope variables.
 * Use the annotation /* @ngInject */ before dependency-injected functions
   to ensure the build tools can appropriately deal with minification.
 
