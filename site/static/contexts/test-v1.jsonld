@@ -44,12 +44,19 @@
 
     "br": "urn:bedrock:",
 
-    "layout": {"@id": "br:layout", "@container": "@list"},
+    "layout": {"@id": "br:layout", "@type": "@id", "@container": "@list"},
     "property": {"@id": "br:property", "@type": "@id"},
     "resource": {"@id": "br:resource", "@type": "@id"},
     "date": {"@id": "br:date", "@type": "xsd:dateTime"},
     "domain": {"@id": "rdfs:domain",  "@type": "@vocab"},
     "range": {"@id": "rdfs:range", "@type": "@vocab"},
+    "rangeOption": {
+      "@id": "br:rangeOption",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "rangeOptionId": {"@id": "br:rangeOptionId", "@type": "@id"},
+    "rangeOptionType": {"@id": "br:rangeOptionType", "@type": "@id"},
     "comment": "rdfs:comment",
     "label": "rdfs:label",
     "value": "rdf:value",

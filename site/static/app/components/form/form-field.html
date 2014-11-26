@@ -9,9 +9,20 @@
 <div ng-if="options.editable" class="form-group">
   <div ng-switch="range">
     <div ng-switch-when="URL">
-      <br-input br-model="value[key]"
+      <br-select ng-if="rangeOptions" br-model="value[key]"
+        br-items="rangeOptions" br-display-item="item.label"
         br-options="{
           icon: 'globe',
+          name: '{{key}}',
+          label: '{{schema.label}}',
+          key: 'id'
+        }">
+        {{schema.comment}}
+      </br-select>
+      <br-input ng-if="!rangeOptions" br-model="value[key]"
+        br-options="{
+          icon: 'globe',
+          name: '{{key}}',
           label: '{{schema.label}}',
           type: 'url',
           placeholder: 'Resource URL'
@@ -23,6 +34,7 @@
       <br-input br-model="value[key]"
         br-options="{
           icon: 'pencil',
+          name: '{{key}}',
           label: '{{schema.label}}',
           type: 'text'
         }">
@@ -44,6 +56,7 @@
     <div ng-switch-when="Date">
       <br-datepicker br-model="value[key]"
         br-options="{
+          name: '{{key}}',
           label: '{{schema.label}}',
           format: 'yyyy/MM/dd',
           time: (24*60*60*1000 - 1)

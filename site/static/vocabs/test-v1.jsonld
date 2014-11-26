@@ -124,6 +124,19 @@
           "value": null
         },
         {
+          "property": "t1:resource2",
+          "rangeOption": [
+            {
+              "rangeOptionId": "http://example.com/choice1",
+              "label": "Choice 1"
+            },
+            {
+              "rangeOptionId": "http://example.com/choice2",
+              "label": "Choice 2"
+            }
+          ]
+        },
+        {
           "property": "t1:string",
           "value": "string default"
         },
