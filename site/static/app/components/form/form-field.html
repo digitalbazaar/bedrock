@@ -101,10 +101,10 @@
     <ul class="list-unstyled">
       <!-- FIXME: repeat over array -->
       <li ng-switch="range">
-        <div ng-switch-when="rdfs:Resource">
+        <div ng-switch-when="URL">
           <a href="{{value[key]}}">{{value[key]}}</a>
         </div>
-        <div ng-switch-when="rdfs:Literal">
+        <div ng-switch-when="String">
           {{value[key]}}
         </div>
         <!-- TODO: textarea
@@ -112,7 +112,7 @@
           <p>{{value[key]}}</p>
         </div>
         -->
-        <div ng-switch-when="xsd:dateTime">
+        <div ng-switch-when="Date">
           {{value[key] | date:'medium'}}
         </div>
         <!-- TODO: schema:image
