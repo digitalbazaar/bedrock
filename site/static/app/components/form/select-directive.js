@@ -117,11 +117,12 @@ function factory() {
       // find matching view item
       for(var i = 0; value && i < scope.viewItems.length; ++i) {
         var viewItem = scope.viewItems[i];
-        if('key' in options && viewItem.item[options.key] === value) {
-          selection.selected = viewItem;
-          return;
-        }
-        if(viewItem.item === value) {
+        if('key' in options) {
+          if(viewItem.item[options.key] === value) {
+            selection.selected = viewItem;
+            return;
+          }
+        } else if(viewItem.item === value) {
           selection.selected = viewItem;
           return;
         }
