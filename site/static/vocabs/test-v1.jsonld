@@ -130,7 +130,8 @@
               "label": "Choice 1",
               "value": {
                 "@id": "http://example.com/choice1"
-              }
+              },
+              "propertyGroup": "t1:custom-group"
             },
             {
               "label": "Choice 2",
