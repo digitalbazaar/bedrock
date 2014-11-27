@@ -173,10 +173,10 @@
           "property": {
             "type": "rdf:Property",
             "label": "Test Custom Resource URL",
-	    "comment": "A test custom resources URL.",
-	    "domain": "schema:Thing",
-	    "range": "rdfs:Resource",
-	    "vs:term_status": "unstable"
+            "comment": "A test custom resources URL.",
+            "domain": "schema:Thing",
+            "range": "rdfs:Resource",
+            "vs:term_status": "unstable"
           },
           "value": null
         }
