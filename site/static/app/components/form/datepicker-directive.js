@@ -92,8 +92,8 @@ function datepickerFactory($filter, $timeout) {
     scope.$watch(function() {
       return ctrl.model;
     }, function(value) {
-      if(value && ctrl.options) {
-        if(ctrl.options.modelType === 'string') {
+      if(value) {
+        if(ctrl.options && ctrl.options.modelType === 'string') {
           ctrl.date = new Date(value);
         } else {
           ctrl.date = value;
