@@ -18,8 +18,18 @@ function factory() {
       model: '=brModel'
     },
     template: '\
-      <form ng-if="options.editable" class="form-horizontal"> \
-        <div ng-repeat="group in groups" ng-switch="group.type"> \
+      <div br-lazy-compile="options" br-lazy-compile-id="br-form"> \
+        <form ng-if="options.editable" class="form-horizontal"> \
+          <div ng-repeat="group in groups" ng-switch="group.type"> \
+            <br-form-group ng-switch-when="PropertyGroup" \
+              br-model="model" br-group="group" br-options="{{options}}" /> \
+            <div ng-switch-default> \
+              <p class="text-warning">Unknown group.</p> \
+              <pre>{{group|json}}</pre> \
+            </div> \
+          </div> \
+        </form> \
+        <div ng-if="!options.editable" ng-repeat="group in groups" ng-switch="group.type"> \
           <br-form-group ng-switch-when="PropertyGroup" \
             br-model="model" br-group="group" br-options="{{options}}" /> \
           <div ng-switch-default> \
@@ -27,21 +37,12 @@ function factory() {
             <pre>{{group|json}}</pre> \
           </div> \
         </div> \
-      </form> \
-      <div ng-if="!options.editable" ng-repeat="group in groups" ng-switch="group.type"> \
-        <br-form-group ng-switch-when="PropertyGroup" \
-          br-model="model" br-group="group" br-options="{{options}}" /> \
-        <div ng-switch-default> \
-          <p class="text-warning">Unknown group.</p> \
-          <pre>{{group|json}}</pre> \
-        </div> \
-      </div> \
-      <!-- \
-      <pre>FORM OPTIONS: {{options|json}}</pre> \
-      <pre>FORM GROUPS: {{groups|json}}</pre> \
-      <pre>FORM MODEL: {{model|json}}</pre> \
-      --> \
-      ',
+        <!-- \
+        <pre>FORM OPTIONS: {{options|json}}</pre> \
+        <pre>FORM GROUPS: {{groups|json}}</pre> \
+        <pre>FORM MODEL: {{model|json}}</pre> \
+        --> \
+      </div>',
     link: function(scope, element, attrs) {
       attrs.brOptions = attrs.brOptions || {};
       attrs.$observe('brOptions', function(value) {
