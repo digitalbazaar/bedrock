@@ -29,6 +29,7 @@ function factory(
       br: 'urn:bedrock:',
       layout: {'@id': 'br:layout', '@type': '@id', '@container': '@list'},
       property: {'@id': 'br:property', '@type': '@id'},
+      propertyGroup: {'@id': 'br:propertyGroup', '@type': '@id'},
       resource: {'@id': 'br:resource', '@type': '@id'},
       date: {'@id': 'br:date', '@type': 'xsd:dateTime'},
       domain: {'@id': 'rdfs:domain',  '@type': '@id'},
@@ -51,7 +52,7 @@ function factory(
 
   // frames properties and property groups
   var FRAME = {
-    '@context': CONTEXT,
+    '@context': CONTEXT['@context'],
     type: ['Property', 'PropertyGroup']
   };
 
@@ -69,7 +70,7 @@ function factory(
     // all groups from all loaded vocabs
     self.groups = {};
     // flattened graph of all properties and groups
-    self.graph = {'@context': CONTEXT, '@graph': []};
+    self.graph = {'@context': CONTEXT['@context'], '@graph': []};
 
     // preload configured vocabs
     if(config.data.forms) {
@@ -99,19 +100,17 @@ function factory(
       .then(function(vocab) {
         // store vocab
         self.vocabs[id] = vocab;
-        // frame properties and groups w/embedded properties
-        return jsonld.promises.frame(vocab, FRAME, {embed: '@always'});
-      })
-      .then(function(framed) {
-        // merge in new properties/groups
-        return jsonld.promises.merge([self.graph, framed]);
+
+        // merge in new vocab w/o merging existing nodes
+        return jsonld.promises.merge(
+          [self.graph, vocab], null, {mergeNodes: false});
       })
       .then(function(merged) {
-        // reframe merged data
-        return jsonld.promises.frame(merged, FRAME, {embed: '@always'});
+        self.graph = merged;
+        // reframe merged data w/properties and groups filtered and linked
+        return jsonld.promises.frame(merged, FRAME, {embed: '@link'});
       })
       .then(function(framed) {
-        self.graph = framed;
         // build property and group indexes
         self.properties = {};
         self.groups = {};
