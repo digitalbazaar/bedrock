@@ -6,7 +6,7 @@
 <pre>FIELD SCHEMA: {{ctrl.schema|json}}</pre>
 <pre>FIELD RANGE: {{ctrl.range|json}}</pre>
 -->
-<div ng-if="ctrl.options.editable" class="form-group">
+<div ng-if="ctrl.options.editable">
   <div ng-switch="ctrl.range">
     <div ng-switch-when="URL">
       <br-select
