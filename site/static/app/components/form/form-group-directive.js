@@ -25,13 +25,16 @@ function factory() {
         <p ng-show="group.layout.length == 0" class="text-center"> \
           No fields. \
         </p> \
-        <div ng-if="options.editable" ng-show="group.layout.length > 0" class="well"> \
+        <div ng-if="options.editable" ng-show="group.layout.length > 0" \
+          ng-class="{well: !options.embedded}"> \
           <fieldset> \
             <br-form-field ng-repeat="property in group.layout" \
-              br-property="property" br-model="model" br-options="{{options}}" /> \
+              br-property="property" br-model="model" \
+              br-options="{{options}}" /> \
           </fieldset> \
         </div> \
-        <dl ng-if="!options.editable" ng-show="group.layout.length > 0" class="dl-horizontal"> \
+        <dl ng-if="!options.editable" ng-show="group.layout.length > 0" \
+          class="dl-horizontal"> \
           <br-form-field ng-repeat="property in group.layout" \
             br-property="property" br-model="model" br-options="{{options}}" /> \
         </dl> \
