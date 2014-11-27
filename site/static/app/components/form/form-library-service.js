@@ -30,6 +30,7 @@ function factory(
       layout: {'@id': 'br:layout', '@type': '@id', '@container': '@list'},
       property: {'@id': 'br:property', '@type': '@id'},
       propertyGroup: {'@id': 'br:propertyGroup', '@type': '@id'},
+      optional: {'@id': 'br:optional', '@type': '@xsd:boolean'},
       resource: {'@id': 'br:resource', '@type': '@id'},
       date: {'@id': 'br:date', '@type': 'xsd:dateTime'},
       domain: {'@id': 'rdfs:domain',  '@type': '@id'},

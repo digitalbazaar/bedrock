@@ -35,9 +35,9 @@ function factory() {
       ctrl.key = ctrl.propertyId;
 
       // build range options, if given
+      ctrl.rangeOptions = [];
       if(ctrl.property.rangeOption) {
         ctrl.selected = null;
-        ctrl.rangeOptions = [];
         for(var i = 0; i < ctrl.property.rangeOption.length; ++i) {
           var opt = ctrl.property.rangeOption[i];
           var option = {
@@ -107,6 +107,12 @@ function factory() {
         if(!angular.isDate(ctrl.value[ctrl.key])) {
           ctrl.value[ctrl.key] = new Date(ctrl.value[ctrl.key]);
         }
+      }
+
+      // auto-select only option
+      if(!ctrl.property.optional && ctrl.rangeOptions.length === 1) {
+        ctrl.selected = ctrl.rangeOptions[0];
+        ctrl.value[ctrl.key] = ctrl.selected.value;
       }
     }
   };

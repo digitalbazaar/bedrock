@@ -9,7 +9,10 @@
 <div ng-if="ctrl.options.editable" class="form-group">
   <div ng-switch="ctrl.range">
     <div ng-switch-when="URL">
-      <br-select ng-if="ctrl.rangeOptions" br-model="ctrl.selected"
+      <br-select
+        ng-if="(ctrl.property.optional && ctrl.rangeOptions.length > 0) ||
+          ctrl.rangeOptions.length > 1"
+        br-model="ctrl.selected"
         br-items="ctrl.rangeOptions" br-display-item="item.label"
         br-options="{
           icon: 'globe',
@@ -22,7 +25,8 @@
         br-model="ctrl.value[ctrl.key]"
         br-groups="[ctrl.selected.propertyGroup]"
         br-options="{editable: true}"></br-form>
-      <br-input ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
+      <br-input ng-if="!ctrl.property.optional && ctrl.rangeOptions <= 1"
+        br-model="ctrl.value[ctrl.key]"
         br-options="{
           icon: 'globe',
           name: '{{ctrl.key}}',
@@ -34,7 +38,10 @@
       </br-input>
     </div>
     <div ng-switch-when="String">
-      <br-select ng-if="ctrl.rangeOptions" br-model="ctrl.selected"
+      <br-select
+        ng-if="(ctrl.property.optional && ctrl.rangeOptions.length > 0) ||
+          ctrl.rangeOptions.length > 1"
+        br-model="ctrl.selected"
         br-items="ctrl.rangeOptions" br-display-item="item.label"
         br-options="{
           icon: 'pencil',
@@ -43,7 +50,9 @@
         }">
         {{ctrl.schema.comment}}
       </br-select>
-      <br-input ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
+      <br-input
+        ng-if="!ctrl.property.optional && ctrl.rangeOptions.length <= 1"
+        br-model="ctrl.value[ctrl.key]"
         br-options="{
           icon: 'pencil',
           name: '{{ctrl.key}}',
@@ -66,7 +75,10 @@
     </div>
     -->
     <div ng-switch-when="Date">
-      <br-select ng-if="ctrl.rangeOptions" br-model="ctrl.selected"
+      <br-select
+        ng-if="(ctrl.property.optional && ctrl.rangeOptions.length > 0) ||
+          ctrl.rangeOptions.length > 1"
+        br-model="ctrl.selected"
         br-items="ctrl.rangeOptions" br-display-item="item.label"
         br-options="{
           name: '{{ctrl.key}}',
@@ -74,7 +86,9 @@
         }">
         {{ctrl.schema.comment}}
       </br-select>
-      <br-datepicker ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
+      <br-datepicker
+        ng-if="!ctrl.property.optional && ctrl.rangeOptions.length <= 1"
+        br-model="ctrl.value[ctrl.key]"
         br-options="{
           name: '{{ctrl.key}}',
           label: '{{ctrl.schema.label}}',
