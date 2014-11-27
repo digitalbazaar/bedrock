@@ -44,24 +44,10 @@ function factory() {
             label: opt.label,
             value: angular.copy(opt.value)
           };
-          ctrl.rangeOptions.push(option);
-
-          // shallow copy property groups/dereference them
           if(opt.propertyGroup) {
-            option.propertyGroup = [];
-            for(var pi = 0; pi < opt.propertyGroup.length; ++pi) {
-              // TODO: populate property groups if not embedded due to
-              // circular reference (requires access to library, so
-              // a br-library option will have to be propagated from
-              // br-form through br-form-field)
-              var group = opt.propertyGroup[i];
-              if(angular.isString(group)) {
-                option.propertyGroup.push(ctrl.library.groups[group]);
-              } else {
-                option.propertyGroup.push(group);
-              }
-            }
+            option.propertyGroup = opt.propertyGroup;
           }
+          ctrl.rangeOptions.push(option);
         }
 
         // two-bind selected.value with ctrl.value[ctrl.key]

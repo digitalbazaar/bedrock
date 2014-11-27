@@ -18,6 +18,10 @@
         }">
         {{ctrl.schema.comment}}
       </br-select>
+      <br-form ng-if="ctrl.rangeOptions && ctrl.selected.propertyGroup"
+        br-model="ctrl.value[ctrl.key]"
+        br-groups="[ctrl.selected.propertyGroup]"
+        br-options="{editable: true}"></br-form>
       <br-input ng-if="!ctrl.rangeOptions" br-model="ctrl.value[ctrl.key]"
         br-options="{
           icon: 'globe',
