@@ -69,7 +69,6 @@ function factory() {
           return ctrl.selected;
         }, function(selected) {
           if(selected) {
-            console.log('selection changed', selected.value);
             ctrl.value[ctrl.key] = selected.value;
           }
         });
