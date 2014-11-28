@@ -93,7 +93,8 @@ function datepickerFactory($filter, $timeout) {
       return ctrl.model;
     }, function(value) {
       if(value) {
-        if(ctrl.options && ctrl.options.modelType === 'string') {
+        if(typeof value === 'string' || (
+          ctrl.options && ctrl.options.modelType === 'string')) {
           ctrl.date = new Date(value);
         } else {
           ctrl.date = value;
