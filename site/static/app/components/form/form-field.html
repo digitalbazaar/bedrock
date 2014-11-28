@@ -161,7 +161,7 @@
         </div>
         -->
         <div ng-switch-when="Date">
-          {{ctrl.value[ctrl.key] | date:'medium'}}
+          {{ctrl.value[ctrl.key]['@value'] | date:'medium'}}
         </div>
         <!-- TODO: schema:image
         <div ng-switch-when="...">
