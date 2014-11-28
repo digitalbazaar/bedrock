@@ -99,6 +99,10 @@ function factory() {
         });
       }
 
+      if(ctrl.value[ctrl.key] === undefined) {
+        initValue();
+      }
+
       function initValue() {
         if(!ctrl.property.optional && ctrl.rangeOptions.length === 1) {
           // auto-select only option
