@@ -142,7 +142,7 @@
           }"></br-input>
         -->
 </div>
-<div ng-if="!ctrl.options.editable && !ctrl.selected.propertyGroup">
+<div ng-if="!ctrl.options.editable">
   <!-- FIXME: add schema.comment as help text -->
   <dt ng-if="ctrl.value[ctrl.key]">{{ctrl.schema.label}}</dt>
   <dd ng-if="ctrl.value[ctrl.key]">
@@ -150,7 +150,11 @@
       <!-- FIXME: repeat over array -->
       <li ng-switch="ctrl.range">
         <div ng-switch-when="URL">
-          <a href="{{ctrl.value[ctrl.key]}}">{{ctrl.value[ctrl.key]}}</a>
+          <a ng-if="!ctrl.selected.propertyGroup"
+            href="{{ctrl.value[ctrl.key]}}">{{ctrl.value[ctrl.key]}}</a>
+          <div ng-if="ctrl.selected.propertyGroup">
+            {{ctrl.value[ctrl.key].label || ctrl.value[ctrl.key].id || ctrl.value[ctrl.key].type}}
+          </div>
         </div>
         <div ng-switch-when="String">
           {{ctrl.value[ctrl.key]}}
