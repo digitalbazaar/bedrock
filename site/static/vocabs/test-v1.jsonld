@@ -125,6 +125,7 @@
         },
         {
           "property": "t1:resource2",
+          "rangeOptionCompareProperty": "id",
           "rangeOption": [
             {
               "label": "Choice 1",

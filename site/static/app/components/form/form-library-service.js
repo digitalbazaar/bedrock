@@ -37,8 +37,11 @@ function factory(
       range: {'@id': 'rdfs:range', '@type': '@vocab'},
       rangeOption: {
         '@id': 'br:rangeOption',
-        '@type': '@id',
-        '@container': '@set'
+        '@container': '@list'
+      },
+      rangeOptionCompareProperty: {
+        '@id': 'br:rangeOptionCompareProperty',
+        '@type': '@vocab'
       },
       comment: 'rdfs:comment',
       label: 'rdfs:label',
