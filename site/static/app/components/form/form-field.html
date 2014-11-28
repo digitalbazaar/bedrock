@@ -21,7 +21,7 @@
         }">
         {{ctrl.schema.comment}}
       </br-select>
-      <br-form ng-if="ctrl.rangeOptions && ctrl.selected.propertyGroup"
+      <br-form ng-if="ctrl.selected.propertyGroup"
         br-model="ctrl.value[ctrl.key]"
         br-groups="[ctrl.selected.propertyGroup]"
         br-options="{editable: true, embedded: true}"></br-form>
@@ -142,7 +142,7 @@
           }"></br-input>
         -->
 </div>
-<div ng-if="!ctrl.options.editable">
+<div ng-if="!ctrl.options.editable && !ctrl.selected.propertyGroup">
   <!-- FIXME: add schema.comment as help text -->
   <dt ng-if="ctrl.value[ctrl.key]">{{ctrl.schema.label}}</dt>
   <dd ng-if="ctrl.value[ctrl.key]">
@@ -175,5 +175,14 @@
         </div>
       </li>
     </ul>
-  </div>
+  </dd>
+</div>
+<div ng-if="!ctrl.options.editable && ctrl.selected.propertyGroup">
+  <br-form
+    br-model="ctrl.value[ctrl.key]"
+    br-groups="[ctrl.selected.propertyGroup]"
+    br-options="{
+      editable: false,
+      embedded: true
+    }"></br-form>
 </div>
