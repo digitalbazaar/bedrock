@@ -34,11 +34,9 @@ function factory() {
       ctrl.value = ctrl.model;
       ctrl.key = ctrl.propertyId;
       ctrl.rangeOptions = [];
+      ctrl.selected = null;
 
       if(ctrl.property.rangeOption) {
-        // no range option selected yet
-        ctrl.selected = null;
-
         // build range options
         for(var i = 0; i < ctrl.property.rangeOption.length; ++i) {
           var opt = ctrl.property.rangeOption[i];
@@ -61,6 +59,9 @@ function factory() {
         if(ctrl.property.rangeOptionCompareProperty) {
           // compare two range options for equality based on the given property
           ctrl.compare = function(item1, item2) {
+            if(!angular.isObject(item1) || !angular.isObject(item2)) {
+              return (item1 === item2);
+            }
             return (item1[ctrl.property.rangeOptionCompareProperty] ===
               item2[ctrl.property.rangeOptionCompareProperty]);
           };
