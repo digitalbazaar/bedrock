@@ -33,21 +33,42 @@ function factory() {
       ctrl.range = ctrl.schema.range;
       ctrl.value = ctrl.model;
       ctrl.key = ctrl.propertyId;
-
-      // build range options, if given
       ctrl.rangeOptions = [];
+
       if(ctrl.property.rangeOption) {
+        // no range option selected yet
         ctrl.selected = null;
+
+        // build range options
         for(var i = 0; i < ctrl.property.rangeOption.length; ++i) {
           var opt = ctrl.property.rangeOption[i];
           var option = {
             label: opt.label,
             value: angular.copy(opt.value)
           };
+          if(angular.isObject(option.value) && 'id' in option.value &&
+            option.value.id.indexOf('_:') === 0) {
+            // remove blank node ID from value to avoid conflicts with
+            // the model's blank nodes
+            delete option.value.id;
+          }
           if(opt.propertyGroup) {
             option.propertyGroup = opt.propertyGroup;
           }
           ctrl.rangeOptions.push(option);
+        }
+
+        if(ctrl.property.rangeOptionCompareProperty) {
+          // compare two range options for equality based on the given property
+          ctrl.compare = function(item1, item2) {
+            return (item1[ctrl.property.rangeOptionCompareProperty] ===
+              item2[ctrl.property.rangeOptionCompareProperty]);
+          };
+        } else {
+          // compare two range options based on simple equality
+          ctrl.compare = function(item1, item2) {
+            return item1 === item2;
+          };
         }
 
         // two-bind selected.value with ctrl.value[ctrl.key]
@@ -61,58 +82,47 @@ function factory() {
         scope.$watch(function() {
           return ctrl.value[ctrl.key];
         }, function(value) {
+          if(value === undefined) {
+            initValue();
+            return;
+          }
+
+          // update selection to matching range option
           for(var i = 0; i < ctrl.rangeOptions.length; ++i) {
             var option = ctrl.rangeOptions[i];
-            if(option.value === value) {
+            if(ctrl.compare(option.value, value)) {
               ctrl.selected = option;
+              ctrl.selected.value = value;
             }
           }
         });
       }
 
-      // setup target for value storage
-      if(ctrl.propertyId in ctrl.model) {
-        // use value from model
-      } else if('value' in ctrl.property) {
-        // use value from property description
-        ctrl.value[ctrl.key] = angular.copy(ctrl.property.value);
-      } else if('br:default' in ctrl.schema) {
-        // use default from schema description
-        ctrl.value[ctrl.key] = angular.copy(ctrl.schema['br:default']);
-      } else {
-        // use default value
-        if(ctrl.range === 'Date') {
-          ctrl.value[ctrl.key] = {
-            type: 'xsd:dateTime',
-            '@value': new Date()
-          };
+      function initValue() {
+        if(!ctrl.property.optional && ctrl.rangeOptions.length === 1) {
+          // auto-select only option
+          ctrl.selected = ctrl.rangeOptions[0];
+          ctrl.value[ctrl.key] = ctrl.selected.value;
+          return;
+        }
+
+        if('value' in ctrl.property) {
+          // use value from property description
+          ctrl.value[ctrl.key] = angular.copy(ctrl.property.value);
+        } else if('br:default' in ctrl.schema) {
+          // use default from schema description
+          ctrl.value[ctrl.key] = angular.copy(ctrl.schema['br:default']);
         } else {
-          ctrl.value[ctrl.key] = null;
+          // use default value
+          if(ctrl.range === 'Date') {
+            ctrl.value[ctrl.key] = {
+              type: 'xsd:dateTime',
+              '@value': new Date()
+            };
+          } else {
+            ctrl.value[ctrl.key] = null;
+          }
         }
-      }
-
-      // special dateTime handling
-      if(ctrl.range === 'Date') {
-        // FIXME: due to compaction w/bedrock form context, data should always
-        // be in expanded form and stored in @value, so remove this conditional
-        if(!angular.isDate(ctrl.value[ctrl.key]) &&
-          angular.isObject(ctrl.value[ctrl.key])) {
-          ctrl.value = ctrl.value[ctrl.key];
-          ctrl.key = '@value';
-        }
-
-        // ensure date is a date object
-        // FIXME: add string model support to datepicker and remove conditional
-        // below
-        if(!angular.isDate(ctrl.value[ctrl.key])) {
-          ctrl.value[ctrl.key] = new Date(ctrl.value[ctrl.key]);
-        }
-      }
-
-      // auto-select only option
-      if(!ctrl.property.optional && ctrl.rangeOptions.length === 1) {
-        ctrl.selected = ctrl.rangeOptions[0];
-        ctrl.value[ctrl.key] = ctrl.selected.value;
       }
     }
   };

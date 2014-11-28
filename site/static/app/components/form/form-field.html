@@ -88,7 +88,7 @@
       </br-select>
       <br-datepicker
         ng-if="!ctrl.property.optional && ctrl.rangeOptions.length <= 1"
-        br-model="ctrl.value[ctrl.key]"
+        br-model="ctrl.value[ctrl.key]['@value']"
         br-options="{
           name: '{{ctrl.key}}',
           label: '{{ctrl.schema.label}}',
