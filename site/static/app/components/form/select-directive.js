@@ -16,7 +16,8 @@ function factory() {
     scope: {
       model: '=brModel',
       items: '=brItems',
-      display: '&?brDisplayItem'
+      display: '&?brDisplayItem',
+      compare: '=?brCompareItem'
     },
     transclude: true,
     template: '\
@@ -106,6 +107,13 @@ function factory() {
       }
     });
 
+    // set default compare item method
+    if(!attrs.brCompareItem) {
+      scope.compare = function(item1, item2) {
+        return item1 === item2;
+      };
+    }
+
     // update view items when items or display function changes
     scope.$watch('items', updateViewItems, true);
     attrs.$observe('brDisplayItem', function() {
@@ -113,16 +121,13 @@ function factory() {
     });
 
     // when external model changes, update selection
-    scope.$watch('model', function(value) {
+    scope.$watch('model', function(item1) {
       // find matching view item
-      for(var i = 0; value && i < scope.viewItems.length; ++i) {
+      for(var i = 0; item1 && i < scope.viewItems.length; ++i) {
         var viewItem = scope.viewItems[i];
-        if('key' in options) {
-          if(viewItem.item[options.key] === value) {
-            selection.selected = viewItem;
-            return;
-          }
-        } else if(viewItem.item === value) {
+        var item2 = ('key' in options ?
+          viewItem.item[options.key] : viewItem.item);
+        if(scope.compare.call(scope.$parent, item1, item2)) {
           selection.selected = viewItem;
           return;
         }
