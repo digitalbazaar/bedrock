@@ -98,8 +98,12 @@ function factory(
     var self = this;
     return service.collection.get(id)
       .then(function(vocab) {
-        // compact
-        return jsonld.promises.compact(vocab, CONTEXT, {base: id});
+        // expand with base to resolve relative context urls
+        return jsonld.promises.expand(vocab, {base: id});
+      })
+      .then(function(vocab) {
+        // compact with standard context
+        return jsonld.promises.compact(vocab, CONTEXT, {skipExpansion: true});
       })
       .then(function(vocab) {
         // store vocab
