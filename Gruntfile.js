@@ -21,7 +21,9 @@ module.exports = function(grunt) {
 
   // setup config vars for templating
   grunt.config('dirs', {
-    'bedrock': __dirname
+    'bedrock': __dirname,
+    // main project dir, override for subprojects
+    'main': __dirname
   });
 
   // read package configuration
@@ -108,7 +110,7 @@ module.exports = function(grunt) {
         name: 'almond',
         include: ['app/main'],
         insertRequire: ['app/main'],
-        out: 'site/static/app/main.min.js',
+        out: '<%= dirs.main %>/site/static/app/main.min.js',
         wrap: true,
         preserveLicenseComments: false,
         optimize: grunt.config('optimize'),
