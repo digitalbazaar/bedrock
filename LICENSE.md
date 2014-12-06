@@ -1,9 +1,15 @@
-Bedrock License
-===============
+Licensing Bedrock
+=================
 
-For licensing information or to obtain a license, please contact
-Digital Bazaar, Inc at the following email address:
+Copyright (c) 2011-2014 Digital Bazaar, Inc.
+All rights reserved.
+
+This is proprietary software owned and licensed by Digital Bazaar, Inc.
+You are allowed to view the source code for the software at no charge, but 
+must obtain a license to operate the software for any purpose.
+
+To obtain a license, please contact Digital Bazaar, Inc. at the following 
+email address:
 
 Digital Bazaar <support@digitalbaaar.com>
 
-Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
