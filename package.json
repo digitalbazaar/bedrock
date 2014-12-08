@@ -80,7 +80,7 @@
     "colors": "~0.6.2",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-less": "~0.11.4",
-    "grunt-jscs": "~0.8.1",
+    "grunt-jscs": "~1.0.0",
     "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
     "mocha": "~2.0.1",
     "protractor": "~1.4.0",
