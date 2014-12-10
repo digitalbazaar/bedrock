@@ -9,10 +9,10 @@ var schema = {
   description: 'A description.',
   type: 'string',
   minLength: 0,
-  maxLength: 1024,
+  maxLength: 5000,
   errors: {
     invalid: 'The description contains invalid characters or is more than ' +
-      '1024 characters in length.',
+      '5000 characters in length.',
     missing: 'Please enter a description.'
   }
 };

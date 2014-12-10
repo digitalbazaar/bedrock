@@ -9,10 +9,10 @@ var schema = {
   description: 'A short comment.',
   type: 'string',
   minLength: 1,
-  maxLength: 4000,
+  maxLength: 5000,
   errors: {
     invalid: 'The comment contains invalid characters or is more than ' +
-      '4000 characters in length.',
+      '5000 characters in length.',
     missing: 'Please enter a comment.'
   }
 };
