@@ -56,11 +56,6 @@ describe('JSON-LD REST API input schema', function() {
       result.valid.should.be.true;
       done();
     });
-    it('should reject newline characters', function(done) {
-      var result = jsonschema('\n', schema);
-      result.valid.should.be.false;
-      done();
-    });
   });
 
   describe('nonce', function() {
