@@ -8,7 +8,6 @@ var schema = {
   title: 'Comment',
   description: 'A short comment.',
   type: 'string',
-  pattern: '^[-a-zA-Z0-9~!@#$%^&*\\(\\)_=+\\\\|{}\\[\\];:\\\'"<>,./? ]*$',
   minLength: 1,
   maxLength: 4000,
   errors: {
