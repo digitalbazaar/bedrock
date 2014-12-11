@@ -2,6 +2,8 @@ var path = require('path');
 var config = require('../lib/config');
 
 // app info
+// 0 means use # of cpus
+config.app.workers = 1;
 config.app.masterTitle = 'bedrock1d';
 config.app.workerTitle = 'bedrock1d-worker';
 config.app.restartWorkers = false;
@@ -28,8 +30,6 @@ config.loggers.error.filename = '/tmp/bedrock-dev-error.log';
 config.loggers.email.silent = true;
 
 // server info
-// 0 means use # of cpus
-config.server.workers = 1;
 config.server.port = 18443;
 config.server.httpPort = 18080;
 config.server.bindAddr = ['bedrock.dev'];

@@ -8,6 +8,8 @@ config.modules.push('test');
 config.modules.push('services.filesystem');
 
 // app info
+// 0 means use # of cpus
+config.app.workers = 0;
 config.app.masterTitle = 'bedrock1d';
 config.app.workerTitle = 'bedrock1d-worker';
 config.app.restartWorkers = true;
@@ -31,8 +33,6 @@ config.loggers.email.silent = true;
 config.loggers.console.level = 'critical';
 
 // server info
-// 0 means use # of cpus
-config.server.workers = 0;
 config.server.port = 18444;
 config.server.httpPort = 18081;
 config.server.bindAddr = ['bedrock.dev'];
