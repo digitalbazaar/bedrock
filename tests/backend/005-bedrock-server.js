@@ -32,7 +32,6 @@ describe('bedrock-server', function() {
     it('should be enabled by default', function(done) {
       superagent.get(bedrock.config.server.baseUri + '/')
         .end(function(err, res) {
-          console.log(res);
           res.status.should.equal(200);
           done();
         });
