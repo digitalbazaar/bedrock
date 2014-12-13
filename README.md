@@ -63,6 +63,11 @@ Features
 
 For a complete list of features included in Bedrock, see the [FEATURES][] file.
 
+FAQ
+---
+
+See the [FAQ][] file for answers to frequently asked questions.
+
 Hacking
 -------
 
@@ -87,4 +92,5 @@ Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
 [HACKING]: HACKING.md
+[FAQ]: FAQ.md
 [LICENSE]: LICENSE.md
