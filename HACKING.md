@@ -2,6 +2,56 @@
 
 Details for developers about hacking on the Bedrock code.
 
+## Development Environment Setup
+
+Setting up local bedrock development environment is fairly simple. The rest of
+this section details how to do it.
+
+### Requirements
+
+* node.js
+* npm
+* mongodb
+
+### Configuration
+
+The options in the `./configs/dev.js` file can be tuned to your environment
+as needed.
+
+### Setup
+
+* Setup an admin user on mongodb (see below)
+* Install the dependencies (see below)
+* Map the `bedrock.dev` hostname to your network IP address (e.g. 192.168.0.1).
+
+To setup an admin user on mongodb:
+
+    mongo
+    use admin
+    db.addUser( { user: "admin", pwd: "password", roles: [ "clusterAdmin", "readWriteAnyDatabase", "userAdminAnyDatabase", "dbAdminAnyDatabase"] } )
+
+To install dependencies, do the following:
+
+    npm install
+
+### Running
+
+Run the following to start up a development server from the source directory:
+
+    node index.js
+
+To add more verbose debugging, use the `--log-level` option:
+
+    node index.js --log-level debug
+
+### Usage
+
+Access the server at the following URL:
+
+* https://bedrock.dev:22443/
+
+Login as the admin `admin` with the password `password` or create a new account.
+
 ## Code Style
 
 ### JavaScript
