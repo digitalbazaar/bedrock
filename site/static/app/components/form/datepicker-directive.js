@@ -89,6 +89,23 @@ function datepickerFactory($filter, $timeout) {
   }
 
   function Link(scope, element, attrs, ctrl) {
+    // FIXME: temporary fix for angular memory leak:
+    // https://github.com/angular/angular.js/issues/10509
+    var formCtrl = element.inheritedData('$formController');
+    if(formCtrl) {
+      // clear reference to ngModelCtrl in parent form controller
+      scope.$on('$destroy', function() {
+        if(formCtrl.$$success) {
+          delete formCtrl.$$success.date;
+          delete formCtrl.$$success['date-disabled'];
+        }
+        if(formCtrl.$$error) {
+          delete formCtrl.$$error.date;
+          delete formCtrl.$$error['date-disabled'];
+        }
+      });
+    }
+
     scope.$watch(function() {
       return ctrl.model;
     }, function(value) {
