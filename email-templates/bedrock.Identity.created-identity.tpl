@@ -1,17 +1,16 @@
 To: {{identity.email}}
-From: "{{serviceName}} Customer Support" <support@{{supportDomain}}>
-Subject: {{identitySubjectPrefix}}Welcome to {{serviceName}}!
+From: "{{service.name}} {{support.name}}" <{{support.email}}>
+Subject: {{subject.identityPrefix}}Welcome to {{service.name}}!
 
 {% if productionMode == false %}
 *******
 NOTE: This is a demonstration website notification.
-More info is available at http://bedrock.dev/wiki/Demo_Warning.
 *******
 
 {% endif -%}
 Hello {{identity.label}},
 
-Welcome to {{serviceName}}!
+Welcome to {{service.name}}!
 
 We're so glad you joined! Please let us know if there is anything that we
 can do to help you settle into the website.
@@ -20,7 +19,7 @@ You can manage your identity and other settings by going here:
 
 {{identity.id}}/dashboard
 
-We'd love to hear any feedback you have about {{serviceName}}.
-Just send an email to comments@{{supportDomain}}.
+We'd love to hear any feedback you have about {{service.name}}.
+Just send an email to {{comments.email}}.
 
-If you have any questions or comments please contact support@{{supportDomain}}.
+If you have any questions or comments please contact {{support.email}}.

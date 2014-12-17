@@ -65,12 +65,28 @@ config.mail.send = false;
 config.mail.vars = {
   productionMode: config.website.views.vars.productionMode,
   baseUri: config.server.baseUri,
-  serviceHost: config.server.host,
-  serviceDomain: config.server.domain,
-  supportDomain: config.server.domain,
-  subjectPrefix: '[DEV] ',
-  identitySubjectPrefix: '[DEV] ',
-  serviceName: 'Bedrock Development',
+  subject: {
+    prefix: '[Bedrock DEV] ',
+    identityPrefix: '[Bedrock DEV] '
+  },
+  service: {
+    name: 'Bedrock Development',
+    host: config.server.host
+  },
+  system: {
+    name: 'System',
+    email: 'cluster@' + config.server.domain
+  },
+  support: {
+    name: 'Customer Support',
+    email: 'support@' + config.server.domain
+  },
+  registration: {
+    email: 'registration@' + config.server.domain
+  },
+  comments: {
+    email: 'comments@' + config.server.domain
+  },
   machine: require('os').hostname()
 };
 

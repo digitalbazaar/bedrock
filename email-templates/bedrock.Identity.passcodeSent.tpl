@@ -1,19 +1,19 @@
 To: {{email}}
-From: "{{serviceName}} Customer Support" <support@{{supportDomain}}>
-Subject: {{identitySubjectPrefix}}Your {{serviceName}} passcode
+From: "{{service.name}} {{support.name}}" <{{support.email}}>
+Subject: {{subject.identityPrefix}}Your {{service.name}} passcode
 
 {% if usage === "reset" -%}
-You requested a passcode so you could reset your {{serviceName}} password.
+You requested a passcode so you could reset your {{service.name}} password.
 If you did not make this request, simply ignore this email and your password
 will not be changed.
 {%- else -%}
-You requested a passcode so you could verify your {{serviceName}} email
+You requested a passcode so you could verify your {{service.name}} email
 address.
 {%- endif %}
 
 You may visit the following page and enter your code manually:
 
-https://{{serviceHost}}/session/passcode
+https://{{service.host}}/session/passcode
 
 {%- if identities.length == 1 %}
 
@@ -29,4 +29,4 @@ Identity: {{identity.label}}
 Passcode: {{identity.sysPasscode}}
 {%- endfor -%}
 {%- endif %}
-If you have any questions or comments please contact support@{{supportDomain}}.
+If you have any questions or comments please contact {{support.email}}.
