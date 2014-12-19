@@ -9,8 +9,10 @@ define([], function() {
 
 'use strict';
 
+var templateReplaced = false;
+
 /* @ngInject */
-function datepickerFactory($filter, $timeout) {
+function datepickerFactory($filter, $templateCache, $timeout) {
   return {
     restrict: 'E',
     scope: {
@@ -63,7 +65,7 @@ function datepickerFactory($filter, $timeout) {
           </span> \
         </div> \
       </div>',
-    link: Link
+    compile: Compile
   };
 
   function Ctrl() {
@@ -86,6 +88,41 @@ function datepickerFactory($filter, $timeout) {
         });
       }
     };
+  }
+
+  function Compile() {
+    console.log('compiling...');
+    // TODO: remove this and instead put a datepicker directive inside
+    // a stackable and reimplement only the necessary bits of
+    // datepicker-popup; this would also solve the need for lazy compile and
+    // z-indexing issues at the same time -- it may be possible to achieve
+    // this my just replacing other datepicker-related templates w/o any
+    // extra code
+    if(!templateReplaced) {
+      var tpl = '\
+      <div> \
+        <ul br-lazy-compile="isOpen" br-lazy-compile-id="br-datepicker-popup" \
+          class="dropdown-menu" ng-style="{ \
+          display: (isOpen && \'block\') || \'none\', \
+          top: position.top+\'px\', left: position.left+\'px\'}" \
+          ng-keydown="keydown($event)"> \
+          <li ng-transclude></li> \
+          <li ng-if="showButtonBar" style="padding:10px 9px 2px"> \
+            <span class="btn-group pull-left"> \
+              <button type="button" class="btn btn-sm btn-info" \
+                ng-click="select(\'today\')">{{getText(\'current\')}}</button> \
+              <button type="button" class="btn btn-sm btn-danger" \
+                ng-click="select(null)">{{getText(\'clear\')}}</button> \
+            </span> \
+            <button type="button" class="btn btn-sm btn-success pull-right" \
+              ng-click="close()">{{ getText(\'close\') }}</button> \
+          </li> \
+        </ul> \
+      </div>';
+      $templateCache.put('template/datepicker/popup.html', tpl);
+      templateReplaced = true;
+    }
+    return Link;
   }
 
   function Link(scope, element, attrs, ctrl) {
