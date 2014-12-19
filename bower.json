@@ -11,7 +11,7 @@
     "angular-route": "~1.3.2",
     "angular-sanitize": "~1.3.2",
     "angular-stackables": "~0.0.29",
-    "angular-ui-select": "https://github.com/digitalbazaar/ui-select.git#fix-double-compilation-dist",
+    "angular-ui-select": "https://github.com/digitalbazaar/ui-select.git#allow-lazy-compile-dist",
     "es6-promise": "=1.0.0",
     "font-awesome": "~4.2.0",
     "forge": "~0.6.16",

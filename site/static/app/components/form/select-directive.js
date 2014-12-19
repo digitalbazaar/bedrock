@@ -44,6 +44,8 @@ function factory() {
               theme="bootstrap" ng-disabled="options.disabled"> \
               <ui-select-match placeholder="{{options.placeholder}}">{{$select.selected.display}}</ui-select-match> \
               <ui-select-choices \
+                br-lazy-compile="$select.open" \
+                br-lazy-compile-id="br-select-ui-select-choices" \
                 repeat="item in viewItems | filter: $select.search"> \
                 <div ng-bind-html="item.display | highlight: $select.search"></div> \
               </ui-select-choices> \
