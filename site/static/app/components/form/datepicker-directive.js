@@ -91,7 +91,6 @@ function datepickerFactory($filter, $templateCache, $timeout) {
   }
 
   function Compile() {
-    console.log('compiling...');
     // TODO: remove this and instead put a datepicker directive inside
     // a stackable and reimplement only the necessary bits of
     // datepicker-popup; this would also solve the need for lazy compile and
