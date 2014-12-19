@@ -28,15 +28,17 @@ function factory() {
         <div ng-if="options.editable" ng-show="group.layout.length > 0" \
           ng-class="{well: !options.embedded}"> \
           <fieldset> \
-            <br-form-field ng-repeat="property in group.layout" \
+            <br-form-field \
+              ng-repeat="property in group.layout track by $index" \
               br-property="property" br-model="model" \
               br-options="{{options}}" /> \
           </fieldset> \
         </div> \
         <dl ng-if="!options.editable" ng-show="group.layout.length > 0" \
           class="dl-horizontal"> \
-          <br-form-field ng-repeat="property in group.layout" \
-            br-property="property" br-model="model" br-options="{{options}}" /> \
+          <br-form-field ng-repeat="property in group.layout track by $index" \
+            br-property="property" br-model="model" \
+            br-options="{{options}}" /> \
         </dl> \
       </div>',
     link: function(scope, element, attrs) {

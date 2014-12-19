@@ -21,7 +21,8 @@ function factory() {
       <div br-lazy-compile="options" br-lazy-compile-id="br-form"> \
         <form ng-if="options.editable && !options.embedded" \
           class="form-horizontal"> \
-          <div ng-repeat="group in groups" ng-switch="group.type"> \
+          <div ng-repeat="group in groups track by group.id" \
+            ng-switch="group.type"> \
             <br-form-group ng-switch-when="PropertyGroup" \
               br-model="model" br-group="group" br-options="{{options}}" /> \
             <div ng-switch-default> \
@@ -31,7 +32,8 @@ function factory() {
           </div> \
         </form> \
         <div ng-if="options.editable && options.embedded"> \
-          <div ng-repeat="group in groups" ng-switch="group.type"> \
+          <div ng-repeat="group in groups track by group.id" \
+            ng-switch="group.type"> \
             <br-form-group ng-switch-when="PropertyGroup" \
               br-model="model" br-group="group" br-options="{{options}}" /> \
             <div ng-switch-default> \
@@ -40,7 +42,8 @@ function factory() {
             </div> \
           </div> \
         </div> \
-        <div ng-if="!options.editable" ng-repeat="group in groups" \
+        <div ng-if="!options.editable" \
+          ng-repeat="group in groups track by group.id" \
           ng-switch="group.type"> \
           <br-form-group ng-switch-when="PropertyGroup" \
             br-model="model" br-group="group" br-options="{{options}}" /> \
