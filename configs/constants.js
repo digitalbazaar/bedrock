@@ -37,3 +37,12 @@ constants.CONTEXT_URL = constants.CONTEXT_V1_URL;
  * Default main application JSON-LD context.
  */
 constants.CONTEXT = constants.CONTEXTS[constants.CONTEXT_URL];
+
+/**
+ * Load local copy of security v1 context.
+ */
+constants.SECURITY_CONTEXT_V1_URL = 'https://w3id.org/security/v1';
+constants.CONTEXTS[constants.SECURITY_CONTEXT_V1_URL] = JSON.parse(
+  fs.readFileSync(
+    __dirname + '/../site/static/contexts/security-v1.jsonld',
+    {encoding: 'utf8'}));

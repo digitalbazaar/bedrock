@@ -6,6 +6,7 @@
  * @author Dave Longley
  */
 define([
+  'jsonld',
   'angular',
   'angular-animate',
   'angular-bootstrap',
@@ -19,7 +20,7 @@ define([
   'app/configs',
   'app/components/components',
   'app/templates'
-], function(angular) {
+], function(jsonld, angular) {
 
 'use strict';
 
@@ -71,8 +72,8 @@ var util = {};
 module.value('util', util);
 util.parseFloat = parseFloat;
 
-var jsonld = util.jsonld = {};
-jsonld.isType = function(obj, value) {
+util.jsonld = {};
+util.jsonld.isType = function(obj, value) {
   var types = obj.type;
   if(types) {
     if(!angular.isArray(types)) {
@@ -106,6 +107,16 @@ module.run(function(
   $http, $location, $rootScope, $route, $window, config, util) {
   /* Note: $route is injected above to trigger watching routes to ensure
     pages are loaded properly. */
+
+  // configure document loader to load security context locally
+  jsonld.useDocumentLoader('xhr', {secure: true});
+  var documentLoader = jsonld.documentLoader;
+  jsonld.documentLoader = function(url) {
+    if(url === 'https://w3id.org/security/v1') {
+      url = config.data.baseUri + '/contexts/security-v1.jsonld';
+    }
+    return documentLoader(url);
+  };
 
   // default headers
   $http.defaults.headers.common.Accept =
