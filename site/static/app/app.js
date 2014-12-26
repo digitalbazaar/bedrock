@@ -10,6 +10,7 @@ define([
   'angular',
   'angular-animate',
   'angular-bootstrap',
+  'angular-file-upload',
   'angular-route',
   'angular-sanitize',
   'angular-ui-select',
@@ -26,7 +27,7 @@ define([
 
 var module = angular.module('app', [
   'multi-transclude', 'ngAnimate', 'ngRoute', 'ngSanitize',
-  'ui.bootstrap', 'ui.select', 'stackables',
+  'ui.bootstrap', 'angularFileUpload', 'ui.select', 'stackables',
   'app.configs', 'app.components', 'app.templates']);
 /* @ngInject */
 module.config(function($locationProvider, $routeProvider, $httpProvider) {
