@@ -29,14 +29,14 @@ function factory() {
           ng-class="{well: !options.embedded}"> \
           <fieldset> \
             <br-form-field \
-              ng-repeat="property in group.layout track by $index" \
+              ng-repeat="property in group.layout" \
               br-property="property" br-model="model" \
               br-options="{{options}}" /> \
           </fieldset> \
         </div> \
         <dl ng-if="!options.editable" ng-show="group.layout.length > 0" \
           class="dl-horizontal"> \
-          <br-form-field ng-repeat="property in group.layout track by $index" \
+          <br-form-field ng-repeat="property in group.layout" \
             br-property="property" br-model="model" \
             br-options="{{options}}" /> \
         </dl> \
