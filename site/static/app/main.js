@@ -62,6 +62,7 @@ require.config({
     'jquery.bedrock': {deps: ['jquery']},
     'jquery-migrate': {deps: ['jquery.bedrock']},
     'jquery.placeholder': {deps: ['jquery']},
+    jsonld: {deps: ['promise']},
     'ng-multi-transclude': {deps: ['angular']},
     stackables: {deps: ['angular', 'dialog-polyfill']},
     underscore: {exports: '_'}
