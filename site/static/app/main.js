@@ -67,6 +67,13 @@ require.config({
     stackables: {deps: ['angular', 'dialog-polyfill']},
     underscore: {exports: '_'}
   },
+  map: {
+    '*': {
+      // map alternate names to 'promise'
+      // currently used by jsonld.js
+      'es6-promise': 'promise'
+    }
+  },
   // preload customizable app bootstrap module
   deps: ['app/bootstrap'],
   callback: function() {
