@@ -77,7 +77,10 @@ require.config({
   // preload customizable app bootstrap module
   deps: ['app/bootstrap'],
   callback: function() {
-    require(['app/app'], function() {});
+    require(['promise'], function(promise) {
+      promise.polyfill();
+      require(['app/app'], function() {});
+    });
   }
 });
 
