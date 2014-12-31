@@ -74,13 +74,12 @@ require.config({
       'es6-promise': 'promise'
     }
   },
-  // preload customizable app bootstrap module
-  deps: ['app/bootstrap'],
-  callback: function() {
-    require(['promise'], function(promise) {
-      promise.polyfill();
-      require(['app/app'], function() {});
-    });
+  // preload customizable app bootstrap module and promise polyfill
+  deps: ['app/bootstrap', 'promise'],
+  callback: function(bs, promise) {
+    // FIXME: remove once using es6-promise 2.0.1 (polyfill auto-called)
+    promise.polyfill();
+    require(['app/app'], function() {});
   }
 });
 
