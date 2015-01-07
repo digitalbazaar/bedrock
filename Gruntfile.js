@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
   // optimization flag (any require.js mode, ie, 'uglify', 'none', etc
   grunt.config('optimize',
-    grunt.option('optimize') || process.env.GRUNT_OPTIMIZE || 'uglify');
+    grunt.option('optimize') || process.env.GRUNT_OPTIMIZE || 'uglify2');
 
   // setup config vars for templating
   grunt.config('dirs', {
@@ -114,6 +114,11 @@ module.exports = function(grunt) {
         wrap: true,
         preserveLicenseComments: false,
         optimize: grunt.config('optimize'),
+        uglify2: {
+          compress: {
+            unused: false
+          }
+        },
         onBuildRead: function(moduleName, path, contents) {
           if(path.indexOf('site/static/app') === -1) {
             return contents;
