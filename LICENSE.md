@@ -1,7 +1,7 @@
 Licensing Bedrock
 =================
 
-Copyright (c) 2011-2014 Digital Bazaar, Inc.
+Copyright (c) 2011-2015 Digital Bazaar, Inc.
 All rights reserved.
 
 This is proprietary software owned and licensed by Digital Bazaar, Inc.
