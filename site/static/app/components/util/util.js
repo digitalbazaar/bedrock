@@ -9,6 +9,7 @@ define([
   'angular',
   './action-menu-directive',
   './ceil-filter',
+  './bytes-filter',
   './ellipsis-filter',
   './embedded-string-filter',
   './encodeuricomponent-filter',
@@ -27,6 +28,7 @@ define([
   angular,
   actionMenuDirective,
   ceil,
+  bytes,
   ellipsis,
   embeddedString,
   encodeURIComponent_,
@@ -48,6 +50,7 @@ var module = angular.module('app.util', []);
 
 module.directive(actionMenuDirective);
 module.filter(ceil);
+module.filter(bytes);
 module.filter(ellipsis);
 module.filter(embeddedString);
 module.filter(encodeURIComponent_);
