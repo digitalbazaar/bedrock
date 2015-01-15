@@ -26,12 +26,17 @@ function tabsFactory() {
 
     this.select = $scope.select = function(pane) {
       if(typeof pane === 'number') {
+        // select by index
         pane = pane[pane];
       }
-      angular.forEach(panes, function(pane) {
-        pane.selected = false;
+      angular.forEach(panes, function(p) {
+        if(typeof pane === 'string' && p.tabId === pane) {
+          // select by tab ID
+          pane = p;
+        }
+        p.selected = false;
       });
-      if(pane) {
+      if(typeof pane !== 'string') {
         pane.selected = true;
       }
     };
