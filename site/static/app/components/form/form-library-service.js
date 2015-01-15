@@ -69,10 +69,12 @@ function factory(
 
     // all loaded vocabs
     self.vocabs = {};
+    self.hasVocabs = false;
     // all properties from all loaded vocabs
     self.properties = {};
     // all groups from all loaded vocabs
     self.groups = {};
+    self.hasGroups = false;
     // flattened graph of all properties and groups
     self.graph = {'@context': CONTEXT['@context'], '@graph': []};
 
@@ -108,6 +110,7 @@ function factory(
       .then(function(vocab) {
         // store vocab
         self.vocabs[id] = vocab;
+        self.hasVocabs = true;
 
         // merge in new vocab w/o merging existing nodes
         return jsonld.promises.merge(
@@ -122,6 +125,7 @@ function factory(
         // build property and group indexes
         self.properties = {};
         self.groups = {};
+        self.hasGroups = false;
         var nodes = jsonld.getValues(framed, '@graph');
         angular.forEach(nodes, function(node) {
           // raise conflict exception, overwrite silently?
@@ -129,6 +133,7 @@ function factory(
             self.properties[node.id] = node;
           } else if(jsonld.hasValue(node, 'type', 'PropertyGroup')) {
             self.groups[node.id] = node;
+            self.hasGroups = true;
           }
         });
         return self.vocabs[id];
