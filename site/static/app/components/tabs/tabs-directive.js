@@ -81,6 +81,18 @@ function tabsPaneFactory() {
     scope.title = scope.title || attrs.brTitle || element.attr('br-title');
     scope.tabId = scope.tabId || attrs.brTabId || element.attr('br-tab-id');
     tabsCtrl.addPane(scope, scope.index);
+
+    // watch br-selected expression (on parent scope) for selection changes
+    if(!attrs.brSelected) {
+      return;
+    }
+    scope.$parent.$watch(attrs.brSelected, function(value) {
+      if(value) {
+        tabsCtrl.select(scope);
+      } else {
+        scope.selected = false;
+      }
+    });
   }
 
   return {
