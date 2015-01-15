@@ -89,7 +89,8 @@ function tabsPaneFactory() {
     transclude: true,
     scope: {
       title: '@brTitle',
-      index: '=?brTabPaneIndex'
+      index: '=?brTabPaneIndex',
+      selected: '=?brSelected'
     },
     link: Link,
     templateUrl: '/app/components/tabs/tabs-pane.html'
