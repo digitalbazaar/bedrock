@@ -3,7 +3,7 @@
  *
  * Adapted from angular.js directive documentation.
  *
- * Copyright (c) 2014 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2014-2015 Digital Bazaar, Inc. All rights reserved.
  *
  * @author David I. Lehn
  */
@@ -22,19 +22,24 @@ function tabsFactory() {
   function Ctrl($scope) {
     var panes = $scope.panes = [];
     var panesMap = {};
-    panesMap['none'] = [];
+    panesMap.none = [];
 
-    $scope.select = function(pane) {
+    this.select = $scope.select = function(pane) {
+      if(typeof pane === 'number') {
+        pane = pane[pane];
+      }
       angular.forEach(panes, function(pane) {
         pane.selected = false;
       });
-      pane.selected = true;
+      if(pane) {
+        pane.selected = true;
+      }
     };
 
     this.addPane = function(pane, index) {
       // store pane order
       if(isNaN(parseInt(index, 10))) {
-        panesMap['none'].push(pane);
+        panesMap.none.push(pane);
       } else {
         panesMap[index] = pane;
       }
