@@ -1,7 +1,6 @@
 /*
- * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2015 Digital Bazaar, Inc. All rights reserved.
  */
-var url = require('./url');
 var email = require('./email');
 var slug = require('./slug');
 var passcode = require('./passcode');

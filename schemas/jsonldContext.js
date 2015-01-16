@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2015 Digital Bazaar, Inc. All rights reserved.
  */
-var tools = require('../lib/bedrock/tools');
-var config = require('../lib/bedrock').config;
+var tools = require('../lib/tools');
+var config = require('../lib/config');
 
 var schema = {
   required: true,
