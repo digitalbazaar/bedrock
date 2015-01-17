@@ -50,6 +50,46 @@ Bedrock database and the local Bedrock database collection:
     > db.bedrock_dev.drop()
     > exit
 
+# Licensing
+
+## Why isn't this released under an open source license?
+
+Our company loves open source. We release many of our projects under
+GPLv2, AGPLv3, MIT, BSD, and Creative Commons licenses. We 
+contribute heavily to the open source world and benefit greatly from
+open source software.
+
+There are a number of reasons that this particular product isn't
+open source:
+
+* We need to feed our families and this product generates revenue for us.
+* We need to fund development of our core company products somehow, and
+  releasing everything we do as open source does not enable us to do that.
+* We have tried the "pay for support" open source model and it has not
+  worked very well for our company. Very large companies, far bigger
+  than ours, regularly benefit from our work and provide nothing in
+  return.
+
+We wish this was not true. We wish we could just develop great 
+technology, release it to the world, and people would pay us for it.
+To date, our revenue from all the open source work we've been paid for 
+wouldn't even cover a month of operations. The reality is that large 
+companies don't pay small companies for their work unless they 
+absolutely have to.
+
+That said, we do also want to be a good citizen of the Web. We want to
+help students, researchers, hobbyists, and non-commercial enterprises
+use our software for research and the greater good. That is why we have
+decided to try a middle path - a non-commercial license for the software.
+This approach ensures that we help those that can't afford a commercial
+license while not putting ourselves out of business.
+
+In the future, we hope to include contributors to the project in a split
+of the revenue. We are still working out the details on how to do that
+fairly, but that's the direction we're headed. We want this software to
+put food on the table for not just us, but all contributors to the project
+as well.
+
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
 [HACKING]: HACKING.md
