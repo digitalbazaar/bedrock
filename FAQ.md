@@ -52,6 +52,17 @@ Bedrock database and the local Bedrock database collection:
 
 # Licensing
 
+## Is Bedrock Open Source?
+
+No. It does not fit any of the OSI-approved definitions for 
+"Open Source Software" primarily because we restrict its 
+use to non-commercial use without a license.
+
+You can look at and contribute to the source. You can use it
+for non-commercial projects. The next question in the FAQ
+explains why we have decided to release Bedrock under this
+model.
+
 ## Why isn't this released under an open source license?
 
 Our company loves open source. We release many of our projects under
