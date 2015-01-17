@@ -1,17 +1,54 @@
 Bedrock
 =======
 
-A core foundation for a rich application server.
+A core foundation for a rich Web application server.
 
-Building the Software
----------------------
+Quickstart 
+----------
 
-    npm install
+You can follow the following tutorial to setup and use 
+Bedrock on a Linux or Mac OS X development machine.
 
-Running the Development Bedrock Server
---------------------------------------
+Requirements
+------------
 
-    npm run dev
+* Linux or Mac OS X (also works on Windows with some coaxing)
+* node.js >= 0.10.x
+* npm >= 1.4.x
+* mongodb ~= 2.4.x (optional, but strongly recommended)
+
+Setup
+-----
+
+1. Setup an admin user on mongodb (see below)
+2. Map the `bedrock.dev` hostname to your machine (see below).
+3. git clone git@github.com:digitalbazaar/bedrock.git
+4. cd bedrock && npm install
+5. [optional] Tweak config settings in configs/dev.js
+
+To setup an admin user on mongodb:
+
+1. mongo
+2. use admin
+3. db.addUser( { user: "admin", pwd: "password", roles: [ "clusterAdmin", "readWriteAnyDatabase", "userAdminAnyDatabase", "dbAdminAnyDatabase"] } )
+
+To setup the `bedrock.dev` hostname:
+
+1. Edit the /etc/hosts file as the administrator/root.
+2. Add an entry mapping the IP address to `bedrock.dev`. 
+   For example: `192.168.0.15 bedrock.dev` (where `192.168.0.15` 
+   is the IP address of your primary network device.
+
+Running Bedrock
+---------------
+
+Run the following to start up a development server from the source directory:
+
+    node bedrock.dev.js
+
+To add more verbose debugging, use the `--log-level` option:
+
+    node bedrock.dev.js --log-level debug
 
 Running the Tests
 -----------------
@@ -59,7 +96,7 @@ Save the generated private key and certificate PEMs in the appropriate files
 (in ./pki/ if using the default config).
 
 Features
--------
+--------
 
 For a complete list of features included in Bedrock, see the [FEATURES][] file.
 
@@ -82,12 +119,11 @@ See the [AUTHORS][] file for author contact information.
 License
 -------
 
-See the [LICENSE][] file for license information.
+Bedrock and all Bedrock modules are 
+Copyright (c) 2011-2015 Digital Bazaar, Inc.
+All Rights Reserved
 
-Copyright
----------
-
-Copyright (c) 2011-2014 Digital Bazaar, Inc. All rights reserved.
+See the [LICENSE][] file for non-commercial license information.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
