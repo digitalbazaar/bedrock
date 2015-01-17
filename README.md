@@ -50,6 +50,13 @@ To add more verbose debugging, use the `--log-level` option:
 
     node bedrock.dev.js --log-level debug
 
+To access the server:
+
+1. Go to: https://bedrock.dev:22443/
+2. The certificate warning is normal for development mode. Accept it and 
+   continue to the landing page. 
+3. Login as the admin `admin` with the password `password` or create a new account.
+
 Running the Tests
 -----------------
 
