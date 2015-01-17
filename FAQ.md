@@ -74,7 +74,7 @@ There are a number of reasons that this particular product isn't
 open source:
 
 * We need to feed our families and this product generates revenue for us.
-* We need to fund development of our core company products somehow, and
+* We need to fund development of our core company products, and
   releasing everything we do as open source does not enable us to do that.
 * We have tried the "pay for support" open source model and it has not
   worked very well for our company. Very large companies, far bigger
