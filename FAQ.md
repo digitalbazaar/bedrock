@@ -74,19 +74,20 @@ There are a number of reasons that this particular product isn't
 open source:
 
 * We need to feed our families and this product generates revenue for us.
-* We need to fund development of our core company products, and
-  releasing everything we do as open source does not enable us to do that.
+* We need to fund development of our core company products and
+  we currently believe that releasing this product as open source
+  will not enable us to do that.
 * We have tried the "pay for support" open source model and it has not
   worked very well for our company. Very large companies, far bigger
   than ours, regularly benefit from our work and provide nothing in
   return.
 
-We wish this was not true. We wish we could just develop great 
+We wish this were not true. We wish we could just develop great 
 technology, release it to the world, and people would pay us for it.
-To date, our revenue from all the open source work we've been paid for 
-wouldn't even cover a month of operations. The reality is that large 
-companies don't pay small companies for their work unless they 
-absolutely have to.
+To date, the revenue we've received from other large companies that have
+benefitted from projects we've open sourced wouldn't even cover a month
+of operations. The reality is that large companies don't pay small
+companies for their work unless they absolutely have to.
 
 That said, we do also want to be a good citizen of the Web. We want to
 help students, researchers, hobbyists, and non-commercial enterprises
