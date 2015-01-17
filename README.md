@@ -1,7 +1,22 @@
 Bedrock
 =======
 
-A core foundation for a rich Web application server.
+Bedrock helps you launch your ideas faster by bundling
+all the best-of-breed tooling that's necessary to 
+build a modern, scalable Web app. It can run on a
+low-powered laptop all the way up to enterprise
+servers serving tens of millions of transactions 
+per day.
+
+Bedrock runs on Linux, Mac OS X, and Windows. It
+uses node.js + Express3 + MongoDB for the server 
+backend while utilizing HTML5 + Bootstrap3 + AngularJS
+for the front-end. It has REST APIs, user account 
+management, strong cryptography support, DoS protection, 
+digital signatures, Linked Data, and tons of other 
+[FEATURES][] that are active by default. If you don't 
+need all the fancy features, Bedrock is modular, so 
+you can use only the modules you want.
 
 Quickstart 
 ----------
