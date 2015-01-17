@@ -101,6 +101,19 @@ fairly, but that's the direction we're headed. We want this software to
 put food on the table for not just us, but all contributors to the project
 as well.
 
+## I work for a startup, is Bedrock expensive to license?
+
+No, it's quite affordable for a startup and we're very careful to not
+endanger the startup with ill-timed license fee schedules. We work 
+with startups on a regular basis and we want them to succeed because 
+we want them to become customers.
+
+## I work for a major corporation, is Bedrock expensive to license?
+
+Bedrock easily provides a 10x return on investment for a large company.
+It took years to write and refine it, which is money that your organization
+does not have to spend making the same mistakes that we did.
+
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
 [HACKING]: HACKING.md
