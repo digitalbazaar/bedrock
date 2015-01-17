@@ -56,7 +56,7 @@ Bedrock database and the local Bedrock database collection:
 
 No. It does not fit any of the OSI-approved definitions for 
 "Open Source Software" primarily because we restrict its 
-use to non-commercial use without a license.
+use to non-commercial use. Commercial use requires a license.
 
 You can look at and contribute to the source. You can use it
 for non-commercial projects. The next question in the FAQ
