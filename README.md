@@ -126,11 +126,15 @@ See the [AUTHORS][] file for author contact information.
 License
 -------
 
-Bedrock and all Bedrock modules are 
-Copyright (c) 2011-2015 Digital Bazaar, Inc.
-All Rights Reserved
+Bedrock and all Bedrock modules are:
 
-See the [LICENSE][] file for non-commercial license information.
+    Copyright (c) 2011-2015 Digital Bazaar, Inc.
+    All Rights Reserved
+
+You can use Bedrock for non-commercial purposes such as self-study, 
+research, personal projects, or for evaluation purposes. See 
+the [LICENSE][] file for details about the included 
+non-commercial license information.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
