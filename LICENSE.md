@@ -23,7 +23,7 @@ These are examples of cases that are allowed by this license:
   personal use only.
 * The licensee is an individual or group of students/researchers that uses
   Bedrock to experiment with an idea for a non-commercial project.
-  The licensee is a startup company that prototypes a Bedrock-dependent
+* The licensee is a startup company that prototypes a Bedrock-dependent
   product before they have cash flow and will be testing the prototype
   software with less than 500 users. The service will not generate revenue
   of any kind.
