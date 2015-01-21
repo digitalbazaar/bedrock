@@ -1,6 +1,6 @@
-# Bedrock Hacking
+# Contributing to Bedrock
 
-Details for developers about hacking on the Bedrock code.
+Details for developers about contributing to the Bedrock code.
 
 ## Development Environment Setup
 
