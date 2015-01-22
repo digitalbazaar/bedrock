@@ -3,11 +3,7 @@
  */
 var bedrock = require('./lib/bedrock');
 
-if(module.parent) {
-  module.exports = bedrock;
-} else {
-  // running in development mode
-  // load dev config and start
-  require('./configs/dev');
-  bedrock.start();
-}
+// running in development mode
+// load dev config and start
+require('./configs/dev');
+bedrock.start({script: __filename});
