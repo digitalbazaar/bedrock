@@ -31,7 +31,7 @@ config.website.views.vars = {
   style: {
     brand: {
       alt: config.brand.name,
-      src: '/img/bedrock.png',
+      src: '/bower-components/bedrock-angular/img/bedrock.png',
       height: '24',
       width: '182'
     }
