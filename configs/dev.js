@@ -36,18 +36,16 @@ config.server.bindAddr = ['bedrock.dev'];
 config.server.domain = 'bedrock.dev';
 config.server.host = 'bedrock.dev:18443';
 config.server.baseUri = 'https://' + config.server.host;
-config.server.key = path.join(__dirname, '..', 'pki', 'test-bedrock.key');
-config.server.cert = path.join(__dirname, '..', 'pki', 'test-bedrock.crt');
 
 // session info
-config.server.session.secret = '0123456789abcdef';
-config.server.session.key = 'bedrock.sid';
-config.server.session.prefix = 'bedrock.';
+config.express.session.secret = '0123456789abcdef';
+config.express.session.key = 'bedrock.sid';
+config.express.session.prefix = 'bedrock.';
 
-// server static resource config
-//config.server.static = [__dirname + '/../site/static'];
-config.server.staticOptions = {
-  maxAge: config.server.cache.maxAge
+// express static resource config
+//config.express.static = [__dirname + '/../site/static'];
+config.express.staticOptions = {
+  maxAge: config.express.cache.maxAge
 };
 
 // database config
