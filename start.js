@@ -70,4 +70,9 @@ bedrock.config.mail.templates.mappers.push(
   path.join(__dirname, 'email-templates', 'mapper')
 );
 
+// TODO: add via bedrock-idp
+bedrock.config.website.views.paths.push(
+  path.join(__dirname, '..', 'bedrock-idp', 'views')
+);
+
 bedrock.start();
