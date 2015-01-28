@@ -50,27 +50,6 @@ bedrock.config.express.static.push({
   file: true
 });
 
-// mail config
-bedrock.config.mail.events.push({
-  type: 'bedrock.Identity.created',
-  // auth email
-  template: 'bedrock.Identity.created'
-}, {
-  type: 'bedrock.Identity.created',
-  // user email
-  template: 'bedrock.Identity.created-identity'
-}, {
-  type: 'bedrock.Identity.passcodeSent',
-  // user email
-  template: 'bedrock.Identity.passcodeSent'
-});
-bedrock.config.mail.templates.paths.push(
-  path.join(__dirname, 'email-templates')
-);
-bedrock.config.mail.templates.mappers.push(
-  path.join(__dirname, 'email-templates', 'mapper')
-);
-
 // TODO: add via bedrock-idp
 bedrock.config.website.views.paths.push(
   path.join(__dirname, '..', 'bedrock-idp', 'views')
