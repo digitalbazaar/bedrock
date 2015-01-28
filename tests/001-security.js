@@ -1,13 +1,11 @@
 /*
- * Copyright (c) 2013-2014 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2013-2015 Digital Bazaar, Inc. All rights reserved.
  */
 
 'use strict';
 
-var jsonld = require('../../lib/bedrock/jsonld');
-var bedrock = {
-  security: require('../../lib/bedrock/security')
-};
+var bedrock = require('../lib/bedrock');
+var jsonld = bedrock.jsonld;
 var should = GLOBAL.should;
 
 var privateKey = {

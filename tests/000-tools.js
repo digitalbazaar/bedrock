@@ -1,12 +1,10 @@
 /*
- * Copyright (c) 2012-2014 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2015 Digital Bazaar, Inc. All rights reserved.
  */
 
 'use strict';
 
-var bedrock = {
-  tools: require('../../lib/bedrock/tools')
-};
+var bedrock = require('../lib/bedrock');
 var BedrockError = bedrock.tools.BedrockError;
 
 describe('bedrock.tool utility tests', function() {
