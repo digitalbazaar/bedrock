@@ -21,6 +21,7 @@ require('../bedrock-rest');
 require('../bedrock-session-mongodb');
 require('../bedrock-validation');
 require('../bedrock-views');
+//require('../bedrock-protractor');
 
 // load local config
 require('./configs/dev');
@@ -74,5 +75,20 @@ bedrock.config.mail.templates.mappers.push(
 bedrock.config.website.views.paths.push(
   path.join(__dirname, '..', 'bedrock-idp', 'views')
 );
+
+// add dev data
+bedrock.events.on('bedrock.configure', function() {
+  require('./configs/roles');
+  require('./configs/common-data');
+  require('./configs/dev-data');
+});
+
+// configure for tests, add test data
+bedrock.events.on('bedrock.test.configure', function() {
+  require('./configs/test');
+  require('./configs/roles');
+  require('./configs/common-data');
+  require('./configs/dev-data');
+});
 
 bedrock.start();

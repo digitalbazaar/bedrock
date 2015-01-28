@@ -1,4 +1,3 @@
-var path = require('path');
 var config = require('../lib/config');
 
 // app info
@@ -87,7 +86,3 @@ config.mail.vars = {
   },
   machine: require('os').hostname()
 };
-
-require('./roles');
-require('./common-data');
-require('./dev-data');
