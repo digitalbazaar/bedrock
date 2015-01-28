@@ -62,11 +62,8 @@
     "grunt-jscs": "~1.0.0",
     "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
     "mocha": "~2.0.1",
-    "protractor": "~1.4.0",
     "request": "~2.47.0",
-    "superagent": "~0.20.0",
-    "temp": "~0.8.1",
-    "wd": "~0.3.10"
+    "superagent": "~0.20.0"
   },
   "engines": {
     "node": ">=0.10.0"
