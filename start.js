@@ -21,7 +21,7 @@ require('../bedrock-rest');
 require('../bedrock-session-mongodb');
 require('../bedrock-validation');
 require('../bedrock-views');
-//require('../bedrock-protractor');
+require('../bedrock-protractor');
 
 // load local config
 require('./configs/dev');
