@@ -11,9 +11,12 @@
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
-    - `{type: 'EVENT-TYPE', template: 'TEMPLATE-HANDLER-ID'}
+    - `{type: 'EVENT-TYPE', template: 'TEMPLATE-HANDLER-ID'}`
   - Modules set config objects in `bedrock.config.mail.templates.config[ID]`:
     - `{filename: 'FULL-FILENAME', [disabled: true]}`
+- **schemas**:
+  - Schemas moved to `bedrock-validation` and other modules.
+  - Modules push paths to `bedrock.config.validation.schemas.paths` array.
 
 # 0.2.0 (up to early 2015)
 

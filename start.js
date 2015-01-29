@@ -26,10 +26,6 @@ require('../bedrock-protractor');
 // load local config
 require('./configs/dev');
 
-// validation schemas
-bedrock.config.validation.schema.paths.push(
-  path.join(__dirname, 'schemas'));
-
 // add static paths for website
 bedrock.config.express.static.push(path.join(__dirname, 'site', 'static'));
 // use CORS for static vocabs and contexts
