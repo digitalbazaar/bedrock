@@ -43,12 +43,6 @@ bedrock.config.express.static.push({
   path: path.join(__dirname, 'site', 'static', 'contexts'),
   cors: true
 });
-// no bower package for iso8601-js-period yet (also has some modifications)
-bedrock.config.express.static.push({
-  route: '/iso8601/iso8601.js',
-  path: path.join(__dirname, 'lib', 'iso8601', 'iso8601.js'),
-  file: true
-});
 
 // TODO: add via bedrock-idp
 bedrock.config.website.views.paths.push(
