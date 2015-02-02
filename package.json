@@ -5,45 +5,23 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js",
-    "test": "node test.js --backend --frontend --hide",
-    "test-backend": "node test.js --backend",
-    "test-frontend": "node test.js --frontend",
-    "test-frontend-hide": "node test.js --frontend --hide",
-    "test-chrome": "node test.js --frontend --browser chrome",
-    "test-chrome-hide": "node test.js --frontend --browser chrome --hide",
-    "test-firefox": "node test.js --frontend --browser firefox",
-    "test-firefox-hide": "node test.js --frontend --browser firefox --hide",
-    "test-phantomjs": "node test.js --frontend --browser phantomjs",
     "lint": "grunt jshint",
-    "ci-test": "node test.js --backend --reporter tap",
     "ci-lint": "grunt --no-color jshint --mode=ci || exit 0",
-    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend --reporter tap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
-    "coverage-backend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend && ./node_modules/.bin/istanbul report --root coverage lcov",
-    "coverage-frontend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --frontend && ./node_modules/.bin/istanbul report --root coverage lcov",
-    "compile-css": "grunt compile-css",
-    "minify": "grunt",
-    "postinstall": "bower install",
-    "postupdate": "bower update",
-    "bower-install": "bower install",
-    "bower-update": "bower update"
+    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend --reporter t
+ap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
+    "coverage-backend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend && .
+/node_modules/.bin/istanbul report --root coverage lcov",
+    "coverage-frontend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --frontend &&
+ ./node_modules/.bin/istanbul report --root coverage lcov",
   },
   "dependencies": {
     "async": "~0.9.0",
     "async-node-events": "~0.0.7",
     "bcrypt": "~0.7.8",
-    "bower": "~1.3.12",
     "commander": "~2.3.0",
-    "grunt": "~0.4.1",
-    "grunt-angular-templates": "git://github.com/digitalbazaar/grunt-angular-templates",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-cssmin": "~0.10.0",
-    "grunt-contrib-requirejs": "~0.4.1",
     "jsonld": "~0.3.19",
-    "ng-annotate": "~0.10.3",
-    "node-forge": "~0.6.16",
+    "mkdirp": "~0.5.0",
     "pkginfo": "~0.3.0",
-    "prompt": "~0.2.14",
-    "requirejs": "~2.1.15",
     "underscore": "~1.7.0",
     "ursa": "v0.8.0",
     "winston": "~0.7.0",
@@ -55,13 +33,8 @@
   "devDependencies": {
     "chai": "~1.9.2",
     "chai-as-promised": "~4.1.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-less": "~0.11.4",
-    "grunt-jscs": "~1.0.0",
     "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
-    "mocha": "~2.0.1",
-    "request": "~2.47.0",
-    "superagent": "~0.20.0"
+    "mocha": "~2.0.1"
   },
   "engines": {
     "node": ">=0.10.0"
