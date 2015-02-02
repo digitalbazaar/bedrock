@@ -7,12 +7,9 @@
     "dev": "node index.js",
     "lint": "grunt jshint",
     "ci-lint": "grunt --no-color jshint --mode=ci || exit 0",
-    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend --reporter t
-ap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
-    "coverage-backend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend && .
-/node_modules/.bin/istanbul report --root coverage lcov",
-    "coverage-frontend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --frontend &&
- ./node_modules/.bin/istanbul report --root coverage lcov",
+    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend --reporter tap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
+    "coverage-backend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend && ./node_modules/.bin/istanbul report --root coverage lcov",
+    "coverage-frontend": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --frontend && ./node_modules/.bin/istanbul report --root coverage lcov"
   },
   "dependencies": {
     "async": "~0.9.0",
@@ -33,6 +30,10 @@ ap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
   "devDependencies": {
     "chai": "~1.9.2",
     "chai-as-promised": "~4.1.0",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-jscs": "~1.0.0",
     "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
     "mocha": "~2.0.1"
   },
