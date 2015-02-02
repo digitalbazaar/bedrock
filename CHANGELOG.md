@@ -17,6 +17,10 @@
 - **schemas**:
   - Schemas moved to `bedrock-validation` and other modules.
   - Modules push paths to `bedrock.config.validation.schemas.paths` array.
+- **mongodb**:
+  - `config.database` changed to `config.mongodb`.
+- **cli**:
+  - `-R/--reporter` changed to `--mocha-reporter`.
 
 # 0.2.0 (up to early 2015)
 
