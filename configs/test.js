@@ -15,9 +15,9 @@ config.server.httpPort = 18081;
 config.server.host = 'bedrock.dev:18444';
 config.server.baseUri = 'https://' + config.server.host;
 
-// database config
-config.database.name = 'bedrock_test';
-config.database.local.collection = 'bedrock_test';
+// mongodb config
+config.mongodb.name = 'bedrock_test';
+config.mongodb.local.collection = 'bedrock_test';
 
 // mail config
 config.mail.vars = {

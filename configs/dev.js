@@ -47,11 +47,11 @@ config.express.staticOptions = {
   maxAge: config.express.cache.maxAge
 };
 
-// database config
-config.database.name = 'bedrock_dev';
-config.database.host = 'localhost';
-config.database.port = 27017;
-config.database.local.collection = 'bedrock_dev';
+// mongodb config
+config.mongodb.name = 'bedrock_dev';
+config.mongodb.host = 'localhost';
+config.mongodb.port = 27017;
+config.mongodb.local.collection = 'bedrock_dev';
 
 // mail config
 config.mail.connection = {
