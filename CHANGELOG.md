@@ -6,8 +6,12 @@
   - Files split into many sub-projects.
   - Bedrock server split into `bedrock-*` modules.
   - Bedrock frontend components split into `bedrock-angular-*` modules.
-- Infrastructure added to make composing a project from modules much easier.
-- New event system for module initialization and communication.
+- Infrastructure changed to make composing a project from modules much easier.
+- **bedrock**:
+  - New event system for module initialization and communication.
+  - Removed old bedrock.modules API.
+  - `config.server.workers` changed to `config.app.workers`.
+  - `iso8601` libraries removed.
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
