@@ -21,7 +21,7 @@ config.mongodb.local.collection = 'bedrock_test';
 
 // mail config
 config.mail.vars = {
-  productionMode: config.website.views.vars.productionMode,
+  productionMode: config.views.vars.productionMode,
   baseUri: config.server.baseUri,
   subject: {
     prefix: '[Bedrock TEST] ',
@@ -49,10 +49,10 @@ config.mail.vars = {
 };
 
 // base URL for tests
-config.website.views.vars.serviceHost = config.server.host;
-config.website.views.vars.serviceDomain = config.server.domain;
-config.website.views.vars.baseUri = config.server.baseUri;
-config.website.views.vars.clientData.baseUri = config.server.baseUri;
+config.views.vars.serviceHost = config.server.host;
+config.views.vars.serviceDomain = config.server.domain;
+config.views.vars.baseUri = config.server.baseUri;
+config.views.vars.clientData.baseUri = config.server.baseUri;
 
 require('./roles');
 require('./common-data');

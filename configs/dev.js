@@ -60,7 +60,7 @@ config.mail.connection = {
 };
 config.mail.send = false;
 config.mail.vars = {
-  productionMode: config.website.views.vars.productionMode,
+  productionMode: config.views.vars.productionMode,
   baseUri: config.server.baseUri,
   subject: {
     prefix: '[Bedrock DEV] ',

@@ -41,7 +41,7 @@ bedrock.config.express.static.push({
 });
 
 // TODO: add via bedrock-idp
-bedrock.config.website.views.paths.push(
+bedrock.config.views.paths.push(
   path.join(__dirname, '..', 'bedrock-idp', 'views')
 );
 

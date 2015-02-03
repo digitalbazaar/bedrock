@@ -25,6 +25,8 @@
   - `config.database` changed to `config.mongodb`.
 - **cli**:
   - `-R/--reporter` changed to `--mocha-reporter`.
+- **views**:
+  - `config.website.views` moved to `config.views`.
 
 # 0.2.0 (up to early 2015)
 
