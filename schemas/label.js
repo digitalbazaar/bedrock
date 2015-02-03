@@ -8,7 +8,7 @@ var schema = {
   title: 'Label',
   description: 'A short, descriptive label.',
   type: 'string',
-  pattern: '^[-a-zA-Z0-9~!$%^&*\\(\\)_=+\\. ]*$',
+  pattern: '^[-a-zA-Z0-9~`!@#$%^&*\\(\\)\\[\\]{}<>_=+\\\\|:;\'\\.,/? ]*$',
   minLength: 1,
   maxLength: 32,
   errors: {
