@@ -11,7 +11,7 @@
   - New event system for module initialization and communication.
   - Removed old bedrock.modules API.
   - `config.server.workers` changed to `config.app.workers`.
-  - `iso8601` libraries removed.
+  - Various code moved to modules or removed (`iso8601` library, etc)
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
