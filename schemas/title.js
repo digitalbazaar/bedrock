@@ -8,7 +8,7 @@ var schema = {
   title: 'Title',
   description: 'A descriptive title.',
   type: 'string',
-  pattern: '^[-a-zA-Z0-9~`!@#$%^&*\\(\\)\\[\\]{}<>_=+\\\\|:;\'\\.,/? ]*$',
+  pattern: '^[-a-zA-Z0-9~`!@#$%^&*\\(\\)\\[\\]{}<>_=+\\\\|:;\'"\\.,/? ]*$',
   minLength: 1,
   maxLength: 200,
   errors: {
