@@ -10,7 +10,7 @@ var schema = {
   type: 'string',
   pattern: '^[-a-zA-Z0-9~`!@#$%^&*\\(\\)\\[\\]{}<>_=+\\\\|:;\'\\.,/? ]*$',
   minLength: 1,
-  maxLength: 32,
+  maxLength: 200,
   errors: {
     invalid: 'The label contains invalid characters or is not between ' +
       '1 and 32 characters in length.',
