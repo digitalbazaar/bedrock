@@ -13,7 +13,7 @@ var schema = {
   maxLength: 200,
   errors: {
     invalid: 'The label contains invalid characters or is not between ' +
-      '1 and 32 characters in length.',
+      '1 and 200 characters in length.',
     missing: 'Please enter a label.'
   }
 };
