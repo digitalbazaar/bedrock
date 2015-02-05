@@ -58,8 +58,6 @@ var testObject = {
 // See the NOTE in the tests if this must be regenerated.
 var encryptedMessage = {"@context":"https://w3id.org/bedrock/v1","type":"EncryptedMessage","cipherData":"FHpoqgUXY/Vh6JjahGPEvQL8h3a1ujJu8QB2ZRe274ltOIQA3gEvDieYkmnB0JwRKkyS8qeQ5fHe3+tG7uhiUzx338VFHowKBl5t3c32biM=","cipherAlgorithm":"rsa-sha256-aes-128-cbc","cipherKey":"AdnKdDo0Fx7OMAW/mt8wyZDpaLVfzbN5LhO80csyaevtW8ugEvMMkHNswKIP6OtC0iB4UiZJ3Km3B+Hg25lKDZiCdV5/ZmHJTloCauXb7Ca7onMSqMQMEt0QAkcFY+o2QjD2QzvEebpVkzzBPZq7eFBLttZR1THr8YFUEIQphAw=","initializationVector":"XdicEPOpQ4WqPS6cm/UxLsjfXYKAC62gn9iaVr8Cw7KtDSW3uETaKePgBIEYLiTx21txNtrYL0Qw2XYZ0T1OAiFpng/3w3ZSjQ8pDnb3JSFX8qY1Mq4a3ZpAXFemwFc6LLwA8WHKGa06hzc7QEkozJhQgIyEj3O9Gf6EzsPxPXQ=","publicKey":"https://bedrock.dev/i/username/keys/1"};
 
-var testPasswordHash = 'bcrypt:$2a$10$hjp3zswzxnOV9A1gui//COzuM/.AG4hArsQEiAIA1nUION1hQ5W12';
-
 describe('bedrock.security', function() {
   describe('JSON-LD hashing', function() {
     it('should generate the correct hash', function(done) {
@@ -126,31 +124,6 @@ describe('bedrock.security', function() {
               done();
             });
         });
-      });
-    });
-  });
-
-  describe('JSON-LD password hashing', function() {
-    it('should generate non-legacy, valid hashes', function(done) {
-      bedrock.security.createPasswordHash('password', function(err, hash) {
-        should.not.exist(err);
-        bedrock.security.verifyPasswordHash(hash, 'password',
-          function(err, verified, legacy) {
-            should.not.exist(err);
-            legacy.should.be.false;
-            verified.should.be.true;
-            done();
-        });
-      });
-    });
-
-    it('should validate non-legacy, valid hashes', function(done) {
-      bedrock.security.verifyPasswordHash(
-        testPasswordHash, 'password', function(err, verified, legacy) {
-          should.not.exist(err);
-          legacy.should.be.false;
-          verified.should.be.true;
-          done();
       });
     });
   });

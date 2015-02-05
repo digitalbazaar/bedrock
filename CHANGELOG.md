@@ -12,6 +12,7 @@
   - Removed old bedrock.modules API.
   - `config.server.workers` changed to `config.app.workers`.
   - Various code moved to modules or removed (`iso8601` library, etc)
+  - Removed password hashing from bedrock.security.
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
