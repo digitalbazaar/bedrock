@@ -7,7 +7,7 @@
 var bedrock = require('../lib/bedrock');
 var BedrockError = bedrock.tools.BedrockError;
 
-describe('bedrock.tool utility tests', function() {
+describe('bedrock', function() {
   describe('tools.extend()', function() {
     it('should perform in-place default extension', function(done) {
       var result = {};
