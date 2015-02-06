@@ -2,6 +2,7 @@ var config = require('../lib/bedrock').config;
 
 // identities
 config.identity.identities.push({
+  '@context': config.constants.IDENTITY_CONTEXT_V1_URL,
   type: 'Identity',
   sysSlug: 'bedrock',
   label: 'Bedrock',
@@ -13,6 +14,7 @@ config.identity.identities.push({
   }]
 });
 config.identity.identities.push({
+  '@context': config.constants.IDENTITY_CONTEXT_V1_URL,
   type: 'Identity',
   sysSlug: 'dev',
   label: 'Dev',
