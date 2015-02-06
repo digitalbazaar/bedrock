@@ -9,16 +9,6 @@ config.loggers.email.silent = true;
 // only log critical errors by default
 config.loggers.console.level = 'critical';
 
-// server info
-config.server.port = 18444;
-config.server.httpPort = 18081;
-config.server.host = 'bedrock.dev:18444';
-config.server.baseUri = 'https://' + config.server.host;
-
-// mongodb config
-config.mongodb.name = 'bedrock_test';
-config.mongodb.local.collection = 'bedrock_test';
-
 // mail config
 config.mail.vars = {
   productionMode: config.views.vars.productionMode,
