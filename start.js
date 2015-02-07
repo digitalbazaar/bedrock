@@ -2,7 +2,6 @@
  * Copyright (c) 2012-2015 Digital Bazaar, Inc. All rights reserved.
  */
 var bedrock = require('./lib/bedrock');
-var path = require('path');
 
 require('../bedrock-express');
 require('../bedrock-docs');
@@ -25,25 +24,6 @@ require('../bedrock-protractor');
 
 // load local config
 require('./configs/dev');
-
-// add static paths for website
-bedrock.config.express.static.push(path.join(__dirname, 'site', 'static'));
-// use CORS for static vocabs and contexts
-bedrock.config.express.static.push({
-  route: '/vocabs',
-  path: path.join(__dirname, 'site', 'static', 'vocabs'),
-  cors: true
-});
-bedrock.config.express.static.push({
-  route: '/contexts',
-  path: path.join(__dirname, 'site', 'static', 'contexts'),
-  cors: true
-});
-
-// TODO: add via bedrock-idp
-bedrock.config.views.paths.push(
-  path.join(__dirname, '..', 'bedrock-idp', 'views')
-);
 
 // add dev data
 bedrock.events.on('bedrock.configure', function() {
