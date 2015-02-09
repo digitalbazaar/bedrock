@@ -1,7 +1,7 @@
 {
   "name": "bedrock",
   "version": "0.0.1",
-  "private": "true",
+  "private": true,
   "description": "Bedrock bower dependencies.",
   "dependencies": {
     "almond": "~0.3.0",
