@@ -14,6 +14,9 @@
   - Various code moved to modules or removed (`iso8601` library, etc)
   - `bedrock.security` API removed. Other libraries such as `jsonld-signatures` can be used.
   - `bedrock.tools` renamed to `bedrock.util`; `bedrock.tools` is deprecated.
+  - Config files:
+    - Most files moved as examples in `bedrock-seed`.
+    - Some values added as defaults in appropriate modules.
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
