@@ -10,7 +10,8 @@
 - **bedrock**:
   - New event system for module initialization and communication.
   - Removed old bedrock.modules API.
-  - `config.server.workers` changed to `config.app.workers`.
+  - `config.app.*` changed to `config.core.*`.
+  - `config.server.workers` changed to `config.core.workers`.
   - Various code moved to modules or removed (`iso8601` library, etc)
   - `bedrock.security` API removed. Other libraries such as `jsonld-signatures` can be used.
   - `bedrock.tools` renamed to `bedrock.util`; `bedrock.tools` is deprecated.
