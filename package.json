@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js",
+    "test": "node index.js test",
     "lint": "grunt jshint",
     "ci-lint": "grunt --no-color jshint --mode=ci || exit 0",
     "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover test.js -- --backend --reporter tap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
