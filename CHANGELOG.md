@@ -29,6 +29,8 @@
   - Modules push paths to `bedrock.config.validation.schemas.paths` array.
 - **mongodb**:
   - `config.database` changed to `config.mongodb`.
+  - `bedrock-mongodb` module now uses version 2.x of the Node.js driver, see [Migrating to 2.X](http://mongodb.github.io/node-mongodb-native/2.0/tutorials/changes-from-1.0/).
+  - Support for mongodb 2.2 has been dropped.
 - **cli**:
   - `-R/--reporter` changed to `--mocha-reporter`.
 - **views**:
