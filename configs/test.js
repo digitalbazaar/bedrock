@@ -1,8 +1,5 @@
 var config = require('../lib/config');
 
-// config environment
-config.environment = 'testing';
-
 // logging
 config.loggers.app.filename = '/tmp/bedrock-test-app.log';
 config.loggers.access.filename = '/tmp/bedrock-test-access.log';

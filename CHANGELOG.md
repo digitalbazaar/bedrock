@@ -18,6 +18,21 @@
   - Config files:
     - Most files moved as examples in `bedrock-seed`.
     - Some values added as defaults in appropriate modules.
+  - Removed `config.environment` in favor of feature flags.
+  - `config.core.starting.groupId` and `config.core.starting.userId` used for
+    master before logging initialized.
+  - `config.core.running.groupId` and `config.core.running.userId` used for
+    master and workers after logging initialized.
+  - `config.core.errors.showStack` used to control general error stack traces.
+  - `config.jsonld.strictSSL` used to control strict SSL of jsonld library.
+  - `config.express.useSession` to control session support.
+  - `config.express.dumpExceptions` to control error exceptions.
+  - `config.express.showStack` to control error stack traces.
+  - `config.views.serviceUnavailable` to control 503 Service Unavailable for
+    all requests.
+  - `config.core.masterTitle` changed to `config.core.master.title`.
+  - `config.core.workerTitle` changed to `config.core.worker.title`.
+  - `config.core.restartWorkers` changed to `config.core.worker.restart`.
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
