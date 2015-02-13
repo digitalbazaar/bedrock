@@ -53,6 +53,10 @@
   - `-R/--reporter` changed to `--mocha-reporter`.
 - **views**:
   - `config.website.views` moved to `config.views`.
+  - `config.views.vars` are now shared between client and server templates except for any vars under `_private` which are server-only.
+  - `config.views.vars.clientData` has been removed.
+  - `config.views.vars.session` moved to `config.views.vars.idp.session`.
+  - A number of unused keys in `config.views.vars` have been removed: `session.auth`, `session.loaded`, `serviceHost`, `serviceDomain`, `productionMode`.
 
 # 0.2.0 (up to early 2015)
 
