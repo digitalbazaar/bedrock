@@ -18,6 +18,9 @@
   - Config files:
     - Most files moved as examples in `bedrock-seed`.
     - Some values added as defaults in appropriate modules.
+    - `configs` dir removed.
+    - Development uses defaults.
+    - Testing uses `lib/test.config.js`.
   - Removed `config.environment` in favor of feature flags.
   - `config.core.starting.groupId` and `config.core.starting.userId` used for
     master before logging initialized.
