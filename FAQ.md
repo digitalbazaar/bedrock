@@ -2,7 +2,7 @@
 
 ## How do I setup a local bedrock development environment?
 
-See the [HACKING][] documentation for full details.
+See the [CONTRIBUTING][] documentation for full details.
 
 ## What should my mongo database config look like?
 
@@ -34,7 +34,7 @@ The command above assumes that 'admin' is the username and 'password' is your
 password. If it's not, put in whatever your admin username and password is
 at the time. The three commands above should return 1 (success). If the
 return value is 0, then your admin user isn't configured correctly. Refer to
-[HACKING][] to learn how to configure the MongoDB administrator.
+[CONTRIBUTING][] to learn how to configure the MongoDB administrator.
 
 ## How do I clear all Bedrock data from the MongoDB database?
 
@@ -117,6 +117,6 @@ does not have to spend making the same mistakes that we did.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
-[HACKING]: HACKING.md
+[CONTRIBUTING]: CONTRIBUTING.md
 [FAQ]: FAQ.md
 [LICENSE]: LICENSE.md

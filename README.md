@@ -130,7 +130,7 @@ See the [FAQ][] file for answers to frequently asked questions.
 Hacking
 -------
 
-See the [HACKING][] file for various details for coders about
+See the [CONTRIBUTING][] file for various details for coders about
 hacking on this project.
 
 Authors
@@ -153,6 +153,6 @@ non-commercial license information.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
-[HACKING]: HACKING.md
+[CONTRIBUTING]: CONTRIBUTING.md
 [FAQ]: FAQ.md
 [LICENSE]: LICENSE.md
