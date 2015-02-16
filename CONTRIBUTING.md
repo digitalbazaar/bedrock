@@ -49,6 +49,7 @@ Reason To (TM).
   that affect both runtime and development time, more indirection that must
   be traced during debugging, decreased ratio of effectual code lines to lines
   of code, and stacktrace horrors.
+* See: http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html
 
 A number of style and code rules can be checked with
 [jshint](http://jshint.com/) and [jscs](https://github.com/jscs-dev/node-jscs):
