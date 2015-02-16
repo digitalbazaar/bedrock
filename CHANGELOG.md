@@ -36,6 +36,9 @@
   - `config.core.masterTitle` changed to `config.core.master.title`.
   - `config.core.workerTitle` changed to `config.core.worker.title`.
   - `config.core.restartWorkers` changed to `config.core.worker.restart`.
+  - Remove uses of `MODULE_NS`.
+  - Remove prefixes from errors and use simpler names.
+  - Change many `*NotFound` error types to just `NotFound`.
 - **mail**:
   - Per-module mapper files removed.
   - Modules push event handlers to `bedrock.config.mail.events` array:
