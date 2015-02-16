@@ -1,3 +1,5 @@
+# Note: This FAQ is out-of-date for Bedrock 0.3+.
+
 # Development
 
 ## How do I setup a local bedrock development environment?

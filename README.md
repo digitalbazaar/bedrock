@@ -1,6 +1,8 @@
 Bedrock
 =======
 
+Note: This README is out-of-date for Bedrock 0.3+.
+
 Bedrock helps you launch your ideas faster by bundling
 all the best-of-breed tooling that's necessary to 
 build a modern, scalable Web app. It can run on a
