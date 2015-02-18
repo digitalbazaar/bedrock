@@ -28,9 +28,6 @@
     master and workers after logging initialized.
   - `config.core.errors.showStack` used to control general error stack traces.
   - `config.jsonld.strictSSL` used to control strict SSL of jsonld library.
-  - `config.express.useSession` to control session support.
-  - `config.express.dumpExceptions` to control error exceptions.
-  - `config.express.showStack` to control error stack traces.
   - `config.views.serviceUnavailable` to control 503 Service Unavailable for
     all requests.
   - `config.core.masterTitle` changed to `config.core.master.title`.
@@ -45,6 +42,17 @@
     - `{type: 'EVENT-TYPE', template: 'TEMPLATE-HANDLER-ID'}`
   - Modules set config objects in `bedrock.config.mail.templates.config[ID]`:
     - `{filename: 'FULL-FILENAME', [disabled: true]}`
+- **express**:
+  - `config.server.cache.*` renamed to `config.express.cache.*`.
+  - `config.server.session.*` renamed to `config.express.session.*`.
+  - `config.server.static` renamed to `config.express.static`.
+  - `config.server.staticOptions` renamed to `config.express.staticOptions`.
+  - `config.express.useSession` to control session support.
+  - `config.express.dumpExceptions` to control error exceptions.
+  - `config.express.showStack` to control error stack traces.
+- **i18n**:
+  - `config.website.i18nPaths` renamed to `config.i18n.localePath`.
+  - `config.website.writeLocales` renamed to `config.i18n.writeLocales`.
 - **schemas**:
   - Schemas moved to `bedrock-validation` and other modules.
   - Modules push paths to `bedrock.config.validation.schemas.paths` array.
