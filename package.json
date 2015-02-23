@@ -1,6 +1,6 @@
 {
   "name": "bedrock",
-  "version": "0.3.1-dev",
+  "version": "0.3.1",
   "description": "A core foundation for rich Web applications.",
   "scripts": {
     "start": "node index.js",

@@ -1,6 +1,15 @@
-# 0.3.0 (2015-xx-xx)
+# bedrock ChangeLog
 
-## Breaking Changes
+## [Unreleased]
+
+## 0.3.1 - 2015-02-23
+
+### Changed
+- Update to commander 2.6.0.
+
+## 0.3.0 - 2015-02-16
+
+### Breaking Changes
 
 - Major package reorganization:
   - Files split into many sub-projects.
@@ -69,6 +78,8 @@
   - `config.views.vars.session` moved to `config.views.vars.idp.session`.
   - A number of unused keys in `config.views.vars` have been removed: `session.auth`, `session.loaded`, `serviceHost`, `serviceDomain`, `productionMode`.
 
-# 0.2.0 (up to early 2015)
+## 0.2.0 (up to early 2015)
 
 - See git history for changes.
+
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/0.3.1...HEAD
