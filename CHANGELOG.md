@@ -2,10 +2,15 @@
 
 ## [Unreleased]
 
+## 0.3.2 - 2015-02-24
+
+### Fixed
+- Fixed default command after upgrade to commander 2.6.
+
 ## 0.3.1 - 2015-02-23
 
 ### Changed
-- Update to commander 2.6.0.
+- Updated commander to version 2.6.0.
 
 ## 0.3.0 - 2015-02-16
 
