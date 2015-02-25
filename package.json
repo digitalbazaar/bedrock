@@ -23,7 +23,6 @@
     "mkdirp": "~0.5.0",
     "pkginfo": "~0.3.0",
     "underscore": "~1.7.0",
-    "ursa": "v0.8.0",
     "winston": "~0.7.0",
     "winston-mail": "~0.2.9"
   },
