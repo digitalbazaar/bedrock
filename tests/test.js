@@ -5,7 +5,7 @@
 'use strict';
 
 var bedrock = require('../lib/bedrock');
-var BedrockError = bedrock.tools.BedrockError;
+var BedrockError = bedrock.util.BedrockError;
 
 describe('bedrock', function() {
   describe('util.extend()', function() {
