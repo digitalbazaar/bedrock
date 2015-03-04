@@ -15,19 +15,26 @@ module.exports = function(grunt) {
   // check for ci mode
   grunt.config('ci', grunt.option('mode') === 'ci');
 
+  // setup config vars for templating
+  grunt.config('dirs', {
+    'bedrock': __dirname,
+    // main project dir, override for subprojects
+    'main': __dirname
+  });
+
   // read package configuration
   grunt.config('pkg', grunt.file.readJSON('package.json'));
 
-  var _js = [
+  grunt.config('js', [
     '*.js',
     'bin/*.js',
     'bin/**/*.js',
     'configs/*.js',
     'lib/*.js',
-    'lib/**/*.js',
+    'lib/**/*.js'
     //'tests/*.js',
     //'tests/**/*.js'
-  ];
+  ]);
 
   // _jshint
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -37,7 +44,7 @@ module.exports = function(grunt) {
         reporter: 'checkstyle',
         reporterOutput: 'reports/jshint.xml'
       } : {},
-      src: _js
+      src: grunt.config('js')
     }
   });
 
@@ -54,7 +61,7 @@ module.exports = function(grunt) {
   grunt.config('jscs', {
     all: {
       options: _jscsOptions,
-      src: _js
+      src: grunt.config('js')
     }
   });
 
