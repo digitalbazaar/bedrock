@@ -182,7 +182,7 @@ TODO
 
 ## How It Works
 
-Bedrock is a modular system built for node.js. Node.js modules typically
+Bedrock is a modular system built on node.js. Node.js modules typically
 communicate with each other using the CommonJS API (eg: `require` and
 `module.exports`, etc.), and Bedrock modules are no different. However,
 Bedrock also provides some additional low-level subsystems to help modules
