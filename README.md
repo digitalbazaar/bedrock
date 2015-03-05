@@ -180,22 +180,99 @@ everything is running now
 
 TODO
 
-
 ## How It Works
 
-TODO: Event System/API
+Bedrock is a modular system built for node.js. Node.js modules typically
+communicate with each other using the CommonJS API (eg: `require` and
+`module.exports`, etc.), and Bedrock modules are no different. However,
+Bedrock also provides some additional low-level subsystems to help modules
+coordinate. These include: `bedrock.config`, `bedrock.events`,
+`bedrock.jsonld`, `bedrock.loggers`, `bedrock.test`, and `bedrock.util`.
 
-TODO: Events emitted by bedrock, when, why, etc.
+### bedrock.config
 
-TODO: Config system
+TODO
 
-TODO: Logging system
+### bedrock.events
 
-TODO: JSON-LD
+It's sometimes necessary to allow modules to coordinate with each other in
+an orderly fashion. To achieve this, Bedrock provides an event system and
+API. Bedrock's event API is very similar to node's built-in EventEmitter,
+but it provides a few additional features.
 
-TODO: Util
+In particular, when emitting and event, Bedrock can wait for a listener to run
+asynchronous code before executing the next listener. This allows each listener
+to run synchronously or asynchronously, depending on their individual needs,
+without worrying that the next listener or the next event will be emitted
+before they have completed what they need to do. Bedrock's event system also
+provides another important additional feature, which is the ability to cancel
+events. Whenever a synchronous listener returns `false` or an asynchronous
+listener passes `false` to its callback, the event will not be emitted to the
+remaining listeners, and, if a callback was given when the event was emitted,
+it will be given the `false` value allowing the emitter to take a different
+action.
 
-TODO: Test system
+To a emit an event:
+
+```js
+bedrock.events.emit('example-module.foo', data, function(err, result) {
+  if(err) {
+    console.log('an error occurred in a listener and the event was canceled');
+    return;
+  }
+  if(result === false) {
+    console.log('the event was canceled, but not due to an error');
+    return;
+  }
+  console.log('the event was not canceled');
+});
+```
+
+To create a synchronous listener:
+
+```js
+bedrock.events.on('example-module.foo', function(data) {
+  if(shouldCancel) {
+    return false;
+  }
+  // do something
+});
+```
+
+To create an asynchronous listener:
+
+```js
+bedrock.events.on('example-module.foo', function(data, callback) {
+  // because an additional parameter was added to the listener function,
+  // it is assumed it should be a function and a callback will be passed
+  // that *must* be called
+  if(anErrorOccurred) {
+    return callback(new Error('foo'));
+  }
+  if(iShouldCancel) {
+    return callback(null, false);
+  }
+  // do something asynchronous, other listeners won't execute and event
+  // emission won't continue until you call the callback
+  process.nextTick(function() {
+    callback();
+  });
+});
+```
+
+### bedrock.jsonld
+
+TODO:
+
+### bedrock.loggers
+
+TODO:
+
+### bedrock.test
+
+TODO:
+
+### bedrock.util
 
 ## Recommended Modules
 
