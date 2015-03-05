@@ -1,8 +1,11 @@
-Bedrock
-=======
+#bedrock
 
-When creating a Web app, you need a good foundation on which to build. There
-are a lot of disparate technologies out there that can be brought together into
+A core foundation for rich Web applications.
+
+## Overview
+
+When creating a Web app, you need a foundation on which to build. There are
+a lot of disparate technologies out there that can be brought together into
 a cohesive whole to make this happen. The trouble is in finding, vetting,
 testing, and combining these technologies -- all of which needs to happen
 before you can begin to make serious progress on your own project.
@@ -28,50 +31,183 @@ load.
 
 Bedrock uses node.js and runs on Linux, Mac OS X, and Windows.
 
-TODO: list of recommended modules
+## Quick Examples
 
-bedrock-server provides a core, cluster-based HTTPS server.
+```
+npm install bedrock
+```
 
-bedrock-express provides an Express server with reasonable
+Below is an example that demonstrates Bedrock's event API. It creates a
+module with an http server that other modules can attach listeners to. It
+also registers a `debug` subcommand that displays the listeners that attached
+to the http server. The example also creates a module that attaches a simple
+"hello world" listener to the http server. The example demonstrates how to use
+Bedrock's event API to:
+
+1. Register a subcommand and handle it if is detected when the command line
+   is parsed.
+2. Create a modular http server, listen to a privileged port (80), and emit a
+   custom event to allow other modules to attach listeners to the server only
+   after process privileges have been dropped.
+3. Execute custom behavior (eg: print the server's registered event listeners)
+   after all other modules have started, if a subcommand was detected.
+
+### Module `bedrock-example-server.js`:
+
+```js
+var bedrock = require('bedrock');
+var http = require('http');
+
+// setup default module config
+bedrock.config['example-server'] = {port: 80};
+
+var server = http.createServer();
+
+// emitted prior to command line parsing
+bedrock.events.on('bedrock-cli.init', function() {
+  // add a new subcommand executed via: node example.js analyze
+  var command = bedrock.program
+    .command('debug')
+    .description('display registered http listeners')
+    .option(
+      '--debug-event <event>',
+      'The event to print listeners for. [request]')
+    .action(function() {
+      // save the parsed command information
+      bedrock.config.cli.command = command;
+    });
+});
+
+// emitted after the command line has been parsed
+bedrock.events.on('bedrock-cli.ready', function() {
+  var command = bedrock.config.cli.command;
+  if(command.name() !== 'debug') {
+    // `debug` not specified on the command line, return early
+    return;
+  }
+
+  // emitted after all bedrock.start listeners have run
+  bedrock.events.on('bedrock.ready', function() {
+    // print out all the listeners that registered with the server
+    var event = command.debugEvent || 'request';
+    var listeners = server.listeners(event);
+    console.log('listeners for event: ' + event);
+    listeners.forEach(function(listener, index) {
+      console.log(index, listener.toString());
+    });
+  });
+});
+
+// emitted before initialization, to allow any further configuration
+bedrock.events.on('bedrock.configure', function() {
+  if(bedrock.config.foo) {
+    bedrock.config.foo.bar = true;
+  }
+});
+
+// emitted for early initialization, prior to dropping process privileges
+bedrock.events.on('bedrock.init', function(callback) {
+  // listen on port 80
+  server.listen(bedrock.config['example-server'].port, function() {
+    // ready, call callback to allow bedrock to continue processing events
+    callback();
+  });
+
+  // emitted for modules to do or schedule any unprivileged work on start up
+  bedrock.events.on('bedrock.start', function(callback) {
+    // emit a custom event giving other modules access to the example server
+    bedrock.events.emit('example.server.ready', server, function() {
+      callback();
+    });
+  });
+});
+
+// emitted after all bedrock.ready listeners have run
+bedrock.events.on('bedrock.started', function() {
+  console.log('everything is running now');
+});
+```
+
+### Module `bedrock-example-listener.js`:
+
+```js
+var bedrock = require('bedrock');
+require('./bedrock-example-listener');
+
+// emitted to allow listeners to be attached to the example server
+bedrock.events.on('example.server.ready', function(server) {
+  server.on('request', function(request, response) {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end('Hello World\n');
+  });
+});
+```
+
+### Example Main Project `project.js`:
+
+```js
+var bedrock = require('bedrock');
+
+// bedrock modules to load
+require('./bedrock-example-server');
+require('./bedrock-example-listener');
+
+bedrock.start();
+```
+
+Run the main project and display the debug information with:
+
+```
+node project.js debug --debug-event request
+```
+
+## Configuration
+
+TODO
+
+## Recommended Modules
+
+[bedrock-server][] provides a core, cluster-based HTTPS server.
+
+[bedrock-express][] provides an Express server with reasonable
 defaults and extra features like the ability to layer static
 files and directories to support overrides.
 
-bedrock-mongodb provides an API for connecting to a MongoDB
+[bedrock-mongodb][] provides an API for connecting to a MongoDB
 database and creating and using collections.
 
-bedrock-jobs provides a background job scheduler.
+[bedrock-jobs][] provides a background job scheduler.
 
-bedrock-requirejs provides a client-side module loader and
+[bedrock-requirejs][] provides a client-side module loader and
 autoconfiguration capabilities for bower components.
 
-bedrock-views provides server-rendered views with HTML5 + Bootstrap3.
+[bedrock-views][] provides server-rendered views with HTML5 + Bootstrap3.
 
-bedrock-angular layers on top of bedrock-views to provide client-rendered
-AngularJS views.
+[bedrock-angular][] layers on top of [bedrock-views][] to provide
+client-rendered AngularJS views.
 
-bedrock-idp provides user identity and public key management.
+[bedrock-idp][] provides user identity and public key management.
 
 Other Bedrock modules provide REST APIs, user account management, strong
 cryptography support, DoS protection, digital signatures, Linked Data, and
 tons of other [FEATURES][]. If you don't need all the fancy features, Bedrock
 is modular, so you can use only the modules you want.
 
-Quickstart
-----------
+# TODO: Move old Bedrock documentation below to the appropriate module
+
+## Quickstart
 
 You can follow the following tutorial to setup and use Bedrock on a Linux or
 Mac OS X development machine.
 
-Requirements
-------------
+## Requirements
 
 * Linux or Mac OS X (also works on Windows with some coaxing)
 * node.js >= 0.10.x
 * npm >= 1.4.x
 * mongodb ~= 2.4.x (optional, but strongly recommended)
 
-Setup
------
+## Setup
 
 1. Setup an admin user on mongodb (see below)
 2. Map the `bedrock.dev` hostname to your machine (see below).
@@ -194,3 +330,10 @@ details about the included non-commercial license information.
 [CONTRIBUTING]: CONTRIBUTING.md
 [FAQ]: FAQ.md
 [LICENSE]: LICENSE.md
+[bedrock-server]: https://github.com/digitalbazaar/bedrock-server
+[bedrock-express]: https://github.com/digitalbazaar/bedrock-express
+[bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
+[bedrock-jobs]: https://github.com/digitalbazaar/bedrock-jobs
+[bedrock-views]: https://github.com/digitalbazaar/bedrock-views
+[bedrock-angular]: https://github.com/digitalbazaar/bedrock-angular
+[bedrock-idp]: https://github.com/digitalbazaar/bedrock-idp
