@@ -180,6 +180,23 @@ everything is running now
 
 TODO
 
+
+## How It Works
+
+TODO: Event System/API
+
+TODO: Events emitted by bedrock, when, why, etc.
+
+TODO: Config system
+
+TODO: Logging system
+
+TODO: JSON-LD
+
+TODO: Util
+
+TODO: Test system
+
 ## Recommended Modules
 
 [bedrock-server][] provides a core, cluster-based HTTPS server.
