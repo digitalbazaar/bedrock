@@ -152,6 +152,9 @@ var bedrock = require('bedrock');
 require('./bedrock-example-server');
 require('./bedrock-example-listener');
 
+// change the port to use
+// bedrock.config['example-server'].port = 8123;
+
 bedrock.start();
 ```
 
@@ -159,6 +162,18 @@ Run the main project and display the debug information with:
 
 ```
 node project.js debug --debug-event request
+```
+
+Example output:
+
+```
+2015-03-05T21:59:23.727Z - info: starting bedrock...
+2015-03-05T21:59:23.729Z - info: running bedrock master process pid=7705
+2015-03-05T21:59:23.904Z - info: running bedrock worker process workerPid=7711
+2015-03-05T21:59:23.906Z - info: startup time: 6ms workerPid=7711
+listeners for event: request
+0 'function (request, response) {\n    response.writeHead(200, {\'Content-Type\': \'text/plain\'});\n    response.end(\'Hello World\\n\');\n  }'
+everything is running now
 ```
 
 ## Configuration
