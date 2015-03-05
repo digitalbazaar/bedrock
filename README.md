@@ -204,14 +204,15 @@ In particular, when emitting an event, Bedrock can wait for a listener to run
 asynchronous code before executing the next listener. This allows each listener
 to run synchronously or asynchronously, depending on their individual needs,
 without worrying that the next listener or the next event will be emitted
-before they have completed what they need to do. Bedrock's event system also
-provides another feature, which is the ability to cancel events. Whenever a
-synchronous listener returns `false` or an asynchronous listener passes `false`
-to its callback, the event will not be emitted to the remaining listeners, and,
-if a callback was given when the event was emitted, it will be given the
-`false` value allowing the emitter to take a different action. Event
-cancelation allows modules to build-in default behavior that can be canceled
-by other modules.
+before they have completed what they need to do.
+
+Bedrock's event system also provides another feature, which is the ability to
+cancel events. Whenever a synchronous listener returns `false` or an
+asynchronous listener passes `false` to its callback, the event will not be
+emitted to the remaining listeners, and, if a callback was given when the
+event was emitted, it will be given the `false` value allowing the emitter to
+take a different action. Event cancelation allows modules to build-in default
+behavior that can be canceled by other modules.
 
 To a emit an event:
 
@@ -233,10 +234,13 @@ To create a synchronous listener:
 
 ```js
 bedrock.events.on('example-module.foo', function(data) {
+  if(anErrorOccured) {
+    throw new Error('foo');
+  }
   if(shouldCancel) {
     return false;
   }
-  // do something
+  // do something synchronous
 });
 ```
 
@@ -260,6 +264,13 @@ bedrock.events.on('example-module.foo', function(data, callback) {
   });
 });
 ```
+
+Note that the asynchronous analog for throwing an error is calling the callback
+with an error as its first parameter and the analogy for returning a value
+(typically only used for event cancelation) is to pass `null` for the first
+parameter and the return value for the second parameter of the callback. This
+API matches the "error-first" callback continuation-style that is standard
+practice in node.
 
 ### bedrock.jsonld
 
