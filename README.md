@@ -266,7 +266,7 @@ bedrock.events.on('example-module.foo', function(data, callback) {
 ```
 
 Note that the asynchronous analog for throwing an error is calling the callback
-with an error as its first parameter and the analogy for returning a value
+with an error as its first parameter and the analog for returning a value
 (typically only used for event cancelation) is to pass `null` for the first
 parameter and the return value for the second parameter of the callback. This
 API matches the "error-first" callback continuation-style that is standard
