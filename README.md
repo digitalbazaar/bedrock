@@ -178,7 +178,7 @@ everything is running now
 
 ## Configuration
 
-TODO
+For documentation on Bedrock's core configuration, see [config.js](https://github.com/digitalbazaar/bedrock/blob/0.3.x/lib/config.js).
 
 ## How It Works
 
@@ -191,7 +191,18 @@ coordinate. These include: `bedrock.config`, `bedrock.events`,
 
 ### bedrock.config
 
-TODO
+Bedrock has a simple, but highly-customizable configuration system. All
+configuration variables are stored in a shared JavaScript object
+`bedrock.config`. The object is partitioned into separate configuration objects
+that are identified by the object's keys. For example Bedrock introduces
+the `cli`, `core`, `constants`, `jsonld`, and `loggers` object keys. The best
+practice for modules to claim their own area in the configuration object is to
+insert their default configuration object using a key that either matches their
+module name or that matches their module name minus any `bedrock-` prefix. For
+example, the [bedrock-server][] module's specific configuration object can be
+found under `bedrock.config.server`. Modules may define whatever configuration
+variables they want to using whatever format is appropriate for their own
+use.
 
 ### bedrock.events
 
