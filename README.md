@@ -189,6 +189,27 @@ Bedrock also provides some additional low-level subsystems to help modules
 coordinate. These include: `bedrock.config`, `bedrock.events`,
 `bedrock.jsonld`, `bedrock.loggers`, `bedrock.test`, and `bedrock.util`.
 
+To create a Bedrock project, all you need to do is create a JavaScript file,
+for example `project.js`, that requires `bedrock`, any other Bedrock modules
+you're interested in, and that then calls `bedrock.start()`. To run your
+project, run:
+
+```
+node project.js
+```
+
+If you're developing your project and you have installed all of the development
+packages for the Bedrock modules you're using, you can also easily test your
+project and any of the modules it has included by running:
+
+```
+node project.js test
+```
+
+This will execute Bedrock's built-in test framework, running all of the tests
+that each module has written. This approach ensures you're running tests for
+your entire project and its dependencies.
+
 ### bedrock.config
 
 Bedrock has a simple, but highly-customizable configuration system. All
@@ -340,17 +361,44 @@ exit early.
 
 ### bedrock.jsonld
 
-TODO:
+Bedrock is intended to provide a foundation for [Linked Data][] applications,
+and as such, it provides a [JSON-LD][] processor (via [jsonld.js][]) that is
+integrated with its configuration system. Any [JSON-LD context][] that is
+inserted into the `bedrock.config.constants.CONTEXTS` object (where keys
+are the URL for the context and the values are the context itself), will be
+served from disk instead of retrieved from the Web. This is a useful feature
+for both developing [Linked Data][] applications and for ensuring contexts
+are available in offline mode.
 
 ### bedrock.loggers
 
-TODO:
+Bedrock has a built-in logging subsystem based on [winston][]. Anything you
+can do with [winston][], you can do with Bedrock. Bedrock provides a set of
+default loggers that are suitable for most applications. The main application
+logger can be retrieved via `bedrock.loggers.get('app')`.
 
 ### bedrock.test
 
-TODO:
+Bedrock comes with test support built-in. It provides a test framework based
+on mocha that integrates with `bedrock.config`. To add a mocha test to a
+Bedrock module, you simply push a directory or a file path onto the
+`config.mocha.tests` array. Bedrock also makes it easy to add other test
+frameworks via Bedrock modules. For example, [bedrock-protractor][] integrates
+the [AngularJS][] [protractor][] test framework with Bedrock. Whenever you
+run tests against your project, your project and all of its dependencies will
+be tested, using whatever test frameworks they have registered with. Bedrock
+also provides command line options to limit the tests that run as desired.
 
 ### bedrock.util
+
+Bedrock provides a number of helpful general purpose utilities. For example,
+Bedrock defines a `BedrockError` class that extends the default `Error`
+class. A `BedrockError` can keep track of a series of "causes" (other errors)
+that allow developers to better understand why an error occured.
+`BedrockError`s can also be marked as `public`, which allows modules that
+may, for example, serve error information over the Web to display more error
+details. `bedrock.util` also contains tools for formatting dates,
+extending/merging/cloning objects, and generating UUIDs.
 
 ## Recommended Modules
 
@@ -374,6 +422,9 @@ autoconfiguration capabilities for bower components.
 client-rendered AngularJS views.
 
 [bedrock-idp][] provides user identity and public key management.
+
+[bedrock-protractor][] integrates [protractor][] with Bedrock, exposing a
+powerful end-to-end [AngularJS][] test framework to Bedrock modules.
 
 Other Bedrock modules provide REST APIs, user account management, strong
 cryptography support, DoS protection, digital signatures, Linked Data, and
@@ -517,6 +568,10 @@ details about the included non-commercial license information.
 [CONTRIBUTING]: CONTRIBUTING.md
 [FAQ]: FAQ.md
 [LICENSE]: LICENSE.md
+[AngularJS]: https://github.com/angular/angular.js
+[JSON-LD]: http://json-ld.org
+[JSON-LD context]: http://www.w3.org/TR/json-ld/#the-context
+[Linked Data]: http://en.wikipedia.org/wiki/Linked_data
 [bedrock-server]: https://github.com/digitalbazaar/bedrock-server
 [bedrock-express]: https://github.com/digitalbazaar/bedrock-express
 [bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
@@ -524,3 +579,7 @@ details about the included non-commercial license information.
 [bedrock-views]: https://github.com/digitalbazaar/bedrock-views
 [bedrock-angular]: https://github.com/digitalbazaar/bedrock-angular
 [bedrock-idp]: https://github.com/digitalbazaar/bedrock-idp
+[bedrock-protractor]: https://github.com/digitalbazaar/bedrock-protractor
+[jsonld.js]: https://github.com/digitalbazaar/jsonld.js
+[protractor]: https://github.com/angular/protractor
+[winston]: https://github.com/winstonjs/winston
