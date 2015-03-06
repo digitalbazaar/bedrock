@@ -572,14 +572,15 @@ details about the included non-commercial license information.
 [JSON-LD]: http://json-ld.org
 [JSON-LD context]: http://www.w3.org/TR/json-ld/#the-context
 [Linked Data]: http://en.wikipedia.org/wiki/Linked_data
-[bedrock-server]: https://github.com/digitalbazaar/bedrock-server
-[bedrock-express]: https://github.com/digitalbazaar/bedrock-express
-[bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
-[bedrock-jobs]: https://github.com/digitalbazaar/bedrock-jobs
-[bedrock-views]: https://github.com/digitalbazaar/bedrock-views
 [bedrock-angular]: https://github.com/digitalbazaar/bedrock-angular
+[bedrock-express]: https://github.com/digitalbazaar/bedrock-express
 [bedrock-idp]: https://github.com/digitalbazaar/bedrock-idp
+[bedrock-jobs]: https://github.com/digitalbazaar/bedrock-jobs
+[bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
 [bedrock-protractor]: https://github.com/digitalbazaar/bedrock-protractor
+[bedrock-requirejs]: https://github.com/digitalbazaar/bedrock-requirejs
+[bedrock-server]: https://github.com/digitalbazaar/bedrock-server
+[bedrock-views]: https://github.com/digitalbazaar/bedrock-views
 [jsonld.js]: https://github.com/digitalbazaar/jsonld.js
 [protractor]: https://github.com/angular/protractor
 [winston]: https://github.com/winstonjs/winston
