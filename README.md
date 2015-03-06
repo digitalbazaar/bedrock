@@ -279,70 +279,53 @@ The `bedrock` events are emitted after the `bedrock-cli` events, unless a
 listener cancels the `bedrock-cli.ready` event or causes the application to
 exit early.
 
-#### Event: bedrock-cli.init
-
-Emitted before command line parsing. Allows registration of new subcommands.
-
-#### Event: bedrock-cli.ready
-
-Emitted after command line parsing. Allows execution of subcommands or the
-prevention of `bedrock` events from being emitted, either by canceling this
-event or by exiting the application early.
-
-#### Event: bedrock-cli.test.configure
-
-Emitted during `bedrock-cli.init` after `test` subcommand has been registered.
-Listeners receive the `test` command object. Allows modules that define new
-test frameworks to add new `test` command line options via the `test` command
-object.
-
-#### Event: bedrock.test.configure
-
-Emitted during `bedrock-cli.ready`, before `bedrock.configure`. Allows
-listeners to make configuration changes for running tests.
-
-#### Event: bedrock.configure
-
-Emitted after `bedrock-cli.ready` and before `bedrock.init`. Allows additional
-custom configuration before Bedrock initializes but after command line parsing.
-
-#### Event: bedrock.init
-
-Emitted after `bedrock.configure` and before process privileges are dropped.
-Allows listeners to perform early initialization tasks that require special
-privileges. Note that, if Bedrock is started with elevated privileges
-(ie: as root), listeners will execute with those privileges. Any background
-work that needs to execute but does not require elevated privileges should be
-deferred to `bedrock.start`.
-
-#### Event: bedrock.start
-
-Emitted after `bedrock.init` and after process privileges have been dropped.
-This is the event modules should use to execute or schedule their main
-background behavior.
-
-#### Event: bedrock.ready
-
-Emitted after `bedrock.start`. Allows listeners to execute custom behavior
-after all modules have handled the `bedrock.start` event. This event is useful
-for turning on external access to web services or other modular systems that
-should now be fully ready for use. It can also be used to run analysis on
-modules that have started, for example, to build live documentation.
-
-#### Event: bedrock.started
-
-Emitted after `bedrock.ready`. External access to web services or other
-features provided by modules should now be available. Allows custom subcommands
-or behavior to run after Bedrock has fully started, eg: tests.
-
-#### Event: bedrock.tests.run
-
-Emitted during `bedrock.started`. Once Bedrock has fully started, this event
-is emitted to inform test frameworks to run their tests. Listeners are passed
-a test state object with a `pass` property that they can set to `false` to
-indicate to the test subsystem that at least one test did not pass. Test
-frameworks may add their own information to the state object using a property
-matching their framework name.
+- **bedrock-cli.init**
+  - Emitted before command line parsing. Allows registration of new subcommands.
+- **bedrock-cli.ready**
+  - Emitted after command line parsing. Allows execution of subcommands or the
+    prevention of `bedrock` events from being emitted, either by canceling this
+    event or by exiting the application early.
+- **bedrock-cli.test.configure**
+  - Emitted during `bedrock-cli.init` after `test` subcommand has been
+    registered. Listeners receive the `test` command object. Allows modules
+    that define new test frameworks to add new `test` command line options via
+    the `test` command object.
+- **bedrock.test.configure**
+  - Emitted during `bedrock-cli.ready`, before `bedrock.configure`. Allows
+    listeners to make configuration changes for running tests.
+- **bedrock.configure**
+  - Emitted after `bedrock-cli.ready` and before `bedrock.init`. Allows
+    additional custom configuration before Bedrock initializes but after
+    command line parsing.
+- **bedrock.init**
+  - Emitted after `bedrock.configure` and before process privileges are
+    dropped. Allows listeners to perform early initialization tasks that
+    require special privileges. Note that, if Bedrock is started with elevated
+    privileges (ie: as root), listeners will execute with those privileges. Any
+    background work that needs to execute but does not require elevated
+    privileges should be deferred to `bedrock.start`.
+- **bedrock.start**
+  - Emitted after `bedrock.init` and after process privileges have been
+    dropped. This is the event modules should use to execute or schedule their
+    main background behavior.
+- **bedrock.ready**
+  - Emitted after `bedrock.start`. Allows listeners to execute custom behavior
+    after all modules have handled the `bedrock.start` event. This event is
+    useful for turning on external access to web services or other modular
+    systems that should now be fully ready for use. It can also be used to run
+    analysis on modules that have started, for example, to build live
+    documentation.
+- **bedrock.started**
+  - Emitted after `bedrock.ready`. External access to web services or other
+    features provided by modules should now be available. Allows custom
+    subcommands or behavior to run after Bedrock has fully started, eg: tests.
+- **bedrock.tests.run**
+  - Emitted during `bedrock.started`. Once Bedrock has fully started, this
+    event is emitted to inform test frameworks to run their tests. Listeners
+    are passed a test state object with a `pass` property that they can set to
+    `false` to indicate to the test subsystem that at least one test did not
+    pass. Test frameworks may add their own information to the state object
+    using a property matching their framework name.
 
 ### bedrock.jsonld
 
