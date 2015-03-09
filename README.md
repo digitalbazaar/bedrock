@@ -259,12 +259,12 @@ without worrying that the next listener or the next event will be emitted
 before they have completed what they need to do.
 
 Bedrock's event system also provides another feature, which is the ability to
-cancel events. Whenever a synchronous listener returns `false` or an
-asynchronous listener passes `false` to its callback, the event will not be
-emitted to the remaining listeners, and, if a callback was given when the
-event was emitted, it will be given the `false` value allowing the emitter to
-take a different action. Event cancelation allows modules to build-in default
-behavior that can be canceled by other modules.
+cancel events. Event cancelation allows modules to build-in default
+behavior that can be canceled by other modules. Whenever a synchronous listener
+returns `false` or an asynchronous listener passes `false` to its callback, the
+event will not be emitted to the remaining listeners, and, if a callback was
+given when the event was emitted, it will be given the `false` value allowing
+the emitter to take a different action.
 
 To a emit an event:
 
@@ -306,7 +306,7 @@ bedrock.events.on('example-module.foo', function(data, callback) {
   if(anErrorOccurred) {
     return callback(new Error('foo'));
   }
-  if(iShouldCancel) {
+  if(shouldCancel) {
     return callback(null, false);
   }
   // do something asynchronous, other listeners won't execute and event
