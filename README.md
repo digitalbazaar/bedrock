@@ -40,7 +40,7 @@ npm install bedrock
 Create a bedrock application with an express server and mongodb-backed
 session storage:
 
-```
+```js
 var bedrock = require('bedrock');
 
 // modules
