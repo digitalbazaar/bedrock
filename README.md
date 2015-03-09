@@ -15,9 +15,6 @@ tooling that's necessary to build a modern, scalable Web app. It creates a
 solid foundation on which you can build, letting you focus on your
 project-specific needs.
 
-Bedrock can run on a low-powered laptop all the way up to enterprise servers
-serving tens of millions of transactions per day.
-
 Bedrock uses a modular design to help keep code well-organized and to allow an
 ecosystem to grow without unnecessary hindrance. Bedrock keeps its core simple:
 it provides a powerful configuration system, an event-based API, Linked
@@ -29,7 +26,9 @@ to emulate this approach, creating organizing priniciples and clear guidelines
 for developers to follow that help break down problems and reduce cognitive
 load.
 
-Bedrock uses node.js and runs on Linux, Mac OS X, and Windows.
+Bedrock uses node.js and runs on Linux, Mac OS X, and Windows. It can run on a
+low-powered laptop all the way up to an enterprise server.
+
 
 ## Quick Examples
 
