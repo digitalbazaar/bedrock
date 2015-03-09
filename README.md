@@ -37,6 +37,27 @@ Bedrock uses node.js and runs on Linux, Mac OS X, and Windows.
 npm install bedrock
 ```
 
+Create a bedrock application with an express server and mongodb-backed
+session storage:
+
+```
+var bedrock = require('bedrock');
+
+// modules
+require('bedrock-express');
+require('bedrock-session-mongodb');
+
+bedrock.events.on('bedrock-express.configure.routes', function(app) {
+  app.get('/', function(req, res) {
+    res.send('Hello World!');
+  });
+});
+
+bedrock.start();
+```
+
+## Comphrehensive Module Example
+
 Below is an example that demonstrates Bedrock's event API. It creates a
 module with an http server that other modules can attach listeners to. It
 also registers a `debug` subcommand that displays the listeners that attached
