@@ -85,7 +85,7 @@ var server = http.createServer();
 
 // emitted prior to command line parsing
 bedrock.events.on('bedrock-cli.init', function() {
-  // add a new subcommand executed via: node project.js analyze
+  // add a new subcommand executed via: node project.js debug
   var command = bedrock.program
     .command('debug')
     .description('display registered http listeners')
