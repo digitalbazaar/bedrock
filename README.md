@@ -326,11 +326,11 @@ API matches the "error-first" callback continuation-style that is standard
 practice in node.
 
 Bedrock core emits several events that modules may listen for. These events
-fall two possible namespaces: `bedrock-cli` and `bedrock`. The `bedrock-cli`
-events are emitted to allow coordination with Bedrock's command line interface.
-The `bedrock` events are emitted after the `bedrock-cli` events, unless a
-listener cancels the `bedrock-cli.ready` event or causes the application to
-exit early.
+fall into two possible namespaces: `bedrock-cli` and `bedrock`. The
+`bedrock-cli` events are emitted to allow coordination with Bedrock's command
+line interface. The `bedrock` events are emitted after the `bedrock-cli`
+events, unless a listener cancels the `bedrock-cli.ready` event or causes the
+application to exit early.
 
 - **bedrock-cli.init**
   - Emitted before command line parsing. Allows registration of new subcommands.
