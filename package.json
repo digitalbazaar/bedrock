@@ -36,7 +36,7 @@
     "grunt-cli": "~0.1.13",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-jscs": "~1.0.0",
-    "istanbul": "git://github.com/digitalbazaar/istanbul#include-pid",
+    "istanbul": "~0.3.7",
     "mocha": "~2.0.1"
   },
   "engines": {
