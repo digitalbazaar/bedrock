@@ -55,6 +55,10 @@ bedrock.events.on('bedrock-express.configure.routes', function(app) {
 bedrock.start();
 ```
 
+## Simple Module Example
+
+TODO: very basic module example that binds to bedrock.start event
+
 ## Comphrehensive Module Example
 
 Below is an example that demonstrates Bedrock's event API. It creates a
@@ -466,19 +470,6 @@ Mac OS X development machine.
 * node.js >= 0.10.x
 * npm >= 1.4.x
 
-## Setup
-
-1. Map the `bedrock.dev` hostname to your machine (see below).
-2. npm install
-3. [optional] Tweak configuration
-
-To setup the `bedrock.dev` hostname:
-
-1. Edit the /etc/hosts file as the administrator/root.
-2. Add an entry mapping the IP address to `bedrock.dev`.
-   For example: `192.168.0.15 bedrock.dev` (where `192.168.0.15`
-   is the IP address of your primary network device.
-
 Running Bedrock
 ---------------
 
@@ -490,36 +481,20 @@ To add more verbose debugging, use the `--log-level` option:
 
     node index.js --log-level debug
 
-To access the server:
-
-1. Go to: https://bedrock.dev:22443/
-2. The certificate warning is normal for development mode. Accept it and
-   continue to the landing page.
-3. Login as the admin `admin` with the password `password` or create a new
-   account.
-
 Running the Tests
 -----------------
 
-Install protractor (before first test run):
+Run all tests:
 
-    npm run install-protractor
+    npm test
 
-Run all backend and frontend tests:
+Run only the mocha test framework:
 
-    npm run test
+    node index.js test --framework mocha
 
-Run just the backend tests:
+Run a specific mocha test:
 
-    npm run test-backend
-
-Run just the frontend tests:
-
-    npm run test-frontend
-
-Run a specific frontend test suite:
-
-    nodejs test.js --frontend --suite unit
+    node index.js test --framework mocha --mocha-test tests/test.js
 
 Running the Code Coverage Tool
 ------------------------------
@@ -527,21 +502,6 @@ Running the Code Coverage Tool
     npm run coverage
 
 Look at 'coverage.html' using a web browser
-
-Minimizing the RequireJS client-side JS
----------------------------------------
-
-    npm run minify
-
-To test in dev mode, set the website config var 'minify' to true.
-
-Generating a new self-signed SSL certificate for testing
---------------------------------------------------------
-
-    nodejs create-credentials.js
-
-Save the generated private key and certificate PEMs in the appropriate files
-(in ./pki/ if using the default config).
 
 Features
 --------
