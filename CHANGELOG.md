@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+### Changed
+- **BREAKING**: A new event `bedrock.admin.init` was introduced that emits
+  prior to `bedrock.init`. This new event is emitted while the process has
+  any elevated privileges and after it is handled, elevated privileges are
+  dropped. This changes `bedrock.init` so that it runs without elevated
+  privileges. This only affected `bedrock.server` in a negative way; this
+  module has been updated to comply with the change. Also, `bedrock.init`
+  should no longer be used to emit custom events; these should be deferred
+  to `bedrock.start` to prevent scenarios where a listener of an event
+  emitted by one module can't use the API of another unrelated module because
+  it hasn't been initialized yet. Deferring custom event emitting to
+  `bedrock.start` as a best practice avoids this scenario.
+
 ## 0.3.2 - 2015-02-24
 
 ### Fixed

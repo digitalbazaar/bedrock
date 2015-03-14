@@ -350,20 +350,40 @@ application to exit early.
   - Emitted during `bedrock-cli.ready`, before `bedrock.configure`. Allows
     listeners to make configuration changes for running tests.
 - **bedrock.configure**
-  - Emitted after `bedrock-cli.ready` and before `bedrock.init`. Allows
+  - Emitted after `bedrock-cli.ready` and before `bedrock.admin.init`. Allows
     additional custom configuration before Bedrock initializes but after
     command line parsing.
-- **bedrock.init**
-  - Emitted after `bedrock.configure` and before process privileges are
-    dropped. Allows listeners to perform early initialization tasks that
+- **bedrock.admin.init**
+  - Emitted after `bedrock.configure` and before elevated process privileges
+    are dropped. Allows listeners to perform early initialization tasks that
     require special privileges. Note that, if Bedrock is started with elevated
     privileges (ie: as root), listeners will execute with those privileges. Any
-    background work that needs to execute but does not require elevated
-    privileges should be deferred to `bedrock.start`.
+    early initialization that needs to execute before `bedrock.start` but does
+    not require elevated privileges should be deferred to `bedrock.init`. Most
+    modules should find binding to `bedrock.init` to be sufficient for any
+    initialization work.
+- **bedrock.init**
+  - Emitted after `bedrock.admin.init` and just after elevated process
+    privileges are dropped. Allows listeners to perform early initialization
+    tasks that do not require special privileges. This event should be used
+    to ensure, for example, that a module's API has the required supporting
+    data structures in memory prior to another module's use of it. For example,
+    a validation module may need to load validation schemas from files on disk
+    before they can be accessed via its API, but this loading must occur after
+    the configuration events have passed and after special process privileges
+    have been dropped. **As a best practice, modules should not emit custom
+    events during `bedrock.init` because it may cause scenarios where two
+    unrelated modules can't be easily combined.** For example, if a module emits
+    a custom event during `bedrock.init`, then a listener of that event would
+    be unable to use the API of an unrelated module that hasn't been
+    initialized yet. Deferring custom event emitting to `bedrock.start` solves
+    this problem; it ensures all modules have had a chance to complete
+    initialization before attempting to interact with one another through the
+    event system.
 - **bedrock.start**
-  - Emitted after `bedrock.init` and after process privileges have been
-    dropped. This is the event modules should use to execute or schedule their
-    main background behavior.
+  - Emitted after `bedrock.init`. This is the event modules should use to
+    execute or schedule their main background behavior and to emit any custom
+    events they would like to make available to their dependents.
 - **bedrock.ready**
   - Emitted after `bedrock.start`. Allows listeners to execute custom behavior
     after all modules have handled the `bedrock.start` event. This event is
