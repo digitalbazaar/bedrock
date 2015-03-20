@@ -10,6 +10,3 @@ node_modules
 npm-debug.log
 phantomjsdriver.log
 reports
-site/static/app/main.min.js
-site/static/app/templates.min.js
-site/static/css/bundle.min.css
