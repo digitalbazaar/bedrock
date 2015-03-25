@@ -29,6 +29,12 @@ load.
 Bedrock uses node.js and runs on Linux, Mac OS X, and Windows. It can run on a
 low-powered laptop all the way up to an enterprise server.
 
+## Runnable Examples
+
+A very basic, runnable "Hello World" bedrock example can be found
+at [bedrock-hello-world](https://github.com/digitalbazaar/bedrock-hello-world).
+
+More complex, runnable examples can be found at [bedrock-examples](https://github.com/digitalbazaar/bedrock-examples).
 
 ## Quick Examples
 
@@ -55,9 +61,9 @@ bedrock.events.on('bedrock-express.configure.routes', function(app) {
 bedrock.start();
 ```
 
-## Simple Module Example
+<!-- TODO: ## Simple Module Example
 
-TODO: very basic module example that binds to bedrock.start event
+TODO: very basic module example that binds to bedrock.start event -->
 
 ## Comphrehensive Module Example
 
