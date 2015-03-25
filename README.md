@@ -483,8 +483,6 @@ cryptography support, DoS protection, digital signatures, Linked Data, and
 tons of other [FEATURES][]. If you don't need all the fancy features, Bedrock
 is modular, so you can use only the modules you want.
 
-# TODO: Move old Bedrock documentation below to the appropriate module
-
 ## Quickstart
 
 You can follow the following tutorial to setup and use Bedrock on a Linux or
@@ -532,7 +530,8 @@ Look at 'coverage.html' using a web browser
 Features
 --------
 
-For a complete list of features included in Bedrock, see the [FEATURES][] file.
+For an example list of features provided by Bedrock modules, see the
+[FEATURES][] file.
 
 FAQ
 ---
