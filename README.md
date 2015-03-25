@@ -452,7 +452,7 @@ extending/merging/cloning objects, and generating UUIDs.
 
 ## Recommended Modules
 
-TODO: Change section to "If you want to do X, use these modules" format
+<!-- TODO: Change section to "If you want to do X, use these modules" format -->
 
 [bedrock-server][] provides a core, cluster-based HTTPS server.
 
