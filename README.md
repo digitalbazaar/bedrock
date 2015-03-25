@@ -130,19 +130,19 @@ bedrock.events.on('bedrock.configure', function() {
 });
 
 // emitted for early initialization, prior to dropping process privileges
-bedrock.events.on('bedrock.init', function(callback) {
+bedrock.events.on('bedrock.admin.init', function(callback) {
   // listen on port 80
   server.listen(bedrock.config['example-server'].port, function() {
     // ready, call callback to allow bedrock to continue processing events
     callback();
   });
+});
 
-  // emitted for modules to do or schedule any unprivileged work on start up
-  bedrock.events.on('bedrock.start', function(callback) {
-    // emit a custom event giving other modules access to the example server
-    bedrock.events.emit('example.server.ready', server, function() {
-      callback();
-    });
+// emitted for modules to do or schedule any unprivileged work on start up
+bedrock.events.on('bedrock.start', function(callback) {
+  // emit a custom event giving other modules access to the example server
+  bedrock.events.emit('example.server.ready', server, function() {
+    callback();
   });
 });
 
