@@ -63,6 +63,20 @@ require('bedrock-views');
 bedrock.start();
 ```
 
+To include the [AngularJS][]-based frontend, `bower install` these modules:
+
+```
+bedrock-angular
+bedrock-angular-alert
+bedrock-angular-filters
+bedrock-angular-form
+bedrock-angular-lazy-compile
+bedrock-angular-modal
+bedrock-angular-model
+bedrock-angular-selector
+bedrock-angular-ui
+```
+
 Create a simple express-based bedrock application:
 
 ```js
