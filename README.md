@@ -42,15 +42,34 @@ More complex, runnable examples can be found at [bedrock-examples](https://githu
 npm install bedrock
 ```
 
-Create a bedrock application with an express server and mongodb-backed
-session storage:
+Create a MEAN stack application:
 
 ```js
 var bedrock = require('bedrock');
 
 // modules
 require('bedrock-express');
+require('bedrock-docs');
+require('bedrock-i18n');
+require('bedrock-mongodb');
+require('bedrock-protractor');
+require('bedrock-request-limiter');
+require('bedrock-requirejs');
+require('bedrock-server');
 require('bedrock-session-mongodb');
+require('bedrock-validation');
+require('bedrock-views');
+
+bedrock.start();
+```
+
+Create a simple express-based bedrock application:
+
+```js
+var bedrock = require('bedrock');
+
+// modules
+require('bedrock-express');
 
 bedrock.events.on('bedrock-express.configure.routes', function(app) {
   app.get('/', function(req, res) {
@@ -61,9 +80,72 @@ bedrock.events.on('bedrock-express.configure.routes', function(app) {
 bedrock.start();
 ```
 
-<!-- TODO: ## Simple Module Example
+Create a bedrock REST application with an express server, mongodb database,
+and mongodb-backed session storage:
 
-TODO: very basic module example that binds to bedrock.start event -->
+```js
+var bedrock = require('bedrock');
+
+// modules
+require('bedrock-express');
+require('bedrock-mongodb');
+require('bedrock-session-mongodb');
+
+bedrock.events.on('bedrock-mongodb.ready', function(callback) {
+  database.openCollections(['people'], function(err) {
+    if(err) {
+      return callback(err);
+    }
+    callback();
+  });
+});
+
+bedrock.events.on('bedrock-express.configure.routes', function(app) {
+  app.get('/people', function(req, res, next) {
+    database.collections.people.find({}).toArray(function(err, docs) {
+      if(err) {
+        return next(err);
+      }
+      res.send(docs);
+    });
+  });
+
+  app.get('/people/:name', function(req, res, next) {
+    database.collections.people.findOne(
+      {name: req.param('name')}, function(err, result) {
+        if(err) {
+          return next(err);
+        }
+        res.send(result);
+      });
+  });
+
+  app.post('/people/:name', function(req, res){
+    database.collections.people.insert(
+      [{name: req.param('name')}], function(err, result) {
+        if(err) {
+          return next(err);
+        }
+        res.send(result.result);
+      });
+  });
+
+  app.delete('/people/:name', function(req, res){
+    database.collections.people.remove(
+      {name: req.param('name')}, function(err, result) {
+        if(err) {
+          return next(err);
+        }
+        res.send(result.result);
+      });
+  });
+});
+
+bedrock.start();
+```
+
+To create a MEAN stack application with identity management and authentication,
+see the [bedrock-seed][] project.
 
 ## Comphrehensive Module Example
 
@@ -577,6 +659,7 @@ details about the included non-commercial license information.
 [bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
 [bedrock-protractor]: https://github.com/digitalbazaar/bedrock-protractor
 [bedrock-requirejs]: https://github.com/digitalbazaar/bedrock-requirejs
+[bedrock-seed]: https://github.com/digitalbazaar/bedrock-seed
 [bedrock-server]: https://github.com/digitalbazaar/bedrock-server
 [bedrock-views]: https://github.com/digitalbazaar/bedrock-views
 [jsonld.js]: https://github.com/digitalbazaar/jsonld.js
