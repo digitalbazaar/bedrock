@@ -304,7 +304,7 @@ everything is running now
 
 ## Configuration
 
-For documentation on Bedrock's core configuration, see [config.js](https://github.com/digitalbazaar/bedrock/blob/0.3.x/lib/config.js).
+For documentation on Bedrock's core configuration, see [config.js](./lib/config.js).
 
 ## How It Works
 
