@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.0.0] - 2015-04-08
+
 ### Changed
 - **BREAKING**: A new event `bedrock.admin.init` was introduced that emits
   prior to `bedrock.init`. This new event is emitted while the process has
@@ -14,18 +16,19 @@
   emitted by one module can't use the API of another unrelated module because
   it hasn't been initialized yet. Deferring custom event emitting to
   `bedrock.start` as a best practice avoids this scenario.
+- Updated JSCS rules.
 
-## 0.3.2 - 2015-02-24
+## [0.3.2] - 2015-02-24
 
 ### Fixed
 - Fixed default command after upgrade to commander 2.6.
 
-## 0.3.1 - 2015-02-23
+## [0.3.1] - 2015-02-23
 
 ### Changed
 - Updated commander to version 2.6.0.
 
-## 0.3.0 - 2015-02-16
+## [0.3.0] - 2015-02-16
 
 ### Breaking Changes
 
@@ -100,4 +103,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/0.3.1...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/digitalbazaar/bedrock/compare/0.3.2...1.0.0
+[0.3.2]: https://github.com/digitalbazaar/bedrock/compare/0.3.1...0.3.2
+[0.3.1]: https://github.com/digitalbazaar/bedrock/compare/0.3.0...0.3.1
+[0.3.0]: https://github.com/digitalbazaar/bedrock/compare/0.2.0-rc.9...0.3.1
