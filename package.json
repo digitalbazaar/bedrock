@@ -25,8 +25,8 @@
     "mocha": "~2.2.1",
     "pkginfo": "~0.3.0",
     "underscore": "~1.7.0",
-    "winston": "~0.7.0",
-    "winston-mail": "~0.2.9"
+    "winston": "~1.0.0",
+    "winston-mail": "~0.4.0"
   },
   "optionalDependencies": {
     "posix": "~1.0.4"
