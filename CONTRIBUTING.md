@@ -11,7 +11,7 @@ Reason To (TM).
 
 * Two-space indentation, NO tabs.
 * Same-line curly brackets, keep else/elseif/catch/while on the same line
-  as a related ending bracket.
+  as a related opening bracket; put one space before opening brackets.
 * No extra spaces after if, while, etc. before the parenthetical.
 * Use semicolons.
 * Use camelCase for variables, method names, etc. Only use underscores as a
