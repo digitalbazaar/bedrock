@@ -16,6 +16,7 @@ Example commit messages:
 Add infinite scroll to comment section.
 
 - Replaces existing pagination mechanism with an infinite scroll feature.
+- Future work includes CSS-animated fireworks when new comments arrive.
 
 Addresses #123.
 ```
@@ -23,9 +24,9 @@ Addresses #123.
 ```
 Fix memory leak in animation runner.
 
-- When canceling an animation, a closure was created that had a reference
-  to a DOM element that caused it to be held indefinitely in jquery's
-  cache. The closure has been reworked to avoid the reference.
+When canceling an animation, a closure was created that had a reference
+to a DOM element that caused it to be held indefinitely in jquery's cache.
+The closure has been reworked to avoid the reference.
 
 Addresses #124.
 ```
