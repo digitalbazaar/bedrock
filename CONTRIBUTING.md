@@ -2,6 +2,34 @@
 
 Details for developers about contributing to the Bedrock code.
 
+## Commit Messages
+
+* Use present tense, so it's read as: If you applied this changeset, X will happen.
+* Start with a capital letter; use proper capitalization throughout, end with a period.
+* Keep the first message under 50 chars if possible, (certainly under 80). It should express a basic summary of the changeset. Be specific, don't just say "Fix the bug."
+* If you have more to express after the summary, leave an empty line after the opening summary and then express whatever you need in an extended description.
+* If you need to reference issues, then after the optional extended description, leave an empty line and then use `Addresses #issue-number` (for example).
+
+Example commit messages:
+
+```
+Add infinite scroll to comment section.
+
+- Replaces existing pagination mechanism with an infinite scroll feature.
+
+Addresses #123.
+```
+
+```
+Fix memory leak in animation runner.
+
+- When canceling an animation, a closure was created that had a reference
+  to a DOM element that caused it to be held indefinitely in jquery's
+  cache. The closure has been reworked to avoid the reference.
+
+Addresses #124.
+```
+
 ## Code Style
 
 ### JavaScript
