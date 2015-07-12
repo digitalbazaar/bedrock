@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.0.2] - 2015-07-12
+
+### Fixed
+- Handle cycles in log message meta data.
+
 ## [1.0.1] - 2015-05-07
 
 ### Changed
@@ -108,7 +113,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.2...HEAD
+[1.0.2]: https://github.com/digitalbazaar/bedrock/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/digitalbazaar/bedrock/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/digitalbazaar/bedrock/compare/0.3.2...1.0.0
 [0.3.2]: https://github.com/digitalbazaar/bedrock/compare/0.3.1...0.3.2
