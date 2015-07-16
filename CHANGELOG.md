@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.0.3] - 2015-07-16
+
+### Fixed
+- Bug that caused workers to not be restarted.
+
 ## [1.0.2] - 2015-07-12
 
 ### Fixed
