@@ -450,7 +450,12 @@ application to exit early.
     the `test` command object.
 - **bedrock.test.configure**
   - Emitted during `bedrock-cli.ready`, before `bedrock.configure`. Allows
-    listeners to make configuration changes for running tests.
+    listeners to make configuration changes for running tests. This event
+    is particularly useful for changing configuration values prior to their
+    later use when `bedrock.configure` is emitted. To make late configuration
+    changes on the basis of whether or not tests are going to run, instead
+    add a listener to the `bedrock.configure` event after any other relevant
+    listeners have been added.
 - **bedrock.configure**
   - Emitted after `bedrock-cli.ready` and before `bedrock.admin.init`. Allows
     additional custom configuration before Bedrock initializes but after
