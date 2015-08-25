@@ -89,6 +89,8 @@ A number of style and code rules can be checked with
 
 ### AngularJS
 
+Follow the [Angular Style Guide](https://github.com/johnpapa/angular-styleguide).
+
 Organize files according to "components". Components are collections of
 controllers, services, directives, filters, and templates that are all
 part of the same submodule or feature:
