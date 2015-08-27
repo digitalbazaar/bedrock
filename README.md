@@ -1,5 +1,7 @@
 # bedrock
 
+[![Dependency Status](https://img.shields.io/david/digitalbazaar/bedrock.svg)](https://david-dm.org/digitalbazaar/bedrock)
+
 A core foundation for rich Web applications.
 
 ## Overview
