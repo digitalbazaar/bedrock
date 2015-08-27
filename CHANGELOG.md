@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.0.4] - 2015-08-27
+
+### Changed
+- Updated async to version 1.4.x.
+
 ## [1.0.3] - 2015-07-16
 
 ### Fixed
@@ -118,7 +123,9 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.2...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.4...HEAD
+[1.0.4]: https://github.com/digitalbazaar/bedrock/compare/1.0.3...1.0.4
+[1.0.3]: https://github.com/digitalbazaar/bedrock/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/digitalbazaar/bedrock/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/digitalbazaar/bedrock/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/digitalbazaar/bedrock/compare/0.3.2...1.0.0
