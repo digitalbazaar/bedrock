@@ -104,8 +104,8 @@ var bedrock = require('bedrock');
 
 // modules
 require('bedrock-express');
-require('bedrock-mongodb');
 require('bedrock-session-mongodb');
+var database = require('bedrock-mongodb');
 
 bedrock.events.on('bedrock-mongodb.ready', function(callback) {
   database.openCollections(['people'], function(err) {
