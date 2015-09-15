@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.0.5] - 2015-09-14
+
+### Changed
+- Updated jsonld and other versions.
+
 ## [1.0.4] - 2015-08-27
 
 ### Changed
@@ -123,7 +128,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.4...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.5...HEAD
+[1.0.5]: https://github.com/digitalbazaar/bedrock/compare/1.0.4...1.0.5
 [1.0.4]: https://github.com/digitalbazaar/bedrock/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/digitalbazaar/bedrock/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/digitalbazaar/bedrock/compare/1.0.1...1.0.2
