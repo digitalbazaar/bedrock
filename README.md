@@ -260,7 +260,9 @@ bedrock.events.on('bedrock.started', function() {
 
 ```js
 var bedrock = require('bedrock');
-require('./bedrock-example-listener');
+
+// load bedrock-example-server dependency
+require('./bedrock-example-server');
 
 // emitted to allow listeners to be attached to the example server
 bedrock.events.on('example.server.ready', function(server) {
