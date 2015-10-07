@@ -163,7 +163,7 @@ bedrock.start();
 To create a MEAN stack application with identity management and authentication,
 see the [bedrock-seed][] project.
 
-## Comphrehensive Module Example
+## Comprehensive Module Example
 
 Below is an example that demonstrates Bedrock's event API. It creates a
 module with an http server that other modules can attach listeners to. It
