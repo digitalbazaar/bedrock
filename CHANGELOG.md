@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.0.7] - 2015-10-15
+
 ### Changed
 - `exit` now calls worker kill() vs disconnect() and process.exit(). Appears to
   be more correct and works around a bug in node 4.x.
@@ -137,7 +139,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.6...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.7...HEAD
+[1.0.7]: https://github.com/digitalbazaar/bedrock/compare/1.0.6...1.0.7
 [1.0.6]: https://github.com/digitalbazaar/bedrock/compare/1.0.5...1.0.6
 [1.0.5]: https://github.com/digitalbazaar/bedrock/compare/1.0.4...1.0.5
 [1.0.4]: https://github.com/digitalbazaar/bedrock/compare/1.0.3...1.0.4
