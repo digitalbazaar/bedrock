@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.0.8] - 2015-10-15
+
 ### Changed
 - Initialize jsonld document loader in `bedrock.init` event phase. Done to
   allow access to fully setup config. Warn if default document loader is used
@@ -148,7 +150,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.7...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.8...HEAD
+[1.0.8]: https://github.com/digitalbazaar/bedrock/compare/1.0.7...1.0.8
 [1.0.7]: https://github.com/digitalbazaar/bedrock/compare/1.0.6...1.0.7
 [1.0.6]: https://github.com/digitalbazaar/bedrock/compare/1.0.5...1.0.6
 [1.0.5]: https://github.com/digitalbazaar/bedrock/compare/1.0.4...1.0.5
