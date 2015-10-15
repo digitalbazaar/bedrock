@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+- `exit` now calls worker kill() vs disconnect() and process.exit(). Appears to
+  be more correct and works around a bug in node 4.x.
+
 ## [1.0.6] - 2015-09-15
 
 ### Changed
