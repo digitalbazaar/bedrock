@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Changed
+- Initialize jsonld document loader in `bedrock.init` event phase. Done to
+  allow access to fully setup config. Warn if default document loader is used
+  before jsonld initialized.
+
+### Fixed
+- `bedrock.config.jsonld.strictSSL` used if available to configure jsonld
+  document loader.
+
 ## [1.0.7] - 2015-10-15
 
 ### Changed
