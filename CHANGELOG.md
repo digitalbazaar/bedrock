@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.0.9] - 2015-10-27
+
+### Changed
+- Updated jsonld.js to 4.0.2 to get URDNA2015 support.
+
 ## [1.0.8] - 2015-10-15
 
 ### Changed
@@ -150,7 +155,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.8...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.9...HEAD
+[1.0.9]: https://github.com/digitalbazaar/bedrock/compare/1.0.8...1.0.9
 [1.0.8]: https://github.com/digitalbazaar/bedrock/compare/1.0.7...1.0.8
 [1.0.7]: https://github.com/digitalbazaar/bedrock/compare/1.0.6...1.0.7
 [1.0.6]: https://github.com/digitalbazaar/bedrock/compare/1.0.5...1.0.6
