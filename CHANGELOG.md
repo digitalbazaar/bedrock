@@ -5,7 +5,7 @@
 ## [1.0.9] - 2015-10-27
 
 ### Changed
-- Updated jsonld.js to 4.0.2 to get URDNA2015 support.
+- Updated jsonld.js to 0.4.2 to get URDNA2015 support.
 
 ## [1.0.8] - 2015-10-15
 
