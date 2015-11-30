@@ -1,3 +1,4 @@
+*.log
 *.py[co]
 *.sw[nop]
 *~
@@ -7,6 +8,4 @@ TAGS
 bower_components
 coverage
 node_modules
-npm-debug.log
-phantomjsdriver.log
 reports
