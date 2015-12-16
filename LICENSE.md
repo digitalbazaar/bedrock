@@ -31,7 +31,7 @@ These are examples of cases that are allowed by this license:
   service that is used by less than 500 users and is built with or
   integrates with Bedrock. The service must be exclusively provided for free
   and no parent, subsidiary, agent, or affiliate organization may profit
-  from its use.
+  from its direct or indirect use.
 
 These cases require a non-profit or commercial license:
 
