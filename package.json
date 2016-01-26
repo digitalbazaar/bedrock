@@ -14,7 +14,7 @@
     "url": "https://github.com/digitalbazaar/bedrock"
   },
   "dependencies": {
-    "async": "^1.4.2",
+    "async": "^1.5.2",
     "async-node-events": "~0.0.7",
     "chai": "^3.2.0",
     "chai-as-promised": "^5.0.0",
