@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.0.10] - 2016-01-31
+
+### Changed
+- Updated dependencies.
+
 ## [1.0.9] - 2015-10-27
 
 ### Changed
