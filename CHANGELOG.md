@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 2016-02-11
+
+### Added
+- Add simpler and more explicit mechanism for adding new winston transports.
+  Now a call to `bedrock.loggers.addTransport` can be made in event listeners
+  handling the `bedrock-loggers.init` event.
+
 ## [1.0.10] - 2016-01-31
 
 ### Changed
@@ -160,7 +167,9 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.0.9...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/digitalbazaar/bedrock/compare/1.0.10...1.1.0
+[1.0.10]: https://github.com/digitalbazaar/bedrock/compare/1.0.9...1.0.10
 [1.0.9]: https://github.com/digitalbazaar/bedrock/compare/1.0.8...1.0.9
 [1.0.8]: https://github.com/digitalbazaar/bedrock/compare/1.0.7...1.0.8
 [1.0.7]: https://github.com/digitalbazaar/bedrock/compare/1.0.6...1.0.7
