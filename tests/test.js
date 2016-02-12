@@ -60,3 +60,20 @@ describe('bedrock', function() {
     });
   });
 });
+
+// TODO: add test that adds logger early
+
+/*
+var winston = require('winston');
+
+bedrock.events.on('bedrock-cli.init', function() {
+  // TODO: test w/custom logger that writes to string, not file
+  bedrock.loggers.addTransport('test', new winston.transports.File({
+    level: 'debug',
+    silent: false,
+    json: false,
+    timestamp: true,
+    filename: '/tmp/test.log'
+  }));
+});
+*/

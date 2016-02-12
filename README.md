@@ -435,18 +435,22 @@ API matches the "error-first" callback continuation-style that is standard
 practice in node.
 
 Bedrock core emits several events that modules may listen for. These events
-fall into two possible namespaces: `bedrock-cli` and `bedrock`. The
-`bedrock-cli` events are emitted to allow coordination with Bedrock's command
-line interface. The `bedrock` events are emitted after the `bedrock-cli`
-events, unless a listener cancels the `bedrock-cli.ready` event or causes the
-application to exit early.
+fall into three possible namespaces: `bedrock-cli`, `bedrock-loggers` and
+`bedrock`. The `bedrock-cli` events are emitted to allow coordination with
+Bedrock's command line interface. The `bedrock-loggers.init` event is emitted
+after the `bedrock-cli.init` event. The `bedrock` events are emitted after
+all the `bedrock-cli` events, unless a listener cancels the `bedrock-cli.ready`
+event or causes the application to exit early.
 
 - **bedrock-cli.init**
   - Emitted before command line parsing. Allows registration of new subcommands.
+- **bedrock-loggers.init**
+  - Emitted after command line parsing. Allows registration of new logging
+    transports prior to initialization of the logging subsystem.
 - **bedrock-cli.ready**
-  - Emitted after command line parsing. Allows execution of subcommands or the
-    prevention of `bedrock` events from being emitted, either by canceling this
-    event or by exiting the application early.
+  - Emitted after command line parsing and logging initialization. Allows
+    execution of subcommands or the prevention of `bedrock` events from being
+    emitted, either by canceling this event or by exiting the application early.
 - **bedrock-cli.test.configure**
   - Emitted during `bedrock-cli.init` after `test` subcommand has been
     registered. Listeners receive the `test` command object. Allows modules
@@ -530,7 +534,11 @@ are available in offline mode.
 Bedrock has a built-in logging subsystem based on [winston][]. Anything you
 can do with [winston][], you can do with Bedrock. Bedrock provides a set of
 default loggers that are suitable for most applications. The main application
-logger can be retrieved via `bedrock.loggers.get('app')`.
+logger can be retrieved via `bedrock.loggers.get('app')`. A call to
+`bedrock.loggers.addTransport` can be made in event handlers of the
+`bedrock-loggers.init` event to add new [winston][] transports. Logging
+categories (such as `app`) and the transports used by them can be configured
+via `bedrock.config`.
 
 ### bedrock.test
 
