@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.1.1] - 2016-02-22
+
 ### Fixed
 - Check `config.loggers` properties are Objects before accsesing
   sub-properties.  Fixes older configs that set other non-Object meta-data
@@ -172,7 +174,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/digitalbazaar/bedrock/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/digitalbazaar/bedrock/compare/1.0.10...1.1.0
 [1.0.10]: https://github.com/digitalbazaar/bedrock/compare/1.0.9...1.0.10
 [1.0.9]: https://github.com/digitalbazaar/bedrock/compare/1.0.8...1.0.9
