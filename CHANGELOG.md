@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Fixed
+- Check `config.loggers` properties are Objects before accsesing
+  sub-properties.  Fixes older configs that set other non-Object meta-data
+  along with loggers.
+
 ## [1.1.0] - 2016-02-11
 
 ### Added
