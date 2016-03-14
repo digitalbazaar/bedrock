@@ -27,6 +27,10 @@
   "disallowSpacesInsideParentheses": true,
   "disallowTrailingComma": true,
   "disallowTrailingWhitespace": true,
+  "maximumLineLength": {
+    "value": 80,
+    "allExcept": ["comments", "regex"]
+  },
   "requireCommaBeforeLineBreak": true,
   "requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch"],
   "requireLineFeedAtFileEnd": true,
@@ -56,6 +60,7 @@
     "beforeOpeningCurlyBrace": true
   },
   "safeContextKeyword": "self",
+  "validateIndentation": 2,
   "validateLineBreaks": "LF",
   // FIXME: enable doc checks (update to use newer jscs jsdoc module)
   //"validateJSDoc": {
