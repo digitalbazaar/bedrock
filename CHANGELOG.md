@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- `bedrock.config.loggers.*.bedrock` for bedrock specific options.
+- Add `...bedrock.enableChownDir` boolean option to control `chown`ing file
+  logger directory to runtime userId.
+
 ## [1.1.1] - 2016-02-22
 
 ### Fixed
