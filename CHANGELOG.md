@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2016-03-30
+
 ### Added
 - `bedrock.config.loggers.*.bedrock` for bedrock specific options.
 - Add `...bedrock.enableChownDir` boolean option to control `chown`ing file
@@ -179,7 +181,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/digitalbazaar/bedrock/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/digitalbazaar/bedrock/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/digitalbazaar/bedrock/compare/1.0.10...1.1.0
 [1.0.10]: https://github.com/digitalbazaar/bedrock/compare/1.0.9...1.0.10
