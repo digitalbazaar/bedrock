@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.2.1] - 2016-04-04
+
+### Fixed
+- `enableChownDir` check typo.
+
 ## [1.2.0] - 2016-03-30
 
 ### Added
@@ -181,7 +186,8 @@
 
 - See git history for changes.
 
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.2.1...HEAD
+[1.2.1]: https://github.com/digitalbazaar/bedrock/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/digitalbazaar/bedrock/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/digitalbazaar/bedrock/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/digitalbazaar/bedrock/compare/1.0.10...1.1.0
