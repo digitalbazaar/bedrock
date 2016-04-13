@@ -89,124 +89,13 @@ A number of style and code rules can be checked with
 
 ### AngularJS
 
-Follow the [Angular Style Guide](https://github.com/johnpapa/angular-styleguide).
+See [bedrock-angular](https://github.com/digitalbazaar/bedrock-angular/blob/master/CONTRIBUTING.md).
 
-Organize files according to "components". Components are collections of
-controllers, services, directives, filters, and templates that are all
-part of the same submodule or feature:
-
-    .
-    `-- app
-        |-- components
-        |   `-- fooBar
-        |       |-- foo-bar.js
-        |       |-- foo-bar-controller.js
-        |       |-- foo-bar-service.js
-        |       |-- foo-bar-directive.js
-        |       |-- foo-bar-filter.js
-        |       |-- foo-bar.html
-        |       |-- foo-bar-modal-directive.js
-        |       |-- foo-bar-modal.html
-        |       |-- foo-bar-selector-directive.js
-        |       `-- foo-bar-selector.html
-        `-- components.js
-
-Each JavaScript file will be an AMD file. The file "foo-bar.js" will be
-responsible for loading all of the controllers, services, directives, and
-filters modules. It will also have the angular.module('app.fooBar') definition
-and will define each controller, service, directive, and filter on that
-angular module.
-
-The file "components.js" is an AMD module that will load all components
-that are used by the app and register them as dependencies for an
-'app.components' angular module.
-
-Naming conventions:
-
-All files use lowercase and hyphens as a word delimiter. Controllers,
-services, and directives should be prefixed and use camelCase. Filters
-are not prefixed and use camelCase.
-
-Controllers:
-
-* Name: prefixFooBarController (camelCase)
-* File: foo-bar-controller.js
-
-Services:
-
-* Name: prefixFooBarService (CamelCase)
-* File: foo-bar-service.js
-
-Directives:
-
-* Name: prefixFooBar (camelCase)
-* File: foo-bar-directive.js
-
-Filters:
-
-* Name: fooBar (camelCase)
-* File: foo-bar-filter.js
-
-Templates:
-
-* Name: foo-bar.html
-
-Modals:
-
-* Name: prefixFooBarModal (camelCase)
-* File: foo-bar-modal-directive.js
-* Template: foo-bar-modal.html
-
-Selectors:
-
-* Name: prefixFooBarSelector (camelCase)
-* File: foo-bar-selector-directive.js
-* Template: foo-bar-selector.html
-
-Best practices:
-
-* Use "controller as" syntax wherever possible. Refer to controller as
-  'self' in controller code. Use "controller as model" in the common
-  case where the view is simple and only one controller is used. Use
-  'controllerAs' property in directive.
-* For complex directives, do not add variables directly to the scope,
-  as this may lead to unexpected behavior that results from
-  prototypical inheritance patterns. Instead, add them to single
-  property on the scope such as "model" or use this pattern in
-  your directive definitions, which will add variables to "ctrl" so
-  you can access them via "ctrl.foo" in a template:
-```js
-  {
-    scope: {foo: '='},
-    controller: function() {},
-    controllerAs: 'ctrl',
-    bindToController: true
-  }
-```
-* Use 'link' not 'controller' for controller code in directives that
-  do not expose a controller API for reuse; only add "controller" in
-  these cases if using the above pattern for scope variables.
-* Use the annotation /* @ngInject */ before dependency-injected functions
-  to ensure the build tools can appropriately deal with minification.
-
-## Debugging
-
-Similar to the NODE_DEBUG environment setting, there is a BEDROCK_DEBUG
-environment setting. This is a comma separated list of modules to debug. The
-current known options are:
-
-* test: Debug the testing framework.
-
-To use, run commands like the following:
-
-    $ BEDROCK_DEBUG=test npm run test
 
 ## Testing
 
-* Backend tests are located in `tests/backend/`.
-* Frontend tests are located in `tests/frontend/`. These tests use
-  protractor to test a web browser.
-* Use `BEDROCK_DEBUG=test` to show additional debug info.
+* Backend tests are typically written using the mocha framework.
+* Frontend tests are typically written using protractor to test a web browser.
 
 The following projects are used for creating tests:
 
