@@ -9,6 +9,14 @@
   // use w/angular directive templates?
   //"disallowMultipleLineStrings": true,
   "disallowNewlineBeforeBlockStatements": true,
+  "disallowSpaceAfterKeywords": [
+    "if",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "catch"
+  ],
   "disallowSpaceAfterObjectKeys": true,
   "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
   "disallowSpaceBeforeBinaryOperators": [","],
