@@ -1,44 +1,48 @@
 # bedrock ChangeLog
 
-## [Unreleased]
+## 1.2.2 - 2016-05-30
 
-## [1.2.1] - 2016-04-04
+### Changed
+- Update docs.
+- Update jscs linter rules.
+
+## 1.2.1 - 2016-04-04
 
 ### Fixed
 - `enableChownDir` check typo.
 
-## [1.2.0] - 2016-03-30
+## 1.2.0 - 2016-03-30
 
 ### Added
 - `bedrock.config.loggers.*.bedrock` for bedrock specific options.
 - Add `...bedrock.enableChownDir` boolean option to control `chown`ing file
   logger directory to runtime userId.
 
-## [1.1.1] - 2016-02-22
+## 1.1.1 - 2016-02-22
 
 ### Fixed
 - Check `config.loggers` properties are Objects before accsesing
   sub-properties.  Fixes older configs that set other non-Object meta-data
   along with loggers.
 
-## [1.1.0] - 2016-02-11
+## 1.1.0 - 2016-02-11
 
 ### Added
 - Add simpler and more explicit mechanism for adding new winston transports.
   Now a call to `bedrock.loggers.addTransport` can be made in event listeners
   handling the `bedrock-loggers.init` event.
 
-## [1.0.10] - 2016-01-31
+## 1.0.10 - 2016-01-31
 
 ### Changed
 - Updated dependencies.
 
-## [1.0.9] - 2015-10-27
+## 1.0.9 - 2015-10-27
 
 ### Changed
 - Updated jsonld.js to 0.4.2 to get URDNA2015 support.
 
-## [1.0.8] - 2015-10-15
+## 1.0.8 - 2015-10-15
 
 ### Changed
 - Initialize jsonld document loader in `bedrock.init` event phase. Done to
@@ -49,43 +53,43 @@
 - `bedrock.config.jsonld.strictSSL` used if available to configure jsonld
   document loader.
 
-## [1.0.7] - 2015-10-15
+## 1.0.7 - 2015-10-15
 
 ### Changed
 - `exit` now calls worker kill() vs disconnect() and process.exit(). Appears to
   be more correct and works around a bug in node 4.x.
 
-## [1.0.6] - 2015-09-15
+## 1.0.6 - 2015-09-15
 
 ### Changed
 - Update posix version to be compatible with node 4.0.0.
 
-## [1.0.5] - 2015-09-14
+## 1.0.5 - 2015-09-14
 
 ### Changed
 - Updated jsonld and other versions.
 
-## [1.0.4] - 2015-08-27
+## 1.0.4 - 2015-08-27
 
 ### Changed
 - Updated async to version 1.4.x.
 
-## [1.0.3] - 2015-07-16
+## 1.0.3 - 2015-07-16
 
 ### Fixed
 - Bug that caused workers to not be restarted.
 
-## [1.0.2] - 2015-07-12
+## 1.0.2 - 2015-07-12
 
 ### Fixed
 - Handle cycles in log message meta data.
 
-## [1.0.1] - 2015-05-07
+## 1.0.1 - 2015-05-07
 
 ### Changed
 - Update dependencies.
 
-## [1.0.0] - 2015-04-08
+## 1.0.0 - 2015-04-08
 
 ### Changed
 - **BREAKING**: A new event `bedrock.admin.init` was introduced that emits
@@ -101,17 +105,17 @@
   `bedrock.start` as a best practice avoids this scenario.
 - Updated JSCS rules.
 
-## [0.3.2] - 2015-02-24
+## 0.3.2 - 2015-02-24
 
 ### Fixed
 - Fixed default command after upgrade to commander 2.6.
 
-## [0.3.1] - 2015-02-23
+## 0.3.1 - 2015-02-23
 
 ### Changed
 - Updated commander to version 2.6.0.
 
-## [0.3.0] - 2015-02-16
+## 0.3.0 - 2015-02-16
 
 ### Breaking Changes
 
@@ -185,23 +189,3 @@
 ## 0.2.0 (up to early 2015)
 
 - See git history for changes.
-
-[Unreleased]: https://github.com/digitalbazaar/bedrock/compare/1.2.1...HEAD
-[1.2.1]: https://github.com/digitalbazaar/bedrock/compare/1.2.0...1.2.1
-[1.2.0]: https://github.com/digitalbazaar/bedrock/compare/1.1.1...1.2.0
-[1.1.1]: https://github.com/digitalbazaar/bedrock/compare/1.1.0...1.1.1
-[1.1.0]: https://github.com/digitalbazaar/bedrock/compare/1.0.10...1.1.0
-[1.0.10]: https://github.com/digitalbazaar/bedrock/compare/1.0.9...1.0.10
-[1.0.9]: https://github.com/digitalbazaar/bedrock/compare/1.0.8...1.0.9
-[1.0.8]: https://github.com/digitalbazaar/bedrock/compare/1.0.7...1.0.8
-[1.0.7]: https://github.com/digitalbazaar/bedrock/compare/1.0.6...1.0.7
-[1.0.6]: https://github.com/digitalbazaar/bedrock/compare/1.0.5...1.0.6
-[1.0.5]: https://github.com/digitalbazaar/bedrock/compare/1.0.4...1.0.5
-[1.0.4]: https://github.com/digitalbazaar/bedrock/compare/1.0.3...1.0.4
-[1.0.3]: https://github.com/digitalbazaar/bedrock/compare/1.0.2...1.0.3
-[1.0.2]: https://github.com/digitalbazaar/bedrock/compare/1.0.1...1.0.2
-[1.0.1]: https://github.com/digitalbazaar/bedrock/compare/1.0.0...1.0.1
-[1.0.0]: https://github.com/digitalbazaar/bedrock/compare/0.3.2...1.0.0
-[0.3.2]: https://github.com/digitalbazaar/bedrock/compare/0.3.1...0.3.2
-[0.3.1]: https://github.com/digitalbazaar/bedrock/compare/0.3.0...0.3.1
-[0.3.0]: https://github.com/digitalbazaar/bedrock/compare/0.2.0-rc.9...0.3.1
