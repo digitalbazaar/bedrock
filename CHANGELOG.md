@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 1.2.3 - 2016-06-01
+
+### Changed
+- Use improved common uncaught exception handler. 
+
 ## 1.2.2 - 2016-05-30
 
 ### Changed
