@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Changed
+- Improve logging of simple object unhandled errors.
+
 ## 1.2.3 - 2016-06-01
 
 ### Changed
