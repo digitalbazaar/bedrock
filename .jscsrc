@@ -45,6 +45,7 @@
   "requireSemicolons": true,
   "requireSpaceAfterBinaryOperators": ["?", ":", "+", "-", "/", "*", "%", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
   "requireSpaceBeforeBinaryOperators": ["?", ":", "+", "-", "/", "*", "%", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
+  "requireSpaceBeforeObjectValues": true,
   "requireSpaceAfterKeywords": [
     "else",
     "do",
