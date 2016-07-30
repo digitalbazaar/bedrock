@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 1.2.5 - 2016-07-29
+
+### Fixed
+- Fix chown bug when posix doesn't exist and usernames are used.
+
 ## 1.2.4 - 2016-06-09
 
 ### Changed
@@ -8,7 +13,7 @@
 ## 1.2.3 - 2016-06-01
 
 ### Changed
-- Use improved common uncaught exception handler. 
+- Use improved common uncaught exception handler.
 
 ## 1.2.2 - 2016-05-30
 
