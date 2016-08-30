@@ -59,6 +59,99 @@ describe('bedrock', function() {
       done();
     });
   });
+  describe('util.computedConfig()', function() {
+    const cc = bedrock.util.computedConfig;
+    it('should create', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', () => config.base.a + config.base.b);
+      config.computed.should.equal('ab');
+    });
+    it('should update', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', () => config.base.a + config.base.b);
+      config.computed.should.equal('ab');
+      config.base.a = 'a2';
+      config.base.b = 'b2';
+      config.computed.should.equal('a2b2');
+    });
+    it('should create template', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', '${base.a + base.b}', {
+        locals: config
+      });
+      config.computed.should.equal('ab');
+    });
+    it('should update template', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', '${base.a + base.b}', {
+        locals: config
+      });
+      config.computed.should.equal('ab');
+      config.base.a = 'a2';
+      config.base.b = 'b2';
+      config.computed.should.equal('a2b2');
+    });
+    it('should create two layers', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', () => config.base.a + config.base.b);
+      cc(config, 'computed2', () => config.computed + config.computed);
+      config.computed2.should.equal('abab');
+    });
+    it('should update two layers', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', () => config.base.a + config.base.b);
+      cc(config, 'computed2', () => config.computed + config.computed);
+      config.computed2.should.equal('abab');
+      config.base.a = 'a2';
+      config.base.b = 'b2';
+      config.computed2.should.equal('a2b2a2b2');
+    });
+    it('should create twice', function() {
+      var config = {base: {}};
+      config.base.a = 'a';
+      config.base.b = 'b';
+      cc(config, 'computed', 'computed');
+      cc(config, 'computed', 'computed2');
+      config.computed.should.equal('computed2');
+    });
+    it('should support set', function() {
+      var config = {};
+      cc(config, 'computed', 'computed');
+      config.computed.should.equal('computed');
+      config.computed = 'computed2';
+      config.computed.should.equal('computed2');
+    });
+    it('should support "delete"', function() {
+      var config = {};
+      cc(config, 'computed', 'computed');
+      config.computed.should.equal('computed');
+      delete config.computed;
+      (typeof config.computed).should.equal('undefined');
+    });
+    it('should support "in"', function() {
+      var config = {};
+      cc(config, 'computed', 'computed');
+      ('computed' in config).should.be.true;
+    });
+    it('should support JSON serialization', function() {
+      var config = {};
+      cc(config, 'computed', 'computed');
+      config.computed.should.equal('computed');
+      JSON.stringify(config).should.equal('{"computed":"computed"}');
+    });
+  });
 });
 
 // TODO: add test that adds logger early
