@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Added
+- Add new `bedrock.util.Config` API. See README for details.
+
 ## 1.2.5 - 2016-07-29
 
 ### Fixed
