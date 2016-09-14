@@ -351,9 +351,10 @@ practice for modules to claim their own area in the configuration object is to
 insert their default configuration object using a key that either matches their
 module name or that matches their module name minus any `bedrock-` prefix. For
 example, the [bedrock-server][] module's specific configuration object can be
-found under `bedrock.config.server`. Modules may define whatever configuration
-variables they want to using whatever format is appropriate for their own
-use.
+found under `bedrock.config.server`. A `mycompany-feature` module would be
+found under `bedrock['mycompany-feature']`. Modules may define whatever
+configuration variables they want to using whatever format is appropriate for
+their own use.
 
 ### bedrock.events
 
