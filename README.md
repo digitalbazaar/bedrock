@@ -493,6 +493,21 @@ cc({
 });
 ```
 
+Computed values can be added to an array using indexing or the `pushComputed`
+feature. If indexing is used the array must already exist or the
+`{parentDefault: []}` option should be used. `pushComputed` will create the
+parent array if needed.
+
+```js
+let config = bedrock.config;
+let c = bedrock.util.config;
+let cc = c.computer();
+cc('server.baseUri', 'https://${server.host}');
+c.setDefault('resources', []);
+cc('resources[0]', '${server.baseUri}/r/0');
+c.pushComputed('resources', '${server.baseUri}/r/1');
+```
+
 ### bedrock.events
 
 It's sometimes necessary to allow modules to coordinate with each other in
