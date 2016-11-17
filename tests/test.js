@@ -206,6 +206,74 @@ describe('bedrock', function() {
       });
     });
 
+    describe('basic array functionality', function() {
+      it('should create empty', function() {
+        c.set('a', []);
+        config.a.should.be.an('array');
+        config.a.length.should.equal(0);
+      });
+      it('should create with simple values', function() {
+        c.set('a', ['a', 'b']);
+        config.a.should.be.an('array');
+        config.a.length.should.equal(2);
+        config.a[0].should.equal('a');
+        config.a[1].should.equal('b');
+      });
+      it('should set computed values', function() {
+        config.a = ['a', 'b'];
+        c.setComputed('a[2]', '${a[0] + a[1]}');
+        config.a.should.be.an('array');
+        config.a.length.should.equal(3);
+        config.a[0].should.equal('a');
+        config.a[1].should.equal('b');
+        config.a[2].should.equal('ab');
+      });
+      it('should create with computed values', function() {
+        c.setComputed({
+          'a[0]': 'a',
+          'a[1]': 'b',
+          'a[2]': '${a[0] + a[1]}'
+        }, {parentDefault: []});
+        config.a.should.be.an('array');
+        config.a.length.should.equal(3);
+        config.a[0].should.equal('a');
+        config.a[1].should.equal('b');
+        config.a[2].should.equal('ab');
+      });
+      it('should update with computed values', function() {
+        config.a = [];
+        c.setComputed({
+          'a[0]': 'a',
+          'a[1]': 'b',
+          'a[2]': '${a[0] + a[1]}'
+        });
+        config.a.should.be.an('array');
+        config.a.length.should.equal(3);
+        config.a[0].should.equal('a');
+        config.a[1].should.equal('b');
+        config.a[2].should.equal('ab');
+      });
+      it('should push to array', function() {
+        c.pushComputed('a', 'a');
+        config.a.should.be.an('array');
+        config.a.length.should.equal(1);
+        config.a[0].should.equal('a');
+      });
+      it('should push computed values', function() {
+        config.a = [];
+        c.pushComputed('a', 'a');
+        c.pushComputed('a', 'b');
+        c.pushComputed('a', '${a[0] + a[1]}');
+        c.pushComputed('a', () => config.a[0] + config.a[1]);
+        config.a.should.be.an('array');
+        config.a.length.should.equal(4);
+        config.a[0].should.equal('a');
+        config.a[1].should.equal('b');
+        config.a[2].should.equal('ab');
+        config.a[3].should.equal('ab');
+      });
+    });
+
     describe('default config', function() {
       // computed config for main config
       let _cc = bedrock.util.config.computer();
@@ -504,6 +572,26 @@ describe('bedrock', function() {
         config.users.admin.id.should.equal(1);
         config.server.url.should.equal('https://bedrock.dev:8443');
         config.users.admin.url.should.equal('https://bedrock.dev:8443/users/1');
+      });
+
+      it('should support README examples (arrays)', function() {
+        c.set('server.port', 8443);
+        c.set('server.domain', 'bedrock.dev');
+        cc('server.host', () => {
+          // only add the port if it's not the well known default
+          if(config.server.port !== 443) {
+            return config.server.domain + ':' + config.server.port;
+          }
+          return config.server.domain;
+        });
+        cc('server.baseUri', 'https://${server.host}');
+        c.setDefault('resources', []);
+        cc('resources[0]', '${server.baseUri}/r/0');
+        c.pushComputed('resources', '${server.baseUri}/r/1');
+        config.resources.should.be.an('array');
+        config.resources.length.should.equal(2);
+        config.resources[0].should.equal('https://bedrock.dev:8443/r/0');
+        config.resources[1].should.equal('https://bedrock.dev:8443/r/1');
       });
 
       it('should support an example', function() {
