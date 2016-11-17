@@ -87,6 +87,8 @@ describe('bedrock', function() {
         config.nopath.should.equal('nopath');
         c.set('path.path', 'path');
         config.path.path.should.equal('path');
+        c.set(['array', 'path'], 'arraypath');
+        config.array.path.should.equal('arraypath');
       });
       it('should update', function() {
         config.data = 'js';
@@ -127,6 +129,13 @@ describe('bedrock', function() {
       it('should setDefault paths', function() {
         (typeof config.p1).should.equal('undefined');
         var object = c.setDefault('p1.p2', {});
+        config.p1.p2.should.equal(object);
+        Object.keys(config.p1).length.should.equal(1);
+        Object.keys(config.p1.p2).length.should.equal(0);
+      });
+      it('should setDefault array paths', function() {
+        (typeof config.p1).should.equal('undefined');
+        var object = c.setDefault(['p1', 'p2'], {});
         config.p1.p2.should.equal(object);
         Object.keys(config.p1).length.should.equal(1);
         Object.keys(config.p1.p2).length.should.equal(0);
@@ -369,6 +378,9 @@ describe('bedrock', function() {
         // non dot names
         cc('a9.b9-c9.d9', 'e9');
         config.a9['b9-c9'].d9.should.equal('e9');
+        // array paths
+        cc(['a10', 'b10', 'c10'], 'd10');
+        config.a10.b10.c10.should.equal('d10');
       });
     });
 
