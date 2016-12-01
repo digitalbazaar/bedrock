@@ -362,9 +362,9 @@ simplify dependency issues by allowing values to be computed at runtime from a
 function or string template. (Note there is a small cost with computed config
 values which could be important depending on the use case.)
 
-`bedrock.util.Config` creates a wrapper around a config object and optional
-options. This wrapper exposes a new, helpful API that is detailed below. A
-common setup could look like the following.
+`bedrock.util.config.Config` creates a wrapper around a config object and
+optional options. This wrapper exposes a new, helpful API that is detailed
+below. A common setup could look like the following.
 
 ```js
 // an empty config object
@@ -377,16 +377,16 @@ let options = {
   locals: config
 };
 // wrap the config
-let c = new bedrock.util.Config(config, options);
+let c = new bedrock.util.config.Config(config, options);
 ```
 
 Bedrock provides a shared wrapper around the common `bedrock.config` as
-`bedrock.util.config`.
+`bedrock.util.config.main`.
 
 To do simple sets of config data, use the `set()` API.
 
 ```js
-let c = bedrock.util.config;
+let c = bedrock.util.config.main;
 // set a config variable with a path
 // path components are created as needed
 c.set('server.port', 8443);
@@ -399,7 +399,7 @@ data. Objects in the path are created as needed.
 
 ```js
 let config = bedrock.config;
-let c = bedrock.util.config;
+let c = bedrock.util.config.main;
 // create container object if needed
 c.setDefault('accounts.admin', {});
 // the config is just a normal object
@@ -417,7 +417,7 @@ powerful feature where values will be calculated at runtime.
 ```js
 let config = bedrock.config;
 // get the Config wrapper for the default bedrock.config
-let c = bedrock.util.config;
+let c = bedrock.util.config.main;
 // set static values
 c.set('server.port', 8443);
 c.set('server.domain', 'bedrock.dev');
@@ -433,7 +433,7 @@ are updated the computed values will reflect the change.
 
 ```js
 let config = bedrock.config;
-let c = bedrock.util.config;
+let c = bedrock.util.config.main;
 c.set('server.port', 8443);
 c.set('server.domain', 'bedrock.dev');
 c.setComputed('server.host', () => {
@@ -452,7 +452,7 @@ console.log(config.server.host); // "bedrock.dev"
 `bind()` functionality. A helper called `computer()` will do this for you.
 ```js
 let config = bedrock.config;
-let cc = bedrock.util.config.computer();
+let cc = bedrock.util.config.main.computer();
 cc('server.host', () => {
   // only add the port if it's not the well known default
   if(config.server.port !== 443) {
@@ -467,7 +467,7 @@ templates)[https://lodash.com/docs/#template].
 
 ```js
 let config = bedrock.config;
-let cc = bedrock.util.config.computer();
+let cc = bedrock.util.config.main.computer();
 cc('server.baseUri', 'https://${server.host}');
 console.log(config.server.baseUri); // "https://bedrock.dev:8443"
 // use locals option to simplify templates
@@ -478,7 +478,7 @@ cc('base.computed', '${a}:${b}:${c}', {locals: config.base});
 Setting or computing multiple values with one call uses an object notation:
 
 ```js
-let c = bedrock.util.config;
+let c = bedrock.util.config.main;
 let cc = c.computer();
 c.set({
   'server.port': 8443,
@@ -499,7 +499,7 @@ parent array if needed.
 
 ```js
 let config = bedrock.config;
-let c = bedrock.util.config;
+let c = bedrock.util.config.main;
 let cc = c.computer();
 cc('server.baseUri', 'https://${server.host}');
 c.setDefault('resources', []);

@@ -1,7 +1,10 @@
 # bedrock ChangeLog
 
 ### Added
-- Add new `bedrock.util.Config` API. See README for details.
+- Add `bedrock.util.config` utilities:
+  - Add `bedrock.util.config.Config` OO wrapper API.
+  - Common `bedrock.util.config.main` Config wrapper for `bedrock.config`.
+  - See README for usage details.
 
 ## 1.2.5 - 2016-07-29
 
