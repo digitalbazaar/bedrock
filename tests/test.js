@@ -61,7 +61,7 @@ describe('bedrock', function() {
     });
   });
 
-  describe('util.Config', function() {
+  describe('util.config', function() {
     // simplify most tests with common config setup
     let config;
     let c;
@@ -75,7 +75,7 @@ describe('bedrock', function() {
         // set locals to our custom config root
         locals: config
       };
-      c = new bedrock.util.Config(config, options);
+      c = new bedrock.util.config.Config(config, options);
       cc = c.computer();
     });
 
@@ -276,7 +276,7 @@ describe('bedrock', function() {
 
     describe('default config', function() {
       // computed config for main config
-      let _cc = bedrock.util.config.computer();
+      let _cc = bedrock.util.config.main.computer();
 
       // config testing namespace
       const ns = '_mocha';
@@ -301,7 +301,7 @@ describe('bedrock', function() {
     describe('templates', function() {
       it('should create', function() {
         let _options = {locals: config};
-        let _cc = new bedrock.util.Config(config, _options).computer();
+        let _cc = new bedrock.util.config.Config(config, _options).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${base.a + base.b}', _options);
@@ -309,7 +309,7 @@ describe('bedrock', function() {
       });
       it('should create with custom locals', function() {
         let _options = {locals: config.base};
-        let _cc = new bedrock.util.Config(config, _options).computer();
+        let _cc = new bedrock.util.config.Config(config, _options).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${a + b}');
@@ -317,7 +317,7 @@ describe('bedrock', function() {
       });
       it('should create with per-call locals', function() {
         let _options = {locals: config.base};
-        let _cc = new bedrock.util.Config(config).computer();
+        let _cc = new bedrock.util.config.Config(config).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${a + b}', _options);
@@ -325,7 +325,7 @@ describe('bedrock', function() {
       });
       it('should update', function() {
         let _options = {locals: config};
-        let _cc = new bedrock.util.Config(config, _options).computer();
+        let _cc = new bedrock.util.config.Config(config, _options).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${base.a + base.b}');
@@ -597,7 +597,7 @@ describe('bedrock', function() {
       it('should support an example', function() {
         let config = {};
         let options = {config: config, locals: config};
-        let c = new bedrock.util.Config(config, options);
+        let c = new bedrock.util.config.Config(config, options);
         let cc = c.computer();
         c.set('server.port', 8443);
         // direct access, 'server' container known to exist
