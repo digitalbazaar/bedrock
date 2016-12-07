@@ -278,15 +278,13 @@ describe('bedrock', function() {
       // computed config for main config
       let _cc = bedrock.util.config.main.computer();
 
-      // config testing namespace
-      const ns = '_mocha';
       // ensure empty config container
       beforeEach('create config', function() {
-        bedrock.config[ns] = {};
+        bedrock.config._mocha = {};
       });
       // clean up test config
       afterEach('remove config', function() {
-        delete bedrock.config[ns];
+        delete bedrock.config._mocha;
       });
 
       it('should use default config', function() {
