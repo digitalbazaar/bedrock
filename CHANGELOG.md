@@ -1,5 +1,14 @@
 # bedrock ChangeLog
 
+### Added
+- Add `config.paths` with `log` and `cache` entries. This is designed to be a
+  simple single point of configuration for the root logging and cache paths.
+
+### Changed
+- Use computed configs:
+  - Add common cache and log paths to config.paths.
+  - Use common log path for default log files.
+
 ## 1.3.0 - 2016-12-07
 
 ### Added
