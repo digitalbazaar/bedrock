@@ -39,7 +39,7 @@
     "grunt-jscs": "~3.0.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=6"
   },
   "directories": {
     "lib": "./lib/bedrock"

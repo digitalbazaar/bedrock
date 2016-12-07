@@ -8,6 +8,7 @@
 
 ### Changed
 - Updated dependencies.
+- Updated to node >= 6.
 
 ## 1.2.5 - 2016-07-29
 
