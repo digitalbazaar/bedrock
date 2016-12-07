@@ -60,7 +60,7 @@ module.exports = function(grunt) {
     _jscsOptions.reporterOutput = 'reports/jscs.xml';
   }
 
-  grunt.loadNpmTasks("grunt-jscs");
+  grunt.loadNpmTasks('grunt-jscs');
   grunt.config('jscs', {
     all: {
       options: _jscsOptions,
