@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.3.0 - 2016-12-07
+
 ### Added
 - Add `bedrock.util.config` utilities:
   - Add `bedrock.util.config.Config` OO wrapper API.
