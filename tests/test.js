@@ -450,14 +450,14 @@ describe('bedrock', function() {
       });
     });
 
-    describe('examples', function() {
-      it('should support README examples (set)', function() {
+    describe('README examples', function() {
+      it('should support set', function() {
         c.set('server.port', 8443);
 
         config.server.port.should.equal(8443);
       });
 
-      it('should support README examples (setDefault)', function() {
+      it('should support setDefault', function() {
         c.setDefault('accounts.admin', {});
         config.accounts.admin.name = 'Ima Admin';
         c.set('accounts.admin.id', 1);
@@ -471,7 +471,7 @@ describe('bedrock', function() {
         config.accounts.account123.name.should.equal('Account 123');
       });
 
-      it('should support README examples (setComputed)', function() {
+      it('should support setComputed', function() {
         c.set('server.port', 8443);
         c.set('server.domain', 'bedrock.dev');
         c.setComputed('server.host', () => {
@@ -483,7 +483,7 @@ describe('bedrock', function() {
         config.server.host.should.equal('bedrock.dev:8443');
       });
 
-      it('should support README examples (setComputed2)', function() {
+      it('should support setComputed2', function() {
         c.set('server.port', 8443);
         c.set('server.domain', 'bedrock.dev');
         c.setComputed('server.host', () => {
@@ -502,7 +502,7 @@ describe('bedrock', function() {
         config.server.host.should.equal('bedrock.dev');
       });
 
-      it('should support README examples (computer)', function() {
+      it('should support computer', function() {
         c.set('server.port', 8443);
         c.set('server.domain', 'bedrock.dev');
         cc('server.host', () => {
@@ -522,7 +522,7 @@ describe('bedrock', function() {
         config.server.host.should.equal('bedrock.dev');
       });
 
-      it('should support README examples (templates)', function() {
+      it('should support templates', function() {
         c.set('server.port', 8443);
         c.set('server.domain', 'bedrock.dev');
         cc('server.host', () => {
@@ -552,7 +552,7 @@ describe('bedrock', function() {
         config.base.computed2.should.equal('a:b:c');
       });
 
-      it('should support README examples (multi)', function() {
+      it('should support multi', function() {
         c.set({
           'server.port': 8443,
           'server.domain': 'bedrock.dev',
@@ -572,7 +572,7 @@ describe('bedrock', function() {
         config.users.admin.url.should.equal('https://bedrock.dev:8443/users/1');
       });
 
-      it('should support README examples (arrays)', function() {
+      it('should support arrays', function() {
         c.set('server.port', 8443);
         c.set('server.domain', 'bedrock.dev');
         cc('server.host', () => {
@@ -591,7 +591,9 @@ describe('bedrock', function() {
         config.resources[0].should.equal('https://bedrock.dev:8443/r/0');
         config.resources[1].should.equal('https://bedrock.dev:8443/r/1');
       });
+    });
 
+    describe('examples', function() {
       it('should support an example', function() {
         let config = {};
         let options = {config: config, locals: config};
