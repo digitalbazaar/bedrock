@@ -41,9 +41,12 @@ module.exports = function(grunt) {
   grunt.config('jshint', {
     all: {
       options: grunt.config('ci') ? {
+        jshintrc: true,
         reporter: 'checkstyle',
         reporterOutput: 'reports/jshint.xml'
-      } : {},
+      } : {
+        jshintrc: true
+      },
       src: grunt.config('js')
     }
   });
