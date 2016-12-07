@@ -6,6 +6,9 @@
   - Common `bedrock.util.config.main` Config wrapper for `bedrock.config`.
   - See README for usage details.
 
+### Changed
+- Updated dependencies.
+
 ## 1.2.5 - 2016-07-29
 
 ### Fixed
