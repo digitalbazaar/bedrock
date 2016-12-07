@@ -5,6 +5,7 @@
   - Add `bedrock.util.config.Config` OO wrapper API.
   - Common `bedrock.util.config.main` Config wrapper for `bedrock.config`.
   - See README for usage details.
+- ci-test target with tap mocha reporter.
 
 ### Changed
 - Updated dependencies.
