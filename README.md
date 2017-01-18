@@ -353,7 +353,7 @@ insert their default configuration object using a key that either matches their
 module name or that matches their module name minus any `bedrock-` prefix. For
 example, the [bedrock-server][] module's specific configuration object can be
 found under `bedrock.config.server`. A `mycompany-feature` module would be
-found under `bedrock['mycompany-feature']`. Modules may define whatever
+found under `bedrock.config['mycompany-feature']`. Modules may define whatever
 configuration variables they want to using whatever format is appropriate for
 their own use.
 
@@ -463,8 +463,8 @@ cc('server.host', () => {
 });
 ```
 
-Computed values can also be created with (lodash-style string
-templates)[https://lodash.com/docs/#template].
+Computed values can also be created with [lodash-style string
+templates](https://lodash.com/docs/#template).
 
 ```js
 let config = bedrock.config;
