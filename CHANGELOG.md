@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.4.1 - 2017-02-02
+
 ### Changed
 - Deprecated default values for `config.paths`. A warning will be printed.  A
   future major version will force values to be set by applications.
