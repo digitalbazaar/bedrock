@@ -74,7 +74,7 @@ Reason To (TM).
   line, do so. Functions are just mappings from x to y (or `x => y`); it
   is easier to read when they are short and on a single line. If the
   function is longer (or requires curly braces `{`), break after the
-  arrow.
+  arrow. See examples.
 * Avoid getters and setters.
 * Do not override built-in prototypes unless you're fixing IE.
 * If you find a need to use OOP, use PascalCase for classes. Avoid OOP unless
@@ -86,6 +86,28 @@ Reason To (TM).
   be traced during debugging, decreased ratio of effectual code lines to lines
   of code, and stacktrace horrors.
 * See: http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html
+
+#### Examples
+
+##### Arrow functions:
+
+If an arrow function will all fit on one line, do it:
+
+```js
+someLongFunctionOrExpression(
+  a, b,
+  (some, long, params) => someExpression());
+```
+
+If it won't fit on one line, then break after the arrow:
+
+```js
+someLongFunctionOrExpression(
+  a, b, (some, long, params, tooManyParams) =>
+  someExpressionThatIsJustTooLong());
+```
+
+#### Linter
 
 A number of style and code rules can be checked with
 [jshint](http://jshint.com/) and [jscs](https://github.com/jscs-dev/node-jscs):
