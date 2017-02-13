@@ -68,6 +68,13 @@ Reason To (TM).
   if a parameter is an object with too many properties to fit on a single
   line; you may break after the opening object bracket for this. Break before
   periods for chaining function calls.
+* When writing backend (node.js) code, use ES2016+, when writing frontend
+  code (browser) use ES5.
+* When writing arrow functions (`=>`), if they can be kept on a single
+  line, do so. Functions are just mappings from x to y (or `x => y`); it
+  is easier to read when they are short and on a single line. If the
+  function is longer (or requires curly braces `{`), break after the
+  arrow.
 * Avoid getters and setters.
 * Do not override built-in prototypes unless you're fixing IE.
 * If you find a need to use OOP, use PascalCase for classes. Avoid OOP unless
