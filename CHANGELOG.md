@@ -1,10 +1,10 @@
 # bedrock ChangeLog
 
 ### Changed
-- Add child(meta) method to loggers that has common metadata. The special
-  `module` key is used to prefix messages with `[module] ` and then removed
-  from the metadata. These adjustments may be removed in the future but are
-  necessary with the current lower level logging mechanisms.
+- Add `child(meta)` method to create a child logger with common metadata for
+  each logging call. The special `module` meta key can be used to prefix
+  messages with `[module] ` and is removed from the message details.
+  `child(name)` is a shortcut for `child({module: name})`.
 
 ## 1.4.1 - 2017-02-02
 
