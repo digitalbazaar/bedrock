@@ -699,6 +699,25 @@ be added to child log output. A special `module` meta name can optionally be
 used for pretty output. A shortcut for creating named module loggers is
 `bedrock.loggers.get('app').child('name')`.
 
+Module prefix display can be controlled per-category:
+
+```js
+// get a child logger with custom module name
+let logger = bedrock.loggers.get('app').child('my-module');
+
+// message module prefix controlled with a per-category config value
+bedrock.config.loggers.app.bedrock.modulePrefix = false;
+logger.info('an info message');
+// module displayed as normal meta data:
+// 2017-06-30T12:34:56.789Z - info: an info message workerPid=1234, module=my-module
+
+// with module prefix enabled:
+bedrock.config.loggers.app.bedrock.modulePrefix = true;
+logger.info('an info message');
+// displayed as an nice message prefix:
+// 2017-06-30T12:34:56.789Z - info: [my-module] an info message workerPid=1234
+```
+
 ### bedrock.test
 
 Bedrock comes with test support built-in. It provides a test framework based
