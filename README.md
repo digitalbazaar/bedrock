@@ -693,6 +693,12 @@ logger can be retrieved via `bedrock.loggers.get('app')`. A call to
 categories (such as `app`) and the transports used by them can be configured
 via `bedrock.config`.
 
+Bedrock supports multi-level child loggers with common metadata. These are
+created with `bedrock.loggers.get('app').child({...})`. Provided metadata will
+be added to child log output. A special `module` meta name can optionally be
+used for pretty output. A shortcut for creating named module loggers is
+`bedrock.loggers.get('app').child('name')`.
+
 ### bedrock.test
 
 Bedrock comes with test support built-in. It provides a test framework based
