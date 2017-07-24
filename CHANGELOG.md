@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-### Changed
+### Added
 - Add `child(meta)` method to create a child logger with common metadata for
   each logging call. The special `module` meta key can be used to prefix
   messages with `[module] ` and is removed from the message details.
