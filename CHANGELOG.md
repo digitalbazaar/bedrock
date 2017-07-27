@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 1.6.0 - 2017-07-27
+
+### Changed
+- Upgrade test related dependencies: mocha, chai, chai-as-promised.
+
 ## 1.5.0 - 2017-07-24
 
 ### Added
