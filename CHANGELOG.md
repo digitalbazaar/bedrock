@@ -1,5 +1,14 @@
 # bedrock ChangeLog
 
+## 1.7.0 - 2017-08-10
+
+### Added
+- Add `assertNoError(err)` global test helper which makes an assertion that
+  `err` should be falsy. If an error does occur, the full error will be
+  logged to the console. The additional logging is helpful when troubleshooting
+  tests that are failing due to a regression. This helper should be used in
+  place of the commonly used `should.not.exist(err)` assertion.
+
 ## 1.6.0 - 2017-07-27
 
 ### Changed
