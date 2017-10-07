@@ -25,7 +25,7 @@
     "jsonld": "^0.4.2",
     "lodash": "^4.15.0",
     "mkdirp": "~0.5.0",
-    "mocha": "^3.4.2",
+    "mocha": "^4.0.0",
     "pkginfo": "~0.3.0",
     "winston": "^1.0.0",
     "winston-mail": "^1.0.0"
