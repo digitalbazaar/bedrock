@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 1.7.1 - 2017-11-13
+
+### Fixed
+- Update mocha dependency which addresses multiple security vulnerabilities.
+
 ## 1.7.0 - 2017-08-10
 
 ### Added
