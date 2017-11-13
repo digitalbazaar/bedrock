@@ -8,7 +8,9 @@
     "ci-test": "node index.js test --mocha-reporter=tap",
     "lint": "grunt jshint",
     "ci-lint": "grunt --no-color jshint --mode=ci || exit 0",
-    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover index.js -- test --mocha-reporter tap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura"
+    "coverage": "rm -rf coverage && ./node_modules/.bin/istanbul cover index.js -- test --mocha-reporter tap && ./node_modules/.bin/istanbul report --root coverage lcov cobertura",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,8 @@
     "mocha": "^4.0.1",
     "pkginfo": "~0.3.0",
     "winston": "^1.0.0",
-    "winston-mail": "^1.0.0"
+    "winston-mail": "^1.0.0",
+    "snyk": "^1.41.1"
   },
   "optionalDependencies": {
     "posix": "^4.0.0"
@@ -45,5 +48,6 @@
   "directories": {
     "lib": "./lib/bedrock"
   },
-  "main": "./lib/bedrock"
+  "main": "./lib/bedrock",
+  "snyk": true
 }
