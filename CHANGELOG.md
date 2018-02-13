@@ -1,5 +1,12 @@
 # bedrock ChangeLog
 
+### Changed
+- Update jsonld to 0.5.x.
+- Update many other dependencies.
+
+### Added
+- `--log-only` option to log only certain modules.
+
 ## 1.7.1 - 2017-11-13
 
 ### Fixed
