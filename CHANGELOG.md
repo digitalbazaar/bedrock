@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.8.0 - 2018-02-13
+
 ### Changed
 - Update jsonld to 0.5.x.
 - Update many other dependencies.
