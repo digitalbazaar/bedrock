@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Changed
+- Update jsonld to 1.0.0.
+
 ## 1.8.0 - 2018-02-13
 
 ### Changed
