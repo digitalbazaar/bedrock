@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.9.1 - 2018-03-07
+
 ### Changed
 - Update from istanbul to nyc for coverage.
 
