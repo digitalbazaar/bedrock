@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Changed
+- Update to newer worker API.
+
 ## 1.9.1 - 2018-03-07
 
 ### Changed
