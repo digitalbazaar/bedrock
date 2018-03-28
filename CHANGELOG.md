@@ -2,6 +2,7 @@
 
 ### Changed
 - Update to newer worker API.
+- Use logger to handle uncaught error formatting.
 
 ## 1.9.1 - 2018-03-07
 
