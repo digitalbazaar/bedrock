@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.9.2 - 2018-03-28
+
 ### Changed
 - Update to newer worker API.
 - Improve errors in runOnce calls.
