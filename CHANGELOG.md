@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## TBD
+## 1.10.0 - 2018-04-06
 
 ### Added
 - `--log-exclude` option to eliminate logging from certain modules.
