@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+### Added
+- Return Promse from `events.emit` and `events.emitLater` that
+  resolves to `undefined` once the event has been emitted to all
+  listeners or to `false` if it was canceled.
+
 ## 1.11.0 - 2018-05-08
 
 ### Added
