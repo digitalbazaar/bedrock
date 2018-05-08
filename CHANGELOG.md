@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.12.0 - 2018-05-08
+
 ### Added
 - Return Promse from `events.emit` and `events.emitLater` that
   resolves to `undefined` once the event has been emitted to all
