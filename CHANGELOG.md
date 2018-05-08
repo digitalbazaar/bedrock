@@ -1,5 +1,13 @@
 # bedrock ChangeLog
 
+### Added
+- Add `util.callbackify` helper to produce functions that can be
+  called with a callback function or that will return a Promise
+  if the callback function is omitted. This utility function
+  is used in bedrock modules that are written using Promises
+  internally and that expose Promise-based public APIs that
+  also support legacy callback patterns.
+
 ## 1.10.0 - 2018-04-06
 
 ### Added
