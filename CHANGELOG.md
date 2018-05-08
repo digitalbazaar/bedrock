@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.11.0 - 2018-05-08
+
 ### Added
 - Add `util.callbackify` helper to produce functions that can be
   called with a callback function or that will return a Promise
