@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 1.12.1 - 2018-05-10
+
+### Changed
+- Update async-node-events to 1.0.0.
+
 ## 1.12.0 - 2018-05-08
 
 ### Added
