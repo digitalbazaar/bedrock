@@ -1,7 +1,7 @@
 Bedrock Non-Commercial License v1.0
 ===================================
 
-Copyright (c) 2011-2015 Digital Bazaar, Inc.
+Copyright (c) 2011-2018 Digital Bazaar, Inc.
 All rights reserved.
 
 Summary
