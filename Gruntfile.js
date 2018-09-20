@@ -1,8 +1,8 @@
-/*
- * Bedrock Gruntfile.
- *
- * Copyright (c) 2013-2015 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2012-2018 Digital Bazaar, Inc. All rights reserved.
  */
+'use strict';
+
 module.exports = function(grunt) {
   'use strict';
 
