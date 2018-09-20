@@ -1,5 +1,14 @@
 # bedrock ChangeLog
 
+## 1.13.0 - TBD
+
+## Added
+- Add `bedrock-cli.parsed` event.
+
+### Changed
+- Update copyright notices.
+- Style fixes.
+
 ## 1.12.1 - 2018-05-10
 
 ### Changed
