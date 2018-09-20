@@ -597,6 +597,11 @@ event or causes the application to exit early.
 
 - **bedrock-cli.init**
   - Emitted before command line parsing. Allows registration of new subcommands.
+- **bedrock-cli.parsed**
+  - Emitted after command line parsing. Allows for configuration of loggers
+    based on command line flags. For instance, a logger may provide for the
+    specification of a `logGroupName` that may be computed at runtime based
+    on some command line flag(s).
 - **bedrock-loggers.init**
   - Emitted after command line parsing. Allows registration of new logging
     transports prior to initialization of the logging subsystem.
