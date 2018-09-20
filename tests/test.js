@@ -4,36 +4,36 @@
 
 'use strict';
 
-var bedrock = require('../lib/bedrock');
-var BedrockError = bedrock.util.BedrockError;
+const bedrock = require('../lib/bedrock');
+const BedrockError = bedrock.util.BedrockError;
 
 describe('bedrock', function() {
   describe('util.extend()', function() {
     it('should perform in-place default extension', function(done) {
-      var result = {};
+      const result = {};
       bedrock.util.extend(result, {a: 1});
       result.should.eql({a: 1});
       done();
     });
     it('should perform in-place deep extension', function(done) {
-      var result = {a: {a0: 0}, b: 2};
+      const result = {a: {a0: 0}, b: 2};
       bedrock.util.extend(true, result, {a: {a1: 1}});
       result.should.eql({a: {a0: 0, a1: 1}, b: 2});
       done();
     });
     it('should perform in-place shallow extension', function(done) {
-      var result = {a: {a0: 0}, b: 2};
+      const result = {a: {a0: 0}, b: 2};
       bedrock.util.extend(false, result, {a: {a1: 1}});
       result.should.eql({a: {a1: 1}, b: 2});
       done();
     });
     it('should be able to return a new object', function(done) {
-      var result = bedrock.util.extend(true, {}, {a: 1});
+      const result = bedrock.util.extend(true, {}, {a: 1});
       result.should.eql({a: 1});
       done();
     });
     it('should merge multiple objects into a new object', function(done) {
-      var result = {};
+      const result = {};
       bedrock.util.extend(true, result, {a: 1}, {b: 2});
       result.should.eql({a: 1, b: 2});
       done();
@@ -42,7 +42,7 @@ describe('bedrock', function() {
 
   describe('util.BedrockError', function() {
     it('should have correct type', function(done) {
-      var err = new BedrockError('E', 'TYPE', null, null);
+      const err = new BedrockError('E', 'TYPE', null, null);
       err.isType('BOGUS').should.be.false;
       err.isType('TYPE').should.be.true;
       err.hasType('BOGUS').should.be.false;
@@ -50,8 +50,8 @@ describe('bedrock', function() {
       done();
     });
     it('should have correct cause', function(done) {
-      var err0 = new BedrockError('E0', 'E0TYPE', null, null);
-      var err1 = new BedrockError('E1', 'E1TYPE', null, err0);
+      const err0 = new BedrockError('E0', 'E0TYPE', null, null);
+      const err1 = new BedrockError('E1', 'E1TYPE', null, err0);
       err1.isType('BOGUS').should.be.false;
       err1.isType('E1TYPE').should.be.true;
       err1.hasType('BOGUS').should.be.false;
@@ -71,7 +71,7 @@ describe('bedrock', function() {
         // 'base' used for path testing
         base: {}
       };
-      let options = {
+      const options = {
         // set locals to our custom config root
         locals: config
       };
@@ -113,7 +113,7 @@ describe('bedrock', function() {
     describe('basic setDefault functionality', function() {
       it('should setDefault when exists', function() {
         (typeof config.p1).should.equal('undefined');
-        var object = c.setDefault('p1', {});
+        const object = c.setDefault('p1', {});
         config.p1.should.equal(object);
         Object.keys(object).length.should.equal(0);
       });
@@ -121,21 +121,21 @@ describe('bedrock', function() {
         config.p1 = {};
         config.p1.exists = true;
         config.p1.exists.should.equal(true);
-        var object = c.setDefault('p1', {});
+        const object = c.setDefault('p1', {});
         config.p1.should.equal(object);
         config.p1.should.equal(config.p1);
         config.p1.exists.should.equal(true);
       });
       it('should setDefault paths', function() {
         (typeof config.p1).should.equal('undefined');
-        var object = c.setDefault('p1.p2', {});
+        const object = c.setDefault('p1.p2', {});
         config.p1.p2.should.equal(object);
         Object.keys(config.p1).length.should.equal(1);
         Object.keys(config.p1.p2).length.should.equal(0);
       });
       it('should setDefault array paths', function() {
         (typeof config.p1).should.equal('undefined');
-        var object = c.setDefault(['p1', 'p2'], {});
+        const object = c.setDefault(['p1', 'p2'], {});
         config.p1.p2.should.equal(object);
         Object.keys(config.p1).length.should.equal(1);
         Object.keys(config.p1.p2).length.should.equal(0);
@@ -146,7 +146,7 @@ describe('bedrock', function() {
         (typeof config.p2).should.equal('undefined');
         (typeof config.p3).should.equal('object');
         Object.keys(config.p3).length.should.equal(0);
-        var object = c.setDefault({
+        const object = c.setDefault({
           'p1': {},
           'p2.c1': {},
           'p3.c1': {}
@@ -276,7 +276,7 @@ describe('bedrock', function() {
 
     describe('default config', function() {
       // computed config for main config
-      let _cc = bedrock.util.config.main.computer();
+      const _cc = bedrock.util.config.main.computer();
 
       // ensure empty config container
       beforeEach('create config', function() {
@@ -288,7 +288,7 @@ describe('bedrock', function() {
       });
 
       it('should use default config', function() {
-        let config = bedrock.config;
+        const config = bedrock.config;
         config._mocha.a = 'a';
         config._mocha.b = 'b';
         _cc('_mocha.computed', () => config._mocha.a + config._mocha.b);
@@ -298,32 +298,32 @@ describe('bedrock', function() {
 
     describe('templates', function() {
       it('should create', function() {
-        let _options = {locals: config};
-        let _cc = new bedrock.util.config.Config(config, _options).computer();
+        const _options = {locals: config};
+        const _cc = new bedrock.util.config.Config(config, _options).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${base.a + base.b}', _options);
         config.computed.should.equal('ab');
       });
       it('should create with custom locals', function() {
-        let _options = {locals: config.base};
-        let _cc = new bedrock.util.config.Config(config, _options).computer();
+        const _options = {locals: config.base};
+        const _cc = new bedrock.util.config.Config(config, _options).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${a + b}');
         config.computed.should.equal('ab');
       });
       it('should create with per-call locals', function() {
-        let _options = {locals: config.base};
-        let _cc = new bedrock.util.config.Config(config).computer();
+        const _options = {locals: config.base};
+        const _cc = new bedrock.util.config.Config(config).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${a + b}', _options);
         config.computed.should.equal('ab');
       });
       it('should update', function() {
-        let _options = {locals: config};
-        let _cc = new bedrock.util.config.Config(config, _options).computer();
+        const _options = {locals: config};
+        const _cc = new bedrock.util.config.Config(config, _options).computer();
         config.base.a = 'a';
         config.base.b = 'b';
         _cc('computed', '${base.a + base.b}');
@@ -461,7 +461,7 @@ describe('bedrock', function() {
         c.setDefault('accounts.admin', {});
         config.accounts.admin.name = 'Ima Admin';
         c.set('accounts.admin.id', 1);
-        let account123 = c.setDefault('accounts.account123', {});
+        const account123 = c.setDefault('accounts.account123', {});
         account123.id = 123;
         account123.name = 'Account 123';
 
@@ -595,10 +595,10 @@ describe('bedrock', function() {
 
     describe('examples', function() {
       it('should support an example', function() {
-        let config = {};
-        let options = {config: config, locals: config};
-        let c = new bedrock.util.config.Config(config, options);
-        let cc = c.computer();
+        const config = {};
+        const options = {config, locals: config};
+        const c = new bedrock.util.config.Config(config, options);
+        const cc = c.computer();
         c.set('server.port', 8443);
         // direct access, 'server' container known to exist
         config.server.domain = 'bedrock.dev';
@@ -613,10 +613,10 @@ describe('bedrock', function() {
         // use Config.setComputed API
         c.setComputed('server.baseUri1', 'https://${server.host}');
         // bind setComputed
-        let cc2 = c.setComputed.bind(c);
+        const cc2 = c.setComputed.bind(c);
         cc2('server.baseUri2', 'https://${server.host}');
         // use binding API
-        let cc3 = c.computer();
+        const cc3 = c.computer();
         cc3('server.baseUri3', 'https://${server.host}');
 
         // all should have the same value
@@ -637,7 +637,7 @@ describe('bedrock', function() {
 // TODO: add test that adds logger early
 
 /*
-var winston = require('winston');
+const winston = require('winston');
 
 bedrock.events.on('bedrock-cli.init', function() {
   // TODO: test w/custom logger that writes to string, not file

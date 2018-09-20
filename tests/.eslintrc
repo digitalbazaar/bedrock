@@ -1,6 +1,9 @@
 {
   "env": {
-    "mocha": true,
-    "ecmaVersion": 2015
+    "mocha": true
+  },
+  "globals": {
+    "assertNoError": true,
+    "should": true
   }
 }
