@@ -1,5 +1,14 @@
 # bedrock ChangeLog
 
+## 1.13.1 - TBD
+
+### Changed
+- change default value of `bedrock.config.jsonld.strictSSL` from `false` to
+  `true`. This means that the `jsonld` library's document loader will refuse
+  to retrieve documents from sites without proper SSL certificates. This change
+  will impact unit tests in Bedrock modules. The `strictSSL` flag will need to
+  be set to `false` in the `test.config.js` files for affected modules.
+
 ## 1.13.0 - 2018-09-20
 
 ## Added
