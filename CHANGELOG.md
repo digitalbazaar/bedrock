@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 1.13.1 - TBD
+## 1.14.1 - 2018-11-29
 
 ### Changed
 - Change default value of `bedrock.config.jsonld.strictSSL` from `false` to
@@ -26,7 +26,7 @@
 ## 1.12.0 - 2018-05-08
 
 ### Added
-- Return Promse from `events.emit` and `events.emitLater` that
+- Return Promise from `events.emit` and `events.emitLater` that
   resolves to `undefined` once the event has been emitted to all
   listeners or to `false` if it was canceled.
 
