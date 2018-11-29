@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 1.14.1 - 2018-11-29
+## 1.14.0 - 2018-11-29
 
 ### Changed
 - Change default value of `bedrock.config.jsonld.strictSSL` from `false` to
