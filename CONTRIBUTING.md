@@ -68,8 +68,8 @@ Reason To (TM).
   if a parameter is an object with too many properties to fit on a single
   line; you may break after the opening object bracket for this. Break before
   periods for chaining function calls.
-* When writing backend (node.js) code, use ES2016+, when writing frontend
-  code (browser) use ES5.
+* Use the latest ES20** code supported by stable node.js everywhere; we will run
+  babel tools to compile for browsers or older versions of node.js as needed.
 * When writing arrow functions (`=>`), if they can be kept on a single
   line, do so. Functions are just mappings from x to y (or `x => y`); it
   is easier to read when they are short and on a single line. If the
@@ -78,13 +78,14 @@ Reason To (TM).
 * Avoid getters and setters.
 * Do not override built-in prototypes unless you're fixing IE.
 * If you find a need to use OOP, use PascalCase for classes. Avoid OOP unless
-  there's a really good justification for the added complexity. OOP is not a
-  panacea, it is a tool for a very specific problem set. If it is used for
-  a problem that is not in that set, there are only disadvantages. Examples
-  include, but are not limited to: unused layers of abstraction and overhead
-  that affect both runtime and development time, more indirection that must
-  be traced during debugging, decreased ratio of effectual code lines to lines
-  of code, and stacktrace horrors.
+  there's a really good justification for the added complexity (e.g. you really
+  need to bundle up and maintain some state and have actual use for inheritance
+  patterns). OOP is not a panacea, it is a tool for a very specific problem set.
+  If it is used for a problem that is not in that set, there are only
+  disadvantages. Examples include, but are not limited to: unused layers of
+  abstraction and overhead that affect both runtime and development time, more
+  indirection that must be traced during debugging, decreased ratio of effectual
+  code lines to lines of code, and stacktrace horrors.
 * See: http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html
 
 #### Examples
