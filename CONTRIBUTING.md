@@ -8,7 +8,7 @@ When writing your git messages, imagine them being read like this:
 
 `If applied, this commit will <the first line of your git message here>.`
 
-* Use present imperative tense, so it's read as: If applied, this commit will <your subject line here>`.
+* Use present imperative tense, so it's read as: If applied, this commit will "your subject line here".
 * Start with a capital letter; use proper capitalization throughout, end with a period.
 * Keep the first message under 50 chars if possible, (certainly under 80). It should express a basic summary of the changeset. Be specific, don't just say "Fix the bug."
 * If you have more to express after the summary, leave an empty line after the opening summary and then express whatever you need in an extended description.
