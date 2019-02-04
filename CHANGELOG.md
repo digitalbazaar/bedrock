@@ -11,7 +11,7 @@
 
 ## 1.13.0 - 2018-09-20
 
-## Added
+### Added
 - Add `bedrock-cli.parsed` event.
 
 ### Changed
