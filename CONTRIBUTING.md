@@ -35,6 +35,18 @@ The closure has been reworked to avoid the reference.
 Addresses #124.
 ```
 
+## ChangeLogs
+
+Packages shuld include a top-level `CHANGELOG.md` file.
+
+* Keep the `CHANGELOG.md` up-to-date *as you make commits*.
+* Entries should be a higher level view than reading all the commit messages.
+  In general, developers should be able to just read this to stay updated while
+  upgrading.
+* Use a simplifed version of the https://keepachangelog.com/ style.
+  * Don't make version links, this is difficult to maintain.
+* Prefix lines with `**BREAKING**:` or `**NOTE**:` or simlar as needed.
+
 ## Code Style
 
 ### JavaScript
