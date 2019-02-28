@@ -87,7 +87,7 @@ open source:
 We wish this were not true. We wish we could just develop great 
 technology, release it to the world, and people would pay us for it.
 To date, the revenue we've received from other large companies that have
-benefitted from projects we've open sourced wouldn't even cover a month
+benefited from projects we've open sourced wouldn't even cover a month
 of operations. The reality is that large companies don't pay small
 companies for their work unless they absolutely have to.
 
