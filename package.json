@@ -30,6 +30,7 @@
     "mocha": "^5.0.4",
     "nyc": "^13.3.0",
     "pkginfo": "^0.4.1",
+    "uuid-random": "^1.0.6",
     "winston": "^1.0.0",
     "winston-mail": "^1.4.0"
   },

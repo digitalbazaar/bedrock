@@ -6,6 +6,9 @@
 - `bedrock.util.delay` API which is used to create a promise which resolves
   after the specified milliseconds.
 
+### Changed
+- Use `uuid-random` for `bedrock.util.uuid`.  
+
 ## 1.14.0 - 2018-11-29
 
 ### Changed
