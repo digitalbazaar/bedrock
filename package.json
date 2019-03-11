@@ -22,6 +22,7 @@
     "chai-as-promised": "^7.1.1",
     "commander": "^2.14.1",
     "cycle": "^1.0.3",
+    "delay": "^4.1.0",
     "errio": "^1.2.2",
     "jsonld": "^1.0.1",
     "lodash": "^4.17.5",
