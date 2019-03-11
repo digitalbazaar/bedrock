@@ -1,7 +1,7 @@
 Bedrock Non-Commercial License v1.0
 ===================================
 
-Copyright (c) 2011-2018 Digital Bazaar, Inc.
+Copyright (c) 2011-2019 Digital Bazaar, Inc.
 All rights reserved.
 
 Summary
@@ -113,4 +113,3 @@ To obtain a non-profit or commercial license for Product, please contact
 Digital Bazaar, Inc. at the following email address:
 
 Digital Bazaar <support@digitalbazaar.com>
-
