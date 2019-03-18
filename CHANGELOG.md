@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 1.15.0 - TBD
+## 1.15.0 - 2019-03-18
 
 ### Added
 - `bedrock.util.delay` API which is used to create a promise which resolves
