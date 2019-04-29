@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "eslint": "^5.14.1",
-    "eslint-config-digitalbazaar": "^1.7.0",
+    "eslint-config-digitalbazaar": "^2.0.0",
     "grunt": "^1.0.2",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-jshint": "^1.1.0",
