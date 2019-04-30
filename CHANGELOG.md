@@ -1,5 +1,11 @@
 # bedrock ChangeLog
 
+## 1.16.0 - 2019-04-30
+
+### Added
+- `bedrock.runOnceAsync` API which is a promise based version of
+  `bedrock.runOnce`.
+
 ## 1.15.0 - 2019-03-18
 
 ### Added
