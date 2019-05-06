@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 1.17.0 - 2019-05-06
+
+### Changed
+- Improve callback function detection in `events.emit` API.
+
 ## 1.16.0 - 2019-04-30
 
 ### Added
