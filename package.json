@@ -32,7 +32,7 @@
     "pkginfo": "^0.4.1",
     "uuid-random": "^1.0.6",
     "winston": "^1.0.0",
-    "winston-mail": "^1.4.0"
+    "winston-mail": "^2.0.0"
   },
   "optionalDependencies": {
     "posix": "^4.0.0"
