@@ -9,7 +9,9 @@
     "lint": "grunt jshint",
     "ci-lint": "grunt --no-color jshint --mode=ci || exit 0",
     "coverage": "rm -rf coverage && nyc --reporter=lcov --reporter=text-summary npm test",
-    "coverage-report": "nyc report"
+    "coverage-report": "nyc report",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,8 @@
     "pkginfo": "^0.4.1",
     "uuid-random": "^1.0.6",
     "winston": "^1.0.0",
-    "winston-mail": "^1.4.0"
+    "winston-mail": "^1.4.0",
+    "snyk": "^1.192.3"
   },
   "optionalDependencies": {
     "posix": "^4.0.0"
@@ -51,5 +54,6 @@
   "directories": {
     "lib": "./lib/bedrock"
   },
-  "main": "./lib/bedrock"
+  "main": "./lib/bedrock",
+  "snyk": true
 }
