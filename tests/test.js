@@ -146,7 +146,7 @@ describe('bedrock', function() {
         (typeof config.p3).should.equal('object');
         Object.keys(config.p3).length.should.equal(0);
         const object = c.setDefault({
-          'p1': {},
+          p1: {},
           'p2.c1': {},
           'p3.c1': {}
         });
