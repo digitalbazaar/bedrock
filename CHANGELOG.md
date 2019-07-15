@@ -3,6 +3,8 @@
 ### Changed
 - Update lodash to 4.17.14.
 - Switch to eslint.
+- **BREAKING**: Update Node.js engine requirement to >= 8. Note this is due to
+  the use of async/await when runOnceAsync was added in 1.16.0.
 
 ## 1.17.0 - 2019-05-06
 
