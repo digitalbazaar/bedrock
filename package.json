@@ -6,8 +6,7 @@
     "start": "node index.js",
     "test": "node index.js test --mocha-reporter=${REPORTER:-spec}",
     "ci-test": "node index.js test --mocha-reporter=${REPORTER:-tap}",
-    "lint": "grunt jshint",
-    "ci-lint": "grunt --no-color jshint --mode=ci || exit 0",
+    "lint": "eslint '*.js' 'lib/*.js' 'tests/*.js'",
     "coverage": "rm -rf coverage && nyc --reporter=lcov --reporter=text-summary npm test",
     "coverage-report": "nyc report"
   },
@@ -38,12 +37,8 @@
     "posix": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.14.1",
-    "eslint-config-digitalbazaar": "^2.0.0",
-    "grunt": "^1.0.2",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-jscs": "^3.0.1"
+    "eslint": "^6.0.1",
+    "eslint-config-digitalbazaar": "^2.0.0"
   },
   "engines": {
     "node": ">=6"

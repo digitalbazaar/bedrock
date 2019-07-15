@@ -126,11 +126,9 @@ someLongFunctionOrExpression(
 
 #### Linter
 
-A number of style and code rules can be checked with
-[jshint](http://jshint.com/) and [jscs](https://github.com/jscs-dev/node-jscs):
+A number of style and code rules can be checked with [ESLint](https://eslint.org/).
 
-    $ grunt jshint
-    $ grunt jscs
+    $ npm run lint
 
 
 ### AngularJS
