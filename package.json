@@ -56,8 +56,5 @@
   "engines": {
     "node": ">=8"
   },
-  "directories": {
-    "lib": "./lib/bedrock"
-  },
   "main": "./lib/bedrock"
 }
