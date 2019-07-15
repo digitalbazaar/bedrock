@@ -2,6 +2,15 @@
   "name": "bedrock",
   "version": "1.17.1-0",
   "description": "A core foundation for rich Web applications.",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com/"
+  },
+  "keywords": [
+    "bedrock"
+  ],
   "scripts": {
     "start": "node index.js",
     "test": "node index.js test --mocha-reporter=${REPORTER:-spec}",
@@ -14,6 +23,10 @@
     "type": "git",
     "url": "https://github.com/digitalbazaar/bedrock"
   },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock",
   "dependencies": {
     "async": "^2.6.0",
     "async-node-events": "^1.0.0",
