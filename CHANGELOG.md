@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Changed
+- Switch to eslint.
+
 ## 1.17.0 - 2019-05-06
 
 ### Changed
