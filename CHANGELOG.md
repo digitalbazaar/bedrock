@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.18.0 - 2019-07-16
+
 ### Changed
 - Update lodash to 4.17.14.
 - Switch to eslint.
