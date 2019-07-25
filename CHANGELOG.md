@@ -3,7 +3,7 @@
 ## 1.18.1 - 2019-07-24
 
 ### Fixed
-- Fix memory leak and improve error handling in  `runOnce` and `runOnceAsync`.
+- Fix memory leak and improve error handling in `runOnce` and `runOnceAsync`.
 
 ## 1.18.0 - 2019-07-16
 
