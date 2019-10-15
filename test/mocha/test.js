@@ -4,7 +4,7 @@
 'use strict';
 
 const bedrock = require('bedrock');
-const BedrockError = bedrock.util.BedrockError;
+const {util: {BedrockError}} = bedrock;
 
 describe('bedrock', function() {
   describe('util.extend()', function() {
