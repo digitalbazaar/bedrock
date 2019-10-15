@@ -13,8 +13,6 @@
   ],
   "scripts": {
     "start": "node index.js",
-    "test": "node index.js test --mocha-reporter=${REPORTER:-spec}",
-    "ci-test": "node index.js test --mocha-reporter=${REPORTER:-tap}",
     "lint": "eslint '*.js' 'lib/*.js' 'tests/*.js'",
     "coverage": "rm -rf coverage && nyc --reporter=lcov --reporter=text-summary npm test",
     "coverage-report": "nyc report"
