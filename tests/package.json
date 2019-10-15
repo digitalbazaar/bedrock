@@ -1,0 +1,12 @@
+{
+  "name": "bedrock-test",
+  "version": "0.0.1-0",
+  "private": true,
+  "scripts": {
+    "test": "node --preserve-symlinks test test"
+  },
+  "dependencies": {
+    "bedrock": "file:..",
+    "bedrock-test": "digitalbazaar/bedrock-test#4.x"
+  }
+}
