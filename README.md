@@ -318,7 +318,7 @@ communicate with each other using the CommonJS API (eg: `require` and
 `module.exports`, etc.), and Bedrock modules are no different. However,
 Bedrock also provides some additional low-level subsystems to help modules
 coordinate. These include: `bedrock.config`, `bedrock.events`,
-`bedrock.jsonld`, `bedrock.loggers`, `bedrock.test`, and `bedrock.util`.
+`bedrock.jsonld`, `bedrock.loggers`, and `bedrock.util`.
 
 To create a Bedrock project, all you need to do is create a JavaScript file,
 for example `project.js`, that requires `bedrock`, any other Bedrock modules
@@ -609,19 +609,6 @@ event or causes the application to exit early.
   - Emitted after command line parsing and logging initialization. Allows
     execution of subcommands or the prevention of `bedrock` events from being
     emitted, either by canceling this event or by exiting the application early.
-- **bedrock-cli.test.configure**
-  - Emitted during `bedrock-cli.init` after `test` subcommand has been
-    registered. Listeners receive the `test` command object. Allows modules
-    that define new test frameworks to add new `test` command line options via
-    the `test` command object.
-- **bedrock.test.configure**
-  - Emitted during `bedrock-cli.ready`, before `bedrock.configure`. Allows
-    listeners to make configuration changes for running tests. This event
-    is particularly useful for changing configuration values prior to their
-    later use when `bedrock.configure` is emitted. To make late configuration
-    changes on the basis of whether or not tests are going to run, instead
-    add a listener to the `bedrock.configure` event after any other relevant
-    listeners have been added.
 - **bedrock.configure**
   - Emitted after `bedrock-cli.ready` and before `bedrock.admin.init`. Allows
     additional custom configuration before Bedrock initializes but after
@@ -722,18 +709,6 @@ logger.info('an info message');
 // displayed as an nice message prefix:
 // 2017-06-30T12:34:56.789Z - info: [my-module] an info message workerPid=1234
 ```
-
-### bedrock.test
-
-Bedrock comes with test support built-in. It provides a test framework based
-on mocha that integrates with `bedrock.config`. To add a mocha test to a
-Bedrock module, you simply push a directory or a file path onto the
-`config.mocha.tests` array. Bedrock also makes it easy to add other test
-frameworks via Bedrock modules. For example, [bedrock-protractor][] integrates
-the [AngularJS][] [protractor][] test framework with Bedrock. Whenever you
-run tests against your project, your project and all of its dependencies will
-be tested, using whatever test frameworks they have registered with. Bedrock
-also provides command line options to limit the tests that run as desired.
 
 ### bedrock.util
 
