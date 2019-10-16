@@ -318,7 +318,7 @@ communicate with each other using the CommonJS API (eg: `require` and
 `module.exports`, etc.), and Bedrock modules are no different. However,
 Bedrock also provides some additional low-level subsystems to help modules
 coordinate. These include: `bedrock.config`, `bedrock.events`,
-`bedrock.jsonld`, `bedrock.loggers`, and `bedrock.util`.
+`bedrock.loggers`, and `bedrock.util`.
 
 To create a Bedrock project, all you need to do is create a JavaScript file,
 for example `project.js`, that requires `bedrock`, any other Bedrock modules
@@ -347,7 +347,7 @@ Bedrock has a simple, but highly-customizable configuration system. All
 configuration variables are stored in a shared JavaScript object
 `bedrock.config`. The object is partitioned into separate configuration objects
 that are identified by the object's keys. For example Bedrock introduces the
-`cli`, `core`, `constants`, `jsonld`, and `loggers` object keys. The best
+`cli`, `core`, `constants`, and `loggers` object keys. The best
 practice for modules to claim their own area in the configuration object is to
 insert their default configuration object using a key that either matches their
 module name or that matches their module name minus any `bedrock-` prefix. For
@@ -663,17 +663,6 @@ event or causes the application to exit early.
     pass. Test frameworks may add their own information to the state object
     using a property matching their framework name.
 
-### bedrock.jsonld
-
-Bedrock is intended to provide a foundation for [Linked Data][] applications,
-and as such, it provides a [JSON-LD][] processor (via [jsonld.js][]) that is
-integrated with its configuration system. Any [JSON-LD context][] that is
-inserted into the `bedrock.config.constants.CONTEXTS` object (where keys
-are the URL for the context and the values are the context itself), will be
-served from disk instead of retrieved from the Web. This is a useful feature
-for both developing [Linked Data][] applications and for ensuring contexts
-are available in offline mode.
-
 ### bedrock.loggers
 
 Bedrock has a built-in logging subsystem based on [winston][]. Anything you
@@ -851,6 +840,5 @@ details about the included non-commercial license information.
 [bedrock-seed]: https://github.com/digitalbazaar/bedrock-seed
 [bedrock-server]: https://github.com/digitalbazaar/bedrock-server
 [bedrock-views]: https://github.com/digitalbazaar/bedrock-views
-[jsonld.js]: https://github.com/digitalbazaar/jsonld.js
 [protractor]: https://github.com/angular/protractor
 [winston]: https://github.com/winstonjs/winston
