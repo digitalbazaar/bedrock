@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "bedrock": "file:..",
-    "bedrock-test": "digitalbazaar/bedrock-test#4.x"
+    "bedrock-test": "^4.0.0"
   }
 }
