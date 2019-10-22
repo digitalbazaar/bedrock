@@ -1,5 +1,16 @@
 # bedrock ChangeLog
 
+## 2.0.0 - 2019-10-22
+
+### Changed
+- **BREAKING**: Remove mocha unit test framework. The test framework now resides
+  entirely in the bedrock-test module@4.
+- **BREAKING**: Remove `bedrock.jsonld` and related configuration. A jsonld
+  document loader is now available in bedrock-jsonld-document-loader@1.
+
+### Added
+- `bedrock.util.hasValue` helper API to replace `jsonld.hasValue`.
+
 ## 1.18.1 - 2019-07-24
 
 ### Fixed
