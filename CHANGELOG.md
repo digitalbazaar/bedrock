@@ -1,5 +1,18 @@
 # bedrock ChangeLog
 
+### Changed
+- **BREAKING**: `bedrock.start()` now returns a promise instead of using a
+  callback. Top-level code using the callback should change to `async`/`await`
+  or `then`/`catch` as needed.
+- **BREAKING**: Update `async-node-events` dependency and update events API.
+  - `emit` is now an async function and used instead of passing a callback for
+    completion. User code **must** be updated for this change. It is suggested
+    to await the `emit` calls and use async listeners or Promises.
+
+### Removed
+- `bedrock.events.emit` wrapper. Using default from `async-node-events`.
+- **BREAKING**: Deprecated event object style.
+
 ## 2.0.0 - 2019-10-22
 
 ### Changed
