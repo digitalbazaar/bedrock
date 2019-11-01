@@ -1,6 +1,7 @@
 # bedrock ChangeLog
 
 ### Changed
+- **BREAKING**: Update Node.js requirement to v10.12.0.
 - **BREAKING**: `bedrock.start()` now returns a promise instead of using a
   callback. Top-level code using the callback should change to `async`/`await`
   or `then`/`catch` as needed.
