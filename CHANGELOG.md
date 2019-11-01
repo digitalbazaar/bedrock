@@ -9,6 +9,7 @@
   - `emit` is now an async function and used instead of passing a callback for
     completion. User code **must** be updated for this change. It is suggested
     to await the `emit` calls and use async listeners or Promises.
+- Use master/worker child loggers.
 
 ### Removed
 - `bedrock.events.emit` wrapper. Using default from `async-node-events`.
