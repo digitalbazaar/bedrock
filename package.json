@@ -26,14 +26,12 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock",
   "dependencies": {
-    "async": "^2.6.0",
     "async-node-events": "github:digitalbazaar/async-node-events#promises",
     "commander": "^2.14.1",
     "cycle": "^1.0.3",
     "delay": "^4.1.0",
     "errio": "^1.2.2",
     "lodash": "^4.17.14",
-    "mkdirp": "~0.5.0",
     "nyc": "^14.1.1",
     "pkginfo": "^0.4.1",
     "uuid-random": "^1.0.6",
@@ -48,7 +46,7 @@
     "eslint-config-digitalbazaar": "^2.0.0"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10.12.0"
   },
   "main": "./lib/bedrock"
 }
