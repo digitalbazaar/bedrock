@@ -48,7 +48,7 @@ npm install bedrock
 Create a MEAN stack application:
 
 ```js
-var bedrock = require('bedrock');
+const bedrock = require('bedrock');
 
 // modules
 require('bedrock-express');
@@ -83,7 +83,7 @@ bedrock-angular-ui
 Create a simple express-based bedrock application:
 
 ```js
-var bedrock = require('bedrock');
+const bedrock = require('bedrock');
 
 // modules
 require('bedrock-express');
@@ -101,20 +101,16 @@ Create a bedrock REST application with an express server, mongodb database,
 and mongodb-backed session storage:
 
 ```js
-var bedrock = require('bedrock');
+const bedrock = require('bedrock');
+const {promisify} = require('util');
 
 // modules
 require('bedrock-express');
 require('bedrock-session-mongodb');
-var database = require('bedrock-mongodb');
+const database = require('bedrock-mongodb');
 
-bedrock.events.on('bedrock-mongodb.ready', function(callback) {
-  database.openCollections(['people'], function(err) {
-    if(err) {
-      return callback(err);
-    }
-    callback();
-  });
+bedrock.events.on('bedrock-mongodb.ready', async () => {
+  await promisify(database.openCollections)(['people']);
 });
 
 bedrock.events.on('bedrock-express.configure.routes', function(app) {
@@ -184,18 +180,18 @@ Bedrock's event API to:
 ### Module `bedrock-example-server.js`:
 
 ```js
-var bedrock = require('bedrock');
-var http = require('http');
+const bedrock = require('bedrock');
+const http = require('http');
 
 // setup default module config
 bedrock.config['example-server'] = {port: 80};
 
-var server = http.createServer();
+const server = http.createServer();
 
 // emitted prior to command line parsing
 bedrock.events.on('bedrock-cli.init', function() {
   // add a new subcommand executed via: node project.js debug
-  var command = bedrock.program
+  const command = bedrock.program
     .command('debug')
     .description('display registered http listeners')
     .option(
@@ -209,7 +205,7 @@ bedrock.events.on('bedrock-cli.init', function() {
 
 // emitted after the command line has been parsed
 bedrock.events.on('bedrock-cli.ready', function() {
-  var command = bedrock.config.cli.command;
+  const command = bedrock.config.cli.command;
   if(command.name() !== 'debug') {
     // `debug` not specified on the command line, return early
     return;
@@ -218,8 +214,8 @@ bedrock.events.on('bedrock-cli.ready', function() {
   // emitted after all bedrock.start listeners have run
   bedrock.events.on('bedrock.ready', function() {
     // print out all the listeners that registered with the server
-    var event = command.debugEvent || 'request';
-    var listeners = server.listeners(event);
+    const event = command.debugEvent || 'request';
+    const listeners = server.listeners(event);
     console.log('listeners for event: ' + event);
     listeners.forEach(function(listener, index) {
       console.log(index, listener.toString());
@@ -235,20 +231,18 @@ bedrock.events.on('bedrock.configure', function() {
 });
 
 // emitted for early initialization, prior to dropping process privileges
-bedrock.events.on('bedrock.admin.init', function(callback) {
+bedrock.events.on('bedrock.admin.init', async () => {
   // listen on port 80
-  server.listen(bedrock.config['example-server'].port, function() {
-    // ready, call callback to allow bedrock to continue processing events
-    callback();
+  return new Promise((resolve, reject) => {
+    // resolve when listening to allow bedrock to continue processing events
+    server.listen(bedrock.config['example-server'].port, () => resolve());
   });
 });
 
 // emitted for modules to do or schedule any unprivileged work on start up
-bedrock.events.on('bedrock.start', function(callback) {
+bedrock.events.on('bedrock.start', async () {
   // emit a custom event giving other modules access to the example server
-  bedrock.events.emit('example.server.ready', server, function() {
-    callback();
-  });
+  await bedrock.events.emit('example.server.ready', server);
 });
 
 // emitted after all bedrock.ready listeners have run
@@ -260,7 +254,7 @@ bedrock.events.on('bedrock.started', function() {
 ### Module `bedrock-example-listener.js`:
 
 ```js
-var bedrock = require('bedrock');
+const bedrock = require('bedrock');
 
 // load bedrock-example-server dependency
 require('./bedrock-example-server');
@@ -277,7 +271,7 @@ bedrock.events.on('example.server.ready', function(server) {
 ### Example Main Project `project.js`:
 
 ```js
-var bedrock = require('bedrock');
+const bedrock = require('bedrock');
 
 // bedrock modules to load
 require('./bedrock-example-server');
@@ -522,27 +516,24 @@ without worrying that the next listener or the next event will be emitted
 before they have completed what they need to do.
 
 Bedrock's event system also provides another feature, which is the ability to
-cancel events. Event cancelation allows modules to build-in default
-behavior that can be canceled by other modules. Whenever a synchronous listener
-returns `false` or an asynchronous listener passes `false` to its callback, the
-event will not be emitted to the remaining listeners, and, if a callback was
-given when the event was emitted, it will be given the `false` value allowing
-the emitter to take a different action.
+cancel events. Event cancelation allows modules to build-in default behavior
+that can be canceled by other modules. Whenever a synchronous listener returns
+`false` or an asynchronous listener resolves to `false`, the event will not be
+emitted to the remaining listeners, and the emit call will resolve to `false`
+allowing the emitter to take a different action.
 
 To a emit an event:
 
 ```js
-bedrock.events.emit('example-module.foo', data, function(err, result) {
-  if(err) {
-    console.log('an error occurred in a listener and the event was canceled');
-    return;
-  }
+try {
+  const result = await bedrock.events.emit('example-module.foo', data);
   if(result === false) {
     console.log('the event was canceled, but not due to an error');
-    return;
   }
-  console.log('the event was not canceled');
-});
+} catch(err) {
+  console.log('an error occurred in a listener and the event was canceled');
+}
+console.log('the event was not canceled');
 ```
 
 To create a synchronous listener:
@@ -562,30 +553,39 @@ bedrock.events.on('example-module.foo', function(data) {
 To create an asynchronous listener:
 
 ```js
-bedrock.events.on('example-module.foo', function(data, callback) {
-  // because an additional parameter was added to the listener function,
-  // it is assumed it should be a function and a callback will be passed
-  // that *must* be called
+bedrock.events.on('example-module.promise', data => {
+  return new Promise((resolve, reject) => {
+    if(anErrorOccurred) {
+      reject(throw new Error('foo'));
+      return;
+    }
+    if(shouldCancel) {
+      resolve(false);
+      return;
+    }
+    // do something asynchronous, other listeners won't execute and event
+    // emission won't continue until you resolve the promise
+    process.nextTick(() => {
+      resolve();
+    });
+  });
+});
+bedrock.events.on('example-module.async-await', async data => {
   if(anErrorOccurred) {
-    return callback(new Error('foo'));
+    throw new Error('foo');
   }
   if(shouldCancel) {
-    return callback(null, false);
+    return false;
   }
   // do something asynchronous, other listeners won't execute and event
-  // emission won't continue until you call the callback
-  process.nextTick(function() {
-    callback();
-  });
+  // emission won't continue until you return
+  await myFunction();
 });
 ```
 
-Note that the asynchronous analog for throwing an error is calling the callback
-with an error as its first parameter and the analog for returning a value
-(typically only used for event cancelation) is to pass `null` for the first
-parameter and the return value for the second parameter of the callback. This
-API matches the "error-first" callback continuation-style that is standard
-practice in node.
+Note that the asynchronous Promise analog for throwing an error is rejecting
+the Promise with an error and the analog for returning a value (typically only
+used for event cancelation) is to resolve the Promise with the value.
 
 Bedrock core emits several events that modules may listen for. These events
 fall into three possible namespaces: `bedrock-cli`, `bedrock-loggers` and
