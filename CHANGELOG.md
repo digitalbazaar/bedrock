@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 3.0.0 - 2019-11-08
+
 ### Changed
 - **BREAKING**: Update Node.js requirement to v10.12.0.
 - **BREAKING**: `bedrock.start()` now returns a promise instead of using a
