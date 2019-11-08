@@ -9,7 +9,7 @@
   - `emit` is now an async function and used instead of passing a callback for
     completion. User code **must** be updated for this change. It is suggested
     to await the `emit` calls and use async listeners or Promises.
-- **BREAKING**: `runOnce` callback form is removed and replaced with the
+- **BREAKING**: `runOnce` callback form is removed in favor of the
   `runOnceAsync` implementation. `runOnceAsync` remains as an alias for
   `runOnce` but is deprecated. Quick fix is to wrap the new `runOnce` with
   `callbackify` and the `fn` param with `promisify`.
