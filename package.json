@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock",
   "dependencies": {
-    "async-node-events": "github:digitalbazaar/async-node-events#promises",
+    "async-node-events": "^2.0.0",
     "commander": "^2.14.1",
     "cycle": "^1.0.3",
     "delay": "^4.1.0",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "eslint": "^6.0.1",
-    "eslint-config-digitalbazaar": "^2.0.0"
+    "eslint-config-digitalbazaar": "^2.0.1"
   },
   "engines": {
     "node": ">=10.12.0"
