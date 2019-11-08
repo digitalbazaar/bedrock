@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 3.0.1 - 2019-11-08
+
 ### Fixed
 - Update bedrock-test dependency.
 
