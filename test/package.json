@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "bedrock": "file:..",
-    "bedrock-test": "^4.0.0"
+    "bedrock-test": "^4.0.2"
   }
 }
