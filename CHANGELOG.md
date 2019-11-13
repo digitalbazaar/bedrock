@@ -3,6 +3,9 @@
 ### Fixed
 - Use workaround for master/worker child logger issue.
 
+### Changed
+- Switch from `getpwnam` in `posix` to `uid-number` package.
+
 ## 3.0.1 - 2019-11-08
 
 ### Fixed
