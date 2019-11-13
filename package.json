@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint '*.js' 'lib/*.js' 'tests/*.js'",
+    "lint": "eslint '*.js' 'lib/**.js' 'test/**.js'",
     "coverage": "rm -rf coverage && nyc --reporter=lcov --reporter=text-summary npm test",
     "coverage-report": "nyc report"
   },
