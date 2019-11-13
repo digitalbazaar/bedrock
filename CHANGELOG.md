@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Fixed
+- Use workaround for master/worker child logger issue.
+
 ## 3.0.1 - 2019-11-08
 
 ### Fixed
