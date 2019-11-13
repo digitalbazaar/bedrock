@@ -34,12 +34,10 @@
     "lodash": "^4.17.14",
     "nyc": "^14.1.1",
     "pkginfo": "^0.4.1",
+    "uid-number": "0.0.6",
     "uuid-random": "^1.0.6",
     "winston": "^1.0.0",
     "winston-mail": "^1.4.0"
-  },
-  "optionalDependencies": {
-    "posix": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
