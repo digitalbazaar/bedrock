@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 1.19.0 - 2019-11-13
+
 ### Changed
 - Switch from `getpwnam` in `posix` to `uid-number` package.
 
