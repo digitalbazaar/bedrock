@@ -15,7 +15,9 @@
     "start": "node index.js",
     "lint": "eslint '*.js' 'lib/**.js' 'test/**.js'",
     "coverage": "rm -rf coverage && nyc --reporter=lcov --reporter=text-summary npm test",
-    "coverage-report": "nyc report"
+    "coverage-report": "nyc report",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,8 @@
     "uid-number": "0.0.6",
     "uuid-random": "^1.0.6",
     "winston": "^1.0.0",
-    "winston-mail": "^1.4.0"
+    "winston-mail": "^1.4.0",
+    "snyk": "^1.316.2"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
@@ -46,5 +49,6 @@
   "engines": {
     "node": ">=10.12.0"
   },
-  "main": "./lib/bedrock"
+  "main": "./lib/bedrock",
+  "snyk": true
 }
