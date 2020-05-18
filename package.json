@@ -13,9 +13,7 @@
   ],
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint '*.js' 'lib/**.js' 'test/**.js'",
-    "coverage": "rm -rf coverage && nyc --reporter=lcov --reporter=text-summary npm test",
-    "coverage-report": "nyc report"
+    "lint": "eslint '*.js' 'lib/**.js' 'test/**.js'"
   },
   "repository": {
     "type": "git",
@@ -32,7 +30,6 @@
     "delay": "^4.1.0",
     "errio": "^1.2.2",
     "lodash": "^4.17.14",
-    "nyc": "^14.1.1",
     "pkginfo": "^0.4.1",
     "uid-number": "0.0.6",
     "uuid-random": "^1.0.6",

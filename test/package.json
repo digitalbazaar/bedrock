@@ -1,12 +1,28 @@
 {
-  "name": "bedrock-test",
+  "name": "bedrock--test",
   "version": "0.0.1-0",
   "private": true,
   "scripts": {
-    "test": "node --preserve-symlinks test test"
+    "test": "node --preserve-symlinks test test",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm test",
+    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm test",
+    "coverage-report": "nyc report"
   },
   "dependencies": {
     "bedrock": "file:..",
-    "bedrock-test": "^4.0.2"
+    "bedrock-test": "^5.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "nyc": "^15.0.1"
+  },
+  "nyc": {
+    "excludeNodeModules": false,
+    "include": [
+      "node_modules/bedrock/**"
+    ],
+    "exclude": [
+      "node_modules/bedrock/node_modules/**"
+    ]
   }
 }
