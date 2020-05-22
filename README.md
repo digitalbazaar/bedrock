@@ -1,6 +1,6 @@
 <img src="https://digitalbazaar.com/wp-content/uploads/BedrockLogo.png">
 
-![Build Status](https://github.com/digitalbazaar/bedrock/workflows/Node.js%20CI/badge.svg)
+[![Bedrock Node.js CI](https://github.com/digitalbazaar/bedrock/workflows/Bedrock%20Node.js%20CI/badge.svg)](https://github.com/digitalbazaar/bedrock/actions?query=workflow%3A%22Bedrock+Node.js+CI%22)
 [![Dependency Status](https://img.shields.io/david/digitalbazaar/bedrock.svg)](https://david-dm.org/digitalbazaar/bedrock)
 
 A core foundation for rich Web applications.
