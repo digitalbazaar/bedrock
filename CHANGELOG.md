@@ -1,5 +1,7 @@
 # bedrock ChangeLog
 
+## 3.1.1 - 2020-05-21
+
 ### Changed
 - Use GitHub Actions for CI testing.
 - Update dependencies.
