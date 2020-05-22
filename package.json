@@ -37,8 +37,8 @@
     "winston-mail": "^1.4.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-digitalbazaar": "^2.0.1"
+    "eslint": "^7.0.0",
+    "eslint-config-digitalbazaar": "^2.5.0"
   },
   "engines": {
     "node": ">=10.12.0"
