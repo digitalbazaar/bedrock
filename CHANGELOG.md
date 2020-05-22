@@ -1,5 +1,9 @@
 # bedrock ChangeLog
 
+### Changed
+- Use GitHub Actions for CI testing.
+- Update dependencies.
+
 ## 3.1.0 - 2019-11-13
 
 ### Fixed
