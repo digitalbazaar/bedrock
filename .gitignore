@@ -5,6 +5,7 @@
 .nyc_output
 .project
 .settings
+.vscode
 TAGS
 bower_components
 coverage
