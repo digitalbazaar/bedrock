@@ -1,5 +1,8 @@
 # bedrock ChangeLog
 
+### Changed
+- Update winston-mail dependency.
+
 ## 3.1.1 - 2020-05-21
 
 ### Changed
