@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 3.2.0 - 2020-10-xx
+
+### Added
+- Log `signal` when workers exit.
+
 ## 3.1.2 - 2020-09-09
 
 ### Changed
