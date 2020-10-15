@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 3.2.0 - 2020-10-xx
+## 3.2.0 - 2020-10-15
 
 ### Added
 - Log `signal` when workers exit.
@@ -92,7 +92,7 @@
   after the specified milliseconds.
 
 ### Changed
-- Use `uuid-random` for `bedrock.util.uuid`.  
+- Use `uuid-random` for `bedrock.util.uuid`.
 
 ## 1.14.0 - 2018-11-29
 
