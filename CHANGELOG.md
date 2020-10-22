@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 3.3.0 - 2020-10-22
+
+### Added
+- Add unique `workerId` per process.
+
 ## 3.2.0 - 2020-10-15
 
 ### Added
