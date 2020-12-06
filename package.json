@@ -36,7 +36,7 @@
     "pkginfo": "^0.4.1",
     "uid-number": "0.0.6",
     "uuid-random": "^1.0.6",
-    "winston": "^1.0.0",
+    "winston": "^3.3.3",
     "winston-mail": "^2.0.0"
   },
   "devDependencies": {
