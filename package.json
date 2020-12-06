@@ -37,7 +37,8 @@
     "uid-number": "0.0.6",
     "uuid-random": "^1.0.6",
     "winston": "^3.3.3",
-    "winston-mail": "^2.0.0"
+    "winston-mail": "^2.0.0",
+    "winston-transport": "^4.4.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
