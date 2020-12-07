@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.0.0 - TBD
+## 4.0.0 - 2020-12-07
 
 ### Changed
 - **BREAKING**: Use Winston logger 3.x. Bedrock configs for the various loggers
