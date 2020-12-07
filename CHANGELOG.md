@@ -1,5 +1,23 @@
 # bedrock ChangeLog
 
+## 4.0.0 - TBD
+
+### Changed
+- **BREAKING**: Use Winston logger 3.x. Bedrock configs for the various loggers
+  are passed directly into the Winston logger constructors where there have
+  been numerous breaking changes. This applies to config objects suchs as
+  `config.loggers.console`.  See:
+  https://github.com/winstonjs/winston/blob/master/UPGRADE-3.0.md
+- Various log formatters may be specified via the Bedrock config. The 'default'
+  formatter produces logs that are equivalent to Bedrock 3.x. Custom
+  formatters must conform the the `logform` API. See:
+  https://github.com/winstonjs/logform
+```js
+ // formatter options:
+ // default, json, logstash or a custom formatter function
+config.loggers.console.bedrock.formatter = 'default';
+```
+
 ## 3.3.1 - 2020-12-07
 
 ### Changed
