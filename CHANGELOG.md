@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 3.3.1 - 2020-12-07
+
+### Changed
+- Replace `lodash` dependency with standalone per method packages.
+
 ## 3.3.0 - 2020-10-22
 
 ### Added
