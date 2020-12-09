@@ -1,5 +1,14 @@
 # bedrock ChangeLog
 
+## 4.1.0 - 2020-12-09
+
+### Added
+- Implement `ensureConfigOverride` configuration setting. This feature provides
+  a mechanism for modules and top level applications to require that certain
+  configuration values are changed during startup. This is useful when a
+  deployment must use a different configuration than the development settings
+  to be valid.
+
 ## 4.0.0 - 2020-12-07
 
 ### Changed
