@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.1.0 - TBD
+## 4.1.0 - 2020-12-09
 
 ### Added
 - Implement `ensureConfigOverride` configuration setting. This feature provides
