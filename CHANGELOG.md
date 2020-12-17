@@ -19,7 +19,7 @@
   https://github.com/winstonjs/winston/blob/master/UPGRADE-3.0.md
 - Various log formatters may be specified via the Bedrock config. The 'default'
   formatter produces logs that are equivalent to Bedrock 3.x. Custom
-  formatters must conform the the `logform` API. See:
+  formatters must conform to the `logform` API. See:
   https://github.com/winstonjs/logform
 ```js
  // formatter options:
