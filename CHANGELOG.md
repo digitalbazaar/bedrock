@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 4.1.1 - 2020-12-18
+
+## Fixed
+- Fix log levels in worker logger.
+
 ## 4.1.0 - 2020-12-09
 
 ### Added
