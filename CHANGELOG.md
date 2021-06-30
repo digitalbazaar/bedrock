@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.2.0 - 2021-06-xx
+## 4.2.0 - 2021-06-30
 
 ## Added
 - Add POSIX signal handler to emit `bedrock.exit` event prior to exiting.
