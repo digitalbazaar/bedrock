@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 4.2.0 - 2021-06-xx
+
+## Added
+- Add POSIX signal handler to log signals before exiting.
+
 ## 4.1.1 - 2020-12-18
 
 ## Fixed
