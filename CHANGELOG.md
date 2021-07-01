@@ -4,6 +4,7 @@
 
 ## Changed
 - Replace 'master' language in process, config, and logging to use 'primary'.
+- Backwards compatibility for `config.core.master` (removal planned for 5.x).
 
 ## 4.2.0 - 2021-06-30
 
