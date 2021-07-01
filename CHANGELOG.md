@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.2.1 - 2021-xx-xx
+## 4.2.1 - 2021-07-01
 
 ## Changed
 - Replace 'master' language in process, config, and logging to use 'primary'.
