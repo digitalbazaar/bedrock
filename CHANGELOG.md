@@ -3,7 +3,8 @@
 ## 4.3.0 - 2021-07-xx
 
 ## Added
-- Add `unhandledRejection` handler to deal with uncaught promises.
+- Add `unhandledRejection` handler to deal with uncaught promises by causing
+  the process to exit.
 
 ## 4.2.1 - 2021-07-01
 
