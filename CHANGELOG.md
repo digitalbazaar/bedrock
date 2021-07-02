@@ -1,5 +1,10 @@
 # bedrock ChangeLog
 
+## 4.3.0 - 2021-07-xx
+
+## Added
+- Add `unhandledRejection` handler to deal with uncaught promises.
+
 ## 4.2.1 - 2021-07-01
 
 ## Changed
