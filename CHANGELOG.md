@@ -1,25 +1,33 @@
 # bedrock ChangeLog
 
+## 4.4.0 - TBD
+
+### Added
+- Add new config `config.loggers.enableFileTransport` with a default of `true`.
+  One can disable all file based logging by setting this value to `false`. This
+  is useful for deployment targets such as Kubernetes that are only concerned
+  with console logs.
+
 ## 4.3.0 - 2021-07-02
 
-## Added
+### Added
 - Add `unhandledRejection` handler to deal with uncaught promises by causing
   the process to exit.
 
 ## 4.2.1 - 2021-07-01
 
-## Changed
+### Changed
 - Replace 'master' language in process, config, and logging to use 'primary'.
 - Backwards compatibility for `config.core.master` (removal planned for 5.x).
 
 ## 4.2.0 - 2021-06-30
 
-## Added
+### Added
 - Add POSIX signal handler to emit `bedrock.exit` event prior to exiting.
 
-## 4.1.1 - 2020-12-18
+### 4.1.1 - 2020-12-18
 
-## Fixed
+### Fixed
 - Fix log levels in worker logger.
 
 ## 4.1.0 - 2020-12-09
