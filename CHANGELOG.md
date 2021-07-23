@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.4.0 - TBD
+## 4.4.0 - 2021-07-23
 
 ### Added
 - Add new config `config.loggers.enableFileTransport` with a default of `true`.
