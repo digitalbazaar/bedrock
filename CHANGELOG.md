@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.4.1 - 2021-09-xx
+## 4.4.1 - 2021-09-21
 
 ### Fixed
 - Use `Infinity` for max event listeners instead of using `0` which is a proxy
