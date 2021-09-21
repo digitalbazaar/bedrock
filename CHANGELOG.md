@@ -4,7 +4,10 @@
 
 ### Fixed
 - Use `Infinity` for max event listeners instead of using `0` which is a proxy
-  for it. This addresses problems with libraries (such as `esm`) that assume
+  for it (from docs: "The value can be set to Infinity (or 0) to indicate an
+  unlimited number of listeners.").
+  Link: https://nodejs.org/api/events.html#events_emitter_setmaxlisteners_n
+  This addresses problems with libraries (such as `esm`) that assume
   `Infinity` will be used and that make erroneous calculations if `0` is used
   instead (e.g., the `esm` library scales the max listeners from `Infinity` to
   `1` when the intention was to increase the max listeners by just `1`).
