@@ -7,7 +7,7 @@
   for it. This addresses problems with libraries (such as `esm`) that assume
   `Infinity` will be used and that make erroneous calculations if `0` is used
   instead (e.g., the `esm` library scales the max listeners from `Infinity` to
-  `1` when the intention was to reduce the max listeners by just `1`).
+  `1` when the intention was to increase the max listeners by just `1`).
 
 ## 4.4.0 - 2021-07-23
 
