@@ -8,10 +8,10 @@
   internal messaging and exit process has been cleaned up and simplified to
   help ensure more consistent outcomes and eliminate a number of bugs or
   unexpected states. Additionally, some unused IPC messages were removed.
-  These changes should not have affected exiting applications except in those
-  cases where those applications may have been exiting in inconsistent ways;
-  the aim is for those applications to now exit the same way regardless of
-  IPC message delivery order.
+  The expectation is that these changes do not affect existing applications
+  except in those cases where those applications may have been exiting in
+  inconsistent ways; the aim is for those applications to now exit the same
+  way regardless of IPC message delivery order.
 
 ## 4.4.1 - 2021-09-21
 
