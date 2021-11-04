@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.4.2 - 2021-10-xx
+## 4.4.2 - 2021-11-04
 
 ### Fixed
 - Signal handlers that prematurely terminated the primary or its workers
