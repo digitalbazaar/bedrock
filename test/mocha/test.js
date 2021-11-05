@@ -634,12 +634,14 @@ describe('bedrock', function() {
 });
 
 // TODO: add test that adds logger early
+// see: https://github.com/digitalbazaar/bedrock/issues/92
 
 /*
 const winston = require('winston');
 
 bedrock.events.on('bedrock-cli.init', function() {
   // TODO: test w/custom logger that writes to string, not file
+  // see: https://github.com/digitalbazaar/bedrock/issues/91
   bedrock.loggers.addTransport('test', new winston.transports.File({
     level: 'debug',
     silent: false,
