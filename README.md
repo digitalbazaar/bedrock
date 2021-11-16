@@ -45,39 +45,28 @@ More complex, runnable examples can be found at [bedrock-examples](https://githu
 npm install bedrock
 ```
 
-Create a MEAN stack application:
+Create a typical application:
 
 ```js
 const bedrock = require('bedrock');
 
 // modules
 require('bedrock-express');
-require('bedrock-docs');
-require('bedrock-i18n');
 require('bedrock-mongodb');
-require('bedrock-protractor');
-require('bedrock-request-limiter');
-require('bedrock-requirejs');
 require('bedrock-server');
 require('bedrock-session-mongodb');
 require('bedrock-validation');
 require('bedrock-views');
+require('bedrock-webpack');
 
 bedrock.start();
 ```
 
-To include the [AngularJS][]-based frontend, `bower install` these modules:
+To include the [Vue.js][]-based frontend, `npm install` these modules:
 
 ```
-bedrock-angular
-bedrock-angular-alert
-bedrock-angular-filters
-bedrock-angular-form
-bedrock-angular-lazy-compile
-bedrock-angular-modal
-bedrock-angular-model
-bedrock-angular-selector
-bedrock-angular-ui
+bedrock-vue
+bedrock-quasar
 ```
 
 Create a simple express-based bedrock application:
@@ -723,20 +712,19 @@ files and directories to support overrides.
 [bedrock-mongodb][] provides an API for connecting to a MongoDB
 database and creating and using collections.
 
-[bedrock-jobs][] provides a background job scheduler.
+[bedrock-webpack][] provides webpack configuration and build tools for
+frontend bundling.
 
-[bedrock-requirejs][] provides a client-side module loader and
-autoconfiguration capabilities for bower components.
+[bedrock-views][] provides infrastructure for serving single page
+applications.
 
-[bedrock-views][] provides server-rendered views with HTML5 + Bootstrap3.
+[bedrock-vue][] layers on top of [bedrock-views][] to provide
+client-rendered Vue.js views.
 
-[bedrock-angular][] layers on top of [bedrock-views][] to provide
-client-rendered AngularJS views.
+[bedrock-quasar][] layers on top of [bedrock-vue][] to provide
+client-rendered Quasar components.
 
-[bedrock-idp][] provides user identity and public key management.
-
-[bedrock-protractor][] integrates [protractor][] with Bedrock, exposing a
-powerful end-to-end [AngularJS][] test framework to Bedrock modules.
+[bedrock-account][] provides user account management.
 
 Other Bedrock modules provide REST APIs, user account management, strong
 cryptography support, DoS protection, digital signatures, Linked Data, and
@@ -814,7 +802,7 @@ License
 
 Bedrock and all Bedrock modules are:
 
-    Copyright (c) 2011-2015 Digital Bazaar, Inc.
+    Copyright (c) 2011-2021 Digital Bazaar, Inc.
     All Rights Reserved
 
 You can use Bedrock for non-commercial purposes such as self-study, research,
@@ -826,19 +814,16 @@ details about the included non-commercial license information.
 [CONTRIBUTING]: CONTRIBUTING.md
 [FAQ]: FAQ.md
 [LICENSE]: LICENSE.md
-[AngularJS]: https://github.com/angular/angular.js
+[Vue.js]: https://vuejs.org/
 [JSON-LD]: http://json-ld.org
 [JSON-LD context]: http://www.w3.org/TR/json-ld/#the-context
 [Linked Data]: http://en.wikipedia.org/wiki/Linked_data
-[bedrock-angular]: https://github.com/digitalbazaar/bedrock-angular
+[bedrock-account]: https://github.com/digitalbazaar/bedrock-account
 [bedrock-express]: https://github.com/digitalbazaar/bedrock-express
-[bedrock-idp]: https://github.com/digitalbazaar/bedrock-idp
 [bedrock-jobs]: https://github.com/digitalbazaar/bedrock-jobs
 [bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
-[bedrock-protractor]: https://github.com/digitalbazaar/bedrock-protractor
-[bedrock-requirejs]: https://github.com/digitalbazaar/bedrock-requirejs
-[bedrock-seed]: https://github.com/digitalbazaar/bedrock-seed
+[bedrock-quasar]: https://github.com/digitalbazaar/bedrock-quasar
 [bedrock-server]: https://github.com/digitalbazaar/bedrock-server
 [bedrock-views]: https://github.com/digitalbazaar/bedrock-views
-[protractor]: https://github.com/angular/protractor
+[bedrock-vue]: https://github.com/digitalbazaar/bedrock-vue
 [winston]: https://github.com/winstonjs/winston
