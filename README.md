@@ -91,7 +91,6 @@ and mongodb-backed session storage:
 
 ```js
 const bedrock = require('bedrock');
-const {promisify} = require('util');
 
 // modules
 require('bedrock-express');
@@ -99,7 +98,7 @@ require('bedrock-session-mongodb');
 const database = require('bedrock-mongodb');
 
 bedrock.events.on('bedrock-mongodb.ready', async () => {
-  await promisify(database.openCollections)(['people']);
+  await database.openCollections(['people']);
 });
 
 bedrock.events.on('bedrock-express.configure.routes', function(app) {
