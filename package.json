@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint '*.js' 'lib/**.js' 'test/**.js'"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

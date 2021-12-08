@@ -150,7 +150,7 @@ describe('bedrock', function() {
           'p2.c1': {},
           'p3.c1': {}
         });
-        config.p1.should.equal(object['p1']);
+        config.p1.should.equal(object.p1);
         Object.keys(config.p1).length.should.equal(0);
         config.p2.c1.should.equal(object['p2.c1']);
         Object.keys(config.p2).length.should.equal(1);
