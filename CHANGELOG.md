@@ -1,5 +1,13 @@
 # bedrock ChangeLog
 
+## 4.4.3 - 2021-12-xx
+
+### Fixed
+- Ensure primary process does not exit before logger completes or errors so
+  that the proper error code is returned.
+- Ensure an orderly exit is performed when nothing else is scheduled to
+  run on the event loop on the primary process.
+
 ## 4.4.2 - 2021-11-04
 
 ### Fixed
