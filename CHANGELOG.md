@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.4.3 - 2021-12-xx
+## 4.4.3 - 2021-12-08
 
 ### Fixed
 - Ensure primary process does not exit before logger completes or errors so
