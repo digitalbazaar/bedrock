@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "test": "node --preserve-symlinks test test",
-    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm test",
-    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm test",
+    "coverage": "cross-env NODE_ENV=test ESM_OPTIONS='{cache:false}' nyc --reporter=lcov --reporter=text-summary npm test",
+    "coverage-ci": "cross-env NODE_ENV=test ESM_OPTIONS='{cache:false}' nyc --reporter=lcovonly npm test",
     "coverage-report": "nyc report"
   },
   "dependencies": {
