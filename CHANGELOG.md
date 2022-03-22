@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.5.0 - 2022-03-xx
+## 4.5.0 - 2022-03-22
 
 ### Added
 - Add `main` export that includes information about the main program
