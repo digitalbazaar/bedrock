@@ -1,5 +1,20 @@
 # bedrock ChangeLog
 
+## 4.5.0 - 2022-03-xx
+
+### Added
+- Add `main` export that includes information about the main program
+  module such as its `filename`. The main program module will be
+  properly computed on bedrock workers to express not the worker
+  filename but the filename of the first loaded module, e.g., if
+  an application `foo.js` calls `bedrock.start`, then `main` includes
+  the full path `filename` for `foo.js` whether running in the primary
+  process on a worker process.
+
+### Changed
+- Change internal implementation to use ESM + transpile using esm.js to
+  CommonJS. Should be a non-breaking change.
+
 ## 4.4.3 - 2021-12-08
 
 ### Fixed
