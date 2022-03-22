@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const bedrock = require('./lib/bedrock/index.js');
+const bedrock = require('./lib/bedrock');
 
 // run with development defaults
 bedrock.start();
