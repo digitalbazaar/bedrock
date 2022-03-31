@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "node --preserve-symlinks test test",
-    "coverage": "cross-env NODE_ENV=test c8 --check-coverage --reporter=lcov --reporter=text-summary npm test",
-    "coverage-ci": "cross-env NODE_ENV=test c8 --check-coverage --reporter=lcovonly npm test",
+    "test": "node --preserve-symlinks test.js test",
+    "coverage": "cross-env NODE_ENV=test c8 --reporter=lcov --reporter=text-summary npm test",
+    "coverage-ci": "cross-env NODE_ENV=test c8 --reporter=lcovonly npm test",
     "coverage-report": "c8 report"
   },
   "dependencies": {
@@ -16,5 +16,15 @@
   "devDependencies": {
     "c8": "^7.11.0",
     "cross-env": "^7.0.3"
+  },
+  "c8": {
+    "excludeNodeModules": false,
+    "include": [
+      "node_modules/@bedrock/core/**"
+    ],
+    "exclude": [
+      "node_modules/@bedrock/core/node_modules/**"
+    ]
   }
 }
+
