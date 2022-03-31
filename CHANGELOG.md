@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.0.0 - 2022-03-xx
+## 5.0.0 - 2022-03-31
 
 ### Changed
 - **BREAKING**: Rename package to `@bedrock/core`.
