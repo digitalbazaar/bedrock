@@ -3,7 +3,7 @@
 ## 5.0.1 - 2022-03-31
 
 ### Fixed
-- Fix erroneous import statement.
+- Fix erroneous test import statement.
 
 ## 5.0.0 - 2022-03-31
 
