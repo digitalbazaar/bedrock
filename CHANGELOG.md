@@ -3,6 +3,7 @@
 ## 5.0.0 - 2022-03-xx
 
 ### Changed
+- **BREAKING**: Rename package to `@bedrock/core`.
 - **BREAKING**: Use pure ESM implementation.
 - **BREAKING**: Remove default export.
 
