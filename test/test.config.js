@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import {config} from 'bedrock';
+import {config} from '@bedrock/core';
 import {fileURLToPath} from 'url';
 import path from 'path';
 
