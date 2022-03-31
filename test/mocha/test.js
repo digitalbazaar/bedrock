@@ -1,7 +1,7 @@
 /*!
- * Copyright (c) 2012-2019 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import * as bedrock from 'bedrock';
+import * as bedrock from '@bedrock/core';
 const {util: {BedrockError}} = bedrock;
 
 describe('bedrock', function() {

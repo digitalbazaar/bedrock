@@ -10,7 +10,7 @@
     "coverage-report": "nyc report"
   },
   "dependencies": {
-    "bedrock": "file:..",
+    "@bedrock/core": "file:..",
     "@bedrock/test": "^7.0.0"
   },
   "devDependencies": {
