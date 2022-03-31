@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.0.3 - 2022-03-xx
+## 5.0.3 - 2022-03-31
 
 ### Fixed
 - Fix `index.js` dev entry point.
