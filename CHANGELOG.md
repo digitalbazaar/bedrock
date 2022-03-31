@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 5.0.2 - 2022-03-xx
+
+### Fixed
+- Fix `package.json` to reflect node 14.x requirement.
+
 ## 5.0.1 - 2022-03-31
 
 ### Fixed
@@ -11,6 +16,7 @@
 - **BREAKING**: Rename package to `@bedrock/core`.
 - **BREAKING**: Use pure ESM implementation.
 - **BREAKING**: Remove default export.
+- **BREAKING**: Require node 14.x.
 
 ## 4.5.0 - 2022-03-22
 
