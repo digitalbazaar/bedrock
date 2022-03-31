@@ -48,16 +48,16 @@ npm install bedrock
 Create a typical application:
 
 ```js
-const bedrock = require('bedrock');
+import * as bedrock from '@core/bedrock';
 
 // modules
-require('bedrock-express');
-require('bedrock-mongodb');
-require('bedrock-server');
-require('bedrock-session-mongodb');
-require('bedrock-validation');
-require('bedrock-views');
-require('bedrock-webpack');
+import 'bedrock-express';
+import 'bedrock-mongodb';
+import 'bedrock-server';
+import 'bedrock-session-mongodb';
+import 'bedrock-validation';
+import 'bedrock-views';
+import 'bedrock-webpack';
 
 bedrock.start();
 ```
@@ -72,10 +72,10 @@ bedrock-quasar
 Create a simple express-based bedrock application:
 
 ```js
-const bedrock = require('bedrock');
+import * as bedrock from '@core/bedrock';
 
 // modules
-require('bedrock-express');
+import 'bedrock-express';
 
 bedrock.events.on('bedrock-express.configure.routes', function(app) {
   app.get('/', function(req, res) {
@@ -90,12 +90,12 @@ Create a bedrock REST application with an express server, mongodb database,
 and mongodb-backed session storage:
 
 ```js
-const bedrock = require('bedrock');
+import * as bedrock from '@core/bedrock';
 
 // modules
-require('bedrock-express');
-require('bedrock-session-mongodb');
-const database = require('bedrock-mongodb');
+import 'bedrock-express';
+import 'bedrock-session-mongodb';
+import * as database from 'bedrock-mongodb';
 
 bedrock.events.on('bedrock-mongodb.ready', async () => {
   await database.openCollections(['people']);
@@ -168,8 +168,8 @@ Bedrock's event API to:
 ### Module `bedrock-example-server.js`:
 
 ```js
-const bedrock = require('bedrock');
-const http = require('http');
+import * as bedrock from '@core/bedrock';
+import http from 'http';
 
 // setup default module config
 bedrock.config['example-server'] = {port: 80};
@@ -242,10 +242,10 @@ bedrock.events.on('bedrock.started', function() {
 ### Module `bedrock-example-listener.js`:
 
 ```js
-const bedrock = require('bedrock');
+import * as bedrock from '@core/bedrock';
 
 // load bedrock-example-server dependency
-require('./bedrock-example-server');
+import './bedrock-example-server.js';
 
 // emitted to allow listeners to be attached to the example server
 bedrock.events.on('example.server.ready', function(server) {
@@ -259,11 +259,11 @@ bedrock.events.on('example.server.ready', function(server) {
 ### Example Main Project `project.js`:
 
 ```js
-const bedrock = require('bedrock');
+import * as bedrock from '@core/bedrock';
 
 // bedrock modules to load
-require('./bedrock-example-server');
-require('./bedrock-example-listener');
+import './bedrock-example-server.js';
+import './bedrock-example-listener.js';
 
 // change the port to use
 // bedrock.config['example-server'].port = 8123;
@@ -295,15 +295,15 @@ For documentation on Bedrock's core configuration, see [config.js](./lib/config.
 
 ## How It Works
 
-Bedrock is a modular system built on node.js. Node.js modules typically
-communicate with each other using the CommonJS API (eg: `require` and
-`module.exports`, etc.), and Bedrock modules are no different. However,
+Bedrock is a modular system built on node.js. Node.js modules can
+communicate with each other using the ESM API (eg: `export` and
+`import`, etc.), and Bedrock modules are no different. However,
 Bedrock also provides some additional low-level subsystems to help modules
 coordinate. These include: `bedrock.config`, `bedrock.events`,
 `bedrock.loggers`, and `bedrock.util`.
 
 To create a Bedrock project, all you need to do is create a JavaScript file,
-for example `project.js`, that requires `bedrock`, any other Bedrock modules
+for example `project.js`, that imports `bedrock`, any other Bedrock modules
 you're interested in, and that then calls `bedrock.start()`. To run your
 project, run:
 
