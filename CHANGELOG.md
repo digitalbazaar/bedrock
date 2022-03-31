@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.0.4 - 2022-03-xx
+## 5.0.5 - 2022-03-31
 
 ### Fixed
 - Remove deprecated `config.core.master`.
