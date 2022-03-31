@@ -1,4 +1,10 @@
-# bedrock ChangeLog
+# `@bedrock/core` ChangeLog
+
+## 5.0.0 - 2022-03-xx
+
+### Changed
+- **BREAKING**: Use pure ESM implementation.
+- **BREAKING**: Remove default export.
 
 ## 4.5.0 - 2022-03-22
 

@@ -1,7 +1,7 @@
-/*
- * Copyright (c) 2019 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-const bedrock = require('bedrock');
+import * as bedrock from 'bedrock';
+import 'bedrock-test';
 
-require('bedrock-test');
 bedrock.start();
