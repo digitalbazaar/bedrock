@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 5.0.4 - 2022-03-xx
+
+### Fixed
+- Remove unused dep `esm`.
+
 ## 5.0.3 - 2022-03-31
 
 ### Fixed
