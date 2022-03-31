@@ -1,9 +1,7 @@
 /*!
- * Copyright (c) 2012-2018 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const bedrock = require('./lib/bedrock');
+import * as bedrock = './lib/index.js';
 
 // run with development defaults
 bedrock.start();

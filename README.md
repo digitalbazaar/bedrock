@@ -48,7 +48,7 @@ npm install bedrock
 Create a typical application:
 
 ```js
-import * as bedrock from '@core/bedrock';
+import * as bedrock from '@bedrock/core';
 
 // modules
 import 'bedrock-express';
@@ -72,7 +72,7 @@ bedrock-quasar
 Create a simple express-based bedrock application:
 
 ```js
-import * as bedrock from '@core/bedrock';
+import * as bedrock from '@bedrock/core';
 
 // modules
 import 'bedrock-express';
@@ -90,7 +90,7 @@ Create a bedrock REST application with an express server, mongodb database,
 and mongodb-backed session storage:
 
 ```js
-import * as bedrock from '@core/bedrock';
+import * as bedrock from '@bedrock/core';
 
 // modules
 import 'bedrock-express';
@@ -168,7 +168,7 @@ Bedrock's event API to:
 ### Module `bedrock-example-server.js`:
 
 ```js
-import * as bedrock from '@core/bedrock';
+import * as bedrock from '@bedrock/core';
 import http from 'http';
 
 // setup default module config
@@ -242,7 +242,7 @@ bedrock.events.on('bedrock.started', function() {
 ### Module `bedrock-example-listener.js`:
 
 ```js
-import * as bedrock from '@core/bedrock';
+import * as bedrock from '@bedrock/core';
 
 // load bedrock-example-server dependency
 import './bedrock-example-server.js';
@@ -259,7 +259,7 @@ bedrock.events.on('example.server.ready', function(server) {
 ### Example Main Project `project.js`:
 
 ```js
-import * as bedrock from '@core/bedrock';
+import * as bedrock from '@bedrock/core';
 
 // bedrock modules to load
 import './bedrock-example-server.js';
