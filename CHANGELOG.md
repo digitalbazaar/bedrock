@@ -14,7 +14,7 @@
 
 ### Changed
 - **BREAKING**: Rename package to `@bedrock/core`.
-- **BREAKING**: Use pure ESM implementation.
+- **BREAKING**: Convert to module (ESM).
 - **BREAKING**: Remove default export.
 - **BREAKING**: Require node 14.x.
 
