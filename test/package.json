@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "bedrock": "file:..",
-    "bedrock-test": "^5.3.0"
+    "bedrock-test": "^6.1.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
