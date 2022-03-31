@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.0.2 - 2022-03-xx
+## 5.0.2 - 2022-03-31
 
 ### Fixed
 - Fix `package.json` to reflect node 14.x requirement.
