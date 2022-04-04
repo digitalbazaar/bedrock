@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.0.6 - 2022-04-xx
+## 5.0.6 - 2022-04-04
 
 ### Fixed
 - Fix winston child logger `defaultMeta` override bug. This
