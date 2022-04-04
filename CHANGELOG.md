@@ -1,5 +1,11 @@
 # `@bedrock/core` ChangeLog
 
+## 5.0.6 - 2022-04-xx
+
+### Fixed
+- Fix winston child logger `defaultMeta` override bug. This
+  fix was also backported to 4.5.1.
+
 ## 5.0.5 - 2022-03-31
 
 ### Fixed
@@ -33,6 +39,11 @@
 - **BREAKING**: Convert to module (ESM).
 - **BREAKING**: Remove default export.
 - **BREAKING**: Require node 14.x.
+
+## 4.5.1 - 2022-04-04 (backported fix)
+
+### Fixed
+- Fix winston child logger `defaultMeta` override bug.
 
 ## 4.5.0 - 2022-03-22
 
