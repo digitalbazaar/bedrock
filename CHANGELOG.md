@@ -1,6 +1,6 @@
 # bedrock ChangeLog
 
-## 4.5.1 - 2022-04-xx
+## 4.5.1 - 2022-04-04
 
 ### Fixed
 - Fix winston child logger `defaultMeta` override bug.
