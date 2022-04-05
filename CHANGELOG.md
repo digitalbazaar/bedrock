@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 5.0.7 - 2022-04-xx
+
+### Fixed
+- Update local dependencies.
+
 ## 5.0.6 - 2022-04-04
 
 ### Fixed
