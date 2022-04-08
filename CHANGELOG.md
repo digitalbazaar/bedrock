@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 5.0.8 - 2022-04-xx
+
+### Fixed
+- Ensure `package.json` is loaded properly.
+
 ## 5.0.7 - 2022-04-05
 
 ### Fixed
