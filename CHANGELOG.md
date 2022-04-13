@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.1.0 - 2022-04-xx
+## 5.1.0 - 2022-04-13
 
 ### Changed
 - Update dependencies:
