@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 5.1.1 - 2022-04-xx
+## 5.1.1 - 2022-04-13
 
 ### Fixed
 - Fix imports.
