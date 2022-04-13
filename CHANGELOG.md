@@ -1,5 +1,12 @@
 # `@bedrock/core` ChangeLog
 
+## 5.1.0 - 2022-04-xx
+
+### Changed
+- Update dependencies:
+  - `@digitalbazaar/async-node-events`.
+  - `commander@2`.
+
 ## 5.0.8 - 2022-04-08
 
 ### Fixed
