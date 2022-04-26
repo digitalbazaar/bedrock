@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install --legacy-peer-deps
+    - run: npm install
     - name: Run eslint
       run: npm run lint
   test-node:
@@ -32,9 +32,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        npm install --legacy-peer-deps
+        npm install
         cd test
-        npm install --legacy-peer-deps
+        npm install
     - name: Run test with Node.js ${{ matrix.node-version }}
       run: |
         cd test
@@ -53,9 +53,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        npm install --legacy-peer-deps
+        npm install
         cd test
-        npm install --legacy-peer-deps
+        npm install
     - name: Generate coverage report
       run: |
         cd test
