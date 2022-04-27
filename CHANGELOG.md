@@ -3,8 +3,21 @@
 ## 6.0.0 - 2022-04-xx
 
 ### Removed
-- **BREAKING**: The winston mail transport which is disabled by default and
-  not expected to be used in any applications using 5.x has been removed.
+- **BREAKING**: Remove winston mail transport. The winston mail transport which
+  is disabled by default and not expected to be used in any applications using
+  5.x has been removed.
+- **BREAKING**: Remove `bedrock.util.callbackify`. Import from node.js `util`
+  if needed.
+- **BREAKING**: Remove `bedrock.util.hasValue`.
+- **BREAKING**: Remove `bedrock.util.delay`. Import from npm `delay` package
+  if needed.
+- **BREAKING**: Remove `bedrock.util.uuid`. Import from npm `uuid` package
+  if needed.
+- **BREAKING**: Remove `bedrock.util.w3cDate`.
+- **BREAKING**: Remove `bedrock.util.isObject`.
+- **BREAKING**: Remove `bedrock.util.clone`. Import from npm `klona` package
+  if needed.
+- **BREAKING**: Remove `bedrock.util.boolify`.
 
 ## 5.1.1 - 2022-04-13
 

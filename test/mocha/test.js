@@ -5,38 +5,6 @@ import * as bedrock from '@bedrock/core';
 const {util: {BedrockError}} = bedrock;
 
 describe('bedrock', function() {
-  describe('util.extend()', function() {
-    it('should perform in-place default extension', function(done) {
-      const result = {};
-      bedrock.util.extend(result, {a: 1});
-      result.should.eql({a: 1});
-      done();
-    });
-    it('should perform in-place deep extension', function(done) {
-      const result = {a: {a0: 0}, b: 2};
-      bedrock.util.extend(true, result, {a: {a1: 1}});
-      result.should.eql({a: {a0: 0, a1: 1}, b: 2});
-      done();
-    });
-    it('should perform in-place shallow extension', function(done) {
-      const result = {a: {a0: 0}, b: 2};
-      bedrock.util.extend(false, result, {a: {a1: 1}});
-      result.should.eql({a: {a1: 1}, b: 2});
-      done();
-    });
-    it('should be able to return a new object', function(done) {
-      const result = bedrock.util.extend(true, {}, {a: 1});
-      result.should.eql({a: 1});
-      done();
-    });
-    it('should merge multiple objects into a new object', function(done) {
-      const result = {};
-      bedrock.util.extend(true, result, {a: 1}, {b: 2});
-      result.should.eql({a: 1, b: 2});
-      done();
-    });
-  });
-
   describe('util.BedrockError', function() {
     it('should have correct type', function(done) {
       const err = new BedrockError('E', 'TYPE', null, null);
