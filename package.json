@@ -30,7 +30,6 @@
     "cycle": "^1.0.3",
     "errio": "^1.2.2",
     "fast-safe-stringify": "^2.1.1",
-    "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "lodash.template": "^4.5.0",
     "lodash.topath": "^4.5.2",
