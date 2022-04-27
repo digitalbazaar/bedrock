@@ -1,5 +1,11 @@
 # `@bedrock/core` ChangeLog
 
+## 6.0.0 - 2022-04-xx
+
+### Removed
+- **BREAKING**: The winston mail transport which is disabled by default and
+  not expected to be used in any applications using 5.x has been removed.
+
 ## 5.1.1 - 2022-04-13
 
 ### Fixed
