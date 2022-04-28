@@ -66,6 +66,8 @@
   if needed.
 - **BREAKING**: Remove `bedrock.util.boolify`.
 - **BREAKING**: Remove `runOnceAsync`. Use `runOnce` instead.
+- **BREAKING**: Remove support for callback-based async event listeners. These
+  are not supported and use of them may cause breakage.
 
 ## 5.1.1 - 2022-04-13
 
