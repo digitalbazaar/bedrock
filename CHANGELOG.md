@@ -3,6 +3,15 @@
 ## 6.0.0 - 2022-04-xx
 
 ### Changed
+- **BREAKING**: `BedrockError` `toObject` conversion now uses `serialize-error`
+  internally for representing error stack traces.
+- **BREAKING**: A private or unspecified `BedrockError`, when converted to
+  an object, now has a type of `OperationError` (instead of
+  `bedrock.InternalServerError`.
+- **BREAKING**: `BedrockError` now has both `name` and `type` properties
+  set internally in its constructor, both to the same value. When
+  `BedrockError` is converted to an object, only `type` remains as was the case
+  in previous versions.
 - **BREAKING**: Top-level variables used in computed config templates must use
   valid JavaScript variable names, e.g., they cannot include hyphens (`-`) or
   periods (`.`). A future version may remove compute config templates entirely;
