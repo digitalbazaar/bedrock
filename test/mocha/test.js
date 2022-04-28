@@ -6,23 +6,94 @@ const {util: {BedrockError}} = bedrock;
 
 describe('bedrock', function() {
   describe('util.BedrockError', function() {
-    it('should have correct type', function(done) {
-      const err = new BedrockError('E', 'TYPE', null, null);
-      err.isType('BOGUS').should.be.false;
-      err.isType('TYPE').should.be.true;
-      err.hasType('BOGUS').should.be.false;
-      err.hasType('TYPE').should.be.true;
-      done();
+    it('should have correct name using legacy params', function() {
+      const err = new BedrockError('E', 'NAME', null, null);
+      err.name.should.equal('NAME');
+      err.message.should.equal('E');
+      should.equal(err.cause, null);
+      should.equal(err.details, null);
     });
-    it('should have correct cause', function(done) {
+    it('should have correct attributes using legacy params', function() {
       const err0 = new BedrockError('E0', 'E0TYPE', null, null);
-      const err1 = new BedrockError('E1', 'E1TYPE', null, err0);
-      err1.isType('BOGUS').should.be.false;
-      err1.isType('E1TYPE').should.be.true;
-      err1.hasType('BOGUS').should.be.false;
-      err1.hasType('E0TYPE').should.be.true;
-      err1.hasType('E1TYPE').should.be.true;
-      done();
+      const err1 = new BedrockError('E1', 'E1TYPE', {foo: 'bar'}, err0);
+      err0.name.should.equal('E0TYPE');
+      err0.message.should.equal('E0');
+      should.equal(err0.cause, null);
+      should.equal(err0.details, null);
+      err1.name.should.equal('E1TYPE');
+      err1.message.should.equal('E1');
+      err1.cause.should.equal(err0);
+      err1.details.should.eql({foo: 'bar'});
+    });
+    it('should have correct name using named params', function() {
+      const err = new BedrockError('E', 'NAME', null, null);
+      err.name.should.equal('NAME');
+      err.message.should.equal('E');
+      should.equal(err.cause, null);
+      should.equal(err.details, null);
+    });
+    it('should have correct attributes using named params', function() {
+      const err0 = new BedrockError('E0', 'E0TYPE', null, null);
+      const err1 = new BedrockError('E1', 'E1TYPE', {foo: 'bar'}, err0);
+      err0.name.should.equal('E0TYPE');
+      err0.message.should.equal('E0');
+      should.equal(err0.cause, null);
+      should.equal(err0.details, null);
+      err1.name.should.equal('E1TYPE');
+      err1.message.should.equal('E1');
+      err1.cause.should.equal(err0);
+      err1.details.should.eql({foo: 'bar'});
+    });
+    it('should have private info', function() {
+      const err = new BedrockError('Error message.');
+      const object = err.toObject();
+      object.should.include.keys(['name', 'type', 'message']);
+      object.name.should.equal('OperationError');
+      object.type.should.equal('OperationError');
+      object.message.should.equal('Error message.');
+    });
+    it('should have only public info', function() {
+      const err = new BedrockError('Error message.');
+      const object = err.toObject({public: true});
+      object.should.include.keys(['name', 'type', 'message']);
+      object.name.should.equal('OperationError');
+      object.type.should.equal('OperationError');
+      object.message.should.equal('An unspecified error occurred.');
+    });
+    it('should have explicit public info with legacy params', function() {
+      const err = new BedrockError('Error message.', 'OperationError', {
+        public: true
+      }, new BedrockError('cause', 'DataError', {public: true}));
+      const object = err.toObject({public: true});
+      object.should.include.keys(['type', 'message']);
+      object.name.should.equal('OperationError');
+      object.type.should.equal('OperationError');
+      object.message.should.equal('Error message.');
+      object.details.should.eql({});
+      should.exist(object.cause);
+      object.cause.message.should.equal('cause');
+      object.cause.name.should.equal('DataError');
+      object.cause.type.should.equal('DataError');
+    });
+    it('should have explicit public info with named params', function() {
+      const err = new BedrockError('Error message.', {
+        name: 'OperationError',
+        details: {public: true},
+        cause: new BedrockError('cause', {
+          name: 'DataError',
+          details: {public: true}
+        })
+      });
+      const object = err.toObject({public: true});
+      object.should.include.keys(['type', 'message']);
+      object.name.should.equal('OperationError');
+      object.type.should.equal('OperationError');
+      object.message.should.equal('Error message.');
+      object.details.should.eql({});
+      should.exist(object.cause);
+      object.cause.message.should.equal('cause');
+      object.cause.name.should.equal('DataError');
+      object.cause.type.should.equal('DataError');
     });
   });
 
