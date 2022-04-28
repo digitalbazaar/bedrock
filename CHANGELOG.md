@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 6.0.0 - 2022-04-xx
+## 6.0.0 - 2022-04-28
 
 ### Changed
 - **BREAKING**: A number of changes have been made to `BedrockError` to bring
