@@ -2,6 +2,15 @@
 
 ## 6.0.0 - 2022-04-xx
 
+### Changed
+- **BREAKING**: Top-level variables used in computed config templates must use
+  valid JavaScript variable names, e.g., they cannot include hyphens (`-`) or
+  periods (`.`). A future version may remove compute config templates entirely;
+  functions should be used instead for computed configs.
+- **BREAKING**: `config.paths.cache` and `config.paths.log` are now listed as
+  requiring overriding in deployments. This replaces the custom code that would
+  log a warning if they were not set.
+
 ### Removed
 - **BREAKING**: Remove winston mail transport. The winston mail transport which
   is disabled by default and not expected to be used in any applications using
