@@ -29,6 +29,7 @@
 - **BREAKING**: Remove `bedrock.util.clone`. Import from npm `klona` package
   if needed.
 - **BREAKING**: Remove `bedrock.util.boolify`.
+- **BREAKING**: Remove `runOnceAsync`. Use `runOnce` instead.
 
 ## 5.1.1 - 2022-04-13
 
