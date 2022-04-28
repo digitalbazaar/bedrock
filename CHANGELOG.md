@@ -42,6 +42,10 @@
   `bedrock.program` no longer has properties for command line options, those
   are accessed via `bedrock.program.opts()` instead.
   See: https://github.com/tj/commander.js/blob/master/CHANGELOG.md
+- Calling `bedrock.start` more than once will cause an error to be thrown. This
+  was already not supported and caused non-deterministic broken behavior, this
+  change just makes it explicit and deterministic (the same clear error is
+  always thrown).
 - Replace error serializer/deserializer `errio` with `serialize-error`. Should
   not be a breaking change.
 
