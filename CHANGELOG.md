@@ -10,7 +10,7 @@
 - **BREAKING**: `config.paths.cache` and `config.paths.log` are now listed as
   requiring overriding in deployments. This replaces the custom code that would
   log a warning if they were not set.
-- **BREAKING**: Use `commander@7`. An important change is that
+- **BREAKING**: Use `commander@9`. An important change is that
   `bedrock.program` no longer has properties for command line options, those
   are accessed via `bedrock.program.opts()` instead.
   See: https://github.com/tj/commander.js/blob/master/CHANGELOG.md
