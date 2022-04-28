@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@bedrock/core": "file:..",
-    "@bedrock/test": "^7.0.0"
+    "@bedrock/test": "^8.0.0"
   },
   "devDependencies": {
     "c8": "^7.11.0",
