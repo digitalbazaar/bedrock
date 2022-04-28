@@ -5,7 +5,8 @@
 ### Changed
 - **BREAKING**: A number of changes have been made to `BedrockError` to bring
   it more inline with modern JavaScript errors and common practice and
-  conventions within bedrock applications.
+  conventions within bedrock applications. Many of these changes are unlikely
+  to break existing applications, but they could, so they are listed here.
   - `toObject` conversion now uses `serialize-error` internally for
     representing error stack traces.
   - A private or unspecified `BedrockError`, when converted to
