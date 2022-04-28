@@ -10,6 +10,8 @@
 - **BREAKING**: `config.paths.cache` and `config.paths.log` are now listed as
   requiring overriding in deployments. This replaces the custom code that would
   log a warning if they were not set.
+- Replace error serializer/deserializer `errio` with `serialize-error`. Should
+  not be a breaking change.
 
 ### Removed
 - **BREAKING**: Remove winston mail transport. The winston mail transport which
