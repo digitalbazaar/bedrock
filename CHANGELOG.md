@@ -3,15 +3,33 @@
 ## 6.0.0 - 2022-04-xx
 
 ### Changed
-- **BREAKING**: `BedrockError` `toObject` conversion now uses `serialize-error`
-  internally for representing error stack traces.
-- **BREAKING**: A private or unspecified `BedrockError`, when converted to
-  an object, now has a type of `OperationError` (instead of
-  `bedrock.InternalServerError`.
-- **BREAKING**: `BedrockError` now has both `name` and `type` properties
-  set internally in its constructor, both to the same value. When
-  `BedrockError` is converted to an object, only `type` remains as was the case
-  in previous versions.
+- **BREAKING**: A number of changes have been made to `BedrockError` to bring
+  it more inline with modern JavaScript errors and common practice and
+  conventions within bedrock applications.
+  - `toObject` conversion now uses `serialize-error` internally for
+    representing error stack traces.
+  - A private or unspecified `BedrockError`, when converted to
+    an object, now has a type of `OperationError` (instead of
+    `bedrock.InternalServerError`. Most bedrock applications do not read
+    or switch off of this value.
+  - Using an array for the name of a `BedrockError` is disallowed,
+    it must be a string. This usage is uncommon and unlikely to impact most
+    applications.
+  - When `BedrockError` is converted to an object, it includes
+    both `name` and `type` (as the same value). The use of `name` is preferred,
+    but `type` is preserved for backwards compatibility. Applications that
+    strictly disallowed additional properties on errors will need to allow the
+    `name` property to be present, but the `name` property is built into
+    JavaScript errors and allowing for additional properties in errors is
+    common practice such that this change is unlikely to affect many
+    applications. The `type` property may be removed in the future, so
+    applications should normalize to using `name`.
+  - `isType`, `hasType`, `hasCauseOfType` have been removed. Use the nullish
+    coalescing operator and compare against `name` instead. Subtle mistakes
+    can also be made by writing code that is not specific to the location that
+    particular errors occur in a causal chain, so these functions have been
+    removed to avoid those problems. These functions are already rarely used in
+    modern bedrock modules and applications.
 - **BREAKING**: Top-level variables used in computed config templates must use
   valid JavaScript variable names, e.g., they cannot include hyphens (`-`) or
   periods (`.`). A future version may remove compute config templates entirely;
