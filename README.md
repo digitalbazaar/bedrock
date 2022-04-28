@@ -738,8 +738,8 @@ Mac OS X development machine.
 ## Requirements
 
 * Linux, Mac OS X, Windows
-* node.js >= 0.10.x
-* npm >= 1.4.x
+* node.js >= 14.x
+* npm >= 6.x
 
 Running Bedrock
 ---------------
@@ -818,11 +818,20 @@ details about the included non-commercial license information.
 [JSON-LD context]: http://www.w3.org/TR/json-ld/#the-context
 [Linked Data]: http://en.wikipedia.org/wiki/Linked_data
 [bedrock-account]: https://github.com/digitalbazaar/bedrock-account
+[bedrock-account-http]: https://github.com/digitalbazaar/bedrock-account-http
+[bedrock-authn-token]: https://github.com/digitalbazaar/bedrock-authn-token
+[bedrock-app-identity]: https://github.com/digitalbazaar/bedrock-app-identity
+[bedrock-edv-storage]: https://github.com/digitalbazaar/bedrock-edv-storage
 [bedrock-express]: https://github.com/digitalbazaar/bedrock-express
-[bedrock-jobs]: https://github.com/digitalbazaar/bedrock-jobs
+[bedrock-kms]: https://github.com/digitalbazaar/bedrock-kms
+[bedrock-kms-http]: https://github.com/digitalbazaar/bedrock-kms-http
+[bedrock-meter]: https://github.com/digitalbazaar/bedrock-meter
 [bedrock-mongodb]: https://github.com/digitalbazaar/bedrock-mongodb
 [bedrock-quasar]: https://github.com/digitalbazaar/bedrock-quasar
 [bedrock-server]: https://github.com/digitalbazaar/bedrock-server
+[bedrock-validation]: https://github.com/digitalbazaar/bedrock-validation
 [bedrock-views]: https://github.com/digitalbazaar/bedrock-views
 [bedrock-vue]: https://github.com/digitalbazaar/bedrock-vue
+[bedrock-web]: https://github.com/digitalbazaar/bedrock-web
+[bedrock-webpack]: https://github.com/digitalbazaar/bedrock-webpack
 [winston]: https://github.com/winstonjs/winston
