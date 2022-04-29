@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 6.0.1 - 2022-04-xx
+## 6.0.1 - 2022-04-29
 
 ### Fixed
 - Fix default CLI command.
