@@ -527,7 +527,7 @@ To create a synchronous listener:
 
 ```js
 bedrock.events.on('example-module.foo', function(data) {
-  if(anErrorOccured) {
+  if(anErrorOccurred) {
     throw new Error('foo');
   }
   if(shouldCancel) {
@@ -691,7 +691,7 @@ logger.info('an info message');
 Bedrock provides a number of helpful general purpose utilities. For example,
 Bedrock defines a `BedrockError` class that extends the default `Error`
 class. A `BedrockError` can keep track of a series of "causes" (other errors)
-that allow developers to better understand why an error occured.
+that allow developers to better understand why an error occurred.
 `BedrockError`s can also be marked as `public`, which allows modules that
 may, for example, serve error information over the Web to display more error
 details. `bedrock.util` also contains tools for formatting dates,
