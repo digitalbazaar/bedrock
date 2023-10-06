@@ -5,6 +5,10 @@
 ### Added
 - Add documentation for `bedrock.stop` and `bedrock.exit` events.
 
+### Changed
+- Deprecate undocumented `bedrock-cli.exit` event. Use `bedrock.exit`. If there
+  is use case for this specific event, please file an issue.
+
 ## 6.1.3 - 2024-03-06
 
 ### Fixed
