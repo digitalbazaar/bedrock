@@ -1,9 +1,14 @@
 # `@bedrock/core` ChangeLog
 
-## 6.3.0 - 2023-xx-xx
+## 6.3.0 - 2024-xx-xx
 
 ### Added
-- Add documentation for `bedrock.stop` and `bedrock.exit` events.
+- Add `bedrock.shutdown()` call that performs an orderly shutdown and emits
+  various events. This differs from `exit()` and `process.exit()` which are
+  more immediate.
+- Add `bedrock.stopped` event, emitted before `bedrock.exit`.
+- Add documentation for `bedrock.stop`, `bedrock.stopped`, and `bedrock.exit`
+  events.
 
 ### Changed
 - Deprecate undocumented `bedrock-cli.exit` event. Use `bedrock.exit`. If there
