@@ -649,6 +649,10 @@ event or causes the application to exit early.
     the event modules should use to stop services for a clean shutdown and to
     emit any custom events they would like to make available to their
     dependents.
+- **bedrock.stopped**
+  - Emitted while exiting, and after `bedrock.stop` if process was previously
+    in a started state. External access to web services or other features
+    provided by modules should now be unavailable.
 - **bedrock.exit**
   - Emitted immediately before exiting.
 
