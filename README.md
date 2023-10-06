@@ -576,19 +576,21 @@ all the `bedrock-cli` events, unless a listener cancels the `bedrock-cli.ready`
 event or causes the application to exit early.
 
 - **bedrock-cli.init**
-  - Emitted before command line parsing. Allows registration of new subcommands.
+  - Emitted before command line parsing. Allows registration of new
+    subcommands.
 - **bedrock-cli.parsed**
   - Emitted after command line parsing. Allows for configuration of loggers
     based on command line flags. For instance, a logger may provide for the
-    specification of a `logGroupName` that may be computed at runtime based
-    on some command line flag(s).
+    specification of a `logGroupName` that may be computed at runtime based on
+    some command line flag(s).
 - **bedrock-loggers.init**
   - Emitted after command line parsing. Allows registration of new logging
     transports prior to initialization of the logging subsystem.
 - **bedrock-cli.ready**
   - Emitted after command line parsing and logging initialization. Allows
     execution of subcommands or the prevention of `bedrock` events from being
-    emitted, either by canceling this event or by exiting the application early.
+    emitted, either by canceling this event or by exiting the application
+    early.
 - **bedrock.configure**
   - Emitted after `bedrock-cli.ready` and before `bedrock.admin.init`. Allows
     additional custom configuration before Bedrock initializes but after
@@ -605,17 +607,17 @@ event or causes the application to exit early.
 - **bedrock.init**
   - Emitted after `bedrock.admin.init` and just after elevated process
     privileges are dropped. Allows listeners to perform early initialization
-    tasks that do not require special privileges. This event should be used
-    to ensure, for example, that a module's API has the required supporting
-    data structures in memory prior to another module's use of it. For example,
-    a validation module may need to load validation schemas from files on disk
+    tasks that do not require special privileges. This event should be used to
+    ensure, for example, that a module's API has the required supporting data
+    structures in memory prior to another module's use of it. For example, a
+    validation module may need to load validation schemas from files on disk
     before they can be accessed via its API, but this loading must occur after
     the configuration events have passed and after special process privileges
     have been dropped. **As a best practice, modules should not emit custom
     events during `bedrock.init` because it may cause scenarios where two
-    unrelated modules can't be easily combined.** For example, if a module emits
-    a custom event during `bedrock.init`, then a listener of that event would
-    be unable to use the API of an unrelated module that hasn't been
+    unrelated modules can't be easily combined.** For example, if a module
+    emits a custom event during `bedrock.init`, then a listener of that event
+    would be unable to use the API of an unrelated module that hasn't been
     initialized yet. Deferring custom event emitting to `bedrock.start` solves
     this problem; it ensures all modules have had a chance to complete
     initialization before attempting to interact with one another through the
