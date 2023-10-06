@@ -644,6 +644,13 @@ event or causes the application to exit early.
     `false` to indicate to the test subsystem that at least one test did not
     pass. Test frameworks may add their own information to the state object
     using a property matching their framework name.
+- **bedrock.stop**
+  - Emitted while exiting if process was previous in a started state. This is
+    the event modules should use to stop services for a clean shutdown and to
+    emit any custom events they would like to make available to their
+    dependents.
+- **bedrock.exit**
+  - Emitted immediately before exiting.
 
 ### bedrock.loggers
 

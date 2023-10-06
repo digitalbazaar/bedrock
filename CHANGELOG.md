@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 6.3.0 - 2023-xx-xx
+
+### Added
+- Add documentation for `bedrock.stop` and `bedrock.exit` events.
+
 ## 6.2.0 - 2024-10-15
 
 ### Changed
