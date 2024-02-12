@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 6.1.0 - 2024-mm-dd
+## 6.1.0 - 2024-02-12
 
 ### Changed
 - Open Source under BSD-3-Clause license.
