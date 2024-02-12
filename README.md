@@ -798,18 +798,18 @@ License
 
 Bedrock and all Bedrock modules are:
 
-    Copyright (c) 2011-2021 Digital Bazaar, Inc.
-    All Rights Reserved
+    Copyright (c) 2011-2024 Digital Bazaar, Inc.
 
 You can use Bedrock for non-commercial purposes such as self-study, research,
-personal projects, or for evaluation purposes. See the [LICENSE][] file for
-details about the included non-commercial license information.
+personal projects, or for evaluation purposes. Many Bedrock libraries (including
+the core) are open source licensed under the [BSD-3-Clause](LICENSE.md). However,
+some components use a custom non-commercial, source visible license: see the
+[LICENSE-bedrock.md](LICENSE-bedrock.md) file for details.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
 [CONTRIBUTING]: CONTRIBUTING.md
 [FAQ]: FAQ.md
-[LICENSE]: LICENSE.md
 [Vue.js]: https://vuejs.org/
 [JSON-LD]: http://json-ld.org
 [JSON-LD context]: http://www.w3.org/TR/json-ld/#the-context
