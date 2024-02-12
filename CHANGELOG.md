@@ -2,6 +2,7 @@
 
 ## 6.0.2 - xxxx-xx-xx
 - Open Source under BSD-3-Clause license.
+- Bump Node.js versions to 20.x (current LTS).
 
 ## 6.0.1 - 2022-04-29
 
