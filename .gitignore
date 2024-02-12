@@ -12,3 +12,4 @@ coverage
 node_modules
 reports
 .cache
+package-lock.json
