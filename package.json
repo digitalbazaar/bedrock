@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/core",
-  "version": "6.0.2-0",
+  "version": "6.1.0",
   "type": "module",
   "description": "A core foundation for rich Web applications.",
   "license": "BSD-3-Clause",
