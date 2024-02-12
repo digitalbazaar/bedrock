@@ -1,5 +1,8 @@
 # `@bedrock/core` ChangeLog
 
+## 6.0.2 - xxxx-xx-xx
+- Open Source under BSD-3-Clause license.
+
 ## 6.0.1 - 2022-04-29
 
 ### Fixed
