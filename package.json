@@ -43,7 +43,7 @@
     "jsdoc-to-markdown": "^7.1.1"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "main": "./lib/index.js"
 }
