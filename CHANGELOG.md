@@ -1,8 +1,10 @@
 # `@bedrock/core` ChangeLog
 
-## 6.0.2 - xxxx-xx-xx
+## 6.1.0 - 2024-mm-dd
+
+### Changed
 - Open Source under BSD-3-Clause license.
-- Bump Node.js versions to 20.x (current LTS).
+- Bump `package.json` Node.js version to 18.x (LTS).
 
 ## 6.0.1 - 2022-04-29
 
