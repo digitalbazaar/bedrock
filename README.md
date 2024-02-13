@@ -740,8 +740,8 @@ Mac OS X development machine.
 ## Requirements
 
 * Linux, Mac OS X, Windows
-* node.js >= 14.x
-* npm >= 6.x
+* node.js >= 18.x
+* npm >= 9.x
 
 Running Bedrock
 ---------------
