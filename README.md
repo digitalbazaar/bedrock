@@ -2,7 +2,8 @@
 
 ![Bedrock Logo](./branding/BedrockLogo.png)
 
-[![Bedrock Node.js CI](https://github.com/digitalbazaar/bedrock/workflows/Bedrock%20Node.js%20CI/badge.svg)](https://github.com/digitalbazaar/bedrock/actions?query=workflow%3A%22Bedrock+Node.js+CI%22)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/digitalbazaar/bedrock/main.yml)](https://github.com/digitalbazaar/bedrock/actions/workflow/main.yml)
+[![Coverage Status](https://img.shields.io/codecov/c/github/digitalbazaar/bedrock)](https://codecov.io/gh/digitalbazaar/bedrock)
 
 A core foundation for rich Web applications.
 
