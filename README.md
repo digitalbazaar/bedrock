@@ -1,3 +1,5 @@
+# Bedrock _(@bedrock/core)_
+
 ![Bedrock Logo](./branding/BedrockLogo.png)
 
 [![Bedrock Node.js CI](https://github.com/digitalbazaar/bedrock/workflows/Bedrock%20Node.js%20CI/badge.svg)](https://github.com/digitalbazaar/bedrock/actions?query=workflow%3A%22Bedrock+Node.js+CI%22)
