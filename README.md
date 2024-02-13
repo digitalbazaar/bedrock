@@ -808,8 +808,8 @@ Bedrock and all Bedrock modules are:
 You can use Bedrock for non-commercial purposes such as self-study, research,
 personal projects, or for evaluation purposes. Many Bedrock libraries (including
 the core) are open source licensed under the [BSD-3-Clause](LICENSE.md). However,
-some components use a custom non-commercial, source visible license: see the
-[LICENSE-bedrock.md](LICENSE-bedrock.md) file for details.
+some components use a custom non-commercial, source available license: see the
+[LICENSES/LicenseRef-bedrock.md](LICENSES/LicenseRef-bedrock.md) file for details.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
