@@ -1,6 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Contact: Digital Bazaar, Inc. <support@digitalbazaar.com>
 
+Files: branding/*
+Copyright: 2012-2024 Digital Bazaar, Inc.
+License: LicenseRef-bedrock
+
 Files: *.md .gitignore .npmrc package.json test/.npmrc test/mocha/.eslintrc
     test/package.json
 Copyright: 2012-2024 Digital Bazaar, Inc.
