@@ -3,7 +3,7 @@
   "version": "6.1.1-0",
   "type": "module",
   "description": "A core foundation for rich Web applications.",
-  "license": "BSD-3-Clause",
+  "license": "Apache-2.0",
   "author": {
     "name": "Digital Bazaar, Inc.",
     "email": "support@digitalbazaar.com",

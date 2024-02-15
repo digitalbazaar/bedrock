@@ -1,5 +1,7 @@
 /*!
- * Copyright 2022-2024 Digital Bazaar, Inc.
+{% for copyright_line in copyright_lines %}
+ * {{ copyright_line }}
+{% endfor %}
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * SPDX-License-Identifier: Apache-2.0
+{% for expression in spdx_expressions %}
+ * SPDX-License-Identifier: {{ expression }}
+{% endfor %}
  */
-
-module.exports = {
-  root: true,
-  parserOptions: {
-    // this is required for dynamic import()
-    ecmaVersion: 2020
-  },
-  env: {
-    node: true
-  },
-  extends: ['digitalbazaar', 'digitalbazaar/jsdoc'],
-  ignorePatterns: ['node_modules/']
-};

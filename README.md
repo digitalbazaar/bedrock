@@ -801,13 +801,15 @@ See the [AUTHORS][] file for author contact information.
 License
 -------
 
-You can use Bedrock for non-commercial purposes such as self-study, research,
-personal projects, or for evaluation purposes. Bedrock libraries (including
-the core) are licensed as open source under the [BSD-3-Clause](LICENSE).
+Bedrock core libraries are licensed under the [Apache-2.0](LICENSE).
 
-Some components use a custom non-commercial source available license: see the
-[LICENSES/LicenseRef-Bedrock-NC-1.0.txt](LICENSES/LicenseRef-Bedrock-NC-1.0.txt)
-file for details.
+Additional libraries are available for non-commercial use such as self-study,
+research, personal projects, or for evaluation purposes. See the
+[Bedrock Non-Commercial License v1.0](LICENSES/LicenseRef-Bedrock-NC-1.0.txt)
+for details.
+
+Commercial support and licensing is available by contacting
+<support@digitalbazaar.com>.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
