@@ -801,15 +801,15 @@ See the [AUTHORS][] file for author contact information.
 License
 -------
 
-Bedrock core libraries are licensed under the [Apache-2.0](LICENSE).
+[Apache License, Version 2.0](LICENSE) Copyright 2011-2024 Digital Bazaar, Inc.
 
-Additional libraries are available for non-commercial use such as self-study,
-research, personal projects, or for evaluation purposes. See the
+Additional Bedrock libraries are available for non-commercial use such as
+self-study, research, personal projects, or for evaluation purposes. See the
 [Bedrock Non-Commercial License v1.0](LICENSES/LicenseRef-Bedrock-NC-1.0.txt)
 for details.
 
-Commercial support and licensing is available by contacting
-<support@digitalbazaar.com>.
+Commercial licensing and support are available by contacting
+[Digital Bazaar](https://digitalbazaar.com/) <support@digitalbazaar.com>.
 
 [AUTHORS]: AUTHORS.md
 [FEATURES]: FEATURES.md
