@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 6.1.1 - 2024-mm-dd
+## 6.1.1 - 2024-02-27
 
 ### Fixed
 - Relicense under the Apache-2.0 license.
