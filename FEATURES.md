@@ -162,11 +162,11 @@ A single identity in the system may be associated with multiple other
 identities for separate purposes, such as a personal identity and a business
 identity.
 
-### RDFa and JSON-LD Support
+### JSON-LD and RDFa Support
 
-Parsers to read in and convert both RDFa and JSON-LD to native data formats
+Parsers to read in and convert both JSON-LD and RDFa to native data formats
 and modify, translate, and process the information are included. Converters
-are included to translate from RDFa to JSON-LD and vice-versa.
+are included to translate from JSON-LD to RDFa and vice-versa.
 
 ### Digital Signatures for Linked Data
 
