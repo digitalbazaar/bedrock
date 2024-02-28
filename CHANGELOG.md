@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 6.1.2 - 2024-02-dd
+
+### Fixed
+- Publish proper LICENSE file.
+
 ## 6.1.1 - 2024-02-27
 
 ### Fixed
