@@ -181,9 +181,9 @@ that use the system have a pleasant experience. This involves ensuring that
 the interface is elegant, responsive, and works across a variety of mobile,
 tablet, and desktop devices.
 
-### Extensible HTML5/CSS3 Templating System
+### Extensible HTML/CSS Templating System
 
-A front-end HTML5 templating system is provided that supports
+A front-end HTML templating system is provided that supports
 dynamic views and compiled view caching. The static or dynamic pages of a
 site is able to be overridden, allowing for the core web server
 framework to provide basic pages while the product pages override certain
