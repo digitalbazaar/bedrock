@@ -1,6 +1,6 @@
-# Contributing to Bedrock
+# Contributing to Bedrock®
 
-Details for developers about contributing to the Bedrock code.
+Details for developers about contributing to the Bedrock® code.
 
 ## Commit Messages
 
