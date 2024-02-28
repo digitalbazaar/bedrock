@@ -203,15 +203,6 @@ megabyte or more in size per page hit. Bedrock contains a good
 minification subsystem which provides good debugging support in development
 mode and optimized HTML+CSS+Javascript in production mode.
 
-A RequireJS-based frontend with auto-dependency determination is also
-provided. The RequireJS-optimizer concatenates and minifies
-all Javascript for optimized production sites. AngularJS and Bootstrap-based
-frontend with stackable modals and customizable popovers are also
-provided. An AngularJS-template compiler w/ Javascript and HTML minification
-for single connection load for production sites is available. Grunt-based CSS
-concatenation and optimization for production sites makes it easy to
-deploy production sites w/ no manual build process necessary.
-
 ### VueJS and Quasar UI Widgets
 
 Basic UI widgets are available: stackable modals, popovers,
