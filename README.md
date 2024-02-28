@@ -31,7 +31,7 @@ More complex, runnable examples can be found at [bedrock-examples](https://githu
 
 ## Quick Examples
 
-```
+```sh
 npm install bedrock
 ```
 
@@ -54,9 +54,8 @@ bedrock.start();
 
 To include the [Vue.js][]-based frontend, `npm install` these modules:
 
-```
-bedrock-vue
-bedrock-quasar
+```sh
+npm install bedrock-vue bedrock-quasar
 ```
 
 Create a simple express-based bedrock application:
@@ -263,7 +262,7 @@ bedrock.start();
 
 Run the main project and display the debug information with:
 
-```
+```sh
 node project.js debug --debug-event request
 ```
 
@@ -297,7 +296,7 @@ for example `project.js`, that imports `bedrock`, any other Bedrock modules
 you're interested in, and that then calls `bedrock.start()`. To run your
 project, run:
 
-```
+```sh
 node project.js
 ```
 
@@ -305,7 +304,7 @@ If you're developing your project and you have installed all of the development
 packages for the Bedrock modules you're using, you can also easily test your
 project and any of the modules it has included by running:
 
-```
+```sh
 node project.js test
 ```
 
@@ -736,33 +735,45 @@ Running Bedrock
 
 Run the following to start up a development server from the source directory:
 
-    node index.js
+```sh
+node index.js
+```
 
 To add more verbose debugging, use the `--log-level` option:
 
-    node index.js --log-level debug
+```sh
+node index.js --log-level debug
+```
 
 Running the Tests
 -----------------
 
 Run all tests:
 
-    npm test
+```sh
+npm test
+```
 
 Run only the mocha test framework:
 
-    node index.js test --framework mocha
+```sh
+node index.js test --framework mocha
+```
 
 Run a specific mocha test:
 
-    node index.js test --framework mocha --mocha-test tests/test.js
+```sh
+node index.js test --framework mocha --mocha-test tests/test.js
+```
 
 Running the Code Coverage Tool
 ------------------------------
 
-    npm run coverage
+```sh
+npm run coverage
+```
 
-Look at 'coverage.html' using a web browser
+Look at `coverage.html` using a web browser
 
 Features
 --------
