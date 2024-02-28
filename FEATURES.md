@@ -212,15 +212,15 @@ for single connection load for production sites is available. Grunt-based CSS
 concatenation and optimization for production sites makes it easy to
 deploy production sites w/ no manual build process necessary.
 
-### AngularJS UI Widgets
+### VueJS and Quasar UI Widgets
 
-Basic Angular UI widgets are available: stackable modals, popovers,
+Basic UI widgets are available: stackable modals, popovers,
 navbar hovercard, duplicate ID checker, generic modal alert, common
 alert display, tabs, bootstrap-styled form inputs, and help toggle.
 
 A lazy-compilation widget is also available; it can drastically
 improve initial page and widget-readiness for complex UIs by
-delaying AngularJS-compilation until it's needed.
+delaying compilation until it's needed.
 
 ## Developer Tooling
 
@@ -251,4 +251,3 @@ The web application framework is contained in a typical npm package
 that can be installed as a dependency. The framework is able to be
 extended by the project using it via an extensible configuration system
 and a layered front-end design.
-
