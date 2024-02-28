@@ -1,4 +1,4 @@
-# Bedrock _(@bedrock/core)_
+# Bedrock® _(@bedrock/core)_
 
 ![Bedrock Logo](./branding/BedrockLogo.png)
 
@@ -9,7 +9,7 @@ A core foundation for rich Web applications.
 
 ## Overview
 
-Bedrock is a modular Web application framework designed to help keep code
+Bedrock® is a modular Web application framework designed to help keep code
 well-organized, secure, and to allow an ecosystem to grow without unnecessary
 hindrance. Bedrock provides a powerful configuration system, an event-based API,
 Linked Data-capabilities, securely integrated modules, and testing capabilities

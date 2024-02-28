@@ -1,6 +1,6 @@
 # Basic Platform Features
 
-Bedrock is an application framework that allows
+Bedrock® is an application framework that allows
 Web technology-based products to be built on top of it. The framework removes
 the need to build and maintain common application subsystems that deal
 with things like logging, application auto-scaling, database access,
