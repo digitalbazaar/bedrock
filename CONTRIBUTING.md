@@ -130,12 +130,6 @@ A number of style and code rules can be checked with [ESLint](https://eslint.org
 
     $ npm run lint
 
-
-### AngularJS
-
-See [bedrock-angular](https://github.com/digitalbazaar/bedrock-angular/blob/master/CONTRIBUTING.md).
-
-
 ## Testing
 
 * Backend tests are typically written using the mocha framework.
