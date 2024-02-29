@@ -15,6 +15,12 @@ hindrance. Bedrock provides a powerful configuration system, an event-based API,
 Linked Data-capabilities, securely integrated modules, and testing capabilities
 that make writing modular Web applications easy.
 
+When creating a Web app, you need a foundation on which to build. There are
+a lot of disparate technologies out there that can be brought together into
+a cohesive whole to make this happen. The trouble is in finding, vetting,
+testing, and combining these technologies -- all of which needs to happen
+before you can begin to make serious progress on your own project.
+
 Bedrock is an opinionated, but flexible framework. Bedrock modules emulate
 organizing principles and clear guidelines for developers to follow that help
 break down problems and reduce cognitive load.
