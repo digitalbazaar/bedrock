@@ -2,7 +2,7 @@
 
 ![Bedrock Logo](./branding/BedrockLogo.png)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/digitalbazaar/bedrock/main.yml)](https://github.com/digitalbazaar/bedrock/actions/workflow/main.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/digitalbazaar/bedrock/main.yml)](https://github.com/digitalbazaar/bedrock/actions/workflows/main.yml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/digitalbazaar/bedrock)](https://codecov.io/gh/digitalbazaar/bedrock)
 
 A core foundation for rich Web applications.
