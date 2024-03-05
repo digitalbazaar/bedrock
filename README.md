@@ -30,10 +30,7 @@ low-powered laptop all the way up to an enterprise server.
 
 ## Runnable Examples
 
-A very basic, runnable "Hello World" bedrock example can be found
-at [bedrock-hello-world](https://github.com/digitalbazaar/bedrock-hello-world).
-
-More complex, runnable examples can be found at [bedrock-examples](https://github.com/digitalbazaar/bedrock-examples).
+Runnable examples can be found at [bedrock-examples](https://github.com/digitalbazaar/bedrock-examples).
 
 ## Quick Examples
 
