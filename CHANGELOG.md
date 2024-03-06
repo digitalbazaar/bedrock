@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 6.1.3 - 2024-03-xx
+
+### Fixed
+- Move eslint plugin to `devDependencies`.
+
 ## 6.1.2 - 2024-02-28
 
 ### Fixed
