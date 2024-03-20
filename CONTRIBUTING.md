@@ -46,6 +46,14 @@ Packages should include a top-level `CHANGELOG.md` file.
 * Use a simplified version of the https://keepachangelog.com/ style.
   * Don't make version links, this is difficult to maintain.
 * Prefix lines with `**BREAKING**:` or `**NOTE**:` or similar as needed.
+* When creating PRs, include a date template (with only the year, not the
+  actual month and date) following the version, like this:
+  `## 14.3.0 - 2024-mm-dd`. The release manager for a package will set the
+  month and date during the release process.
+* Do not update the version in `package.json` files to match the changelog
+  manually, because the release software will do this automatically. Setting
+  it manually will cause the release software to misbehave. New repositories
+  should always set the version in `package.json` to `"0.0.1-0"`.
 
 ## Code Style
 
