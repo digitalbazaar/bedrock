@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 6.1.4 - 2024-10-dd
+
+### Fixed
+- Replace unmaintained `uid-number` package with `passwd-user`.
+
 ## 6.1.3 - 2024-03-06
 
 ### Fixed
