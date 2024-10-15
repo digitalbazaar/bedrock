@@ -1,6 +1,9 @@
 # `@bedrock/core` ChangeLog
 
-## 6.1.4 - 2024-10-dd
+## 6.2.0 - 2024-10-dd
+
+### Changed
+- Use `serialize-error@11`. No significant changes are expected.
 
 ### Fixed
 - Replace unmaintained `uid-number` package with `passwd-user`.
