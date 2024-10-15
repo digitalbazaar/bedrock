@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 6.2.0 - 2024-10-dd
+## 6.2.0 - 2024-10-15
 
 ### Changed
 - Use `serialize-error@11`. No significant changes are expected.
