@@ -1,6 +1,6 @@
 # `@bedrock/core` ChangeLog
 
-## 6.3.0 - 2024-xx-xx
+## 6.3.0 - 2024-11-19
 
 ### Added
 - Add `bedrock.shutdown()` call that performs an orderly shutdown and emits
@@ -11,8 +11,8 @@
   events.
 
 ### Changed
-- Deprecate undocumented `bedrock-cli.exit` event. Use `bedrock.exit`. If there
-  is use case for this specific event, please file an issue.
+- Deprecate undocumented `bedrock-cli.exit` event. Use `bedrock.exit` instead.
+  If there is use case for this specific event, please file an issue.
 
 ## 6.2.0 - 2024-10-15
 
