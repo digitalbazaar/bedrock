@@ -63,28 +63,26 @@ Follow these rules as strictly as possible; only stray if there's a Very Good
 Reason To (TM).
 
 * Two-space indentation, NO tabs.
-* Same-line curly brackets, keep else/elseif/catch/while on the same line
-  as a related opening bracket; put one space before opening brackets.
+* Same-line opening curly brackets, keep else/elseif/catch/while on the same
+  line as a related opening bracket; put one space before opening brackets.
+* Drop closing curly brackets if they are not on the same line as the opening
+  bracket due to other rules causing line breaks.
+* Do NOT drop a closing parenthesis just because it is not on the same line as
+  the opening parenthesis, but only when they also follow a dropped closing
+  curly bracket. Curly braces express objects and isolated scopes and should
+  be dropped to visually indicate this, whereas parentheses do not and this
+  can cause visual confusion.
 * No extra spaces after if, while, etc. before the parenthetical.
 * Use semicolons.
 * Use camelCase for variables, method names, etc. Only use underscores as a
   prefix for "private" functions or variables that really need to be
   distinguished as such.
 * Return early and avoid else if possible.
-* Use continuation-passing-style (callbacks) when writing node.js code as
-  it is popular practice there. Use Promises in client-side code. If Promises
-  and other generator-related tech begin to become popular in node.js then
-  we will switch to that. We want our code to be as compatible as possible
-  with the community and idiomatic in the environments in which it is run.
-* Use async for callback management: [https://github.com/caolan/async]()
-* Prefer single quotes for strings. Only use double quotes when it would
-  result in fewer escape sequences. If there's any HTML that must be written
-  in a JS-string, it will be easier with single-quotes as you won't have
-  to escape any the HTML double quoting.
+* Use promises for asynchronous code, with a preference for async/await syntax.
+* Prefer single quotes for strings. Only use double quotes or backticks when it
+  would result in fewer escape sequences.
 * Prefer one variable declaration per line, no elaborate indentation, and
-  declare nearest to where variables are used. You may declare simple iterator
-  vars for loops multiple times in the same function, functional-scope
-  notwithstanding.
+  declare nearest to where variables are used.
 * Do not use trailing commas (for example: [foo, bar,]).
 * Line break at 80 chars; if you must line break for function parameters, line
   break at the opening parenthesis and move all parameters down, do not
@@ -92,7 +90,7 @@ Reason To (TM).
   if a parameter is an object with too many properties to fit on a single
   line; you may break after the opening object bracket for this. Break before
   periods for chaining function calls.
-* Use the latest ES20** code supported by stable node.js everywhere; we will run
+* Use the latest JS syntax supported by stable node.js everywhere; we will run
   babel tools to compile for browsers or older versions of node.js as needed.
 * When writing arrow functions (`=>`), if they can be kept on a single
   line, do so. Functions are just mappings from x to y (or `x => y`); it
