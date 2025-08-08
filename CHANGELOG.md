@@ -1,5 +1,10 @@
 # `@bedrock/core` ChangeLog
 
+## 6.3.1 - 2025-08-xx
+
+### Changed
+- Update to support `eslint@9`.
+
 ## 6.3.0 - 2024-11-19
 
 ### Added

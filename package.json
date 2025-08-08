@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint ."
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -36,12 +36,12 @@
     "winston-transport": "^4.5.0"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-digitalbazaar": "^5.0.1",
-    "eslint-plugin-jsdoc": "^50.4.1",
-    "eslint-plugin-unicorn": "^56.0.0",
-    "jsdoc": "^4.0.2",
-    "jsdoc-to-markdown": "^9.0.2"
+    "eslint": "^9.32.0",
+    "eslint-config-digitalbazaar": "github:digitalbazaar/eslint-config-digitalbazaar#use-eslint-v9",
+    "eslint-plugin-jsdoc": "^52.0.4",
+    "eslint-plugin-unicorn": "^60.0.0",
+    "globals": "^16.3.0",
+    "jsdoc": "^4.0.4"
   },
   "engines": {
     "node": ">=18"
