@@ -15,37 +15,8 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-import globals from 'globals';
-
-import digitalbazaar from 'eslint-config-digitalbazaar';
-import digitalbazaarJsdoc from 'eslint-config-digitalbazaar/jsdoc';
-import digitalbazaarModule from 'eslint-config-digitalbazaar/module';
+import config from '@digitalbazaar/eslint-config/node-recommended';
 
 export default [
-  {
-    languageOptions: {
-      globals: {
-        ...globals.node
-      }
-    }
-  },
-  ...digitalbazaar,
-  ...digitalbazaarJsdoc,
-  ...digitalbazaarModule,
-  {
-    rules: {
-      'unicorn/prefer-node-protocol': 'error'
-    }
-  },
-  {
-    files: [
-      'test/mocha/**/*.js'
-    ],
-    languageOptions: {
-      globals: {
-        ...globals.mocha,
-        should: true
-      }
-    }
-  }
+  ...config
 ];
