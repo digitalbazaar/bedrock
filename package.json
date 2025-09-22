@@ -36,10 +36,10 @@
     "winston-transport": "^4.5.0"
   },
   "devDependencies": {
-    "@digitalbazaar/eslint-config": "^6.0.0",
-    "eslint": "^9.34.0",
-    "eslint-plugin-jsdoc": "^54.3.0",
-    "eslint-plugin-unicorn": "^60.0.0",
+    "@digitalbazaar/eslint-config": "^6.1.0",
+    "eslint": "^9.36.0",
+    "eslint-plugin-jsdoc": "^60.1.1",
+    "eslint-plugin-unicorn": "^61.0.2",
     "jsdoc": "^4.0.4"
   },
   "engines": {
