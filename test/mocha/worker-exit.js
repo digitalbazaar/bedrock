@@ -23,17 +23,24 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.join(__dirname, '..', 'fixtures', 'worker-exit', 'app.js');
 
 // runs the fixture app as a separate bedrock process and resolves with its
-// exit code; rejects if it does not exit in time
+// exit code and captured stdout/stderr; rejects if it does not exit in time
 function runApp({mode, timeout = 60000}) {
   return new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath, [...process.execArgv, APP, 'start'], {
         env: {...process.env, MODE: mode},
-        stdio: 'ignore'
+        stdio: ['ignore', 'pipe', 'pipe']
       });
+    let output = '';
+    const capture = data => {
+      output += data.toString();
+    };
+    child.stdout.on('data', capture);
+    child.stderr.on('data', capture);
     const timer = setTimeout(() => {
       child.kill('SIGKILL');
-      reject(new Error(`app did not exit within ${timeout}ms`));
+      reject(new Error(
+        `app did not exit within ${timeout}ms; output:\n${output}`));
     }, timeout);
     child.on('error', err => {
       clearTimeout(timer);
@@ -41,19 +48,29 @@ function runApp({mode, timeout = 60000}) {
     });
     child.on('exit', code => {
       clearTimeout(timer);
-      resolve(code);
+      resolve({code, output});
     });
   });
+}
+
+// asserts the app's exit code, including the child's output on failure so
+// CI logs show why the process exited the way it did
+function expectExitCode(result, expected) {
+  if(result.code !== expected) {
+    throw new Error(
+      `expected exit code ${expected}, got ${result.code}; output:\n` +
+      result.output);
+  }
 }
 
 describe('worker exit', function() {
   this.timeout(120000);
   it('exits 1 when a worker has an uncaught error', async function() {
-    const code = await runApp({mode: 'crash'});
-    code.should.equal(1);
+    const result = await runApp({mode: 'crash'});
+    expectExitCode(result, 1);
   });
   it('exits 0 on an orderly shutdown', async function() {
-    const code = await runApp({mode: 'clean'});
-    code.should.equal(0);
+    const result = await runApp({mode: 'clean'});
+    expectExitCode(result, 0);
   });
 });
